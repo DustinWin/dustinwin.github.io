@@ -7,10 +7,11 @@ tags: [ShellCrash, AdGuard Home, mihomo, sing-box, sing-boxp, 安装, Dashboard]
 pin: true
 ---
 
-## 说明
-1. 本教程中 **[AdGuard Home](https://github.com/AdguardTeam/AdGuardHome) 安装目录为 `/data/AdGuardHome`**
+> 说明
+{: .prompt-tip }
+1. 本教程中 **[AdGuard Home](https://github.com/AdguardTeam/AdGuardHome) 安装目录为 `/data/AdGuardHome`{: .filepath}**
 2. 本教程中的下载链接以 CPU 架构 ARMv8 为例，请注意修改链接后缀
-3. 查看 CPU 架构可连接 SSH 后执行命令 `uname -ms`，若执行结果是 `linux aarch64`，就是搭载的 ARMv8 架构
+3. 查看 CPU 架构可连接 SSH 后执行命令 `uname -ms`，若执行结果是“linux aarch64”，就是搭载的 ARMv8 架构
 4. 以下所有命令均可全部复制后直接粘贴执行
 
 ## 一、 安装 [ShellCrash](https://github.com/juewuy/ShellCrash)
@@ -87,7 +88,7 @@ curl -L https://cdn.jsdelivr.net/gh/DustinWin/proxy-tools@Dashboard/metacubexd.t
 ```
 
 - 注：若使用基于 [Chromium 项目](https://www.chromium.org/Home/)开发的浏览器打开网址去访问 Dashboard 面板时，以 [Chrome 浏览器](https://www.google.com/chrome/)为例，需要设置该网址域名“允许显示不安全内容”。方法如下：  
-进入设置 -> 隐私和安全 -> 网站设置 -> 更多内容设置 -> 不安全内容（或者地址栏直接打开 chrome://settings/content/insecureContent 进行设置），在“允许显示不安全内容”内添加网址域名如：`metacubex.github.io`
+进入设置 -> 隐私和安全 -> 网站设置 -> 更多内容设置 -> 不安全内容（或者直接在地址栏打开 chrome://settings/content/insecureContent 进行设置），在“允许显示不安全内容”内添加网址域名如：`metacubex.github.io`
 
 ## 四、 安装 AdGuard Home
 ### 1. 安装 AdGuard Home

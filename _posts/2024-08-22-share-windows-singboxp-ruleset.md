@@ -6,7 +6,8 @@ categories: [分享配置, Windows]
 tags: [sing-box, sing-boxp, Windows, ruleset, rule_set, 分享]
 ---
 
-## 声明
+> 声明
+{: .prompt-warning }
 1. 请根据自身情况进行修改，**适合自己的方案才是最好的方案**，如无特殊需求，可以照搬
 2. 此方案采用**裸核**的方式运行，更加精简
 
@@ -269,7 +270,7 @@ tags: [sing-box, sing-boxp, Windows, ruleset, rule_set, 分享]
 - ① 编辑本文文档，粘贴如下内容：  
   注：
   - ➊ 将第《一》步生成的配置文件 .json 文件直链替换下面命令中的 `{.json 配置文件直链}`
-  - ➋ 或删除此条命令，直接进入 *%PROGRAMFILES%\sing-box* 文件夹，新建 config.json 文件并粘贴配置内容
+  - ➋ 或删除此条命令，直接进入 `%PROGRAMFILES%\sing-box`{: .filepath} 文件夹，新建 config.json 文件并粘贴配置内容
 
   ```shell
   rem 导入 sing-box 内核和配置文件
@@ -299,7 +300,7 @@ tags: [sing-box, sing-boxp, Windows, ruleset, rule_set, 分享]
   start /min sing-box.exe run
   ```
 
-- ② 另存为 run.bat 文件并复制到 *%PROGRAMFILES%\sing-box* 文件夹中
+- ② 另存为 run.bat 文件并复制到 `%PROGRAMFILES%\sing-box`{: .filepath} 文件夹中
 - ③ 右击 run.bat 文件并选择“以管理员身份运行”即可  
   小窍门：
   - ➊ 右击 run.bat 文件并选择“发送到桌面快捷方式”
@@ -310,7 +311,7 @@ tags: [sing-box, sing-boxp, Windows, ruleset, rule_set, 分享]
 编辑本文文档，粘贴如下内容：  
 注：
 - ① 将第《一》步生成的配置文件 .json 文件直链替换下面命令中的 `{.json 配置文件直链}`
-- ② 或者删除此条命令，直接进入 *%PROGRAMFILES%\sing-box* 文件夹，修改 config.json 文件内的配置内容
+- ② 或者删除此条命令，直接进入 `%PROGRAMFILES%\sing-box`{: .filepath} 文件夹，修改 config.json 文件内的配置内容
 
 ```shell
 @echo off
@@ -340,5 +341,5 @@ pause
 
 ## 四、 访问 Dashboard 面板
 .json 文件已配置 [zashboard 面板](https://github.com/Zephyruso/zashboard)  
-打开 http://127.0.0.1:9090/ui/ 后可直接点击“提交”，即可访问 Dashboard 面板  
+打开 <http://127.0.0.1:9090/ui/> 后可直接点击“提交”，即可访问 Dashboard 面板  
 <img src="/assets/img/share/127-9090-dashboard.png" alt="在线 Dashboard 面板" width="60%" />

@@ -7,17 +7,18 @@ tags: [Clash, mihomo, ShellCrash, AdGuard Home, 解锁, SSH]
 pin: true
 ---
 
-## 说明
+> 说明
+{: .prompt-tip }
 1. 本教程基于 Redmi AX6000 [官方固件](https://www1.miwifi.com/miwifi_download.html) v1.0.70 版，[ShellCrash](https://github.com/juewuy/ShellCrash) v1.9.2 版，[AdGuard Home](https://github.com/AdguardTeam/AdGuardHome) v0.108.0 版编写
 2. 恢复 SSH，安装 ShellCrash 和 AdGuard Home 的方法也适用于其它已解锁 SSH 的路由器
-3. 安装 [mihomo 内核](https://github.com/MetaCubeX/mihomo)和 AdGuard Home 时须注意路由器 CPU 架构，查看 CPU 架构可连接 SSH 后执行命令 `uname -ms`，若执行结果是 `linux aarch64`，就下载 armv8 或 arm64 版安装包；若是其它架构请下载相匹配的安装包
+3. 安装 [mihomo 内核](https://github.com/MetaCubeX/mihomo)和 AdGuard Home 时须注意路由器 CPU 架构，查看 CPU 架构可连接 SSH 后执行命令 `uname -ms`，若执行结果是“linux aarch64”，就下载 armv8 或 arm64 版安装包；若是其它架构请下载相匹配的安装包
 4. ShellCrash 和 AdGuard Home 中所有没有提到的配置保持默认即可
 5. ShellCrash 和 AdGuard Home 快速安装方法请看《[ShellCrash 和 AdGuard Home 快速安装教程](https://proxy-tutorials.dustinwin.top/posts/pin-toolsinstall)》
 6. ShellCrash 单独使用时设置 DNS 分流请看《[搭载 mihomo 内核进行 DNS 分流教程-geodata 方案](https://proxy-tutorials.dustinwin.top/posts/dnsbypass-mihomo-geodata)》或《[搭载 mihomo 内核进行 DNS 分流教程-ruleset 方案](https://proxy-tutorials.dustinwin.top/posts/dnsbypass-mihomo-ruleset)》
 
 ## 一、 资源下载
 打包下载：<https://dustinwinvip.lanzoum.com/b01qd6p3a>  
-密码：zyxz  
+密码：`zyxz`  
 注：
 - ① 没有对文件进行任何处理，请自行操作使用
 - ② 不保证实时更新，想用新版请安装后自行升级
@@ -49,7 +50,7 @@ pin: true
 
 ## 二、 解锁 SSH
 ### 1. 复制 stok 值
-进入路由器管理页面 http://192.168.31.1，登录后复制地址栏中的 stok 值  
+进入路由器管理页面 <http://192.168.31.1>，登录后复制地址栏中的 stok 值  
 <img src="/assets/img/pin/copy-stok.png" alt="复制 stok 值" width="60%" />
 
 ### 2. 开启调试模式
@@ -168,7 +169,7 @@ echo -e '12345678\n12345678' | passwd root
 
 - ④ 连接 SSH  
 成功解锁或恢复 SSH 后，以管理员身份运行 PowerShell 或 CMD，执行命令 `ssh root@192.168.31.1`
-  - 注：若当前电脑登录过 SSH，后路由器经过重新解锁或恢复 SSH，需要进入 *C:\Users\\[用户名]\\.ssh* 文件夹，删除“known_hosts”文件，否则登录会报错
+  - 注：若当前电脑登录过 SSH，后路由器经过重新解锁或恢复 SSH，需要进入 `C:\Users\[用户名]\.ssh`{: .filepath} 文件夹，删除“known_hosts”文件，否则登录会报错
 
   首次登录需要手动输入“yes”，然后回车  
   <img src="/assets/img/pin/connect-ssh-windows.png" alt="连接 SSH 1" />  
@@ -184,7 +185,7 @@ echo -e '12345678\n12345678' | passwd root
 <img src="/assets/img/pin/skip-termius.png" alt="打开 Termius" width="60%" />
 
 - ② 添加 Host  
-依次点击 ADD->New Host  
+依次点击 ADD -> New Host  
 <img src="/assets/img/pin/add-new-host.png" alt="添加 Host" width="60%" />
 
 - ③ 添加 Telnet  
@@ -216,7 +217,7 @@ echo -e '12345678\n12345678' | passwd root
 
 ## 五、 ShellCrash 安装和配置
 ### 1. ShellCrash 安装
-- ① 打开 WinSCP，将下载的 ShellCrash.tar.gz 文件移动到路由器的 */tmp* 目录中  
+- ① 打开 WinSCP，将下载的 ShellCrash.tar.gz 文件移动到路由器的 `/tmp`{: .filepath} 目录中  
 <img src="/assets/img/pin/move-shellcrash.png" alt="ShellCrash 安装 1" width="60%" />
 
 - ② 连接 SSH，执行如下命令：
@@ -227,7 +228,7 @@ echo -e '12345678\n12345678' | passwd root
 
 - ③ 选择 1 安装到 /data 目录（推荐，支持软固化功能）
 - ④ 将下载的 mihomo-linux-arm64-xxx.gz 文件解压，得到 mihomo-linux-arm64 文件
-- ⑤ 将 mihomo-linux-arm64 文件移动到路由器的 */tmp* 目录中  
+- ⑤ 将 mihomo-linux-arm64 文件移动到路由器的 `/tmp`{: .filepath} 目录中  
 <img src="/assets/img/pin/move-mihomo.png" alt="ShellCrash 安装 2" width="60%" />
 
 **ShellCrash 安装成功！**
@@ -236,14 +237,14 @@ echo -e '12345678\n12345678' | passwd root
 - ① 连接 SSH 后执行 `crash` 命令打开 ShellCrash 配置脚本  
 首次打开会进入新手引导，选择 1 路由设备配置局域网透明代理  
 启用推荐的自动任务配置  
-根据需要是否启用软固化（此处选择 1，解锁 SSH 时已成功启用软固化）  
-根据需要是否选择 1 确认导入配置文件（此处选择 0）  
-根据需要是否选择 1 立即启动服务（此处选择 0）  
-  - 注：强烈建议选择 0，待以下配置完成后，最后一步启动服务
-- ② 此时脚本会自动“发现可用的内核文件”，选择 1 加载，后选择 3 Clash-Meta 内核  
+根据需要是否启用软固化（此处选择 `1`，解锁 SSH 时已成功启用软固化）  
+根据需要是否选择 1 确认导入配置文件（此处选择 `0`）  
+根据需要是否选择 1 立即启动服务（此处选择 `0`）  
+  - 注：强烈建议选择 `0`，待以下配置完成后，最后一步启动服务
+- ② 此时脚本会自动“发现可用的内核文件”，选择 `1` 加载，后选择 3 Clash-Meta 内核  
 <img src="/assets/img/pin/import-mihomo.png" alt="ShellCrash 配置 1" width="60%" />
 
-- ③ 内核加载完成后根据需要是否保留相关数据库文件（此处选择 0）
+- ③ 内核加载完成后根据需要是否保留相关数据库文件（此处选择 `0`）
 - ④ 进入主菜单 -> 2 内核功能设置 -> 1 切换防火墙运行模式，选择 3 Tproxy 模式（有“Tproxy 模式”就选“Tproxy 模式”，否则推荐选“混合模式”，宽带在 300M 内推荐 Tun 模式）  
 进入 1 切换防火墙运行模式 -> 9 ipv6 设置，若机场节点支持 IPv6，可开启 1 ipv6 透明代理；根据自身需要开启 3 CNV6 绕过内核  
 <img src="/assets/img/pin/ipv6-setting.png" alt="ShellCrash 配置 2" width="60%" />
@@ -260,7 +261,7 @@ echo -e '12345678\n12345678' | passwd root
   返回到 2 内核功能设置，根据自身需要开启 8 CN_IP 绕过内核  
   <img src="/assets/img/pin/tproxy-mix.png" alt="ShellCrash 配置 4" width="60%" />
 
-- ⑤ 进入主菜单 -> 4 内核启动设置，选择 1 允许 ShellCrash 开机启动（若重启路由器后服务没有自动运行，可“设置自启延时”为 30 秒，然后在第《六、 1. ⑥》，将 `sleep 10s` 改为 `sleep 40s`）
+- ⑤ 进入主菜单 -> 4 内核启动设置，选择 1 允许 ShellCrash 开机启动（若重启路由器后服务没有自动运行，可“设置自启延时”为 `30` 秒，然后在第《六、 1. ⑥》，将 `sleep 10s` 改为 `sleep 40s`）
 - ⑥ 进入主菜单 -> 7 内核进阶设置，选择 4 启用域名嗅探
 - ⑦ 进入主菜单 -> 9 更新/卸载 -> 7 切换安装源及安装版本，选择 b 切换至公测版-master -> 1 Jsdelivr_CDN源，追求新版可选择 c 切换至开发版（可能不稳定）  
 <img src="/assets/img/pin/select-update-source.png" alt="ShellCrash 配置 5" width="60%" />
@@ -268,14 +269,14 @@ echo -e '12345678\n12345678' | passwd root
   进入 4 安装本地 Dashboard 面板，选择 3 安装 MetaXD 面板
 
   注：
-  - ➊ 启动服务后，面板 Dashboard 访问链接为：http://192.168.31.1:9999/ui
-  - ➋ 初次打开需要添加“后端地址”：http://192.168.31.1:9999
+  - ➊ 启动服务后，面板 Dashboard 访问链接为：<http://192.168.31.1:9999/ui/>
+  - ➋ 初次打开需要添加“后端地址”：`http://192.168.31.1:9999`
 
   <img src="/assets/img/pin/install-dashboard.png" alt="ShellCrash 配置 6" width="60%" />
 
 - ⑧ 进入主菜单 -> 6 导入配置文件  
 注：
-  - ➊ 选择 1 在线生成 meta 配置文件，粘贴你的订阅链接并回车，输入“1”并再次回车即可
+  - ➊ 选择 1 在线生成 meta 配置文件，粘贴你的订阅链接并回车，输入 `1` 并再次回车即可
   - ➋ 选择 2 在线获取完整配置文件，需要一定的 mihomo 知识储备，请查看《[生成带有自定义策略组和规则的 mihomo 配置文件直链-geodata 方案](https://proxy-tutorials.dustinwin.top/posts/link-mihomo-geodata)》或《[生成带有自定义策略组和规则的 mihomo 配置文件直链-ruleset 方案](https://proxy-tutorials.dustinwin.top/posts/link-mihomo-ruleset)》
 
   导入配置文件完成后，选择 1 启动/重启服务  
@@ -306,7 +307,7 @@ echo -e '12345678\n12345678' | passwd root
 
 ## 六 、 AdGuard Home 安装和配置
 ### 1. AdGuard Home 安装
-- ① 将下载的 upx-xxx-win64.zip 文件解压到桌面，目录结构为 *C:\Users\\[用户名]\Desktop\upx*
+- ① 将下载的 upx-xxx-win64.zip 文件解压到桌面，目录结构为 `C:\Users\[用户名]\Desktop\upx`{: .filepath}
 - ② 将下载的 AdGuardHome_linux_arm64.tar.gz 文件复制到桌面，以管理员身份运行 PowerShell，依次执行如下命令：
 
   ```shell
@@ -314,8 +315,8 @@ echo -e '12345678\n12345678' | passwd root
   tar -zxvf AdGuardHome_linux_arm64.tar.gz
   ```
 
-  .tar.gz 压缩文件成功解压到桌面的 *AdGuardHome* 文件夹内，目录结构为 *C:\Users\\[用户名]\Desktop\AdGuardHome*
-- ③ 进入 *AdGuardHome* 文件夹，将里面的“AdGuardHome”文件移动到 *C:\Users\\[用户名]\Desktop\upx* 文件夹中  
+  .tar.gz 压缩文件成功解压到桌面的 `AdGuardHome`{: .filepath} 文件夹内，目录结构为 `C:\Users\[用户名]\Desktop\AdGuardHome`{: .filepath}
+- ③ 进入 `AdGuardHome`{: .filepath} 文件夹，将里面的“AdGuardHome”文件移动到 `C:\Users\[用户名]\Desktop\upx`{: .filepath} 文件夹中  
 依次执行如下命令：
 
   ```shell
@@ -323,10 +324,10 @@ echo -e '12345678\n12345678' | passwd root
   .\upx AdGuardHome
   ```
 
-- ④ 将压缩后的“AdGuardHome”文件移动到路由器的 */data/AdGuardHome* 目录（没有此目录就新建）中  
+- ④ 将压缩后的“AdGuardHome”文件移动到路由器的 `/data/AdGuardHome`{: .filepath} 目录（没有此目录就新建）中  
 <img src="/assets/img/pin/move-adguardhome.png" alt="AdGuard Home 安装 1" width="60%" />
 
-- ⑤ 进入路由器文件管理的 */data/auto_ssh* 目录，右击“auto_ssh.sh”文件  
+- ⑤ 进入路由器文件管理的 `/data/auto_ssh`{: .filepath} 目录，右击“auto_ssh.sh”文件  
 注：
   - ➊ 若没有此目录和文件，可新建
   - ➋ 新建后连接 SSH，直接粘贴如下所有命令：
@@ -338,10 +339,11 @@ echo -e '12345678\n12345678' | passwd root
   并编辑  
   <img src="/assets/img/pin/edit-task.png" alt="AdGuard Home 安装 2" width="60%" />
 
+> AdGuard Home 的“DNS 服务器端口”须设置为 `5353`
+{: .prompt-warning }
+
 - ⑥ 在最下方添加如下内容并保存：  
-注：
-  - ➊ AdGuard Home 的“DNS 服务器端口”须设置为“5353”
-  - ➋ 若 ShellCrash 设置了自启延时如 30 秒，须将 `sleep 10s` 修改为 `sleep 40s`（即 +10s）
+  - 注： 若 ShellCrash 设置了自启延时如 `30` 秒，须将 `sleep 10s` 修改为 `sleep 40s`（即 +10s）
 
   ```shell
   sleep 10s
@@ -354,7 +356,6 @@ echo -e '12345678\n12345678' | passwd root
   ```
 
 - ⑦ 连接 SSH，直接粘贴如下所有命令：
-  - 注：AdGuard Home 的“DNS 服务器端口”须设置为“5353”
 
   ```shell
   chmod +x /data/AdGuardHome/AdGuardHome
@@ -369,8 +370,8 @@ echo -e '12345678\n12345678' | passwd root
   **AdGuard Home 安装成功！**
 
 ### 2. AdGuard Home 配置
-- ① 打开网页 http://192.168.31.1:3000  
-点击“开始配置”，**“网页管理界面端口”输入“3000”，“DNS 服务器端口”输入“5353”**  
+- ① 打开网页 <http://192.168.31.1:3000>  
+点击“开始配置”，**“网页管理界面端口”输入 `3000`，“DNS 服务器端口”输入 `5353`**  
 “身份认证”设置用户名和密码
 - ② 点击“打开仪表盘”后输入刚才设置的用户名和密码“登入”，就可以进入 AdGuard Home 管理页面
 - ③ 进入设置 -> 常规设置  
@@ -398,7 +399,7 @@ echo -e '12345678\n12345678' | passwd root
   直接点击“应用”即可  
   <img src="/assets/img/pin/adguardhome-dns.png" alt="AdGuard Home 配置 2" width="60%" />
 
-  “速度限制”输入“0”，勾选“启用 EDNS 客户端子网”，然后点击下方的“保存”  
+  “速度限制”输入 `0`，勾选“启用 EDNS 客户端子网”，然后点击下方的“保存”  
   <img src="/assets/img/pin/adguardhome-dns-service.png" alt="AdGuard Home 配置 3" width="60%" />
 
   勾选“乐观缓存”，并点击“保存”  
@@ -414,7 +415,7 @@ echo -e '12345678\n12345678' | passwd root
 
 - ⑥ 进入过滤器 -> DNS 重写 -> 添加 DNS 重写，“输入域”填写 `miwifi.com`，“输入 IP 地址或域名”填写 `192.168.31.1`，然后点击“保存”  
 注：
-  - ➊ 此步骤可解决访问 http://miwifi.com 时无法打开小米或红米路由器管理页面的问题，其它型号路由器请根据自身需要填写
+  - ➊ 此步骤可解决访问 <http://miwifi.com> 时无法打开小米或红米路由器管理页面的问题，其它型号路由器请根据自身需要填写
   - ➋ 若已在 ShellCrash 配置文件自行添加了 `hosts`，可跳过此步骤
 
   添加成功  

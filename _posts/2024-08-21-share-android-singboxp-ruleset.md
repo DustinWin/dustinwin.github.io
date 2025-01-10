@@ -6,9 +6,12 @@ categories: [分享配置, Android]
 tags: [sing-box, sing-boxp, Android, ruleset, rule_set, 分享]
 ---
 
-## 声明
-1. 请根据自身情况进行修改，**适合自己的方案才是最好的方案**，如无特殊需求，可以照搬
-2. **规则集暂时不可用**，等 [sing-boxp for Android](https://github.com/PuerNya/sing-box/actions/workflows/sfa.yml) v1.10.0+ 版本吧
+> 规则集暂时不可用，等 [sing-boxp for Android](https://github.com/PuerNya/sing-box/actions/workflows/sfa.yml) v1.10.0+ 版本吧
+{: .prompt-danger }
+
+> 声明
+{: .prompt-warning }
+请根据自身情况进行修改，**适合自己的方案才是最好的方案**，如无特殊需求，可以照搬
 
 ## 一、 生成配置文件 .json 文件直链
 具体方法请参考《[生成带有自定义出站和规则的 sing-boxp 配置文件直链-ruleset 方案](https://proxy-tutorials.dustinwin.top/posts/link-singboxp-ruleset)》，贴一下我使用的配置：
@@ -268,7 +271,7 @@ tags: [sing-box, sing-boxp, Android, ruleset, rule_set, 分享]
 ```
 
 ## 二、 导入配置文件并启动 sing-box
-1. 进入 sing-box for Android -> Profiles -> New Profile，“Type”选择“Remote”，在“URL”处粘贴第《一》中生成的配置文件 .json 直链，“Auto Update Interval”填写“1440”，最后点击“Create”
+1. 进入 sing-box for Android -> Profiles -> New Profile，“Type”选择“Remote”，在“URL”处粘贴第《一》中生成的配置文件 .json 直链，“Auto Update Interval”填写 `1440`，最后点击“Create”
 2. 进入 sing-boxp for Android -> Dashboard，点击“▶️”图标即可启动 sing-box 服务
 - 注：首次启用可能会报错，重试几次即可
 

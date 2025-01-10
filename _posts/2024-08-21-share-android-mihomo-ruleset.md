@@ -6,7 +6,8 @@ categories: [分享配置, Android]
 tags: [Clash, Clash.Meta, mihomo, Android, ruleset, rule-set, 分享]
 ---
 
-## 声明
+> 声明
+{: .prompt-warning }
 请根据自身情况进行修改，**适合自己的方案才是最好的方案**，如无特殊需求，可以照搬
 
 ## 一、 生成配置文件 .yaml 文件直链
@@ -267,6 +268,5 @@ rules:
 ```
 
 ## 二、 导入配置文件并启动
-1. 进入 [Clash.Meta for Android](https://github.com/MetaCubeX/ClashMetaForAndroid) -> 配置 -> 创建配置 -> 从 URL 导入，“URL”输入第《一》中生成的配置文件 .yaml 直链，“自动更新”填写“1440”，最后点击右上角的“保存图标”
-2. 进入 Clash.Meta for Android -> 设置 -> 网络，将“系统代理”关闭
-3. 返回到主界面，点击“点此启用”即可启动
+1. 进入 [Clash.Meta for Android](https://github.com/MetaCubeX/ClashMetaForAndroid) -> 配置 -> 创建配置 -> 从 URL 导入，“URL”输入第《一》中生成的配置文件 .yaml 直链，“自动更新”填写 `1440`，最后点击右上角的“保存图标”
+2. 返回到主界面，点击“点此启用”即可启动
