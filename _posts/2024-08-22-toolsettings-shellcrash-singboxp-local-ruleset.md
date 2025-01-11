@@ -20,10 +20,10 @@ tags: [sing-box, sing-boxp, ShellCrash, ruleset, rule_set, 进阶, 本地, Route
 可参考《[ShellCrash 搭载 sing-boxp 内核的配置-ruleset 方案/导入 sing-box PuerNya 版内核](https://proxy-tutorials.dustinwin.top/posts/toolsettings-shellcrash-singboxp-ruleset/#%E4%B8%80-%E5%AF%BC%E5%85%A5-sing-box-PuerNya-%E7%89%88%E5%86%85%E6%A0%B8)》里的步骤进行操作
 
 ## 二、 导入配置文件
-1. 进入 ShellCrash -> 6 导入配置文件 -> 1 在线生成 singbox 配置文件 -> 4 选取在线配置规则模版，选择 4 [ACL4SSR](https://acl4ssr-sub.github.io) 极简版（适合自建节点）  
+1. 进入 ShellCrash → 6 导入配置文件 → 1 在线生成 singbox 配置文件 → 4 选取在线配置规则模版，选择 4 [ACL4SSR](https://acl4ssr-sub.github.io) 极简版（适合自建节点）  
 <img src="/assets/img/tools/subscribe-easy.png" alt="导入配置文件" width="60%" />
 
-2. 进入 ShellCrash -> 6 导入配置文件 -> 1 在线生成 singbox 配置文件，输入订阅链接后回车，再输入 `1` 并回车即可
+2. 进入 ShellCrash → 6 导入配置文件 → 1 在线生成 singbox 配置文件，输入订阅链接后回车，再输入 `1` 并回车即可
 
 ## 三、 自定义出站和规则
 ### 1. 自定义出站提供者 outbound_providers.json（用于添加自定义出站提供者 `outbound_providers`）
@@ -45,9 +45,9 @@ tags: [sing-box, sing-boxp, ShellCrash, ruleset, rule_set, 进阶, 本地, Route
         "download_interval": "24h",
         "download_ua": "clash.meta",
         // 初步筛选需要的节点，可有效减轻路由器压力，支持正则表达式，若不筛选可删除此配置项
-        "includes": [ "香港|台湾|日本|新加坡|美国" ],
+        "includes": [ "(?i)港|hk|hongkong|hong kong|台|tw|taiwan|日本|jp|japan|新|sg|singapore|美|us|unitedstates|united states" ],
         // 初步排除不需要的节点，支持正则表达式，若不排除可删除此配置项
-        "excludes": "高倍|×10",
+        "excludes": "高倍|直连|×10",
         "healthcheck_url": "https://www.gstatic.com/generate_204",
         "healthcheck_interval": "10m",
         "outbound_override": {
@@ -65,8 +65,8 @@ tags: [sing-box, sing-boxp, ShellCrash, ruleset, rule_set, 进阶, 本地, Route
         "path": "./providers/airport2.json",
         "download_interval": "24h",
         "download_ua": "sing-box",
-        "includes": [ "香港|台湾|日本|新加坡|美国" ],
-        "excludes": "高倍|×10",
+        "includes": [ "(?i)港|hk|hongkong|hong kong|台|tw|taiwan|日本|jp|japan|新|sg|singapore|美|us|unitedstates|united states" ],
+        "excludes": "高倍|直连|×10",
         "healthcheck_url": "https://www.gstatic.com/generate_204",
         "healthcheck_interval": "10m",
         "outbound_override": {

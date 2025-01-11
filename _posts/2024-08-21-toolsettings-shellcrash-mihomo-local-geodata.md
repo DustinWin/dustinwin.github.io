@@ -19,10 +19,10 @@ tags: [Clash, mihomo, ShellCrash, geodata, geosite, 进阶, 本地, Router]
 可参考《[ShellCrash 搭载 mihomo 内核的配置-geodata 方案](https://proxy-tutorials.dustinwin.top/posts/toolsettings-shellcrash-mihomo-geodata)》里的步骤《一、二》进行操作
 
 ## 二、 导入配置文件
-1. 进入 ShellCrash -> 6 导入配置文件 -> 1 在线生成 meta 配置文件 -> 4 选取在线配置规则模版，选择 4 [ACL4SSR](https://acl4ssr-sub.github.io) 极简版（适合自建节点）  
+1. 进入 ShellCrash → 6 导入配置文件 → 1 在线生成 meta 配置文件 → 4 选取在线配置规则模版，选择 4 [ACL4SSR](https://acl4ssr-sub.github.io) 极简版（适合自建节点）  
 <img src="/assets/img/tools/subscribe-easy.png" alt="导入配置文件" width="60%" />
 
-2. 进入 ShellCrash -> 6 导入配置文件 -> 1 在线生成 meta 配置文件，输入订阅链接后回车，再输入 `1` 并回车即可
+2. 进入 ShellCrash → 6 导入配置文件 → 1 在线生成 meta 配置文件，输入订阅链接后回车，再输入 `1` 并回车即可
 
 ## 三、 自定义策略组和规则
 ### 1. 自定义 others.yaml（用于编写自定义的锚点、入站、代理集合 `proxy-providers`、子规则 `sub-rules` 和 script 脚本等功能）
@@ -40,7 +40,7 @@ proxy-providers:
     ## 初步筛选需要的节点，可有效减轻路由器压力，支持正则表达式，不筛选可删除此配置项
     filter: "(?i)港|hk|hongkong|hong kong|台|tw|taiwan|日本|jp|japan|新|sg|singapore|美|us|unitedstates|united states"
     ## 初步排除不需要的节点，支持正则表达式，若不排除可删除此配置项
-    exclude-filter: "高倍|×10"
+    exclude-filter: "高倍|直连|×10"
     health-check:
       enable: true
       url: https://www.gstatic.com/generate_204
@@ -57,7 +57,7 @@ proxy-providers:
     path: ./proxies/airport2.yaml
     interval: 86400
     filter: "(?i)港|hk|hongkong|hong kong|台|tw|taiwan|日本|jp|japan|新|sg|singapore|美|us|unitedstates|united states"
-    exclude-filter: "高倍|×10"
+    exclude-filter: "高倍|直连|×10"
     health-check:
       enable: true
       url: https://www.gstatic.com/generate_204

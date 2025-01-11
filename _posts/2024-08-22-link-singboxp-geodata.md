@@ -14,7 +14,7 @@ tags: [sing-box, sing-boxp, 直链, 订阅, geodata, geosite, 基础]
 3. 生成的订阅链接**自带规则集**，规则集来源 [DustinWin/ruleset_geodata/geodata](https://github.com/DustinWin/ruleset_geodata?tab=readme-ov-file#%E4%B8%80-geodata-%E6%96%87%E4%BB%B6%E8%AF%B4%E6%98%8E)
 4. 本教程必须使用支持[出站提供者](https://sing-boxp.dustinwin.top/zh/configuration/provider/) `outbound_providers`（类似于 [mihomo 内核](https://github.com/MetaCubeX/mihomo)的[代理集合](https://wiki.metacubex.one/config/proxy-providers/) `proxy-providers`）的 [sing-box PuerNya 版内核](https://github.com/PuerNya/sing-box)，请先**确定自己机场的订阅链接是否为 Clash 或 sing-box 订阅链接**，若不是，需前往[肥羊在线订阅转换工具](https://suburl.v1.mk)进行转换，“生成类型”选择“Clash”或“sing-box”，其它参数保持默认即可，转换后的 Clash 订阅链接需要在末尾添加 `&flag=clash`，然后添加到 .json 文件出站提供者 `outbound_providers` 的 `download_url` 中
 5. 推荐使用 [Visual Studio Code](https://code.visualstudio.com/Download) 等专业编辑器来修改配置文件
-6. ShellCrash 支持本地导入配置文件，可以直接将下方的 .json 直链文件内容复制到 `$CRASHDIR/jsons/config.json`{: .filepath} 文件中，可代替通过 ShellCrash 配置脚本 -> 6 -> 2 导入配置文件的方式
+6. ShellCrash 支持本地导入配置文件，可以直接将下方的 .json 直链文件内容复制到 `$CRASHDIR/jsons/config.json`{: .filepath} 文件中，可代替通过 ShellCrash 配置脚本 → 6 → 2 导入配置文件的方式
 
 ## 一、 准备编辑 .json 直链文件
 ### 1. 注册 [Gist](https://gist.github.com)
@@ -43,9 +43,9 @@ tags: [sing-box, sing-boxp, 直链, 订阅, geodata, geosite, 基础]
       "download_interval": "24h",
       "download_ua": "clash.meta",
       // 初步筛选需要的节点，可有效减轻路由器压力，支持正则表达式，若不筛选可删除此配置项
-      "includes": [ "香港|台湾|日本|新加坡|美国" ],
+      "includes": [ "(?i)港|hk|hongkong|hong kong|台|tw|taiwan|日本|jp|japan|新|sg|singapore|美|us|unitedstates|united states" ],
       // 初步排除不需要的节点，支持正则表达式，若不排除可删除此配置项
-      "excludes": "高倍|×10",
+      "excludes": "高倍|直连|×10",
       "healthcheck_url": "https://www.gstatic.com/generate_204",
       "healthcheck_interval": "10m",
       "outbound_override": {
@@ -63,8 +63,8 @@ tags: [sing-box, sing-boxp, 直链, 订阅, geodata, geosite, 基础]
       "path": "./providers/airport2.json",
       "download_interval": "24h",
       "download_ua": "sing-box",
-      "includes": [ "香港|台湾|日本|新加坡|美国" ],
-      "excludes": "高倍|×10",
+      "includes": [ "(?i)港|hk|hongkong|hong kong|台|tw|taiwan|日本|jp|japan|新|sg|singapore|美|us|unitedstates|united states" ],
+      "excludes": "高倍|直连|×10",
       "healthcheck_url": "https://www.gstatic.com/generate_204",
       "healthcheck_interval": "10m",
       "outbound_override": {
@@ -182,9 +182,9 @@ tags: [sing-box, sing-boxp, 直链, 订阅, geodata, geosite, 基础]
       "download_ua": "clash.meta",
       "download_detour": "PROXY",
       // 初步筛选需要的节点，可有效减轻路由器压力，支持正则表达式，若不筛选可删除此配置项
-      "includes": [ "香港|台湾|日本|新加坡|美国" ],
+      "includes": [ "(?i)港|hk|hongkong|hong kong|台|tw|taiwan|日本|jp|japan|新|sg|singapore|美|us|unitedstates|united states" ],
       // 初步排除不需要的节点，支持正则表达式，若不排除可删除此配置项
-      "excludes": "高倍|×10",
+      "excludes": "高倍|直连|×10",
       "healthcheck_url": "https://www.gstatic.com/generate_204",
       "healthcheck_interval": "10m",
       "outbound_override": {
@@ -203,8 +203,8 @@ tags: [sing-box, sing-boxp, 直链, 订阅, geodata, geosite, 基础]
       "download_interval": "24h",
       "download_ua": "sing-box",
       "download_detour": "PROXY",
-      "includes": [ "香港|台湾|日本|新加坡|美国" ],
-      "excludes": "高倍|×10",
+      "includes": [ "(?i)港|hk|hongkong|hong kong|台|tw|taiwan|日本|jp|japan|新|sg|singapore|美|us|unitedstates|united states" ],
+      "excludes": "高倍|直连|×10",
       "healthcheck_url": "https://www.gstatic.com/generate_204",
       "healthcheck_interval": "10m",
       "outbound_override": {
@@ -355,4 +355,4 @@ tags: [sing-box, sing-boxp, 直链, 订阅, geodata, geosite, 基础]
 1. 连接 SSH 后执行命令 `mkdir -p $CRASHDIR/providers/`
    - 注：因出站提供者 `outbound_providers` 配置的 `path` 路径中含有文件夹 `providers`{: .filepath}，须手动新建此文件夹才能使 .json 订阅文件保存到本地，否则将保存到内存中（每次启动服务都要重新下载）
 
-2. 进入 ShellCrash 配置脚本 -> 6 -> 2，粘贴最终生成的订阅链接即可，具体设置请参考《[ShellCrash 搭载 sing-boxp 内核的配置-geodata 方案](https://proxy-tutorials.dustinwin.top/posts/toolsettings-shellcrash-singboxp-geodata)》
+2. 进入 ShellCrash 配置脚本 → 6 → 2，粘贴最终生成的订阅链接即可，具体设置请参考《[ShellCrash 搭载 sing-boxp 内核的配置-geodata 方案](https://proxy-tutorials.dustinwin.top/posts/toolsettings-shellcrash-singboxp-geodata)》
