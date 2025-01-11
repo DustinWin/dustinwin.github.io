@@ -283,7 +283,7 @@ tags: [sing-box, sing-boxp, Windows, ruleset, rule_set, 分享]
   icacls "%PROGRAMFILES%\sing-box" /grant[:r] SYSTEM:(OI)(CI)F
   icacls "%PROGRAMFILES%\sing-box" /grant[:r] Administrators:(OI)(CI)F
   icacls "%PROGRAMFILES%\sing-box" /grant[:r] Users:(OI)(CI)F
-  curl -o "%PROGRAMFILES%\sing-box\sing-box.exe" -L https://ghgo.xyz/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-puernya-windows-amd64v3.exe
+  curl -o "%PROGRAMFILES%\sing-box\sing-box.exe" -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-puernya-windows-amd64v3.exe
   curl -o "%PROGRAMFILES%\sing-box\config.json" -L {.json 配置文件直链}
   echo 导入 sing-box 内核和配置文件成功
   pause
