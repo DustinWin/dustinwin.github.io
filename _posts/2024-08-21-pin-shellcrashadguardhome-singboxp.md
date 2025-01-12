@@ -103,7 +103,11 @@ pin: true
   - ➌ 最后点击“Done”即可打开 打开 Termius  
     <img src="/assets/img/pin/open-termius-3.png" alt="打开 Termius 3" width="60%" />
 
-- ② 连接和添加 Telnet  
+- ② 连接和添加 Telnet
+
+> 在成功完成《[三、 2](https://proxy-tutorials.dustinwin.top/posts/pin-shellcrashadguardhome-singboxp/#2-%E6%B0%B8%E4%B9%85%E5%BC%80%E5%90%AF-telnet)》后才能进行此操作
+{: .prompt-warning }
+
   - ➊ 点击“NEW HOST”，按图输入，点击“...”图标后再点击“Remove Protocol”  
     <img src="/assets/img/pin/add-new-telnet-1.png" alt="连接和添加 Telnet 1" width="60%" />
 
@@ -118,7 +122,11 @@ pin: true
   - ➍ 显示“ARE U OK”表示成功登录 Telnet  
     <img src="/assets/img/pin/add-new-telnet-4.png" alt="连接和添加 Telnet 4" width="60%" />
 
-- ③ 连接和添加 SSH  
+- ③ 连接和添加 SSH
+
+> 在成功完成《[三、 3](https://proxy-tutorials.dustinwin.top/posts/pin-shellcrashadguardhome-singboxp/#3-%E6%B0%B8%E4%B9%85%E5%BC%80%E5%90%AF%E5%B9%B6%E5%9B%BA%E5%8C%96-ssh)》后才能进行此操作
+{: .prompt-warning }
+
   - ➊ 同样先按照第 ② 步操作，然后按图输入，“Password”为解锁或恢复 SSH 时设置的密码，点击“Connect”  
     <img src="/assets/img/pin/add-new-ssh-1.png" alt="连接和添加 SSH 1" width="60%" />
 
@@ -129,6 +137,9 @@ pin: true
     <img src="/assets/img/pin/add-new-ssh-3.png" alt="连接和添加 SSH 3" width="60%" />
 
 ### 3. 通过 WinSCP 连接路由器文件管理
+> 在成功完成《[三、 3](https://proxy-tutorials.dustinwin.top/posts/pin-shellcrashadguardhome-singboxp/#3-%E6%B0%B8%E4%B9%85%E5%BC%80%E5%90%AF%E5%B9%B6%E5%9B%BA%E5%8C%96-ssh)》后才能进行此操作
+{: .prompt-warning }
+
 - ① 将下载的 WinSCP-xxx-Portable.zip 文件解压，路径随意，打开 WinSCP，“文件协议”选择“SCP”，其它按图输入，“密码”为 SSH 登录密码，完成后点击登录  
   <img src="/assets/img/pin/login-winscp.png" alt="通过 WinSCP 连接路由器文件管理 1" width="60%" />
 
@@ -175,8 +186,6 @@ pin: true
 **开启 Telnet 成功！**
 
 ### 3. 永久开启并固化 SSH
-> 见下方《[四](https://proxy-tutorials.dustinwin.top/posts/pin-shellcrashadguardhome-singboxp/#%E5%9B%9B-%E8%BF%9E%E6%8E%A5-ssh)》中连接 Telnet 的方法
-{: .prompt-tip }
 - ① 连接 Telnet，执行如下命令：
   - 注：第一行命令是将 Telnet 和 SSH 登录密码设置为 `12345678`，可自定义
 
@@ -216,8 +225,6 @@ pin: true
 <img src="/assets/img/pin/caculate-ssh-password.png" alt="计算 Telnet 登录密码" width="60%" />
 
 ### 2. 永久开启并固化 SSH
-> 见《[二](https://proxy-tutorials.dustinwin.top/posts/pin-shellcrashadguardhome-singboxp/#%E4%BA%8C-%E6%B7%BB%E5%8A%A0-ssh-%E6%94%AF%E6%8C%81)》中连接 Telnet 的方法
-{: .prompt-tip }
 连接 Telnet，执行如下命令：
 - 注：最后一行命令是将 Telnet 或 SSH 登录密码设置为 `12345678`，可自定义
 
