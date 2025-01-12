@@ -39,13 +39,13 @@ pin: true
 
 ### 5. UPX
 官方下载：<https://github.com/upx/upx/releases>  
-下载 upx-xxx-win64.zip 文件
+下载 upx-[version]-win64.zip 文件
 
 ### 6. WinSCP
 官方下载：<https://winscp.net/eng/downloads.php>
 - 注：中文绿色版请下载打包文件
 
-下载 WinSCP-xxx-Portable.zip 文件
+下载 WinSCP-[version]-Portable.zip 文件
 
 ## 二、 添加 SSH 支持
 ### 1. 给 Windows 操作系统添加 SSH 支持（任选一）
@@ -140,7 +140,7 @@ pin: true
 > 在成功完成《[三、 3](https://proxy-tutorials.dustinwin.top/posts/pin-shellcrashadguardhome-singboxp/#3-%E6%B0%B8%E4%B9%85%E5%BC%80%E5%90%AF%E5%B9%B6%E5%9B%BA%E5%8C%96-ssh)》后才能进行此操作
 {: .prompt-warning }
 
-- ① 将下载的 WinSCP-xxx-Portable.zip 文件解压，路径随意，打开 WinSCP，“文件协议”选择“SCP”，其它按图输入，“密码”为 SSH 登录密码，完成后点击登录  
+- ① 将下载的 WinSCP-[version]-Portable.zip 文件解压，路径随意，打开 WinSCP，“文件协议”选择“SCP”，其它按图输入，“密码”为 SSH 登录密码，完成后点击登录  
   <img src="/assets/img/pin/login-winscp.png" alt="通过 WinSCP 连接路由器文件管理 1" width="60%" />
 
 - ② 左侧为电脑本地文件，右侧为路由器文件  
@@ -253,7 +253,14 @@ echo -e '12345678\n12345678' | passwd root
   ```
 
 - ③ 选择 1 安装到 /data 目录（推荐，支持软固化功能）
-- ④ 将下载的 sing-box-puernya-linux-armv8.tar.gz 文件解压，得到 CrashCore 文件
+- ④ 将下载的 sing-box-puernya-linux-armv8.tar.gz 文件复制到桌面，以管理员身份运行 PowerShell，依次执行如下命令：
+
+  ```
+  cd C:\Users\[用户名]\Desktop
+  tar -zxvf sing-box-puernya-linux-armv8.tar.gz
+  ```
+
+  .tar.gz 压缩文件成功解压到桌面上，目录结构为 `C:\Users\[用户名]\Desktop\CrashCore`{: .filepath}
 - ⑤ 将 CrashCore 文件移动到路由器的 `/tmp`{: .filepath} 目录中  
   <img src="/assets/img/pin/move-sing-boxp.png" alt="ShellCrash 安装 2" width="60%" />
 
@@ -287,7 +294,7 @@ echo -e '12345678\n12345678' | passwd root
     <img src="/assets/img/pin/tproxy-mix.png" alt="ShellCrash 配置 4" width="60%" />
 
 - ④ 进入主菜单 → 4 内核启动设置，选择 1 允许 ShellCrash 开机启动（若重启路由器后服务没有自动运行，可“设置自启延时”为 `30` 秒，然后在《[六、 1. ⑥](https://proxy-tutorials.dustinwin.top//posts/pin-shellcrashadguardhome-singboxp/#1-adguard-home-%E5%AE%89%E8%A3%85)》，将 `sleep 10s` 改为 `sleep 40s`）
-- ⑤ 进入主菜单 → 7 内核进阶设置，选择 4 启用域名嗅探
+- ⑤ 进入主菜单 → 5 配置自动任务 → 1 添加自动任务，输入对应的数字并回车后可设置执行条件
 - ⑥ 进入主菜单 → 9 更新/卸载 → 7 切换安装源及安装版本，选择 b 切换至公测版-master → 1 Jsdelivr_CDN源，追求新版可选择 c 切换至开发版（可能不稳定）  
   <img src="/assets/img/pin/select-update-source.png" alt="ShellCrash 配置 5" width="60%" />
 
@@ -332,7 +339,7 @@ echo -e '12345678\n12345678' | passwd root
 
 ## 六 、 AdGuard Home 安装和配置
 ### 1. AdGuard Home 安装
-- ① 将下载的 upx-xxx-win64.zip 文件解压到桌面，目录结构为 `C:\Users\[用户名]\Desktop\upx`{: .filepath}
+- ① 将下载的 upx-[version]-win64.zip 文件解压到桌面，目录结构为 `C:\Users\[用户名]\Desktop\upx`{: .filepath}
 - ② 将下载的 AdGuardHome_linux_arm64.tar.gz 文件复制到桌面，以管理员身份运行 PowerShell，依次执行如下命令：
 
   ```shell
@@ -456,12 +463,8 @@ echo -e '12345678\n12345678' | passwd root
 
 ### 3. AdGuard Home 升级
 为了节约路由器内存，请按照如下步骤进行操作：
-- ① 执行《[六、 1. ① ② ③ ④ ⑤（替换）](https://proxy-tutorials.dustinwin.top//posts/pin-shellcrashadguardhome-singboxp/#1-adguard-home-%E5%AE%89%E8%A3%85)》的操作步骤
-- ② 连接 SSH，直接粘贴如下所有命令：
-
-  ```shell
-  chmod +x /data/AdGuardHome/AdGuardHome && /data/AdGuardHome/AdGuardHome -s restart
-  ```
+- ① 执行《[六、 1. ① ② ③ ④（替换）](https://proxy-tutorials.dustinwin.top//posts/pin-shellcrashadguardhome-singboxp/#1-adguard-home-%E5%AE%89%E8%A3%85)》的操作步骤
+- ② 连接 SSH，执行命令 `/data/AdGuardHome/AdGuardHome -s restart`
 
 ### 4. AdGuard Home 卸载
 - ① 删除开机启动项
