@@ -112,7 +112,7 @@ chmod +x /data/AdGuardHome/AdGuardHome
 ```
 
 ### 2. 添加开机启动
-连接 SSH 后执行 `vi /data/auto_ssh/auto_ssh.sh`  
+连接 SSH 后执行命令 `vi /data/auto_ssh/auto_ssh.sh`  
 按一下 Ins 键（Insert 键），在最下方粘贴如下命令：
 
 ```shell

@@ -246,7 +246,7 @@ echo -e '12345678\n12345678' | passwd root
 - ① 打开 WinSCP，将下载的 ShellCrash.tar.gz 文件移动到路由器的 `/tmp`{: .filepath} 目录中  
   <img src="/assets/img/pin/move-shellcrash.png" alt="ShellCrash 安装 1" width="60%" />
 
-- ② 连接 SSH，执行如下命令：
+- ② 连接 SSH 后执行如下命令：
 
   ```shell
   mkdir -p /tmp/SC_tmp && tar -zxf '/tmp/ShellCrash.tar.gz' -C /tmp/SC_tmp/ && source /tmp/SC_tmp/init.sh
@@ -267,7 +267,7 @@ echo -e '12345678\n12345678' | passwd root
 **安装 ShellCrash 成功！**
 
 ### 2. ShellCrash 配置
-- ① 连接 SSH 后执行 `crash` 命令打开 ShellCrash 配置脚本
+- ① 连接 SSH 后执行命令 `crash` 即可打开 ShellCrash 配置脚本
 - ② 新手引导
   - ➊ 选择 1 路由设备配置局域网透明代理
   - ➋ 启用推荐的自动任务配置
@@ -328,12 +328,7 @@ echo -e '12345678\n12345678' | passwd root
 
 ### 4. ShellCrash 卸载
 - ① 通过脚本命令进行卸载（任选一）  
-  连接 SSH 后，执行如下命令：
-
-  ```shell
-  $CRASHDIR/start.sh stop && crash -u
-  ```
-
+  连接 SSH 后执行命令 `$CRASHDIR/start.sh stop && crash -u`
 - ② 通过 ShellCrash 配置进行卸载（任选一）  
   进入主菜单 → 9 更新/卸载，选择 9 卸载 ShellCrash
 
@@ -359,16 +354,9 @@ echo -e '12345678\n12345678' | passwd root
 - ④ 将压缩后的“AdGuardHome”文件移动到路由器的 `/data/AdGuardHome`{: .filepath} 目录（没有此目录就新建）中  
   <img src="/assets/img/pin/move-adguardhome.png" alt="AdGuard Home 安装 1" width="60%" />
 
-- ⑤ 进入路由器文件管理的 `/data/auto_ssh`{: .filepath} 目录，右击“auto_ssh.sh”文件  
-  注：
-    - ➊ 若没有此目录和文件，可新建
-    - ➋ 新建后连接 SSH，直接粘贴如下所有命令：
+- ⑤ 进入路由器文件管理的 `/data/auto_ssh`{: .filepath} 目录，右击“auto_ssh.sh”文件并点击“编辑”
+  - 注：若没有此目录和文件，可新建，且须连接 SSH 后执行命令 `chmod +x /data/auto_ssh/auto_ssh.sh`
 
-  ```shell
-  chmod +x /data/auto_ssh && chmod +x /data/auto_ssh/auto_ssh.sh
-  ```
-
-  并编辑  
   <img src="/assets/img/pin/edit-task.png" alt="AdGuard Home 安装 2" width="60%" />
 
 > AdGuard Home 的“DNS 服务器端口”须设置为 `5353`
@@ -387,7 +375,7 @@ echo -e '12345678\n12345678' | passwd root
   ip6tables -t nat -A PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 5353
   ```
 
-- ⑦ 连接 SSH，直接粘贴如下所有命令：
+- ⑦ 连接 SSH 后直接粘贴如下所有命令：
 
   ```shell
   chmod +x /data/AdGuardHome/AdGuardHome
@@ -464,7 +452,7 @@ echo -e '12345678\n12345678' | passwd root
 ### 3. AdGuard Home 升级
 为了节约路由器内存，请按照如下步骤进行操作：
 - ① 执行《[六、 1. ① ② ③ ④（替换）](https://proxy-tutorials.dustinwin.top//posts/pin-shellcrashadguardhome-singboxp/#1-adguard-home-%E5%AE%89%E8%A3%85)》的操作步骤
-- ② 连接 SSH，执行命令 `/data/AdGuardHome/AdGuardHome -s restart`
+- ② 连接 SSH 后执行命令 `/data/AdGuardHome/AdGuardHome -s restart`
 
 ### 4. AdGuard Home 卸载
 - ① 删除开机启动项
@@ -482,7 +470,7 @@ echo -e '12345678\n12345678' | passwd root
 
   并保存
 - ② 卸载 AdGuard Home
-  连接 SSH，直接粘贴如下所有命令：
+  连接 SSH 后直接粘贴如下所有命令：
 
   ```shell
   /data/AdGuardHome/AdGuardHome -s stop && /data/AdGuardHome/AdGuardHome -s uninstall && rm -rf /data/AdGuardHome

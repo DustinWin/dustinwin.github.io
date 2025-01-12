@@ -100,7 +100,7 @@ rules:
 ```
 
 ## 二、 导入 [mihomo 内核](https://github.com/MetaCubeX/mihomo)和 [zashboard 面板](https://github.com/Zephyruso/zashboard)
-连接 SSH 后运行如下命令：
+连接 SSH 后执行如下命令：
 
 ```shell
 curl -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-meta-linux-armv8.tar.gz | tar -zx -C /tmp/
@@ -114,7 +114,7 @@ crash
 ## 三、 导入路由规则文件
 > 路由规则文件和 user.yaml 都属高度定制，牵一发而动全身
 {: .prompt-warning }
-连接 SSH 后运行如下命令：
+连接 SSH 后执行如下命令：
 
 ```shell
 curl -o $CRASHDIR/GeoSite.dat -L https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo/geosite.dat
@@ -125,7 +125,7 @@ curl -o $CRASHDIR/cn_ipv6.txt -L https://cdn.jsdelivr.net/gh/DustinWin/geoip@ips
 ```
 
 ## 四、 编辑 user.yaml 文件
-连接 SSH 后运行 `vi $CRASHDIR/yamls/user.yaml`，按一下 Ins 键（Insert 键），粘贴如下内容：
+连接 SSH 后执行命令 `vi $CRASHDIR/yamls/user.yaml`，按一下 Ins 键（Insert 键），粘贴如下内容：
 
 ```yaml
 mode: rule
@@ -169,7 +169,7 @@ dns:
 按一下 Esc 键（退出键），输入英文冒号 `:`，继续输入 `wq` 并回车
 
 ## 五、 添加定时任务
-1. 连接 SSH 后运行 `vi $CRASHDIR/task/task.user`，按一下 Ins 键（Insert 键），粘贴如下内容：
+1. 连接 SSH 后执行命令 `vi $CRASHDIR/task/task.user`，按一下 Ins 键（Insert 键），粘贴如下内容：
 ```shell
 201#curl -o /data/ShellCrash/CrashCore.tar.gz -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-alpha-linux-armv8.tar.gz && /data/ShellCrash/start.sh restart >/dev/null 2>&1#更新mihomo内核
 202#curl -o /data/ShellCrash/GeoSite.dat -L https://ghfast.top/https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo/geosite.dat && curl -o /data/ShellCrash/GeoIP.dat -L https://ghfast.top/https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo/geoip-lite.dat && curl -o /data/ShellCrash/Country.mmdb -L https://ghfast.top/https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo/Country-lite.mmdb && /data/ShellCrash/start.sh restart >/dev/null 2>&1#更新geodata路由规则文件

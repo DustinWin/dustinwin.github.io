@@ -19,7 +19,7 @@ geosite.db 文件须包含 `fakeip-filter`、`proxy` 和 `cn`，geoip.db 文件�
 1. 进入主菜单 → 2 内核功能设置 → 2 切换 DNS 运行模式 → 4 DNS 进阶设置，将“当前基础 DNS”和“PROXY-DNS”都设置为 `null`  
 <img src="/assets/img/dns/dns-null.png" alt="ShellCrash 设置" width="60%" />
 
-2. 连接 SSH 后执行 `vi $CRASHDIR/jsons/dns.json`，按一下 Ins 键（Insert 键），修改为如下内容：
+2. 连接 SSH 后执行命令 `vi $CRASHDIR/jsons/dns.json`，按一下 Ins 键（Insert 键），修改为如下内容：
 
 ```json
 {

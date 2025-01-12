@@ -117,7 +117,7 @@ tags: [sing-box, sing-boxp, ShellCrash, geodata, geosite, 分享, Router]
 ```
 
 ## 二、 导入 [sing-box PuerNya 版内核](https://github.com/PuerNya/sing-box/tree/building)和 [zashboard 面板](https://github.com/Zephyruso/zashboard)
-连接 SSH 后运行如下命令：
+连接 SSH 后执行如下命令：
 
 ```shell
 curl -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-puernya-linux-armv8.tar.gz | tar -zx -C /tmp/
@@ -129,7 +129,7 @@ crash
 此时脚本会自动“发现可用的内核文件”，选择 1 加载，后选择 5 Sing-Box-Puer 内核
 
 ## 三、 导入路由规则文件
-连接 SSH 后运行如下命令：
+连接 SSH 后执行如下命令：
 
 ```shell
 curl -o $CRASHDIR/geosite.db -L https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box/geosite.db
@@ -137,7 +137,7 @@ curl -o $CRASHDIR/geoip.db -L https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geod
 ```
 
 ## 四、 编辑 dns.json 文件
-连接 SSH 后运行 `vi $CRASHDIR/jsons/dns.json`，按一下 Ins 键（Insert 键），粘贴如下内容：
+连接 SSH 后执行命令 `vi $CRASHDIR/jsons/dns.json`，按一下 Ins 键（Insert 键），粘贴如下内容：
 
 ```json
 {
@@ -184,7 +184,7 @@ curl -o $CRASHDIR/geoip.db -L https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geod
 按一下 Esc 键（退出键），输入英文冒号 `:`，继续输入 `wq` 并回车
 
 ## 五、 编辑 experimental.json 文件
-连接 SSH 后运行 `vi $CRASHDIR/jsons/experimental.json`，按一下 Ins 键（Insert 键），粘贴如下内容：
+连接 SSH 后执行命令 `vi $CRASHDIR/jsons/experimental.json`，按一下 Ins 键（Insert 键），粘贴如下内容：
 
 ```json
 {
@@ -203,7 +203,7 @@ curl -o $CRASHDIR/geoip.db -L https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geod
 按一下 Esc 键（退出键），输入英文冒号 `:`，继续输入 `wq` 并回车
 
 ## 六、 添加定时任务
-1. 连接 SSH 后运行 `vi $CRASHDIR/task/task.user`，按一下 Ins 键（Insert 键），粘贴如下内容：
+1. 连接 SSH 后执行命令 `vi $CRASHDIR/task/task.user`，按一下 Ins 键（Insert 键），粘贴如下内容：
 ```shell
 201#curl -o /data/ShellCrash/CrashCore.tar.gz -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-puernya-linux-armv8.tar.gz && /data/ShellCrash/start.sh restart >/dev/null 2>&1#更新sing-box_PuerNya版内核
 202#curl -o /data/ShellCrash/geosite.db -L https://ghfast.top/https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box/geosite.db && curl -o /data/ShellCrash/geoip.db -L https://ghfast.top/https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box/geoip-lite.db && /data/ShellCrash/start.sh restart >/dev/null 2>&1#更新geodata路由规则文件

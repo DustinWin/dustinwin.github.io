@@ -33,7 +33,7 @@ curl -o $CRASHDIR/geoip.db -L https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geod
 ```
 
 ## 三、 添加定时任务
-连接 SSH 后执行 `vi $CRASHDIR/task/task.user`，按一下 Ins 键（Insert 键），粘贴（快捷键 Ctrl+Shift+V）如下内容：
+连接 SSH 后执行命令 `vi $CRASHDIR/task/task.user`，按一下 Ins 键（Insert 键），粘贴（快捷键 Ctrl+Shift+V）如下内容：
 - 注：[ShellCrash](https://github.com/juewuy/ShellCrash) 安装路径为 `/data/ShellCrash`{: .filepath}
 
 ```shell
@@ -45,7 +45,7 @@ curl -o $CRASHDIR/geoip.db -L https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geod
 按一下 Esc 键（退出键），输入英文冒号 `:`，继续输入 `wq` 并回车
 
 ## 四、 设置部分
-1. 连接 SSH 后执行 `crash` 命令打开 ShellCrash 配置脚本
+1. 连接 SSH 后执行命令 `crash` 即可打开 ShellCrash 配置脚本
 2. 新手引导
    - ① 选择 1 路由设备配置局域网透明代理
    - ② 启用推荐的自动任务配置
