@@ -270,7 +270,7 @@ tags: [sing-box, sing-boxp, Android, ruleset, rule_set, 分享]
 ```
 
 ## 二、 导入配置文件并启动 sing-box
-1. 进入 sing-box for Android → Profiles → New Profile，“Type”选择“Remote”，在“URL”处粘贴第《一》中生成的配置文件 .json 直链，“Auto Update Interval”填写 `1440`，最后点击“Create”
+1. 进入 sing-box for Android → Profiles → New Profile，“Type”选择“Remote”，在“URL”处粘贴《[一](https://proxy-tutorials.dustinwin.top/posts/share-android-singboxp-ruleset/#%E4%B8%80-%E7%94%9F%E6%88%90%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-json-%E6%96%87%E4%BB%B6%E7%9B%B4%E9%93%BE)》中生成的配置文件 .json 直链，“Auto Update Interval”填写 `1440`，最后点击“Create”
 2. 进入 sing-boxp for Android → Dashboard，点击“▶️”图标即可启动 sing-box 服务
 - 注：首次启用可能会报错，重试几次即可
 

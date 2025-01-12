@@ -268,7 +268,7 @@ tags: [sing-box, sing-boxp, Windows, ruleset, rule_set, 分享]
 ### 1. 导入内核和配置文件
 - ① 编辑本文文档，粘贴如下内容：  
   注：
-  - ➊ 将第《一》步生成的配置文件 .json 文件直链替换下面命令中的 `{.json 配置文件直链}`
+  - ➊ 将《[一](https://proxy-tutorials.dustinwin.top/posts/share-windows-singboxp-ruleset/#%E4%B8%80-%E7%94%9F%E6%88%90%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-json-%E6%96%87%E4%BB%B6%E7%9B%B4%E9%93%BE)》中生成的配置文件 .json 文件直链替换下面命令中的 `{.json 配置文件直链}`
   - ➋ 或删除此条命令，直接进入 `%PROGRAMFILES%\sing-box`{: .filepath} 文件夹，新建 config.json 文件并粘贴配置内容
 
   ```shell
@@ -309,7 +309,7 @@ tags: [sing-box, sing-boxp, Windows, ruleset, rule_set, 分享]
 ## 三、 更新 sing-box PuerNya 版内核和配置文件
 编辑本文文档，粘贴如下内容：  
 注：
-- ① 将第《一》步生成的配置文件 .json 文件直链替换下面命令中的 `{.json 配置文件直链}`
+- ① 将《[一](https://proxy-tutorials.dustinwin.top/posts/share-windows-singboxp-ruleset/#%E4%B8%80-%E7%94%9F%E6%88%90%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-json-%E6%96%87%E4%BB%B6%E7%9B%B4%E9%93%BE)》中生成的配置文件 .json 文件直链替换下面命令中的 `{.json 配置文件直链}`
 - ② 或者删除此条命令，直接进入 `%PROGRAMFILES%\sing-box`{: .filepath} 文件夹，修改 config.json 文件内的配置内容
 
 ```shell

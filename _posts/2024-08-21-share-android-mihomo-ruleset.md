@@ -267,5 +267,5 @@ rules:
 ```
 
 ## 二、 导入配置文件并启动
-1. 进入 [Clash.Meta for Android](https://github.com/MetaCubeX/ClashMetaForAndroid) → 配置 → 创建配置 → 从 URL 导入，“URL”输入第《一》中生成的配置文件 .yaml 直链，“自动更新”填写 `1440`，最后点击右上角的“保存图标”
+1. 进入 [Clash.Meta for Android](https://github.com/MetaCubeX/ClashMetaForAndroid) → 配置 → 创建配置 → 从 URL 导入，“URL”输入《[一](https://proxy-tutorials.dustinwin.top/posts/share-android-mihomo-ruleset/#%E4%B8%80-%E7%94%9F%E6%88%90%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-yaml-%E6%96%87%E4%BB%B6%E7%9B%B4%E9%93%BE)》中生成的配置文件 .yaml 直链，“自动更新”填写 `1440`，最后点击右上角的“保存图标”
 2. 返回到主界面，点击“点此启用”即可启动

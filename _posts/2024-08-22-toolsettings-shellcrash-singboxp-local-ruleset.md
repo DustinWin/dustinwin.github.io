@@ -11,7 +11,7 @@ tags: [sing-box, sing-boxp, ShellCrash, ruleset, rule_set, 进阶, 本地, Route
 1. 本教程只适用于 [ShellCrash](https://github.com/juewuy/ShellCrash) 
 2. 本教程**仅适合白名单模式**（没有命中规则的网络流量统统使用代理，适用于服务器线路网络质量稳定、快速，不缺服务器流量的用户）
 3. 本教程最终效果媲美《[生成带有自定义出站和规则的 sing-boxp 配置文件直链-ruleset 方案](https://proxy-tutorials.dustinwin.top/posts/link-singboxp-ruleset)》（出站分组更直观，操作更方便）
-4. 若仅配置自定义出站和规则，可直接跳过第《二》步
+4. 若仅配置自定义出站和规则，可直接跳过《[二](https://proxy-tutorials.dustinwin.top/posts/toolsettings-shellcrash-singboxp-local-ruleset/#%E4%BA%8C-%E5%AF%BC%E5%85%A5%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6)》
 5. 出站提供者 outbound_providers.json、出站 outbounds.json 和规则 route.json 为合并模式（在基础配置上新增）
 6. 所有步骤完成后，请连接 SSH 执行命令 `$CRASHDIR/start.sh restart` 后生效
 7. 推荐使用 [Visual Studio Code](https://code.visualstudio.com/Download) 等专业编辑器来修改配置文件
