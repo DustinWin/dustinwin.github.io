@@ -256,7 +256,7 @@ tags: [sing-box, sing-boxp, Windows, ruleset, rule_set, 分享]
     "clash_api": {
       "external_controller": "127.0.0.1:9090",
       "external_ui": "ui",
-      "external_ui_download_url": "https://github.com/Zephyruso/zashboard/releases/latest/download/dist-cdn-fonts.zip",
+      "external_ui_download_url": "https://github.com/Zephyruso/zashboard/releases/latest/download/dist.zip",
       "secret": "",
       "default_mode": "Rule"
     }

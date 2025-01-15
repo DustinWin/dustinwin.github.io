@@ -47,7 +47,7 @@ unified-delay: false
 tcp-concurrent: true
 external-controller: 127.0.0.1:9090
 external-ui: ui
-external-ui-url: "https://github.com/Zephyruso/zashboard/releases/latest/download/dist-cdn-fonts.zip"
+external-ui-url: "https://github.com/Zephyruso/zashboard/releases/latest/download/dist.zip"
 find-process-mode: strict
 global-client-fingerprint: chrome
 profile: {store-selected: true}
