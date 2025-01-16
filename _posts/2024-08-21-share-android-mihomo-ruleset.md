@@ -42,7 +42,7 @@ log-level: error
 ipv6: true
 allow-lan: true
 mixed-port: 7890
-unified-delay: false
+unified-delay: true
 tcp-concurrent: true
 external-controller: 127.0.0.1:9090
 find-process-mode: strict
@@ -125,7 +125,7 @@ proxy-groups:
   - {name: 🇯🇵 日本节点, type: url-test, tolerance: 50, use: [🛫 我的机场], filter: "(?i)日|jp|japan"}
   - {name: 🇸🇬 新加坡节点, type: url-test, tolerance: 50, use: [🛫 我的机场], filter: "(?i)(新|sg|singapore)"}
   - {name: 🇺🇸 美国节点, type: url-test, tolerance: 50, use: [🛫 我的机场], filter: "(?i)美|us|unitedstates|united states"}
-  - {name: 🆓 免费节点, type: url-test, tolerance: 100, use: [🆓 免费订阅]}
+  - {name: 🆓 免费节点, type: url-test, tolerance: 50, use: [🆓 免费订阅]}
 
 rule-providers:
   fakeip-filter:

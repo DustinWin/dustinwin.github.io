@@ -79,7 +79,7 @@ proxy-groups:
   - {name: 🇯🇵 日本节点, type: url-test, tolerance: 50, use: [🛫 我的机场], filter: "(?i)日|jp|japan"}
   - {name: 🇸🇬 新加坡节点, type: url-test, tolerance: 50, use: [🛫 我的机场], filter: "(?i)(新|sg|singapore)"}
   - {name: 🇺🇸 美国节点, type: url-test, tolerance: 50, use: [🛫 我的机场], filter: "(?i)美|us|unitedstates|united states"}
-  - {name: 🆓 免费节点, type: url-test, tolerance: 100, use: [🆓 免费订阅]}
+  - {name: 🆓 免费节点, type: url-test, tolerance: 50, use: [🆓 免费订阅]}
 
 rule-providers:
   fakeip-filter:
@@ -230,7 +230,7 @@ crash
 mode: rule
 log-level: error
 allow-lan: true
-unified-delay: false
+unified-delay: true
 tcp-concurrent: true
 external-ui-url: "https://github.com/Zephyruso/zashboard/releases/latest/download/dist-cdn-fonts.zip"
 global-client-fingerprint: chrome
