@@ -278,14 +278,13 @@ echo -e '12345678\n12345678' | passwd root
   - ➋ 进入 1 切换防火墙运行模式 → 9 ipv6 设置，若机场节点不支持 IPv6，可关闭 1 ipv6 透明代理  
     <img src="/assets/img/pin/ipv6-setting.png" alt="ShellCrash 配置 2" width="60%" />
 
-  - ➌ 进入 2 切换 DNS 运行模式，选择 3 mix 混合模式
-  - ➍ 进入 4 DNS 进阶设置，选择 4 一键配置加密 DNS，选择 7 禁用 DNS 劫持
+  - ➌ 进入 2 切换 DNS 运行模式，选择 3 mix 混合模式  
+    <img src="/assets/img/pin/tproxy-mix.png" alt="ShellCrash 配置 4" width="60%" />
+
+  - ➍ 进入 2 切换 DNS 运行模式 → 4 DNS 进阶设置，选择 4 一键配置加密 DNS，选择 7 禁用 DNS 劫持
     - 注：推荐设置 DNS 分流（单独使用 ShellCrash 以及 ShellCrash 搭配 AdGuard Home 都适用），请看《[搭载 mihomo 内核进行 DNS 分流教程-geodata 方案](https://proxy-tutorials.dustinwin.top/posts/dnsbypass-mihomo-geodata)》或《[搭载 mihomo 内核进行 DNS 分流教程-ruleset 方案](https://proxy-tutorials.dustinwin.top/posts/dnsbypass-mihomo-ruleset)》
 
     <img src="/assets/img/pin/dns-setting.png" alt="ShellCrash 配置 3" width="60%" />
-
-  - ➎ 返回到 2 内核功能设置，根据自身需要开启 8 CN_IP 绕过内核  
-    <img src="/assets/img/pin/tproxy-mix.png" alt="ShellCrash 配置 4" width="60%" />
 
 - ④ 进入主菜单 → 4 内核启动设置，选择 1 允许 ShellCrash 开机启动（若重启路由器后服务没有自动运行，可“设置自启延时”为 `30` 秒，然后在《[六、 1. ⑥](https://proxy-tutorials.dustinwin.top//posts/pin-shellcrashadguardhome-mihomo/#1-adguard-home-%E5%AE%89%E8%A3%85)》，将 `sleep 10s` 改为 `sleep 40s`）
 - ⑤ 进入主菜单 → 5 配置自动任务 → 1 添加自动任务，输入对应的数字并回车后可设置执行条件
