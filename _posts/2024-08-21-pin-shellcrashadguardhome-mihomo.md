@@ -281,7 +281,7 @@ echo -e '12345678\n12345678' | passwd root
   - ➌ 进入 2 切换 DNS 运行模式，选择 3 mix 混合模式  
     <img src="/assets/img/pin/tproxy-mix.png" alt="ShellCrash 配置 4" width="60%" />
 
-  - ➍ 进入 2 切换 DNS 运行模式 → 4 DNS 进阶设置，选择 4 一键配置加密 DNS，选择 7 禁用 DNS 劫持
+  - ➍ 进入 2 切换 DNS 运行模式 → 4 DNS 进阶设置，选择 7 禁用 DNS 劫持
     - 注：推荐设置 DNS 分流（单独使用 ShellCrash 以及 ShellCrash 搭配 AdGuard Home 都适用），请看《[搭载 mihomo 内核进行 DNS 分流教程-geodata 方案](https://proxy-tutorials.dustinwin.top/posts/dnsbypass-mihomo-geodata)》或《[搭载 mihomo 内核进行 DNS 分流教程-ruleset 方案](https://proxy-tutorials.dustinwin.top/posts/dnsbypass-mihomo-ruleset)》
 
     <img src="/assets/img/pin/dns-setting.png" alt="ShellCrash 配置 3" width="60%" />
