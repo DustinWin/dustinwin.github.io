@@ -1,6 +1,6 @@
 ---
 title: 全网最详细的解锁 SSH ShellCrash 搭载 sing-boxp 内核搭配 AdGuard Home 安装和配置教程
-description: 此教程适用于 sing-box，ShellCrash 搭载 sing-boxp 内核，搭配 AdGuard Home 作下游，配有详细图文
+description: 此教程使用 ShellCrash 搭载 sing-boxp 内核并搭配 AdGuard Home 作下游，配有详细图文
 date: 2024-08-21 22:27:53 +0800
 categories: [置顶]
 tags: [sing-box, sing-boxp, ShellCrash, AdGuard Home, 解锁, SSH]

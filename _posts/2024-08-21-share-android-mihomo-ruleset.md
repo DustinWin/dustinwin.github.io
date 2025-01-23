@@ -1,6 +1,6 @@
 ---
 title: 分享 Clash.Meta for Android 采用 ruleset 方案的一套配置
-description: 此方案适用于 mihomo，搭载 mihomo 内核，采用 `RULE-SET` 规则搭配 .yaml、.text 和 .mrs 规则集合文件
+description: 此配置搭载 mihomo 内核，采用 `RULE-SET` 规则搭配 .yaml、.text 和 .mrs 规则集合文件
 date: 2024-08-21 18:08:13 +0800
 categories: [分享配置, Android]
 tags: [Clash, Clash.Meta, mihomo, Android, ruleset, rule-set, 分享]
@@ -15,7 +15,7 @@ tags: [Clash, Clash.Meta, mihomo, Android, ruleset, rule-set, 分享]
 
 ```yaml
 proxy-providers:
-  🛫 我的机场:
+  🛫 机场订阅:
     type: http
     ## 修改为你的 Clash 订阅链接
     url: "https://example.com/xxx/xxx&flag=clash"
@@ -120,11 +120,11 @@ proxy-groups:
   - {name: 🛑 广告拦截, type: select, proxies: [REJECT]}
   - {name: 🎯 全球直连, type: select, proxies: [DIRECT]}
 
-  - {name: 🇭🇰 香港节点, type: url-test, tolerance: 50, use: [🛫 我的机场], filter: "(?i)港|hk|hongkong|hong kong"}
-  - {name: 🇹🇼 台湾节点, type: url-test, tolerance: 50, use: [🛫 我的机场], filter: "(?i)台|tw|taiwan"}
-  - {name: 🇯🇵 日本节点, type: url-test, tolerance: 50, use: [🛫 我的机场], filter: "(?i)日|jp|japan"}
-  - {name: 🇸🇬 新加坡节点, type: url-test, tolerance: 50, use: [🛫 我的机场], filter: "(?i)(新|sg|singapore)"}
-  - {name: 🇺🇸 美国节点, type: url-test, tolerance: 50, use: [🛫 我的机场], filter: "(?i)美|us|unitedstates|united states"}
+  - {name: 🇭🇰 香港节点, type: url-test, tolerance: 50, use: [🛫 机场订阅], filter: "(?i)港|hk|hongkong|hong kong"}
+  - {name: 🇹🇼 台湾节点, type: url-test, tolerance: 50, use: [🛫 机场订阅], filter: "(?i)台|tw|taiwan"}
+  - {name: 🇯🇵 日本节点, type: url-test, tolerance: 50, use: [🛫 机场订阅], filter: "(?i)日|jp|japan"}
+  - {name: 🇸🇬 新加坡节点, type: url-test, tolerance: 50, use: [🛫 机场订阅], filter: "(?i)(新|sg|singapore)"}
+  - {name: 🇺🇸 美国节点, type: url-test, tolerance: 50, use: [🛫 机场订阅], filter: "(?i)美|us|unitedstates|united states"}
   - {name: 🆓 免费节点, type: url-test, tolerance: 50, use: [🆓 免费订阅]}
 
 rule-providers:

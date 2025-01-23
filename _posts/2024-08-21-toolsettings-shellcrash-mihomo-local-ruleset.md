@@ -1,6 +1,6 @@
 ---
 title: ShellCrash 搭载 mihomo 内核本地配置自定义策略组和规则-ruleset 方案
-description: 此方案适用于 mihomo，搭载 mihomo 内核，采用 `RULE-SET` 规则搭配 .yaml、.text 和 .mrs 规则集合文件
+description: 此教程搭载 mihomo 内核，可通过修改本地配置文件的方式来自定义策略组和规则 `RULE-SET`
 date: 2024-08-21 08:39:18 +0800
 categories: [工具配置, ShellCrash 配置]
 tags: [Clash, ShellCrash, ruleset, rule-set, 进阶, 本地, Router]
@@ -31,7 +31,7 @@ tags: [Clash, ShellCrash, ruleset, rule-set, 进阶, 本地, Router]
 ```yaml
 ## 代理集合（获取机场订阅链接内的所有节点）
 proxy-providers:
-  🛫 我的机场 1:
+  🛫 机场订阅 1:
     type: http
     ## 机场订阅链接，使用 Clash 链接
     url: "https://example.com/xxx/xxx&flag=clash"
@@ -46,12 +46,12 @@ proxy-providers:
       url: https://www.gstatic.com/generate_204
       interval: 600
     override:
-      ## 为节点名称添加固定前缀，如节点名称原为“香港节点”会变成“🛫 我的机场 1-香港节点”；推荐有多个机场时使用
-      additional-prefix: "🛫 我的机场 1-"
-      ## 为节点名称添加固定后缀，如节点名称原为“香港节点”会变成“香港节点-🛫 我的机场 1”；推荐有多个机场时使用
-      additional-suffix: "-🛫 我的机场 1"
+      ## 为节点名称添加固定前缀，如节点名称原为“香港节点”会变成“🛫 机场订阅 1-香港节点”；推荐有多个机场时使用
+      additional-prefix: "🛫 机场订阅 1-"
+      ## 为节点名称添加固定后缀，如节点名称原为“香港节点”会变成“香港节点-🛫 机场订阅 1”；推荐有多个机场时使用
+      additional-suffix: "-🛫 机场订阅 1"
 
-  🛫 我的机场 2:
+  🛫 机场订阅 2:
     type: http
     url: "https://example.com/xxx/xxx&flag=clash"
     path: ./proxies/airport2.yaml
@@ -63,10 +63,10 @@ proxy-providers:
       url: https://www.gstatic.com/generate_204
       interval: 600
     override:
-      ## 为节点名称添加固定前缀，如节点名称原为“香港节点”会变成“🛫 我的机场 2-香港节点”；推荐有多个机场时使用
-      additional-prefix: "🛫 我的机场 2-"
-      ## 为节点名称添加固定后缀，如节点名称原为“香港节点”会变成“香港节点-🛫 我的机场 2”；推荐有多个机场时使用
-      additional-suffix: "-🛫 我的机场 2"
+      ## 为节点名称添加固定前缀，如节点名称原为“香港节点”会变成“🛫 机场订阅 2-香港节点”；推荐有多个机场时使用
+      additional-prefix: "🛫 机场订阅 2-"
+      ## 为节点名称添加固定后缀，如节点名称原为“香港节点”会变成“香港节点-🛫 机场订阅 2”；推荐有多个机场时使用
+      additional-suffix: "-🛫 机场订阅 2"
 
 ## 规则集（yaml 文件每天自动更新）
 rule-providers:

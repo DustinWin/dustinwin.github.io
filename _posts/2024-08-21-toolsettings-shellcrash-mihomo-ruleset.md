@@ -1,6 +1,6 @@
 ---
 title: ShellCrash 搭载 mihomo 内核的配置-ruleset 方案
-description: 此方案适用于 mihomo，搭载 mihomo 内核，采用 `RULE-SET` 规则搭配 .yaml、.text 和 .mrs 规则集合文件
+description: 此配置搭载 mihomo 内核，包括 ShellCrash 的安装、配置和使用方法
 date: 2024-08-21 06:53:20 +0800
 categories: [工具配置, ShellCrash 配置]
 tags: [Clash, mihomo, ShellCrash, ruleset, rule-set, 基础, Router]

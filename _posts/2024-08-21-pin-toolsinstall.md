@@ -1,6 +1,6 @@
 ---
 title: ShellCrash 和 AdGuard Home 快速安装教程
-description: 包括 ShellCrash、AdGuard Home、mihomo 内核、sing-box 内核和 Dashboard 面板的安装方法
+description: 此教程包括 ShellCrash、AdGuard Home、mihomo 内核、sing-box 内核和 Dashboard 面板的安装方法
 date: 2024-08-21 17:13:12 +0800
 categories: [置顶]
 tags: [ShellCrash, AdGuard Home, mihomo, sing-box, sing-boxp, 安装, Dashboard]

@@ -1,6 +1,6 @@
 ---
 title: ShellCrash 搭载 mihomo 内核的配置-geodata 方案
-description: 此方案适用于 mihomo，搭载 mihomo 内核，采用 `GEOSITE` 和 `GEOIP` 规则搭配 geosite.dat 和 geoip.dat（或 Country.mmdb）路由规则文件
+description: 此配置搭载 mihomo 内核，包括 ShellCrash 的安装、导入路由规则文件、配置和使用方法
 date: 2024-08-21 06:30:11 +0800
 categories: [工具配置, ShellCrash 配置]
 tags: [Clash, mihomo, ShellCrash, geodata, geosite, 基础, Router]

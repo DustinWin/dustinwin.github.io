@@ -1,6 +1,6 @@
 ---
 title: ShellCrash 搭载 sing-boxp 内核的配置-ruleset 方案
-description: 此方案适用于 sing-box，搭载 sing-boxp 内核，采用 `rule_set` 规则搭配 .srs 和 .json 规则集文件
+description: 此配置搭载 sing-boxp 内核，包括 ShellCrash 的安装、配置和使用方法
 date: 2024-08-22 17:34:34 +0800
 categories: [工具配置, ShellCrash 配置]
 tags: [sing-box, sing-boxp, ShellCrash, ruleset, rule_set, 基础, Router]

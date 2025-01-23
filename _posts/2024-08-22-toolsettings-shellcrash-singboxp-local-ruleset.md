@@ -1,6 +1,6 @@
 ---
 title: ShellCrash 搭载 sing-boxp 内核本地配置自定义出站和规则-ruleset 方案
-description: 此方案适用于 sing-box，搭载 sing-boxp 内核，采用 `rule_set` 规则搭配 .srs 和 .json 规则集文件
+description: 此教程搭载 sing-boxp 内核，可通过修改本地配置文件的方式来自定义出站和规则 `rule_set`
 date: 2024-08-22 18:10:32 +0800
 categories: [工具配置, ShellCrash 配置]
 tags: [sing-box, sing-boxp, ShellCrash, ruleset, rule_set, 进阶, 本地, Router]
@@ -37,7 +37,7 @@ tags: [sing-box, sing-boxp, ShellCrash, ruleset, rule_set, 进阶, 本地, Route
     // 出站提供者（获取机场订阅链接内的所有节点）
     "outbound_providers": [
       {
-        "tag": "🛫 我的机场 1",
+        "tag": "🛫 机场订阅 1",
         "type": "remote",
         // 机场订阅链接，使用 Clash 链接
         "download_url": "https://example.com/xxx/xxx&flag=clash",
@@ -51,14 +51,14 @@ tags: [sing-box, sing-boxp, ShellCrash, ruleset, rule_set, 进阶, 本地, Route
         "healthcheck_url": "https://www.gstatic.com/generate_204",
         "healthcheck_interval": "10m",
         "outbound_override": {
-          // 设置出站标签的前缀，如出站标签原为“香港节点”会变成“🛫 我的机场 1-香港节点”；推荐有多个机场时使用
-          "tag_prefix": "🛫 我的机场 1-",
-          // 设置出站标签的后缀，如出站标签原为“香港节点”会变成“香港节点-🛫 我的机场 1”；推荐有多个机场时使用
-          "tag_suffix": "-🛫 我的机场 1"
+          // 设置出站标签的前缀，如出站标签原为“香港节点”会变成“🛫 机场订阅 1-香港节点”；推荐有多个机场时使用
+          "tag_prefix": "🛫 机场订阅 1-",
+          // 设置出站标签的后缀，如出站标签原为“香港节点”会变成“香港节点-🛫 机场订阅 1”；推荐有多个机场时使用
+          "tag_suffix": "-🛫 机场订阅 1"
         }
       },
       {
-        "tag": "🛫 我的机场 2",
+        "tag": "🛫 机场订阅 2",
         "type": "remote",
         // 机场订阅链接，使用 sing-box 链接
         "download_url": "https://example.com/xxx/xxx",
@@ -70,10 +70,10 @@ tags: [sing-box, sing-boxp, ShellCrash, ruleset, rule_set, 进阶, 本地, Route
         "healthcheck_url": "https://www.gstatic.com/generate_204",
         "healthcheck_interval": "10m",
         "outbound_override": {
-          // 设置出站标签的前缀，如出站标签原为“香港节点”会变成“🛫 我的机场 2-香港节点”；推荐有多个机场时使用
-          "tag_prefix": "🛫 我的机场 2-",
-          // 设置出站标签的后缀，如出站标签原为“香港节点”会变成“香港节点-🛫 我的机场 2”；推荐有多个机场时使用
-          "tag_suffix": "-🛫 我的机场 2"
+          // 设置出站标签的前缀，如出站标签原为“香港节点”会变成“🛫 机场订阅 2-香港节点”；推荐有多个机场时使用
+          "tag_prefix": "🛫 机场订阅 2-",
+          // 设置出站标签的后缀，如出站标签原为“香港节点”会变成“香港节点-🛫 机场订阅 2”；推荐有多个机场时使用
+          "tag_suffix": "-🛫 机场订阅 2"
         }
       }
     ]

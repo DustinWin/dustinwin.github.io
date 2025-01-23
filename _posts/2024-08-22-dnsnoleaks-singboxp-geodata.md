@@ -1,6 +1,6 @@
 ---
 title: 搭载 sing-boxp 内核配置 DNS 不泄露教程-geodata 方案
-description: 此方案适用于 sing-box，搭载 sing-boxp 内核并使用其特性防止 DNS 泄露
+description: 此教程搭载 sing-boxp 内核并使用其特性防止 DNS 泄露，即针对未知域名走国外 DNS 解析
 date: 2024-08-22 14:53:20 +0800
 categories: [DNS 配置, DNS 防泄漏]
 tags: [sing-box, sing-boxp, ShellCrash, geodata, geosite, 进阶, DNS, DNS 泄露]

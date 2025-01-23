@@ -1,6 +1,6 @@
 ---
 title: ShellCrash 搭载 sing-boxp 内核的配置-geodata 方案
-description: 此方案适用于 sing-box，搭载 sing-boxp 内核，采用 `geosite` 和 `geoip` 规则搭配 geosite.db 和 geoip.db 路由规则文件
+description: 此配置搭载 sing-boxp 内核，包括 ShellCrash 的安装、导入路由规则文件、配置和使用方法
 date: 2024-08-21 23:19:34 +0800
 categories: [工具配置, ShellCrash 配置]
 tags: [sing-box, sing-boxp, ShellCrash, geodata, geosite, 基础, Router]
