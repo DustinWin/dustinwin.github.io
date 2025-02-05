@@ -216,6 +216,14 @@ rule-providers:
     url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/proxy.mrs"
     interval: 86400
 
+  tld-cn:
+    type: http
+    behavior: domain
+    format: mrs
+    path: ./rules/tld-cn.mrs
+    url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/tld-cn.mrs"
+    interval: 86400
+
   cn:
     type: http
     behavior: domain
@@ -259,6 +267,7 @@ rules:
   - RULE-SET,ai,🤖 人工智能
   - RULE-SET,networktest,📈 网络测试
   - RULE-SET,proxy,🧱 代理域名
+  - RULE-SET,tld-cn,🇨🇳 直连域名
   - RULE-SET,cn,🇨🇳 直连域名
   - RULE-SET,telegramip,📲 电报信息,no-resolve
   - RULE-SET,privateip,🔒 私有网络,no-resolve

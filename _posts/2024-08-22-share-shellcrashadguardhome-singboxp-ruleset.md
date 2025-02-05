@@ -93,6 +93,7 @@ tags: [sing-box, sing-boxp, ShellCrash, AdGuard Home, ruleset, rule_set, 分享,
       { "rule_set": [ "ai" ], "outbound": "🤖 人工智能" },
       { "rule_set": [ "networktest" ], "outbound": "📈 网络测试" },
       { "rule_set": [ "proxy" ], "outbound": "🧱 代理域名" },
+      { "rule_set": [ "tld-cn" ], "outbound": "🇨🇳 直连域名" },
       { "rule_set": [ "cn" ], "outbound": "🇨🇳 直连域名" },
       { "rule_set": [ "telegramip" ], "outbound": "📲 电报信息", "skip_resolve": true },
       { "rule_set": [ "privateip" ], "outbound": "🔒 私有网络", "skip_resolve": true },
@@ -161,6 +162,13 @@ tags: [sing-box, sing-boxp, ShellCrash, AdGuard Home, ruleset, rule_set, 分享,
         "format": "binary",
         "path": "./ruleset/proxy.srs",
         "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/proxy.srs"
+      },
+      {
+        "tag": "tld-cn",
+        "type": "remote",
+        "format": "binary",
+        "path": "./ruleset/tld-cn.srs",
+        "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/tld-cn.srs"
       },
       {
         "tag": "cn",
