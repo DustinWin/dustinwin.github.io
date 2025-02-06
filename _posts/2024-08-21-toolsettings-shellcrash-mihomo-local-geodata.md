@@ -250,6 +250,7 @@ proxy-providers:
 - GEOSITE,ai,🤖 人工智能
 - GEOSITE,networktest,📈 网络测速
 - GEOSITE,proxy,🧱 代理域名
+- GEOSITE,tld-cn,🇨🇳 直连域名
 - GEOSITE,cn,🇨🇳 直连域名
 - GEOIP,telegram,📲 电报信息,no-resolve
 - GEOIP,private,🔒 私有网络,no-resolve

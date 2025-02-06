@@ -147,6 +147,7 @@ tags: [sing-box, sing-boxp, ShellCrash, geodata, geosite, 进阶, 本地, Router
       { "geosite": [ "games-cn" ], "outbound": "🎮 游戏服务" },
       { "geosite": [ "networktest" ], "outbound": "📈 网络测速" },
       { "geosite": [ "proxy" ], "outbound": "🧱 代理域名" },
+      { "geosite": [ "tld-cn" ], "outbound": "🇨🇳 直连域名" },
       { "geosite": [ "cn" ], "outbound": "🇨🇳 直连域名" },
       { "geoip": [ "telegram" ], "outbound": "📲 电报信息", "skip_resolve": true },
       { "geoip": [ "private" ],  "outbound": "🔒 私有网络", "skip_resolve": true },
