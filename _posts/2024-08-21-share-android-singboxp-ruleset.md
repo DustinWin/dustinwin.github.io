@@ -6,7 +6,7 @@ categories: [分享配置, Android]
 tags: [sing-box, sing-boxp, Android, ruleset, rule_set, 分享]
 ---
 
-> 规则集暂时不可用，等 [sing-boxp for Android](https://github.com/PuerNya/sing-box/actions/workflows/sfa.yml) v1.10.0+ 版本吧
+> 规则集暂时不可用，等 [sing-boxp for Android](https://github.com/PuerNya/sing-box/actions/workflows/sfa.yml) v1.11.0+ 版本吧
 {: .prompt-danger }
 
 > 声明
