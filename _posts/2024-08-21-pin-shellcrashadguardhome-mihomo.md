@@ -72,10 +72,10 @@ pin: true
   - ➊ 以管理员身份运行 PowerShell 或 CMD，执行命令 `telnet 192.168.31.1`
     - 注：首次登录不需要用户名和密码，解锁或恢复 SSH 后用户名为 `root`，密码为《[三、 3](https://proxy-tutorials.dustinwin.top/posts/pin-shellcrashadguardhome-mihomo/#3-%E6%B0%B8%E4%B9%85%E5%BC%80%E5%90%AF%E5%B9%B6%E5%9B%BA%E5%8C%96-ssh)》中设置的登录密码
 
-    <img src="/assets/img/pin/connect-telnet-windows-1.png" alt="连接 Telnet 1" />
+    <img src="/assets/img/pin/connect-telnet-windows-1.png" alt="连接 Telnet 1" width="60%" />
 
   - ➋ 输入密码 `12345678`（输入时密码不可见，下同）并回车，显示“ARE U OK”表示成功连接 Telnet  
-    <img src="/assets/img/pin/connect-telnet-windows-2.png" alt="连接 Telnet 2" />
+    <img src="/assets/img/pin/connect-telnet-windows-2.png" alt="连接 Telnet 2" width="60%" />
 
 - ④ 连接 SSH
 
@@ -85,13 +85,13 @@ pin: true
   - ➊ 以管理员身份运行 PowerShell 或 CMD，执行命令 `ssh -oHostKeyAlgorithms=+ssh-rsa root@192.168.31.1` 以允许 SSH 客户端接受“ssh-rsa”密钥，输入 `yes` 并回车
     - 注：若当前电脑登录过 SSH，后路由器经过重新解锁或恢复 SSH，须进入 `C:\Users\[用户名]\.ssh`{: .filepath} 文件夹，删除“known_hosts”文件，否则登录会报错
 
-    <img src="/assets/img/pin/connect-ssh-windows-1.png" alt="连接 SSH 1" />
+    <img src="/assets/img/pin/connect-ssh-windows-1.png" alt="连接 SSH 1" width="60%" />
 
   - ➋ 输入密码 `12345678` 并回车  
-    <img src="/assets/img/pin/connect-ssh-windows-2.png" alt="连接 SSH 1" />
+    <img src="/assets/img/pin/connect-ssh-windows-2.png" alt="连接 SSH 2" width="60%" />
 
   - ➌ 显示“ARE U OK”表示成功登录 SSH  
-    <img src="/assets/img/pin/connect-ssh-windows-3.png" alt="连接 SSH 3" />
+    <img src="/assets/img/pin/connect-ssh-windows-3.png" alt="连接 SSH 3" width="60%" />
 
 ### 2. 通过 SSH 工具添加 SSH 支持（任选一）
 - ① 打开 Termius  
