@@ -116,10 +116,12 @@ proxy-groups:
   - {name: 🇨🇳 直连域名, type: select, proxies: [🎯 全球直连, 🚀 节点选择]}
   - {name: 🇨🇳 直连 IP, type: select, proxies: [🎯 全球直连, 🚀 节点选择]}
   - {name: 🧱 代理域名, type: select, proxies: [🚀 节点选择, 🎯 全球直连]}
-  - {name: 📲 电报信息, type: select, proxies: [🚀 节点选择]}
+  - {name: 📲 电报消息, type: select, proxies: [🚀 节点选择]}
   - {name: 🖥️ 直连软件, type: select, proxies: [🎯 全球直连]}
   - {name: 🔒 私有网络, type: select, proxies: [🎯 全球直连]}
-  - {name: 🛑 广告拦截, type: select, proxies: [REJECT]}
+  - {name: 🛑 广告域名, type: select, proxies: [🔴 全球拦截, 🟢 全球绕过]}
+  - {name: 🔴 全球拦截, type: select, proxies: [REJECT]}
+  - {name: 🟢 全球绕过, type: select, proxies: [PASS]}
   - {name: 🎯 全球直连, type: select, proxies: [DIRECT]}
 
   - {name: 🇭🇰 香港节点, type: url-test, tolerance: 50, use: [🛫 机场订阅], filter: "(?i)(🇭🇰|港|hk|hongkong|hong kong)"}
@@ -261,7 +263,7 @@ rule-providers:
 rules:
   - RULE-SET,applications,🖥️ 直连软件
   - RULE-SET,private,🔒 私有网络
-  - RULE-SET,ads,🛑 广告拦截
+  - RULE-SET,ads,🛑 广告域名
   - RULE-SET,microsoft-cn,🪟 微软服务
   - RULE-SET,apple-cn,🍎 苹果服务
   - RULE-SET,google-cn,🇬 谷歌服务
@@ -271,7 +273,7 @@ rules:
   - RULE-SET,proxy,🧱 代理域名
   - RULE-SET,tld-cn,🇨🇳 直连域名
   - RULE-SET,cn,🇨🇳 直连域名
-  - RULE-SET,telegramip,📲 电报信息,no-resolve
+  - RULE-SET,telegramip,📲 电报消息,no-resolve
   - RULE-SET,privateip,🔒 私有网络,no-resolve
   - RULE-SET,cnip,🇨🇳 直连 IP
   - MATCH,🐟 漏网之鱼

@@ -101,9 +101,10 @@ tags: [sing-box, sing-boxp, ShellCrash, ruleset, rule_set, 进阶, 本地, Route
     { "tag": "🇨🇳 直连域名", "type": "selector", "outbounds": [ "🎯 全球直连", "🈯 节点指定" ] },
     { "tag": "🇨🇳 直连 IP", "type": "selector", "outbounds": [ "🎯 全球直连", "🈯 节点指定" ] },
     { "tag": "🧱 代理域名", "type": "selector", "outbounds": [ "🈯 节点指定", "🎯 全球直连" ] },
-    { "tag": "📲 电报信息", "type": "selector", "outbounds": [ "🈯 节点指定" ] },
+    { "tag": "📲 电报消息", "type": "selector", "outbounds": [ "🈯 节点指定" ] },
     { "tag": "🔒 私有网络", "type": "selector", "outbounds": [ "🎯 全球直连" ] },
-    { "tag": "🛑 广告拦截", "type": "selector", "outbounds": [ "REJECT" ] },
+    { "tag": "🛑 广告域名", "type": "selector", "outbounds": [ "🔴 全球拦截", "🎯 全球直连" ] },
+    { "tag": "🔴 全球拦截", "type": "selector", "outbounds": [ "REJECT" ] },
 
     // 单个出站节点（以 vless 为例）
     {
@@ -144,7 +145,7 @@ tags: [sing-box, sing-boxp, ShellCrash, ruleset, rule_set, 进阶, 本地, Route
       "rules": [
         // 自定义规则优先放前面
         { "rule_set": [ "private" ], "outbound": "🔒 私有网络" },
-        { "rule_set": [ "ads" ], "outbound": "🛑 广告拦截" },
+        { "rule_set": [ "ads" ], "outbound": "🛑 广告域名" },
         { "rule_set": [ "microsoft-cn" ], "outbound": "🪟 微软服务" },
         { "rule_set": [ "apple-cn" ], "outbound": "🍎 苹果服务" },
         { "rule_set": [ "google-cn" ], "outbound": "🇬 谷歌服务" },
@@ -154,7 +155,7 @@ tags: [sing-box, sing-boxp, ShellCrash, ruleset, rule_set, 进阶, 本地, Route
         { "rule_set": [ "proxy" ], "outbound": "🧱 代理域名" },
         { "rule_set": [ "tld-cn" ], "outbound": "🇨🇳 直连域名" },
         { "rule_set": [ "cn" ], "outbound": "🇨🇳 直连域名" },
-        { "rule_set": [ "telegramip" ], "outbound": "📲 电报信息", "skip_resolve": true },
+        { "rule_set": [ "telegramip" ], "outbound": "📲 电报消息", "skip_resolve": true },
         { "rule_set": [ "privateip" ],  "outbound": "🔒 私有网络", "skip_resolve": true },
         { "rule_set": [ "cnip" ], "outbound": "🇨🇳 直连 IP" }
       ],

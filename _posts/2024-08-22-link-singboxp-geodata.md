@@ -90,9 +90,10 @@ tags: [sing-box, sing-boxp, 直链, 订阅, geodata, geosite, 基础]
     { "tag": "🇨🇳 直连域名", "type": "selector", "outbounds": [ "🎯 全球直连", "🚀 节点选择" ] },
     { "tag": "🇨🇳 直连 IP", "type": "selector", "outbounds": [ "🎯 全球直连", "🚀 节点选择" ] },
     { "tag": "🧱 代理域名", "type": "selector", "outbounds": [ "🚀 节点选择", "🎯 全球直连" ] },
-    { "tag": "📲 电报信息", "type": "selector", "outbounds": [ "🚀 节点选择" ] },
+    { "tag": "📲 电报消息", "type": "selector", "outbounds": [ "🚀 节点选择" ] },
     { "tag": "🔒 私有网络", "type": "selector", "outbounds": [ "🎯 全球直连" ] },
-    { "tag": "🛑 广告拦截", "type": "selector", "outbounds": [ "REJECT" ] },
+    { "tag": "🛑 广告域名", "type": "selector", "outbounds": [ "🔴 全球拦截", "🎯 全球直连" ] },
+    { "tag": "🔴 全球拦截", "type": "selector", "outbounds": [ "REJECT" ] },
     { "tag": "🎯 全球直连", "type": "selector", "outbounds": [ "DIRECT" ] },
     { "tag": "REJECT", "type": "block" },
     { "tag": "DIRECT", "type": "direct" },
@@ -131,7 +132,7 @@ tags: [sing-box, sing-boxp, 直链, 订阅, geodata, geosite, 基础]
       // 为了使 P2P 流量（BT 下载）走直连，可添加一条 `DST-PORT` 规则（ShellCrash 会默认开启“只代理常用端口”，可删除此条 `DST-PORT`）
       { "port_range": [ "6881:6889" ], "outbound": "🎯 全球直连" },
       { "geosite": [ "private" ], "outbound": "🔒 私有网络" },
-      { "geosite": [ "ads" ], "outbound": "🛑 广告拦截" },
+      { "geosite": [ "ads" ], "outbound": "🛑 广告域名" },
       { "geosite": [ "microsoft-cn" ], "outbound": "🪟 微软服务" },
       { "geosite": [ "apple-cn" ], "outbound": "🍎 苹果服务" },
       { "geosite": [ "google-cn" ], "outbound": "🇬 谷歌服务" },
@@ -141,7 +142,7 @@ tags: [sing-box, sing-boxp, 直链, 订阅, geodata, geosite, 基础]
       { "geosite": [ "proxy" ], "outbound": "🧱 代理域名" },
       { "geosite": [ "tld-cn" ], "outbound": "🇨🇳 直连域名" },
       { "geosite": [ "cn" ], "outbound": "🇨🇳 直连域名" },
-      { "geoip": [ "telegram" ], "outbound": "📲 电报信息", "skip_resolve": true },
+      { "geoip": [ "telegram" ], "outbound": "📲 电报消息", "skip_resolve": true },
       { "geoip": [ "private" ],  "outbound": "🔒 私有网络", "skip_resolve": true },
       { "geoip": [ "cn" ], "outbound": "🇨🇳 直连 IP" }
     ],
@@ -225,9 +226,10 @@ tags: [sing-box, sing-boxp, 直链, 订阅, geodata, geosite, 基础]
     { "tag": "📈 网络测试", "type": "selector", "outbounds": [ "🎯 全球直连", "🇭🇰 香港节点", "🇹🇼 台湾节点", "🇯🇵 日本节点", "🇸🇬 新加坡节点", "🇺🇸 美国节点", "🆓 免费节点" ] },
     { "tag": "🤖 人工智能", "type": "selector", "outbounds": [ "🇭🇰 香港节点", "🇹🇼 台湾节点", "🇯🇵 日本节点", "🇰🇷 韩国节点", "🇸🇬 新加坡节点", "🇺🇸 美国节点" ] },
     { "tag": "🧱 代理域名", "type": "selector", "outbounds": [ "🚀 节点选择", "🎯 全球直连" ] },
-    { "tag": "📲 电报信息", "type": "selector", "outbounds": [ "🚀 节点选择" ] },
+    { "tag": "📲 电报消息", "type": "selector", "outbounds": [ "🚀 节点选择" ] },
     { "tag": "🔒 私有网络", "type": "selector", "outbounds": [ "🎯 全球直连" ] },
-    { "tag": "🛑 广告拦截", "type": "selector", "outbounds": [ "REJECT" ] },
+    { "tag": "🛑 广告域名", "type": "selector", "outbounds": [ "🔴 全球拦截", "🎯 全球直连" ] },
+    { "tag": "🔴 全球拦截", "type": "selector", "outbounds": [ "REJECT" ] },
     { "tag": "🎯 全球直连", "type": "selector", "outbounds": [ "DIRECT" ] },
     { "tag": "REJECT", "type": "block" },
     { "tag": "DIRECT", "type": "direct" },
@@ -265,12 +267,12 @@ tags: [sing-box, sing-boxp, 直链, 订阅, geodata, geosite, 基础]
       { "clash_mode": [ "Global" ], "outbound": "GLOBAL" },
       // 自定义规则优先放前面
       { "geosite": [ "private" ], "outbound": "🔒 私有网络" },
-      { "geosite": [ "ads" ], "outbound": "🛑 广告拦截" },
+      { "geosite": [ "ads" ], "outbound": "🛑 广告域名" },
       { "geosite": [ "ai" ], "outbound": "🤖 人工智能" },
       { "geosite": [ "networktest" ], "outbound": "📈 网络测试" },
       { "geosite": [ "tld-proxy" ], "outbound": "🧱 代理域名" },
       { "geosite": [ "proxy" ], "outbound": "🧱 代理域名" },
-      { "geoip": [ "telegram" ], "outbound": "📲 电报信息", "skip_resolve": true }
+      { "geoip": [ "telegram" ], "outbound": "📲 电报消息", "skip_resolve": true }
     ],
     // geosite 配置项
     "geosite": {

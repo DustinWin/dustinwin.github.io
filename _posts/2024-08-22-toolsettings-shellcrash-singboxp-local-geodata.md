@@ -100,9 +100,10 @@ tags: [sing-box, sing-boxp, ShellCrash, geodata, geosite, 进阶, 本地, Router
     { "tag": "🇨🇳 直连域名", "type": "selector", "outbounds": [ "🎯 全球直连", "🈯 节点指定" ] },
     { "tag": "🇨🇳 直连 IP", "type": "selector", "outbounds": [ "🎯 全球直连", "🈯 节点指定" ] },
     { "tag": "🧱 代理域名", "type": "selector", "outbounds": [ "🈯 节点指定", "🎯 全球直连" ] },
-    { "tag": "📲 电报信息", "type": "selector", "outbounds": [ "🈯 节点指定" ] },
+    { "tag": "📲 电报消息", "type": "selector", "outbounds": [ "🈯 节点指定" ] },
     { "tag": "🔒 私有网络", "type": "selector", "outbounds": [ "🎯 全球直连" ] },
-    { "tag": "🛑 广告拦截", "type": "selector", "outbounds": [ "REJECT" ] },
+    { "tag": "🛑 广告域名", "type": "selector", "outbounds": [ "🔴 全球拦截", "🎯 全球直连" ] },
+    { "tag": "🔴 全球拦截", "type": "selector", "outbounds": [ "REJECT" ] },
 
     // 单个出站节点（以 vless 为例）
     {
@@ -140,7 +141,7 @@ tags: [sing-box, sing-boxp, ShellCrash, geodata, geosite, 进阶, 本地, Router
     "rules": [
       // 自定义规则优先放前面
       { "geosite": [ "private" ], "outbound": "🔒 私有网络" },
-      { "geosite": [ "ads" ], "outbound": "🛑 广告拦截" },
+      { "geosite": [ "ads" ], "outbound": "🛑 广告域名" },
       { "geosite": [ "microsoft-cn" ], "outbound": "🪟 微软服务" },
       { "geosite": [ "apple-cn" ], "outbound": "🍎 苹果服务" },
       { "geosite": [ "google-cn" ], "outbound": "🇬 谷歌服务" },
@@ -149,7 +150,7 @@ tags: [sing-box, sing-boxp, ShellCrash, geodata, geosite, 进阶, 本地, Router
       { "geosite": [ "proxy" ], "outbound": "🧱 代理域名" },
       { "geosite": [ "tld-cn" ], "outbound": "🇨🇳 直连域名" },
       { "geosite": [ "cn" ], "outbound": "🇨🇳 直连域名" },
-      { "geoip": [ "telegram" ], "outbound": "📲 电报信息", "skip_resolve": true },
+      { "geoip": [ "telegram" ], "outbound": "📲 电报消息", "skip_resolve": true },
       { "geoip": [ "private" ],  "outbound": "🔒 私有网络", "skip_resolve": true },
       { "geoip": [ "cn" ], "outbound": "🇨🇳 直连 IP" }
     ],

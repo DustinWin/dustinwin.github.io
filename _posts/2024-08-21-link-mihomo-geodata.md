@@ -103,9 +103,11 @@ proxy-groups:
   - {name: 🇨🇳 直连域名, type: select, proxies: [🎯 全球直连, 🚀 节点选择]}
   - {name: 🇨🇳 直连 IP, type: select, proxies: [🎯 全球直连, 🚀 节点选择]}
   - {name: 🧱 代理域名, type: select, proxies: [🚀 节点选择, 🎯 全球直连]}
-  - {name: 📲 电报信息, type: select, proxies: [🚀 节点选择]}
+  - {name: 📲 电报消息, type: select, proxies: [🚀 节点选择]}
   - {name: 🔒 私有网络, type: select, proxies: [🎯 全球直连]}
-  - {name: 🛑 广告拦截, type: select, proxies: [REJECT]}
+  - {name: 🛑 广告域名, type: select, proxies: [🔴 全球拦截, 🟢 全球绕过]}
+  - {name: 🔴 全球拦截, type: select, proxies: [REJECT]}
+  - {name: 🟢 全球绕过, type: select, proxies: [PASS]}
   - {name: 🎯 全球直连, type: select, proxies: [DIRECT]}
 
   ## ----------------国家或地区策略组---------------------
@@ -124,7 +126,7 @@ rules:
   ## 为了使 P2P 流量（BT 下载）走直连，可添加一条 `DST-PORT` 规则（ShellCrash 会默认开启“只代理常用端口”，可删除此条 `DST-PORT`）
   - DST-PORT,6881-6889,🎯 全球直连
   - GEOSITE,private,🔒 私有网络
-  - GEOSITE,ads,🛑 广告拦截
+  - GEOSITE,ads,🛑 广告域名
   - GEOSITE,microsoft-cn,🪟 微软服务
   - GEOSITE,apple-cn,🍎 苹果服务
   - GEOSITE,google-cn,🇬 谷歌服务
@@ -134,7 +136,7 @@ rules:
   - GEOSITE,proxy,🧱 代理域名
   - GEOSITE,tld-cn,🇨🇳 直连域名
   - GEOSITE,cn,🇨🇳 直连域名
-  - GEOIP,telegram,📲 电报信息,no-resolve
+  - GEOIP,telegram,📲 电报消息,no-resolve
   - GEOIP,private,🔒 私有网络,no-resolve
   - GEOIP,cn,🇨🇳 直连 IP
   - MATCH,🐟 漏网之鱼
@@ -212,9 +214,11 @@ proxy-groups:
   - {name: 📈 网络测试, type: select, proxies: [🎯 全球直连, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇺🇸 美国节点, 🆓 免费节点]}
   - {name: 🤖 人工智能, type: select, proxies: [🇭🇰 香港节点, 🇹🇼 台湾节点, 🇯🇵 日本节点, 🇰🇷 韩国节点, 🇸🇬 新加坡节点, 🇺🇸 美国节点]}
   - {name: 🧱 代理域名, type: select, proxies: [🚀 节点选择, 🎯 全球直连]}
-  - {name: 📲 电报信息, type: select, proxies: [🚀 节点选择]}
+  - {name: 📲 电报消息, type: select, proxies: [🚀 节点选择]}
   - {name: 🔒 私有网络, type: select, proxies: [🎯 全球直连]}
-  - {name: 🛑 广告拦截, type: select, proxies: [REJECT]}
+  - {name: 🛑 广告域名, type: select, proxies: [🔴 全球拦截, 🟢 全球绕过]}
+  - {name: 🔴 全球拦截, type: select, proxies: [REJECT]}
+  - {name: 🟢 全球绕过, type: select, proxies: [PASS]}
   - {name: 🎯 全球直连, type: select, proxies: [DIRECT]}
 
   ## ----------------国家或地区策略组---------------------
@@ -231,12 +235,12 @@ proxy-groups:
 rules:
   ## 自定义规则优先放前面
   - GEOSITE,private,🔒 私有网络
-  - GEOSITE,ads,🛑 广告拦截
+  - GEOSITE,ads,🛑 广告域名
   - GEOSITE,ai,🤖 人工智能
   - GEOSITE,networktest,📈 网络测试
   - GEOSITE,tld-proxy,🧱 代理域名
   - GEOSITE,proxy,🧱 代理域名
-  - GEOIP,telegram,📲 电报信息,no-resolve
+  - GEOIP,telegram,📲 电报消息,no-resolve
   - MATCH,🐟 漏网之鱼
 ```
 
