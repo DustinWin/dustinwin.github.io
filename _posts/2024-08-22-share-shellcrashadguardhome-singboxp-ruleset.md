@@ -276,6 +276,7 @@ crash
 ```json
 {
   "experimental": {
+    "cache_file": { "enabled": true },
     "clash_api": {
       "external_controller": "192.168.31.1:9090",
       "external_ui": "ui",
