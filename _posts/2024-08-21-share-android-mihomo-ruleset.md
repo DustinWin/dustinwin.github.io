@@ -1,6 +1,6 @@
 ---
 title: 分享 Clash.Meta for Android 采用 ruleset 方案的一套配置
-description: 此配置搭载 mihomo 内核，采用 `RULE-SET` 规则搭配 .yaml、.text 和 .mrs 规则集合文件
+description: 此配置搭载 mihomo 内核，采用 `RULE-SET` 规则搭配 .list 和 .mrs 规则集合文件
 date: 2024-08-21 18:08:13 +0800
 categories: [分享配置, Android]
 tags: [Clash, Clash.Meta, mihomo, Android, ruleset, rule-set, 分享]

@@ -1,6 +1,6 @@
 ---
 title: 分享 ShellCrash 搭载 sing-boxp 内核搭配 AdGuard Home 采用 ruleset 方案的一套配置
-description: 此配置搭载 sing-boxp 内核，采用 `rule_set` 规则搭配 .srs 和 .json 规则集文件
+description: 此配置搭载 sing-boxp 内核，采用 `rule_set` 规则搭配 .srs 规则集文件
 date: 2024-08-22 19:51:07 +0800
 categories: [分享配置, Router]
 tags: [sing-box, sing-boxp, ShellCrash, AdGuard Home, ruleset, rule_set, 分享, Router]

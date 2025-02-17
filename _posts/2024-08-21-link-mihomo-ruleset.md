@@ -1,6 +1,6 @@
 ---
 title: 生成带有自定义策略组和规则的 mihomo 配置文件直链-ruleset 方案
-description: 此教程搭载 mihomo 内核，采用 `RULE-SET` 规则搭配 .yaml、.text 和 .mrs 规则集合文件
+description: 此教程搭载 mihomo 内核，采用 `RULE-SET` 规则搭配 .list 和 .mrs 规则集合文件
 date: 2024-08-21 07:41:24 +0800
 categories: [直链配置, mihomo 直链]
 tags: [Clash, mihomo, 直链, 订阅, ruleset, rule-set, 基础]

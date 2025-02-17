@@ -1,6 +1,6 @@
 ---
 title: 分享 sing-boxp for Android 采用 ruleset 方案的一套配置
-description: 此配置搭载 sing-boxp 内核，采用 `rule_set` 规则搭配 .srs 和 .json 规则集文件
+description: 此配置搭载 sing-boxp 内核，采用 `rule_set` 规则搭配 .srs 规则集文件
 date: 2024-08-22 19:58:51 +0800
 categories: [分享配置, Android]
 tags: [sing-box, sing-boxp, Android, ruleset, rule_set, 分享]
