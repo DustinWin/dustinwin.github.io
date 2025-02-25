@@ -276,13 +276,13 @@ rule-providers:
     - 🎯 全球直连
     - 🈯 节点指定
 
-- name: 🇨🇳 直连域名
+- name: 🛡️ 直连域名
   type: select
   proxies:
     - 🎯 全球直连
     - 🈯 节点指定
 
-- name: 🇨🇳 直连 IP
+- name: 🀄️ 直连 IP
   type: select
   proxies:
     - 🎯 全球直连
@@ -374,11 +374,11 @@ rule-providers:
 - RULE-SET,ai,🤖 人工智能
 - RULE-SET,networktest,📈 网络测试
 - RULE-SET,proxy,🧱 代理域名
-- RULE-SET,tld-cn,🇨🇳 直连域名
-- RULE-SET,cn,🇨🇳 直连域名
+- RULE-SET,tld-cn,🛡️ 直连域名
+- RULE-SET,cn,🛡️ 直连域名
 - RULE-SET,telegramip,📲 电报消息,no-resolve
 - RULE-SET,privateip,🔒 私有网络,no-resolve
-- RULE-SET,cnip,🇨🇳 直连 IP
+- RULE-SET,cnip,🀄️ 直连 IP
 ```
 
 按一下 Esc 键（退出键），输入英文冒号 `:`，继续输入 `wq` 并回车  

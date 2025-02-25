@@ -53,8 +53,8 @@ tags: [sing-box, sing-boxp, ShellCrash, geodata, geosite, 分享, Router]
     { "tag": "🪟 微软服务", "type": "selector", "outbounds": [ "🎯 全球直连", "🚀 节点选择" ] },
     { "tag": "🇬 谷歌服务", "type": "selector", "outbounds": [ "🎯 全球直连", "🚀 节点选择" ] },
     { "tag": "🍎 苹果服务", "type": "selector", "outbounds": [ "🎯 全球直连", "🚀 节点选择" ] },
-    { "tag": "🇨🇳 直连域名", "type": "selector", "outbounds": [ "🎯 全球直连", "🚀 节点选择" ] },
-    { "tag": "🇨🇳 直连 IP", "type": "selector", "outbounds": [ "🎯 全球直连", "🚀 节点选择" ] },
+    { "tag": "🛡️ 直连域名", "type": "selector", "outbounds": [ "🎯 全球直连", "🚀 节点选择" ] },
+    { "tag": "🀄️ 直连 IP", "type": "selector", "outbounds": [ "🎯 全球直连", "🚀 节点选择" ] },
     { "tag": "🧱 代理域名", "type": "selector", "outbounds": [ "🚀 节点选择", "🎯 全球直连" ] },
     { "tag": "📲 电报消息", "type": "selector", "outbounds": [ "🚀 节点选择" ] },
     { "tag": "🔒 私有网络", "type": "selector", "outbounds": [ "🎯 全球直连" ] },
@@ -97,11 +97,11 @@ tags: [sing-box, sing-boxp, ShellCrash, geodata, geosite, 分享, Router]
       { "geosite": [ "ai" ], "outbound": "🤖 人工智能" },
       { "geosite": [ "networktest" ], "outbound": "📈 网络测试" },
       { "geosite": [ "proxy" ], "outbound": "🧱 代理域名" },
-      { "geosite": [ "tld-cn" ], "outbound": "🇨🇳 直连域名" },
-      { "geosite": [ "cn" ], "outbound": "🇨🇳 直连域名" },
+      { "geosite": [ "tld-cn" ], "outbound": "🛡️ 直连域名" },
+      { "geosite": [ "cn" ], "outbound": "🛡️ 直连域名" },
       { "geoip": [ "telegram" ], "outbound": "📲 电报消息", "skip_resolve": true },
       { "geoip": [ "private" ], "outbound": "🔒 私有网络", "skip_resolve": true },
-      { "geoip": [ "cn" ], "outbound": "🇨🇳 直连 IP" }
+      { "geoip": [ "cn" ], "outbound": "🀄️ 直连 IP" }
     ],
     "geosite": {
       "path": "./geosite.db",

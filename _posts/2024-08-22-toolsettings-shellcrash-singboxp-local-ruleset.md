@@ -98,8 +98,8 @@ tags: [sing-box, sing-boxp, ShellCrash, ruleset, rule_set, 进阶, 本地, Route
     { "tag": "🪟 微软服务", "type": "selector", "outbounds": [ "🎯 全球直连", "🈯 节点指定" ] },
     { "tag": "🇬 谷歌服务", "type": "selector", "outbounds": [ "🎯 全球直连", "🈯 节点指定" ] },
     { "tag": "🍎 苹果服务", "type": "selector", "outbounds": [ "🎯 全球直连", "🈯 节点指定" ] },
-    { "tag": "🇨🇳 直连域名", "type": "selector", "outbounds": [ "🎯 全球直连", "🈯 节点指定" ] },
-    { "tag": "🇨🇳 直连 IP", "type": "selector", "outbounds": [ "🎯 全球直连", "🈯 节点指定" ] },
+    { "tag": "🛡️ 直连域名", "type": "selector", "outbounds": [ "🎯 全球直连", "🈯 节点指定" ] },
+    { "tag": "🀄️ 直连 IP", "type": "selector", "outbounds": [ "🎯 全球直连", "🈯 节点指定" ] },
     { "tag": "🧱 代理域名", "type": "selector", "outbounds": [ "🈯 节点指定", "🎯 全球直连" ] },
     { "tag": "📲 电报消息", "type": "selector", "outbounds": [ "🈯 节点指定" ] },
     { "tag": "🔒 私有网络", "type": "selector", "outbounds": [ "🎯 全球直连" ] },
@@ -153,11 +153,11 @@ tags: [sing-box, sing-boxp, ShellCrash, ruleset, rule_set, 进阶, 本地, Route
         { "rule_set": [ "ai" ], "outbound": "🤖 人工智能" },
         { "rule_set": [ "networktest" ], "outbound": "📈 网络测试" },
         { "rule_set": [ "proxy" ], "outbound": "🧱 代理域名" },
-        { "rule_set": [ "tld-cn" ], "outbound": "🇨🇳 直连域名" },
-        { "rule_set": [ "cn" ], "outbound": "🇨🇳 直连域名" },
+        { "rule_set": [ "tld-cn" ], "outbound": "🛡️ 直连域名" },
+        { "rule_set": [ "cn" ], "outbound": "🛡️ 直连域名" },
         { "rule_set": [ "telegramip" ], "outbound": "📲 电报消息", "skip_resolve": true },
         { "rule_set": [ "privateip" ],  "outbound": "🔒 私有网络", "skip_resolve": true },
-        { "rule_set": [ "cnip" ], "outbound": "🇨🇳 直连 IP" }
+        { "rule_set": [ "cnip" ], "outbound": "🀄️ 直连 IP" }
       ],
       // 规则集（binary 文件每天自动更新）
       "rule_set": [

@@ -97,8 +97,8 @@ tags: [sing-box, sing-boxp, ShellCrash, geodata, geosite, 进阶, 本地, Router
     { "tag": "🪟 微软服务", "type": "selector", "outbounds": [ "🎯 全球直连", "🈯 节点指定" ] },
     { "tag": "🇬 谷歌服务", "type": "selector", "outbounds": [ "🎯 全球直连", "🈯 节点指定" ] },
     { "tag": "🍎 苹果服务", "type": "selector", "outbounds": [ "🎯 全球直连", "🈯 节点指定" ] },
-    { "tag": "🇨🇳 直连域名", "type": "selector", "outbounds": [ "🎯 全球直连", "🈯 节点指定" ] },
-    { "tag": "🇨🇳 直连 IP", "type": "selector", "outbounds": [ "🎯 全球直连", "🈯 节点指定" ] },
+    { "tag": "🛡️ 直连域名", "type": "selector", "outbounds": [ "🎯 全球直连", "🈯 节点指定" ] },
+    { "tag": "🀄️ 直连 IP", "type": "selector", "outbounds": [ "🎯 全球直连", "🈯 节点指定" ] },
     { "tag": "🧱 代理域名", "type": "selector", "outbounds": [ "🈯 节点指定", "🎯 全球直连" ] },
     { "tag": "📲 电报消息", "type": "selector", "outbounds": [ "🈯 节点指定" ] },
     { "tag": "🔒 私有网络", "type": "selector", "outbounds": [ "🎯 全球直连" ] },
@@ -148,11 +148,11 @@ tags: [sing-box, sing-boxp, ShellCrash, geodata, geosite, 进阶, 本地, Router
       { "geosite": [ "games-cn" ], "outbound": "🎮 游戏服务" },
       { "geosite": [ "networktest" ], "outbound": "📈 网络测速" },
       { "geosite": [ "proxy" ], "outbound": "🧱 代理域名" },
-      { "geosite": [ "tld-cn" ], "outbound": "🇨🇳 直连域名" },
-      { "geosite": [ "cn" ], "outbound": "🇨🇳 直连域名" },
+      { "geosite": [ "tld-cn" ], "outbound": "🛡️ 直连域名" },
+      { "geosite": [ "cn" ], "outbound": "🛡️ 直连域名" },
       { "geoip": [ "telegram" ], "outbound": "📲 电报消息", "skip_resolve": true },
       { "geoip": [ "private" ],  "outbound": "🔒 私有网络", "skip_resolve": true },
-      { "geoip": [ "cn" ], "outbound": "🇨🇳 直连 IP" }
+      { "geoip": [ "cn" ], "outbound": "🀄️ 直连 IP" }
     ],
     // geosite 配置项
     "geosite": {

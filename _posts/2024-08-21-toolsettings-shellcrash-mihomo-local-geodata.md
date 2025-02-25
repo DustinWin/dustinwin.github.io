@@ -163,13 +163,13 @@ proxy-providers:
     - 🎯 全球直连
     - 🈯 节点指定
 
-- name: 🇨🇳 直连域名
+- name: 🛡️ 直连域名
   type: select
   proxies:
     - 🎯 全球直连
     - 🈯 节点指定
 
-- name: 🇨🇳 直连 IP
+- name: 🀄️ 直连 IP
   type: select
   proxies:
     - 🎯 全球直连
@@ -261,11 +261,11 @@ proxy-providers:
 - GEOSITE,ai,🤖 人工智能
 - GEOSITE,networktest,📈 网络测速
 - GEOSITE,proxy,🧱 代理域名
-- GEOSITE,tld-cn,🇨🇳 直连域名
-- GEOSITE,cn,🇨🇳 直连域名
+- GEOSITE,tld-cn,🛡️ 直连域名
+- GEOSITE,cn,🛡️ 直连域名
 - GEOIP,telegram,📲 电报消息,no-resolve
 - GEOIP,private,🔒 私有网络,no-resolve
-- GEOIP,cn,🇨🇳 直连 IP
+- GEOIP,cn,🀄️ 直连 IP
 ```
 
 按一下 Esc 键（退出键），输入英文冒号 `:`，继续输入 `wq` 并回车  

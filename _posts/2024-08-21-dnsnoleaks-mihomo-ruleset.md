@@ -8,7 +8,7 @@ tags: [Clash, mihomo, 进阶, DNS, DNS 泄露]
 
 > 说明
 {: .prompt-tip }
-1. 此方案彻底防止了 DNS 泄露（针对未知域名走国外 DNS 解析，解析出 IP 在国内则走 `🇨🇳 直连 IP` 规则，否则走 `🐟 漏网之鱼` 规则），兼容性无法保证，请慎用
+1. 此方案彻底防止了 DNS 泄露（针对未知域名走国外 DNS 解析，解析出 IP 在国内则走 `🀄️ 直连 IP` 规则，否则走 `🐟 漏网之鱼` 规则），兼容性无法保证，请慎用
 2. 本教程以 [ShellCrash](https://github.com/juewuy/ShellCrash) 为例，其它客户端亦可参考
 3. 可进入 <https://ipleak.net> 测试 DNS 是否泄露，“DNS Addresses” 栏目下没有中国国旗（因 `ipleak.net` 属未知域名，默认走 `🐟 漏网之鱼` 规则），即代表 DNS 没有发生泄露
 
@@ -46,7 +46,7 @@ rule-providers:
   ```yaml
     - RULE-SET,telegramip,📲 电报消息,no-resolve
     - RULE-SET,privateip,🔒 私有网络,no-resolve
-    - RULE-SET,cnip,🇨🇳 直连 IP,no-resolve
+    - RULE-SET,cnip,🀄️ 直连 IP,no-resolve
   ```
 
 - ② 连接 SSH 后执行 `vi $CRASHDIR/yamls/user.yaml`，按一下 Ins 键（Insert 键），粘贴如下内容：
