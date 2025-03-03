@@ -58,48 +58,48 @@ proxies:
         host: example.com
 
 proxy-groups:
-  - {name: 🚀 节点选择, type: select, proxies: [🇭🇰 香港节点, 🇹🇼 台湾节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇺🇸 美国节点, 🆓 免费节点, 🆚 vless 节点]}
+  - {name: 节点选择, type: select, proxies: [香港节点, 台湾节点, 日本节点, 新加坡节点, 美国节点, 免费节点, 🆚 vless 节点], icon: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/qure/color/Proxy.png"}
   ## 若机场的 UDP 质量不是很好，导致某游戏无法登录或进入房间，可以添加 `disable-udp: true` 配置项解决
-  - {name: 🐟 漏网之鱼, type: select, proxies: [🚀 节点选择, 🎯 全球直连]}
-  - {name: 📈 网络测试, type: select, proxies: [🎯 全球直连, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇺🇸 美国节点, 🆓 免费节点, 🆚 vless 节点]}
-  - {name: 🤖 人工智能, type: select, proxies: [🇭🇰 香港节点, 🇹🇼 台湾节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇺🇸 美国节点]}
-  - {name: 🎮 游戏服务, type: select, proxies: [🎯 全球直连, 🚀 节点选择]}
-  - {name: 🪟 微软服务, type: select, proxies: [🎯 全球直连, 🚀 节点选择]}
-  - {name: 🇬 谷歌服务, type: select, proxies: [🎯 全球直连, 🚀 节点选择]}
-  - {name: 🍎 苹果服务, type: select, proxies: [🎯 全球直连, 🚀 节点选择]}
-  - {name: 🛡️ 直连域名, type: select, proxies: [🎯 全球直连, 🚀 节点选择]}
-  - {name: 🀄️ 直连 IP, type: select, proxies: [🎯 全球直连, 🚀 节点选择]}
-  - {name: 🧱 代理域名, type: select, proxies: [🚀 节点选择, 🎯 全球直连]}
-  - {name: 📲 电报消息, type: select, proxies: [🚀 节点选择]}
-  - {name: 🔒 私有网络, type: select, proxies: [🎯 全球直连]}
-  - {name: 🛑 广告域名, type: select, proxies: [🔴 全球拦截, 🟢 全球绕过]}
-  - {name: 🔴 全球拦截, type: select, proxies: [REJECT]}
-  - {name: 🟢 全球绕过, type: select, proxies: [PASS]}
-  - {name: 🎯 全球直连, type: select, proxies: [DIRECT]}
+  - {name: 漏网之鱼, type: select, proxies: [节点选择, 全球直连], icon: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/qure/color/Final.png"}
+  - {name: 网络测试, type: select, proxies: [全球直连, 香港节点, 台湾节点, 日本节点, 新加坡节点, 美国节点, 免费节点, 🆚 vless 节点], icon: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/qure/color/Speedtest.png"}
+  - {name: 人工智能, type: select, proxies: [香港节点, 台湾节点, 日本节点, 新加坡节点, 美国节点], icon: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/qure/color/Bot.png"}
+  - {name: 游戏服务, type: select, proxies: [全球直连, 节点选择], icon: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/qure/color/Game.png"}
+  - {name: 微软服务, type: select, proxies: [全球直连, 节点选择], icon: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/qure/color/Microsoft.png"}
+  - {name: 谷歌服务, type: select, proxies: [全球直连, 节点选择], icon: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/qure/color/Google_Search.png"}
+  - {name: 苹果服务, type: select, proxies: [全球直连, 节点选择], icon: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/qure/color/Apple_2.png"}
+  - {name: 直连域名, type: select, proxies: [全球直连, 节点选择], icon: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/qure/color/China_Map.png"}
+  - {name: 直连 IP, type: select, proxies: [全球直连, 节点选择], icon: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/qure/color/CN.png"}
+  - {name: 代理域名, type: select, proxies: [节点选择, 全球直连], icon: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/qure/color/Global.png"}
+  - {name: 电报消息, type: select, proxies: [节点选择], icon: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/qure/color/Telegram.png"}
+  - {name: 私有网络, type: select, proxies: [全球直连], icon: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/qure/color/Lock.png"}
+  - {name: 广告域名, type: select, proxies: [全球拦截, 全球绕过], icon: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/qure/color/Advertising.png"}
+  - {name: 全球拦截, type: select, proxies: [REJECT], icon: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/qure/color/Reject.png"}
+  - {name: 全球绕过, type: select, proxies: [PASS], icon: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/qure/color/Bypass.png"}
+  - {name: 全球直连, type: select, proxies: [DIRECT], icon: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/qure/color/Direct.png"}
 
-  - {name: 🇭🇰 香港节点, type: url-test, tolerance: 50, use: [🛫 机场订阅], filter: "(?i)(🇭🇰|港|hk|hongkong|hong kong)"}
-  - {name: 🇹🇼 台湾节点, type: url-test, tolerance: 50, use: [🛫 机场订阅], filter: "(?i)(🇹🇼|台|tw|taiwan|tai wan)"}
-  - {name: 🇯🇵 日本节点, type: url-test, tolerance: 50, use: [🛫 机场订阅], filter: "(?i)(🇯🇵|日|jp|japan)"}
-  - {name: 🇸🇬 新加坡节点, type: url-test, tolerance: 50, use: [🛫 机场订阅], filter: "(?i)(🇸🇬|新|sg|singapore)"}
-  - {name: 🇺🇸 美国节点, type: url-test, tolerance: 50, use: [🛫 机场订阅], filter: "(?i)(🇺🇸|美|us|unitedstates|united states)"}
-  - {name: 🆓 免费节点, type: url-test, tolerance: 50, use: [🆓 免费订阅]}
+  - {name: 香港节点, type: load-balance, strategy: consistent-hashing, use: [🛫 机场订阅], filter: "(?i)(🇭🇰|港|hk|hongkong|hong kong)", icon: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/qure/color/Hong_Kong.png"}
+  - {name: 台湾节点, type: load-balance, strategy: consistent-hashing, use: [🛫 机场订阅], filter: "(?i)(🇹🇼|台|tw|taiwan|tai wan)", icon: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/qure/color/Taiwan.png"}
+  - {name: 日本节点, type: load-balance, strategy: consistent-hashing, use: [🛫 机场订阅], filter: "(?i)(🇯🇵|日|jp|japan)", icon: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/qure/color/Japan.png"}
+  - {name: 新加坡节点, type: load-balance, strategy: consistent-hashing, use: [🛫 机场订阅], filter: "(?i)(🇸🇬|新|sg|singapore)", icon: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/qure/color/Singapore.png"}
+  - {name: 美国节点, type: load-balance, strategy: consistent-hashing, use: [🛫 机场订阅], filter: "(?i)(🇺🇸|美|us|unitedstates|united states)", icon: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/qure/color/United_States.png"}
+  - {name: 免费节点, type: url-test, tolerance: 50, use: [🆓 免费订阅], icon: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/color/vpn.png"}
 
 rules:
-  - GEOSITE,private,🔒 私有网络
-  - GEOSITE,ads,🛑 广告域名
-  - GEOSITE,microsoft-cn,🪟 微软服务
-  - GEOSITE,apple-cn,🍎 苹果服务
-  - GEOSITE,google-cn,🇬 谷歌服务
-  - GEOSITE,games-cn,🎮 游戏服务
-  - GEOSITE,ai,🤖 人工智能
-  - GEOSITE,networktest,📈 网络测试
-  - GEOSITE,proxy,🧱 代理域名
-  - GEOSITE,tld-cn,🛡️ 直连域名
-  - GEOSITE,cn,🛡️ 直连域名
-  - GEOIP,telegram,📲 电报消息,no-resolve
-  - GEOIP,private,🔒 私有网络,no-resolve
-  - GEOIP,cn,🀄️ 直连 IP
-  - MATCH,🐟 漏网之鱼
+  - GEOSITE,private,私有网络
+  - GEOSITE,ads,广告域名
+  - GEOSITE,microsoft-cn,微软服务
+  - GEOSITE,apple-cn,苹果服务
+  - GEOSITE,google-cn,谷歌服务
+  - GEOSITE,games-cn,游戏服务
+  - GEOSITE,ai,人工智能
+  - GEOSITE,networktest,网络测试
+  - GEOSITE,proxy,代理域名
+  - GEOSITE,tld-cn,直连域名
+  - GEOSITE,cn,直连域名
+  - GEOIP,telegram,电报消息,no-resolve
+  - GEOIP,private,私有网络,no-resolve
+  - GEOIP,cn,直连 IP
+  - MATCH,漏网之鱼
 ```
 
 ## 二、 导入 [mihomo 内核](https://github.com/MetaCubeX/mihomo)和 [zashboard 面板](https://github.com/Zephyruso/zashboard)
