@@ -72,7 +72,7 @@ proxy-groups:
   - {name: 直连 IP, type: select, proxies: [全球直连, 节点选择], icon: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/qure/color/CN.png"}
   - {name: 代理域名, type: select, proxies: [节点选择, 全球直连], icon: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/qure/color/Global.png"}
   - {name: 电报消息, type: select, proxies: [节点选择], icon: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/qure/color/Telegram.png"}
-  - {name: 私有网络, type: select, proxies: [全球直连], icon: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/qure/color/Lock.png"}
+  - {name: 私有网络, type: select, proxies: [全球直连], icon: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/color/personal.png"}
   - {name: 全球直连, type: select, proxies: [DIRECT], icon: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/qure/color/Direct.png"}
 
   - {name: 香港节点, type: load-balance, strategy: consistent-hashing, use: [🛫 机场订阅], filter: "(?i)(🇭🇰|港|hk|hongkong|hong kong)", icon: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/qure/color/Hong_Kong.png"}

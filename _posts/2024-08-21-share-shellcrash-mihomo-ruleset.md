@@ -70,7 +70,7 @@ proxy-groups:
   - {name: 直连 IP, type: select, proxies: [全球直连, 节点选择], icon: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/qure/color/CN.png"}
   - {name: 代理域名, type: select, proxies: [节点选择, 全球直连], icon: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/qure/color/Global.png"}
   - {name: 电报消息, type: select, proxies: [节点选择], icon: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/qure/color/Telegram.png"}
-  - {name: 私有网络, type: select, proxies: [全球直连], icon: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/qure/color/Lock.png"}
+  - {name: 私有网络, type: select, proxies: [全球直连], icon: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/color/personal.png"}
   - {name: 广告域名, type: select, proxies: [全球拦截, 全球绕过], icon: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/qure/color/Advertising.png"}
   - {name: 全球拦截, type: select, proxies: [REJECT], icon: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/qure/color/Reject.png"}
   - {name: 全球绕过, type: select, proxies: [PASS], icon: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/qure/color/Bypass.png"}
