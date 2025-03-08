@@ -76,7 +76,7 @@ dns:
   listen: 0.0.0.0:53
   fake-ip-range: 198.18.0.1/16
   enhanced-mode: fake-ip
-  fake-ip-filter: ['rule-set:fakeip-filter,private,cn']
+  fake-ip-filter: ['rule-set:fakeip-filter,trackerslist,private,cn']
   nameserver:
     - https://doh.pub/dns-query
     - https://dns.alidns.com/dns-query
@@ -102,32 +102,31 @@ proxies:
         host: example.com
 
 proxy-groups:
-  - {name: 节点选择, type: select, proxies: [香港节点, 台湾节点, 日本节点, 新加坡节点, 美国节点, 免费节点, 🆚 vless 节点], icon: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/qure/color/Proxy.png"}
+  - {name: 节点选择, type: select, proxies: [香港节点, 台湾节点, 日本节点, 新加坡节点, 美国节点, 免费节点, 🆚 vless 节点], icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icon/proxy.png"}
+  - {name: 网络测试, type: select, proxies: [全球直连, 香港节点, 台湾节点, 日本节点, 新加坡节点, 美国节点, 免费节点, 🆚 vless 节点], icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icon/networktest.png"}
+  - {name: 人工智能, type: select, proxies: [香港节点, 台湾节点, 日本节点, 新加坡节点, 美国节点, 免费节点, 🆚 vless 节点], icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icon/ai.png"}
+  - {name: Trackerslist, type: select, proxies: [全球直连, 节点选择], icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icon/trackerslist.png"}
+  - {name: 游戏服务, type: select, proxies: [全球直连, 节点选择], icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icon/games-cn.png"}
+  - {name: 微软服务, type: select, proxies: [全球直连, 节点选择], icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icon/microsoft-cn.png"}
+  - {name: 谷歌服务, type: select, proxies: [全球直连, 节点选择], icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icon/google-cn.png"}
+  - {name: 苹果服务, type: select, proxies: [全球直连, 节点选择], icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icon/apple-cn.png"}
+  - {name: 直连域名, type: select, proxies: [全球直连, 节点选择], icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icon/cn.png"}
+  - {name: 直连 IP, type: select, proxies: [全球直连, 节点选择], icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icon/cnip.png"}
+  - {name: 代理域名, type: select, proxies: [节点选择, 全球直连], icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icon/global.png"}
+  - {name: 电报消息, type: select, proxies: [节点选择], icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icon/telegram.png"}
   ## 若机场的 UDP 质量不是很好，导致某游戏无法登录或进入房间，可以添加 `disable-udp: true` 配置项解决
-  - {name: 漏网之鱼, type: select, proxies: [节点选择, 全球直连], icon: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/qure/color/Final.png"}
-  - {name: 网络测试, type: select, proxies: [全球直连, 香港节点, 台湾节点, 日本节点, 新加坡节点, 美国节点, 免费节点, 🆚 vless 节点], icon: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/qure/color/Speedtest.png"}
-  - {name: 人工智能, type: select, proxies: [香港节点, 台湾节点, 日本节点, 新加坡节点, 美国节点], icon: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/qure/color/Bot.png"}
-  - {name: 游戏服务, type: select, proxies: [全球直连, 节点选择], icon: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/qure/color/Game.png"}
-  - {name: 微软服务, type: select, proxies: [全球直连, 节点选择], icon: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/qure/color/Microsoft.png"}
-  - {name: 谷歌服务, type: select, proxies: [全球直连, 节点选择], icon: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/qure/color/Google_Search.png"}
-  - {name: 苹果服务, type: select, proxies: [全球直连, 节点选择], icon: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/qure/color/Apple_2.png"}
-  - {name: 直连域名, type: select, proxies: [全球直连, 节点选择], icon: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/qure/color/China_Map.png"}
-  - {name: 直连 IP, type: select, proxies: [全球直连, 节点选择], icon: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/qure/color/CN.png"}
-  - {name: 代理域名, type: select, proxies: [节点选择, 全球直连], icon: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/qure/color/Global.png"}
-  - {name: 电报消息, type: select, proxies: [节点选择], icon: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/qure/color/Telegram.png"}
-  - {name: 直连软件, type: select, proxies: [全球直连], icon: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/qure/color/Download.png"}
-  - {name: 私有网络, type: select, proxies: [全球直连], icon: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/color/personal.png"}
-  - {name: 广告域名, type: select, proxies: [全球拦截, 全球绕过], icon: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/qure/color/Advertising.png"}
-  - {name: 全球拦截, type: select, proxies: [REJECT], icon: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/qure/color/Reject.png"}
-  - {name: 全球绕过, type: select, proxies: [PASS], icon: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/qure/color/Bypass.png"}
-  - {name: 全球直连, type: select, proxies: [DIRECT], icon: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/qure/color/Direct.png"}
+  - {name: 漏网之鱼, type: select, proxies: [节点选择, 全球直连], icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icon/match.png"}
+  - {name: 广告域名, type: select, proxies: [全球拦截, 全球绕过], icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icon/ads.png"}
+  - {name: 全球拦截, type: select, proxies: [REJECT], icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icon/reject.png"}
+  - {name: 全球绕过, type: select, proxies: [PASS], icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icon/pass.png"}
+  - {name: 全球直连, type: select, proxies: [DIRECT], icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icon/direct.png"}
 
-  - {name: 香港节点, type: load-balance, strategy: consistent-hashing, use: [🛫 机场订阅], filter: "(?i)(🇭🇰|港|hk|hongkong|hong kong)", icon: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/qure/color/Hong_Kong.png"}
-  - {name: 台湾节点, type: load-balance, strategy: consistent-hashing, use: [🛫 机场订阅], filter: "(?i)(🇹🇼|台|tw|taiwan|tai wan)", icon: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/qure/color/Taiwan.png"}
-  - {name: 日本节点, type: load-balance, strategy: consistent-hashing, use: [🛫 机场订阅], filter: "(?i)(🇯🇵|日|jp|japan)", icon: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/qure/color/Japan.png"}
-  - {name: 新加坡节点, type: load-balance, strategy: consistent-hashing, use: [🛫 机场订阅], filter: "(?i)(🇸🇬|新|sg|singapore)", icon: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/qure/color/Singapore.png"}
-  - {name: 美国节点, type: load-balance, strategy: consistent-hashing, use: [🛫 机场订阅], filter: "(?i)(🇺🇸|美|us|unitedstates|united states)", icon: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/qure/color/United_States.png"}
-  - {name: 免费节点, type: url-test, tolerance: 50, use: [🆓 免费订阅], icon: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/color/vpn.png"}
+  - {name: 香港节点, type: load-balance, strategy: consistent-hashing, use: [🛫 机场订阅], filter: "(?i)(🇭🇰|港|hk|hongkong|hong kong)", icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icon/hongkong.png"}
+  - {name: 台湾节点, type: load-balance, strategy: consistent-hashing, use: [🛫 机场订阅], filter: "(?i)(🇹🇼|台|tw|taiwan|tai wan)", icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icon/taiwan.png"}
+  - {name: 日本节点, type: load-balance, strategy: consistent-hashing, use: [🛫 机场订阅], filter: "(?i)(🇯🇵|日|jp|japan)", icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icon/japan.png"}
+  - {name: 新加坡节点, type: load-balance, strategy: consistent-hashing, use: [🛫 机场订阅], filter: "(?i)(🇸🇬|新|sg|singapore)", icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icon/singapore.png"}
+  - {name: 美国节点, type: load-balance, strategy: consistent-hashing, use: [🛫 机场订阅], filter: "(?i)(🇺🇸|美|us|unitedstates|united states)", icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icon/unitedstates.png"}
+  - {name: 免费节点, type: url-test, tolerance: 50, use: [🆓 免费订阅], icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icon/free.png"}
 
 rule-providers:
   fakeip-filter:
@@ -136,14 +135,6 @@ rule-providers:
     format: mrs
     path: ./rules/fakeip-filter.mrs
     url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/fakeip-filter-lite.mrs"
-    interval: 86400
-
-  applications:
-    type: http
-    behavior: classical
-    format: text
-    path: ./rules/applications.list
-    url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/applications.list"
     interval: 86400
 
   private:
@@ -160,6 +151,22 @@ rule-providers:
     format: mrs
     path: ./rules/ads.mrs
     url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/ads.mrs"
+    interval: 86400
+
+  trackerslist:
+    type: http
+    behavior: domain
+    format: mrs
+    path: ./rules/trackerslist.mrs
+    url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/trackerslist.mrs"
+    interval: 86400
+
+  applications:
+    type: http
+    behavior: classical
+    format: text
+    path: ./rules/applications.list
+    url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/applications.list"
     interval: 86400
 
   microsoft-cn:
@@ -234,14 +241,6 @@ rule-providers:
     url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/cn.mrs"
     interval: 86400
 
-  telegramip:
-    type: http
-    behavior: ipcidr
-    format: mrs
-    path: ./rules/telegramip.mrs
-    url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/telegramip.mrs"
-    interval: 86400
-
   privateip:
     type: http
     behavior: ipcidr
@@ -258,10 +257,19 @@ rule-providers:
     url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/cnip.mrs"
     interval: 86400
 
+  telegramip:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    path: ./rules/telegramip.mrs
+    url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/telegramip.mrs"
+    interval: 86400
+
 rules:
-  - RULE-SET,applications,直连软件
-  - RULE-SET,private,私有网络
+  - RULE-SET,private,全球直连
   - RULE-SET,ads,广告域名
+  - RULE-SET,trackerslist,Trackerslist
+  - RULE-SET,applications,全球直连
   - RULE-SET,microsoft-cn,微软服务
   - RULE-SET,apple-cn,苹果服务
   - RULE-SET,google-cn,谷歌服务
@@ -271,9 +279,9 @@ rules:
   - RULE-SET,proxy,代理域名
   - RULE-SET,tld-cn,直连域名
   - RULE-SET,cn,直连域名
-  - RULE-SET,telegramip,电报消息,no-resolve
-  - RULE-SET,privateip,私有网络,no-resolve
+  - RULE-SET,privateip,全球直连,no-resolve
   - RULE-SET,cnip,直连 IP
+  - RULE-SET,telegramip,电报消息,no-resolve
   - MATCH,漏网之鱼
 ```
 
