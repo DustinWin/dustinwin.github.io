@@ -248,7 +248,6 @@ rule-providers:
     - 🇯🇵 日本节点
     - 🇸🇬 新加坡节点
     - 🇺🇸 美国节点
-    ## 添加 proxies.yaml 中的自定义节点
     - 🆓 免费节点
 
 - name: 🤖 人工智能
@@ -259,6 +258,7 @@ rule-providers:
     - 🇯🇵 日本节点
     - 🇸🇬 新加坡节点
     - 🇺🇸 美国节点
+    - 🆓 免费节点
 
 - name: 📋 Trackerslist
   type: select
@@ -300,7 +300,7 @@ rule-providers:
   type: select
   proxies:
     - 🎯 全球直连
-    - 🚀 节点选择
+    - 🈯 节点指定
 
 - name: 🧱 代理域名
   type: select
@@ -311,7 +311,12 @@ rule-providers:
 - name: 📲 电报消息
   type: select
   proxies:
-    - 🚀 节点选择
+    - 🇭🇰 香港节点
+    - 🇹🇼 台湾节点
+    - 🇯🇵 日本节点
+    - 🇸🇬 新加坡节点
+    - 🇺🇸 美国节点
+    - 🆓 免费节点
 
 - name: 🛑 广告域名
   type: select
@@ -492,7 +497,7 @@ rule-providers:
 ## 规则
 
 ## 以 googleapis.cn 为后缀（包括 googleapis.cn）的所有域名走代理
-- DOMAIN-SUFFIX,googleapis.cn,🚀 节点选择
+- DOMAIN-SUFFIX,googleapis.cn,🈯 节点指定
 ## 含有 ipv6 关键字的所有域名走直连
 - DOMAIN-KEYWORD,ipv6,DIRECT
 ```

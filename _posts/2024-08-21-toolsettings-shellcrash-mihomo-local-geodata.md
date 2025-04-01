@@ -127,7 +127,6 @@ proxy-providers:
     - 🇰🇷 韩国节点
     - 🇸🇬 新加坡节点
     - 🇺🇸 美国节点
-    ## 添加 proxies.yaml 中的自定义节点
     - 🆓 免费节点
 
 - name: 🤖 人工智能
@@ -138,6 +137,7 @@ proxy-providers:
     - 🇯🇵 日本节点
     - 🇸🇬 新加坡节点
     - 🇺🇸 美国节点
+    - 🆓 免费节点
 
 - name: 📋 Trackerslist
   type: select
@@ -190,7 +190,12 @@ proxy-providers:
 - name: 📲 电报消息
   type: select
   proxies:
-    - 🈯 节点指定
+    - 🇭🇰 香港节点
+    - 🇹🇼 台湾节点
+    - 🇯🇵 日本节点
+    - 🇸🇬 新加坡节点
+    - 🇺🇸 美国节点
+    - 🆓 免费节点
 
 - name: 🛑 广告域名
   type: select
