@@ -197,6 +197,12 @@ proxy-providers:
     - 🇺🇸 美国节点
     - 🆓 免费节点
 
+- name: 🔒 私有网络
+  type: select
+  proxies:
+    - 🎯 全球直连
+  hidden: true
+
 - name: 🛑 广告域名
   type: select
   proxies:
@@ -207,11 +213,13 @@ proxy-providers:
   type: select
   proxies:
     - REJECT
+  hidden: true
 
 - name: 🟢 全球绕过
   type: select
   proxies:
     - PASS
+  hidden: true
 
 ## ----------------国家或地区策略组---------------------
 
@@ -258,7 +266,7 @@ proxy-providers:
 ## 规则
 
 ## 自定义规则优先放前面
-- GEOSITE,private,🎯 全球直连
+- GEOSITE,private,🔒 私有网络
 - GEOSITE,ads,🛑 广告域名
 - GEOSITE,trackerslist,📋 Trackerslist
 - GEOSITE,microsoft-cn,🪟 微软服务
@@ -270,7 +278,7 @@ proxy-providers:
 - GEOSITE,proxy,🧱 代理域名
 - GEOSITE,tld-cn,🛡️ 直连域名
 - GEOSITE,cn,🛡️ 直连域名
-- GEOIP,private,🎯 全球直连,no-resolve
+- GEOIP,private,🔒 私有网络,no-resolve
 - GEOIP,cn,🀄️ 直连 IP
 - GEOIP,telegram,📲 电报消息,no-resolve
 ```

@@ -318,6 +318,12 @@ rule-providers:
     - 🇺🇸 美国节点
     - 🆓 免费节点
 
+- name: 🔒 私有网络
+  type: select
+  proxies:
+    - 🎯 全球直连
+  hidden: true
+
 - name: 🛑 广告域名
   type: select
   proxies:
@@ -328,11 +334,13 @@ rule-providers:
   type: select
   proxies:
     - REJECT
+  hidden: true
 
 - name: 🟢 全球绕过
   type: select
   proxies:
     - PASS
+  hidden: true
 
 ## ----------------国家或地区策略组---------------------
 
@@ -379,7 +387,7 @@ rule-providers:
 ## 规则
 
 ## 自定义规则优先放前面
-- RULE-SET,private,🎯 全球直连
+- RULE-SET,private,🔒 私有网络
 - RULE-SET,ads,🛑 广告域名
 - RULE-SET,trackerslist,📋 Trackerslist
 - RULE-SET,microsoft-cn,🪟 微软服务
@@ -391,7 +399,7 @@ rule-providers:
 - RULE-SET,proxy,🧱 代理域名
 - RULE-SET,tld-cn,🛡️ 直连域名
 - RULE-SET,cn,🛡️ 直连域名
-- RULE-SET,privateip,🎯 全球直连,no-resolve
+- RULE-SET,privateip,🔒 私有网络,no-resolve
 - RULE-SET,cnip,🀄️ 直连 IP
 - RULE-SET,telegramip,📲 电报消息,no-resolve
 ```

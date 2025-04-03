@@ -94,7 +94,7 @@ proxy-groups:
   ## 选择`🎯 全球直连`为测试本地网络（运营商网络速度和 IPv6 支持情况），可选择其它节点用于测试机场节点速度和 IPv6 支持情况
   - {name: 📈 网络测试, type: select, proxies: [🎯 全球直连, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇺🇸 美国节点, 🆓 免费节点]}
   - {name: 🤖 人工智能, type: select, proxies: [🇭🇰 香港节点, 🇹🇼 台湾节点, 🇯🇵 日本节点, 🇰🇷 韩国节点, 🇸🇬 新加坡节点, 🇺🇸 美国节点, 🆓 免费节点]}
-  - {name: 📋 Trackerslist, type: select, proxies: [全球直连, 节点选择]}
+  - {name: 📋 Trackerslist, type: select, proxies: [🎯 全球直连, 🚀 节点选择]}
   - {name: 🎮 游戏服务, type: select, proxies: [🎯 全球直连, 🚀 节点选择]}
   - {name: 🪟 微软服务, type: select, proxies: [🎯 全球直连, 🚀 节点选择]}
   - {name: 🇬 谷歌服务, type: select, proxies: [🎯 全球直连, 🚀 节点选择]}
@@ -103,12 +103,15 @@ proxy-groups:
   - {name: 🀄️ 直连 IP, type: select, proxies: [🎯 全球直连, 🚀 节点选择]}
   - {name: 🧱 代理域名, type: select, proxies: [🚀 节点选择, 🎯 全球直连]}
   - {name: 📲 电报消息, type: select, proxies: [🇭🇰 香港节点, 🇹🇼 台湾节点, 🇯🇵 日本节点, 🇰🇷 韩国节点, 🇸🇬 新加坡节点, 🇺🇸 美国节点, 🆓 免费节点]}
-  ## 若机场的 UDP 质量不是很好，导致某游戏无法登录或进入房间，可以添加 `disable-udp: true` 配置项解决
+  ## 若使用 ShellCrash，由于无法判断本机进程（默认 `find-process-mode: off`），需删除此条 `⬇️ 直连软件`；若在面板 dashboard 中需隐藏该策略组，可添加 `hidden: true` 配置项
+  - {name: ⬇️ 直连软件, type: select, proxies: [🎯 全球直连], hidden: true}
+  - {name: 🔒 私有网络, type: select, proxies: [🎯 全球直连], hidden: true}
+  ## 若机场的 UDP 质量不是很好，导致某游戏无法登录或进入房间，可添加 `disable-udp: true` 配置项解决
   - {name: 🐟 漏网之鱼, type: select, proxies: [🚀 节点选择, 🎯 全球直连]}
   - {name: 🛑 广告域名, type: select, proxies: [🔴 全球拦截, 🟢 全球绕过]}
-  - {name: 🔴 全球拦截, type: select, proxies: [REJECT]}
-  - {name: 🟢 全球绕过, type: select, proxies: [PASS]}
-  - {name: 🎯 全球直连, type: select, proxies: [DIRECT]}
+  - {name: 🔴 全球拦截, type: select, proxies: [REJECT], hidden: true}
+  - {name: 🟢 全球绕过, type: select, proxies: [PASS], hidden: true}
+  - {name: 🎯 全球直连, type: select, proxies: [DIRECT], hidden: true}
 
   ## ----------------国家或地区策略组---------------------
   ## 自动选择节点，即按照 url 测试结果使用延迟最低的节点；测试后容差大于 50ms 才会切换到延迟低的那个节点；筛选出“香港”节点，支持正则表达式
@@ -254,13 +257,13 @@ rule-providers:
 ## 规则
 rules:
   ## 自定义规则优先放前面
-  - RULE-SET,private,🎯 全球直连
+  - RULE-SET,private,🔒 私有网络
   - RULE-SET,ads,🛑 广告域名
   - RULE-SET,trackerslist,📋 Trackerslist
   ## 为了使 P2P 流量（BT 下载）走直连，可添加一条 `DST-PORT` 规则（ShellCrash 会默认开启“只代理常用端口”，可删除此条 `DST-PORT`）
   - DST-PORT,6881-6889,🎯 全球直连
   ## 若使用 ShellCrash，由于无法判断本机进程（默认 `find-process-mode: off`），需删除此条 `RULE-SET`
-  - RULE-SET,applications,🎯 全球直连
+  - RULE-SET,applications,⬇️ 直连软件
   - RULE-SET,microsoft-cn,🪟 微软服务
   - RULE-SET,apple-cn,🍎 苹果服务
   - RULE-SET,google-cn,🇬 谷歌服务
@@ -270,7 +273,7 @@ rules:
   - RULE-SET,proxy,🧱 代理域名
   - RULE-SET,tld-cn,🛡️ 直连域名
   - RULE-SET,cn,🛡️ 直连域名
-  - RULE-SET,privateip,🎯 全球直连,no-resolve
+  - RULE-SET,privateip,🔒 私有网络,no-resolve
   - RULE-SET,cnip,🀄️ 直连 IP
   - RULE-SET,telegramip,📲 电报消息,no-resolve
   - MATCH,🐟 漏网之鱼
@@ -344,14 +347,16 @@ proxy-groups:
   ## 选择`🎯 全球直连`为测试本地网络（运营商网络速度和 IPv6 支持情况），可选择其它节点用于测试机场节点速度和 IPv6 支持情况
   - {name: 📈 网络测试, type: select, proxies: [🎯 全球直连, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇺🇸 美国节点, 🆓 免费节点]}
   - {name: 🤖 人工智能, type: select, proxies: [🇭🇰 香港节点, 🇹🇼 台湾节点, 🇯🇵 日本节点, 🇰🇷 韩国节点, 🇸🇬 新加坡节点, 🇺🇸 美国节点, 🆓 免费节点]}
-  - {name: 📋 Trackerslist, type: select, proxies: [全球直连, 节点选择]}
+  - {name: 📋 Trackerslist, type: select, proxies: [🎯 全球直连, 🚀 节点选择]}
   - {name: 🧱 代理域名, type: select, proxies: [🚀 节点选择, 🎯 全球直连]}
   - {name: 📲 电报消息, type: select, proxies: [🇭🇰 香港节点, 🇹🇼 台湾节点, 🇯🇵 日本节点, 🇰🇷 韩国节点, 🇸🇬 新加坡节点, 🇺🇸 美国节点, 🆓 免费节点]}
+  ## 若在面板 dashboard 中需隐藏该策略组，可添加 `hidden: true` 配置项
+  - {name: 🔒 私有网络, type: select, proxies: [🎯 全球直连], hidden: true}
   - {name: 🐟 漏网之鱼, type: select, proxies: [🎯 全球直连, 🚀 节点选择]}
   - {name: 🛑 广告域名, type: select, proxies: [🔴 全球拦截, 🟢 全球绕过]}
-  - {name: 🔴 全球拦截, type: select, proxies: [REJECT]}
-  - {name: 🟢 全球绕过, type: select, proxies: [PASS]}
-  - {name: 🎯 全球直连, type: select, proxies: [DIRECT]}
+  - {name: 🔴 全球拦截, type: select, proxies: [REJECT], hidden: true}
+  - {name: 🟢 全球绕过, type: select, proxies: [PASS], hidden: true}
+  - {name: 🎯 全球直连, type: select, proxies: [DIRECT], hidden: true}
 
   ## ----------------国家或地区策略组---------------------
   ## 自动选择节点，即按照 url 测试结果使用延迟最低的节点；测试后容差大于 50ms 才会切换到延迟低的那个节点；筛选出“香港”节点，支持正则表达式
@@ -431,7 +436,7 @@ rule-providers:
 
 ## 规则
 rules:
-  - RULE-SET,private,🎯 全球直连
+  - RULE-SET,private,🔒 私有网络
   - RULE-SET,ads,🛑 广告域名
   - RULE-SET,trackerslist,📋 Trackerslist
   - RULE-SET,ai,🤖 人工智能
@@ -472,7 +477,7 @@ proxy-groups:
   - {name: 🇸🇬 新加坡节点, type: url-test, tolerance: 50, include-all-providers: true, filter: "(?i)(🇸🇬|新|sg|singapore)"}
   ## 手动选择日本任一节点
   - {name: 🇯🇵 日本节点, type: select, include-all-providers: true, filter: "(?i)(🇯🇵|日|jp|japan)"}
-  - {name: 🎯 全球直连, type: select, proxies: [DIRECT]}
+  - {name: 🎯 全球直连, type: select, proxies: [DIRECT], hidden: true}
 
 ## 规则集（yaml 文件每天自动更新）
 rule-providers:
