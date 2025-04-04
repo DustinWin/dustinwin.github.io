@@ -121,10 +121,10 @@ proxy-providers:
   type: select
   proxies:
     - 🎯 全球直连
+    - 🈯 节点指定
     - 🇭🇰 香港节点
     - 🇹🇼 台湾节点
     - 🇯🇵 日本节点
-    - 🇰🇷 韩国节点
     - 🇸🇬 新加坡节点
     - 🇺🇸 美国节点
     - 🆓 免费节点
@@ -132,12 +132,12 @@ proxy-providers:
 - name: 🤖 人工智能
   type: select
   proxies:
+    - 🈯 节点指定
     - 🇭🇰 香港节点
     - 🇹🇼 台湾节点
     - 🇯🇵 日本节点
     - 🇸🇬 新加坡节点
     - 🇺🇸 美国节点
-    - 🆓 免费节点
 
 - name: 📋 Trackerslist
   type: select
@@ -169,6 +169,16 @@ proxy-providers:
     - 🎯 全球直连
     - 🈯 节点指定
 
+- name: 🌍 国外媒体
+  type: select
+  proxies:
+    - 🈯 节点指定
+    - 🇭🇰 香港节点
+    - 🇹🇼 台湾节点
+    - 🇯🇵 日本节点
+    - 🇸🇬 新加坡节点
+    - 🇺🇸 美国节点
+
 - name: 🛡️ 直连域名
   type: select
   proxies:
@@ -190,6 +200,7 @@ proxy-providers:
 - name: 📲 电报消息
   type: select
   proxies:
+    - 🈯 节点指定
     - 🇭🇰 香港节点
     - 🇹🇼 台湾节点
     - 🇯🇵 日本节点
@@ -273,6 +284,7 @@ proxy-providers:
 - GEOSITE,apple-cn,🍎 苹果服务
 - GEOSITE,google-cn,🇬 谷歌服务
 - GEOSITE,games-cn,🎮 游戏服务
+- GEOSITE,media,🌍 国外媒体
 - GEOSITE,ai,🤖 人工智能
 - GEOSITE,networktest,📈 网络测速
 - GEOSITE,proxy,🧱 代理域名
@@ -280,13 +292,14 @@ proxy-providers:
 - GEOSITE,cn,🛡️ 直连域名
 - GEOIP,private,🔒 私有网络,no-resolve
 - GEOIP,cn,🀄️ 直连 IP
+- GEOIP,media,🌍 国外媒体,no-resolve
 - GEOIP,telegram,📲 电报消息,no-resolve
 ```
 
 按一下 Esc 键（退出键），输入英文冒号 `:`，继续输入 `wq` 并回车
 
 ## 四、 修改策略组或规则
-**举例：我的机场包含有 2 个节点，分别是新加坡节点和日本节点，我想让 [Netflix](https://www.netflix.com/) 自动选择延迟最低的新加坡节点，[哔哩哔哩](https://www.bilibili.com)可以手动选择日本任一节点**
+**举例：我想让 [Netflix](https://www.netflix.com/) 和 [Disney+](https://www.disneyplus.com/) 等国外媒体自动选择延迟最低的新加坡节点**
 > 一定要保证缩进对齐！一定要保证缩进对齐！一定要保证缩进对齐！
 {: .prompt-warning }
 
@@ -297,17 +310,10 @@ proxy-providers:
 ## 策略组
 
 ## 默认选择新加坡节点
-- name: 🎥 奈飞视频
+- name: 🌍 国外媒体
   type: select
   proxies:
     - 🇸🇬 新加坡节点
-
-## 默认选择日本节点，也可切换到直连
-- name: 📺 哔哩哔哩
-  type: select
-  proxies:
-    - 🇯🇵 日本节点
-    - 🎯 全球直连
 
 ## 自动选择延迟最低的新加坡节点；容差大于 50ms 才会切换到延迟低的那个节点
 - name: 🇸🇬 新加坡节点
@@ -315,12 +321,6 @@ proxy-providers:
   tolerance: 50
   include-all-providers: true
   filter: "(?i)(🇸🇬|新|sg|singapore)"
-
-## 手动选择日本任一节点
-- name: 🇯🇵 日本节点
-  type: select
-  include-all-providers: true
-  filter: "(?i)(🇯🇵|日|jp|japan)"
 ```
 
 按一下 Esc 键（退出键），输入英文冒号 `:`，继续输入 `wq` 并回车
@@ -332,9 +332,8 @@ proxy-providers:
 ## 规则
 
 ## 自定义规则优先放前面
-- GEOSITE,netflix,🎥 奈飞视频
-- GEOIP,netflix,🎥 奈飞视频,no-resolve
-- GEOSITE,bilibili,📺 哔哩哔哩
+- GEOSITE,media,🌍 国外媒体
+- GEOIP,media,🌍 国外媒体,no-resolve
 ```
 
 按一下 Esc 键（退出键），输入英文冒号 `:`，继续输入 `wq` 并回车

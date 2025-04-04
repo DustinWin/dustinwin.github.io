@@ -92,17 +92,18 @@ tags: [sing-box, sing-boxp, ShellCrash, geodata, geosite, 进阶, 本地, Router
     // 手动选择国家或地区节点；根据“国家或地区出站”的名称对 `outbounds` 值进行增删改，须一一对应
     { "tag": "🈯 节点指定", "type": "selector", "outbounds": [ "🇭🇰 香港节点", "🇹🇼 台湾节点", "🇯🇵 日本节点", "🇸🇬 新加坡节点", "🇺🇸 美国节点", "🆓 免费节点" ] },
     // 选择`🎯 全球直连`为测试本地网络（运营商网络速度和 IPv6 支持情况），可选择其它节点用于测试机场节点速度和 IPv6 支持情况
-    { "tag": "📈 网络测试", "type": "selector", "outbounds": [ "🎯 全球直连", "🇭🇰 香港节点", "🇹🇼 台湾节点", "🇯🇵 日本节点", "🇸🇬 新加坡节点", "🇺🇸 美国节点", "🆓 免费节点" ] },
-    { "tag": "🤖 人工智能", "type": "selector", "outbounds": [ "🇭🇰 香港节点", "🇹🇼 台湾节点", "🇯🇵 日本节点", "🇰🇷 韩国节点", "🇸🇬 新加坡节点", "🇺🇸 美国节点", "🆓 免费节点" ] },
+    { "tag": "📈 网络测试", "type": "selector", "outbounds": [ "🎯 全球直连", "🈯 节点指定", "🇭🇰 香港节点", "🇹🇼 台湾节点", "🇯🇵 日本节点", "🇸🇬 新加坡节点", "🇺🇸 美国节点", "🆓 免费节点" ] },
+    { "tag": "🤖 人工智能", "type": "selector", "outbounds": [ "🈯 节点指定", "🇭🇰 香港节点", "🇹🇼 台湾节点", "🇯🇵 日本节点", "🇸🇬 新加坡节点", "🇺🇸 美国节点" ] },
     { "tag": "📋 Trackerslist", "type": "selector", "outbounds": [ "🎯 全球直连", "🈯 节点指定" ] },
     { "tag": "🎮 游戏服务", "type": "selector", "outbounds": [ "🎯 全球直连", "🈯 节点指定" ] },
     { "tag": "🪟 微软服务", "type": "selector", "outbounds": [ "🎯 全球直连", "🈯 节点指定" ] },
     { "tag": "🇬 谷歌服务", "type": "selector", "outbounds": [ "🎯 全球直连", "🈯 节点指定" ] },
     { "tag": "🍎 苹果服务", "type": "selector", "outbounds": [ "🎯 全球直连", "🈯 节点指定" ] },
+    { "tag": "🌍 国外媒体", "type": "selector", "outbounds": [ "🈯 节点指定", "🇭🇰 香港节点", "🇹🇼 台湾节点", "🇯🇵 日本节点", "🇸🇬 新加坡节点", "🇺🇸 美国节点" ] },
     { "tag": "🛡️ 直连域名", "type": "selector", "outbounds": [ "🎯 全球直连", "🈯 节点指定" ] },
     { "tag": "🀄️ 直连 IP", "type": "selector", "outbounds": [ "🎯 全球直连", "🈯 节点指定" ] },
     { "tag": "🧱 代理域名", "type": "selector", "outbounds": [ "🈯 节点指定", "🎯 全球直连" ] },
-    { "tag": "📲 电报消息", "type": "selector", "outbounds": [ "🇭🇰 香港节点", "🇹🇼 台湾节点", "🇯🇵 日本节点", "🇰🇷 韩国节点", "🇸🇬 新加坡节点", "🇺🇸 美国节点", "🆓 免费节点" ] },
+    { "tag": "📲 电报消息", "type": "selector", "outbounds": [ "🈯 节点指定", "🇭🇰 香港节点", "🇹🇼 台湾节点", "🇯🇵 日本节点", "🇸🇬 新加坡节点", "🇺🇸 美国节点", "🆓 免费节点" ] },
     { "tag": "🛑 广告域名", "type": "selector", "outbounds": [ "🔴 全球拦截", "🎯 全球直连" ] },
     { "tag": "🔴 全球拦截", "type": "selector", "outbounds": [ "REJECT" ] },
 
@@ -148,18 +149,21 @@ tags: [sing-box, sing-boxp, ShellCrash, geodata, geosite, 进阶, 本地, Router
       { "geosite": [ "apple-cn" ], "outbound": "🍎 苹果服务" },
       { "geosite": [ "google-cn" ], "outbound": "🇬 谷歌服务" },
       { "geosite": [ "games-cn" ], "outbound": "🎮 游戏服务" },
+      { "geosite": [ "media" ], "outbound": "🌍 国外媒体" },
+      { "geosite": [ "ai" ], "outbound": "🤖 人工智能" },
       { "geosite": [ "networktest" ], "outbound": "📈 网络测速" },
       { "geosite": [ "proxy" ], "outbound": "🧱 代理域名" },
       { "geosite": [ "tld-cn" ], "outbound": "🛡️ 直连域名" },
       { "geosite": [ "cn" ], "outbound": "🛡️ 直连域名" },
       { "geoip": [ "private" ],  "outbound": "🎯 全球直连", "skip_resolve": true },
       { "geoip": [ "cn" ], "outbound": "🀄️ 直连 IP" },
+      { "geoip": [ "media" ], "outbound": "🌍 国外媒体", "skip_resolve": true },
       { "geoip": [ "telegram" ], "outbound": "📲 电报消息", "skip_resolve": true }
     ],
     // geosite 配置项
     "geosite": {
       "path": "./geosite.db",
-      "download_url": "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box/geosite.db"
+      "download_url": "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box/geosite-all.db"
     },
     // geoip 配置项
     "geoip": {
@@ -175,7 +179,7 @@ tags: [sing-box, sing-boxp, ShellCrash, geodata, geosite, 进阶, 本地, Router
 按一下 Esc 键（退出键），输入英文冒号 `:`，继续输入 `wq` 并回车
 
 ## 四、 修改出站或规则
-**举例：我的机场包含有 2 个节点，分别是新加坡节点和日本节点，我想让 [Netflix](https://www.netflix.com/) 自动选择延迟最低的新加坡节点，[哔哩哔哩](https://www.bilibili.com)可以手动选择日本任一节点**  
+**举例：我想让 [Netflix](https://www.netflix.com/) 和 [Disney+](https://www.disneyplus.com/) 等国外媒体自动选择延迟最低的新加坡节点**  
 > 一定要保证缩进对齐！一定要保证缩进对齐！一定要保证缩进对齐！
 {: .prompt-warning }
 
@@ -187,13 +191,10 @@ tags: [sing-box, sing-boxp, ShellCrash, geodata, geosite, 进阶, 本地, Router
   // 出站
   "outbounds": [
     // 默认选择新加坡节点
-    { "tag": "🎥 奈飞视频", "type": "selector", "outbounds": [ "🇸🇬 新加坡节点" ] },
-    // 默认选择日本节点，也可切换到直连
-    { "tag": "📺 哔哩哔哩", "type": "selector", "outbounds": [ "🇯🇵 日本节点", "🎯 全球直连" ] },
+    { "tag": "🌍 国外媒体", "type": "selector", "outbounds": [ "🇸🇬 新加坡节点" ] },
+
     // 自动选择延迟最低的新加坡节点；容差大于 50ms 才会切换到延迟低的那个节点
-    { "tag": "🇸🇬 新加坡节点", "type": "urltest", "tolerance": 50, "use_all_providers": true, "includes": [ "(?i)(🇸🇬|新|sg|singapore)" ] },
-    // 手动选择日本任一节点
-    { "tag": "🇯🇵 日本节点", "type": "selector", "use_all_providers": true, "includes": [ "(?i)(🇯🇵|日|jp|japan)" ] }
+    { "tag": "🇸🇬 新加坡节点", "type": "urltest", "tolerance": 50, "use_all_providers": true, "includes": [ "(?i)(🇸🇬|新|sg|singapore)" ] }
   ]
 }
 ```
@@ -210,9 +211,8 @@ tags: [sing-box, sing-boxp, ShellCrash, geodata, geosite, 进阶, 本地, Router
     // 规则
     "rules": [
       // 自定义规则优先放前面
-      { "geosite": [ "netflix" ], "outbound": "🎥 奈飞视频" },
-      { "geoip": [ "netflix" ], "outbound": "🎥 奈飞视频", "skip_resolve": true  },
-      { "geosite": [ "bilibili" ], "outbound": "📺 哔哩哔哩" }
+      { "geosite": [ "media" ], "outbound": "🌍 国外媒体" },
+      { "geoip": [ "media" ], "outbound": "🌍 国外媒体", "skip_resolve": true  }
     ]
   }
 }
@@ -236,15 +236,15 @@ tags: [sing-box, sing-boxp, ShellCrash, geodata, geosite, 进阶, 本地, Router
     "rules": [
       // 以 googleapis.cn 为后缀（包括 googleapis.cn）的所有域名走代理
       { "domain_suffix": [ "googleapis.cn" ], "outbound": "🈯 节点指定" },
-      // 与哔哩哔哩相关的所有域名走直连
-      { "geosite": [ "bilibili" ], "outbound": "DIRECT" },
+      // 国外媒体走代理
+      { "geosite": [ "media" ], "outbound": "🈯 节点指定" },
       // 含有 ipv6 关键字的所有域名走直连
       { "domain_keyword": [ "ipv6" ], "outbound": "DIRECT" }
     ],
     // geosite 配置项
     "geosite": {
       "path": "./geosite.db",
-      "download_url": "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box/geosite.db"
+      "download_url": "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box/geosite-all.db"
     }
   }
 }

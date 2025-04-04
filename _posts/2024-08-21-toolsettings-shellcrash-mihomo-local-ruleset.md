@@ -126,6 +126,14 @@ rule-providers:
     url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/games-cn.mrs"
     interval: 86400
 
+  media:
+    type: http
+    behavior: domain
+    format: mrs
+    path: ./rules/media.mrs
+    url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/media.mrs"
+    interval: 86400
+
   ai:
     type: http
     behavior: domain
@@ -180,6 +188,14 @@ rule-providers:
     format: mrs
     path: ./rules/cnip.mrs
     url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/cnip.mrs"
+    interval: 86400
+
+  mediaip:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    path: ./rules/mediaip.mrs
+    url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/mediaip.mrs"
     interval: 86400
 
   telegramip:
@@ -243,6 +259,7 @@ rule-providers:
   type: select
   proxies:
     - 🎯 全球直连
+    - 🈯 节点指定
     - 🇭🇰 香港节点
     - 🇹🇼 台湾节点
     - 🇯🇵 日本节点
@@ -253,12 +270,12 @@ rule-providers:
 - name: 🤖 人工智能
   type: select
   proxies:
+    - 🈯 节点指定
     - 🇭🇰 香港节点
     - 🇹🇼 台湾节点
     - 🇯🇵 日本节点
     - 🇸🇬 新加坡节点
     - 🇺🇸 美国节点
-    - 🆓 免费节点
 
 - name: 📋 Trackerslist
   type: select
@@ -290,6 +307,16 @@ rule-providers:
     - 🎯 全球直连
     - 🈯 节点指定
 
+- name: 🌍 国外媒体
+  type: select
+  proxies:
+    - 🈯 节点指定
+    - 🇭🇰 香港节点
+    - 🇹🇼 台湾节点
+    - 🇯🇵 日本节点
+    - 🇸🇬 新加坡节点
+    - 🇺🇸 美国节点
+
 - name: 🛡️ 直连域名
   type: select
   proxies:
@@ -311,6 +338,7 @@ rule-providers:
 - name: 📲 电报消息
   type: select
   proxies:
+    - 🈯 节点指定
     - 🇭🇰 香港节点
     - 🇹🇼 台湾节点
     - 🇯🇵 日本节点
@@ -394,6 +422,7 @@ rule-providers:
 - RULE-SET,apple-cn,🍎 苹果服务
 - RULE-SET,google-cn,🇬 谷歌服务
 - RULE-SET,games-cn,🎮 游戏服务
+- RULE-SET,media,🌍 国外媒体
 - RULE-SET,ai,🤖 人工智能
 - RULE-SET,networktest,📈 网络测试
 - RULE-SET,proxy,🧱 代理域名
@@ -401,6 +430,7 @@ rule-providers:
 - RULE-SET,cn,🛡️ 直连域名
 - RULE-SET,privateip,🔒 私有网络,no-resolve
 - RULE-SET,cnip,🀄️ 直连 IP
+- RULE-SET,mediaip,🌍 国外媒体,no-resolve
 - RULE-SET,telegramip,📲 电报消息,no-resolve
 ```
 
