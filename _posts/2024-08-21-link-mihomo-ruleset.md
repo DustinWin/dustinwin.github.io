@@ -100,6 +100,7 @@ proxy-groups:
   - {name: 🇬 谷歌服务, type: select, proxies: [🎯 全球直连, 🚀 节点选择]}
   - {name: 🍎 苹果服务, type: select, proxies: [🎯 全球直连, 🚀 节点选择]}
   - {name: 🌍 国外媒体, type: select, proxies: [🚀 节点选择, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇺🇸 美国节点]}
+  - {name: 🎮 游戏平台, type: select, proxies: [🚀 节点选择, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇺🇸 美国节点]}
   - {name: 🛡️ 直连域名, type: select, proxies: [🎯 全球直连, 🚀 节点选择]}
   - {name: 🀄️ 直连 IP, type: select, proxies: [🎯 全球直连, 🚀 节点选择]}
   - {name: 🧱 代理域名, type: select, proxies: [🚀 节点选择, 🎯 全球直连]}
@@ -199,6 +200,14 @@ rule-providers:
     url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/media.mrs"
     interval: 86400
 
+  games:
+    type: http
+    behavior: domain
+    format: mrs
+    path: ./rules/games.mrs
+    url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/games.mrs"
+    interval: 86400
+
   ai:
     type: http
     behavior: domain
@@ -263,6 +272,14 @@ rule-providers:
     url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/mediaip.mrs"
     interval: 86400
 
+  gamesip:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    path: ./rules/gamesip.mrs
+    url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/gamesip.mrs"
+    interval: 86400
+
   telegramip:
     type: http
     behavior: ipcidr
@@ -286,6 +303,7 @@ rules:
   - RULE-SET,google-cn,🇬 谷歌服务
   - RULE-SET,games-cn,🎮 游戏服务
   - RULE-SET,media,🌍 国外媒体
+  - RULE-SET,games,🎮 游戏平台
   - RULE-SET,ai,🤖 人工智能
   - RULE-SET,networktest,📈 网络测试
   - RULE-SET,proxy,🧱 代理域名
@@ -294,6 +312,7 @@ rules:
   - RULE-SET,privateip,🔒 私有网络,no-resolve
   - RULE-SET,cnip,🀄️ 直连 IP
   - RULE-SET,mediaip,🌍 国外媒体,no-resolve
+  - RULE-SET,gamesip,🎮 游戏平台,no-resolve
   - RULE-SET,telegramip,📲 电报消息,no-resolve
   - MATCH,🐟 漏网之鱼
 ```
@@ -368,6 +387,7 @@ proxy-groups:
   - {name: 🤖 人工智能, type: select, proxies: [🚀 节点选择, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇺🇸 美国节点]}
   - {name: 📋 Trackerslist, type: select, proxies: [🎯 全球直连, 🚀 节点选择]}
   - {name: 🌍 国外媒体, type: select, proxies: [🚀 节点选择, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇺🇸 美国节点]}
+  - {name: 🎮 游戏平台, type: select, proxies: [🚀 节点选择, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇺🇸 美国节点]}
   - {name: 🧱 代理域名, type: select, proxies: [🚀 节点选择, 🎯 全球直连]}
   - {name: 📲 电报消息, type: select, proxies: [🚀 节点选择, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇺🇸 美国节点, 🆓 免费节点]}
   ## 若在面板 dashboard 中需隐藏该策略组，可添加 `hidden: true` 配置项
@@ -422,6 +442,14 @@ rule-providers:
     url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/media.mrs"
     interval: 86400
 
+  games:
+    type: http
+    behavior: domain
+    format: mrs
+    path: ./rules/games.mrs
+    url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/games.mrs"
+    interval: 86400
+
   ai:
     type: http
     behavior: domain
@@ -462,6 +490,14 @@ rule-providers:
     url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/mediaip.mrs"
     interval: 86400
 
+  gamesip:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    path: ./rules/gamesip.mrs
+    url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/gamesip.mrs"
+    interval: 86400
+
   telegramip:
     type: http
     behavior: ipcidr
@@ -476,11 +512,13 @@ rules:
   - RULE-SET,ads,🛑 广告域名
   - RULE-SET,trackerslist,📋 Trackerslist
   - RULE-SET,media,🌍 国外媒体
+  - RULE-SET,games,🎮 游戏平台
   - RULE-SET,ai,🤖 人工智能
   - RULE-SET,networktest,📈 网络测试
   - RULE-SET,tld-proxy,🧱 代理域名
   - RULE-SET,proxy,🧱 代理域名
   - RULE-SET,mediaip,🌍 国外媒体,no-resolve
+  - RULE-SET,gamesip,🎮 游戏平台,no-resolve
   - RULE-SET,telegramip,📲 电报消息,no-resolve
   - MATCH,🐟 漏网之鱼
 ```

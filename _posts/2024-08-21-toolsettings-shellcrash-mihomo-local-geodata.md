@@ -179,6 +179,16 @@ proxy-providers:
     - 🇸🇬 新加坡节点
     - 🇺🇸 美国节点
 
+- name: 🎮 游戏平台
+  type: select
+  proxies:
+    - 🈯 节点指定
+    - 🇭🇰 香港节点
+    - 🇹🇼 台湾节点
+    - 🇯🇵 日本节点
+    - 🇸🇬 新加坡节点
+    - 🇺🇸 美国节点
+
 - name: 🛡️ 直连域名
   type: select
   proxies:
@@ -285,6 +295,7 @@ proxy-providers:
 - GEOSITE,google-cn,🇬 谷歌服务
 - GEOSITE,games-cn,🎮 游戏服务
 - GEOSITE,media,🌍 国外媒体
+- GEOSITE,games,🎮 游戏平台
 - GEOSITE,ai,🤖 人工智能
 - GEOSITE,networktest,📈 网络测速
 - GEOSITE,proxy,🧱 代理域名
@@ -293,6 +304,7 @@ proxy-providers:
 - GEOIP,private,🔒 私有网络,no-resolve
 - GEOIP,cn,🀄️ 直连 IP
 - GEOIP,media,🌍 国外媒体,no-resolve
+- GEOIP,games,🎮 游戏平台,no-resolve
 - GEOIP,telegram,📲 电报消息,no-resolve
 ```
 

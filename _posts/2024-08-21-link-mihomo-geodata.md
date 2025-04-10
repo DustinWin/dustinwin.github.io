@@ -100,6 +100,7 @@ proxy-groups:
   - {name: 🇬 谷歌服务, type: select, proxies: [🎯 全球直连, 🚀 节点选择]}
   - {name: 🍎 苹果服务, type: select, proxies: [🎯 全球直连, 🚀 节点选择]}
   - {name: 🌍 国外媒体, type: select, proxies: [🚀 节点选择, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇺🇸 美国节点]}
+  - {name: 🎮 游戏平台, type: select, proxies: [🚀 节点选择, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇺🇸 美国节点]}
   - {name: 🛡️ 直连域名, type: select, proxies: [🎯 全球直连, 🚀 节点选择]}
   - {name: 🀄️ 直连 IP, type: select, proxies: [🎯 全球直连, 🚀 节点选择]}
   - {name: 🧱 代理域名, type: select, proxies: [🚀 节点选择, 🎯 全球直连]}
@@ -136,6 +137,7 @@ rules:
   - GEOSITE,google-cn,🇬 谷歌服务
   - GEOSITE,games-cn,🎮 游戏服务
   - GEOSITE,media,🌍 国外媒体
+  - GEOSITE,games,🎮 游戏平台
   - GEOSITE,ai,🤖 人工智能
   - GEOSITE,networktest,📈 网络测试
   - GEOSITE,proxy,🧱 代理域名
@@ -144,6 +146,7 @@ rules:
   - GEOIP,private,🔒 私有网络,no-resolve
   - GEOIP,cn,🀄️ 直连 IP
   - GEOIP,media,🌍 国外媒体,no-resolve
+  - GEOIP,games,🎮 游戏平台,no-resolve
   - GEOIP,telegram,📲 电报消息,no-resolve
   - MATCH,🐟 漏网之鱼
 ```
@@ -218,6 +221,7 @@ proxy-groups:
   - {name: 🤖 人工智能, type: select, proxies: [🚀 节点选择, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇺🇸 美国节点]}
   - {name: 📋 Trackerslist, type: select, proxies: [🎯 全球直连, 🚀 节点选择]}
   - {name: 🌍 国外媒体, type: select, proxies: [🚀 节点选择, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇺🇸 美国节点]}
+  - {name: 🎮 游戏平台, type: select, proxies: [🚀 节点选择, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇺🇸 美国节点]}
   - {name: 🧱 代理域名, type: select, proxies: [🚀 节点选择, 🎯 全球直连]}
   - {name: 📲 电报消息, type: select, proxies: [🚀 节点选择, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇺🇸 美国节点, 🆓 免费节点]}
   ## 若在面板 dashboard 中需隐藏该策略组，可添加 `hidden: true` 配置项
@@ -245,11 +249,13 @@ rules:
   - GEOSITE,ads,🛑 广告域名
   - GEOSITE,trackerslist,📋 Trackerslist
   - GEOSITE,media,🌍 国外媒体
+  - GEOSITE,games,🎮 游戏平台
   - GEOSITE,ai,🤖 人工智能
   - GEOSITE,networktest,📈 网络测试
   - GEOSITE,tld-proxy,🧱 代理域名
   - GEOSITE,proxy,🧱 代理域名
   - GEOIP,media,🌍 国外媒体,no-resolve
+  - GEOIP,games,🎮 游戏平台,no-resolve
   - GEOIP,telegram,📲 电报消息,no-resolve
   - MATCH,🐟 漏网之鱼
 ```
