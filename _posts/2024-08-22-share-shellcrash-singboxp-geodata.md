@@ -99,7 +99,6 @@ tags: [sing-box, sing-boxp, ShellCrash, geodata, geosite, 分享, Router]
       { "geosite": [ "ai" ], "outbound": "🤖 人工智能" },
       { "geosite": [ "networktest" ], "outbound": "📈 网络测试" },
       { "geosite": [ "proxy" ], "outbound": "🧱 代理域名" },
-      { "geosite": [ "tld-cn" ], "outbound": "🛡️ 直连域名" },
       { "geosite": [ "cn" ], "outbound": "🛡️ 直连域名" },
       { "geoip": [ "private" ], "outbound": "🎯 全球直连", "skip_resolve": true },
       { "geoip": [ "cn" ], "outbound": "🀄️ 直连 IP" },

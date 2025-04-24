@@ -137,7 +137,6 @@ tags: [sing-box, sing-boxp, Windows, ruleset, rule_set, 分享]
       { "rule_set": [ "ai" ], "outbound": "🤖 人工智能" },
       { "rule_set": [ "networktest" ], "outbound": "📈 网络测试" },
       { "rule_set": [ "proxy" ], "outbound": "🧱 代理域名" },
-      { "rule_set": [ "tld-cn" ], "outbound": "🛡️ 直连域名" },
       { "rule_set": [ "cn" ], "outbound": "🛡️ 直连域名" },
       { "rule_set": [ "privateip" ], "outbound": "🎯 全球直连", "skip_resolve": true },
       { "rule_set": [ "cnip" ], "outbound": "🀄️ 直连 IP" },
@@ -229,18 +228,11 @@ tags: [sing-box, sing-boxp, Windows, ruleset, rule_set, 分享]
         "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset-compatible/proxy.srs"
       },
       {
-        "tag": "tld-cn",
-        "type": "remote",
-        "format": "binary",
-        "path": "./ruleset/tld-cn.srs",
-        "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset-compatible/tld-cn.srs"
-      },
-      {
         "tag": "cn",
         "type": "remote",
         "format": "binary",
         "path": "./ruleset/cn.srs",
-        "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset-compatible/cn.srs"
+        "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset-compatible/cn-lite.srs"
       },
       {
         "tag": "privateip",
