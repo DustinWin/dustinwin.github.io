@@ -32,6 +32,7 @@ hosts:
 
 dns:
   enable: true
+  prefer-h3: true
   ipv6: true
   listen: 0.0.0.0:1053
   fake-ip-range: 198.18.0.1/16
