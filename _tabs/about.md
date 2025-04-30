@@ -25,11 +25,3 @@ order: 4
 2. 若 jsDelivr 源无法访问，可将地址改为 `https://fastly.jsdelivr.net/gh/[username]/[reponame]@[branchname]/[filename]`
 3. 推荐使用 [GitHub 源](https://github.com)，格式分别为 `https://github.com/[username]/[reponame]/releases/download/[tagname]/[filename]`（推荐）、`https://raw.githubusercontent.com/[username]/[reponame]/[tagname]/[filename]` 和 `https://raw.githubusercontent.com/[username]/[reponame]/[branchname]/[filename]`
 4. 若 GitHub 源无法访问，可添加 `https://ghfast.top/` 前缀，即：将地址分别改为 `https://ghfast.top/https://github.com/[username]/[reponame]/releases/download/[tagname]/[filename]`（推荐）、`https://ghfast.top/https://raw.githubusercontent.com/[username]/[reponame]/[tagname]/[filename]` 和 `https://ghfast.top/https://raw.githubusercontent.com/[username]/[reponame]/[branchname]/[filename]`
-
-## 给作者加鸡腿
-<img src="/assets/img/about/alipay.jpg" alt="支付宝" width="30%" />
-<img src="/assets/img/about/wechat.png" alt="微信" width="30%" />
-
-## 机场推荐
-[Bitz Net](https://new.bnaffloop.com/#/register?code=HT0ALWZq)（仅次于一线机场，推荐打折时购买）  
-85 折优惠码：`TURKEY24`（有效期至 2024 年 12 月 1 日 23:59 分）
