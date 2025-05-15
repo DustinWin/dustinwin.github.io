@@ -31,7 +31,7 @@ github:
   username: DustinWin # change to your GitHub username
 
 twitter:
-  username: twitter_username # change to your Twitter username
+  username: DustinWinQS # change to your Twitter username
 
 social:
   # Change to your full name.
@@ -40,7 +40,7 @@ social:
   email: dustinwinup@gmail.com # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    #- https://twitter.com/username # change to your Twitter homepage
+    - https://x.com/DustinWinQS # change to your Twitter homepage
     - https://github.com/DustinWin # change to your GitHub homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
@@ -97,7 +97,7 @@ theme_mode: # [light | dark]
 # will be added to all media resources (site avatar, posts' images, audio and video files) paths starting with '/'
 #
 # e.g. 'https://cdn.com'
-cdn:
+cdn: "https://chirpy-img.netlify.app"
 
 # the avatar on sidebar, support local or CORS resources
 avatar: "/assets/img/about/avatar.png"
@@ -215,7 +215,7 @@ exclude:
   - README.md
   - LICENSE
   - purgecss.js
-  - rollup.config.js
+  - "*.config.js"
   - "package*.json"
 
 jekyll-archives:

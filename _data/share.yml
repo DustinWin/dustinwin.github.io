@@ -3,7 +3,7 @@
 
 platforms:
   - type: X
-    icon: "fa-brands fa-square-x-twitter"
+    icon: "fa-brands fa-square-x"
     link: "https://x.com/intent/tweet?text=TITLE&url=URL"
 
   - type: Facebook
@@ -18,7 +18,7 @@ platforms:
   #
   # - type: Linkedin
   #   icon: "fab fa-linkedin"
-  #   link: "https://www.linkedin.com/sharing/share-offsite/?url=URL"
+  #   link: "https://www.linkedin.com/feed/?shareActive=true&shareUrl=URL"
   #
   # - type: Weibo
   #   icon: "fab fa-weibo"
