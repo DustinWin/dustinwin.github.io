@@ -132,7 +132,6 @@ curl -o $CRASHDIR/cn_ipv6.txt -L https://cdn.jsdelivr.net/gh/DustinWin/geoip@ips
 连接 SSH 后执行命令 `vi $CRASHDIR/yamls/user.yaml`，按一下 Ins 键（Insert 键），粘贴如下内容：
 
 ```yaml
-mode: rule
 log-level: error
 allow-lan: true
 unified-delay: true
@@ -145,7 +144,6 @@ geodata-mode: true
 
 sniffer:
   enable: true
-  parse-pure-ip: true
   sniff: {HTTP: {ports: [80, 8080-8880], override-destination: true}, TLS: {ports: [443, 8443]}, QUIC: {ports: [443, 8443]}}
   skip-domain: ['Mijia Cloud']
 

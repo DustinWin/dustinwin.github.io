@@ -236,7 +236,6 @@ crash
 <img src="/assets/img/share/update-adguardhome.png" alt="编辑 user.yaml 文件" width="60%" />
 
 ```yaml
-mode: rule
 log-level: error
 allow-lan: true
 unified-delay: true
@@ -247,7 +246,6 @@ profile: {store-selected: true}
 
 sniffer:
   enable: true
-  parse-pure-ip: true
   sniff: {HTTP: {ports: [80, 8080-8880], override-destination: true}, TLS: {ports: [443, 8443]}, QUIC: {ports: [443, 8443]}}
   skip-domain: ['Mijia Cloud']
 

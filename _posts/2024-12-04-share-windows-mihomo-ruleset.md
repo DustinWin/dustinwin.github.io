@@ -38,7 +38,6 @@ proxy-providers:
       url: https://www.gstatic.com/generate_204
       interval: 600
 
-mode: rule
 log-level: error
 ipv6: true
 allow-lan: true
@@ -48,13 +47,11 @@ tcp-concurrent: true
 external-controller: 127.0.0.1:9090
 external-ui: ui
 external-ui-url: "https://github.com/Zephyruso/zashboard/releases/latest/download/dist.zip"
-find-process-mode: strict
 global-client-fingerprint: chrome
 profile: {store-selected: true}
 
 sniffer:
   enable: true
-  parse-pure-ip: true
   sniff: {HTTP: {ports: [80, 8080-8880], override-destination: true}, TLS: {ports: [443, 8443]}, QUIC: {ports: [443, 8443]}}
   skip-domain: ['Mijia Cloud']
 
