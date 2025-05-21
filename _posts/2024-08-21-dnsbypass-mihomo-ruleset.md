@@ -45,10 +45,6 @@ rule-providers:
 3. 连接 SSH 后执行命令 `vi $CRASHDIR/yamls/user.yaml`，按一下 Ins 键（Insert 键），粘贴如下内容：
 
 ```yaml
-hosts:
-  doh.pub: [1.12.12.12, 120.53.53.53, 2402:4e00::]
-  dns.alidns.com: [223.5.5.5, 223.6.6.6, 2400:3200::1, 2400:3200:baba::1]
-
 dns:
   enable: true
   prefer-h3: true
@@ -58,9 +54,6 @@ dns:
   enhanced-mode: fake-ip
   fake-ip-filter: ['rule-set:fakeip-filter,cn']
   nameserver:
-    - https://doh.pub/dns-query
-    - https://dns.alidns.com/dns-query
-  direct-nameserver:
     - https://doh.pub/dns-query
     - https://dns.alidns.com/dns-query
 ```

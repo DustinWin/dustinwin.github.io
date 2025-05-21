@@ -45,7 +45,7 @@ unified-delay: true
 tcp-concurrent: true
 external-controller: 127.0.0.1:9090
 global-client-fingerprint: chrome
-profile: {store-selected: true}
+profile: {store-selected: true, store-fake-ip: true}
 
 sniffer:
   enable: true
@@ -62,8 +62,6 @@ tun:
   strict-route: true
 
 hosts:
-  doh.pub: [1.12.12.12, 120.53.53.53, 2402:4e00::]
-  dns.alidns.com: [223.5.5.5, 223.6.6.6, 2400:3200::1, 2400:3200:baba::1]
   miwifi.com: [192.168.31.1, 127.0.0.1]
   services.googleapis.cn: services.googleapis.com
 
@@ -76,9 +74,6 @@ dns:
   enhanced-mode: fake-ip
   fake-ip-filter: ['rule-set:fakeip-filter,trackerslist,private,cn']
   nameserver:
-    - https://doh.pub/dns-query
-    - https://dns.alidns.com/dns-query
-  direct-nameserver:
     - https://doh.pub/dns-query
     - https://dns.alidns.com/dns-query
 
