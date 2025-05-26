@@ -271,6 +271,36 @@ rules:
   - MATCH,漏网之鱼
 ```
 
+------
+
+>`dns` 私货
+{: .prompt-tip }
+
+注：
+- 1. 本 `dns` 配置中，未知域名由国外 dns 解析（有效解决了“心理 dns 泄露问题”），且配置 `ecs` 提高了兼容性
+- 2. 推荐将 `ecs` 设置为当前网络所属运营商在当地省会城市的 IP 段，可在 <https://bgpview.io> 中查询（如湖北移动，可以搜索“cmnet-hubei”）
+
+```yaml
+dns:
+  enable: true
+  ipv6: true
+  listen: 0.0.0.0:53
+  fake-ip-range: 28.0.0.1/8
+  enhanced-mode: fake-ip
+  fake-ip-filter: ['rule-set:fakeip-filter,trackerslist,private,cn']
+  respect-rules: true
+  nameserver:
+    ## 推荐将 `ecs` 设置为当前网络所属运营商在当地省会城市的 IP 段
+    - 'https://dns.google/dns-query#ecs=211.137.64.0/20'
+    - 'https://dns11.quad9.net/dns-query#ecs=211.137.64.0/20'
+  proxy-server-nameserver:
+    - 'https://dns.alidns.com/dns-query#h3=true'
+    - https://doh.pub/dns-query
+  direct-nameserver:
+    - 'https://dns.alidns.com/dns-query#h3=true'
+    - https://doh.pub/dns-query
+```
+
 ## 二、 导入配置文件并启动
 1. 进入 [FlClash for Android](https://github.com/chen08209/FlClash) → 配置 → 添加配置 → URL，“URL”输入《[一](https://proxy-tutorials.dustinwin.top/posts/share-android-mihomo-ruleset/#%E4%B8%80-%E7%94%9F%E6%88%90%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-yaml-%E6%96%87%E4%BB%B6%E7%9B%B4%E9%93%BE)》中生成的配置文件 .yaml 直链，点击“提交”
 2. 待配置下载完成后返回到主界面，点击“▶”即可启动

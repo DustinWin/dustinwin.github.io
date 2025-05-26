@@ -273,6 +273,56 @@ crash
 }
 ```
 
+---
+
+>`dns` 私货
+{: .prompt-tip }
+
+注：
+- 1. 本 `dns` 配置中，未知域名由国外 dns 解析（有效解决了“心理 dns 泄露问题”），且配置 `client_subnet` 提高了兼容性
+- 2. 推荐将 `client_subnet` 设置为当前网络所属运营商在当地省会城市的 IP 段，可在 <https://bgpview.io> 中查询（如湖北移动，可以搜索“cmnet-hubei”）
+
+```json
+{
+  "dns": {
+    "hosts": {
+      "dns.alidns.com": [ "223.5.5.5", "223.6.6.6", "2400:3200::1", "2400:3200:baba::1" ],
+      "doh.pub": [ "1.12.12.12", "120.53.53.53", "2402:4e00::" ],
+      "dns.google": [ "8.8.8.8", "8.8.4.4", "2001:4860:4860::8888", "2001:4860:4860::8844" ],
+      "dns11.quad9.net": [ "9.9.9.11", "149.112.112.11", "2620:fe::11", "2620:fe::fe:11" ],
+      "miwifi.com": [ "192.168.31.1", "127.0.0.1" ],
+      "services.googleapis.cn": [ "services.googleapis.com" ]
+    },
+    "servers": [
+      { "tag": "dns_direct", "address": [ "h3://dns.alidns.com/dns-query", "https://doh.pub/dns-query" ], "detour": "DIRECT" },
+      // 推荐将 `client_subnet` 设置为当前网络所属运营商在当地省会城市的 IP 段
+      { "tag": "dns_proxy", "address": [ "https://dns.google/dns-query", "https://dns11.quad9.net/dns-query" ], "client_subnet": "211.137.64.0/20" },
+      { "tag": "dns_fakeip", "address": "fakeip" }
+    ],
+    "rules": [
+      { "outbound": [ "any" ], "server": "dns_direct" },
+      { "clash_mode": [ "Direct" ], "query_type": [ "A", "AAAA" ], "server": "dns_direct" },
+      { "clash_mode": [ "Global" ], "query_type": [ "A", "AAAA" ], "server": "dns_proxy" },
+      { "rule_set": [ "cn" ], "query_type": [ "A", "AAAA" ], "server": "dns_direct" },
+      { "rule_set": [ "proxy" ], "query_type": [ "A", "AAAA" ], "server": "dns_fakeip", "rewrite_ttl": 1 },
+      { "fallback_rules": [ { "rule_set": [ "cnip" ], "server": "dns_direct" }, { "match_all": true, "server": "dns_fakeip", "rewrite_ttl": 1 } ], "server": "dns_proxy", "allow_fallthrough": true }
+    ],
+    "final": "dns_direct",
+    "strategy": "prefer_ipv4",
+    "independent_cache": true,
+    "lazy_cache": true,
+    "reverse_mapping": true,
+    "mapping_override": true,
+    "fakeip": {
+      "enabled": true,
+      "inet4_range": "198.18.0.0/15",
+      "inet6_range": "fc00::/18",
+      "exclude_rule": { "rule_set": [ "fakeip-filter", "trackerslist", "private", "cn" ] }
+    }
+  }
+}
+```
+
 按一下 Esc 键（退出键），输入英文冒号 `:`，继续输入 `wq` 并回车
 
 ## 四、 添加定时任务
