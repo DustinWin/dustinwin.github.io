@@ -50,7 +50,7 @@ dns:
   prefer-h3: true
   ipv6: true
   listen: 0.0.0.0:1053
-  fake-ip-range: 198.18.0.1/16
+  fake-ip-range: 28.0.0.1/8
   enhanced-mode: fake-ip
   fake-ip-filter: ['rule-set:fakeip-filter,cn']
   nameserver:
