@@ -275,12 +275,13 @@ tags: [sing-box, sing-boxp, Windows, ruleset, rule_set, 分享]
 
 ---
 
->`dns` 私货
+>`DNS` 私货
 {: .prompt-tip }
 
 注：
-- 1. 本 `dns` 配置中，未知域名由国外 dns 解析（有效解决了“心理 dns 泄露问题”），且配置 `client_subnet` 提高了兼容性
+- 1. 本 `dns` 配置中，未知域名由国外 DNS 解析（有效解决了“心理 DNS 泄露问题”，详见《[搭载 sing-boxp 内核配置 DNS 不泄露教程-ruleset 方案](https://proxy-tutorials.dustinwin.top/posts/dnsnoleaks-singboxp-ruleset/)》），且配置 `client_subnet` 提高了兼容性
 - 2. 推荐将 `client_subnet` 设置为当前网络所属运营商在当地省会城市的 IP 段，可在 <https://bgpview.io> 中查询（如湖北移动，可以搜索“cmnet-hubei”）
+- 3. 本 `route.rule_set` 配置中，`"tag": "cn"` 里的 `url` 链接使用 `cn.srs` 非精简版规则集文件，可避免某些国内域名被国外 DNS 解析后无法命中 `🀄️ 直连 IP` 从而走 `🐟 漏网之鱼` 规则，提高了兼容性
 
 ```json
 {
@@ -318,9 +319,22 @@ tags: [sing-box, sing-boxp, Windows, ruleset, rule_set, 分享]
       "inet6_range": "fc00::/18",
       "exclude_rule": { "rule_set": [ "fakeip-filter", "trackerslist", "private", "cn" ] }
     }
+  },
+  "route": {
+    "rule_set": [
+      {
+        "tag": "cn",
+        "type": "remote",
+        "format": "binary",
+        "path": "./ruleset/cn.srs",
+        "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset-compatible/cn.srs"
+      }
+    ]
   }
 }
 ```
+
+---
 
 ## 二、 导入 [sing-box PuerNya 版内核](https://github.com/PuerNya/sing-box/tree/building)和配置文件并启动 sing-box
 ### 1. 导入内核和配置文件
