@@ -274,12 +274,12 @@ echo -e '12345678\n12345678' | passwd root
 
   - ➐ 内核加载完成后根据需要是否保留相关数据库文件（此处选择 `0`）
 - ③ 模式设置
-  - ➊ 进入主菜单 → 2 内核功能设置 → 1 切换防火墙运行模式，选择 3 Tproxy 模式（有“Tproxy 模式”就选“Tproxy 模式”，否则推荐选“混合模式”，宽带在 300M 内推荐 Tun 模式）
+  - ➊ 进入主菜单 → 2 内核功能设置 → 1 切换防火墙运行模式，选择 2 混合模式（推荐“混合模式”，其次“Tproxy 模式”，宽带在 300M 内推荐“Tun 模式”）
   - ➋ 进入 1 切换防火墙运行模式 → 9 ipv6 设置，若机场节点不支持 IPv6，可关闭 1 ipv6 透明代理  
     <img src="/assets/img/pin/ipv6-setting.png" alt="ShellCrash 配置 2" width="60%" />
 
   - ➌ 进入 2 切换 DNS 运行模式，选择 3 mix 混合模式  
-    <img src="/assets/img/pin/tproxy-mix.png" alt="ShellCrash 配置 4" width="60%" />
+    <img src="/assets/img/pin/mix-mix.png" alt="ShellCrash 配置 4" width="60%" />
 
   - ➍ 进入 2 切换 DNS 运行模式 → 4 DNS 进阶设置，选择 7 禁用 DNS 劫持
     - 注：推荐设置 DNS 分流（单独使用 ShellCrash 以及 ShellCrash 搭配 AdGuard Home 都适用），请看《[搭载 mihomo 内核进行 DNS 分流教程-geodata 方案](https://proxy-tutorials.dustinwin.top/posts/dnsbypass-mihomo-geodata)》或《[搭载 mihomo 内核进行 DNS 分流教程-ruleset 方案](https://proxy-tutorials.dustinwin.top/posts/dnsbypass-mihomo-ruleset)》

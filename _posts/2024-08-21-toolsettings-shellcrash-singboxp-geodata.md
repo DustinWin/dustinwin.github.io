@@ -59,8 +59,8 @@ curl -o $CRASHDIR/geoip.db -L https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geod
    - ⑦ 内核加载完成后根据需要是否保留相关数据库文件（此处选择 `0`）
 3. 进入主菜单 → 9 更新/卸载 → 7 切换安装源及安装版本，选择 b 切换至公测版 → 1 Jsdelivr_CDN源（推荐）
 4. 进入主菜单 → 9 更新/卸载 → 4 安装本地 Dashboard 面板，选择 3 安装 MetaXD 面板（也可跳过此步，使用《[五](https://proxy-tutorials.dustinwin.top/posts/toolsettings-shellcrash-singboxp-geodata/#%E4%BA%94-%E5%9C%A8%E7%BA%BF-dashboard-%E9%9D%A2%E6%9D%BF)》中的在线 Dashboard 面板）
-5. 进入主菜单 → 2 内核功能设置，设置如下（有“Tproxy 模式”就选“Tproxy 模式”，否则推荐选“混合模式”，宽带在 300M 内推荐选 Tun 模式）：  
-<img src="/assets/img/pin/tproxy-mix.png" alt="设置部分 1" width="60%" />
+5. 进入主菜单 → 2 内核功能设置，设置如下（推荐“混合模式”，其次“Tproxy 模式”，宽带在 300M 内推荐“Tun 模式”）：  
+<img src="/assets/img/pin/mix-mix.png" alt="设置部分 1" width="60%" />
 
 6. 进入主菜单 → 4 内核启动设置，选择 1 允许 ShellCrash 开机启动（若重启路由器后服务没有自动运行，可“设置自启延时”为 `30` 秒）
 7. 进入主菜单 → 5 配置自动任务 → 1 添加自动任务，可以看到末尾就有《[三](https://proxy-tutorials.dustinwin.top/posts/toolsettings-shellcrash-singboxp-geodata/#%E4%B8%89-%E6%B7%BB%E5%8A%A0%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1)》中添加的定时任务，输入对应的数字并回车后可设置执行条件 
