@@ -206,7 +206,7 @@ curl -o $CRASHDIR/geoip.db -L https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geod
       "services.googleapis.cn": [ "services.googleapis.com" ]
     },
     "servers": [
-      { "tag": "dns_direct", "address": [ "h3://dns.alidns.com/dns-query", "https://doh.pub/dns-query" ], "detour": "DIRECT" },
+      { "tag": "dns_direct", "address": [ "quic://dns.alidns.com:853", "https://doh.pub/dns-query" ], "detour": "DIRECT" },
       // 推荐将 `client_subnet` 设置为当前网络所属运营商在当地省会城市的 IP 段
       { "tag": "dns_proxy", "address": [ "https://dns.google/dns-query", "https://dns11.quad9.net/dns-query" ], "client_subnet": "211.137.64.0/20" },
       { "tag": "dns_fakeip", "address": "fakeip" }

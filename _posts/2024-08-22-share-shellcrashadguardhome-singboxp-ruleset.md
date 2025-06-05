@@ -291,7 +291,7 @@ crash
       "services.googleapis.cn": [ "services.googleapis.com" ]
     },
     "servers": [
-      { "tag": "dns_direct", "address": [ "h3://dns.alidns.com/dns-query", "https://doh.pub/dns-query" ], "detour": "DIRECT" },
+      { "tag": "dns_direct", "address": [ "quic://dns.alidns.com:853", "https://doh.pub/dns-query" ], "detour": "DIRECT" },
       // 推荐将 `client_subnet` 设置为当前网络所属运营商在当地省会城市的 IP 段
       { "tag": "dns_proxy", "address": [ "https://dns.google/dns-query", "https://dns11.quad9.net/dns-query" ], "client_subnet": "211.137.64.0/20" },
       { "tag": "dns_fakeip", "address": "fakeip" }
@@ -396,7 +396,7 @@ ip6tables -t nat -A PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 5353
 1. 设置可参考《[全网最详细的解锁 SSH ShellCrash 搭载 sing-boxp 内核搭配 AdGuard Home 安装和配置教程/AdGuard Home 配置](https://proxy-tutorials.dustinwin.top/posts/pin-shellcrashadguardhome-singboxp/#2-adguard-home-%E9%85%8D%E7%BD%AE)》（可跳过“添加 DNS 重写”的步骤），此处只列举配置的不同之处
 2. 进入设置 → DNS 设置，“后备 DNS 服务器”设置为：
 ```text
-h3://dns.alidns.com/dns-query
+quic://dns.alidns.com:853
 https://doh.pub/dns-query
 ```
 3. “Bootstrap DNS 服务器”设置为：

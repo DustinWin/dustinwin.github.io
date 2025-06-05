@@ -188,10 +188,10 @@ dns:
     - 'https://dns.google/dns-query#ecs=211.137.64.0/20'
     - 'https://dns11.quad9.net/dns-query#ecs=211.137.64.0/20'
   proxy-server-nameserver:
-    - 'https://dns.alidns.com/dns-query#h3=true'
+    - quic://dns.alidns.com:853
     - https://doh.pub/dns-query
   direct-nameserver:
-    - 'https://dns.alidns.com/dns-query#h3=true'
+    - quic://dns.alidns.com:853
     - https://doh.pub/dns-query
 ```
 
