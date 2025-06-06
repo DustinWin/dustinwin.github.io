@@ -253,8 +253,10 @@ sniffer:
   skip-domain: ['Mijia Cloud']
 
 hosts:
+  dns.alidns.com: [223.5.5.5, 223.6.6.6, 2400:3200::1, 2400:3200:baba::1]
+  dns.pub: [1.12.12.12, 1.12.12.21, 120.53.53.53]
   miwifi.com: [192.168.31.1, 127.0.0.1]
-  services.googleapis.cn: services.googleapis.com
+  services.googleapis.cn: [services.googleapis.com]
 
 dns:
   enable: true
@@ -265,8 +267,8 @@ dns:
   enhanced-mode: fake-ip
   fake-ip-filter: ['rule-set:fakeip-filter,trackerslist,private,cn']
   nameserver:
-    - https://doh.pub/dns-query
     - https://dns.alidns.com/dns-query
+    - https://doh.pub/dns-query
 ```
 
 ---
@@ -280,6 +282,14 @@ dns:
 - 3. 本 `rule-providers.cn` 配置中，`url` 链接使用 `cn.mrs` 非精简版规则集文件，可避免某些国内域名被国外 DNS 解析后无法命中 `直连 IP` 从而走 `漏网之鱼` 规则，提高了兼容性
 
 ```yaml
+hosts:
+  dns.alidns.com: [223.5.5.5, 223.6.6.6, 2400:3200::1, 2400:3200:baba::1]
+  dns.pub: [1.12.12.12, 1.12.12.21, 120.53.53.53]
+  dns.google: [8.8.8.8, 8.8.4.4, 2001:4860:4860::8888, 2001:4860:4860::8844]
+  dns11.quad9.net: [9.9.9.11, 149.112.112.11, 2620:fe::11, 2620:fe::fe:11]
+  miwifi.com: [192.168.31.1, 127.0.0.1]
+  services.googleapis.cn: [services.googleapis.com]
+
 dns:
   enable: true
   ipv6: true

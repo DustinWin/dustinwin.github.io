@@ -26,6 +26,10 @@ geosite.dat 文件须包含 `fakeip-filter` 和 `cn`，推荐导入我定制的[
 3. 连接 SSH 后执行命令 `vi $CRASHDIR/yamls/user.yaml`，按一下 Ins 键（Insert 键），粘贴如下内容：
 
 ```yaml
+hosts:
+  dns.alidns.com: [223.5.5.5, 223.6.6.6, 2400:3200::1, 2400:3200:baba::1]
+  dns.pub: [1.12.12.12, 1.12.12.21, 120.53.53.53]
+
 dns:
   enable: true
   prefer-h3: true
@@ -35,8 +39,8 @@ dns:
   enhanced-mode: fake-ip
   fake-ip-filter: ['geosite:fakeip-filter,cn']
   nameserver:
-    - https://doh.pub/dns-query
     - https://dns.alidns.com/dns-query
+    - https://doh.pub/dns-query
 ```
 
 按一下 Esc 键（退出键），输入英文冒号 `:`，继续输入 `wq` 并回车
