@@ -404,15 +404,15 @@ echo -e '12345678\n12345678' | passwd root
   - ➋ “后备 DNS 服务器”设置为：
 
     ```text
-    https://doh.pub/dns-query
     https://dns.alidns.com/dns-query
+    https://doh.pub/dns-query
     ```
 
   - ➌ “Bootstrap DNS 服务器”设置为：
 
     ```text
-    119.29.29.29
     223.5.5.5
+    119.29.29.29
     ```
 
   - ➍ 直接点击“应用”即可  

@@ -31,6 +31,10 @@ geosite.dat 文件须包含 `fakeip-filter` 和 `cn`，推荐导入我定制的[
 - ② 连接 SSH 后执行 `vi $CRASHDIR/yamls/user.yaml`，按一下 Ins 键（Insert 键），粘贴如下内容：
 
   ```yaml
+  hosts:
+    dns.alidns.com: [223.5.5.5, 223.6.6.6, 2400:3200::1, 2400:3200:baba::1]
+    doh.pub: [1.12.12.12, 1.12.12.21, 120.53.53.53]
+
   dns:
     enable: true
     prefer-h3: true
@@ -40,8 +44,8 @@ geosite.dat 文件须包含 `fakeip-filter` 和 `cn`，推荐导入我定制的[
     enhanced-mode: fake-ip
     fake-ip-filter: ['geosite:fakeip-filter']
     nameserver:
-      - https://doh.pub/dns-query
       - https://dns.alidns.com/dns-query
+      - https://doh.pub/dns-query
   ```
 
 - ③ 按一下 Esc 键（退出键），输入英文冒号 `:`，继续输入 `wq` 并回车
@@ -50,6 +54,12 @@ geosite.dat 文件须包含 `fakeip-filter` 和 `cn`，推荐导入我定制的[
 连接 SSH 后执行 `vi $CRASHDIR/yamls/user.yaml`，按一下 Ins 键（Insert 键），粘贴如下内容：
 
 ```yaml
+hosts:
+  dns.alidns.com: [223.5.5.5, 223.6.6.6, 2400:3200::1, 2400:3200:baba::1]
+  doh.pub: [1.12.12.12, 1.12.12.21, 120.53.53.53]
+  dns.google: [8.8.8.8, 8.8.4.4, 2001:4860:4860::8888, 2001:4860:4860::8844]
+  cloudflare-dns.com: [1.1.1.1, 1.0.0.1, 2606:4700:4700::1111, 2606:4700:4700::1001]
+
 dns:
   enable: true
   ipv6: true
@@ -62,11 +72,11 @@ dns:
     - https://dns.google/dns-query
     - https://cloudflare-dns.com/dns-query
   proxy-server-nameserver:
-    - https://doh.pub/dns-query
     - https://dns.alidns.com/dns-query
+    - https://doh.pub/dns-query
   direct-nameserver:
-    - https://doh.pub/dns-query
     - https://dns.alidns.com/dns-query
+    - https://doh.pub/dns-query
 ```
 
 按一下 Esc 键（退出键），输入英文冒号 `:`，继续输入 `wq` 并回车
@@ -75,6 +85,12 @@ dns:
 连接 SSH 后执行 `vi $CRASHDIR/yamls/user.yaml`，按一下 Ins 键（Insert 键），粘贴如下内容：
 
 ```yaml
+hosts:
+  dns.alidns.com: [223.5.5.5, 223.6.6.6, 2400:3200::1, 2400:3200:baba::1]
+  doh.pub: [1.12.12.12, 1.12.12.21, 120.53.53.53]
+  dns.google: [8.8.8.8, 8.8.4.4, 2001:4860:4860::8888, 2001:4860:4860::8844]
+  cloudflare-dns.com: [1.1.1.1, 1.0.0.1, 2606:4700:4700::1111, 2606:4700:4700::1001]
+
 dns:
   enable: true
   ipv6: true
@@ -87,11 +103,11 @@ dns:
     - https://dns.google/dns-query
     - https://cloudflare-dns.com/dns-query
   proxy-server-nameserver:
-    - https://doh.pub/dns-query
     - https://dns.alidns.com/dns-query
+    - https://doh.pub/dns-query
   direct-nameserver:
-    - https://doh.pub/dns-query
     - https://dns.alidns.com/dns-query
+    - https://doh.pub/dns-query
 ```
 
 按一下 Esc 键（退出键），输入英文冒号 `:`，继续输入 `wq` 并回车
