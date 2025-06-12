@@ -413,7 +413,7 @@ echo -e '12345678\n12345678' | passwd root
   - ➍ 直接点击“应用”即可  
     <img src="/assets/img/pin/adguardhome-dns.png" alt="AdGuard Home 配置 2" width="60%" />
 
-  - ➎ “速度限制”输入 `0`，勾选“启用 EDNS 客户端子网”，然后点击下方的“保存”  
+  - ➎ “速度限制”输入 `0`，然后点击下方的“保存”  
     <img src="/assets/img/pin/adguardhome-dns-service.png" alt="AdGuard Home 配置 3" width="60%" />
 
   - ➏ 勾选“乐观缓存”，并点击“保存”  
