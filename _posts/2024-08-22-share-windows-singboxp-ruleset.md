@@ -140,6 +140,13 @@ tags: [sing-box, sing-boxp, Windows, ruleset, rule_set, 分享]
     ],
     "rule_set": [
       {
+        "tag": "ads",
+        "type": "remote",
+        "format": "binary",
+        "path": "./ruleset/ads.srs",
+        "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset-compatible/ads.srs"
+      },
+      {
         "tag": "fakeip-filter",
         "type": "remote",
         "format": "binary",
@@ -152,13 +159,6 @@ tags: [sing-box, sing-boxp, Windows, ruleset, rule_set, 分享]
         "format": "binary",
         "path": "./ruleset/private.srs",
         "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset-compatible/private.srs"
-      },
-      {
-        "tag": "ads",
-        "type": "remote",
-        "format": "binary",
-        "path": "./ruleset/ads.srs",
-        "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset-compatible/ads.srs"
       },
       {
         "tag": "trackerslist",

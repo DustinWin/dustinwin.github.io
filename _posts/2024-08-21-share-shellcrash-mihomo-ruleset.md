@@ -82,6 +82,14 @@ proxy-groups:
   - {name: 免费节点, type: url-test, tolerance: 50, use: [🆓 免费订阅], icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/free.png"}
 
 rule-providers:
+  ads:
+    type: http
+    behavior: domain
+    format: mrs
+    path: ./rules/ads.mrs
+    url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/ads.mrs"
+    interval: 86400
+
   fakeip-filter:
     type: http
     behavior: domain
@@ -96,14 +104,6 @@ rule-providers:
     format: mrs
     path: ./rules/private.mrs
     url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/private.mrs"
-    interval: 86400
-
-  ads:
-    type: http
-    behavior: domain
-    format: mrs
-    path: ./rules/ads.mrs
-    url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/ads.mrs"
     interval: 86400
 
   trackerslist:
@@ -265,8 +265,7 @@ dns:
   nameserver:
     - https://dns.alidns.com/dns-query
     - https://doh.pub/dns-query
-  nameserver-policy:
-    'rule-set:ads': [rcode://success]
+  nameserver-policy: {'rule-set:ads': [rcode://success]}
 ```
 
 ---
@@ -306,8 +305,7 @@ dns:
   direct-nameserver:
     - quic://dns.alidns.com:853
     - https://doh.pub/dns-query
-  nameserver-policy:
-    'rule-set:ads': [rcode://success]
+  nameserver-policy: {'rule-set:ads': [rcode://success]}
 ```
 
 **修改 .yaml 配置文件**

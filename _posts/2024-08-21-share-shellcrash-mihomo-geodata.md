@@ -160,8 +160,7 @@ dns:
   nameserver:
     - https://dns.alidns.com/dns-query
     - https://doh.pub/dns-query
-  nameserver-policy:
-    'geosite:ads': [rcode://success]
+  nameserver-policy: {'geosite:ads': [rcode://success]}
 ```
 
 ---
@@ -201,8 +200,7 @@ dns:
   direct-nameserver:
     - quic://dns.alidns.com:853
     - https://doh.pub/dns-query
-  nameserver-policy:
-    'geosite:ads': [rcode://success]
+  nameserver-policy: {'geosite:ads': [rcode://success]}
 ```
 
 **导入路由规则文件**  
