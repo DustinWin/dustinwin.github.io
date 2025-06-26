@@ -435,7 +435,7 @@ echo -e '12345678\n12345678' | passwd root
 - ⑤ 进入过滤器 → DNS 重写 → 添加 DNS 重写，“输入域”填写 `miwifi.com`，“输入 IP 地址或域名”填写 `192.168.31.1`，然后点击“保存”  
   注：
     - ➊ 此步骤可解决访问 <http://miwifi.com> 时无法打开小米或红米路由器管理页面的问题，其它型号路由器请根据自身需要填写
-    - ➋ 若已在 ShellCrash 配置文件自行添加了此域名相关 `hosts`，可跳过此步骤
+    - ➋ 若已在 ShellCrash 配置文件自行添加了此域名相关 `hosts`，仍可执行此步骤，防止其停止服务后无法正常访问
 
   添加成功  
   <img src="/assets/img/pin/adguardhome-dns-rewrite.png" alt="AdGuard Home 配置 7" width="60%" />
