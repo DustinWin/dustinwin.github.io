@@ -22,6 +22,8 @@ geosite.dat 文件须包含 `fakeip-filter` 和 `cn`，推荐导入我定制的[
 ## 三、 DNS 防泄漏配置
 ### 1. DNS 模式为 `mix` 并配置 `ecs`（推荐）
 连接 SSH 后执行 `vi $CRASHDIR/yamls/user.yaml`，按一下 Ins 键（Insert 键），粘贴如下内容：
+>推荐将 `ecs` 设置为当前网络的公网 IP 段，如当前网络公网 IP 为 `202.103.17.123`，可设置为 `202.103.17.0/24`（后续维护更新可直接执行命令 `sed -i -E "s/(ecs=)[0-9.]+\/[0-9]+/\1$(curl -s 4.ipw.cn | cut -d. -f1-3).0\/24/" $CRASHDIR/yamls/user.yaml`）
+{: .prompt-info }
 
 ```yaml
 hosts:
@@ -39,9 +41,9 @@ dns:
   fake-ip-filter: ['geosite:fakeip-filter,cn']
   respect-rules: true
   nameserver:
-    ## 推荐将 `ecs` 设置为当前网络所属运营商在当地省会城市的 IP 段，可在 https://bgpview.io 中查询（如湖北移动，可以搜索“cmnet-hubei”）
-    - 'https://dns.google/dns-query#ecs=211.137.64.0/20'
-    - 'https://dns11.quad9.net/dns-query#ecs=211.137.64.0/20'
+    ## 推荐将 `ecs` 设置为当前网络的公网 IP 段
+    - 'https://dns.google/dns-query#ecs=202.103.17.0/24'
+    - 'https://dns11.quad9.net/dns-query#ecs=202.103.17.0/24'
   proxy-server-nameserver:
     - https://dns.alidns.com/dns-query
     - https://doh.pub/dns-query
