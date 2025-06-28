@@ -76,7 +76,7 @@ dns:
   listen: 0.0.0.0:53
   fake-ip-range: 28.0.0.1/8
   enhanced-mode: fake-ip
-  fake-ip-filter: ['rule-set:fakeip-filter,trackerslist,private,cn']
+  fake-ip-filter: ['rule-set:trackerslist,private,cn']
   nameserver:
     - https://dns.alidns.com/dns-query
     - https://doh.pub/dns-query
@@ -116,6 +116,9 @@ proxy-groups:
   - {name: 私有网络, type: select, proxies: [全球直连], hidden: true, icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/private.png"}
   ## 若机场的 UDP 质量不是很好，导致某游戏无法登录或进入房间，可以添加 `disable-udp: true` 配置项解决
   - {name: 漏网之鱼, type: select, proxies: [节点选择, 香港节点, 台湾节点, 日本节点, 新加坡节点, 美国节点, 免费节点, 🆚 vless 节点, 全球直连], icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/match.png"}
+  - {name: 广告域名, type: select, proxies: [全球拦截, 全球绕过], icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/ads.png"}
+  - {name: 全球拦截, type: select, proxies: [REJECT], hidden: true, icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/reject.png"}
+  - {name: 全球绕过, type: select, proxies: [PASS], hidden: true, icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/pass.png"}
   - {name: 全球直连, type: select, proxies: [DIRECT], hidden: true, icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/direct.png"}
 
   - {name: 香港节点, type: load-balance, strategy: consistent-hashing, use: [🛫 机场订阅], filter: "(?i)(🇭🇰|港|hk|hongkong|hong kong)", icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/hongkong.png"}
@@ -132,14 +135,6 @@ rule-providers:
     format: mrs
     path: ./rules/ads.mrs
     url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/ads.mrs"
-    interval: 86400
-
-  fakeip-filter:
-    type: http
-    behavior: domain
-    format: mrs
-    path: ./rules/fakeip-filter.mrs
-    url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/fakeip-filter-lite.mrs"
     interval: 86400
 
   private:
@@ -256,6 +251,7 @@ rule-providers:
 
 rules:
   - RULE-SET,private,私有网络
+  - RULE-SET,ads,广告域名
   - RULE-SET,trackerslist,Trackerslist
   - RULE-SET,applications,直连软件
   - RULE-SET,microsoft-cn,微软服务
@@ -296,7 +292,7 @@ dns:
   listen: 0.0.0.0:1053
   fake-ip-range: 28.0.0.1/8
   enhanced-mode: fake-ip
-  fake-ip-filter: ['rule-set:fakeip-filter,trackerslist,private,cn']
+  fake-ip-filter: ['rule-set:trackerslist,private,cn']
   respect-rules: true
   nameserver:
     ## 推荐将 `ecs` 设置为当前网络的公网 IP 段

@@ -111,13 +111,6 @@ tags: [sing-box, sing-boxp, ShellCrash, ruleset, rule_set, 分享, Router]
         "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset-compatible/ads.srs"
       },
       {
-        "tag": "fakeip-filter",
-        "type": "remote",
-        "format": "binary",
-        "path": "./ruleset/fakeip-filter.srs",
-        "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset-compatible/fakeip-filter-lite.srs"
-      },
-      {
         "tag": "private",
         "type": "remote",
         "format": "binary",
@@ -243,6 +236,7 @@ crash
       "services.googleapis.cn": [ "services.googleapis.com" ]
     },
     "servers": [
+      { "tag": "dns_block", "address": "rcode://success" },
       { "tag": "dns_direct", "address": [ "https://dns.alidns.com/dns-query", "https://doh.pub/dns-query" ], "detour": "DIRECT" },
       { "tag": "dns_proxy", "address": [ "https://dns.google/dns-query", "https://cloudflare-dns.com/dns-query" ] },
       { "tag": "dns_fakeip", "address": "fakeip" }
@@ -251,6 +245,7 @@ crash
       { "outbound": [ "any" ], "server": "dns_direct" },
       { "clash_mode": [ "Direct" ], "query_type": [ "A", "AAAA" ], "server": "dns_direct" },
       { "clash_mode": [ "Global" ], "query_type": [ "A", "AAAA" ], "server": "dns_proxy" },
+      { "rule_set": [ "ads" ], "server": "dns_block", "disable_cache": true, "rewrite_ttl": 0 },
       { "rule_set": [ "cn" ], "query_type": [ "A", "AAAA" ], "server": "dns_direct" },
       { "rule_set": [ "proxy" ], "query_type": [ "A", "AAAA" ], "server": "dns_fakeip", "rewrite_ttl": 1 },
       { "fallback_rules": [ { "rule_set": [ "cnip" ], "server": "dns_direct" }, { "match_all": true, "server": "dns_fakeip", "rewrite_ttl": 1 } ], "server": "dns_direct", "allow_fallthrough": true }
@@ -265,7 +260,7 @@ crash
       "enabled": true,
       "inet4_range": "198.18.0.0/15",
       "inet6_range": "fc00::/18",
-      "exclude_rule": { "rule_set": [ "fakeip-filter", "trackerslist", "private", "cn" ] }
+      "exclude_rule": { "rule_set": [ "trackerslist", "private", "cn" ] }
     }
   }
 }
@@ -293,6 +288,7 @@ crash
       "services.googleapis.cn": [ "services.googleapis.com" ]
     },
     "servers": [
+      { "tag": "dns_block", "address": "rcode://success" },
       { "tag": "dns_direct", "address": [ "quic://dns.alidns.com:853", "https://doh.pub/dns-query" ], "detour": "DIRECT" },
       // 推荐将 `client_subnet` 设置为当前网络的公网 IP 段
       { "tag": "dns_proxy", "address": [ "https://dns.google/dns-query", "https://dns11.quad9.net/dns-query" ], "client_subnet": "202.103.17.0/24" },
@@ -302,6 +298,7 @@ crash
       { "outbound": [ "any" ], "server": "dns_direct" },
       { "clash_mode": [ "Direct" ], "query_type": [ "A", "AAAA" ], "server": "dns_direct" },
       { "clash_mode": [ "Global" ], "query_type": [ "A", "AAAA" ], "server": "dns_proxy" },
+      { "rule_set": [ "ads" ], "server": "dns_block", "disable_cache": true, "rewrite_ttl": 0 },
       { "rule_set": [ "cn" ], "query_type": [ "A", "AAAA" ], "server": "dns_direct" },
       { "rule_set": [ "proxy" ], "query_type": [ "A", "AAAA" ], "server": "dns_fakeip", "rewrite_ttl": 1 },
       { "fallback_rules": [ { "rule_set": [ "cnip" ], "server": "dns_direct" }, { "match_all": true, "server": "dns_fakeip", "rewrite_ttl": 1 } ], "server": "dns_proxy", "allow_fallthrough": true }
@@ -316,7 +313,7 @@ crash
       "enabled": true,
       "inet4_range": "198.18.0.0/15",
       "inet6_range": "fc00::/18",
-      "exclude_rule": { "rule_set": [ "fakeip-filter", "trackerslist", "private", "cn" ] }
+      "exclude_rule": { "rule_set": [ "trackerslist", "private", "cn" ] }
     }
   }
 }
@@ -340,15 +337,24 @@ crash
 }
 ```
 
+**新增定时任务**  
+连接 SSH 后执行命令 `vi $CRASHDIR/task/task.user`，按一下 Ins 键（Insert 键），粘贴如下内容：
+
+```shell
+204#sed -i -E "s/(\"client_subnet\": \")[0-9.]+\/[0-9]+/\1$(curl -s 4.ipw.cn | cut -d. -f1-3).0\/24/" $CRASHDIR/jsons/dns.json >/dev/null 2>&1#更新client_subnet地址
+```
+
 ---
 
 ## 四、 添加定时任务
 1. 连接 SSH 后执行命令 `vi $CRASHDIR/task/task.user`，按一下 Ins 键（Insert 键），粘贴如下内容：
+
 ```shell
 201#curl -o $CRASHDIR/CrashCore.tar.gz -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-puernya-linux-armv8.tar.gz && $CRASHDIR/start.sh restart >/dev/null 2>&1#更新sing-box_PuerNya版内核
 202#curl -o $CRASHDIR/cn_ip.txt -L https://ghfast.top/https://github.com/DustinWin/geoip/releases/download/ips/cn_ipv4.txt && curl -o $CRASHDIR/cn_ipv6.txt -L https://ghfast.top/https://github.com/DustinWin/geoip/releases/download/ips/cn_ipv6.txt >/dev/null 2>&1#更新CN_IP文件
 203#rm -rf $CRASHDIR/ui/* && curl -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/Dashboard/zashboard.tar.gz | tar -zx -C $CRASHDIR/ui/ >/dev/null 2>&1#更新Dashboard面板
 ```
+
 2. 按一下 Esc 键（退出键），输入英文冒号 `:`，继续输入 `wq` 并回车
 3. 执行 `crash`，进入 ShellCrash → 5 配置自动任务 → 1 添加自动任务，可以看到末尾就有添加的定时任务，输入对应的数字并回车后可设置执行条件  
 <img src="/assets/img/share/task-singbox-ruleset.png" alt="添加定时任务" width="60%" />

@@ -51,6 +51,7 @@ tags: [sing-box, sing-boxp, Windows, ruleset, rule_set, 分享]
       "miwifi.com": [ "192.168.31.1", "127.0.0.1" ]
     },
     "servers": [
+      { "tag": "dns_block", "address": "rcode://success" },
       { "tag": "dns_direct", "address": [ "https://dns.alidns.com/dns-query", "https://doh.pub/dns-query" ], "detour": "DIRECT" },
       { "tag": "dns_proxy", "address": [ "https://dns.google/dns-query", "https://cloudflare-dns.com/dns-query" ] },
       { "tag": "dns_fakeip", "address": "fakeip" }
@@ -59,6 +60,7 @@ tags: [sing-box, sing-boxp, Windows, ruleset, rule_set, 分享]
       { "outbound": [ "any" ], "server": "dns_direct" },
       { "clash_mode": [ "Direct" ], "query_type": [ "A", "AAAA" ], "server": "dns_direct" },
       { "clash_mode": [ "Global" ], "query_type": [ "A", "AAAA" ], "server": "dns_proxy" },
+      { "rule_set": [ "ads" ], "server": "dns_block", "disable_cache": true, "rewrite_ttl": 0 },
       { "rule_set": [ "cn" ], "query_type": [ "A", "AAAA" ], "server": "dns_direct" },
       { "rule_set": [ "proxy" ], "query_type": [ "A", "AAAA" ], "server": "dns_fakeip", "rewrite_ttl": 1 },
       { "fallback_rules": [ { "rule_set": [ "cnip" ], "server": "dns_direct" }, { "match_all": true, "server": "dns_fakeip", "rewrite_ttl": 1 } ], "server": "dns_direct", "allow_fallthrough": true }
@@ -147,13 +149,6 @@ tags: [sing-box, sing-boxp, Windows, ruleset, rule_set, 分享]
         "format": "binary",
         "path": "./ruleset/ads.srs",
         "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset-compatible/ads.srs"
-      },
-      {
-        "tag": "fakeip-filter",
-        "type": "remote",
-        "format": "binary",
-        "path": "./ruleset/fakeip-filter.srs",
-        "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset-compatible/fakeip-filter-lite.srs"
       },
       {
         "tag": "private",
@@ -292,6 +287,7 @@ tags: [sing-box, sing-boxp, Windows, ruleset, rule_set, 分享]
       "miwifi.com": [ "192.168.31.1", "127.0.0.1" ]
     },
     "servers": [
+      { "tag": "dns_block", "address": "rcode://success" },
       { "tag": "dns_direct", "address": [ "quic://dns.alidns.com:853", "https://doh.pub/dns-query" ], "detour": "DIRECT" },
       // 推荐将 `client_subnet` 设置为当前网络的公网 IP 段
       { "tag": "dns_proxy", "address": [ "https://dns.google/dns-query", "https://dns11.quad9.net/dns-query" ], "client_subnet": "202.103.17.0/24" },
@@ -301,6 +297,7 @@ tags: [sing-box, sing-boxp, Windows, ruleset, rule_set, 分享]
       { "outbound": [ "any" ], "server": "dns_direct" },
       { "clash_mode": [ "Direct" ], "query_type": [ "A", "AAAA" ], "server": "dns_direct" },
       { "clash_mode": [ "Global" ], "query_type": [ "A", "AAAA" ], "server": "dns_proxy" },
+      { "rule_set": [ "ads" ], "server": "dns_block", "disable_cache": true, "rewrite_ttl": 0 },
       { "rule_set": [ "cn" ], "query_type": [ "A", "AAAA" ], "server": "dns_direct" },
       { "rule_set": [ "proxy" ], "query_type": [ "A", "AAAA" ], "server": "dns_fakeip", "rewrite_ttl": 1 },
       { "fallback_rules": [ { "rule_set": [ "cnip" ], "server": "dns_direct" }, { "match_all": true, "server": "dns_fakeip", "rewrite_ttl": 1 } ], "server": "dns_proxy", "allow_fallthrough": true }
@@ -315,7 +312,7 @@ tags: [sing-box, sing-boxp, Windows, ruleset, rule_set, 分享]
       "enabled": true,
       "inet4_range": "198.18.0.0/15",
       "inet6_range": "fc00::/18",
-      "exclude_rule": { "rule_set": [ "fakeip-filter", "trackerslist", "private", "cn" ] }
+      "exclude_rule": { "rule_set": [ "trackerslist", "private", "cn" ] }
     }
   },
   "route": {

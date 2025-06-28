@@ -320,15 +320,24 @@ rule-providers:
     interval: 86400
 ```
 
+**新增定时任务**  
+连接 SSH 后执行命令 `vi $CRASHDIR/task/task.user`，按一下 Ins 键（Insert 键），粘贴如下内容：
+
+```shell
+204#sed -i -E "s/(ecs=)[0-9.]+\/[0-9]+/\1$(curl -s 4.ipw.cn | cut -d. -f1-3).0\/24/" $CRASHDIR/yamls/user.yaml >/dev/null 2>&1#更新ecs地址
+```
+
 ---
 
 ## 四、 添加定时任务
 1. 连接 SSH 后执行命令 `vi $CRASHDIR/task/task.user`，按一下 Ins 键（Insert 键），粘贴如下内容：
+
 ```shell
 201#curl -o $CRASHDIR/CrashCore.tar.gz -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-alpha-linux-armv8.tar.gz && $CRASHDIR/start.sh restart >/dev/null 2>&1#更新mihomo内核
 202#curl -o $CRASHDIR/cn_ip.txt -L https://ghfast.top/https://github.com/DustinWin/geoip/releases/download/ips/cn_ipv4.txt && curl -o $CRASHDIR/cn_ipv6.txt -L https://ghfast.top/https://github.com/DustinWin/geoip/releases/download/ips/cn_ipv6.txt >/dev/null 2>&1#更新CN_IP文件
 203#curl -o /data/AdGuardHome/AdGuardHome -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/AdGuardHome/AdGuardHome_beta_linux_armv8 && /data/AdGuardHome/AdGuardHome -s restart >/dev/null 2>&1#更新AdGuardHome
 ```
+
 2. 按一下 Esc 键（退出键），输入英文冒号 `:`，继续输入 `wq` 并回车
 3. 执行 `crash`，进入 ShellCrash → 5 配置自动任务 → 1 添加自动任务，可以看到末尾就有添加的定时任务，输入对应的数字并回车后可设置执行条件  
 <img src="/assets/img/share/task-mihomo-adguardhome.png" alt="添加定时任务" width="60%" />
@@ -344,6 +353,7 @@ rule-providers:
 
 ## 六、 安装 AdGuard Home
 1. 连接 SSH 后执行如下命令：
+
 ```shell
 mkdir -p /data/AdGuardHome
 curl -o /data/AdGuardHome/AdGuardHome -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/AdGuardHome/AdGuardHome_beta_linux_armv8
@@ -356,7 +366,9 @@ ip6tables -t nat -A PREROUTING -p tcp --dport 53 -j REDIRECT --to-ports 5353
 ip6tables -t nat -A PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 5353
 vi /data/auto_ssh/auto_ssh.sh
 ```
+
 2. 按一下 Ins 键（Insert 键），在末尾粘贴如下内容：
+
 ```shell
 sleep 10s
 /data/AdGuardHome/AdGuardHome -s install
@@ -366,11 +378,13 @@ iptables -t nat -A PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 5353
 ip6tables -t nat -A PREROUTING -p tcp --dport 53 -j REDIRECT --to-ports 5353
 ip6tables -t nat -A PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 5353
 ```
+
 3. 按一下 Esc 键（退出键），输入英文冒号 `:`，继续输入 `wq` 并回车
 
 ## 七、 AdGuard Home 设置
 1. 设置可参考《[全网最详细的解锁 SSH ShellCrash 搭载 mihomo 内核搭配 AdGuard Home 安装和配置教程/AdGuard Home 配置](https://proxy-tutorials.dustinwin.top/posts/pin-shellcrashadguardhome-mihomo/#2-adguard-home-%E9%85%8D%E7%BD%AE)》（可跳过“添加 DNS 重写”的步骤），此处只列举配置的不同之处
 2. 进入设置 → DNS 设置，“后备 DNS 服务器”设置为：
+
 ```text
 quic://dns.alidns.com:853
 https://doh.pub/dns-query

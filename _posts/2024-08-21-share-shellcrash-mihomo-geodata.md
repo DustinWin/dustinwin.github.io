@@ -73,6 +73,9 @@ proxy-groups:
   - {name: 私有网络, type: select, proxies: [全球直连], hidden: true, icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/private.png"}
   ## 若机场的 UDP 质量不是很好，导致某游戏无法登录或进入房间，可以添加 `disable-udp: true` 配置项解决
   - {name: 漏网之鱼, type: select, proxies: [节点选择, 香港节点, 台湾节点, 日本节点, 新加坡节点, 美国节点, 免费节点, 🆚 vless 节点, 全球直连], icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/match.png"}
+  - {name: 广告域名, type: select, proxies: [全球拦截, 全球绕过], icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/ads.png"}
+  - {name: 全球拦截, type: select, proxies: [REJECT], hidden: true, icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/reject.png"}
+  - {name: 全球绕过, type: select, proxies: [PASS], hidden: true, icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/pass.png"}
   - {name: 全球直连, type: select, proxies: [DIRECT], hidden: true, icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/direct.png"}
 
   - {name: 香港节点, type: load-balance, strategy: consistent-hashing, use: [🛫 机场订阅], filter: "(?i)(🇭🇰|港|hk|hongkong|hong kong)", icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/hongkong.png"}
@@ -84,6 +87,7 @@ proxy-groups:
 
 rules:
   - GEOSITE,private,私有网络
+  - GEOSITE,ads,广告域名
   - GEOSITE,trackerslist,Trackerslist
   - GEOSITE,microsoft-cn,微软服务
   - GEOSITE,apple-cn,苹果服务
@@ -156,7 +160,7 @@ dns:
   listen: 0.0.0.0:1053
   fake-ip-range: 28.0.0.1/8
   enhanced-mode: fake-ip
-  fake-ip-filter: ['geosite:fakeip-filter-lite,trackerslist,private,cn']
+  fake-ip-filter: ['geosite:trackerslist,private,cn']
   nameserver:
     - https://dns.alidns.com/dns-query
     - https://doh.pub/dns-query
@@ -188,7 +192,7 @@ dns:
   listen: 0.0.0.0:1053
   fake-ip-range: 28.0.0.1/8
   enhanced-mode: fake-ip
-  fake-ip-filter: ['geosite:fakeip-filter,trackerslist,private,cn']
+  fake-ip-filter: ['geosite:trackerslist,private,cn']
   respect-rules: true
   nameserver:
     ## 推荐将 `ecs` 设置为当前网络的公网 IP 段
@@ -210,22 +214,25 @@ dns:
 curl -o $CRASHDIR/GeoSite.dat -L https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo/geosite-all.dat
 ```
 
-**修改定时任务**  
+**修改和新增定时任务**  
 连接 SSH 后执行命令 `vi $CRASHDIR/task/task.user`，按一下 Ins 键（Insert 键），粘贴如下内容：
 
 ```shell
 202#curl -o $CRASHDIR/GeoSite.dat -L https://ghfast.top/https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo/geosite-all.dat && curl -o $CRASHDIR/GeoIP.dat -L https://ghfast.top/https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo/geoip-lite.dat && curl -o $CRASHDIR/Country.mmdb -L https://ghfast.top/https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo/Country-lite.mmdb && $CRASHDIR/start.sh restart >/dev/null 2>&1#更新geodata路由规则文件
+204#sed -i -E "s/(ecs=)[0-9.]+\/[0-9]+/\1$(curl -s 4.ipw.cn | cut -d. -f1-3).0\/24/" $CRASHDIR/yamls/user.yaml >/dev/null 2>&1#更新ecs地址
 ```
 
 ---
 
 ## 五、 添加定时任务
 1. 连接 SSH 后执行命令 `vi $CRASHDIR/task/task.user`，按一下 Ins 键（Insert 键），粘贴如下内容：
+
 ```shell
 201#curl -o $CRASHDIR/CrashCore.tar.gz -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-alpha-linux-armv8.tar.gz && $CRASHDIR/start.sh restart >/dev/null 2>&1#更新mihomo内核
 202#curl -o $CRASHDIR/GeoSite.dat -L https://ghfast.top/https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo/geosite.dat && curl -o $CRASHDIR/GeoIP.dat -L https://ghfast.top/https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo/geoip-lite.dat && curl -o $CRASHDIR/Country.mmdb -L https://ghfast.top/https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo/Country-lite.mmdb && $CRASHDIR/start.sh restart >/dev/null 2>&1#更新geodata路由规则文件
 203#curl -o $CRASHDIR/cn_ip.txt -L https://ghfast.top/https://github.com/DustinWin/geoip/releases/download/ips/cn_ipv4.txt && curl -o $CRASHDIR/cn_ipv6.txt -L https://ghfast.top/https://github.com/DustinWin/geoip/releases/download/ips/cn_ipv6.txt >/dev/null 2>&1#更新CN_IP文件
 ```
+
 2. 按一下 Esc 键（退出键），输入英文冒号 `:`，继续输入 `wq` 并回车
 3. 执行 `crash`，进入 ShellCrash → 5 配置自动任务 → 1 添加自动任务，可以看到末尾就有添加的定时任务，输入对应的数字并回车后可设置执行条件  
 <img src="/assets/img/share/task-mihomo-geodata.png" alt="添加定时任务" width="60%" />
