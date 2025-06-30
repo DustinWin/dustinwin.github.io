@@ -331,7 +331,20 @@ tags: [sing-box, sing-boxp, Windows, ruleset, rule_set, 分享]
 
 ---
 
-## 二、 导入 [sing-box PuerNya 版内核](https://github.com/PuerNya/sing-box/tree/building)和配置文件并启动 sing-box
+## 二、 添加以管理员身份运行 Bash 文件的支持
+1. 下载安装 [Git for Windows](https://github.com/git-for-windows/git/releases)，安装目录默认为 `C:\Program Files\Git`{: .filepath}
+2. 编辑文本文档，粘贴如下内容：
+
+```text
+Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\sh_auto_file\shell\runas\command]
+@="\"C:\\Program Files\\Git\\git-bash.exe\" \"%1\""
+```
+
+3. 另存为 .reg 文件，双击导入
+
+## 三、 导入 [sing-box PuerNya 版内核](https://github.com/PuerNya/sing-box/tree/building)和配置文件并启动 sing-box
 ### 1. 导入内核和配置文件
 - ① 编辑本文文档，粘贴如下内容：  
   注：
@@ -339,24 +352,36 @@ tags: [sing-box, sing-boxp, Windows, ruleset, rule_set, 分享]
   - ➋ 或删除此条命令，直接进入 `%PROGRAMFILES%\sing-box`{: .filepath} 文件夹，新建 config.json 文件并粘贴配置内容
 
   ```shell
-  rem 导入 sing-box 内核和配置文件
-  md "%PROGRAMFILES%\sing-box" "%PROGRAMFILES%\sing-box\ui" "%PROGRAMFILES%\sing-box\providers" "%PROGRAMFILES%\sing-box\ruleset"
-  takeown /f "%PROGRAMFILES%\sing-box" /a /r /d y
-  icacls "%PROGRAMFILES%\sing-box" /inheritance:r
-  icacls "%PROGRAMFILES%\sing-box" /remove[:g] "TrustedInstaller"
-  icacls "%PROGRAMFILES%\sing-box" /remove[:g] "CREATOR OWNER"
-  icacls "%PROGRAMFILES%\sing-box" /remove[:g] "ALL APPLICATION PACKAGES"
-  icacls "%PROGRAMFILES%\sing-box" /remove[:g] "所有受限制的应用程序包"
-  icacls "%PROGRAMFILES%\sing-box" /grant[:r] SYSTEM:(OI)(CI)F
-  icacls "%PROGRAMFILES%\sing-box" /grant[:r] Administrators:(OI)(CI)F
-  icacls "%PROGRAMFILES%\sing-box" /grant[:r] Users:(OI)(CI)F
-  curl -o "%PROGRAMFILES%\sing-box\sing-box.exe" -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-puernya-windows-amd64v3.exe
-  curl -o "%PROGRAMFILES%\sing-box\config.json" -L {.json 配置文件直链}
-  echo 导入 sing-box 内核和配置文件成功
-  pause
+  #!/bin/bash
+
+  echo "导入 sing-box 内核和配置文件..."
+  cd "$PROGRAMFILES"
+  mkdir -p sing-box/providers sing-box/ruleset sing-box/ui
+  curl -o sing-box/sing-box.exe -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-puernya-windows-amd64v3.exe
+  curl -o sing-box/config.json -L https://ghfast.top/{.json 配置文件直链}
+  sed -i -E "s/(\"client_subnet\": \")[0-9.]+\/[0-9]+/\1$(curl -s 4.ipw.cn | cut -d. -f1-3).0\/24/" sing-box/config.json
+  echo "导入 sing-box 内核和配置文件成功"
+
+  echo "安装 Zashboard 面板..."
+  curl -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/Dashboard/zashboard.tar.gz | tar -zx -C sing-box/ui
+  echo "安装 Zashboard 面板成功"
+
+  echo "赋予 sing-box 权限..."
+  cmd //c "takeown /f sing-box /a /r /d y"
+  icacls sing-box /inheritance:r
+  icacls sing-box /remove[:g] "TrustedInstaller"
+  icacls sing-box /remove[:g] "CREATOR OWNER"
+  icacls sing-box /remove[:g] "ALL APPLICATION PACKAGES"
+  icacls sing-box /remove[:g] "所有受限制的应用程序包"
+  icacls sing-box /grant[:r] "SYSTEM:(OI)(CI)F"
+  icacls sing-box /grant[:r] "Administrators:(OI)(CI)F"
+  icacls sing-box /grant[:r] "Users:(OI)(CI)F"
+  echo "赋予 sing-box 权限成功"
+
+  read -p "按任意键退出" -n1 -s
   ```
 
-- ② 另存为 .bat 文件，右击并选择“以管理员身份运行”
+- ② 另存为 .sh 文件，右击并选择“以管理员身份运行”
 
 ### 2. 启动 sing-box
 - ① 编辑本文文档，粘贴如下内容：
@@ -373,39 +398,42 @@ tags: [sing-box, sing-boxp, Windows, ruleset, rule_set, 分享]
   - ➋ 右击快捷方式并点击“属性” → “高级”，勾选“以管理员身份运行”并“确定”
   - ➌ 若想开机启动 sing-box，可搜索“Windows 添加任务计划”教程自行添加
 
-## 三、 更新 sing-box PuerNya 版内核和配置文件
+## 四、 更新 sing-box PuerNya 版内核和配置文件
 编辑本文文档，粘贴如下内容：  
 注：
 - ① 将《[一](https://proxy-tutorials.dustinwin.top/posts/share-windows-singboxp-ruleset/#%E4%B8%80-%E7%94%9F%E6%88%90%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-json-%E6%96%87%E4%BB%B6%E7%9B%B4%E9%93%BE)》中生成的配置文件 .json 文件直链替换下面命令中的 `{.json 配置文件直链}`
 - ② 或者删除此条命令，直接进入 `%PROGRAMFILES%\sing-box`{: .filepath} 文件夹，修改 config.json 文件内的配置内容
 
 ```shell
-@echo off
-rem 下载 sing-box 相关文件
-curl -o "%USERPROFILE%\Downloads\sing-box.exe" -L https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-puernya-windows-amd64v3.exe
-curl -o "%USERPROFILE%\Downloads\config.json" -L {.json 配置文件直链}
-echo 下载 sing-box 相关文件成功
+#!/bin/bash
 
-rem 结束 sing-box 相关进程
-taskkill /f /t /im sing-box*
-echo 结束 sing-box 相关进程成功
+echo "下载 sing-box 相关文件..."
+cd "$PROGRAMFILES/sing-box"
+curl -o "$USERPROFILE/Downloads/sing-box.exe" -L https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-puernya-windows-amd64v3.exe
+curl -o "$USERPROFILE/Downloads/config.json" -L {.json 配置文件直链}
+echo "下载 sing-box 相关文件成功"
 
-rem 更新 sing-box 内核和配置文件
-move /y "%USERPROFILE%\Downloads\sing-box.exe" "%PROGRAMFILES%\sing-box"
-move /y "%USERPROFILE%\Downloads\config.json" "%PROGRAMFILES%\sing-box"
-echo 更新 sing-box 内核和配置文件成功
+echo "结束 sing-box 相关进程..."
+taskkill //f //t //im "sing-box*"
+echo "结束 sing-box 相关进程成功"
 
-rem 更新 sing-box 内核和配置文件成功，等待 10 秒启动 sing-box 服务
-timeout /t 10 /nobreak
-cd "%PROGRAMFILES%\sing-box"
-start /min sing-box.exe run
-echo 启动 sing-box 服务成功
-pause
+echo "更新 sing-box 内核和配置文件..."
+mv -f "$USERPROFILE/Downloads/sing-box.exe" .
+mv -f "$USERPROFILE/Downloads/config.json" .
+sed -i -E "s/(\"client_subnet\": \")[0-9.]+\/[0-9]+/\1$(curl -s 4.ipw.cn | cut -d. -f1-3).0\/24/" config.json
+echo "更新 sing-box 内核和配置文件成功"
+
+echo "等待 10 秒启动 sing-box 服务..."
+sleep 10
+start //min sing-box.exe -d profiles
+echo "启动 sing-box 服务成功"
+
+read -p "按任意键退出" -n1 -s
 ```
 
-另存为 .bat 文件，右击并选择“以管理员身份运行”
+另存为 .sh 文件，右击并选择“以管理员身份运行”
 
-## 四、 访问 Dashboard 面板
+## 五、 访问 Dashboard 面板
 .json 文件已配置 [zashboard 面板](https://github.com/Zephyruso/zashboard)  
 打开 <http://127.0.0.1:9090/ui/> 后可直接点击“提交”，即可访问 Dashboard 面板  
 <img src="/assets/img/share/127-9090-dashboard.png" alt="在线 Dashboard 面板" width="60%" />
