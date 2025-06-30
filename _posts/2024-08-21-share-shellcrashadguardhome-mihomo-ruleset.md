@@ -15,7 +15,7 @@ tags: [Clash, mihomo, ShellCrash, AdGuard Home, ruleset, rule-set, 分享, Route
 5. 此方案适用于 AdGuard Home（以 arm64 架构为例，且安装路径为 `/data/AdGuardHome`{: .filepath}）
 
 ## 一、 生成配置文件 .yaml 文件直链
-具体方法此处不再赘述，请看《[生成带有自定义策略组和规则的 mihomo 配置文件直链-ruleset 方案](https://proxy-tutorials.dustinwin.top/posts/link-mihomo-ruleset)》，贴一下我使用的配置：
+具体方法此处不再赘述，请看《[生成带有自定义策略组和规则的 mihomo 配置文件直链-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/link-mihomo-ruleset)》，贴一下我使用的配置：
 
 ```yaml
 proxy-providers:
@@ -232,7 +232,7 @@ crash
 注：
 - ① 由于 ShellCrash 采用的 DNS 模式为 `mix`，**ShellCrash 传给 AdGuard Home 的国外域名对应 IP 为假 IP**，会导致 AdGuard Home 检查更新和下载更新 DNS 黑名单时失败
 - ② `dns.fake-ip-filter` 中添加了 AdGuard Home 常用域名，包括：`adguardteam.github.io`（AdGuard Home 自带 DNS 黑名单下载域名）、`adrules.top`（常用广告拦截下载域名）、`anti-ad.net`（常用广告拦截下载域名）和 `static.adtidy.org`（AdGuard Home 检查更新域名），可使这些域名不走 `fakeip`
-- ③ 不推荐使用自带更新去更新，推荐《[四](https://proxy-tutorials.dustinwin.top/posts/share-shellcrashadguardhome-mihomo-ruleset/#%E5%9B%9B-%E6%B7%BB%E5%8A%A0%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1)》中通过定时任务去自动更新（AdGuard Home 程序已被压缩，节省空间）  
+- ③ 不推荐使用自带更新去更新，推荐《[四](https://proxy-tutorials.dustinwin.us.kg/posts/share-shellcrashadguardhome-mihomo-ruleset/#%E5%9B%9B-%E6%B7%BB%E5%8A%A0%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1)》中通过定时任务去自动更新（AdGuard Home 程序已被压缩，节省空间）  
 <img src="/assets/img/share/update-adguardhome.png" alt="编辑 user.yaml 文件" width="60%" />
 
 ```yaml
@@ -274,7 +274,7 @@ dns:
 {: .prompt-tip }
 
 注：
-- 1. 本 `dns` 配置中，未知域名由国外 DNS 解析（有效解决了“心理 DNS 泄露问题”，详见《[搭载 mihomo 内核配置 DNS 不泄露教程-ruleset 方案](https://proxy-tutorials.dustinwin.top/posts/dnsnoleaks-mihomo-ruleset/)》），且配置 `ecs` 提高了兼容性
+- 1. 本 `dns` 配置中，未知域名由国外 DNS 解析（有效解决了“心理 DNS 泄露问题”，详见《[搭载 mihomo 内核配置 DNS 不泄露教程-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/dnsnoleaks-mihomo-ruleset/)》），且配置 `ecs` 提高了兼容性
 - 2. 推荐将 `ecs` 设置为当前网络的公网 IP 段，如当前网络公网 IP 为 `202.103.17.123`，可设置为 `202.103.17.0/24`（后续维护更新可直接执行命令 `sed -i -E "s/(ecs=)[0-9.]+\/[0-9]+/\1$(curl -s 4.ipw.cn | cut -d. -f1-3).0\/24/" $CRASHDIR/yamls/user.yaml`）
 - 3. 本 `rule-providers.cn` 配置中，`url` 链接使用 `cn.mrs` 非精简版规则集文件，可避免某些国内域名被国外 DNS 解析后无法命中 `直连 IP` 从而走 `漏网之鱼` 规则，提高了兼容性
 
@@ -343,13 +343,13 @@ rule-providers:
 <img src="/assets/img/share/task-mihomo-adguardhome.png" alt="添加定时任务" width="60%" />
 
 ## 五、 ShellCrash 设置
-1. 设置可参考《[ShellCrash 搭载 mihomo 内核的配置-ruleset 方案](https://proxy-tutorials.dustinwin.top/posts/toolsettings-shellcrash-mihomo-ruleset)》，此处只列举配置的不同之处
+1. 设置可参考《[ShellCrash 搭载 mihomo 内核的配置-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/toolsettings-shellcrash-mihomo-ruleset)》，此处只列举配置的不同之处
 2. 进入主菜单 → 2 内核功能设置 → 2 切换 DNS 运行模式 → 4 DNS 进阶设置，设置如下：  
 <img src="/assets/img/share/close-dns-null.png" alt="ShellCrash 设置 2" width="60%" />
 
 3. 进入主菜单 → 7 内核进阶设置，不要启用 4 启用域名嗅探（因 user.yaml 文件中已添加 `dns.sniffer` 配置项）
 4. 进入主菜单 → 7 内核进阶设置 → 5 自定义端口及秘钥，设置为 `9090`
-5. 进入主菜单 → 6 导入配置文件 → 2 在线获取完整配置文件，粘贴《[一](https://proxy-tutorials.dustinwin.top/posts/share-shellcrashadguardhome-mihomo-ruleset/#%E4%B8%80-%E7%94%9F%E6%88%90%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-yaml-%E6%96%87%E4%BB%B6%E7%9B%B4%E9%93%BE)》中生成的配置文件 .yaml 文件直链，启动服务即可
+5. 进入主菜单 → 6 导入配置文件 → 2 在线获取完整配置文件，粘贴《[一](https://proxy-tutorials.dustinwin.us.kg/posts/share-shellcrashadguardhome-mihomo-ruleset/#%E4%B8%80-%E7%94%9F%E6%88%90%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-yaml-%E6%96%87%E4%BB%B6%E7%9B%B4%E9%93%BE)》中生成的配置文件 .yaml 文件直链，启动服务即可
 
 ## 六、 安装 AdGuard Home
 1. 连接 SSH 后执行如下命令：
@@ -382,7 +382,7 @@ ip6tables -t nat -A PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 5353
 3. 按一下 Esc 键（退出键），输入英文冒号 `:`，继续输入 `wq` 并回车
 
 ## 七、 AdGuard Home 设置
-1. 设置可参考《[全网最详细的解锁 SSH ShellCrash 搭载 mihomo 内核搭配 AdGuard Home 安装和配置教程/AdGuard Home 配置](https://proxy-tutorials.dustinwin.top/posts/pin-shellcrashadguardhome-mihomo/#2-adguard-home-%E9%85%8D%E7%BD%AE)》（可跳过“添加 DNS 重写”的步骤），此处只列举配置的不同之处
+1. 设置可参考《[全网最详细的解锁 SSH ShellCrash 搭载 mihomo 内核搭配 AdGuard Home 安装和配置教程/AdGuard Home 配置](https://proxy-tutorials.dustinwin.us.kg/posts/pin-shellcrashadguardhome-mihomo/#2-adguard-home-%E9%85%8D%E7%BD%AE)》（可跳过“添加 DNS 重写”的步骤），此处只列举配置的不同之处
 2. 进入设置 → DNS 设置，“后备 DNS 服务器”设置为：
 
 ```text

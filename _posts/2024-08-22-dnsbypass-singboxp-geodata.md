@@ -11,7 +11,7 @@ tags: [sing-box, sing-boxp, geodata, geosite, 进阶, DNS, DNS 分流]
 1. [ShellCrash](https://github.com/juewuy/ShellCrash) 搭配 [AdGuard Home](https://github.com/AdguardTeam/AdGuardHome) 并将 AdGuard Home 作为上游时不要使用该方法
 2. 本教程以 ShellCrash 为例，其它客户端亦可参考
 3. DNS 分流简单来说就是**指定国内域名走国内 DNS 解析，国外域名走 `fake-ip`，未知域名走国内 DNS 解析，解析出 IP 在国内则走国内 DNS 解析和 `🀄️ 直连 IP` 规则，否则走 `fake-ip` 和 `🐟 漏网之鱼` 规则**
-4. 部分用户觉得未知域名处理方式会导致 DNS 泄露，可参考《[搭载 sing-boxp 内核配置 DNS 不泄露教程-geodata 方案](https://proxy-tutorials.dustinwin.top/posts/dnsnoleaks-singboxp-geodata)》
+4. 部分用户觉得未知域名处理方式会导致 DNS 泄露，可参考《[搭载 sing-boxp 内核配置 DNS 不泄露教程-geodata 方案](https://proxy-tutorials.dustinwin.us.kg/posts/dnsnoleaks-singboxp-geodata)》
 
 ## 一、 导入路由规则文件
 geosite.db 文件须包含 `fakeip-filter`、`proxy` 和 `cn`，geoip.db 文件须包含 `cn`，推荐导入我定制的[路由规则文件](https://github.com/DustinWin/ruleset_geodata?tab=readme-ov-file#%E4%B8%80-geodata-%E6%96%87%E4%BB%B6%E8%AF%B4%E6%98%8E)

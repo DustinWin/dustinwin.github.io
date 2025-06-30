@@ -12,7 +12,7 @@ tags: [Clash, mihomo, Windows, ruleset, rule-set, 分享]
 2. 此方案采用**裸核**的方式运行，更加精简
 
 ## 一、 生成配置文件 .yaml 文件直链
-具体方法请参考《[生成带有自定义策略组和规则的 mihomo 配置文件直链-ruleset 方案](https://proxy-tutorials.dustinwin.top/posts/link-mihomo-ruleset)》，贴一下我使用的配置：
+具体方法请参考《[生成带有自定义策略组和规则的 mihomo 配置文件直链-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/link-mihomo-ruleset)》，贴一下我使用的配置：
 
 ```yaml
 proxy-providers:
@@ -274,7 +274,7 @@ rules:
 {: .prompt-tip }
 
 注：
-- 1. 本 `dns` 配置中，未知域名由国外 DNS 解析（有效解决了“心理 DNS 泄露问题”，详见《[搭载 mihomo 内核配置 DNS 不泄露教程-ruleset 方案](https://proxy-tutorials.dustinwin.top/posts/dnsnoleaks-mihomo-ruleset/)》），且配置 `ecs` 提高了兼容性
+- 1. 本 `dns` 配置中，未知域名由国外 DNS 解析（有效解决了“心理 DNS 泄露问题”，详见《[搭载 mihomo 内核配置 DNS 不泄露教程-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/dnsnoleaks-mihomo-ruleset/)》），且配置 `ecs` 提高了兼容性
 - 2. 推荐将 `ecs` 设置为当前网络的公网 IP 段，如当前网络公网 IP 为 `202.103.17.123`，可设置为 `202.103.17.0/24`
 - 3. 本 `rule-providers.cn` 配置中，`url` 链接使用 `cn.mrs` 非精简版规则集文件，可避免某些国内域名被国外 DNS 解析后无法命中 `直连 IP` 从而走 `漏网之鱼` 规则，提高了兼容性
 
@@ -335,7 +335,7 @@ Windows Registry Editor Version 5.00
 ### 1. 导入内核和配置文件
 - ① 编辑本文文档，粘贴如下内容：  
   注：
-  - ➊ 将《[一](https://proxy-tutorials.dustinwin.top/posts/share-windows-mihomo-ruleset/#%E4%B8%80-%E7%94%9F%E6%88%90%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-yaml-%E6%96%87%E4%BB%B6%E7%9B%B4%E9%93%BE)》中生成的配置文件 .yaml 文件直链替换下面命令中的 `{.yaml 配置文件直链}`
+  - ➊ 将《[一](https://proxy-tutorials.dustinwin.us.kg/posts/share-windows-mihomo-ruleset/#%E4%B8%80-%E7%94%9F%E6%88%90%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-yaml-%E6%96%87%E4%BB%B6%E7%9B%B4%E9%93%BE)》中生成的配置文件 .yaml 文件直链替换下面命令中的 `{.yaml 配置文件直链}`
   - ➋ 或者删除此条命令，直接进入 `%PROGRAMFILES%\mihomo\profiles`{: .filepath} 文件夹，新建 config.yaml 文件并粘贴配置内容
 
   ```shell
@@ -388,7 +388,7 @@ Windows Registry Editor Version 5.00
 ## 四、 更新 mihomo 内核和配置文件
 编辑本文文档，粘贴如下内容：  
 注：
-- ① 将《[一](https://proxy-tutorials.dustinwin.top/posts/share-windows-mihomo-ruleset/#%E4%B8%80-%E7%94%9F%E6%88%90%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-yaml-%E6%96%87%E4%BB%B6%E7%9B%B4%E9%93%BE)》中生成的配置文件 .yaml 文件直链替换下面命令中的 `{.yaml 配置文件直链}`
+- ① 将《[一](https://proxy-tutorials.dustinwin.us.kg/posts/share-windows-mihomo-ruleset/#%E4%B8%80-%E7%94%9F%E6%88%90%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-yaml-%E6%96%87%E4%BB%B6%E7%9B%B4%E9%93%BE)》中生成的配置文件 .yaml 文件直链替换下面命令中的 `{.yaml 配置文件直链}`
 - ② 或者删除此条命令，直接进入 `%PROGRAMFILES%\mihomo`{: .filepath} 文件夹，修改 config.yaml 文件内的配置内容
 
 ```shell

@@ -86,7 +86,7 @@ dns:
 按一下 Esc 键（退出键），输入英文冒号 `:`，继续输入 `wq` 并回车
 
 ### 3. DNS 模式为 `fake-ip`
-- ① 额外编辑配置文件，在《[生成带有自定义策略组和规则的 mihomo 配置文件直链-geodata 方案/添加模板](https://proxy-tutorials.dustinwin.top/posts/link-mihomo-geodata/#%E4%BA%8C-%E6%B7%BB%E5%8A%A0%E6%A8%A1%E6%9D%BF)》编辑 .yaml 配置文件时，将 `rules` 里的所有 `GEOIP` 规则末尾加上 `no-resolve`，即修改为：
+- ① 额外编辑配置文件，在《[生成带有自定义策略组和规则的 mihomo 配置文件直链-geodata 方案/添加模板](https://proxy-tutorials.dustinwin.us.kg/posts/link-mihomo-geodata/#%E4%BA%8C-%E6%B7%BB%E5%8A%A0%E6%A8%A1%E6%9D%BF)》编辑 .yaml 配置文件时，将 `rules` 里的所有 `GEOIP` 规则末尾加上 `no-resolve`，即修改为：
 
   ```yaml
     - GEOIP,telegram,📲 电报消息,no-resolve

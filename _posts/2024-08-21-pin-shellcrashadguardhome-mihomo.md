@@ -13,8 +13,8 @@ pin: true
 2. 恢复 SSH，安装 ShellCrash 和 AdGuard Home 的方法也适用于其它已解锁 SSH 的路由器
 3. 安装 [mihomo 内核](https://github.com/MetaCubeX/mihomo)和 AdGuard Home 时须注意路由器 CPU 架构，查看 CPU 架构可连接 SSH 后执行命令 `uname -ms`，若执行结果是“linux aarch64”，就下载 armv8 或 arm64 版安装包；若是其它架构请下载相匹配的安装包
 4. ShellCrash 和 AdGuard Home 中所有没有提到的配置保持默认即可
-5. ShellCrash 和 AdGuard Home 快速安装方法请看《[ShellCrash 和 AdGuard Home 快速安装教程](https://proxy-tutorials.dustinwin.top/posts/pin-toolsinstall)》
-6. ShellCrash 单独使用时设置 DNS 分流请看《[搭载 mihomo 内核进行 DNS 分流教程-geodata 方案](https://proxy-tutorials.dustinwin.top/posts/dnsbypass-mihomo-geodata)》或《[搭载 mihomo 内核进行 DNS 分流教程-ruleset 方案](https://proxy-tutorials.dustinwin.top/posts/dnsbypass-mihomo-ruleset)》
+5. ShellCrash 和 AdGuard Home 快速安装方法请看《[ShellCrash 和 AdGuard Home 快速安装教程](https://proxy-tutorials.dustinwin.us.kg/posts/pin-toolsinstall)》
+6. ShellCrash 单独使用时设置 DNS 分流请看《[搭载 mihomo 内核进行 DNS 分流教程-geodata 方案](https://proxy-tutorials.dustinwin.us.kg/posts/dnsbypass-mihomo-geodata)》或《[搭载 mihomo 内核进行 DNS 分流教程-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/dnsbypass-mihomo-ruleset)》
 
 ## 一、 资源下载
 打包下载：<https://dustinwinvip.lanzoum.com/b01qd6p3a>  
@@ -66,11 +66,11 @@ pin: true
 
 - ③ 连接 Telnet
 
-> 在成功完成《[三、 2](https://proxy-tutorials.dustinwin.top/posts/pin-shellcrashadguardhome-mihomo/#2-%E6%B0%B8%E4%B9%85%E5%BC%80%E5%90%AF-telnet)》后才能进行此操作
+> 在成功完成《[三、 2](https://proxy-tutorials.dustinwin.us.kg/posts/pin-shellcrashadguardhome-mihomo/#2-%E6%B0%B8%E4%B9%85%E5%BC%80%E5%90%AF-telnet)》后才能进行此操作
 {: .prompt-warning }
 
   - ➊ 以管理员身份运行 PowerShell 或 CMD，执行命令 `telnet 192.168.31.1`
-    - 注：首次登录不需要用户名和密码，解锁或恢复 SSH 后用户名为 `root`，密码为《[三、 3](https://proxy-tutorials.dustinwin.top/posts/pin-shellcrashadguardhome-mihomo/#3-%E6%B0%B8%E4%B9%85%E5%BC%80%E5%90%AF%E5%B9%B6%E5%9B%BA%E5%8C%96-ssh)》中设置的登录密码
+    - 注：首次登录不需要用户名和密码，解锁或恢复 SSH 后用户名为 `root`，密码为《[三、 3](https://proxy-tutorials.dustinwin.us.kg/posts/pin-shellcrashadguardhome-mihomo/#3-%E6%B0%B8%E4%B9%85%E5%BC%80%E5%90%AF%E5%B9%B6%E5%9B%BA%E5%8C%96-ssh)》中设置的登录密码
 
     <img src="/assets/img/pin/connect-telnet-windows-1.png" alt="连接 Telnet 1" width="60%" />
 
@@ -79,7 +79,7 @@ pin: true
 
 - ④ 连接 SSH
 
-> 在成功完成《[三、 3](https://proxy-tutorials.dustinwin.top/posts/pin-shellcrashadguardhome-mihomo/#3-%E6%B0%B8%E4%B9%85%E5%BC%80%E5%90%AF%E5%B9%B6%E5%9B%BA%E5%8C%96-ssh)》后才能进行此操作
+> 在成功完成《[三、 3](https://proxy-tutorials.dustinwin.us.kg/posts/pin-shellcrashadguardhome-mihomo/#3-%E6%B0%B8%E4%B9%85%E5%BC%80%E5%90%AF%E5%B9%B6%E5%9B%BA%E5%8C%96-ssh)》后才能进行此操作
 {: .prompt-warning }
 
   - ➊ 以管理员身份运行 PowerShell 或 CMD，执行命令 `ssh -oHostKeyAlgorithms=+ssh-rsa root@192.168.31.1` 以允许 SSH 客户端接受“ssh-rsa”密钥，输入 `yes` 并回车
@@ -106,7 +106,7 @@ pin: true
 
 - ② 连接和添加 Telnet
 
-> 在成功完成《[三、 2](https://proxy-tutorials.dustinwin.top/posts/pin-shellcrashadguardhome-mihomo/#2-%E6%B0%B8%E4%B9%85%E5%BC%80%E5%90%AF-telnet)》后才能进行此操作
+> 在成功完成《[三、 2](https://proxy-tutorials.dustinwin.us.kg/posts/pin-shellcrashadguardhome-mihomo/#2-%E6%B0%B8%E4%B9%85%E5%BC%80%E5%90%AF-telnet)》后才能进行此操作
 {: .prompt-warning }
 
   - ➊ 点击“NEW HOST”，按图输入，点击“...”图标后再点击“Remove Protocol”  
@@ -125,7 +125,7 @@ pin: true
 
 - ③ 连接和添加 SSH
 
-> 在成功完成《[三、 3](https://proxy-tutorials.dustinwin.top/posts/pin-shellcrashadguardhome-mihomo/#3-%E6%B0%B8%E4%B9%85%E5%BC%80%E5%90%AF%E5%B9%B6%E5%9B%BA%E5%8C%96-ssh)》后才能进行此操作
+> 在成功完成《[三、 3](https://proxy-tutorials.dustinwin.us.kg/posts/pin-shellcrashadguardhome-mihomo/#3-%E6%B0%B8%E4%B9%85%E5%BC%80%E5%90%AF%E5%B9%B6%E5%9B%BA%E5%8C%96-ssh)》后才能进行此操作
 {: .prompt-warning }
 
   - ➊ 同样先按照第 ② 步操作，然后按图输入，“Password”为解锁或恢复 SSH 时设置的密码，点击“Connect”  
@@ -138,7 +138,7 @@ pin: true
     <img src="/assets/img/pin/add-new-ssh-3.png" alt="连接和添加 SSH 3" width="60%" />
 
 ### 3. 通过 WinSCP 连接路由器文件管理
-> 在成功完成《[三、 3](https://proxy-tutorials.dustinwin.top/posts/pin-shellcrashadguardhome-mihomo/#3-%E6%B0%B8%E4%B9%85%E5%BC%80%E5%90%AF%E5%B9%B6%E5%9B%BA%E5%8C%96-ssh)》后才能进行此操作
+> 在成功完成《[三、 3](https://proxy-tutorials.dustinwin.us.kg/posts/pin-shellcrashadguardhome-mihomo/#3-%E6%B0%B8%E4%B9%85%E5%BC%80%E5%90%AF%E5%B9%B6%E5%9B%BA%E5%8C%96-ssh)》后才能进行此操作
 {: .prompt-warning }
 
 - ① 将下载的 WinSCP-[version]-Portable.zip 文件解压，路径随意，打开 WinSCP，“文件协议”选择“SCP”，其它按图输入，“密码”为 SSH 登录密码，完成后点击登录  
@@ -282,11 +282,11 @@ echo -e '12345678\n12345678' | passwd root
     <img src="/assets/img/pin/mix-mix.png" alt="ShellCrash 配置 4" width="60%" />
 
   - ➍ 进入 2 切换 DNS 运行模式 → 4 DNS 进阶设置，选择 7 禁用 DNS 劫持
-    - 注：推荐设置 DNS 分流（单独使用 ShellCrash 以及 ShellCrash 搭配 AdGuard Home 都适用），请看《[搭载 mihomo 内核进行 DNS 分流教程-geodata 方案](https://proxy-tutorials.dustinwin.top/posts/dnsbypass-mihomo-geodata)》或《[搭载 mihomo 内核进行 DNS 分流教程-ruleset 方案](https://proxy-tutorials.dustinwin.top/posts/dnsbypass-mihomo-ruleset)》
+    - 注：推荐设置 DNS 分流（单独使用 ShellCrash 以及 ShellCrash 搭配 AdGuard Home 都适用），请看《[搭载 mihomo 内核进行 DNS 分流教程-geodata 方案](https://proxy-tutorials.dustinwin.us.kg/posts/dnsbypass-mihomo-geodata)》或《[搭载 mihomo 内核进行 DNS 分流教程-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/dnsbypass-mihomo-ruleset)》
 
     <img src="/assets/img/pin/dns-setting.png" alt="ShellCrash 配置 3" width="60%" />
 
-- ④ 进入主菜单 → 4 内核启动设置，选择 1 允许 ShellCrash 开机启动（若重启路由器后服务没有自动运行，可“设置自启延时”为 `30` 秒，然后在《[六、 1. ⑥](https://proxy-tutorials.dustinwin.top//posts/pin-shellcrashadguardhome-mihomo/#1-adguard-home-%E5%AE%89%E8%A3%85)》，将 `sleep 10s` 改为 `sleep 40s`）
+- ④ 进入主菜单 → 4 内核启动设置，选择 1 允许 ShellCrash 开机启动（若重启路由器后服务没有自动运行，可“设置自启延时”为 `30` 秒，然后在《[六、 1. ⑥](https://proxy-tutorials.dustinwin.us.kg//posts/pin-shellcrashadguardhome-mihomo/#1-adguard-home-%E5%AE%89%E8%A3%85)》，将 `sleep 10s` 改为 `sleep 40s`）
 - ⑤ 进入主菜单 → 5 配置自动任务 → 1 添加自动任务，输入对应的数字并回车后可设置执行条件
 - ⑥ 进入主菜单 → 7 内核进阶设置，选择 4 启用域名嗅探
 - ⑦ 进入主菜单 → 9 更新/卸载 → 7 切换安装源及安装版本，选择 b 切换至公测版-master → 1 Jsdelivr_CDN源，追求新版可选择 c 切换至开发版（可能不稳定）  
@@ -302,7 +302,7 @@ echo -e '12345678\n12345678' | passwd root
 - ⑨ 进入主菜单 → 6 导入配置文件  
   注：
     - ➊ 选择 1 在线生成 meta 配置文件，粘贴你的订阅链接并回车，输入 `1` 并再次回车即可
-    - ➋ 选择 2 在线获取完整配置文件，需要一定的 mihomo 知识储备，请查看《[生成带有自定义策略组和规则的 mihomo 配置文件直链-geodata 方案](https://proxy-tutorials.dustinwin.top/posts/link-mihomo-geodata)》或《[生成带有自定义策略组和规则的 mihomo 配置文件直链-ruleset 方案](https://proxy-tutorials.dustinwin.top/posts/link-mihomo-ruleset)》
+    - ➋ 选择 2 在线获取完整配置文件，需要一定的 mihomo 知识储备，请查看《[生成带有自定义策略组和规则的 mihomo 配置文件直链-geodata 方案](https://proxy-tutorials.dustinwin.us.kg/posts/link-mihomo-geodata)》或《[生成带有自定义策略组和规则的 mihomo 配置文件直链-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/link-mihomo-ruleset)》
 
   导入配置文件完成后，选择 1 启动/重启服务
 
@@ -445,12 +445,12 @@ echo -e '12345678\n12345678' | passwd root
 
 ### 3. AdGuard Home 升级
 为了节约路由器内存，请按照如下步骤进行操作：
-- ① 执行《[六、 1. ① ② ③ ④（替换）](https://proxy-tutorials.dustinwin.top//posts/pin-shellcrashadguardhome-mihomo/#1-adguard-home-%E5%AE%89%E8%A3%85)》的操作步骤
+- ① 执行《[六、 1. ① ② ③ ④（替换）](https://proxy-tutorials.dustinwin.us.kg//posts/pin-shellcrashadguardhome-mihomo/#1-adguard-home-%E5%AE%89%E8%A3%85)》的操作步骤
 - ② 连接 SSH 后执行命令 `/data/AdGuardHome/AdGuardHome -s restart`
 
 ### 4. AdGuard Home 卸载
 - ① 删除开机启动项
-  执行《[六、 1. ⑥](https://proxy-tutorials.dustinwin.top//posts/pin-shellcrashadguardhome-mihomo/#1-adguard-home-%E5%AE%89%E8%A3%85)》的操作步骤，删除添加的内容：
+  执行《[六、 1. ⑥](https://proxy-tutorials.dustinwin.us.kg//posts/pin-shellcrashadguardhome-mihomo/#1-adguard-home-%E5%AE%89%E8%A3%85)》的操作步骤，删除添加的内容：
 
   ```shell
   sleep 10s

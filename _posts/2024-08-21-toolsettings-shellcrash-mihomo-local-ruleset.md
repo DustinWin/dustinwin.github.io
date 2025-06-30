@@ -10,13 +10,13 @@ tags: [Clash, ShellCrash, ruleset, rule-set, 进阶, 本地, Router]
 {: .prompt-tip }
 1. 本教程只适用于 [ShellCrash](https://github.com/juewuy/ShellCrash)
 2. 本教程**仅适合白名单模式**（没有命中规则的网络流量统统使用代理，适用于服务器线路网络质量稳定、快速，不缺服务器流量的用户）
-3. 本教程最终效果媲美《[生成带有自定义策略组和规则的 mihomo 配置文件直链-ruleset 方案](https://proxy-tutorials.dustinwin.top/posts/link-mihomo-ruleset)》（策略组更直观，操作更方便）
-4. 若仅配置自定义策略组和规则，可直接跳过《[二](https://proxy-tutorials.dustinwin.top/posts/toolsettings-shellcrash-mihomo-local-ruleset/#%E4%BA%8C-%E5%AF%BC%E5%85%A5%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6)》
+3. 本教程最终效果媲美《[生成带有自定义策略组和规则的 mihomo 配置文件直链-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/link-mihomo-ruleset)》（策略组更直观，操作更方便）
+4. 若仅配置自定义策略组和规则，可直接跳过《[二](https://proxy-tutorials.dustinwin.us.kg/posts/toolsettings-shellcrash-mihomo-local-ruleset/#%E4%BA%8C-%E5%AF%BC%E5%85%A5%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6)》
 5. 所有步骤完成后，请连接 SSH 后执行命令 `$CRASHDIR/start.sh restart` 生效
 6. 推荐使用 [Visual Studio Code](https://code.visualstudio.com/Download) 等专业编辑器来修改配置文件
 
 ## 一、 导入 [mihomo 内核](https://github.com/MetaCubeX/mihomo)
-可参考《[ShellCrash 搭载 mihomo 内核的配置-ruleset 方案/导入 mihomo 内核](https://proxy-tutorials.dustinwin.top/posts/toolsettings-shellcrash-mihomo-ruleset/#%E4%B8%80-%E5%AF%BC%E5%85%A5-mihomo-%E5%86%85%E6%A0%B8)》里的步骤进行操作
+可参考《[ShellCrash 搭载 mihomo 内核的配置-ruleset 方案/导入 mihomo 内核](https://proxy-tutorials.dustinwin.us.kg/posts/toolsettings-shellcrash-mihomo-ruleset/#%E4%B8%80-%E5%AF%BC%E5%85%A5-mihomo-%E5%86%85%E6%A0%B8)》里的步骤进行操作
 
 ## 二、 导入配置文件
 1. 进入 ShellCrash → 6 导入配置文件 → 1 在线生成 meta 配置文件 → 4 选取在线配置规则模版，选择 4 [ACL4SSR](https://acl4ssr-sub.github.io) 极简版（适合自建节点）  

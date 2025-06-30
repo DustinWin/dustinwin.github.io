@@ -106,7 +106,7 @@ dns:
 
 ### 3. DNS 模式为 `fake-ip`
 - ① 额外编辑配置文件
-  在《[生成带有自定义策略组和规则的 mihomo 配置文件直链-ruleset 方案/添加模板](https://proxy-tutorials.dustinwin.top/posts/link-mihomo-ruleset/#%E4%BA%8C-%E6%B7%BB%E5%8A%A0%E6%A8%A1%E6%9D%BF)》编辑 .yaml 配置文件时，将 `rules` 里所有 IP 相关的规则末尾加上 `no-resolve`，即修改为：
+  在《[生成带有自定义策略组和规则的 mihomo 配置文件直链-ruleset 方案/添加模板](https://proxy-tutorials.dustinwin.us.kg/posts/link-mihomo-ruleset/#%E4%BA%8C-%E6%B7%BB%E5%8A%A0%E6%A8%A1%E6%9D%BF)》编辑 .yaml 配置文件时，将 `rules` 里所有 IP 相关的规则末尾加上 `no-resolve`，即修改为：
 
   ```yaml
     - RULE-SET,telegramip,📲 电报消息,no-resolve

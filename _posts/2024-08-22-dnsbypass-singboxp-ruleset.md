@@ -11,7 +11,7 @@ tags: [sing-box, sing-boxp, ShellCrash, ruleset, rule_set, 进阶, DNS, DNS 分�
 1. [ShellCrash](https://github.com/juewuy/ShellCrash) 搭配 [AdGuard Home](https://github.com/AdguardTeam/AdGuardHome) 并将 AdGuard Home 作为上游时不要使用该方法
 2. 本教程以 ShellCrash 为例，其它客户端亦可参考
 3. DNS 分流简单来说就是**指定国内域名走国内 DNS 解析，国外域名走 `fake-ip`，未知域名走国内 DNS 解析，解析出 IP 在国内则走国内 DNS 解析和 `🀄️ 直连 IP` 规则，否则走 `fake-ip` 和 `🐟 漏网之鱼` 规则**
-4. 部分用户觉得未知域名处理方式会导致 DNS 泄露，可参考《[搭载 sing-boxp 内核配置 DNS 不泄露教程-ruleset 方案](https://proxy-tutorials.dustinwin.top/posts/dnsnoleaks-singboxp-ruleset)》
+4. 部分用户觉得未知域名处理方式会导致 DNS 泄露，可参考《[搭载 sing-boxp 内核配置 DNS 不泄露教程-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/dnsnoleaks-singboxp-ruleset)》
 
 ## 一、 导入规则集合文件
 `route.rule_set` 须添加 `fakeip-filter`、`cn`、`proxy` 和 `cnip`，如下：

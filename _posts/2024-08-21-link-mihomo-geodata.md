@@ -309,4 +309,4 @@ rules:
 - 注：若无法直连访问，可在链接上添加 `https://ghfast.top/` 前缀，即：将链接改为 `https://ghfast.top/https://gist.githubusercontent.com/DustinWin/3d1a5039fc6f88a1da44f8e0b1c8e181/raw/mihomolink.yaml`
 
 ## 五、 导入订阅链接（以 ShellCrash 导入订阅链接为例）
-进入 ShellCrash 配置脚本 → 6 → 2，粘贴最终生成的订阅链接即可，具体设置请参考《[ShellCrash 搭载 mihomo 内核的配置-geodata 方案](https://proxy-tutorials.dustinwin.top/posts/toolsettings-shellcrash-mihomo-geodata)》
+进入 ShellCrash 配置脚本 → 6 → 2，粘贴最终生成的订阅链接即可，具体设置请参考《[ShellCrash 搭载 mihomo 内核的配置-geodata 方案](https://proxy-tutorials.dustinwin.us.kg/posts/toolsettings-shellcrash-mihomo-geodata)》

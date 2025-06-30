@@ -11,7 +11,7 @@ tags: [Clash, mihomo, 进阶, DNS, DNS 分流]
 1. 使用 [ShellCrash](https://github.com/juewuy/ShellCrash) 搭配 [AdGuard Home](https://github.com/AdguardTeam/AdGuardHome) 并将 AdGuard Home 作为上游时不要使用该方法
 2. 本教程以 ShellCrash 为例，其它客户端亦可参考
 3. DNS 分流简单来说就是**指定国内域名走国内 DNS 解析，其它域名包括国外域名都走 `fake-ip`，未知域名走国内 DNS 解析，解析出 IP 在国内则走 `🀄️ 直连 IP` 规则，否则走 `🐟 漏网之鱼` 规则**
-4. 部分用户觉得未知域名处理方式会导致 DNS 泄露，可参考《[搭载 mihomo 内核配置 DNS 不泄露教程-ruleset 方案](https://proxy-tutorials.dustinwin.top/posts/dnsnoleaks-mihomo-ruleset)》
+4. 部分用户觉得未知域名处理方式会导致 DNS 泄露，可参考《[搭载 mihomo 内核配置 DNS 不泄露教程-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/dnsnoleaks-mihomo-ruleset)》
 
 ## 一、 导入规则集合文件
 `rule-providers` 须添加 `fakeip-filter` 和 `cn`，如下：

@@ -13,7 +13,7 @@ tags: [sing-box, sing-boxp, ShellCrash, ruleset, rule_set, 分享, Router]
 3. 本方案绕过了 CNIP 且不搭配 [AdGuard Home](https://github.com/AdguardTeam/AdGuardHome)，但拦截广告效果依然强劲
 
 ## 一、 生成配置文件 .json 文件直链
-具体方法此处不再赘述，请看《[生成带有自定义出站和规则的 sing-boxp 配置文件直链-ruleset 方案](https://proxy-tutorials.dustinwin.top/posts/link-singboxp-ruleset)》，贴一下我使用的配置：
+具体方法此处不再赘述，请看《[生成带有自定义出站和规则的 sing-boxp 配置文件直链-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/link-singboxp-ruleset)》，贴一下我使用的配置：
 
 ```json
 {
@@ -272,7 +272,7 @@ crash
 {: .prompt-tip }
 
 注：
-- 1. 本 `dns` 配置中，未知域名由国外 DNS 解析（有效解决了“心理 DNS 泄露问题”，详见《[搭载 sing-boxp 内核配置 DNS 不泄露教程-ruleset 方案](https://proxy-tutorials.dustinwin.top/posts/dnsnoleaks-singboxp-ruleset/)》），且配置 `client_subnet` 提高了兼容性
+- 1. 本 `dns` 配置中，未知域名由国外 DNS 解析（有效解决了“心理 DNS 泄露问题”，详见《[搭载 sing-boxp 内核配置 DNS 不泄露教程-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/dnsnoleaks-singboxp-ruleset/)》），且配置 `client_subnet` 提高了兼容性
 - 2. 推荐将 `client_subnet` 设置为当前网络的公网 IP 段，如当前网络公网 IP 为 `202.103.17.123`，可设置为 `202.103.17.0/24`（后续维护更新可直接执行命令 `sed -i -E "s/(\"client_subnet\": \")[0-9.]+\/[0-9]+/\1$(curl -s 4.ipw.cn | cut -d. -f1-3).0\/24/" $CRASHDIR/jsons/dns.json`）
 - 3. 本 `route.rule_set` 配置中，`"tag": "cn"` 里的 `url` 链接使用 `cn.srs` 非精简版规则集文件，可避免某些国内域名被国外 DNS 解析后无法命中 `🀄️ 直连 IP` 从而走 `🐟 漏网之鱼` 规则，提高了兼容性
 
@@ -366,12 +366,12 @@ crash
 - ② 因规则集 `route.rule_set` 配置的 `path` 路径中含有文件夹 `ruleset`{: .filepath}，须手动新建此文件夹才能使 .srs 规则集文件保存到本地，否则将保存到内存中（每次启动服务都要重新下载）
 
 ## 六、 设置部分
-1. 设置可参考《[ShellCrash 搭载 sing-boxp 内核的配置-ruleset 方案](https://proxy-tutorials.dustinwin.top/posts/toolsettings-shellcrash-singboxp-ruleset)》，此处只列举配置的不同之处
+1. 设置可参考《[ShellCrash 搭载 sing-boxp 内核的配置-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/toolsettings-shellcrash-singboxp-ruleset)》，此处只列举配置的不同之处
 2. 返回到 2 切换 DNS 运行模式，进入 4 DNS 进阶设置，设置如下：  
 <img src="/assets/img/share/dns-null.png" alt="设置部分 2" width="60%" />
 
 3. 进入主菜单 → 7 内核进阶设置 → 5 自定义端口及秘钥，设置为 `9090`
-4. 进入主菜单 → 6 导入配置文件 → 2 在线获取完整配置文件，粘贴《[一](https://proxy-tutorials.dustinwin.top/posts/share-shellcrash-singboxp-ruleset/#%E4%B8%80-%E7%94%9F%E6%88%90%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-json-%E6%96%87%E4%BB%B6%E7%9B%B4%E9%93%BE)》中生成的配置文件 .json 文件直链，启动服务即可
+4. 进入主菜单 → 6 导入配置文件 → 2 在线获取完整配置文件，粘贴《[一](https://proxy-tutorials.dustinwin.us.kg/posts/share-shellcrash-singboxp-ruleset/#%E4%B8%80-%E7%94%9F%E6%88%90%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-json-%E6%96%87%E4%BB%B6%E7%9B%B4%E9%93%BE)》中生成的配置文件 .json 文件直链，启动服务即可
 
 ## 七、 访问 Dashboard 面板
 打开 <http://miwifi.com:9090/ui/> 后，“主机”输入 `192.168.31.1`，点击“提交”即可访问 Dashboard 面板  
