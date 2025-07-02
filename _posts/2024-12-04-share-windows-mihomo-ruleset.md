@@ -325,6 +325,9 @@ rule-providers:
 ```text
 Windows Registry Editor Version 5.00
 
+[HKEY_CLASSES_ROOT\.sh]
+@="sh_auto_file"
+
 [HKEY_CLASSES_ROOT\sh_auto_file\shell\runas\command]
 @="\"C:\\Program Files\\Git\\git-bash.exe\" \"%1\""
 ```
