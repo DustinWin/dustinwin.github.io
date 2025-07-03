@@ -219,7 +219,7 @@ curl -o $CRASHDIR/GeoSite.dat -L https://cdn.jsdelivr.net/gh/DustinWin/ruleset_g
 
 ```shell
 202#curl -o $CRASHDIR/GeoSite.dat -L https://ghfast.top/https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo/geosite-all.dat && curl -o $CRASHDIR/GeoIP.dat -L https://ghfast.top/https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo/geoip-lite.dat && curl -o $CRASHDIR/Country.mmdb -L https://ghfast.top/https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo/Country-lite.mmdb && $CRASHDIR/start.sh restart >/dev/null 2>&1#更新geodata路由规则文件
-204#sed -i -E "s/(ecs=)[0-9.]+\/[0-9]+/\1$(curl -s 4.ipw.cn | cut -d. -f1-3).0\/24/" $CRASHDIR/yamls/user.yaml >/dev/null 2>&1#更新ecs地址
+204#sed -i -E "s/(ecs=)[0-9.]+\/[0-9]+/\1$(curl -s 4.ipw.cn | cut -d. -f1-3).0\/24/" $CRASHDIR/yamls/user.yaml && curl -H 'Authorization: Bearer ""' http://192.168.31.1:9090/configs -d '{"path": "", "payload": ""}' -X PUT >/dev/null 2>&1#更新ecs地址
 ```
 
 ---

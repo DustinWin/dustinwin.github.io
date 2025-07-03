@@ -321,7 +321,7 @@ rule-providers:
 连接 SSH 后执行命令 `vi $CRASHDIR/task/task.user`，按一下 Ins 键（Insert 键），粘贴如下内容：
 
 ```shell
-203#sed -i -E "s/(ecs=)[0-9.]+\/[0-9]+/\1$(curl -s 4.ipw.cn | cut -d. -f1-3).0\/24/" $CRASHDIR/yamls/user.yaml >/dev/null 2>&1#更新ecs地址
+203#sed -i -E "s/(ecs=)[0-9.]+\/[0-9]+/\1$(curl -s 4.ipw.cn | cut -d. -f1-3).0\/24/" $CRASHDIR/yamls/user.yaml && curl -H 'Authorization: Bearer ""' http://192.168.31.1:9090/configs -d '{"path": "", "payload": ""}' -X PUT >/dev/null 2>&1#更新ecs地址
 ```
 
 ---
