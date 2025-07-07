@@ -31,26 +31,26 @@ tags: [Clash, mihomo, 直链, 订阅, ruleset, rule-set, 基础]
 ### 1. 白名单模式（没有命中规则的网络流量统统使用代理，适用于服务器线路网络质量稳定、快速，不缺服务器流量的用户，推荐）
 
 ```yaml
-## 代理集合（获取机场订阅链接内的所有节点）
+# 代理集合（获取机场订阅链接内的所有节点）
 proxy-providers:
   🛫 机场订阅 1:
     type: http
-    ## 机场订阅链接，使用 Clash 链接
+    # 机场订阅链接，使用 Clash 链接
     url: "https://example.com/xxx/xxx&flag=clash"
     path: ./proxies/airport1.yaml
     interval: 86400
-    ## 初步筛选需要的节点，可有效减轻路由器压力，支持正则表达式，不筛选可删除此配置项
+    # 初步筛选需要的节点，可有效减轻路由器压力，支持正则表达式，不筛选可删除此配置项
     filter: "(?i)(🇭🇰|港|hk|hongkong|hong kong|🇹🇼|台|tw|taiwan|tai wan|🇯🇵|日|jp|japan|🇸🇬|新|sg|singapore|🇺🇸|美|us|unitedstates|united states)"
-    ## 初步排除不需要的节点，支持正则表达式，若不排除可删除此配置项
+    # 初步排除不需要的节点，支持正则表达式，若不排除可删除此配置项
     exclude-filter: "高倍|直连|×10"
     health-check:
       enable: true
       url: https://www.gstatic.com/generate_204
       interval: 600
     override:
-      ## 为节点名称添加固定前缀，如节点名称原为“香港节点”会变成“🛫 机场订阅 1-香港节点”；推荐有多个机场时使用
+      # 为节点名称添加固定前缀，如节点名称原为“香港节点”会变成“🛫 机场订阅 1-香港节点”；推荐有多个机场时使用
       additional-prefix: "🛫 机场订阅 1-"
-      ## 为节点名称添加固定后缀，如节点名称原为“香港节点”会变成“香港节点-🛫 机场订阅 1”；推荐有多个机场时使用
+      # 为节点名称添加固定后缀，如节点名称原为“香港节点”会变成“香港节点-🛫 机场订阅 1”；推荐有多个机场时使用
       additional-suffix: "-🛫 机场订阅 1"
 
   🛫 机场订阅 2:
@@ -65,12 +65,12 @@ proxy-providers:
       url: https://www.gstatic.com/generate_204
       interval: 600
     override:
-      ## 为节点名称添加固定前缀，如节点名称原为“香港节点”会变成“🛫 机场订阅 2-香港节点”；推荐有多个机场时使用
+      # 为节点名称添加固定前缀，如节点名称原为“香港节点”会变成“🛫 机场订阅 2-香港节点”；推荐有多个机场时使用
       additional-prefix: "🛫 机场订阅 2-"
-      ## 为节点名称添加固定后缀，如节点名称原为“香港节点”会变成“香港节点-🛫 机场订阅 2”；推荐有多个机场时使用
+      # 为节点名称添加固定后缀，如节点名称原为“香港节点”会变成“香港节点-🛫 机场订阅 2”；推荐有多个机场时使用
       additional-suffix: "-🛫 机场订阅 2"
 
-## 单个出站代理节点（以 vless 为例）
+# 单个出站代理节点（以 vless 为例）
 proxies:
   - name: 🆓 免费节点
     type: vless
@@ -87,11 +87,11 @@ proxies:
       headers:
         host: example.com
 
-## 策略组
+# 策略组
 proxy-groups:
-  ## 手动选择国家或地区节点；根据“国家或地区策略组”名称对 `proxies` 值进行增删改，须一一对应
+  # 手动选择国家或地区节点；根据“国家或地区策略组”名称对 `proxies` 值进行增删改，须一一对应
   - {name: 🚀 节点选择, type: select, proxies: [🇭🇰 香港节点, 🇹🇼 台湾节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇺🇸 美国节点, 🆓 免费节点]}
-  ## 选择`🎯 全球直连`为测试本地网络（运营商网络速度和 IPv6 支持情况），可选择其它节点用于测试机场节点速度和 IPv6 支持情况
+  # 选择`🎯 全球直连`为测试本地网络（运营商网络速度和 IPv6 支持情况），可选择其它节点用于测试机场节点速度和 IPv6 支持情况
   - {name: 📈 网络测试, type: select, proxies: [🎯 全球直连, 🚀 节点选择, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇺🇸 美国节点, 🆓 免费节点]}
   - {name: 🤖 人工智能, type: select, proxies: [🚀 节点选择, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇺🇸 美国节点]}
   - {name: 📋 Trackerslist, type: select, proxies: [🎯 全球直连, 🚀 节点选择]}
@@ -105,27 +105,27 @@ proxy-groups:
   - {name: 🀄️ 直连 IP, type: select, proxies: [🎯 全球直连, 🚀 节点选择]}
   - {name: 🧱 代理域名, type: select, proxies: [🚀 节点选择, 🎯 全球直连]}
   - {name: 📲 电报消息, type: select, proxies: [🚀 节点选择, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇺🇸 美国节点, 🆓 免费节点]}
-  ## 若使用 ShellCrash，由于无法判断本机进程（默认 `find-process-mode: off`），需删除此条 `⬇️ 直连软件`；若在面板 dashboard 中需隐藏该策略组，可添加 `hidden: true` 配置项
+  # 若使用 ShellCrash，由于无法判断本机进程（默认 `find-process-mode: off`），需删除此条 `⬇️ 直连软件`；若在面板 dashboard 中需隐藏该策略组，可添加 `hidden: true` 配置项
   - {name: ⬇️ 直连软件, type: select, proxies: [🎯 全球直连], hidden: true}
   - {name: 🔒 私有网络, type: select, proxies: [🎯 全球直连], hidden: true}
-  ## 若机场的 UDP 质量不是很好，导致某游戏无法登录或进入房间，可添加 `disable-udp: true` 配置项解决
+  # 若机场的 UDP 质量不是很好，导致某游戏无法登录或进入房间，可添加 `disable-udp: true` 配置项解决
   - {name: 🐟 漏网之鱼, type: select, proxies: [🚀 节点选择, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇺🇸 美国节点, 🆓 免费节点, 🎯 全球直连]}
   - {name: 🛑 广告域名, type: select, proxies: [🔴 全球拦截, 🟢 全球绕过]}
   - {name: 🔴 全球拦截, type: select, proxies: [REJECT], hidden: true}
   - {name: 🟢 全球绕过, type: select, proxies: [PASS], hidden: true}
   - {name: 🎯 全球直连, type: select, proxies: [DIRECT], hidden: true}
 
-  ## ----------------国家或地区策略组---------------------
-  ## 自动选择节点，即按照 url 测试结果使用延迟最低的节点；测试后容差大于 50ms 才会切换到延迟低的那个节点；筛选出“香港”节点，支持正则表达式
+  # ----------------国家或地区策略组---------------------
+  # 自动选择节点，即按照 url 测试结果使用延迟最低的节点；测试后容差大于 50ms 才会切换到延迟低的那个节点；筛选出“香港”节点，支持正则表达式
   - {name: 🇭🇰 香港节点, type: url-test, tolerance: 50, use: [🛫 机场订阅 1, 🛫 机场订阅 2], filter: "(?i)(🇭🇰|港|hk|hongkong|hong kong)"}
-  ## 节点负载均衡，即将请求均匀分配到多个节点上，优点是更稳定，速度可能有提升；将相同顶级域名的请求分配给策略组内的同一个代理节点；推荐在节点复用比较多的情况下使用
+  # 节点负载均衡，即将请求均匀分配到多个节点上，优点是更稳定，速度可能有提升；将相同顶级域名的请求分配给策略组内的同一个代理节点；推荐在节点复用比较多的情况下使用
   - {name: 🇹🇼 台湾节点, type: load-balance, strategy: consistent-hashing, use: [🛫 机场订阅 1, 🛫 机场订阅 2], filter: "(?i)(🇹🇼|台|tw|taiwan|tai wan)"}
-  ## 可使用 `include-all-providers: true` 代替 `use: [🛫 机场订阅 1, 🛫 机场订阅 2, ...]`，意思为引入所有代理集合
+  # 可使用 `include-all-providers: true` 代替 `use: [🛫 机场订阅 1, 🛫 机场订阅 2, ...]`，意思为引入所有代理集合
   - {name: 🇯🇵 日本节点, type: url-test, tolerance: 50, include-all-providers: true, filter: "(?i)(🇯🇵|日|jp|japan)"}
   - {name: 🇸🇬 新加坡节点, type: url-test, tolerance: 50, use: [🛫 机场订阅 1, 🛫 机场订阅 2], filter: "(?i)(🇸🇬|新|sg|singapore)"}
   - {name: 🇺🇸 美国节点, type: url-test, tolerance: 50, use: [🛫 机场订阅 1, 🛫 机场订阅 2], filter: "(?i)(🇺🇸|美|us|unitedstates|united states)"}
 
-## 规则集（yaml 文件每天自动更新）
+# 规则集（yaml 文件每天自动更新）
 rule-providers:
   private:
     type: http
@@ -151,7 +151,7 @@ rule-providers:
     url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/trackerslist.mrs"
     interval: 86400
 
-  ## 若使用 ShellCrash，由于无法判断本机进程（默认 `find-process-mode: off`），需删除此条 `applications`
+  # 若使用 ShellCrash，由于无法判断本机进程（默认 `find-process-mode: off`），需删除此条 `applications`
   applications:
     type: http
     behavior: classical
@@ -280,15 +280,15 @@ rule-providers:
     url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/telegramip.mrs"
     interval: 86400
 
-## 规则
+# 规则
 rules:
-  ## 自定义规则优先放前面
+  # 自定义规则优先放前面
   - RULE-SET,private,🔒 私有网络
   - RULE-SET,ads,🛑 广告域名
   - RULE-SET,trackerslist,📋 Trackerslist
-  ## 为了使 P2P 流量（BT 下载）走直连，可添加一条 `DST-PORT` 规则（ShellCrash 会默认开启“只代理常用端口”，可删除此条 `DST-PORT`）
+  # 为了使 P2P 流量（BT 下载）走直连，可添加一条 `DST-PORT` 规则（ShellCrash 会默认开启“只代理常用端口”，可删除此条 `DST-PORT`）
   - DST-PORT,6881-6889,🎯 全球直连
-  ## 若使用 ShellCrash，由于无法判断本机进程（默认 `find-process-mode: off`），需删除此条 `RULE-SET`
+  # 若使用 ShellCrash，由于无法判断本机进程（默认 `find-process-mode: off`），需删除此条 `RULE-SET`
   - RULE-SET,applications,⬇️ 直连软件
   - RULE-SET,microsoft-cn,🪟 微软服务
   - RULE-SET,apple-cn,🍎 苹果服务
@@ -313,26 +313,26 @@ rules:
 ### 2. 黑名单模式（只有命中规则的网络流量才使用代理，适用于服务器线路网络质量不稳定或不够快，或服务器流量紧缺的用户。通常也是软路由用户、家庭网关用户的常用模式）
 
 ```yaml
-## 代理集合（获取机场订阅链接内的所有节点）
+# 代理集合（获取机场订阅链接内的所有节点）
 proxy-providers:
   🛫 机场订阅 1:
     type: http
-    ## 机场订阅链接，使用 Clash 链接
+    # 机场订阅链接，使用 Clash 链接
     url: "https://example.com/xxx/xxx&flag=clash"
     path: ./proxies/airport1.yaml
     interval: 86400
-    ## 初步筛选需要的节点，可有效减轻路由器压力，支持正则表达式，不筛选可删除此配置项
+    # 初步筛选需要的节点，可有效减轻路由器压力，支持正则表达式，不筛选可删除此配置项
     filter: "(?i)(🇭🇰|港|hk|hongkong|hong kong|🇹🇼|台|tw|taiwan|tai wan|🇯🇵|日|jp|japan|🇸🇬|新|sg|singapore|🇺🇸|美|us|unitedstates|united states)"
-    ## 初步排除不需要的节点，支持正则表达式，若不排除可删除此配置项
+    # 初步排除不需要的节点，支持正则表达式，若不排除可删除此配置项
     exclude-filter: "高倍|直连|×10"
     health-check:
       enable: true
       url: https://www.gstatic.com/generate_204
       interval: 600
     override:
-      ## 为节点名称添加固定前缀，如节点名称原为“香港节点”会变成“🛫 机场订阅 1-香港节点”；推荐有多个机场时使用
+      # 为节点名称添加固定前缀，如节点名称原为“香港节点”会变成“🛫 机场订阅 1-香港节点”；推荐有多个机场时使用
       additional-prefix: "🛫 机场订阅 1-"
-      ## 为节点名称添加固定后缀，如节点名称原为“香港节点”会变成“香港节点-🛫 机场订阅 1”；推荐有多个机场时使用
+      # 为节点名称添加固定后缀，如节点名称原为“香港节点”会变成“香港节点-🛫 机场订阅 1”；推荐有多个机场时使用
       additional-suffix: "-🛫 机场订阅 1"
 
   🛫 机场订阅 2:
@@ -347,12 +347,12 @@ proxy-providers:
       url: https://www.gstatic.com/generate_204
       interval: 600
     override:
-      ## 为节点名称添加固定前缀，如节点名称原为“香港节点”会变成“🛫 机场订阅 2-香港节点”；推荐有多个机场时使用
+      # 为节点名称添加固定前缀，如节点名称原为“香港节点”会变成“🛫 机场订阅 2-香港节点”；推荐有多个机场时使用
       additional-prefix: "🛫 机场订阅 2-"
-      ## 为节点名称添加固定后缀，如节点名称原为“香港节点”会变成“香港节点-🛫 机场订阅 2”；推荐有多个机场时使用
+      # 为节点名称添加固定后缀，如节点名称原为“香港节点”会变成“香港节点-🛫 机场订阅 2”；推荐有多个机场时使用
       additional-suffix: "-🛫 机场订阅 2"
 
-## 单个出站代理节点（以 vless 为例）
+# 单个出站代理节点（以 vless 为例）
 proxies:
   - name: 🆓 免费节点
     type: vless
@@ -369,11 +369,11 @@ proxies:
       headers:
         host: example.com
 
-## 策略组
+# 策略组
 proxy-groups:
-  ## 手动选择国家或地区节点；根据“国家或地区策略组”名称对 `proxies` 值进行增删改，须一一对应
+  # 手动选择国家或地区节点；根据“国家或地区策略组”名称对 `proxies` 值进行增删改，须一一对应
   - {name: 🚀 节点选择, type: select, proxies: [🇭🇰 香港节点, 🇹🇼 台湾节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇺🇸 美国节点, 🆓 免费节点]}
-  ## 选择`🎯 全球直连`为测试本地网络（运营商网络速度和 IPv6 支持情况），可选择其它节点用于测试机场节点速度和 IPv6 支持情况
+  # 选择`🎯 全球直连`为测试本地网络（运营商网络速度和 IPv6 支持情况），可选择其它节点用于测试机场节点速度和 IPv6 支持情况
   - {name: 📈 网络测试, type: select, proxies: [🎯 全球直连, 🚀 节点选择, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇺🇸 美国节点, 🆓 免费节点]}
   - {name: 🤖 人工智能, type: select, proxies: [🚀 节点选择, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇺🇸 美国节点]}
   - {name: 📋 Trackerslist, type: select, proxies: [🎯 全球直连, 🚀 节点选择]}
@@ -381,7 +381,7 @@ proxy-groups:
   - {name: 🎮 游戏平台, type: select, proxies: [🚀 节点选择, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇺🇸 美国节点]}
   - {name: 🧱 代理域名, type: select, proxies: [🚀 节点选择, 🎯 全球直连]}
   - {name: 📲 电报消息, type: select, proxies: [🚀 节点选择, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇺🇸 美国节点, 🆓 免费节点]}
-  ## 若在面板 dashboard 中需隐藏该策略组，可添加 `hidden: true` 配置项
+  # 若在面板 dashboard 中需隐藏该策略组，可添加 `hidden: true` 配置项
   - {name: 🔒 私有网络, type: select, proxies: [🎯 全球直连], hidden: true}
   - {name: 🐟 漏网之鱼, type: select, proxies: [🎯 全球直连, 🚀 节点选择, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇺🇸 美国节点, 🆓 免费节点]}
   - {name: 🛑 广告域名, type: select, proxies: [🔴 全球拦截, 🟢 全球绕过]}
@@ -389,17 +389,17 @@ proxy-groups:
   - {name: 🟢 全球绕过, type: select, proxies: [PASS], hidden: true}
   - {name: 🎯 全球直连, type: select, proxies: [DIRECT], hidden: true}
 
-  ## ----------------国家或地区策略组---------------------
-  ## 自动选择节点，即按照 url 测试结果使用延迟最低的节点；测试后容差大于 50ms 才会切换到延迟低的那个节点；筛选出“香港”节点，支持正则表达式
+  # ----------------国家或地区策略组---------------------
+  # 自动选择节点，即按照 url 测试结果使用延迟最低的节点；测试后容差大于 50ms 才会切换到延迟低的那个节点；筛选出“香港”节点，支持正则表达式
   - {name: 🇭🇰 香港节点, type: url-test, tolerance: 50, use: [🛫 机场订阅 1, 🛫 机场订阅 2], filter: "(?i)(🇭🇰|港|hk|hongkong|hong kong)"}
-  ## 节点负载均衡，即将请求均匀分配到多个节点上，优点是更稳定，速度可能有提升；将相同顶级域名的请求分配给策略组内的同一个代理节点；推荐在节点复用比较多的情况下使用
+  # 节点负载均衡，即将请求均匀分配到多个节点上，优点是更稳定，速度可能有提升；将相同顶级域名的请求分配给策略组内的同一个代理节点；推荐在节点复用比较多的情况下使用
   - {name: 🇹🇼 台湾节点, type: load-balance, strategy: consistent-hashing, use: [🛫 机场订阅 1, 🛫 机场订阅 2], filter: "(?i)(🇹🇼|台|tw|taiwan|tai wan)"}
-  ## 可使用 `include-all-providers: true` 代替 `use: [🛫 机场订阅 1, 🛫 机场订阅 2, ...]`，意思为引入所有代理集合
+  # 可使用 `include-all-providers: true` 代替 `use: [🛫 机场订阅 1, 🛫 机场订阅 2, ...]`，意思为引入所有代理集合
   - {name: 🇯🇵 日本节点, type: url-test, tolerance: 50, include-all-providers: true, filter: "(?i)(🇯🇵|日|jp|japan)"}
   - {name: 🇸🇬 新加坡节点, type: url-test, tolerance: 50, use: [🛫 机场订阅 1, 🛫 机场订阅 2], filter: "(?i)(🇸🇬|新|sg|singapore)"}
   - {name: 🇺🇸 美国节点, type: url-test, tolerance: 50, use: [🛫 机场订阅 1, 🛫 机场订阅 2], filter: "(?i)(🇺🇸|美|us|unitedstates|united states)"}
 
-## 规则集（yaml 文件每天自动更新）
+# 规则集（yaml 文件每天自动更新）
 rule-providers:
   private:
     type: http
@@ -497,7 +497,7 @@ rule-providers:
     url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/telegramip.mrs"
     interval: 86400
 
-## 规则
+# 规则
 rules:
   - RULE-SET,private,🔒 私有网络
   - RULE-SET,ads,🛑 广告域名
@@ -534,19 +534,19 @@ rules:
    - ② 本教程搭配的规则集合文件包含有 `netflix`、`netflixip` 和 `bilibili`
 
 ```yaml
-## 策略组
+# 策略组
 proxy-groups:
-  ## 默认选择新加坡节点
+  # 默认选择新加坡节点
   - {name: 🎥 奈飞视频, type: select, proxies: [🇸🇬 新加坡节点]}
-  ## 默认选择日本节点，也可切换到直连
+  # 默认选择日本节点，也可切换到直连
   - {name: 📺 哔哩哔哩, type: select, proxies: [🇯🇵 日本节点, 🎯 全球直连]}
-  ## 自动选择延迟最低的新加坡节点；容差大于 50ms 才会切换到延迟低的那个节点
+  # 自动选择延迟最低的新加坡节点；容差大于 50ms 才会切换到延迟低的那个节点
   - {name: 🇸🇬 新加坡节点, type: url-test, tolerance: 50, include-all-providers: true, filter: "(?i)(🇸🇬|新|sg|singapore)"}
-  ## 手动选择日本任一节点
+  # 手动选择日本任一节点
   - {name: 🇯🇵 日本节点, type: select, include-all-providers: true, filter: "(?i)(🇯🇵|日|jp|japan)"}
   - {name: 🎯 全球直连, type: select, proxies: [DIRECT], hidden: true}
 
-## 规则集（yaml 文件每天自动更新）
+# 规则集（yaml 文件每天自动更新）
 rule-providers:
   netflix:
     type: http
@@ -572,9 +572,9 @@ rule-providers:
     url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/bilibili.mrs"
     interval: 86400
 
-## 规则
+# 规则
 rules:
-  ## 自定义规则优先放前面
+  # 自定义规则优先放前面
   - RULE-SET,netflix,🎥 奈飞视频
   - RULE-SET,netflixip,🎥 奈飞视频,no-resolve
   - RULE-SET,bilibili,📺 哔哩哔哩

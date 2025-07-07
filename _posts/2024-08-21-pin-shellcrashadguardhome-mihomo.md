@@ -31,22 +31,21 @@ pin: true
 官方下载：<https://github.com/MetaCubeX/mihomo/releases>  
 下载 mihomo-linux-arm64-[version].gz 文件
 
-### 3. Termius
-官方下载：<https://autoupdate.termius.com/windows/Termius.exe>
+### 3. PuTTY
+官方下载：<https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html>  
+下载 putty-64bit-[version]-installer.msi 文件
 
 ### 4. AdGuard Home
 官方下载：<https://github.com/AdguardTeam/AdGuardHome/releases>  
 下载 AdGuardHome_linux_arm64.tar.gz 文件
 
 ### 5. UPX
-官方下载：<https://github.com/upx/upx/releases>  
+官方下载：<https://winscp.net/eng/download.php>  
 下载 upx-[version]-win64.zip 文件
 
 ### 6. WinSCP
-官方下载：<https://winscp.net/eng/downloads.php>
-- 注：中文绿色版请下载打包文件
-
-下载 WinSCP-[version]-Portable.zip 文件
+官方下载：<https://winscp.net/eng/downloads.php>  
+下载 WinSCP-[version]-Setup.exe 文件
 
 ## 二、 添加 SSH 支持
 ### 1. 给 Windows 操作系统添加 SSH 支持（任选一）
@@ -94,58 +93,70 @@ pin: true
     <img src="/assets/img/pin/connect-ssh-windows-3.png" alt="连接 SSH 3" width="60%" />
 
 ### 2. 通过 SSH 工具添加 SSH 支持（任选一）
-- ① 打开 Termius  
-  - ➊ 安装 Termius 并启动，注册并登录（登录后可一直免费试用），然后点击“Starter”  
-    <img src="/assets/img/pin/open-termius-1.png" alt="打开 Termius 1" width="60%" />
-
-  - ➋ 继续点击“No, downgrade me to Starter”  
-    <img src="/assets/img/pin/open-termius-2.png" alt="打开 Termius 2" width="60%" />
-
-  - ➌ 最后点击“Done”即可打开 打开 Termius  
-    <img src="/assets/img/pin/open-termius-3.png" alt="打开 Termius 3" width="60%" />
-
-- ② 连接和添加 Telnet
+- ① 连接 Telnet
 
 > 在成功完成《[三、 2](https://proxy-tutorials.dustinwin.us.kg/posts/pin-shellcrashadguardhome-mihomo/#2-%E6%B0%B8%E4%B9%85%E5%BC%80%E5%90%AF-telnet)》后才能进行此操作
 {: .prompt-warning }
 
-  - ➊ 点击“NEW HOST”，按图输入，点击“...”图标后再点击“Remove Protocol”  
-    <img src="/assets/img/pin/add-new-telnet-1.png" alt="连接和添加 Telnet 1" width="60%" />
+  - ➊ 安装 PuTTY 并打开，按图输入和选择，点击“Open”即可成功连接 Telnet
+    <img src="/assets/img/pin/connect-telnet-1.png" alt="连接 Telnet 1" width="60%" />
 
-  - ➋ 点击“Add protocol”后再点击“Telnet”  
-    <img src="/assets/img/pin/add-new-telnet-2.png" alt="连接和添加 Telnet 2" width="60%" />
+  - ➋ 显示“ARE U OK”表示成功登录 Telnet  
+    <img src="/assets/img/pin/connect-telnet-2.png" alt="连接和添加 Telnet 2" width="60%" />
 
-  - ➌ 最后点击“Connect”即可成功连接和添加 Telnet
-    - 注：首次登录不需要输入用户名和密码，解锁或恢复 SSH 后用户名为 `root`，密码为 SSH 登录密码
-
-    <img src="/assets/img/pin/add-new-telnet-3.png" alt="连接和添加 Telnet 3" width="60%" />
-
-  - ➍ 显示“ARE U OK”表示成功登录 Telnet  
-    <img src="/assets/img/pin/add-new-telnet-4.png" alt="连接和添加 Telnet 4" width="60%" />
-
-- ③ 连接和添加 SSH
+- ② 连接 SSH
 
 > 在成功完成《[三、 3](https://proxy-tutorials.dustinwin.us.kg/posts/pin-shellcrashadguardhome-mihomo/#3-%E6%B0%B8%E4%B9%85%E5%BC%80%E5%90%AF%E5%B9%B6%E5%9B%BA%E5%8C%96-ssh)》后才能进行此操作
 {: .prompt-warning }
 
-  - ➊ 同样先按照第 ② 步操作，然后按图输入，“Password”为解锁或恢复 SSH 时设置的密码，点击“Connect”  
-    <img src="/assets/img/pin/add-new-ssh-1.png" alt="连接和添加 SSH 1" width="60%" />
+  - ➊ 打开 PuTTY，然后按图输入，点击“Open”即可成功连接 SSH
+    <img src="/assets/img/pin/connect-ssh-1.png" alt="连接和添加 SSH 1" width="60%" />
 
-  - ➋ 首次连接 SSH 需要点击“Add and continue”即可成功连接和添加 SSH  
-    <img src="/assets/img/pin/add-new-ssh-2.png" alt="连接和添加 SSH 2" width="60%" />
-
-  - ➌ 显示“ARE U OK”表示成功连接 SSH  
-    <img src="/assets/img/pin/add-new-ssh-3.png" alt="连接和添加 SSH 3" width="60%" />
+  - ➋ “login as”输入“root”并回车，“password”为解锁或恢复 SSH 时设置的密码，输入后再次回车，显示“ARE U OK”表示成功连接 SSH  
+    <img src="/assets/img/pin/connect-ssh-2.png" alt="连接和添加 SSH 2" width="60%" />
 
 ### 3. 通过 WinSCP 连接路由器文件管理
 > 在成功完成《[三、 3](https://proxy-tutorials.dustinwin.us.kg/posts/pin-shellcrashadguardhome-mihomo/#3-%E6%B0%B8%E4%B9%85%E5%BC%80%E5%90%AF%E5%B9%B6%E5%9B%BA%E5%8C%96-ssh)》后才能进行此操作
 {: .prompt-warning }
 
-- ① 将下载的 WinSCP-[version]-Portable.zip 文件解压，路径随意，打开 WinSCP，“文件协议”选择“SCP”，其它按图输入，“密码”为 SSH 登录密码，完成后点击登录  
+- ① 将下载的 WinSCP-[version]-Portable.zip 文件解压，路径随意，打开 WinSCP，“文件协议”选择“SCP”，其它按图输入，“密码”为 SSH 登录密码，点击“保存”后再点击“登录”  
   <img src="/assets/img/pin/login-winscp.png" alt="通过 WinSCP 连接路由器文件管理 1" width="60%" />
 
 - ② 左侧为电脑本地文件，右侧为路由器文件  
   <img src="/assets/img/pin/show-winscp.png" alt="通过 WinSCP 连接路由器文件管理 2" width="60%" />
+
+---
+
+>配置免密码连接 SSH 和 WinSCP
+{: .prompt-tip }
+1. 配置免密码连接 SSH
+- ① 打开 PuTTYgen，直接点击“Generate”（期间鼠标必须在此窗口内不停移动）  
+  <img src="/assets/img/pin/puttygen-generate.png" alt="生成 key" width="60%" />
+
+- ② 生成后复制完整的“Key”值备用，点击“Save private key”（可在“Key comment”填入“root@192.168.31.1 - REDMI AX6000”）  
+  <img src="/assets/img/pin/puttygen-save.png" alt="保存 key" width="60%" />
+
+- ③ “保存”文件到 `C:\Users\[用户名]\.ssh\rsa_key.ppk`{: .filepath} 中
+- ④ 打开 PuTTY，进入 Connection → SSH → Auth → Credentials，点击“Private key file for authentication”的“Browser”，定位到 `C:\Users\[用户名]\.ssh\rsa_key.ppk`{: .filepath} 文件并“打开”
+- ⑤ 进入 Session，按图输入后，先点击“Default Settings”，后点击“Save”  
+  <img src="/assets/img/pin/putty-setting.png" alt="保存 key" width="60%" />
+
+2. 配置免密码连接 WinSCP
+- ① 打开 WinSCP，进入标签页 → 站点 → 站点管理器，点击“编辑”，删除密码后点击“高级”
+- ② 进入 SSH → 验证，点击“密钥文件”的“...”图标，定位到 `C:\Users\[用户名]\.ssh\rsa_key.ppk`{: .filepath} 文件并“打开”，点击“确定”，再点击“保存”
+
+3. 导入 Key 并加入开机启动  
+连接 SSH，执行如下命令：
+- 注：将《1. ②》中复制的 Key 值替换下面命令中的 `{key}`
+
+```shell
+echo "{key}" > /data/auto_ssh/authorized_keys
+chmod 600 /data/auto_ssh/authorized_keys
+ln -sf /data/auto_ssh/authorized_keys /etc/dropbear/
+echo -e "\nln -sf /data/auto_ssh/authorized_keys /etc/dropbear/" >> /data/auto_ssh/auto_ssh.sh
+```
+
+---
 
 ## 三、 解锁 SSH
 ### 1. 开启调试模式
@@ -210,7 +221,7 @@ pin: true
   reboot
   ```
 
-  <img src="/assets/img/pin/ssh.png" alt="永久开启并固化 SSH" width="60%" />
+  <img src="/assets/img/pin/unlock-ssh.png" alt="永久开启并固化 SSH" width="60%" />
 
 - ② 最后一行 `reboot` 命令需要手动回车（下同），回车后路由器会重启
 
@@ -292,10 +303,10 @@ echo -e '12345678\n12345678' | passwd root
 - ⑦ 进入主菜单 → 9 更新/卸载 → 7 切换安装源及安装版本，选择 b 切换至公测版-master → 1 Jsdelivr_CDN源，追求新版可选择 c 切换至开发版（可能不稳定）  
   <img src="/assets/img/pin/select-update-source.png" alt="ShellCrash 配置 5" width="60%" />
 
-- ⑧ 进入主菜单 → 9 更新/卸载 → 4 安装本地 Dashboard 面板，选择 3 安装 MetaXD 面板  
+- ⑧ 进入主菜单 → 9 更新/卸载 → 4 安装本地 Dashboard 面板，选择 4 安装 zashboard 面板  
   注：
     - ➊ 启动服务后，面板 Dashboard 访问链接为：<http://192.168.31.1:9999/ui/>
-    - ➋ 初次打开需要添加“后端地址”：`http://192.168.31.1:9999`
+    - ➋ 初次打开需要添加“主机”和“端口”，分别填入 `192.168.31.1` 和 `9999` 并点击“添加”即可访问 Dashboard 面板
 
   <img src="/assets/img/pin/install-dashboard.png" alt="ShellCrash 配置 6" width="60%" />
 
@@ -318,7 +329,7 @@ echo -e '12345678\n12345678' | passwd root
 
 ### 3. ShellCrash 升级
 进入主菜单 → 9 更新/卸载，查看“管理脚本”、“内核文件”和“数据库文件”有无新版本，有则选择对应的数字进行升级即可  
-<img src="/assets/img/pin/update-shellcrash.png" alt="ShellCrash 升级" width="60%" />
+<img src="/assets/img/pin/update-shellcrash-mihomo.png" alt="ShellCrash 升级" width="60%" />
 
 ### 4. ShellCrash 卸载
 - ① 通过脚本命令进行卸载（任选一）  

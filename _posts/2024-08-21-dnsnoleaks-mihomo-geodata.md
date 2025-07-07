@@ -41,7 +41,7 @@ dns:
   fake-ip-filter: ['geosite:fakeip-filter,cn']
   respect-rules: true
   nameserver:
-    ## 推荐将 `ecs` 设置为当前网络的公网 IP 段
+    # 推荐将 `ecs` 设置为当前网络的公网 IP 段
     - 'https://dns.google/dns-query#ecs=202.103.17.0/24'
     - 'https://dns11.quad9.net/dns-query#ecs=202.103.17.0/24'
   proxy-server-nameserver:

@@ -19,7 +19,7 @@ tags: [Clash, mihomo, ShellCrash, ruleset, rule-set, 分享, Router]
 proxy-providers:
   🛫 机场订阅:
     type: http
-    ## 修改为你的 Clash 订阅链接
+    # 修改为你的 Clash 订阅链接
     url: "https://example.com/xxx/xxx&flag=clash"
     path: ./proxies/airport.yaml
     interval: 86400
@@ -30,7 +30,7 @@ proxy-providers:
       interval: 600
   🆓 免费订阅:
     type: http
-    ## 修改为你的 Clash 订阅链接
+    # 修改为你的 Clash 订阅链接
     url: "https://example.com/xxx/xxx&flag=clash"
     path: ./proxies/free.yaml
     interval: 86400
@@ -39,7 +39,7 @@ proxy-providers:
       url: https://www.gstatic.com/generate_204
       interval: 600
 
-## 若没有单个出站代理节点，须删除所有 `🆚 vless 节点` 相关内容
+# 若没有单个出站代理节点，须删除所有 `🆚 vless 节点` 相关内容
 proxies:
   - name: 🆚 vless 节点
     type: vless
@@ -70,7 +70,7 @@ proxy-groups:
   - {name: 代理域名, type: select, proxies: [节点选择, 全球直连], icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/global.png"}
   - {name: 电报消息, type: select, proxies: [节点选择, 香港节点, 台湾节点, 日本节点, 新加坡节点, 美国节点, 免费节点, 🆚 vless 节点], icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/telegram.png"}
   - {name: 私有网络, type: select, proxies: [全球直连], hidden: true, icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/private.png"}
-  ## 若机场的 UDP 质量不是很好，导致某游戏无法登录或进入房间，可以添加 `disable-udp: true` 配置项解决
+  # 若机场的 UDP 质量不是很好，导致某游戏无法登录或进入房间，可以添加 `disable-udp: true` 配置项解决
   - {name: 漏网之鱼, type: select, proxies: [节点选择, 香港节点, 台湾节点, 日本节点, 新加坡节点, 美国节点, 免费节点, 🆚 vless 节点, 全球直连], icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/match.png"}
   - {name: 广告域名, type: select, proxies: [全球拦截, 全球绕过], icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/ads.png"}
   - {name: 全球拦截, type: select, proxies: [REJECT], hidden: true, icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/reject.png"}
@@ -292,7 +292,7 @@ dns:
   fake-ip-filter: ['rule-set:trackerslist,private,cn']
   respect-rules: true
   nameserver:
-    ## 推荐将 `ecs` 设置为当前网络的公网 IP 段
+    # 推荐将 `ecs` 设置为当前网络的公网 IP 段
     - 'https://dns.google/dns-query#ecs=202.103.17.0/24'
     - 'https://dns11.quad9.net/dns-query#ecs=202.103.17.0/24'
   proxy-server-nameserver:
@@ -341,7 +341,7 @@ rule-providers:
 ## 五、 设置部分
 1. 设置可参考《[ShellCrash 搭载 mihomo 内核的配置-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/toolsettings-shellcrash-mihomo-ruleset)》，此处只列举配置的不同之处
 2. 进入主菜单 → 2 内核功能设置 → 2 切换 DNS 运行模式 → 4 DNS 进阶设置，设置如下：  
-<img src="/assets/img/share/dns-null.png" alt="设置部分 2" width="60%" />
+<img src="/assets/img/dns/dns-null.png" alt="设置部分 2" width="60%" />
 
 3. 进入主菜单 → 7 内核进阶设置，不要启用 4 启用域名嗅探（因 user.yaml 文件中已添加 `dns.sniffer` 配置项）
 4. 进入主菜单 → 7 内核进阶设置 → 5 自定义端口及秘钥，设置为 `9090`

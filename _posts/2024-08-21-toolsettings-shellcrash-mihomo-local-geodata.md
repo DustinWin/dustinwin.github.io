@@ -29,26 +29,26 @@ tags: [Clash, mihomo, ShellCrash, geodata, geosite, 进阶, 本地, Router]
 连接 SSH 后执行命令 `vi $CRASHDIR/yamls/others.yaml`，按一下 Ins 键（Insert 键），粘贴如下内容：
 
 ```yaml
-## 代理集合（获取机场订阅链接内的所有节点）
+# 代理集合（获取机场订阅链接内的所有节点）
 proxy-providers:
   🛫 机场订阅 1:
     type: http
-    ## 机场订阅链接，使用 Clash 链接
+    # 机场订阅链接，使用 Clash 链接
     url: "https://example.com/xxx/xxx&flag=clash"
     path: ./proxies/airport1.yaml
     interval: 86400
-    ## 初步筛选需要的节点，可有效减轻路由器压力，支持正则表达式，不筛选可删除此配置项
+    # 初步筛选需要的节点，可有效减轻路由器压力，支持正则表达式，不筛选可删除此配置项
     filter: "(?i)(🇭🇰|港|hk|hongkong|hong kong|🇹🇼|台|tw|taiwan|tai wan|🇯🇵|日|jp|japan|🇸🇬|新|sg|singapore|🇺🇸|美|us|unitedstates|united states)"
-    ## 初步排除不需要的节点，支持正则表达式，若不排除可删除此配置项
+    # 初步排除不需要的节点，支持正则表达式，若不排除可删除此配置项
     exclude-filter: "高倍|直连|×10"
     health-check:
       enable: true
       url: https://www.gstatic.com/generate_204
       interval: 600
     override:
-      ## 为节点名称添加固定前缀，如节点名称原为“香港节点”会变成“🛫 机场订阅 1-香港节点”；推荐有多个机场时使用
+      # 为节点名称添加固定前缀，如节点名称原为“香港节点”会变成“🛫 机场订阅 1-香港节点”；推荐有多个机场时使用
       additional-prefix: "🛫 机场订阅 1-"
-      ## 为节点名称添加固定后缀，如节点名称原为“香港节点”会变成“香港节点-🛫 机场订阅 1”；推荐有多个机场时使用
+      # 为节点名称添加固定后缀，如节点名称原为“香港节点”会变成“香港节点-🛫 机场订阅 1”；推荐有多个机场时使用
       additional-suffix: "-🛫 机场订阅 1"
 
   🛫 机场订阅 2:
@@ -63,9 +63,9 @@ proxy-providers:
       url: https://www.gstatic.com/generate_204
       interval: 600
     override:
-      ## 为节点名称添加固定前缀，如节点名称原为“香港节点”会变成“🛫 机场订阅 2-香港节点”；推荐有多个机场时使用
+      # 为节点名称添加固定前缀，如节点名称原为“香港节点”会变成“🛫 机场订阅 2-香港节点”；推荐有多个机场时使用
       additional-prefix: "🛫 机场订阅 2-"
-      ## 为节点名称添加固定后缀，如节点名称原为“香港节点”会变成“香港节点-🛫 机场订阅 2”；推荐有多个机场时使用
+      # 为节点名称添加固定后缀，如节点名称原为“香港节点”会变成“香港节点-🛫 机场订阅 2”；推荐有多个机场时使用
       additional-suffix: "-🛫 机场订阅 2"
 ```
 
@@ -79,9 +79,9 @@ proxy-providers:
 
 ```yaml
 - name: 🆓 免费节点
-  ## 节点类型
+  # 节点类型
   type: vless
-  ## 代理节点服务器（域名/IP）
+  # 代理节点服务器（域名/IP）
   server: example.com
   port: 443
   uuid: {uuid}
@@ -102,9 +102,9 @@ proxy-providers:
 连接 SSH 后执行命令 `vi $CRASHDIR/yamls/proxy-groups.yaml`，按一下 Ins 键（Insert 键），粘贴如下内容：
 
 ```yaml
-## 策略组
+# 策略组
 
-## 手动选择国家或地区节点；根据“国家或地区策略组”名称对 `proxies` 值进行增删改，须一一对应
+# 手动选择国家或地区节点；根据“国家或地区策略组”名称对 `proxies` 值进行增删改，须一一对应
 - name: 🈯 节点指定
   type: select
   proxies:
@@ -113,10 +113,10 @@ proxy-providers:
     - 🇯🇵 日本节点
     - 🇸🇬 新加坡节点
     - 🇺🇸 美国节点
-    ## 添加 proxies.yaml 中的自定义节点
+    # 添加 proxies.yaml 中的自定义节点
     - 🆓 免费节点
 
-## 选择 `🎯 全球直连` 为测试本地网络（运营商网络速度和 IPv6 支持情况），可选择其它节点用于测试机场节点速度和 IPv6 支持情况
+# 选择 `🎯 全球直连` 为测试本地网络（运营商网络速度和 IPv6 支持情况），可选择其它节点用于测试机场节点速度和 IPv6 支持情况
 - name: 📈 网络测试
   type: select
   proxies:
@@ -242,15 +242,15 @@ proxy-providers:
     - PASS
   hidden: true
 
-## ----------------国家或地区策略组---------------------
+# ----------------国家或地区策略组---------------------
 
-## 自动选择节点，即按照 url 测试结果使用延迟最低的节点
+# 自动选择节点，即按照 url 测试结果使用延迟最低的节点
 - name: 🇭🇰 香港节点
   type: url-test
-  ## 测试后容差大于 50ms 才会切换到延迟低的那个节点
+  # 测试后容差大于 50ms 才会切换到延迟低的那个节点
   tolerance: 50
   include-all-providers: true
-  ## 筛选出“香港”节点，支持正则表达式
+  # 筛选出“香港”节点，支持正则表达式
   filter: "(?i)(🇭🇰|港|hk|hongkong|hong kong)"
 
 - name: 🇹🇼 台湾节点
@@ -284,9 +284,9 @@ proxy-providers:
 连接 SSH 后执行命令 `vi $CRASHDIR/yamls/rules.yaml`，按一下 Ins 键（Insert 键），粘贴如下内容：
 
 ```yaml
-## 规则
+# 规则
 
-## 自定义规则优先放前面
+# 自定义规则优先放前面
 - GEOSITE,private,🔒 私有网络
 - GEOSITE,ads,🛑 广告域名
 - GEOSITE,trackerslist,📋 Trackerslist
@@ -318,15 +318,15 @@ proxy-providers:
 连接 SSH 后执行命令 `vi $CRASHDIR/yamls/proxy-groups.yaml`，按一下 Ins 键（Insert 键），粘贴如下内容：
 
 ```yaml
-## 策略组
+# 策略组
 
-## 默认选择新加坡节点
+# 默认选择新加坡节点
 - name: 🌍 国外媒体
   type: select
   proxies:
     - 🇸🇬 新加坡节点
 
-## 自动选择延迟最低的新加坡节点；容差大于 50ms 才会切换到延迟低的那个节点
+# 自动选择延迟最低的新加坡节点；容差大于 50ms 才会切换到延迟低的那个节点
 - name: 🇸🇬 新加坡节点
   type: url-test
   tolerance: 50
@@ -340,9 +340,9 @@ proxy-providers:
 连接 SSH 后执行命令 `vi $CRASHDIR/yamls/rules.yaml`，按一下 Ins 键（Insert 键），**优先在最上方**粘贴如下内容：
 
 ```yaml
-## 规则
+# 规则
 
-## 自定义规则优先放前面
+# 自定义规则优先放前面
 - GEOSITE,media,🌍 国外媒体
 - GEOIP,media,🌍 国外媒体,no-resolve
 ```
@@ -358,13 +358,13 @@ proxy-providers:
 - ② 其它规则请参考《[mihomo Wiki](https://wiki.metacubex.one/config/rules)》
 
 ```yaml
-## 规则
+# 规则
 
-## 以 googleapis.cn 为后缀（包括 googleapis.cn）的所有域名走代理
+# 以 googleapis.cn 为后缀（包括 googleapis.cn）的所有域名走代理
 - DOMAIN-SUFFIX,googleapis.cn,🈯 节点指定
-## 与哔哩哔哩相关的所有域名走直连
+# 与哔哩哔哩相关的所有域名走直连
 - GEOSITE,bilibili,DIRECT
-## 含有 ipv6 关键字的所有域名走直连
+# 含有 ipv6 关键字的所有域名走直连
 - DOMAIN-KEYWORD,ipv6,DIRECT
 ```
 

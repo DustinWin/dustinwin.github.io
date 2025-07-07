@@ -21,7 +21,7 @@ tags: [Clash, mihomo, ShellCrash, AdGuard Home, ruleset, rule-set, 分享, Route
 proxy-providers:
   🛫 机场订阅:
     type: http
-    ## 修改为你的 Clash 订阅链接
+    # 修改为你的 Clash 订阅链接
     url: "https://example.com/xxx/xxx&flag=clash"
     path: ./proxies/airport.yaml
     interval: 86400
@@ -32,7 +32,7 @@ proxy-providers:
       interval: 600
   🆓 免费订阅:
     type: http
-    ## 修改为你的 Clash 订阅链接
+    # 修改为你的 Clash 订阅链接
     url: "https://example.com/xxx/xxx&flag=clash"
     path: ./proxies/free.yaml
     interval: 86400
@@ -41,7 +41,7 @@ proxy-providers:
       url: https://www.gstatic.com/generate_204
       interval: 600
 
-## 若没有单个出站代理节点，须删除所有 `🆚 vless 节点` 相关内容
+# 若没有单个出站代理节点，须删除所有 `🆚 vless 节点` 相关内容
 proxies:
   - name: 🆚 vless 节点
     type: vless
@@ -72,7 +72,7 @@ proxy-groups:
   - {name: 代理域名, type: select, proxies: [节点选择, 全球直连], icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/global.png"}
   - {name: 电报消息, type: select, proxies: [节点选择, 香港节点, 台湾节点, 日本节点, 新加坡节点, 美国节点, 免费节点, 🆚 vless 节点], icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/telegram.png"}
   - {name: 私有网络, type: select, proxies: [全球直连], hidden: true, icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/private.png"}
-  ## 若机场的 UDP 质量不是很好，导致某游戏无法登录或进入房间，可以添加 `disable-udp: true` 配置项解决
+  # 若机场的 UDP 质量不是很好，导致某游戏无法登录或进入房间，可以添加 `disable-udp: true` 配置项解决
   - {name: 漏网之鱼, type: select, proxies: [节点选择, 香港节点, 台湾节点, 日本节点, 新加坡节点, 美国节点, 免费节点, 🆚 vless 节点, 全球直连], icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/match.png"}
   - {name: 全球直连, type: select, proxies: [DIRECT], hidden: true, icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/direct.png"}
 
@@ -296,7 +296,7 @@ dns:
   fake-ip-filter: ['rule-set:fakeip-filter,trackerslist,private,cn']
   respect-rules: true
   nameserver:
-    ## 推荐将 `ecs` 设置为当前网络的公网 IP 段
+    # 推荐将 `ecs` 设置为当前网络的公网 IP 段
     - 'https://dns.google/dns-query#ecs=202.103.17.0/24'
     - 'https://dns11.quad9.net/dns-query#ecs=202.103.17.0/24'
   proxy-server-nameserver:
@@ -352,7 +352,7 @@ rule-providers:
 5. 进入主菜单 → 6 导入配置文件 → 2 在线获取完整配置文件，粘贴《[一](https://proxy-tutorials.dustinwin.us.kg/posts/share-shellcrashadguardhome-mihomo-ruleset/#%E4%B8%80-%E7%94%9F%E6%88%90%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-yaml-%E6%96%87%E4%BB%B6%E7%9B%B4%E9%93%BE)》中生成的配置文件 .yaml 文件直链，启动服务即可
 
 ## 六、 安装 AdGuard Home
-1. 连接 SSH 后执行如下命令：
+连接 SSH 后执行如下命令：
 
 ```shell
 mkdir -p /data/AdGuardHome
@@ -364,12 +364,8 @@ iptables -t nat -A PREROUTING -p tcp --dport 53 -j REDIRECT --to-ports 5353
 iptables -t nat -A PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 5353
 ip6tables -t nat -A PREROUTING -p tcp --dport 53 -j REDIRECT --to-ports 5353
 ip6tables -t nat -A PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 5353
-vi /data/auto_ssh/auto_ssh.sh
-```
+cat <<EOF >> /data/auto_ssh/auto_ssh.sh
 
-2. 按一下 Ins 键（Insert 键），在末尾粘贴如下内容：
-
-```shell
 sleep 10s
 /data/AdGuardHome/AdGuardHome -s install
 /data/AdGuardHome/AdGuardHome -s start
@@ -377,9 +373,8 @@ iptables -t nat -A PREROUTING -p tcp --dport 53 -j REDIRECT --to-ports 5353
 iptables -t nat -A PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 5353
 ip6tables -t nat -A PREROUTING -p tcp --dport 53 -j REDIRECT --to-ports 5353
 ip6tables -t nat -A PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 5353
+EOF
 ```
-
-3. 按一下 Esc 键（退出键），输入英文冒号 `:`，继续输入 `wq` 并回车
 
 ## 七、 AdGuard Home 设置
 1. 设置可参考《[全网最详细的解锁 SSH ShellCrash 搭载 mihomo 内核搭配 AdGuard Home 安装和配置教程/AdGuard Home 配置](https://proxy-tutorials.dustinwin.us.kg/posts/pin-shellcrashadguardhome-mihomo/#2-adguard-home-%E9%85%8D%E7%BD%AE)》（可跳过“添加 DNS 重写”的步骤），此处只列举配置的不同之处

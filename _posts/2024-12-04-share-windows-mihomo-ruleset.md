@@ -18,7 +18,7 @@ tags: [Clash, mihomo, Windows, ruleset, rule-set, 分享]
 proxy-providers:
   🛫 机场订阅:
     type: http
-    ## 修改为你的 Clash 订阅链接
+    # 修改为你的 Clash 订阅链接
     url: "https://example.com/xxx/xxx&flag=clash"
     path: ./proxies/airport.yaml
     interval: 86400
@@ -29,7 +29,7 @@ proxy-providers:
       interval: 600
   🆓 免费订阅:
     type: http
-    ## 修改为你的 Clash 订阅链接
+    # 修改为你的 Clash 订阅链接
     url: "https://example.com/xxx/xxx&flag=clash"
     path: ./proxies/free.yaml
     interval: 86400
@@ -82,7 +82,7 @@ dns:
     - https://doh.pub/dns-query
   nameserver-policy: {'rule-set:ads': [rcode://success]}
 
-## 若没有单个出站代理节点，须删除所有 `🆚 vless 节点` 相关内容
+# 若没有单个出站代理节点，须删除所有 `🆚 vless 节点` 相关内容
 proxies:
   - name: 🆚 vless 节点
     type: vless
@@ -114,7 +114,7 @@ proxy-groups:
   - {name: 电报消息, type: select, proxies: [节点选择, 香港节点, 台湾节点, 日本节点, 新加坡节点, 美国节点, 免费节点, 🆚 vless 节点], icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/telegram.png"}
   - {name: 直连软件, type: select, proxies: [全球直连], hidden: true, icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/applications.png"}
   - {name: 私有网络, type: select, proxies: [全球直连], hidden: true, icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/private.png"}
-  ## 若机场的 UDP 质量不是很好，导致某游戏无法登录或进入房间，可以添加 `disable-udp: true` 配置项解决
+  # 若机场的 UDP 质量不是很好，导致某游戏无法登录或进入房间，可以添加 `disable-udp: true` 配置项解决
   - {name: 漏网之鱼, type: select, proxies: [节点选择, 香港节点, 台湾节点, 日本节点, 新加坡节点, 美国节点, 免费节点, 🆚 vless 节点, 全球直连], icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/match.png"}
   - {name: 广告域名, type: select, proxies: [全球拦截, 全球绕过], icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/ads.png"}
   - {name: 全球拦截, type: select, proxies: [REJECT], hidden: true, icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/reject.png"}
@@ -295,7 +295,7 @@ dns:
   fake-ip-filter: ['rule-set:trackerslist,private,cn']
   respect-rules: true
   nameserver:
-    ## 推荐将 `ecs` 设置为当前网络的公网 IP 段
+    # 推荐将 `ecs` 设置为当前网络的公网 IP 段
     - 'https://dns.google/dns-query#ecs=202.103.17.0/24'
     - 'https://dns11.quad9.net/dns-query#ecs=202.103.17.0/24'
   proxy-server-nameserver:
@@ -425,5 +425,5 @@ read -p "按任意键退出" -n1 -s
 
 ## 五、 访问 Dashboard 面板
 .json 文件已配置 [zashboard 面板](https://github.com/Zephyruso/zashboard)  
-打开 <http://127.0.0.1:9090/ui/> 后可直接点击“提交”，即可访问 Dashboard 面板  
+打开 <http://miwifi.com:9090/ui/> 后可直接点击“提交”，即可访问 Dashboard 面板  
 <img src="/assets/img/share/127-9090-dashboard.png" alt="在线 Dashboard 面板" width="60%" />

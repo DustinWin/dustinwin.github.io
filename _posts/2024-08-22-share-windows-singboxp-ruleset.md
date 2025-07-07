@@ -438,5 +438,5 @@ read -p "按任意键退出" -n1 -s
 
 ## 五、 访问 Dashboard 面板
 .json 文件已配置 [zashboard 面板](https://github.com/Zephyruso/zashboard)  
-打开 <http://127.0.0.1:9090/ui/> 后可直接点击“提交”，即可访问 Dashboard 面板  
+打开 <http://miwifi.com:9090/ui/> 后可直接点击“提交”，即可访问 Dashboard 面板  
 <img src="/assets/img/share/127-9090-dashboard.png" alt="在线 Dashboard 面板" width="60%" />
