@@ -424,6 +424,6 @@ read -p "按任意键退出" -n1 -s
 另存为 .sh 文件，右击并选择“以管理员身份运行”
 
 ## 五、 访问 Dashboard 面板
-.json 文件已配置 [zashboard 面板](https://github.com/Zephyruso/zashboard)  
+.yaml 文件已配置 [zashboard 面板](https://github.com/Zephyruso/zashboard)  
 打开 <http://miwifi.com:9090/ui/> 后可直接点击“提交”，即可访问 Dashboard 面板  
 <img src="/assets/img/share/127-9090-dashboard.png" alt="在线 Dashboard 面板" width="60%" />

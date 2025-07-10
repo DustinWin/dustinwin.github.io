@@ -11,9 +11,9 @@
 1. geodata 方案更适用于路由器等设备（连接多台设备而无法判断非本机设备进程），配置文件编写简单，对小白用户友好
 2. ruleset 方案适用于对分流规则要求比较严格的用户，配置文件编写复杂，可按需配置且配置灵活
 3. mihomo 采用 geodata 方案，使用 `GEOSITE` 和 `GEOIP` 规则搭配 GeoSite.dat 和 GeoIP.dat（或 Country.mmdb）[路由规则文件](https://github.com/DustinWin/ruleset_geodata?tab=readme-ov-file#%E4%B8%80-geodata-%E6%96%87%E4%BB%B6%E8%AF%B4%E6%98%8E)
-4. mihomo 采用 ruleset 方案，采用 `RULE-SET` 规则搭配 .list 和 .mrs [规则集文件](https://github.com/DustinWin/ruleset_geodata?tab=readme-ov-file#%E4%BA%8C-ruleset-%E8%A7%84%E5%88%99%E9%9B%86%E6%96%87%E4%BB%B6%E8%AF%B4%E6%98%8E)
+4. mihomo 采用 ruleset 方案，使用 `RULE-SET` 规则搭配 .list 和 .mrs [规则集文件](https://github.com/DustinWin/ruleset_geodata?tab=readme-ov-file#%E4%BA%8C-ruleset-%E8%A7%84%E5%88%99%E9%9B%86%E6%96%87%E4%BB%B6%E8%AF%B4%E6%98%8E)
 5. sing-box 采用 geodata 方案，使用 `geosite` 和 `geoip` 规则搭配 geosite.db 和 geoip.db [路由规则文件](https://github.com/DustinWin/ruleset_geodata?tab=readme-ov-file#%E4%B8%80-geodata-%E6%96%87%E4%BB%B6%E8%AF%B4%E6%98%8E)
-6. sing-box 采用 ruleset 方案，采用 `rule_set` 规则搭配 .srs [规则集文件](https://github.com/DustinWin/ruleset_geodata?tab=readme-ov-file#%E4%BA%8C-ruleset-%E8%A7%84%E5%88%99%E9%9B%86%E6%96%87%E4%BB%B6%E8%AF%B4%E6%98%8E)
+6. sing-box 采用 ruleset 方案，使用 `rule_set` 规则搭配 .srs [规则集文件](https://github.com/DustinWin/ruleset_geodata?tab=readme-ov-file#%E4%BA%8C-ruleset-%E8%A7%84%E5%88%99%E9%9B%86%E6%96%87%E4%BB%B6%E8%AF%B4%E6%98%8E)
 
 # 对下载源的说明
 1. 本教程默认下载源为 [jsDelivr 源](https://www.jsdelivr.com/github)，格式为 `https://cdn.jsdelivr.net/gh/[username]/[reponame]@[branchname]/[filename]`，此源中**文件更新有 12 小时延迟**

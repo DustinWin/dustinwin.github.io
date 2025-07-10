@@ -118,7 +118,7 @@ pin: true
 > 在成功完成《[三、 3](https://proxy-tutorials.dustinwin.us.kg/posts/pin-shellcrashadguardhome-singboxp/#3-%E6%B0%B8%E4%B9%85%E5%BC%80%E5%90%AF%E5%B9%B6%E5%9B%BA%E5%8C%96-ssh)》后才能进行此操作
 {: .prompt-warning }
 
-- ① 将下载的 WinSCP-[version]-Portable.zip 文件解压，路径随意，打开 WinSCP，“文件协议”选择“SCP”，其它按图输入，“密码”为 SSH 登录密码，点击“保存”后再点击“登录”  
+- ① 安装 WinSCP 并打开，“文件协议”选择“SCP”，其它按图输入，“密码”为 SSH 登录密码，点击“保存”后再点击“登录”  
   <img src="/assets/img/pin/login-winscp.png" alt="通过 WinSCP 连接路由器文件管理 1" width="60%" />
 
 - ② 左侧为电脑本地文件，右侧为路由器文件  
@@ -132,13 +132,16 @@ pin: true
 - ① 打开 PuTTYgen，直接点击“Generate”（期间鼠标必须在此窗口内不停移动）  
   <img src="/assets/img/pin/puttygen-generate.png" alt="生成 key" width="60%" />
 
-- ② 生成后复制完整的“Key”值备用，点击“Save private key”（可在“Key comment”填入“root@192.168.31.1 - REDMI AX6000”）  
+- ② 生成后复制完整的“Key”值备用，点击“Save private key”（可在“Key comment”输入 `root@192.168.31.1 - REDMI AX6000`）  
   <img src="/assets/img/pin/puttygen-save.png" alt="保存 key" width="60%" />
 
 - ③ “保存”文件到 `C:\Users\[用户名]\.ssh\rsa_key.ppk`{: .filepath} 中
 - ④ 打开 PuTTY，进入 Connection → SSH → Auth → Credentials，点击“Private key file for authentication”的“Browser”，定位到 `C:\Users\[用户名]\.ssh\rsa_key.ppk`{: .filepath} 文件并“打开”
-- ⑤ 进入 Session，按图输入后，先点击“Default Settings”，后点击“Save”  
-  <img src="/assets/img/pin/putty-setting.png" alt="保存 key" width="60%" />
+- ⑤ 进入 Connections → Data，“Auto-login username”输入 `root`  
+  <img src="/assets/img/pin/putty-setting-1.png" alt="设置登录用户名" width="60%" />
+
+- ⑥ 进入 Session，按图输入后，**先点击“Default Settings”，后点击“Save”**  
+  <img src="/assets/img/pin/putty-setting-2.png" alt="保存配置" width="60%" />
 
 2. 配置免密码连接 WinSCP
 - ① 打开 WinSCP，进入标签页 → 站点 → 站点管理器，点击“编辑”，删除密码后点击“高级”
