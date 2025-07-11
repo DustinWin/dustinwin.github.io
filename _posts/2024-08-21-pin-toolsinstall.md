@@ -41,15 +41,15 @@ export url='https://cdn.jsdelivr.net/gh/juewuy/ShellCrash@master' && sh -c "$(cu
 连接 SSH 后执行如下命令：
 
 ```shell
-## mihomo 内核 Meta 版
+# mihomo 内核 Meta 版
 curl -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-meta-linux-armv8.tar.gz | tar -zx -C /tmp/ && crash
-## mihomo 内核 Alpha 版
+# mihomo 内核 Alpha 版
 curl -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-alpha-linux-armv8.tar.gz | tar -zx -C /tmp/ && crash
-## sing-box 内核 PuerNya 版
+# sing-box 内核 PuerNya 版
 curl -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-puernya-linux-armv8.tar.gz | tar -zx -C /tmp/ && crash
-## sing-box 内核 Release 版
+# sing-box 内核 Release 版
 curl -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-release-linux-armv8.tar.gz | tar -zx -C /tmp/ && crash
-## sing-box 内核 Dev 版
+# sing-box 内核 Dev 版
 curl -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-dev-linux-armv8.tar.gz | tar -zx -C /tmp/ && crash
 ```
 
@@ -59,15 +59,15 @@ curl -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/dow
 连接 SSH 后执行如下命令：
 
 ```shell
-## mihomo 内核 Meta 版
+# mihomo 内核 Meta 版
 curl -o $CRASHDIR/CrashCore.tar.gz -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-meta-linux-armv8.tar.gz && $CRASHDIR/start.sh restart
-## mihomo 内核 Alpha 版
+# mihomo 内核 Alpha 版
 curl -o $CRASHDIR/CrashCore.tar.gz -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-alpha-linux-armv8.tar.gz && $CRASHDIR/start.sh restart
-## sing-box 内核 PuerNya 版
+# sing-box 内核 PuerNya 版
 curl -o $CRASHDIR/CrashCore.tar.gz -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-puernya-linux-armv8.tar.gz && $CRASHDIR/start.sh restart
-## sing-box 内核 Release 版
+# sing-box 内核 Release 版
 curl -o $CRASHDIR/CrashCore.tar.gz -L https://cdn.jsdelivr.net/gh/DustinWin/proxy-tools/@sing-box/sing-box-release-linux-armv8.tar.gz && $CRASHDIR/start.sh restart
-## sing-box 内核 Dev 版
+# sing-box 内核 Dev 版
 curl -o $CRASHDIR/CrashCore.tar.gz -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-dev-linux-armv8.tar.gz && $CRASHDIR/start.sh restart
 ```
 
@@ -102,35 +102,40 @@ curl -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/dow
 
 ```shell
 mkdir -p /data/AdGuardHome/
-## AdGuard Home Release 版
+# AdGuard Home Release 版
 curl -o /data/AdGuardHome/AdGuardHome -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/AdGuardHome/AdGuardHome_release_linux_armv8
-## AdGuard Home Beta 版
+# AdGuard Home Beta 版
 curl -o /data/AdGuardHome/AdGuardHome -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/AdGuardHome/AdGuardHome_beta_linux_armv8
 chmod +x /data/AdGuardHome/AdGuardHome
 /data/AdGuardHome/AdGuardHome -s install
 /data/AdGuardHome/AdGuardHome -s start
-```
+# 将所有发往 53 端口的流量重定向到本地的 5353 端口
+iptables -t nat -A PREROUTING -p tcp --dport 53 -j REDIRECT --to-ports 5353
+iptables -t nat -A PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 5353
+ip6tables -t nat -A PREROUTING -p tcp --dport 53 -j REDIRECT --to-ports 5353
+ip6tables -t nat -A PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 5353
+# 添加开机启动
+cat <<EOF >> /data/auto_ssh/auto_ssh.sh
 
-### 2. 添加开机启动
-连接 SSH 后执行命令 `vi /data/auto_ssh/auto_ssh.sh`  
-按一下 Ins 键（Insert 键），在最下方粘贴如下命令：
-
-```shell
+sleep 10s
 /data/AdGuardHome/AdGuardHome -s install
 /data/AdGuardHome/AdGuardHome -s start
+iptables -t nat -A PREROUTING -p tcp --dport 53 -j REDIRECT --to-ports 5353
+iptables -t nat -A PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 5353
+ip6tables -t nat -A PREROUTING -p tcp --dport 53 -j REDIRECT --to-ports 5353
+ip6tables -t nat -A PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 5353
+EOF
 ```
 
-按一下 Esc 键（退出键），输入英文冒号 `:`，继续输入 `wq` 并回车
-
-### 3. 升级 AdGuard Home
+### 2. 升级 AdGuard Home
 - 注：留意链接后缀是否与 CPU 架构匹配
 
 连接 SSH 后执行如下命令：
 
 ```shell
-## AdGuard Home Release 版
+# AdGuard Home Release 版
 curl -o /data/AdGuardHome/AdGuardHome -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/AdGuardHome/AdGuardHome_release_linux_armv8
-## AdGuard Home Beta 版
+# AdGuard Home Beta 版
 curl -o /data/AdGuardHome/AdGuardHome -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/AdGuardHome/AdGuardHome_beta_linux_armv8
 /data/AdGuardHome/AdGuardHome -s restart
 ```
