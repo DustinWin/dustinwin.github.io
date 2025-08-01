@@ -175,7 +175,6 @@ dns:
 注：
 - 1. 本 `dns` 配置中，未知域名由国外 DNS 解析（有效解决了“心理 DNS 泄露问题”，详见《[搭载 mihomo 内核配置 DNS 不泄露教程-geodata 方案](https://proxy-tutorials.dustinwin.us.kg/posts/dnsnoleaks-mihomo-geodata/)》），且配置 `ecs` 提高了兼容性
 - 2. 推荐将 `ecs` 设置为当前网络的公网 IP 段，如当前网络公网 IP 为 `202.103.17.123`，可设置为 `202.103.17.0/24`（后续维护更新可直接执行命令 `sed -i -E "s/(ecs=)[0-9.]+\/[0-9]+/\1$(curl -s 4.ipw.cn | cut -d. -f1-3).0\/24/" $CRASHDIR/yamls/user.yaml`）
-- 3. 本路由规则文件中，使用 `geosite-all.dat` 非精简版路由规则文件，可避免某些国内域名被国外 DNS 解析后无法命中 `直连 IP` 从而走 `漏网之鱼` 规则，提高了兼容性
 
 ```yaml
 hosts:
@@ -207,18 +206,10 @@ dns:
   nameserver-policy: {'geosite:ads': [rcode://success]}
 ```
 
-**导入路由规则文件**  
-连接 SSH 后执行如下命令：
-
-```shell
-curl -o $CRASHDIR/GeoSite.dat -L https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo/geosite-all.dat
-```
-
-**修改和新增定时任务**  
+**新增定时任务**  
 连接 SSH 后执行命令 `vi $CRASHDIR/task/task.user`，按一下 Ins 键（Insert 键），粘贴如下内容：
 
 ```shell
-202#curl -o $CRASHDIR/GeoSite.dat -L https://ghfast.top/https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo/geosite-all.dat && curl -o $CRASHDIR/GeoIP.dat -L https://ghfast.top/https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo/geoip-lite.dat && curl -o $CRASHDIR/Country.mmdb -L https://ghfast.top/https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo/Country-lite.mmdb && $CRASHDIR/start.sh restart >/dev/null 2>&1#更新geodata路由规则文件
 204#sed -i -E "s/(ecs=)[0-9.]+\/[0-9]+/\1$(curl -s 4.ipw.cn | cut -d. -f1-3).0\/24/" $CRASHDIR/yamls/user.yaml && curl -H 'Authorization: Bearer ""' http://192.168.31.1:9090/configs -d '{"path": "", "payload": ""}' -X PUT >/dev/null 2>&1#更新ecs地址
 ```
 
