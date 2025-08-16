@@ -155,12 +155,12 @@ tags: [sing-box, sing-boxp, 直链, 订阅, geodata, geosite, 基础]
     // geosite 配置项
     "geosite": {
       "path": "./geosite.db",
-      "download_url": "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box/geosite-all.db"
+      "download_url": "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-geodata/geosite-all.db"
     },
     // geoip 配置项
     "geoip": {
       "path": "./geoip.db",
-      "download_url": "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box/geoip.db"
+      "download_url": "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-geodata/geoip.db"
     },
     // 默认出站，即没有命中规则的域名或 IP 走该规则
     "final": "🐟 漏网之鱼",
@@ -288,13 +288,13 @@ tags: [sing-box, sing-boxp, 直链, 订阅, geodata, geosite, 基础]
     // geosite 配置项
     "geosite": {
       "path": "./geosite.db",
-      "download_url": "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box/geosite-all.db",
+      "download_url": "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-geodata/geosite-all.db",
       "download_detour": "PROXY"
     },
     // geoip 配置项
     "geoip": {
       "path": "./geoip.db",
-      "download_url": "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box/geoip.db",
+      "download_url": "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-geodata/geoip.db",
       "download_detour": "PROXY"
     },
     // 默认出站，即没有命中规则的域名或 IP 走该规则

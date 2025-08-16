@@ -106,11 +106,11 @@ tags: [sing-box, sing-boxp, ShellCrash, geodata, geosite, 分享, Router]
     ],
     "geosite": {
       "path": "./geosite.db",
-      "download_url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box/geosite.db"
+      "download_url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-geodata/geosite.db"
     },
     "geoip": {
       "path": "./geoip.db",
-      "download_url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box/geoip-lite.db"
+      "download_url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-geodata/geoip-lite.db"
     },
     "final": "🐟 漏网之鱼",
     "auto_detect_interface": true,
@@ -135,8 +135,8 @@ crash
 连接 SSH 后执行如下命令：
 
 ```shell
-curl -o $CRASHDIR/geosite.db -L https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box/geosite.db
-curl -o $CRASHDIR/geoip.db -L https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box/geoip-lite.db
+curl -o $CRASHDIR/geosite.db -L https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-geodata/geosite.db
+curl -o $CRASHDIR/geoip.db -L https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-geodata/geoip-lite.db
 ```
 
 ## 四、 编辑 dns.json 文件
@@ -250,7 +250,7 @@ curl -o $CRASHDIR/geoip.db -L https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geod
 
 ```shell
 201#curl -o $CRASHDIR/CrashCore.tar.gz -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-puernya-linux-armv8.tar.gz && $CRASHDIR/start.sh restart >/dev/null 2>&1#更新sing-box_PuerNya版内核
-202#curl -o $CRASHDIR/geosite.db -L https://ghfast.top/https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box/geosite.db && curl -o $CRASHDIR/geoip.db -L https://ghfast.top/https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box/geoip-lite.db && $CRASHDIR/start.sh restart >/dev/null 2>&1#更新geodata路由规则文件
+202#curl -o $CRASHDIR/geosite.db -L https://ghfast.top/https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-geodata/geosite.db && curl -o $CRASHDIR/geoip.db -L https://ghfast.top/https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-geodata/geoip-lite.db && $CRASHDIR/start.sh restart >/dev/null 2>&1#更新geodata路由规则文件
 203#curl -o $CRASHDIR/cn_ip.txt -L https://ghfast.top/https://github.com/DustinWin/geoip/releases/download/ips/cn_ipv4.txt && curl -o $CRASHDIR/cn_ipv6.txt -L https://ghfast.top/https://github.com/DustinWin/geoip/releases/download/ips/cn_ipv6.txt >/dev/null 2>&1#更新CN_IP文件
 204#rm -rf $CRASHDIR/ui/* && curl -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/Dashboard/zashboard.tar.gz | tar -zx -C $CRASHDIR/ui/ >/dev/null 2>&1#更新Dashboard面板
 ```

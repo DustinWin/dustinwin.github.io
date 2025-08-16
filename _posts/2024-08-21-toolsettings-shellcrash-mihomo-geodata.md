@@ -28,8 +28,8 @@ curl -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/dow
 连接 SSH 后执行如下命令：
 
 ```shell
-curl -o $CRASHDIR/GeoSite.dat -L https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo/geosite-all.dat
-curl -o $CRASHDIR/Country.mmdb -L https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo/Country.mmdb
+curl -o $CRASHDIR/GeoSite.dat -L https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-geodata/geosite-all.dat
+curl -o $CRASHDIR/Country.mmdb -L https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-geodata/Country.mmdb
 ```
 
 ## 三、 添加定时任务
@@ -38,7 +38,7 @@ curl -o $CRASHDIR/Country.mmdb -L https://cdn.jsdelivr.net/gh/DustinWin/ruleset_
 
 ```shell
 201#curl -o $CRASHDIR/CrashCore.tar.gz -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-meta-linux-armv8.tar.gz && $CRASHDIR/start.sh restart >/dev/null 2>&1#更新mihomo内核
-202#curl -o $CRASHDIR/GeoSite.dat -L https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo/geosite-all.dat && curl -o $CRASHDIR/Country.mmdb -L https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo/Country.mmdb && $CRASHDIR/start.sh restart >/dev/null 2>&1#更新geodata路由规则文件
+202#curl -o $CRASHDIR/GeoSite.dat -L https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-geodata/geosite-all.dat && curl -o $CRASHDIR/Country.mmdb -L https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-geodata/Country.mmdb && $CRASHDIR/start.sh restart >/dev/null 2>&1#更新geodata路由规则文件
 203#curl -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/Dashboard/metacubexd.tar.gz | tar -zx -C $CRASHDIR/ui/ && $CRASHDIR/start.sh restart >/dev/null 2>&1#更新metacubexd面板
 ```
 

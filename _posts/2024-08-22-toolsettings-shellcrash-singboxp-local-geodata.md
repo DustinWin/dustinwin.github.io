@@ -165,12 +165,12 @@ tags: [sing-box, sing-boxp, ShellCrash, geodata, geosite, 进阶, 本地, Router
     // geosite 配置项
     "geosite": {
       "path": "./geosite.db",
-      "download_url": "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box/geosite-all.db"
+      "download_url": "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-geodata/geosite-all.db"
     },
     // geoip 配置项
     "geoip": {
       "path": "./geoip.db",
-      "download_url": "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box/geoip.db"
+      "download_url": "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-geodata/geoip.db"
     },
     "auto_detect_interface": true,
     "concurrent_dial": true
@@ -246,7 +246,7 @@ tags: [sing-box, sing-boxp, ShellCrash, geodata, geosite, 进阶, 本地, Router
     // geosite 配置项
     "geosite": {
       "path": "./geosite.db",
-      "download_url": "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box/geosite-all.db"
+      "download_url": "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-geodata/geosite-all.db"
     }
   }
 }
