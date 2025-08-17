@@ -235,7 +235,7 @@ log-level: error
 allow-lan: true
 unified-delay: true
 tcp-concurrent: true
-external-ui-url: "https://github.com/Zephyruso/zashboard/releases/latest/download/dist-cdn-fonts.zip"
+external-ui-url: "https://github.com/Zephyruso/zashboard/archive/gh-pages-cdn-fonts.zip"
 global-client-fingerprint: chrome
 profile: {store-selected: true, store-fake-ip: true}
 

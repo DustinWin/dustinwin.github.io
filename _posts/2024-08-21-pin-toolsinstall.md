@@ -12,7 +12,7 @@ pin: true
 1. 本教程中 **[AdGuard Home](https://github.com/AdguardTeam/AdGuardHome) 安装目录为 `/data/AdGuardHome`{: .filepath}**
 2. 本教程中的下载链接以 CPU 架构 ARMv8 为例，请注意修改链接后缀
 3. 查看 CPU 架构可连接 SSH 后执行命令 `uname -ms`，若执行结果是“linux aarch64”，就是搭载的 ARMv8 架构
-4. 以下所有命令均可全部复制后直接粘贴执行
+4. 以下所有命令均可全部复制后直接粘贴执行（若出现无法下载的情况，可更换[下载源](https://proxy-tutorials.dustinwin.us.kg/about/#%E5%AF%B9%E4%B8%8B%E8%BD%BD%E6%BA%90%E7%9A%84%E8%AF%B4%E6%98%8E)）
 
 ## 一、 安装 [ShellCrash](https://github.com/juewuy/ShellCrash)
 ### 1. 本地安装
@@ -84,11 +84,11 @@ curl -o $CRASHDIR/CrashCore.tar.gz -L https://ghfast.top/https://github.com/Dust
 连接 SSH 后执行如下命令：
 
 ```shell
-curl -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/Dashboard/metacubexd.tar.gz | tar -zx -C $CRASHDIR/ui/ && $CRASHDIR/start.sh restart
+curl -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/Dashboard/zashboard.tar.gz | tar -zx -C $CRASHDIR/ui/ && $CRASHDIR/start.sh restart
 ```
 
 - 注：若使用基于 [Chromium 项目](https://www.chromium.org/Home/)开发的浏览器打开网址去访问 Dashboard 面板时，以 [Chrome 浏览器](https://www.google.com/chrome/)为例，需要设置该网址域名“允许显示不安全内容”。方法如下：  
-进入设置 → 隐私和安全 → 网站设置 → 更多内容设置 → 不安全内容（或者直接在地址栏打开 chrome://settings/content/insecureContent 进行设置），在“允许显示不安全内容”内添加网址域名如：`metacubex.github.io`
+进入设置 → 隐私和安全 → 网站设置 → 更多内容设置 → 不安全内容（或者直接在地址栏打开 chrome://settings/content/insecureContent 进行设置），在“允许显示不安全内容”内添加网址域名如：`board.zash.run.place`
 
 ## 四、 安装 AdGuard Home
 ### 1. 安装 AdGuard Home
