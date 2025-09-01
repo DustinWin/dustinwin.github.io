@@ -14,9 +14,9 @@ tags: [Clash, mihomo, ShellCrash, ruleset, rule-set, 基础, Router]
 ## 一、 导入 [mihomo 内核](https://github.com/MetaCubeX/mihomo)
 **mihomo 内核 Linux 版下载链接后缀和 CPU 架构对应关系如下表：**
 
-| CPU 架构     | AMD64   | AMD64v3   | ARMv5   | ARMv6   | ARMv7   | ARMv8&ARM64&AArch64 | mips-softfloat   | mipsle-hardfloat   | mipsle-softfloat   |
-| ------------ | ------- | --------- | ------- | ------- | ------- | :-----------------: | ---------------- | ------------------ | ------------------ |
-| **链接后缀** | `amd64` | `amd64v3` | `armv5` | `armv6` | `armv7` |       `armv8`       | `mips-softfloat` | `mipsle-hardfloat` | `mipsle-softfloat` |
+| CPU 架构     | AMD64v1   | AMD64v3   | ARMv5   | ARMv6   | ARMv7   | ARMv8&ARM64&AArch64 | mips-softfloat   | mipsle-softfloat   | mipsle-hardfloat   |
+| ------------ | --------- | --------- | ------- | ------- | ------- | :-----------------: | ---------------- | ------------------ | ------------------ |
+| **链接后缀** | `amd64v1` | `amd64v3` | `armv5` | `armv6` | `armv7` |       `armv8`       | `mips-softfloat` | `mipsle-softfloat` | `mipsle-hardfloat` |
 
 连接 SSH 后执行如下命令：
 
@@ -69,5 +69,5 @@ curl -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/dow
 1. 若使用基于 [Chromium 项目](https://www.chromium.org/Home/)开发的浏览器打开网址去访问 Dashboard 面板时，以 [Chrome 浏览器](https://www.google.com/chrome/)为例，需要设置该网址域名“允许显示不安全内容”，进入设置 → 隐私和安全 → 网站设置 → 更多内容设置 → 不安全内容（或者直接在地址栏打开 `chrome://settings/content/insecureContent` 进行设置），在“允许显示不安全内容”内添加网址域名 `board.zash.run.place`  
 <img src="/assets/img/tools/chrome-setting-dashboard.png" alt="在线 Dashboard 面板 1" width="60%" />
 
-2. 首次进入 <https://board.zash.run.place> 需要添加“主机”和“端口”，分别填入 `192.168.31.1` 和 `9999` 并点击“添加”即可访问 Dashboard 面板  
+2. 首次进入 <https://board.zash.run.place> 需要添加“主机”和“端口”，分别填入 `192.168.31.1` 和 `9999` 并点击“提交”即可访问 Dashboard 面板  
 <img src="/assets/img/tools/192-9999-dashboard.png" alt="在线 Dashboard 面板 2" width="60%" />

@@ -348,7 +348,7 @@ Windows Registry Editor Version 5.00
   echo "导入 sing-box 内核和配置文件..."
   cd "$PROGRAMFILES"
   mkdir -p sing-box/providers sing-box/ruleset sing-box/ui
-  curl -o sing-box/sing-box.exe -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-puernya-windows-amd64v3.exe
+  curl -o sing-box/sing-box.exe -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-puernya-windows-amd64.exe
   curl -o sing-box/config.json -L https://ghfast.top/{.json 配置文件直链}
   sed -i -E "s/(\"client_subnet\": \")[0-9.]+\/[0-9]+/\1$(curl -s 4.ipw.cn | cut -d. -f1-3).0\/24/" sing-box/config.json
   echo "导入 sing-box 内核和配置文件成功"
@@ -400,7 +400,7 @@ Windows Registry Editor Version 5.00
 
 echo "下载 sing-box 相关文件..."
 cd "$PROGRAMFILES/sing-box"
-curl -o "$USERPROFILE/Downloads/sing-box.exe" -L https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-puernya-windows-amd64v3.exe
+curl -o "$USERPROFILE/Downloads/sing-box.exe" -L https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-puernya-windows-amd64.exe
 curl -o "$USERPROFILE/Downloads/config.json" -L {.json 配置文件直链}
 echo "下载 sing-box 相关文件成功"
 
