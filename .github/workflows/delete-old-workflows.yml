@@ -1,0 +1,22 @@
+name: Delete old workflows
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 22 * * *"
+
+jobs:
+  del_runs:
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+    steps:
+      - name: Delete old workflow runs
+        uses: Mattraks/delete-workflow-runs@v2
+        with:
+          token: ${{ github.token }}
+          repository: ${{ github.repository }}
+          delete_workflow_pattern:
+            - "Dependabot Updates"
+            - "Delete old workflows"
+          retain_days: 3
+          keep_minimum_runs: 1
