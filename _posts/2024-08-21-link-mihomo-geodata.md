@@ -252,7 +252,7 @@ rules:
   - GEOSITE,ai,🤖 人工智能
   - GEOSITE,networktest,📈 网络测试
   - GEOSITE,tld-proxy,🧱 代理域名
-  - GEOSITE,proxy,🧱 代理域名
+  - GEOSITE,gfw,🧱 代理域名
   - GEOIP,media,🌍 国外媒体,no-resolve
   - GEOIP,games,🎮 游戏平台,no-resolve
   - GEOIP,telegram,📲 电报消息,no-resolve

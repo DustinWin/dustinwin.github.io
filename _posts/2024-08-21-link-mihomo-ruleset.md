@@ -465,12 +465,12 @@ rule-providers:
     url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/tld-proxy.mrs"
     interval: 86400
 
-  proxy:
+  gfw:
     type: http
     behavior: domain
     format: mrs
-    path: ./rules/proxy.mrs
-    url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/proxy.mrs"
+    path: ./rules/gfw.mrs
+    url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/gfw.mrs"
     interval: 86400
 
   mediaip:
@@ -507,7 +507,7 @@ rules:
   - RULE-SET,ai,🤖 人工智能
   - RULE-SET,networktest,📈 网络测试
   - RULE-SET,tld-proxy,🧱 代理域名
-  - RULE-SET,proxy,🧱 代理域名
+  - RULE-SET,gfw,🧱 代理域名
   - RULE-SET,mediaip,🌍 国外媒体,no-resolve
   - RULE-SET,gamesip,🎮 游戏平台,no-resolve
   - RULE-SET,telegramip,📲 电报消息,no-resolve

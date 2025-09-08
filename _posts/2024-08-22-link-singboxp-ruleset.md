@@ -409,7 +409,7 @@ tags: [sing-box, sing-boxp, 直链, 订阅, ruleset, rule_set, 基础]
       { "rule_set": [ "ai" ], "outbound": "🤖 人工智能" },
       { "rule_set": [ "networktest" ], "outbound": "📈 网络测试" },
       { "rule_set": [ "tld-proxy" ], "outbound": "🧱 代理域名" },
-      { "rule_set": [ "proxy" ], "outbound": "🧱 代理域名" },
+      { "rule_set": [ "gfw" ], "outbound": "🧱 代理域名" },
       { "rule_set": [ "mediaip" ], "outbound": "🌍 国外媒体", "skip_resolve": true },
       { "rule_set": [ "gamesip" ], "outbound": "🎮 游戏平台", "skip_resolve": true },
       { "rule_set": [ "telegramip" ], "outbound": "📲 电报消息", "skip_resolve": true }
@@ -481,11 +481,11 @@ tags: [sing-box, sing-boxp, 直链, 订阅, ruleset, rule_set, 基础]
         "download_detour": "PROXY"
       },
       {
-        "tag": "proxy",
+        "tag": "gfw",
         "type": "remote",
         "format": "binary",
-        "path": "./ruleset/proxy.srs",
-        "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset-compatible/proxy.srs",
+        "path": "./ruleset/gfw.srs",
+        "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset-compatible/gfw.srs",
         "download_detour": "PROXY"
       },
       {
