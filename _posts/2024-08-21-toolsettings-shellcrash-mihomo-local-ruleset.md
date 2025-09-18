@@ -1,6 +1,6 @@
 ---
 title: ShellCrash 搭载 mihomo 内核本地配置自定义策略组和规则-ruleset 方案
-description: 此教程搭载 mihomo 内核，可通过修改本地配置文件的方式来自定义策略组和规则 `RULE-SET`
+description: 此教程搭载 mihomo 内核，可通过修改本地配置文件的方式来自定义策略组和规则 <code>RULE-SET</code>
 date: 2024-08-21 08:39:18 +0800
 categories: [工具配置, ShellCrash 配置]
 tags: [Clash, ShellCrash, ruleset, rule-set, 进阶, 本地, Router]

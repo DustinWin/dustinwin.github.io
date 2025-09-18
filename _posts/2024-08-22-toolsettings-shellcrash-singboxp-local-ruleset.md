@@ -1,6 +1,6 @@
 ---
 title: ShellCrash 搭载 sing-boxp 内核本地配置自定义出站和规则-ruleset 方案
-description: 此教程搭载 sing-boxp 内核，可通过修改本地配置文件的方式来自定义出站和规则 `rule_set`
+description: 此教程搭载 sing-boxp 内核，可通过修改本地配置文件的方式来自定义出站和规则 <code>rule_set</code>
 date: 2024-08-22 18:10:32 +0800
 categories: [工具配置, ShellCrash 配置]
 tags: [sing-box, sing-boxp, ShellCrash, ruleset, rule_set, 进阶, 本地, Router]

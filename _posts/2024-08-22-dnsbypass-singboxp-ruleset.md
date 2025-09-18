@@ -1,6 +1,6 @@
 ---
 title: 搭载 sing-boxp 内核进行 DNS 分流教程-ruleset方案
-description: 此教程搭载 sing-boxp 内核并使用其特性进行 DNS 分流，即指定国内域名 `rule_set:cn` 走国内 DNS 解析，国外域名走 `fake-ip`
+description: 此教程搭载 sing-boxp 内核并使用其特性进行 DNS 分流，即指定国内域名 <code>rule_set:cn</code> 走国内 DNS 解析，国外域名走 <code>fake-ip</code>
 date: 2024-08-22 18:24:06 +0800
 categories: [DNS 配置, DNS 分流]
 tags: [sing-box, sing-boxp, ShellCrash, ruleset, rule_set, 进阶, DNS, DNS 分流]

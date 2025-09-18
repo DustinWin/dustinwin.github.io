@@ -1,6 +1,6 @@
 ---
 title: 搭载 mihomo 内核进行 DNS 分流教程-ruleset 方案
-description: 此教程搭载 mihomo 内核并使用其特性进行 DNS 分流，即指定国内域名 `rule-set:cn` 走国内 DNS 解析，其它域名包括国外域名都走 `fake-ip`
+description: 此教程搭载 mihomo 内核并使用其特性进行 DNS 分流，即指定国内域名 <code>rule-set:cn</code> 走国内 DNS 解析，其它域名包括国外域名都走 <code>fake-ip</code>
 date: 2024-08-21 07:52:58 +0800
 categories: [DNS 配置, DNS 分流]
 tags: [Clash, mihomo, 进阶, DNS, DNS 分流]
