@@ -203,10 +203,10 @@ rule-providers:
 
   networktest:
     type: http
-    behavior: classical
-    format: text
-    path: ./rules/networktest.list
-    url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/networktest.list"
+    behavior: domain
+    format: mrs
+    path: ./rules/networktest.mrs
+    url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/networktest.mrs"
     interval: 86400
 
   proxy:
