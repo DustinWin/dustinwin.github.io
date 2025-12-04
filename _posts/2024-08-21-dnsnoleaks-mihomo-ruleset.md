@@ -21,7 +21,7 @@ rule-providers:
     type: http
     behavior: domain
     format: mrs
-    path: ./rules/fakeip-filter.mrs
+    path: ./ruleset/fakeip-filter.mrs
     url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/fakeip-filter.mrs"
     interval: 86400
 
@@ -29,7 +29,7 @@ rule-providers:
     type: http
     behavior: domain
     format: mrs
-    path: ./rules/cn.mrs
+    path: ./ruleset/cn.mrs
     url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/cn.mrs"
     interval: 86400
 ```

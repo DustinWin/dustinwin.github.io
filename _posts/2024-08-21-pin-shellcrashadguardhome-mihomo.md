@@ -41,7 +41,7 @@ pin: true
 下载 AdGuardHome_linux_arm64.tar.gz 文件
 
 ### 5. UPX
-官方下载：<https://winscp.net/eng/download.php>  
+官方下载：<https://github.com/upx/upx/releases>  
 下载 upx-[version]-win64.zip 文件
 
 ### 6. WinSCP

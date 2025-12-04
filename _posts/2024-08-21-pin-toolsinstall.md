@@ -3,7 +3,7 @@ title: ShellCrash 和 AdGuard Home 快速安装教程
 description: 此教程包括 ShellCrash、AdGuard Home、mihomo 内核、sing-box 内核和 Dashboard 面板的安装方法
 date: 2024-08-21 17:13:12 +0800
 categories: [置顶]
-tags: [ShellCrash, AdGuard Home, mihomo, sing-box, sing-boxp, 安装, Dashboard]
+tags: [ShellCrash, AdGuard Home, mihomo, sing-box, sing-boxr, 安装, Dashboard]
 pin: true
 ---
 
@@ -39,9 +39,9 @@ export url='https://cdn.jsdelivr.net/gh/juewuy/ShellCrash@master' && sh -c "$(cu
 
 **sing-box 内核 Linux 版下载链接后缀和 CPU 架构对应关系如下表：**
 
-| CPU 架构     | AMD64   | ARMv5   | ARMv6   | ARMv7   | ARMv8&ARM64&AArch64 | mips-softfloat   | mipsle-softfloat   |
-| ------------ | ------- | ------- | ------- | ------- | :-----------------: | ---------------- | ------------------ |
-| **链接后缀** | `amd64` | `armv5` | `armv6` | `armv7` |       `armv8`       | `mips-softfloat` | `mipsle-softfloat` |
+| CPU 架构     | AMD64   | ARMv5   | ARMv6   | ARMv7   | ARMv8&ARM64&AArch64 | mips-softfloat   | mipsle-softfloat   | mipsle-hardfloat   |
+| ------------ | ------- | ------- | ------- | ------- | :-----------------: | ---------------- | ------------------ | ------------------ |
+| **链接后缀** | `amd64` | `armv5` | `armv6` | `armv7` |       `armv8`       | `mips-softfloat` | `mipsle-softfloat` | `mipsle-hardfloat` |
 
 ### 1. 首次导入
 连接 SSH 后执行如下命令：
@@ -51,8 +51,10 @@ export url='https://cdn.jsdelivr.net/gh/juewuy/ShellCrash@master' && sh -c "$(cu
 curl -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-meta-linux-armv8.tar.gz | tar -zx -C /tmp/ && crash
 # mihomo 内核 Alpha 版
 curl -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-alpha-linux-armv8.tar.gz | tar -zx -C /tmp/ && crash
-# sing-box 内核 PuerNya 版
-curl -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-puernya-linux-armv8.tar.gz | tar -zx -C /tmp/ && crash
+# sing-box 内核 reF1nd-main 版
+curl -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-main-linux-armv8.tar.gz | tar -zx -C /tmp/ && crash
+# sing-box 内核 reF1nd-dev 版
+curl -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-dev-linux-armv8.tar.gz | tar -zx -C /tmp/ && crash
 # sing-box 内核 Release 版
 curl -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-release-linux-armv8.tar.gz | tar -zx -C /tmp/ && crash
 # sing-box 内核 Dev 版
@@ -69,8 +71,10 @@ curl -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/dow
 curl -o $CRASHDIR/CrashCore.tar.gz -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-meta-linux-armv8.tar.gz && $CRASHDIR/start.sh restart
 # mihomo 内核 Alpha 版
 curl -o $CRASHDIR/CrashCore.tar.gz -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-alpha-linux-armv8.tar.gz && $CRASHDIR/start.sh restart
-# sing-box 内核 PuerNya 版
-curl -o $CRASHDIR/CrashCore.tar.gz -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-puernya-linux-armv8.tar.gz && $CRASHDIR/start.sh restart
+# sing-box 内核 reF1nd-main 版
+curl -o $CRASHDIR/CrashCore.tar.gz -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-main-linux-armv8.tar.gz && $CRASHDIR/start.sh restart
+# sing-box 内核 reF1nd-dev 版
+curl -o $CRASHDIR/CrashCore.tar.gz -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-dev-linux-armv8.tar.gz && $CRASHDIR/start.sh restart
 # sing-box 内核 Release 版
 curl -o $CRASHDIR/CrashCore.tar.gz -L https://cdn.jsdelivr.net/gh/DustinWin/proxy-tools/@sing-box/sing-box-release-linux-armv8.tar.gz && $CRASHDIR/start.sh restart
 # sing-box 内核 Dev 版

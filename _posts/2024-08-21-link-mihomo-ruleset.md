@@ -131,7 +131,7 @@ rule-providers:
     type: http
     behavior: domain
     format: mrs
-    path: ./rules/private.mrs
+    path: ./ruleset/private.mrs
     url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/private.mrs"
     interval: 86400
 
@@ -139,7 +139,7 @@ rule-providers:
     type: http
     behavior: domain
     format: mrs
-    path: ./rules/ads.mrs
+    path: ./ruleset/ads.mrs
     url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/ads.mrs"
     interval: 86400
 
@@ -147,7 +147,7 @@ rule-providers:
     type: http
     behavior: domain
     format: mrs
-    path: ./rules/trackerslist.mrs
+    path: ./ruleset/trackerslist.mrs
     url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/trackerslist.mrs"
     interval: 86400
 
@@ -156,7 +156,7 @@ rule-providers:
     type: http
     behavior: classical
     format: text
-    path: ./rules/applications.list
+    path: ./ruleset/applications.list
     url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/applications.list"
     interval: 86400
 
@@ -164,7 +164,7 @@ rule-providers:
     type: http
     behavior: domain
     format: mrs
-    path: ./rules/microsoft-cn.mrs
+    path: ./ruleset/microsoft-cn.mrs
     url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/microsoft-cn.mrs"
     interval: 86400
 
@@ -172,7 +172,7 @@ rule-providers:
     type: http
     behavior: domain
     format: mrs
-    path: ./rules/apple-cn.mrs
+    path: ./ruleset/apple-cn.mrs
     url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/apple-cn.mrs"
     interval: 86400
 
@@ -180,7 +180,7 @@ rule-providers:
     type: http
     behavior: domain
     format: mrs
-    path: ./rules/google-cn.mrs
+    path: ./ruleset/google-cn.mrs
     url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/google-cn.mrs"
     interval: 86400
 
@@ -188,7 +188,7 @@ rule-providers:
     type: http
     behavior: domain
     format: mrs
-    path: ./rules/games-cn.mrs
+    path: ./ruleset/games-cn.mrs
     url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/games-cn.mrs"
     interval: 86400
 
@@ -196,7 +196,7 @@ rule-providers:
     type: http
     behavior: domain
     format: mrs
-    path: ./rules/media.mrs
+    path: ./ruleset/media.mrs
     url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/media.mrs"
     interval: 86400
 
@@ -204,7 +204,7 @@ rule-providers:
     type: http
     behavior: domain
     format: mrs
-    path: ./rules/games.mrs
+    path: ./ruleset/games.mrs
     url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/games.mrs"
     interval: 86400
 
@@ -212,7 +212,7 @@ rule-providers:
     type: http
     behavior: domain
     format: mrs
-    path: ./rules/ai.mrs
+    path: ./ruleset/ai.mrs
     url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/ai.mrs"
     interval: 86400
 
@@ -220,7 +220,7 @@ rule-providers:
     type: http
     behavior: domain
     format: mrs
-    path: ./rules/networktest.mrs
+    path: ./ruleset/networktest.mrs
     url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/networktest.mrs"
     interval: 86400
 
@@ -228,7 +228,7 @@ rule-providers:
     type: http
     behavior: domain
     format: mrs
-    path: ./rules/proxy.mrs
+    path: ./ruleset/proxy.mrs
     url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/proxy.mrs"
     interval: 86400
 
@@ -236,7 +236,7 @@ rule-providers:
     type: http
     behavior: domain
     format: mrs
-    path: ./rules/cn.mrs
+    path: ./ruleset/cn.mrs
     url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/cn.mrs"
     interval: 86400
 
@@ -244,7 +244,7 @@ rule-providers:
     type: http
     behavior: ipcidr
     format: mrs
-    path: ./rules/privateip.mrs
+    path: ./ruleset/privateip.mrs
     url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/privateip.mrs"
     interval: 86400
 
@@ -252,7 +252,7 @@ rule-providers:
     type: http
     behavior: ipcidr
     format: mrs
-    path: ./rules/cnip.mrs
+    path: ./ruleset/cnip.mrs
     url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/cnip.mrs"
     interval: 86400
 
@@ -260,7 +260,7 @@ rule-providers:
     type: http
     behavior: ipcidr
     format: mrs
-    path: ./rules/mediaip.mrs
+    path: ./ruleset/mediaip.mrs
     url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/mediaip.mrs"
     interval: 86400
 
@@ -268,7 +268,7 @@ rule-providers:
     type: http
     behavior: ipcidr
     format: mrs
-    path: ./rules/gamesip.mrs
+    path: ./ruleset/gamesip.mrs
     url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/gamesip.mrs"
     interval: 86400
 
@@ -276,7 +276,7 @@ rule-providers:
     type: http
     behavior: ipcidr
     format: mrs
-    path: ./rules/telegramip.mrs
+    path: ./ruleset/telegramip.mrs
     url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/telegramip.mrs"
     interval: 86400
 
@@ -405,7 +405,7 @@ rule-providers:
     type: http
     behavior: domain
     format: mrs
-    path: ./rules/private.mrs
+    path: ./ruleset/private.mrs
     url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/private.mrs"
     interval: 86400
 
@@ -413,7 +413,7 @@ rule-providers:
     type: http
     behavior: domain
     format: mrs
-    path: ./rules/ads.mrs
+    path: ./ruleset/ads.mrs
     url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/ads.mrs"
     interval: 86400
 
@@ -421,7 +421,7 @@ rule-providers:
     type: http
     behavior: domain
     format: mrs
-    path: ./rules/trackerslist.mrs
+    path: ./ruleset/trackerslist.mrs
     url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/trackerslist.mrs"
     interval: 86400
 
@@ -429,7 +429,7 @@ rule-providers:
     type: http
     behavior: domain
     format: mrs
-    path: ./rules/media.mrs
+    path: ./ruleset/media.mrs
     url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/media.mrs"
     interval: 86400
 
@@ -437,7 +437,7 @@ rule-providers:
     type: http
     behavior: domain
     format: mrs
-    path: ./rules/games.mrs
+    path: ./ruleset/games.mrs
     url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/games.mrs"
     interval: 86400
 
@@ -445,7 +445,7 @@ rule-providers:
     type: http
     behavior: domain
     format: mrs
-    path: ./rules/ai.mrs
+    path: ./ruleset/ai.mrs
     url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/ai.mrs"
     interval: 86400
 
@@ -453,7 +453,7 @@ rule-providers:
     type: http
     behavior: domain
     format: mrs
-    path: ./rules/networktest.mrs
+    path: ./ruleset/networktest.mrs
     url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/networktest.mrs"
     interval: 86400
 
@@ -461,7 +461,7 @@ rule-providers:
     type: http
     behavior: domain
     format: mrs
-    path: ./rules/tld-proxy.mrs
+    path: ./ruleset/tld-proxy.mrs
     url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/tld-proxy.mrs"
     interval: 86400
 
@@ -469,7 +469,7 @@ rule-providers:
     type: http
     behavior: domain
     format: mrs
-    path: ./rules/gfw.mrs
+    path: ./ruleset/gfw.mrs
     url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/gfw.mrs"
     interval: 86400
 
@@ -477,7 +477,7 @@ rule-providers:
     type: http
     behavior: ipcidr
     format: mrs
-    path: ./rules/mediaip.mrs
+    path: ./ruleset/mediaip.mrs
     url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/mediaip.mrs"
     interval: 86400
 
@@ -485,7 +485,7 @@ rule-providers:
     type: http
     behavior: ipcidr
     format: mrs
-    path: ./rules/gamesip.mrs
+    path: ./ruleset/gamesip.mrs
     url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/gamesip.mrs"
     interval: 86400
 
@@ -493,7 +493,7 @@ rule-providers:
     type: http
     behavior: ipcidr
     format: mrs
-    path: ./rules/telegramip.mrs
+    path: ./ruleset/telegramip.mrs
     url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/telegramip.mrs"
     interval: 86400
 
@@ -552,7 +552,7 @@ rule-providers:
     type: http
     behavior: domain
     format: mrs
-    path: ./rules/netflix.mrs
+    path: ./ruleset/netflix.mrs
     url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/netflix.mrs"
     interval: 86400
 
@@ -560,7 +560,7 @@ rule-providers:
     type: http
     behavior: ipcidr
     format: mrs
-    path: ./rules/netflixip.mrs
+    path: ./ruleset/netflixip.mrs
     url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/netflixip.mrs"
     interval: 86400
 
@@ -568,7 +568,7 @@ rule-providers:
     type: http
     behavior: domain
     format: mrs
-    path: ./rules/bilibili.mrs
+    path: ./ruleset/bilibili.mrs
     url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/bilibili.mrs"
     interval: 86400
 

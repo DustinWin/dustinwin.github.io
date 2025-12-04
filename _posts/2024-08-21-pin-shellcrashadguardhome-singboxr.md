@@ -1,9 +1,9 @@
 ---
-title: 全网最详细的解锁 SSH ShellCrash 搭载 sing-boxp 内核搭配 AdGuard Home 安装和配置教程
-description: 此教程使用 ShellCrash 搭载 sing-boxp 内核并搭配 AdGuard Home 作下游，配有详细图文
+title: 全网最详细的解锁 SSH ShellCrash 搭载 sing-boxr 内核搭配 AdGuard Home 安装和配置教程
+description: 此教程使用 ShellCrash 搭载 sing-boxr 内核并搭配 AdGuard Home 作下游，配有详细图文
 date: 2024-08-21 22:27:53 +0800
 categories: [置顶]
-tags: [sing-box, sing-boxp, ShellCrash, AdGuard Home, 解锁, SSH]
+tags: [sing-box, sing-boxr, ShellCrash, AdGuard Home, 解锁, SSH]
 pin: true
 ---
 
@@ -11,7 +11,7 @@ pin: true
 {: .prompt-tip }
 1. 本教程基于 REDMI AX6000 [官方固件](https://www1.miwifi.com/miwifi_download.html) v1.0.70 版，[ShellCrash](https://github.com/juewuy/ShellCrash) v1.9.2 版，[AdGuard Home](https://github.com/AdguardTeam/AdGuardHome) v0.108.0 版编写
 2. 恢复 SSH，安装 ShellCrash 和 AdGuard Home 的方法也适用于其它已解锁 SSH 的路由器
-3. 安装 [sing-box PuerNya 版内核](https://github.com/PuerNya/sing-box/tree/building) 内核和 AdGuard Home 时须注意路由器 CPU 架构，查看 CPU 架构可连接 SSH 后执行命令 `uname -ms`，若执行结果是“linux aarch64”，就下载 armv8 或 arm64 版安装包；若是其它架构请下载相匹配的安装包
+3. 安装 [sing-box reF1nd 版内核](https://github.com/reF1nd/sing-box) 内核和 AdGuard Home 时须注意路由器 CPU 架构，查看 CPU 架构可连接 SSH 后执行命令 `uname -ms`，若执行结果是“linux aarch64”，就下载 armv8 或 arm64 版安装包；若是其它架构请下载相匹配的安装包
 4. ShellCrash 和 AdGuard Home 中所有没有提到的配置保持默认即可
 5. 使用本教程时，不建议开启 ShellCrash 中的“5 过滤局域网设备”，因不经过内核的设备在访问“漏网之鱼”域名时会遇到无法访问的情况
 6. ShellCrash 和 AdGuard Home 快速安装方法请看《[ShellCrash 和 AdGuard Home 快速安装教程](https://proxy-tutorials.dustinwin.us.kg/posts/pin-toolsinstall)》
@@ -27,9 +27,9 @@ pin: true
 ### 1. ShellCrash
 官方下载：<https://raw.githubusercontent.com/juewuy/ShellCrash/master/bin/ShellCrash.tar.gz>
 
-### 2. sing-box PuerNya 版内核
+### 2. sing-box reF1nd 版内核
 第三方下载：<https://github.com/DustinWin/proxy-tools/releases/tag/sing-box>  
-下载 sing-box-puernya-linux-armv8.tar.gz 文件
+下载 sing-box-ref1nd-dev-linux-armv8.tar.gz 文件
 
 ### 3. PuTTY
 官方下载：<https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html>  
@@ -40,7 +40,7 @@ pin: true
 下载 AdGuardHome_linux_arm64.tar.gz 文件
 
 ### 5. UPX
-官方下载：<https://winscp.net/eng/download.php>  
+官方下载：<https://github.com/upx/upx/releases>  
 下载 upx-[version]-win64.zip 文件
 
 ### 6. WinSCP
@@ -65,11 +65,11 @@ pin: true
 
 - ③ 连接 Telnet
 
-> 在成功完成《[三、 2](https://proxy-tutorials.dustinwin.us.kg/posts/pin-shellcrashadguardhome-singboxp/#2-%E6%B0%B8%E4%B9%85%E5%BC%80%E5%90%AF-telnet)》后才能进行此操作
+> 在成功完成《[三、 2](https://proxy-tutorials.dustinwin.us.kg/posts/pin-shellcrashadguardhome-singboxr/#2-%E6%B0%B8%E4%B9%85%E5%BC%80%E5%90%AF-telnet)》后才能进行此操作
 {: .prompt-warning }
 
   - ➊ 以管理员身份运行 PowerShell 或 CMD，执行命令 `telnet 192.168.31.1`
-    - 注：首次登录不需要用户名和密码，解锁或恢复 SSH 后用户名为 `root`，密码为《[三、 3](https://proxy-tutorials.dustinwin.us.kg/posts/pin-shellcrashadguardhome-singboxp/#3-%E6%B0%B8%E4%B9%85%E5%BC%80%E5%90%AF%E5%B9%B6%E5%9B%BA%E5%8C%96-ssh)》中设置的登录密码
+    - 注：首次登录不需要用户名和密码，解锁或恢复 SSH 后用户名为 `root`，密码为《[三、 3](https://proxy-tutorials.dustinwin.us.kg/posts/pin-shellcrashadguardhome-singboxr/#3-%E6%B0%B8%E4%B9%85%E5%BC%80%E5%90%AF%E5%B9%B6%E5%9B%BA%E5%8C%96-ssh)》中设置的登录密码
 
     <img src="/assets/img/pin/connect-telnet-windows-1.png" alt="连接 Telnet 1" width="60%" />
 
@@ -78,7 +78,7 @@ pin: true
 
 - ④ 连接 SSH
 
-> 在成功完成《[三、 3](https://proxy-tutorials.dustinwin.us.kg/posts/pin-shellcrashadguardhome-singboxp/#3-%E6%B0%B8%E4%B9%85%E5%BC%80%E5%90%AF%E5%B9%B6%E5%9B%BA%E5%8C%96-ssh)》后才能进行此操作
+> 在成功完成《[三、 3](https://proxy-tutorials.dustinwin.us.kg/posts/pin-shellcrashadguardhome-singboxr/#3-%E6%B0%B8%E4%B9%85%E5%BC%80%E5%90%AF%E5%B9%B6%E5%9B%BA%E5%8C%96-ssh)》后才能进行此操作
 {: .prompt-warning }
 
   - ➊ 以管理员身份运行 PowerShell 或 CMD，执行命令 `ssh -oHostKeyAlgorithms=+ssh-rsa root@192.168.31.1` 以允许 SSH 客户端接受“ssh-rsa”密钥，输入 `yes` 并回车
@@ -95,7 +95,7 @@ pin: true
 ### 2. 通过 SSH 工具添加 SSH 支持（任选一）
 - ① 连接 Telnet
 
-> 在成功完成《[三、 2](https://proxy-tutorials.dustinwin.us.kg/posts/pin-shellcrashadguardhome-singboxp/#2-%E6%B0%B8%E4%B9%85%E5%BC%80%E5%90%AF-telnet)》后才能进行此操作
+> 在成功完成《[三、 2](https://proxy-tutorials.dustinwin.us.kg/posts/pin-shellcrashadguardhome-singboxr/#2-%E6%B0%B8%E4%B9%85%E5%BC%80%E5%90%AF-telnet)》后才能进行此操作
 {: .prompt-warning }
 
   - ➊ 安装 PuTTY 并打开，按图输入和选择，点击“Open”即可成功连接 Telnet
@@ -106,7 +106,7 @@ pin: true
 
 - ② 连接 SSH
 
-> 在成功完成《[三、 3](https://proxy-tutorials.dustinwin.us.kg/posts/pin-shellcrashadguardhome-singboxp/#3-%E6%B0%B8%E4%B9%85%E5%BC%80%E5%90%AF%E5%B9%B6%E5%9B%BA%E5%8C%96-ssh)》后才能进行此操作
+> 在成功完成《[三、 3](https://proxy-tutorials.dustinwin.us.kg/posts/pin-shellcrashadguardhome-singboxr/#3-%E6%B0%B8%E4%B9%85%E5%BC%80%E5%90%AF%E5%B9%B6%E5%9B%BA%E5%8C%96-ssh)》后才能进行此操作
 {: .prompt-warning }
 
   - ➊ 打开 PuTTY，然后按图输入，点击“Open”即可成功连接 SSH
@@ -116,7 +116,7 @@ pin: true
     <img src="/assets/img/pin/connect-ssh-2.png" alt="连接和添加 SSH 2" width="60%" />
 
 ### 3. 通过 WinSCP 连接路由器文件管理
-> 在成功完成《[三、 3](https://proxy-tutorials.dustinwin.us.kg/posts/pin-shellcrashadguardhome-singboxp/#3-%E6%B0%B8%E4%B9%85%E5%BC%80%E5%90%AF%E5%B9%B6%E5%9B%BA%E5%8C%96-ssh)》后才能进行此操作
+> 在成功完成《[三、 3](https://proxy-tutorials.dustinwin.us.kg/posts/pin-shellcrashadguardhome-singboxr/#3-%E6%B0%B8%E4%B9%85%E5%BC%80%E5%90%AF%E5%B9%B6%E5%9B%BA%E5%8C%96-ssh)》后才能进行此操作
 {: .prompt-warning }
 
 - ① 安装 WinSCP 并打开，“文件协议”选择“SCP”，其它按图输入，“密码”为 SSH 登录密码，点击“保存”后再点击“登录”  
@@ -268,16 +268,16 @@ echo -e '12345678\n12345678' | passwd root
   ```
 
 - ③ 选择 1 安装到 /data 目录（推荐，支持软固化功能）
-- ④ 将下载的 sing-box-puernya-linux-armv8.tar.gz 文件复制到桌面，以管理员身份运行 PowerShell，依次执行如下命令：
+- ④ 将下载的 sing-box-ref1nd-dev-linux-armv8.tar.gz 文件复制到桌面，以管理员身份运行 PowerShell，依次执行如下命令：
 
   ```
   cd C:\Users\[用户名]\Desktop
-  tar -zxvf sing-box-puernya-linux-armv8.tar.gz
+  tar -zxvf sing-box-ref1nd-dev-linux-armv8.tar.gz
   ```
 
   .tar.gz 压缩文件成功解压到桌面上，目录结构为 `C:\Users\[用户名]\Desktop\CrashCore`{: .filepath}
 - ⑤ 将 CrashCore 文件移动到路由器的 `/tmp`{: .filepath} 目录中  
-  <img src="/assets/img/pin/move-sing-boxp.png" alt="ShellCrash 安装 2" width="60%" />
+  <img src="/assets/img/pin/move-sing-boxr.png" alt="ShellCrash 安装 2" width="60%" />
 
 **安装 ShellCrash 成功！**
 
@@ -291,7 +291,7 @@ echo -e '12345678\n12345678' | passwd root
   - ➎ 根据需要是否选择 1 立即启动服务（此处选择 `0`）
     - 注：强烈建议选择 `0`，待以下配置完成后，最后一步启动服务
   - ➏ 此时脚本会自动“发现可用的内核文件”，选择 `1` 加载，后选择 3 Sing-Box-Puer 内核  
-    <img src="/assets/img/pin/import-sing-boxp.png" alt="ShellCrash 配置 1" width="60%" />
+    <img src="/assets/img/pin/import-sing-boxr.png" alt="ShellCrash 配置 1" width="60%" />
 
   - ➐ 内核加载完成后根据需要是否保留相关数据库文件（此处选择 `0`）
 - ③ 模式设置
@@ -303,11 +303,11 @@ echo -e '12345678\n12345678' | passwd root
     <img src="/assets/img/pin/mix-mix.png" alt="ShellCrash 配置 4" width="60%" />
 
   - ➍ 进入 2 切换 DNS 运行模式 → 4 DNS 进阶设置，选择 7 禁用 DNS 劫持
-    - 注：推荐设置 DNS 分流（单独使用 ShellCrash 以及 ShellCrash 搭配 AdGuard Home 都适用），请看《[搭载 sing-boxp 内核进行 DNS 分流教程-geodata 方案](https://proxy-tutorials.dustinwin.us.kg/posts/dnsbypass-singboxp-geodata)》或《[搭载 sing-boxp 内核进行 DNS 分流教程-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/dnsbypass-singboxp-ruleset)》
+    - 注：推荐设置 DNS 分流（单独使用 ShellCrash 以及 ShellCrash 搭配 AdGuard Home 都适用），请看《[搭载 sing-boxr 内核进行 DNS 分流教程-geodata 方案](https://proxy-tutorials.dustinwin.us.kg/posts/dnsbypass-singboxr-geodata)》或《[搭载 sing-boxr 内核进行 DNS 分流教程-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/dnsbypass-singboxr-ruleset)》
 
     <img src="/assets/img/pin/dns-setting.png" alt="ShellCrash 配置 3" width="60%" />
 
-- ④ 进入主菜单 → 4 内核启动设置，选择 1 允许 ShellCrash 开机启动（若重启路由器后服务没有自动运行，可“设置自启延时”为 `30` 秒，然后在《[六、 1. ⑥](https://proxy-tutorials.dustinwin.us.kg//posts/pin-shellcrashadguardhome-singboxp/#1-adguard-home-%E5%AE%89%E8%A3%85)》，将 `sleep 10s` 改为 `sleep 40s`）
+- ④ 进入主菜单 → 4 内核启动设置，选择 1 允许 ShellCrash 开机启动（若重启路由器后服务没有自动运行，可“设置自启延时”为 `30` 秒，然后在《[六、 1. ⑥](https://proxy-tutorials.dustinwin.us.kg//posts/pin-shellcrashadguardhome-singboxr/#1-adguard-home-%E5%AE%89%E8%A3%85)》，将 `sleep 10s` 改为 `sleep 40s`）
 - ⑤ 进入主菜单 → 5 配置自动任务 → 1 添加自动任务，输入对应的数字并回车后可设置执行条件
 - ⑥ 进入主菜单 → 9 更新/卸载 → 7 切换安装源及安装版本，选择 b 切换至公测版-master → 1 Jsdelivr_CDN源，追求新版可选择 c 切换至开发版（可能不稳定）  
   <img src="/assets/img/pin/select-update-source.png" alt="ShellCrash 配置 5" width="60%" />
@@ -321,8 +321,8 @@ echo -e '12345678\n12345678' | passwd root
 
 - ⑧ 进入主菜单 → 6 导入配置文件  
   注：
-    - ➊ 选择 1 在线生成 singboxp 配置文件，粘贴你的订阅链接并回车，输入 `1` 并再次回车即可
-    - ➋ 选择 2 在线获取完整配置文件，需要一定的 sing-boxp 知识储备，请查看《[生成带有自定义策略组和规则的 sing-boxp 配置文件直链-geodata 方案](https://proxy-tutorials.dustinwin.us.kg/posts/link-singboxp-geodata)》或《[生成带有自定义策略组和规则的 sing-boxp 配置文件直链-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/link-singboxp-ruleset)》
+    - ➊ 选择 1 在线生成 singboxr 配置文件，粘贴你的订阅链接并回车，输入 `1` 并再次回车即可
+    - ➋ 选择 2 在线获取完整配置文件，需要一定的 sing-boxr 知识储备，请查看《[生成带有自定义策略组和规则的 sing-boxr 配置文件直链-geodata 方案](https://proxy-tutorials.dustinwin.us.kg/posts/link-singboxr-geodata)》或《[生成带有自定义策略组和规则的 sing-boxr 配置文件直链-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/link-singboxr-ruleset)》
     - ➌ 若 1 或 2 无法正确获取配置文件，可进入 9 自定义浏览器 UA 选择合适的 UA
 
   导入配置文件完成后，选择 1 启动/重启服务
@@ -339,7 +339,7 @@ echo -e '12345678\n12345678' | passwd root
 
 ### 3. ShellCrash 升级
 进入主菜单 → 9 更新/卸载，查看“管理脚本”、“内核文件”和“数据库文件”有无新版本，有则选择对应的数字进行升级即可  
-<img src="/assets/img/pin/update-shellcrash-singboxp.png" alt="ShellCrash 升级" width="60%" />
+<img src="/assets/img/pin/update-shellcrash-singboxr.png" alt="ShellCrash 升级" width="60%" />
 
 ### 4. ShellCrash 卸载
 - ① 通过脚本命令进行卸载（任选一）  
@@ -466,12 +466,12 @@ echo -e '12345678\n12345678' | passwd root
 
 ### 3. AdGuard Home 升级
 为了节约路由器内存，请按照如下步骤进行操作：
-- ① 执行《[六、 1. ① ② ③ ④（替换）](https://proxy-tutorials.dustinwin.us.kg//posts/pin-shellcrashadguardhome-singboxp/#1-adguard-home-%E5%AE%89%E8%A3%85)》的操作步骤
+- ① 执行《[六、 1. ① ② ③ ④（替换）](https://proxy-tutorials.dustinwin.us.kg//posts/pin-shellcrashadguardhome-singboxr/#1-adguard-home-%E5%AE%89%E8%A3%85)》的操作步骤
 - ② 连接 SSH 后执行命令 `/data/AdGuardHome/AdGuardHome -s restart`
 
 ### 4. AdGuard Home 卸载
 - ① 删除开机启动项
-  执行《[六、 1. ⑥](https://proxy-tutorials.dustinwin.us.kg//posts/pin-shellcrashadguardhome-singboxp/#1-adguard-home-%E5%AE%89%E8%A3%85)》的操作步骤，删除添加的内容：
+  执行《[六、 1. ⑥](https://proxy-tutorials.dustinwin.us.kg//posts/pin-shellcrashadguardhome-singboxr/#1-adguard-home-%E5%AE%89%E8%A3%85)》的操作步骤，删除添加的内容：
 
   ```shell
   sleep 10s
