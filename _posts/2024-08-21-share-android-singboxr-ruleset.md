@@ -63,14 +63,12 @@ tags: [sing-box, sing-boxr, Android, ruleset, rule_set, 分享]
       { "clash_mode": [ "Direct" ], "query_type": [ "A", "AAAA" ], "server": "dns_direct" },
       { "clash_mode": [ "Global" ], "query_type": [ "A", "AAAA" ], "server": "dns_proxy" },
       { "rule_set": [ "ads" ], "action": "predefined" },
-      { "domain": [ "services.googleapis.cn" ], "query_type": [ "A", "AAAA" ], "server": "dns_fakeip", "rewrite_ttl": 1 },
+      { "domain": [ "services.googleapis.cn" ], "query_type": [ "A", "AAAA" ], "server": "dns_fakeip" },
       { "rule_set": [ "trackerslist", "private", "cn" ], "query_type": [ "A", "AAAA" ], "server": "dns_direct", "rewrite_ttl": 1 },
-      { "query_type": [ "A", "AAAA" ], "server": "dns_fakeip", "rewrite_ttl": 1 }
+      { "query_type": [ "A", "AAAA" ], "server": "dns_fakeip" }
     ],
     "final": "dns_proxy",
     "strategy": "prefer_ipv4",
-    "disable_cache": true,
-    "disable_expire": false,
     "independent_cache": true,
     "reverse_mapping": true,
     // 推荐将 `client_subnet` 设置为当前网络的公网 IP 段，如当前网络公网 IP 为 `202.103.17.123`，可设置为 `202.103.17.0/24`
@@ -139,7 +137,7 @@ tags: [sing-box, sing-boxr, Android, ruleset, rule_set, 分享]
       { "rule_set": [ "cn" ], "outbound": "直连域名" },
       { "rule_set": [ "privateip" ], "outbound": "私有网络" },
       { "rule_set": [ "telegramip" ], "outbound": "电报消息" },
-      { "action": "resolve", "server": "dns_proxy" },
+      { "action": "resolve", "match_only": true },
       { "rule_set": [ "cnip" ], "outbound": "直连 IP" }
     ],
     "rule_set": [
@@ -255,9 +253,7 @@ tags: [sing-box, sing-boxr, Android, ruleset, rule_set, 分享]
   },
   "experimental": {
     "cache_file": {
-      "enabled": true,
-      "store_fakeip": true,
-      "store_rdrc": false
+      "store_fakeip": true
     },
     "clash_api": {
       "external_controller": "127.0.0.1:9999",
