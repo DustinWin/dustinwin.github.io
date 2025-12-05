@@ -65,7 +65,7 @@ curl -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/dow
 11. 进入 Dashboard 面板 → 代理 → 代理提供者，点击“转圈”图标，可手动更新节点
 
 ## 四、 在线 Dashboard 面板
-推荐使用在线 Dashboard 面板 [zashboard](https://github.com/Zephyruso/zashboard)，网址：<https://board.zash.run.place>
+在线 Dashboard 面板 [zashboard](https://github.com/Zephyruso/zashboard)，网址：<https://board.zash.run.place>
 1. 若使用基于 [Chromium 项目](https://www.chromium.org/Home/)开发的浏览器打开网址去访问 Dashboard 面板时，以 [Chrome 浏览器](https://www.google.com/chrome/)为例，需要设置该网址域名“允许显示不安全内容”，进入设置 → 隐私和安全 → 网站设置 → 更多内容设置 → 不安全内容（或者直接在地址栏打开 `chrome://settings/content/insecureContent` 进行设置），在“允许显示不安全内容”内添加网址域名 `board.zash.run.place`  
 <img src="/assets/img/tools/chrome-setting-dashboard.png" alt="在线 Dashboard 面板 1" width="60%" />
 
