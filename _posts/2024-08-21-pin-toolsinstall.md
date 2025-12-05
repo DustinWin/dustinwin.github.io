@@ -37,6 +37,12 @@ export url='https://cdn.jsdelivr.net/gh/juewuy/ShellCrash@master' && sh -c "$(cu
 | ------------ | --------- | --------- | ------- | ------- | ------- | :-----------------: | ---------------- | ------------------ | ------------------ |
 | **链接后缀** | `amd64v1` | `amd64v3` | `armv5` | `armv6` | `armv7` |       `armv8`       | `mips-softfloat` | `mipsle-softfloat` | `mipsle-hardfloat` |
 
+**[sing-boxr 内核](https://github.com/reF1nd/sing-box) Linux 版下载链接后缀和 CPU 架构对应关系如下表：**
+
+| CPU 架构     | AMD64v1   | AMD64v3   | ARMv5   | ARMv6   | ARMv7   | ARMv8&ARM64&AArch64 | mips-softfloat   | mipsle-softfloat   | mipsle-hardfloat   |
+| ------------ | --------- | --------- | ------- | ------- | ------- | :-----------------: | ---------------- | ------------------ | ------------------ |
+| **链接后缀** | `amd64v1` | `amd64v3` | `armv5` | `armv6` | `armv7` |       `armv8`       | `mips-softfloat` | `mipsle-softfloat` | `mipsle-hardfloat` |
+
 **sing-box 内核 Linux 版下载链接后缀和 CPU 架构对应关系如下表：**
 
 | CPU 架构     | AMD64   | ARMv5   | ARMv6   | ARMv7   | ARMv8&ARM64&AArch64 | mips-softfloat   | mipsle-softfloat   | mipsle-hardfloat   |
