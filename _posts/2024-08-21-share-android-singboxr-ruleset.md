@@ -260,7 +260,7 @@ tags: [sing-box, sing-boxr, Android, ruleset, rule_set, 分享]
       "store_rdrc": false
     },
     "clash_api": {
-      "external_controller": "127.0.0.1:9090",
+      "external_controller": "127.0.0.1:9999",
       "external_ui": "ui",
       "external_ui_download_url": "https://github.com/Zephyruso/zashboard/archive/gh-pages.zip",
       "secret": ""
@@ -276,8 +276,7 @@ tags: [sing-box, sing-boxr, Android, ruleset, rule_set, 分享]
 
 ## 三、 访问 Dashboard 面板
 .json 文件已配置 [zashboard 面板](https://github.com/Zephyruso/zashboard)  
-打开 <http://miwifi.com:9090/ui/> 后可直接点击“提交”，即可访问 Dashboard 面板  
-<img src="/assets/img/share/127-9090-phone-dashboard.png" alt="在线 Dashboard 面板" width="60%" />
+打开 <http://miwifi.com:9999/ui/> 后，“端口”输入`9999`，点击“提交”，即可访问 Dashboard 面板
 
 > 推荐设置
 {: .prompt-tip }

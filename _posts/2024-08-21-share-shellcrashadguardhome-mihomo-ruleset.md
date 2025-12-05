@@ -292,7 +292,7 @@ dns:
   ipv6: true
   listen: 0.0.0.0:1053
   fake-ip-range: 28.0.0.1/8
-  fake-ip-range6: fc00::/18
+  fake-ip-range6: fc00::/16
   enhanced-mode: fake-ip
   fake-ip-filter: ['rule-set:fakeip-filter,trackerslist,private,cn']
   nameserver:
@@ -323,7 +323,7 @@ dns:
   ipv6: true
   listen: 0.0.0.0:1053
   fake-ip-range: 28.0.0.1/8
-  fake-ip-range6: fc00::/18
+  fake-ip-range6: fc00::/16
   enhanced-mode: fake-ip
   fake-ip-filter: ['rule-set:fakeip-filter,trackerslist,private,cn']
   respect-rules: true
@@ -343,7 +343,7 @@ dns:
 连接 SSH 后执行命令 `vi $CRASHDIR/task/task.user`，按一下 Ins 键（Insert 键），粘贴如下内容：
 
 ```shell
-204#sed -i -E "s/(ecs=)[0-9.]+\/[0-9]+/\1$(curl -s 4.ipw.cn | cut -d. -f1-3).0\/24/" $CRASHDIR/yamls/user.yaml && curl -H 'Authorization: Bearer ""' http://192.168.31.1:9090/configs -d '{"path": "", "payload": ""}' -X PUT >/dev/null 2>&1#更新ecs地址
+204#sed -i -E "s/(ecs=)[0-9.]+\/[0-9]+/\1$(curl -s 4.ipw.cn | cut -d. -f1-3).0\/24/" $CRASHDIR/yamls/user.yaml && curl -H 'Authorization: Bearer ""' http://192.168.31.1:9999/configs -d '{"path": "", "payload": ""}' -X PUT >/dev/null 2>&1#更新ecs地址
 ```
 
 ---
@@ -367,8 +367,7 @@ dns:
 <img src="/assets/img/share/close-dns-null.png" alt="ShellCrash 设置 2" width="60%" />
 
 3. 进入主菜单 → 7 内核进阶设置，不要启用 4 启用域名嗅探（因 user.yaml 文件中已添加 `dns.sniffer` 配置项）
-4. 进入主菜单 → 7 内核进阶设置 → 5 自定义端口及秘钥，设置为 `9090`
-5. 进入主菜单 → 6 导入配置文件 → 2 在线获取完整配置文件，粘贴《[一](https://proxy-tutorials.dustinwin.us.kg/posts/share-shellcrashadguardhome-mihomo-ruleset/#%E4%B8%80-%E7%94%9F%E6%88%90%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-yaml-%E6%96%87%E4%BB%B6%E7%9B%B4%E9%93%BE)》中生成的配置文件 .yaml 文件直链，启动服务即可
+4. 进入主菜单 → 6 导入配置文件 → 2 在线获取完整配置文件，粘贴《[一](https://proxy-tutorials.dustinwin.us.kg/posts/share-shellcrashadguardhome-mihomo-ruleset/#%E4%B8%80-%E7%94%9F%E6%88%90%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-yaml-%E6%96%87%E4%BB%B6%E7%9B%B4%E9%93%BE)》中生成的配置文件 .yaml 文件直链，启动服务即可
 
 ## 六、 安装 AdGuard Home
 连接 SSH 后执行如下命令：
@@ -405,5 +404,4 @@ https://doh.pub/dns-query
 ```
 
 ## 八、 访问 Dashboard 面板
-打开 <http://miwifi.com:9090/ui/> 后，“主机”输入 `192.168.31.1`，点击“提交”即可访问 Dashboard 面板  
-<img src="/assets/img/share/192-9090-dashboard.png" alt="在线 Dashboard 面板" width="60%" />
+打开 <http://miwifi.com:9999/ui/> 后，“主机”输入 `192.168.31.1`，“端口”输入 `9999`，点击“提交”即可访问 Dashboard 面板

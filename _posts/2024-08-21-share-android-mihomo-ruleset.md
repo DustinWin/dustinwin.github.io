@@ -43,7 +43,7 @@ allow-lan: true
 mixed-port: 7890
 unified-delay: true
 tcp-concurrent: true
-external-controller: 127.0.0.1:9090
+external-controller: 127.0.0.1:9999
 global-client-fingerprint: chrome
 profile: {store-selected: true, store-fake-ip: true}
 
@@ -73,7 +73,7 @@ dns:
   ipv6: true
   listen: 0.0.0.0:53
   fake-ip-range: 28.0.0.1/8
-  fake-ip-range6: fc00::/18
+  fake-ip-range6: fc00::/16
   enhanced-mode: fake-ip
   fake-ip-filter: ['rule-set:trackerslist,private,cn']
   nameserver:
@@ -319,7 +319,7 @@ dns:
   ipv6: true
   listen: 0.0.0.0:53
   fake-ip-range: 28.0.0.1/8
-  fake-ip-range6: fc00::/18
+  fake-ip-range6: fc00::/16
   enhanced-mode: fake-ip
   fake-ip-filter: ['rule-set:trackerslist,private,cn']
   respect-rules: true

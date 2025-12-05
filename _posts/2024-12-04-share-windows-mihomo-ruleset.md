@@ -44,7 +44,7 @@ allow-lan: true
 mixed-port: 7890
 unified-delay: true
 tcp-concurrent: true
-external-controller: 127.0.0.1:9090
+external-controller: 127.0.0.1:9999
 external-ui: ui
 external-ui-url: "https://github.com/Zephyruso/zashboard/archive/gh-pages.zip"
 global-client-fingerprint: chrome
@@ -75,7 +75,7 @@ dns:
   ipv6: true
   listen: 0.0.0.0:53
   fake-ip-range: 28.0.0.1/8
-  fake-ip-range6: fc00::/18
+  fake-ip-range6: fc00::/16
   enhanced-mode: fake-ip
   fake-ip-filter: ['rule-set:trackerslist,private,cn']
   nameserver:
@@ -320,7 +320,7 @@ dns:
   ipv6: true
   listen: 0.0.0.0:1053
   fake-ip-range: 28.0.0.1/8
-  fake-ip-range6: fc00::/18
+  fake-ip-range6: fc00::/16
   enhanced-mode: fake-ip
   fake-ip-filter: ['rule-set:trackerslist,private,cn']
   respect-rules: true
@@ -446,5 +446,4 @@ read -p "按任意键退出" -n1 -s
 
 ## 五、 访问 Dashboard 面板
 .yaml 文件已配置 [zashboard 面板](https://github.com/Zephyruso/zashboard)  
-打开 <http://miwifi.com:9090/ui/> 后可直接点击“提交”，即可访问 Dashboard 面板  
-<img src="/assets/img/share/127-9090-dashboard.png" alt="在线 Dashboard 面板" width="60%" />
+打开 <http://miwifi.com:9999/ui/> 后，“端口”输入 `9999`，点击“提交”，即可访问 Dashboard 面板

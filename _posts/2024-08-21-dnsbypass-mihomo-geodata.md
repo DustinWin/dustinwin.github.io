@@ -36,7 +36,7 @@ dns:
   ipv6: true
   listen: 0.0.0.0:1053
   fake-ip-range: 28.0.0.1/8
-  fake-ip-range6: fc00::/18
+  fake-ip-range6: fc00::/16
   enhanced-mode: fake-ip
   fake-ip-filter: ['geosite:fakeip-filter,cn']
   nameserver:
