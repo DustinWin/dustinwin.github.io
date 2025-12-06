@@ -273,6 +273,7 @@ crash
 {
   "experimental": {
     "cache_file": {
+      "enabled": true,
       "store_fakeip": true
     },
     "clash_api": {
