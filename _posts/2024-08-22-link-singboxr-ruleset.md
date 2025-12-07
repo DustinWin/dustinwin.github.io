@@ -40,8 +40,8 @@ tags: [sing-box, sing-boxr, 直链, 订阅, ruleset, rule_set, 基础]
       // 机场订阅链接，使用 Clash 链接
       "url": "https://example.com/xxx/xxx&flag=clash",
       "path": "./providers/airport1.yaml",
-      // 若出现获取不了机场节点的情况，可添加此配置项
-      "user_agent": "mihomo/1.19.17",
+      // 若出现获取不了机场节点的情况，可删除此配置项
+      "user_agent": "clash.meta",
       // 初步筛选需要的节点，可有效减轻路由器压力，支持正则表达式，若不筛选可删除此配置项
       "include": "(?i)(🇭🇰|港|hk|hongkong|hong kong|🇹🇼|台|tw|taiwan|tai wan|🇯🇵|日|jp|japan|🇸🇬|新|sg|singapore|🇺🇸|美|us|unitedstates|united states)",
       // 初步排除不需要的节点，支持正则表达式，若不排除可删除此配置项
@@ -118,10 +118,13 @@ tags: [sing-box, sing-boxr, 直链, 订阅, ruleset, rule_set, 基础]
   "route": {
     // 规则
     "rules": [
+      // 若使用 ShellCrash，可进入 7 → 4 启用域名嗅探后删除此条 `action`
       { "action": "sniff" },
-      // 若使用 ShellCrash，会自动覆写此条，可忽略
+      // 若使用 ShellCrash，可进入 7 → 4 启用域名嗅探后删除此条 `action`
       { "protocol": [ "dns" ], "action": "hijack-dns" },
+      // 若使用 ShellCrash，会自动覆写此条，可删除此条 `clash_mode`
       { "clash_mode": [ "Direct" ], "outbound": "DIRECT" },
+      // 若使用 ShellCrash，会自动覆写此条，可删除此条 `clash_mode`
       { "clash_mode": [ "Global" ], "outbound": "GLOBAL" },
       // 自定义规则优先放前面
       { "rule_set": [ "private" ], "outbound": "🎯 全球直连" },
@@ -307,8 +310,8 @@ tags: [sing-box, sing-boxr, 直链, 订阅, ruleset, rule_set, 基础]
       // 机场订阅链接，使用 Clash 链接
       "url": "https://example.com/xxx/xxx&flag=clash",
       "path": "./providers/airport1.yaml",
-      // 若出现获取不了机场节点的情况，可添加此配置项
-      "user_agent": "mihomo/1.19.17",
+      // 若出现获取不了机场节点的情况，可删除此配置项
+      "user_agent": "clash.meta",
       "download_detour": "PROXY",
       // 初步筛选需要的节点，可有效减轻路由器压力，支持正则表达式，若不筛选可删除此配置项
       "include": "(?i)(🇭🇰|港|hk|hongkong|hong kong|🇹🇼|台|tw|taiwan|tai wan|🇯🇵|日|jp|japan|🇸🇬|新|sg|singapore|🇺🇸|美|us|unitedstates|united states)",
@@ -383,10 +386,13 @@ tags: [sing-box, sing-boxr, 直链, 订阅, ruleset, rule_set, 基础]
   "route": {
     // 规则
     "rules": [
+      // 若使用 ShellCrash，可进入 7 → 4 启用域名嗅探后删除此条 `action`
       { "action": "sniff" },
-      // 若使用 ShellCrash，会自动覆写此条，可忽略
+      // 若使用 ShellCrash，可进入 7 → 4 启用域名嗅探后删除此条 `action`
       { "protocol": [ "dns" ], "action": "hijack-dns" },
+      // 若使用 ShellCrash，会自动覆写此条，可删除此条 `clash_mode`
       { "clash_mode": [ "Direct" ], "outbound": "DIRECT" },
+      // 若使用 ShellCrash，会自动覆写此条，可删除此条 `clash_mode`
       { "clash_mode": [ "Global" ], "outbound": "GLOBAL" },
       // 自定义规则优先放前面
       { "rule_set": [ "private" ], "outbound": "🎯 全球直连" },

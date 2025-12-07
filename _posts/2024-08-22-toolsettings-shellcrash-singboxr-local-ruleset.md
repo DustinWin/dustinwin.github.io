@@ -39,8 +39,8 @@ tags: [sing-box, sing-boxr, ShellCrash, ruleset, rule_set, 进阶, 本地, Route
       // 机场订阅链接，使用 Clash 链接
       "url": "https://example.com/xxx/xxx&flag=clash",
       "path": "./providers/airport1.yaml",
-      // 若出现获取不了机场节点的情况，可添加此配置项
-      "user_agent": "mihomo/1.19.17",
+      // 若出现获取不了机场节点的情况，可删除此配置项
+      "user_agent": "clash.meta",
       // 初步筛选需要的节点，可有效减轻路由器压力，支持正则表达式，若不筛选可删除此配置项
       "include": "(?i)(🇭🇰|港|hk|hongkong|hong kong|🇹🇼|台|tw|taiwan|tai wan|🇯🇵|日|jp|japan|🇸🇬|新|sg|singapore|🇺🇸|美|us|unitedstates|united states)",
       // 初步排除不需要的节点，支持正则表达式，若不排除可删除此配置项

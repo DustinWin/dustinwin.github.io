@@ -57,11 +57,12 @@ curl -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/dow
 
 6. 进入主菜单 → 4 内核启动设置，选择 1 允许 ShellCrash 开机启动（若重启路由器后服务没有自动运行，可“设置自启延时”为 `30` 秒）
 7. 进入主菜单 → 5 配置自动任务 → 1 添加自动任务，可以看到末尾就有《[二](https://proxy-tutorials.dustinwin.us.kg/posts/toolsettings-shellcrash-singboxr-ruleset/#%E4%BA%8C-%E6%B7%BB%E5%8A%A0%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1)》中添加的定时任务，输入对应的数字并回车后可设置执行条件
-8. 进入主菜单 → 6 导入配置文件 → 2 在线获取完整配置文件，粘贴《[生成带有自定义出站和规则的 sing-boxr 配置文件直链-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/link-singboxr-ruleset)》中生成的 .json 配置文件直链，启动服务即可
-9. 访问 Dashboard 面板 <http://192.168.31.1:9999/ui/>，首次打开需要添加“主机”和“端口”，分别填入 `192.168.31.1` 和 `9999` 并点击“添加”即可  
+8. 进入主菜单 → 7 内核进阶设置 → 4 启用域名嗅探
+9. 进入主菜单 → 6 导入配置文件 → 2 在线获取完整配置文件，粘贴《[生成带有自定义出站和规则的 sing-boxr 配置文件直链-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/link-singboxr-ruleset)》中生成的 .json 配置文件直链，启动服务即可
+10. 访问 Dashboard 面板 <http://192.168.31.1:9999/ui/>，首次打开需要添加“主机”和“端口”，分别填入 `192.168.31.1` 和 `9999` 并点击“添加”即可  
 <img src="/assets/img/tools/192-9999-dashboard.png" alt="设置部分 2" width="60%" />
 
-10. 进入 Dashboard 面板 → 代理 → 代理提供者，点击“转圈”图标，可手动更新节点
+11. 进入 Dashboard 面板 → 代理 → 代理提供者，点击“转圈”图标，可手动更新节点
 
 ## 四、 在线 Dashboard 面板
 在线 Dashboard 面板 [zashboard](https://github.com/Zephyruso/zashboard)，网址：<https://board.zash.run.place>

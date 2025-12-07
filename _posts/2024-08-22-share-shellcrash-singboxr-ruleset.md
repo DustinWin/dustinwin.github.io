@@ -24,6 +24,8 @@ tags: [sing-box, sing-boxr, ShellCrash, ruleset, rule_set, 分享, Router]
       // 修改为你的 Clash 订阅链接
       "url": "https://example.com/xxx/xxx&flag=clash",
       "path": "./providers/airport.yaml",
+      // 若出现获取不了机场节点的情况，可删除此配置项
+      "user_agent": "clash.meta",
       "include": "(?i)(🇭🇰|港|hk|hongkong|hong kong|🇹🇼|台|tw|taiwan|tai wan|🇯🇵|日|jp|japan|🇸🇬|新|sg|singapore|🇺🇸|美|us|unitedstates|united states)",
       "health_check": {
         "enabled": true,
@@ -82,9 +84,6 @@ tags: [sing-box, sing-boxr, ShellCrash, ruleset, rule_set, 分享, Router]
   ],
   "route": {
     "rules": [
-      { "action": "sniff" },
-      { "clash_mode": [ "Direct" ], "outbound": "DIRECT" },
-      { "clash_mode": [ "Global" ], "outbound": "GLOBAL" },
       { "rule_set": [ "private" ], "outbound": "私有网络" },
       { "rule_set": [ "ads" ], "action": "reject" },
       { "rule_set": [ "trackerslist" ], "outbound": "Trackerslist" },
