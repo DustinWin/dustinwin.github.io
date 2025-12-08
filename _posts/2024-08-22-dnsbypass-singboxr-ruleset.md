@@ -10,11 +10,11 @@ tags: [sing-box, sing-boxr, ShellCrash, ruleset, rule_set, 进阶, DNS, DNS 分�
 {: .prompt-tip }
 1. [ShellCrash](https://github.com/juewuy/ShellCrash) 搭配 [AdGuard Home](https://github.com/AdguardTeam/AdGuardHome) 并将 AdGuard Home 作为上游时不要使用该方法
 2. 本教程以 ShellCrash 为例，其它客户端亦可参考
-3. DNS 分流简单来说就是**指定国内域名走国内 DNS 解析，国外域名走 `fake-ip`，未知域名走国内 DNS 解析，解析出 IP 在国内则走国内 DNS 解析和 `🀄️ 直连 IP` 规则，否则走 `fake-ip` 和 `🐟 漏网之鱼` 规则**
+3. DNS 分流简单来说就是**指定国内域名走国内 DNS 解析，国外域名走 `fakeip`**。未知域名也走 `fakeip`（在匹配 `route.rules.rule_set:cn` 规则时会由国内 DNS 解析，解析出 IP 在国内则走 `🀄️ 直连 IP` 规则，否则走 `🐟 漏网之鱼` 规则）
 4. 部分用户觉得未知域名处理方式会导致 DNS 泄露，可参考《[搭载 sing-boxr 内核配置 DNS 不泄露教程-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/dnsnoleaks-singboxr-ruleset)》
 
 ## 一、 导入规则集合文件
-`route.rule_set` 须添加 `fakeip-filter`、`cn`、和 `proxy`，如下：
+`route.rule_set` 须添加 `fakeip-filter` 和 `cn`，如下：
 
 ```json
 {
@@ -33,13 +33,6 @@ tags: [sing-box, sing-boxr, ShellCrash, ruleset, rule_set, 进阶, DNS, DNS 分�
         "format": "binary",
         "path": "./ruleset/cn.srs",
         "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/cn.srs"
-      },
-      {
-        "tag": "proxy",
-        "type": "remote",
-        "format": "binary",
-        "path": "./ruleset/proxy.srs",
-        "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/proxy.srs"
       }
     ]
   }
@@ -67,7 +60,7 @@ tags: [sing-box, sing-boxr, ShellCrash, ruleset, rule_set, 进阶, DNS, DNS 分�
           "dns.google": [ "8.8.8.8", "8.8.4.4", "2001:4860:4860::8888", "2001:4860:4860::8844" ]
         }
       },
-      { "tag": "dns_resolver", "type": "https", "server": "223.5.5.5"},
+      { "tag": "dns_resolver", "type": "https", "server": "223.5.5.5" },
       { "tag": "dns_direct", "type": "quic", "server": "dns.alidns.com", "domain_resolver": "dns_resolver" },
       // `outbounds` 里必须存在 `🚀 节点选择`
       { "tag": "dns_proxy", "type": "https", "server": "dns.google", "domain_resolver": "dns_resolver", "detour": "🚀 节点选择" },
