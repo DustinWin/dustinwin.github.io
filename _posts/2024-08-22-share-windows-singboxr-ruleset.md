@@ -56,7 +56,7 @@ tags: [sing-box, sing-boxr, Windows, ruleset, rule_set, 分享]
           "miwifi.com": [ "192.168.31.1", "127.0.0.1" ]
         }
       },
-      { "tag": "dns_resolver", "type": "https", "server": "223.5.5.5"},
+      { "tag": "dns_resolver", "type": "https", "server": "223.5.5.5" },
       { "tag": "dns_direct", "type": "quic", "server": "dns.alidns.com", "domain_resolver": "dns_resolver" },
       { "tag": "dns_proxy", "type": "https", "server": "dns.google", "domain_resolver": "dns_resolver", "detour": "节点选择" },
       { "tag": "dns_fakeip", "type": "fakeip", "inet4_range": "28.0.0.1/8", "inet6_range": "fc00::/16" }
@@ -69,12 +69,10 @@ tags: [sing-box, sing-boxr, Windows, ruleset, rule_set, 分享]
       { "rule_set": [ "trackerslist", "private", "cn" ], "query_type": [ "A", "AAAA" ], "server": "dns_direct", "rewrite_ttl": 1 },
       { "query_type": [ "A", "AAAA" ], "server": "dns_fakeip" }
     ],
-    "final": "dns_proxy",
+    "final": "dns_direct",
     "strategy": "prefer_ipv4",
     "independent_cache": true,
-    "reverse_mapping": true,
-    // 推荐将 `client_subnet` 设置为当前网络的公网 IP 段，如当前网络公网 IP 为 `202.103.17.123`，可设置为 `202.103.17.0/24`
-    "client_subnet": "202.103.17.0/24"
+    "reverse_mapping": true
   },
   "inbounds": [
     { "tag": "tun-in", "type": "tun", "interface_name": "sing-box", "address": [ "172.18.0.1/30", "fdfe:dcba:9876::1/126" ], "auto_route": true, "strict_route": true, "stack": "mixed" }
@@ -265,6 +263,53 @@ tags: [sing-box, sing-boxr, Windows, ruleset, rule_set, 分享]
   }
 }
 ```
+
+---
+
+>`DNS` 私货
+{: .prompt-tip }
+
+注：
+- 1. 本 `dns` 配置中，国外域名 `proxy` 走 `fake-ip`，私有网络 `private` 和国内域名 `cn` 走国内 DNS 解析，未知域名走国外 DNS 解析（有效解决了“心理 DNS 泄露问题”，详见《[搭载 sing-boxr 内核配置 DNS 不泄露教程-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/dnsnoleaks-singboxr-ruleset/)》），且配置 `client_subnet` 提高了兼容性
+- 2. 推荐将 `client_subnet` 设置为当前网络的公网 IP 段，如当前网络公网 IP 为 `202.103.17.123`，可设置为 `202.103.17.0/24`
+
+```json
+{
+  "dns": {
+    "servers": [
+      {
+        "tag": "hosts",
+        "type": "hosts",
+        "predefined": {
+          "dns.alidns.com": [ "223.5.5.5", "223.6.6.6", "2400:3200::1", "2400:3200:baba::1" ],
+          "dns.google": [ "8.8.8.8", "8.8.4.4", "2001:4860:4860::8888", "2001:4860:4860::8844" ],
+          "miwifi.com": [ "192.168.31.1", "127.0.0.1" ]
+        }
+      },
+      { "tag": "dns_resolver", "type": "https", "server": "223.5.5.5" },
+      { "tag": "dns_direct", "type": "quic", "server": "dns.alidns.com", "domain_resolver": "dns_resolver" },
+      { "tag": "dns_proxy", "type": "https", "server": "dns.google", "domain_resolver": "dns_resolver", "detour": "节点选择" },
+      { "tag": "dns_fakeip", "type": "fakeip", "inet4_range": "28.0.0.1/8", "inet6_range": "fc00::/16" }
+    ],
+    "rules": [
+      { "ip_accept_any": true, "server": "hosts" },
+      { "clash_mode": [ "Direct" ], "query_type": [ "A", "AAAA" ], "server": "dns_direct" },
+      { "clash_mode": [ "Global" ], "query_type": [ "A", "AAAA" ], "server": "dns_proxy" },
+      { "rule_set": [ "ads" ], "action": "predefined" },
+      { "rule_set": [ "proxy" ], "query_type": [ "A", "AAAA" ], "server": "dns_fakeip" },
+      { "rule_set": [ "private", "cn" ], "query_type": [ "A", "AAAA" ], "server": "dns_direct", "rewrite_ttl": 1 }
+    ],
+    "final": "dns_proxy",
+    "strategy": "prefer_ipv4",
+    "independent_cache": true,
+    "reverse_mapping": true,
+    // 推荐将 `client_subnet` 设置为当前网络的公网 IP 段，如当前网络公网 IP 为 `202.103.17.123`，可设置为 `202.103.17.0/24`
+    "client_subnet": "202.103.17.0/24"
+  }
+}
+```
+
+---
 
 ## 二、 添加以管理员身份运行 Bash 文件的支持
 1. 下载安装 [Git for Windows](https://github.com/git-for-windows/git/releases)，安装目录默认为 `C:\Program Files\Git`{: .filepath}

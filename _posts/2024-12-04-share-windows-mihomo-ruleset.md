@@ -73,9 +73,9 @@ dns:
   enable: true
   prefer-h3: true
   ipv6: true
+  enhanced-mode: fake-ip
   fake-ip-range: 28.0.0.1/8
   fake-ip-range6: fc00::/16
-  enhanced-mode: fake-ip
   fake-ip-filter: ['rule-set:trackerslist,private,cn']
   nameserver:
     - https://dns.alidns.com/dns-query
@@ -303,7 +303,7 @@ proxy-groups:
 {: .prompt-tip }
 
 注：
-- 1. 本 `dns` 配置中，未知域名由国外 DNS 解析（有效解决了“心理 DNS 泄露问题”，详见《[搭载 mihomo 内核配置 DNS 不泄露教程-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/dnsnoleaks-mihomo-ruleset/)》），且配置 `ecs` 提高了兼容性
+- 1. 本 `dns` 配置中，仅国外域名 `proxy` 走 `fake-ip`，直连域名（含国内域名 `cn`）走国内 DNS 解析，未知域名走国外 DNS 解析（有效解决了“心理 DNS 泄露问题”，详见《[搭载 mihomo 内核配置 DNS 不泄露教程-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/dnsnoleaks-mihomo-ruleset/)》），且配置 `ecs` 提高了兼容性
 - 2. 推荐将 `ecs` 设置为当前网络的公网 IP 段，如当前网络公网 IP 为 `202.103.17.123`，可设置为 `202.103.17.0/24`
 
 ```yaml
@@ -317,11 +317,11 @@ hosts:
 dns:
   enable: true
   ipv6: true
-  listen: 0.0.0.0:1053
+  enhanced-mode: fake-ip
   fake-ip-range: 28.0.0.1/8
   fake-ip-range6: fc00::/16
-  enhanced-mode: fake-ip
-  fake-ip-filter: ['rule-set:trackerslist,private,cn']
+  fake-ip-filter-mode: whitelist
+  fake-ip-filter: ['rule-set:proxy']
   respect-rules: true
   nameserver:
     # 推荐将 `ecs` 设置为当前网络的公网 IP 段
