@@ -59,7 +59,7 @@ tags: [sing-box, sing-boxr, Windows, ruleset, rule_set, 分享]
       { "tag": "dns_resolver", "type": "https", "server": "223.5.5.5" },
       { "tag": "dns_direct", "type": "quic", "server": "dns.alidns.com", "domain_resolver": "dns_resolver" },
       { "tag": "dns_proxy", "type": "https", "server": "dns.google", "domain_resolver": "dns_resolver", "detour": "节点选择" },
-      { "tag": "dns_fakeip", "type": "fakeip", "inet4_range": "28.0.0.1/8", "inet6_range": "fc00::/16" }
+      { "tag": "dns_fakeip", "type": "fakeip", "inet4_range": "28.0.0.0/8", "inet6_range": "fc00::/16" }
     ],
     "rules": [
       { "ip_accept_any": true, "server": "hosts" },
@@ -289,7 +289,7 @@ tags: [sing-box, sing-boxr, Windows, ruleset, rule_set, 分享]
       { "tag": "dns_resolver", "type": "https", "server": "223.5.5.5" },
       { "tag": "dns_direct", "type": "quic", "server": "dns.alidns.com", "domain_resolver": "dns_resolver" },
       { "tag": "dns_proxy", "type": "https", "server": "dns.google", "domain_resolver": "dns_resolver", "detour": "节点选择" },
-      { "tag": "dns_fakeip", "type": "fakeip", "inet4_range": "28.0.0.1/8", "inet6_range": "fc00::/16" }
+      { "tag": "dns_fakeip", "type": "fakeip", "inet4_range": "28.0.0.0/8", "inet6_range": "fc00::/16" }
     ],
     "rules": [
       { "ip_accept_any": true, "server": "hosts" },
