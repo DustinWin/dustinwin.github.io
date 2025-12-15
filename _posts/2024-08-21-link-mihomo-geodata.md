@@ -90,7 +90,7 @@ proxies:
 ## 策略组
 proxy-groups:
   # 手动选择国家或地区节点；根据“国家或地区策略组”名称对 `proxies` 值进行增删改，须一一对应
-  - {name: 🚀 节点选择, type: select, proxies: [🇭🇰 香港节点, 🇹🇼 台湾节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇺🇸 美国节点, 🆓 免费节点]}
+  - {name: 🚀 节点选择, type: select, proxies: [♻️ 自动选择, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇺🇸 美国节点, 🆓 免费节点]}
   # 选择`🎯 全球直连`为测试本地网络（运营商网络速度和 IPv6 支持情况），可选择其它节点用于测试机场节点速度和 IPv6 支持情况
   - {name: 📈 网络测试, type: select, proxies: [🎯 全球直连, 🚀 节点选择, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇺🇸 美国节点, 🆓 免费节点]}
   - {name: 🤖 AI 平台, type: select, proxies: [🚀 节点选择, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇺🇸 美国节点]}
@@ -124,6 +124,7 @@ proxy-groups:
   # 可使用 `include-all-providers: true` 代替 `use: [🛫 机场订阅 1, 🛫 机场订阅 2, ...]`，意思为引入所有代理集合
   - {name: 🇸🇬 新加坡节点, type: url-test, tolerance: 50, include-all-providers: true, filter: "(?i)(🇸🇬|新|sg|singapore)"}
   - {name: 🇺🇸 美国节点, type: url-test, tolerance: 100, use: [🛫 机场订阅 1, 🛫 机场订阅 2], filter: "(?i)(🇺🇸|美|us|unitedstates|united states)"}
+  - {name: ♻️ 自动选择, type: url-test, tolerance: 100, include-all-providers: true}
 
 # 规则
 rules:
@@ -215,7 +216,7 @@ proxies:
 # 策略组
 proxy-groups:
   # 手动选择国家或地区节点；根据“国家或地区策略组”名称对 `proxies` 值进行增删改，须一一对应
-  - {name: 🚀 节点选择, type: select, proxies: [🇭🇰 香港节点, 🇹🇼 台湾节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇺🇸 美国节点, 🆓 免费节点]}
+  - {name: 🚀 节点选择, type: select, proxies: [♻️ 自动选择, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇺🇸 美国节点, 🆓 免费节点]}
   # 选择`🎯 全球直连`为测试本地网络（运营商网络速度和 IPv6 支持情况），可选择其它节点用于测试机场节点速度和 IPv6 支持情况
   - {name: 📈 网络测试, type: select, proxies: [🎯 全球直连, 🚀 节点选择, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇺🇸 美国节点, 🆓 免费节点]}
   - {name: 🤖 AI 平台, type: select, proxies: [🚀 节点选择, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇺🇸 美国节点]}
@@ -242,6 +243,7 @@ proxy-groups:
   # 可使用 `include-all-providers: true` 代替 `use: [🛫 机场订阅 1, 🛫 机场订阅 2, ...]`，意思为引入所有代理集合
   - {name: 🇸🇬 新加坡节点, type: url-test, tolerance: 50, include-all-providers: true, filter: "(?i)(🇸🇬|新|sg|singapore)"}
   - {name: 🇺🇸 美国节点, type: url-test, tolerance: 100, use: [🛫 机场订阅 1, 🛫 机场订阅 2], filter: "(?i)(🇺🇸|美|us|unitedstates|united states)"}
+  - {name: ♻️ 自动选择, type: url-test, tolerance: 100, include-all-providers: true}
 
 # 规则
 rules:
