@@ -46,10 +46,7 @@ tags: [sing-box, sing-boxr, ShellCrash, ruleset, rule_set, 进阶, DNS, DNS 泄�
 ```
 
 ## 二、 ShellCrash 防泄漏配置
-1. 进入主菜单 → 2 内核功能设置 → 2 切换 DNS 运行模式，选择“3 mix混合模式”  
-<img src="/assets/img/dns/dns-mix.png" alt="ShellCrash DNS 运行模式设置" width="60%" />
-
-2. 进入主菜单 → 2 内核功能设置 → 2 切换 DNS 运行模式 → 4 DNS 进阶设置，将“当前基础 DNS”和“PROXY-DNS”都设置为 `null`  
+进入主菜单 → 2 内核功能设置 → 2 切换 DNS 运行模式 → 4 DNS 进阶设置，将“当前基础 DNS”和“PROXY-DNS”都设置为 `null`  
 <img src="/assets/img/dns/dns-null.png" alt="ShellCrash 设置" width="60%" />
 
 ## 三、 DNS 防泄漏配置

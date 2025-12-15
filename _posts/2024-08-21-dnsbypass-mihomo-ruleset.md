@@ -36,13 +36,10 @@ rule-providers:
 ```
 
 ## 二、 DNS 分流配置
-1. 进入主菜单 → 2 内核功能设置 → 2 切换 DNS 运行模式，选择“3 mix混合模式”  
-<img src="/assets/img/dns/dns-mix.png" alt="ShellCrash DNS 运行模式设置" width="60%" />
-
-2. 进入主菜单 → 2 内核功能设置 → 2 切换 DNS 运行模式 → 4 DNS 进阶设置，将“当前基础 DNS”和“PROXY-DNS”都设置为 `null`  
+1. 进入主菜单 → 2 内核功能设置 → 2 切换 DNS 运行模式 → 4 DNS 进阶设置，将“当前基础 DNS”和“PROXY-DNS”都设置为 `null`  
 <img src="/assets/img/dns/dns-null.png" alt="ShellCrash DNS 进阶设置" width="60%" />
 
-3. 连接 SSH 后执行命令 `vi $CRASHDIR/yamls/user.yaml`，按一下 Ins 键（Insert 键），粘贴如下内容：
+2. 连接 SSH 后执行命令 `vi $CRASHDIR/yamls/user.yaml`，按一下 Ins 键（Insert 键），粘贴如下内容：
 
 ```yaml
 hosts:

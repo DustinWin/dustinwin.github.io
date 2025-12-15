@@ -9,7 +9,7 @@ pin: true
 
 > 说明
 {: .prompt-tip }
-1. 本教程基于 REDMI AX6000 [官方固件](https://www1.miwifi.com/miwifi_download.html) v1.0.70 版，[ShellCrash](https://github.com/juewuy/ShellCrash) v1.9.2 版，[AdGuard Home](https://github.com/AdguardTeam/AdGuardHome) v0.108.0 版编写
+1. 本教程基于 REDMI AX6000 [官方固件](https://www1.miwifi.com/miwifi_download.html) v1.0.70 版，[ShellCrash](https://github.com/juewuy/ShellCrash) v1.9.3 版，[AdGuard Home](https://github.com/AdguardTeam/AdGuardHome) v0.108.0 版编写
 2. 恢复 SSH，安装 ShellCrash 和 AdGuard Home 的方法也适用于其它已解锁 SSH 的路由器
 3. 安装 [mihomo 内核](https://github.com/MetaCubeX/mihomo)和 AdGuard Home 时须注意路由器 CPU 架构，查看 CPU 架构可连接 SSH 后执行命令 `uname -ms`，若执行结果是“linux aarch64”，就下载 armv8 或 arm64 版安装包；若是其它架构请下载相匹配的安装包
 4. ShellCrash 和 AdGuard Home 中所有没有提到的配置保持默认即可
@@ -268,35 +268,34 @@ echo -e '12345678\n12345678' | passwd root
   mkdir -p /tmp/SC_tmp && tar -zxf '/tmp/ShellCrash.tar.gz' -C /tmp/SC_tmp/ && source /tmp/SC_tmp/init.sh
   ```
 
-- ③ 选择 1 安装到 /data 目录（推荐，支持软固化功能）
-- ④ 将下载的 mihomo-linux-arm64-[version].gz 文件解压，得到 mihomo-linux-arm64 文件
-- ⑤ 将 mihomo-linux-arm64 文件移动到路由器的 `/tmp`{: .filepath} 目录中  
+- ③ 选择 1 安装到 /data 目录，剩余空间：*.*M（支持软固化功能）
+- ④ 根据需要自定义别名（此处选择 `2`）
+- ⑤ 将下载的 mihomo-linux-arm64-[version].gz 文件解压，得到 mihomo-linux-arm64 文件
+- ⑥ 将 mihomo-linux-arm64 文件移动到路由器的 `/tmp`{: .filepath} 目录中  
   <img src="/assets/img/pin/move-mihomo.png" alt="ShellCrash 安装 2" width="60%" />
 
 **安装 ShellCrash 成功！**
 
 ### 2. ShellCrash 配置
-- ① 连接 SSH 后执行命令 `crash` 即可打开 ShellCrash 配置脚本
+- ① 连接 SSH 后执行命令 `sc` 即可打开 ShellCrash 配置脚本
 - ② 新手引导
   - ➊ 选择 1 路由设备配置局域网透明代理
-  - ➋ 启用推荐的自动任务配置
-  - ➌ 根据需要是否启用软固化（此处选择 `1`，解锁 SSH 时已成功启用软固化）
-  - ➍ 根据需要是否选择 1 确认导入配置文件（此处选择 `0`）
-  - ➎ 根据需要是否选择 1 立即启动服务（此处选择 `0`）
+  - ➋ 根据需要是否开启小内存模式（此处选择 `0`）
+  - ➌ 启用推荐的自动任务配置
+  - ➍ 根据需要是否启用软固化（此处选择 `1`，解锁 SSH 时已成功启用软固化）
+  - ➎ 根据需要是否选择 1 确认导入配置文件（此处选择 `0`）
+  - ➏ 根据需要是否选择 1 立即启动服务（此处选择 `0`）
     - 注：强烈建议选择 `0`，待以下配置完成后，最后一步启动服务
-  - ➏ 此时脚本会自动“发现可用的内核文件”，选择 `1` 加载，后选择 3 Clash-Meta 内核  
+  - ➐ 此时脚本会自动“发现可用的内核文件”，选择 `1` 加载，后选择 3 Mihomo(Meta) 内核  
     <img src="/assets/img/pin/import-mihomo.png" alt="ShellCrash 配置 1" width="60%" />
 
-  - ➐ 内核加载完成后根据需要是否保留相关数据库文件（此处选择 `0`）
+  - ➑ 内核加载完成后根据需要是否保留相关数据库文件（此处选择 `0`）
 - ③ 模式设置
-  - ➊ 进入主菜单 → 2 内核功能设置 → 1 切换防火墙运行模式，选择 2 混合模式（推荐“混合模式”，其次“Tproxy 模式”，宽带在 300M 内推荐“Tun 模式”）
+  - ➊ 进入主菜单 → 2 内核功能设置 → 1 切换防火墙运行模式（推荐“混合模式”，其次“Tproxy 模式”，宽带在 300M 内推荐“Tun 模式”）
   - ➋ 进入 1 切换防火墙运行模式 → 9 ipv6 设置，若机场节点不支持 IPv6，可关闭 1 ipv6 透明代理  
     <img src="/assets/img/pin/ipv6-setting.png" alt="ShellCrash 配置 2" width="60%" />
 
-  - ➌ 进入 2 切换 DNS 运行模式，选择 3 mix 混合模式  
-    <img src="/assets/img/pin/mix-mix.png" alt="ShellCrash 配置 4" width="60%" />
-
-  - ➍ 进入 2 切换 DNS 运行模式 → 4 DNS 进阶设置，选择 7 禁用 DNS 劫持
+  - ➌ 进入 2 切换 DNS 运行模式 → 4 DNS 进阶设置，选择 7 禁用 DNS 劫持
     - 注：推荐设置 DNS 分流（单独使用 ShellCrash 以及 ShellCrash 搭配 AdGuard Home 都适用），请看《[搭载 mihomo 内核进行 DNS 分流教程-geodata 方案](https://proxy-tutorials.dustinwin.us.kg/posts/dnsbypass-mihomo-geodata)》或《[搭载 mihomo 内核进行 DNS 分流教程-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/dnsbypass-mihomo-ruleset)》
 
     <img src="/assets/img/pin/dns-setting.png" alt="ShellCrash 配置 3" width="60%" />
@@ -325,12 +324,12 @@ echo -e '12345678\n12345678' | passwd root
 **配置 ShellCrash 成功！**
 
 **ShellCrash 常用命令：**
-1. 打开配置：`crash`
+1. 打开配置：`sc`
 2. 启动服务：`$CRASHDIR/start.sh start`
 3. 停止服务：`$CRASHDIR/start.sh stop`
 4. 重启服务：`$CRASHDIR/start.sh restart`
 5. 更新订阅：`$CRASHDIR/start.sh update_config`
-6. 查看帮助和说明：`crash -h`
+6. 查看帮助和说明：`sc -h`
 
 ### 3. ShellCrash 升级
 进入主菜单 → 9 更新/卸载，查看“管理脚本”、“内核文件”和“数据库文件”有无新版本，有则选择对应的数字进行升级即可  
@@ -338,7 +337,7 @@ echo -e '12345678\n12345678' | passwd root
 
 ### 4. ShellCrash 卸载
 - ① 通过脚本命令进行卸载（任选一）  
-  连接 SSH 后执行命令 `$CRASHDIR/start.sh stop && crash -u`
+  连接 SSH 后执行命令 `$CRASHDIR/start.sh stop && sc -u`
 - ② 通过 ShellCrash 配置进行卸载（任选一）  
   进入主菜单 → 9 更新/卸载，选择 9 卸载 ShellCrash
 

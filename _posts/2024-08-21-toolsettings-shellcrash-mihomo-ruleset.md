@@ -39,22 +39,21 @@ curl -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/dow
 1. 连接 SSH 后执行命令 `crash` 即可打开 ShellCrash 配置脚本
 2. 新手引导
    - ① 选择 1 路由设备配置局域网透明代理
-   - ② 启用推荐的自动任务配置
-   - ③ 根据需要是否启用软固化（此处选择 `1`，解锁 SSH 时已成功启用软固化）
-   - ④ 根据需要是否选择 1 确认导入配置文件（此处选择 `0`）
-   - ⑤ 根据需要是否选择 1 立即启动服务（此处选择 `0`）
+   - ② 根据需要是否开启小内存模式（此处选择 `0`）
+   - ③ 启用推荐的自动任务配置
+   - ④ 根据需要是否启用软固化（此处选择 `1`，解锁 SSH 时已成功启用软固化）
+   - ⑤ 根据需要是否选择 1 确认导入配置文件（此处选择 `0`）
+   - ⑥ 根据需要是否选择 1 立即启动服务（此处选择 `0`）
      - 注：强烈建议选择 `0`，待以下配置完成后，最后一步启动服务
-   - ⑥ 此时脚本会自动“发现可用的内核文件”，选择 `1` 加载，后选择 3 Clash-Meta 内核  
+   - ⑦ 此时脚本会自动“发现可用的内核文件”，选择 `1` 加载，后选择 3 Mihomo(Meta) 内核  
      <img src="/assets/img/pin/import-mihomo.png" alt="ShellCrash 配置 1" width="60%" />
 
-   - ⑦ 内核加载完成后根据需要是否保留相关数据库文件（此处选择 `0`）
+   - ⑧ 内核加载完成后根据需要是否保留相关数据库文件（此处选择 `0`）
 3. 进入主菜单 → 9 更新/卸载 → 7 切换安装源及安装版本，选择 b 切换至公测版 → 1 Jsdelivr_CDN源（推荐）
 4. 进入主菜单 → 9 更新/卸载 → 4 安装本地 Dashboard 面板，选择 4 安装 zashboard 面板（也可跳过此步，直接使用《[四](https://proxy-tutorials.dustinwin.us.kg/posts/toolsettings-shellcrash-mihomo-ruleset/#%E5%9B%9B-%E5%9C%A8%E7%BA%BF-dashboard-%E9%9D%A2%E6%9D%BF)》中的在线 Dashboard 面板）  
 <img src="/assets/img/tools/install-dashboard.png" alt="安装面板" width="60%" />
 
-5. 进入主菜单 → 2 内核功能设置，设置如下（推荐“混合模式”，其次“Tproxy 模式”，宽带在 300M 内推荐“Tun 模式”）：  
-<img src="/assets/img/pin/mix-mix.png" alt="设置部分 1" width="60%" />
-
+5. 进入主菜单 → 2 内核功能设置（推荐“混合模式”，其次“Tproxy 模式”，宽带在 300M 内推荐“Tun 模式”）
 6. 进入主菜单 → 4 内核启动设置，选择 1 允许 ShellCrash 开机启动（若重启路由器后服务没有自动运行，可“设置自启延时”为 `30` 秒）
 7. 进入主菜单 → 5 配置自动任务 → 1 添加自动任务，可以看到末尾就有《[二](https://proxy-tutorials.dustinwin.us.kg/posts/toolsettings-shellcrash-mihomo-ruleset/#%E4%BA%8C-%E6%B7%BB%E5%8A%A0%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1)》中添加的定时任务，输入对应的数字并回车后可设置执行条件
 8. 进入主菜单 → 7 内核进阶设置 → 4 启用域名嗅探（若 `$CRASHDIR/yamls/user.yaml` 配置了 `sniffer` 则跳过此步骤）
