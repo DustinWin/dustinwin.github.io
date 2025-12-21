@@ -19,10 +19,10 @@ tags: [Clash, ShellCrash, ruleset, rule-set, 进阶, 本地, Router]
 可参考《[ShellCrash 搭载 mihomo 内核的配置-ruleset 方案/导入 mihomo 内核](https://proxy-tutorials.dustinwin.us.kg/posts/toolsettings-shellcrash-mihomo-ruleset/#%E4%B8%80-%E5%AF%BC%E5%85%A5-mihomo-%E5%86%85%E6%A0%B8)》里的步骤进行操作
 
 ## 二、 导入配置文件
-1. 进入 ShellCrash → 6 导入配置文件 → 1 在线生成 meta 配置文件 → 4 选取在线配置规则模版，选择 4 [ACL4SSR](https://acl4ssr-sub.github.io) 极简版（适合自建节点）  
+1. 进入 ShellCrash → 6 导入配置文件 → 1 在线生成配置文件 → 4 选取在线配置规则模版，选择 4 [ACL4SSR](https://acl4ssr-sub.github.io) 极简版（适合自建节点）  
 <img src="/assets/img/tools/subscribe-easy.png" alt="导入配置文件" width="60%" />
 
-2. 进入 ShellCrash → 6 导入配置文件 → 1 在线生成 meta 配置文件，输入订阅链接后回车，再输入 `1` 并回车即可
+2. 进入 ShellCrash → 6 导入配置文件 → 1 在线生成配置文件，输入订阅链接后回车，再输入 `1` 并回车即可
 
 ## 三、 自定义策略组和规则
 ### 1. 自定义 others.yaml（用于编写自定义的锚点、入站、代理集合 `proxy-providers`、子规则 `sub-rules`、规则集合 `rule-provider` 和 script 脚本等功能）
@@ -254,6 +254,8 @@ rule-providers:
 - name: 🈯 节点指定
   type: select
   proxies:
+    - ♻️ 自动选择
+    - 👉 手动选择
     - 🇭🇰 香港节点
     - 🇹🇼 台湾节点
     - 🇯🇵 日本节点
@@ -395,33 +397,37 @@ rule-providers:
   type: url-test
   # 测试后容差大于 50ms 才会切换到延迟低的那个节点
   tolerance: 50
-  include-all-providers: true
+  include-all: true
   # 筛选出“香港”节点，支持正则表达式
   filter: "(?i)(🇭🇰|港|hk|hongkong|hong kong)"
 
 - name: 🇹🇼 台湾节点
   type: url-test
   tolerance: 50
-  include-all-providers: true
+  include-all: true
   filter: "(?i)(🇹🇼|台|tw|taiwan|tai wan)"
 
 - name: 🇯🇵 日本节点
   type: url-test
   tolerance: 50
-  include-all-providers: true
+  include-all: true
   filter: "(?i)(🇯🇵|日|jp|japan)"
 
 - name: 🇸🇬 新加坡节点
   type: url-test
   tolerance: 50
-  include-all-providers: true
+  include-all: true
   filter: "(?i)(🇸🇬|新|sg|singapore)"
 
 - name: 🇺🇸 美国节点
   type: url-test
   tolerance: 50
-  include-all-providers: true
+  include-all: true
   filter: "(?i)(🇺🇸|美|us|unitedstates|united states)"
+
+- name: 👉 手动选择
+  type: select
+  include-all: true
 ```
 
 按一下 Esc 键（退出键），输入英文冒号 `:`，继续输入 `wq` 并回车
@@ -516,13 +522,13 @@ rule-providers:
 - name: 🇸🇬 新加坡节点
   type: url-test
   tolerance: 50
-  include-all-providers: true
+  include-all: true
   filter: "(?i)(🇸🇬|新|sg|singapore)"
 
 # 手动选择日本任一节点
 - name: 🇯🇵 日本节点
   type: select
-  include-all-providers: true
+  include-all: true
   filter: "(?i)(🇯🇵|日|jp|japan)"
 ```
 

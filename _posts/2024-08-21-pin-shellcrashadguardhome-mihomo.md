@@ -316,7 +316,7 @@ echo -e '12345678\n12345678' | passwd root
 - ⑨ 进入主菜单 → 6 导入配置文件  
   注：
     - ➊ 选择 1 在线生成 meta 配置文件，粘贴你的订阅链接并回车，输入 `1` 并再次回车即可
-    - ➋ 选择 2 在线获取完整配置文件，需要一定的 mihomo 知识储备，请查看《[生成带有自定义策略组和规则的 mihomo 配置文件直链-geodata 方案](https://proxy-tutorials.dustinwin.us.kg/posts/link-mihomo-geodata)》或《[生成带有自定义策略组和规则的 mihomo 配置文件直链-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/link-mihomo-ruleset)》
+    - ➋ 选择 2 在线获取配置文件，需要一定的 mihomo 知识储备，请查看《[生成带有自定义策略组和规则的 mihomo 配置文件直链-geodata 方案](https://proxy-tutorials.dustinwin.us.kg/posts/link-mihomo-geodata)》或《[生成带有自定义策略组和规则的 mihomo 配置文件直链-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/link-mihomo-ruleset)》
     - ➌ 若 1 或 2 无法正确获取配置文件，可进入 9 自定义浏览器 UA 选择合适的 UA
 
   导入配置文件完成后，选择 1 启动/重启服务
