@@ -13,4 +13,4 @@ pin: true
 
 # 机场推荐
 [Bitz Net](https://dir3.bnaffloop.com/#/register?code=HT0ALWZq)（仅次于一线机场，推荐打折时购买）  
-85 折优惠码：`2025DOWN85`（有效期至 2025 年 11 月 1 日）
+85 折优惠码：`XMAS2025`（有效期至 2026 年 1 月 2 日 23:59）
