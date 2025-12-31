@@ -87,6 +87,8 @@ tags: [sing-box, sing-boxr, 直链, 订阅, ruleset, rule_set, 基础]
     { "tag": "🧱 代理域名", "type": "selector", "outbounds": [ "🚀 节点选择", "🎯 全球直连" ] },
     { "tag": "📲 电报消息", "type": "selector", "outbounds": [ "🚀 节点选择", "🇭🇰 香港节点", "🇹🇼 台湾节点", "🇯🇵 日本节点", "🇸🇬 新加坡节点", "🇺🇸 美国节点", "🆓 免费节点" ] },
     { "tag": "🐟 漏网之鱼", "type": "selector", "outbounds": [ "🚀 节点选择", "🇭🇰 香港节点", "🇹🇼 台湾节点", "🇯🇵 日本节点", "🇸🇬 新加坡节点", "🇺🇸 美国节点", "🆓 免费节点", "🎯 全球直连" ] },
+    { "tag": "🛑 广告域名", "type": "selector", "outbounds": [ "🔴 全球拦截", "🎯 全球直连" ] },
+    { "tag": "🔴 全球拦截", "type": "block" },
     { "tag": "🎯 全球直连", "type": "selector", "outbounds": [ "DIRECT" ] },
     { "tag": "DIRECT", "type": "direct" },
     { "tag": "GLOBAL", "type": "selector", "outbounds": [ "DIRECT", "🚀 节点选择" ] },
@@ -130,7 +132,7 @@ tags: [sing-box, sing-boxr, 直链, 订阅, ruleset, rule_set, 基础]
       { "clash_mode": [ "Global" ], "outbound": "GLOBAL" },
       // 自定义规则优先放前面
       { "rule_set": [ "private" ], "outbound": "🎯 全球直连" },
-      { "rule_set": [ "ads" ], "action": "reject" },
+      { "rule_set": [ "ads" ], "outbound": "🛑 广告域名" },
       { "rule_set": [ "trackerslist" ], "outbound": "📋 Trackerslist" },
       // 为了使 P2P 流量（BT 下载）走直连，可添加一条 `DST-PORT` 规则（ShellCrash 会默认开启“只代理常用端口”，可删除此条 `DST-PORT`）
       { "port_range": [ "6881:6889" ], "outbound": "🎯 全球直连"},
@@ -157,18 +159,18 @@ tags: [sing-box, sing-boxr, 直链, 订阅, ruleset, rule_set, 基础]
     // 规则集（binary 文件每天自动更新）
     "rule_set": [
       {
-        "tag": "private",
-        "type": "remote",
-        "format": "binary",
-        "path": "./ruleset/private.srs",
-        "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/private.srs"
-      },
-      {
         "tag": "ads",
         "type": "remote",
         "format": "binary",
         "path": "./ruleset/ads.srs",
         "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/ads.srs"
+      },
+      {
+        "tag": "private",
+        "type": "remote",
+        "format": "binary",
+        "path": "./ruleset/private.srs",
+        "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/private.srs"
       },
       {
         "tag": "trackerslist",
@@ -355,6 +357,8 @@ tags: [sing-box, sing-boxr, 直链, 订阅, ruleset, rule_set, 基础]
     { "tag": "🧱 代理域名", "type": "selector", "outbounds": [ "🚀 节点选择", "🎯 全球直连" ] },
     { "tag": "📲 电报消息", "type": "selector", "outbounds": [ "🚀 节点选择", "🇭🇰 香港节点", "🇹🇼 台湾节点", "🇯🇵 日本节点", "🇸🇬 新加坡节点", "🇺🇸 美国节点", "🆓 免费节点" ] },
     { "tag": "🐟 漏网之鱼", "type": "selector", "outbounds": [ "🎯 全球直连", "🚀 节点选择", "🇭🇰 香港节点", "🇹🇼 台湾节点", "🇯🇵 日本节点", "🇸🇬 新加坡节点", "🇺🇸 美国节点", "🆓 免费节点" ] },
+    { "tag": "🛑 广告域名", "type": "selector", "outbounds": [ "🔴 全球拦截", "🎯 全球直连" ] },
+    { "tag": "🔴 全球拦截", "type": "block" },
     { "tag": "🎯 全球直连", "type": "selector", "outbounds": [ "DIRECT" ] },
     { "tag": "DIRECT", "type": "direct" },
     { "tag": "PROXY", "type": "urltest", "use_all_providers": true },
@@ -400,7 +404,7 @@ tags: [sing-box, sing-boxr, 直链, 订阅, ruleset, rule_set, 基础]
       { "clash_mode": [ "Global" ], "outbound": "GLOBAL" },
       // 自定义规则优先放前面
       { "rule_set": [ "private" ], "outbound": "🎯 全球直连" },
-      { "rule_set": [ "ads" ], "action": "reject" },
+      { "rule_set": [ "ads" ], "outbound": "🛑 广告域名" },
       { "rule_set": [ "trackerslist" ], "outbound": "📋 Trackerslist" },
       { "rule_set": [ "media" ], "outbound": "🌍 国外媒体" },
       { "rule_set": [ "games" ], "outbound": "🎮 游戏平台" },
@@ -417,19 +421,19 @@ tags: [sing-box, sing-boxr, 直链, 订阅, ruleset, rule_set, 基础]
     // 规则集（binary 文件每天自动更新）
     "rule_set": [
       {
-        "tag": "private",
-        "type": "remote",
-        "format": "binary",
-        "path": "./ruleset/private.srs",
-        "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/private.srs",
-        "download_detour": "PROXY"
-      },
-      {
         "tag": "ads",
         "type": "remote",
         "format": "binary",
         "path": "./ruleset/ads.srs",
         "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/ads.srs",
+        "download_detour": "PROXY"
+      },
+      {
+        "tag": "private",
+        "type": "remote",
+        "format": "binary",
+        "path": "./ruleset/private.srs",
+        "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/private.srs",
         "download_detour": "PROXY"
       },
       {

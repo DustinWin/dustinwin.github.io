@@ -60,6 +60,8 @@ tags: [sing-box, sing-boxr, ShellCrash, ruleset, rule_set, 分享, Router]
     { "tag": "电报消息", "type": "selector", "outbounds": [ "节点选择", "香港节点", "台湾节点", "日本节点", "新加坡节点", "美国节点", "免费节点", "🆚 vless 节点" ] },
     { "tag": "私有网络", "type": "selector", "outbounds": [ "全球直连" ] },
     { "tag": "漏网之鱼", "type": "selector", "outbounds": [ "节点选择", "香港节点", "台湾节点", "日本节点", "新加坡节点", "美国节点", "免费节点", "🆚 vless 节点", "全球直连" ] },
+    { "tag": "广告域名", "type": "selector", "outbounds": [ "全球拦截", "全球直连" ] },
+    { "tag": "全球拦截", "type": "block" },
     { "tag": "全球直连", "type": "selector", "outbounds": [ "DIRECT" ] },
     { "tag": "DIRECT", "type": "direct" },
     { "tag": "GLOBAL", "type": "selector", "outbounds": [ "DIRECT", "节点选择" ] },
@@ -85,7 +87,7 @@ tags: [sing-box, sing-boxr, ShellCrash, ruleset, rule_set, 分享, Router]
   "route": {
     "rules": [
       { "rule_set": [ "private" ], "outbound": "私有网络" },
-      { "rule_set": [ "ads" ], "action": "reject" },
+      { "rule_set": [ "ads" ], "outbound": "广告域名" },
       { "rule_set": [ "trackerslist" ], "outbound": "Trackerslist" },
       { "rule_set": [ "microsoft-cn" ], "outbound": "微软服务" },
       { "rule_set": [ "apple-cn" ], "outbound": "苹果服务" },
