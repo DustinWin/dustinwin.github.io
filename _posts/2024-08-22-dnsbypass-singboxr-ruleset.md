@@ -40,7 +40,7 @@ tags: [sing-box, sing-boxr, ShellCrash, ruleset, rule_set, 进阶, DNS, DNS 分�
 ```
 
 ## 二、 DNS 分流配置
-1. 进入主菜单 → 2 内核功能设置 → 2 切换 DNS 运行模式 → 4 DNS 进阶设置，将“当前基础 DNS”和“PROXY-DNS”都设置为 `null`  
+1. 进入主菜单 → 2 功能设置 → 2 DNS 设置 → 9 DNS 进阶设置，将“当前基础 DNS”、“PROXY-DNS”和“解析 DNS”都设置为 `null`  
 <img src="/assets/img/dns/dns-null.png" alt="ShellCrash 设置" width="60%" />
 
 2. 连接 SSH 后执行命令 `vi $CRASHDIR/jsons/dns.json`，按一下 Ins 键（Insert 键），粘贴如下内容：

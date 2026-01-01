@@ -9,11 +9,11 @@ pin: true
 
 > 说明
 {: .prompt-tip }
-1. 本教程基于 REDMI AX6000 [官方固件](https://www1.miwifi.com/miwifi_download.html) v1.0.70 版，[ShellCrash](https://github.com/juewuy/ShellCrash) v1.9.3 版，[AdGuard Home](https://github.com/AdguardTeam/AdGuardHome) v0.108.0 版编写
+1. 本教程基于 REDMI AX6000 [官方固件](https://www1.miwifi.com/miwifi_download.html) v1.0.70 版，[ShellCrash](https://github.com/juewuy/ShellCrash) v1.9.4 版，[AdGuard Home](https://github.com/AdguardTeam/AdGuardHome) v0.108.0 版编写
 2. 恢复 SSH，安装 ShellCrash 和 AdGuard Home 的方法也适用于其它已解锁 SSH 的路由器
 3. 安装 [mihomo 内核](https://github.com/MetaCubeX/mihomo)和 AdGuard Home 时须注意路由器 CPU 架构，查看 CPU 架构可连接 SSH 后执行命令 `uname -ms`，若执行结果是“linux aarch64”，就下载 armv8 或 arm64 版安装包；若是其它架构请下载相匹配的安装包
 4. ShellCrash 和 AdGuard Home 中所有没有提到的配置保持默认即可
-5. 使用本教程时，不建议开启 ShellCrash 中的“5 过滤局域网设备”，因不经过内核的设备在访问“漏网之鱼”域名时会遇到无法访问的情况
+5. 使用本教程时，不建议开启 ShellCrash 配置脚本 → 2 功能设置 → 3 透明路由流量过滤 → 2 过滤局域网设备，因不经过内核的设备在访问 `漏网之鱼` 域名时会遇到无法访问的情况
 6. ShellCrash 和 AdGuard Home 快速安装方法请看《[ShellCrash 和 AdGuard Home 快速安装教程](https://proxy-tutorials.dustinwin.us.kg/posts/pin-toolsinstall)》
 7. ShellCrash 单独使用时设置 DNS 分流请看《[搭载 mihomo 内核进行 DNS 分流教程-geodata 方案](https://proxy-tutorials.dustinwin.us.kg/posts/dnsbypass-mihomo-geodata)》或《[搭载 mihomo 内核进行 DNS 分流教程-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/dnsbypass-mihomo-ruleset)》
 
@@ -290,32 +290,32 @@ echo -e '12345678\n12345678' | passwd root
     <img src="/assets/img/pin/import-mihomo.png" alt="ShellCrash 配置 1" width="60%" />
 
   - ➑ 内核加载完成后根据需要是否保留相关数据库文件（此处选择 `0`）
-- ③ 模式设置
-  - ➊ 进入主菜单 → 2 内核功能设置 → 1 切换防火墙运行模式（推荐“混合模式”，其次“Tproxy 模式”，宽带在 300M 内推荐“Tun 模式”）
-  - ➋ 进入 1 切换防火墙运行模式 → 9 ipv6 设置，若机场节点不支持 IPv6，可关闭 1 ipv6 透明代理  
-    <img src="/assets/img/pin/ipv6-setting.png" alt="ShellCrash 配置 2" width="60%" />
-
-  - ➌ 进入 2 切换 DNS 运行模式 → 4 DNS 进阶设置，选择 7 禁用 DNS 劫持
+- ③ 功能设置
+  - ➊ 进入主菜单 → 2 功能设置 → 1 路由模式设置（推荐“混合模式”，其次“Tproxy 模式”，宽带在 300M 内推荐“Tun 模式”）
+  - ➋ 进入 2 功能设置 → 2 DNS 设置（推荐“MIX 模式”）
+  - ➌ 进入 2 功能设置 → 2 DNS 设置 → 9 DNS 进阶设置，分别选择 4 一键配置加密 DNS 和 7 禁用 DNS 劫持
     - 注：推荐设置 DNS 分流（单独使用 ShellCrash 以及 ShellCrash 搭配 AdGuard Home 都适用），请看《[搭载 mihomo 内核进行 DNS 分流教程-geodata 方案](https://proxy-tutorials.dustinwin.us.kg/posts/dnsbypass-mihomo-geodata)》或《[搭载 mihomo 内核进行 DNS 分流教程-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/dnsbypass-mihomo-ruleset)》
-
     <img src="/assets/img/pin/dns-setting.png" alt="ShellCrash 配置 3" width="60%" />
 
-- ④ 进入主菜单 → 4 内核启动设置，选择 1 允许 ShellCrash 开机启动（若重启路由器后服务没有自动运行，可“设置自启延时”为 `30` 秒，然后在《[六、 1. ⑥](https://proxy-tutorials.dustinwin.us.kg//posts/pin-shellcrashadguardhome-mihomo/#1-adguard-home-%E5%AE%89%E8%A3%85)》，将 `sleep 10s` 改为 `sleep 40s`）
-- ⑤ 进入主菜单 → 5 配置自动任务 → 1 添加自动任务，输入对应的数字并回车后可设置执行条件
-- ⑥ 进入主菜单 → 7 内核进阶设置，选择 4 启用域名嗅探
-- ⑦ 进入主菜单 → 9 更新/卸载 → 7 切换安装源及安装版本，选择 b 切换至公测版-master → 1 Jsdelivr_CDN源，追求新版可选择 c 切换至开发版（可能不稳定）  
+  - ➍ 进入 2 功能设置，选择 5 启用域名嗅探
+  - ➎ 进入 2 功能设置 → 8 ipv6 设置，若机场节点不支持 IPv6，可关闭 1 ipv6 透明路由  
+    <img src="/assets/img/pin/ipv6-setting.png" alt="ShellCrash 配置 2" width="60%" />
+
+- ④ 进入主菜单 → 4 启动设置，选择 1 允许 ShellCrash 开机启动（若重启路由器后服务没有自动运行，可“设置自启延时”为 `30` 秒，然后在《[六、 1. ⑥](https://proxy-tutorials.dustinwin.us.kg//posts/pin-shellcrashadguardhome-mihomo/#1-adguard-home-%E5%AE%89%E8%A3%85)》，将 `sleep 10s` 改为 `sleep 40s`）
+- ⑤ 进入主菜单 → 5 设置自动任务 → 1 添加自动任务，输入对应的数字并回车后可设置执行条件
+- ⑥ 进入主菜单 → 9 更新与支持 → 7 切换安装源及安装版本，选择 b 切换至公测版-master → 1 Jsdelivr_CDN源，追求新版可选择 c 切换至开发版（可能不稳定）  
   <img src="/assets/img/pin/select-update-source.png" alt="ShellCrash 配置 5" width="60%" />
 
-- ⑧ 进入主菜单 → 9 更新/卸载 → 4 安装本地 Dashboard 面板，选择 4 安装 zashboard 面板  
+- ⑦ 进入主菜单 → 9 更新与支持 → 4 安装本地 Dashboard 面板，选择 1 安装 zashboard 面板  
   注：
     - ➊ 启动服务后，面板 Dashboard 访问链接为：<http://192.168.31.1:9999/ui/>
     - ➋ 初次打开需要添加“主机”和“端口”，分别填入 `192.168.31.1` 和 `9999` 并点击“添加”即可访问 Dashboard 面板
 
   <img src="/assets/img/pin/install-dashboard.png" alt="ShellCrash 配置 6" width="60%" />
 
-- ⑨ 进入主菜单 → 6 导入配置文件  
+- ⑧ 进入主菜单 → 6 管理配置文件  
   注：
-    - ➊ 选择 1 在线生成 meta 配置文件，粘贴你的订阅链接并回车，输入 `1` 并再次回车即可
+    - ➊ 选择 1 在线生成配置文件，粘贴你的订阅链接并回车，输入 `1` 并再次回车即可
     - ➋ 选择 2 在线获取配置文件，需要一定的 mihomo 知识储备，请查看《[生成带有自定义策略组和规则的 mihomo 配置文件直链-geodata 方案](https://proxy-tutorials.dustinwin.us.kg/posts/link-mihomo-geodata)》或《[生成带有自定义策略组和规则的 mihomo 配置文件直链-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/link-mihomo-ruleset)》
     - ➌ 若 1 或 2 无法正确获取配置文件，可进入 9 自定义浏览器 UA 选择合适的 UA
 
@@ -328,18 +328,18 @@ echo -e '12345678\n12345678' | passwd root
 2. 启动服务：`$CRASHDIR/start.sh start`
 3. 停止服务：`$CRASHDIR/start.sh stop`
 4. 重启服务：`$CRASHDIR/start.sh restart`
-5. 更新订阅：`$CRASHDIR/start.sh update_config`
+5. 更新订阅：`$CRASHDIR/task/task.sh update_config`
 6. 查看帮助和说明：`sc -h`
 
 ### 3. ShellCrash 升级
-进入主菜单 → 9 更新/卸载，查看“管理脚本”、“内核文件”和“数据库文件”有无新版本，有则选择对应的数字进行升级即可  
+进入主菜单 → 9 更新与支持，查看“管理脚本”、“内核文件”和“数据库文件”有无新版本，有则选择对应的数字进行升级即可  
 <img src="/assets/img/pin/update-shellcrash-mihomo.png" alt="ShellCrash 升级" width="60%" />
 
 ### 4. ShellCrash 卸载
 - ① 通过脚本命令进行卸载（任选一）  
   连接 SSH 后执行命令 `$CRASHDIR/start.sh stop && sc -u`
 - ② 通过 ShellCrash 配置进行卸载（任选一）  
-  进入主菜单 → 9 更新/卸载，选择 9 卸载 ShellCrash
+  进入主菜单 → 9 更新与支持，选择 9 卸载 ShellCrash
 
 ## 六 、 AdGuard Home 安装和配置
 ### 1. AdGuard Home 安装

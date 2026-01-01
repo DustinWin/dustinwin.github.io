@@ -45,7 +45,7 @@ curl -o $CRASHDIR/Country.mmdb -L https://cdn.jsdelivr.net/gh/DustinWin/ruleset_
 按一下 Esc 键（退出键），输入英文冒号 `:`，继续输入 `wq` 并回车
 
 ## 四、 设置部分
-1. 连接 SSH 后执行命令 `crash` 即可打开 ShellCrash 配置脚本
+1. 连接 SSH 后执行命令 `sc` 即可打开 ShellCrash 配置脚本（若安装 ShellCrash 后自定义别名选择的是“2 sc”）
 2. 新手引导
    - ① 选择 1 路由设备配置局域网透明代理
    - ② 根据需要是否开启小内存模式（此处选择 `0`）
@@ -58,19 +58,18 @@ curl -o $CRASHDIR/Country.mmdb -L https://cdn.jsdelivr.net/gh/DustinWin/ruleset_
      <img src="/assets/img/pin/import-mihomo.png" alt="ShellCrash 配置 1" width="60%" />
 
    - ⑧ 内核加载完成后根据需要是否保留相关数据库文件（此处选择 `0`）
-3. 进入主菜单 → 9 更新/卸载 → 7 切换安装源及安装版本，选择 b 切换至公测版 → 1 Jsdelivr_CDN源（推荐）
-4. 进入主菜单 → 9 更新/卸载 → 4 安装本地 Dashboard 面板，选择 4 安装 zashboard 面板（也可跳过此步，直接使用《[五](https://proxy-tutorials.dustinwin.us.kg/posts/toolsettings-shellcrash-mihomo-geodata/#%E4%BA%94-%E5%9C%A8%E7%BA%BF-dashboard-%E9%9D%A2%E6%9D%BF)》中的在线 Dashboard 面板）  
-<img src="/assets/img/tools/install-dashboard.png" alt="安装面板" width="60%" />
+3. 进入主菜单 → 9 更新与支持 → 7 切换安装源及安装版本，选择 b 切换至公测版 → 1 Jsdelivr_CDN源（推荐）
+4. 进入主菜单 → 9 更新与支持 → 4 安装本地 Dashboard 面板，选择 1 安装 zashboard 面板（也可跳过此步，直接使用《[五](https://proxy-tutorials.dustinwin.us.kg/posts/toolsettings-shellcrash-mihomo-geodata/#%E4%BA%94-%E5%9C%A8%E7%BA%BF-dashboard-%E9%9D%A2%E6%9D%BF)》中的在线 Dashboard 面板）  
+<img src="/assets/img/pin/install-dashboard.png" alt="安装面板" width="60%" />
 
-5. 进入主菜单 → 2 内核功能设置（推荐“混合模式”，其次“Tproxy 模式”，宽带在 300M 内推荐“Tun 模式”）
-6. 进入主菜单 → 4 内核启动设置，选择 1 允许 ShellCrash 开机启动（若重启路由器后服务没有自动运行，可“设置自启延时”为 `30` 秒）
-7. 进入主菜单 → 5 配置自动任务 → 1 添加自动任务，可以看到末尾就有《[三](https://proxy-tutorials.dustinwin.us.kg/posts/toolsettings-shellcrash-mihomo-geodata/#%E4%B8%89-%E6%B7%BB%E5%8A%A0%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1)》中添加的定时任务，输入对应的数字并回车后可设置执行条件
-8. 进入主菜单 → 7 内核进阶设置 → 4 启用域名嗅探（若 `$CRASHDIR/yamls/user.yaml` 配置了 `sniffer` 则跳过此步骤）
-9. 进入主菜单 → 6 导入配置文件 → 2 在线获取配置文件，粘贴《[生成带有自定义策略组和规则的 mihomo 配置文件直链-geodata 方案](https://proxy-tutorials.dustinwin.us.kg/posts/link-mihomo-geodata)》中生成的 .yaml 配置文件直链，启动服务即可
-10. 访问 Dashboard 面板 <http://192.168.31.1:9999/ui/>，首次打开需要添加“主机”和“端口”，分别填入 `192.168.31.1` 和 `9999` 并点击“添加”即可  
+5. 进入主菜单 → 2 功能设置，选择 5 启用域名嗅探（若 `$CRASHDIR/yamls/user.yaml` 配置了 `sniffer` 则跳过此步骤）
+6. 进入主菜单 → 4 启动设置，选择 1 允许 ShellCrash 开机启动（若重启路由器后服务没有自动运行，可“设置自启延时”为 `30` 秒）
+7. 进入主菜单 → 5 设置自动任务 → 1 添加自动任务，可以看到末尾就有《[三](https://proxy-tutorials.dustinwin.us.kg/posts/toolsettings-shellcrash-mihomo-geodata/#%E4%B8%89-%E6%B7%BB%E5%8A%A0%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1)》中添加的定时任务，输入对应的数字并回车后可设置执行条件
+8. 进入主菜单 → 6 管理配置文件 → 2 在线获取配置文件，粘贴《[生成带有自定义策略组和规则的 mihomo 配置文件直链-geodata 方案](https://proxy-tutorials.dustinwin.us.kg/posts/link-mihomo-geodata)》中生成的 .yaml 配置文件直链，启动服务即可
+9. 访问 Dashboard 面板 <http://192.168.31.1:9999/ui/>，首次打开需要添加“主机”和“端口”，分别填入 `192.168.31.1` 和 `9999` 并点击“添加”即可  
 <img src="/assets/img/tools/192-9999-dashboard.png" alt="设置部分 2" width="60%" />
 
-11. 进入 Dashboard 面板 → 代理 → 代理提供者，点击“转圈”图标，可手动更新节点
+10. 进入 Dashboard 面板 → 代理 → 代理提供者，点击“转圈”图标，可手动更新节点
 
 ## 五、 在线 Dashboard 面板
 在线 Dashboard 面板 [zashboard](https://github.com/Zephyruso/zashboard)，网址：<https://board.zash.run.place>

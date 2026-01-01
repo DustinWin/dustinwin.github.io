@@ -14,7 +14,7 @@ tags: [Clash, mihomo, 直链, 订阅, ruleset, rule-set, 基础]
 3. 生成的订阅链接**自带规则集**，规则集来源 [DustinWin/ruleset_geodata/ruleset](https://github.com/DustinWin/ruleset_geodata#%E4%BA%8C-ruleset-%E8%A7%84%E5%88%99%E9%9B%86%E6%96%87%E4%BB%B6%E8%AF%B4%E6%98%8E)
 4. 请先**确定自己机场的订阅链接是否为 Clash 订阅链接**，若不是，需前往[肥羊在线订阅转换工具](https://suburl.v1.mk)进行转换，“生成类型”选择“Clash”，其它参数保持默认即可，转换后的订阅链接需要在末尾添加`&flag=clash`，然后添加到 .yaml 文件代理集合 `proxy-providers` 的 `url` 中
 5. 推荐使用 [Visual Studio Code](https://code.visualstudio.com/Download) 等专业编辑器来修改配置文件
-6. ShellCrash 支持本地导入配置文件，可以直接将下方的 .yaml 直链文件内容复制到 `$CRASHDIR/yamls/config.yaml`{: .filepath} 文件中，可代替通过 ShellCrash 配置脚本 → 6 → 2 导入配置文件的方式
+6. ShellCrash 支持本地导入配置文件，可以直接将下方的 .yaml 直链文件内容复制到 `$CRASHDIR/yamls/config.yaml`{: .filepath} 文件中，可代替通过 ShellCrash 配置脚本 → 6 管理配置文件 → 2 在线获取配置文件
 
 ## 一、 准备编辑 .yaml 直链文件
 ### 1. 注册 [Gist](https://gist.github.com)
@@ -130,20 +130,20 @@ proxy-groups:
 
 # 规则集（yaml 文件每天自动更新）
 rule-providers:
-  private:
-    type: http
-    behavior: domain
-    format: mrs
-    path: ./ruleset/private.mrs
-    url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/private.mrs"
-    interval: 86400
-
   ads:
     type: http
     behavior: domain
     format: mrs
     path: ./ruleset/ads.mrs
     url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/ads.mrs"
+    interval: 86400
+
+  private:
+    type: http
+    behavior: domain
+    format: mrs
+    path: ./ruleset/private.mrs
+    url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/private.mrs"
     interval: 86400
 
   trackerslist:
@@ -602,4 +602,4 @@ rules:
 - 注：若无法直连访问，可在链接上添加 `https://ghfast.top/` 前缀，即：将链接改为 `https://ghfast.top/https://gist.githubusercontent.com/DustinWin/3d1a5039fc6f88a1da44f8e0b1c8e181/raw/mihomolink.yaml`
 
 ## 五、 导入订阅链接（以 ShellCrash 导入订阅链接为例）
-进入 ShellCrash 配置脚本 → 6 → 2，粘贴最终生成的订阅链接即可，具体设置请参考《[ShellCrash 搭载 mihomo 内核的配置-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/toolsettings-shellcrash-mihomo-ruleset)》
+进入 ShellCrash 配置脚本 → 6 管理配置文件 → 2 在线获取配置文件，粘贴最终生成的订阅链接即可，具体设置请参考《[ShellCrash 搭载 mihomo 内核的配置-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/toolsettings-shellcrash-mihomo-ruleset)》

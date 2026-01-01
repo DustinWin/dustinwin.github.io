@@ -20,10 +20,10 @@ tags: [sing-box, sing-boxr, ShellCrash, ruleset, rule_set, 进阶, 本地, Route
 可参考《[ShellCrash 搭载 sing-boxr 内核的配置-ruleset 方案/导入 sing-box reF1nd 版内核](https://proxy-tutorials.dustinwin.us.kg/posts/toolsettings-shellcrash-singboxr-ruleset/#%E4%B8%80-%E5%AF%BC%E5%85%A5-sing-box-reF1nd-%E7%89%88%E5%86%85%E6%A0%B8)》里的步骤进行操作
 
 ## 二、 导入配置文件
-1. 进入 ShellCrash → 6 导入配置文件 → 1 在线生成配置文件 → 4 选取在线配置规则模版，选择 4 [ACL4SSR](https://acl4ssr-sub.github.io) 极简版（适合自建节点）  
+1. 进入 ShellCrash → 6 管理配置文件 → 1 在线生成配置文件 → 4 选取在线配置规则模版，选择 4 [ACL4SSR](https://acl4ssr-sub.github.io) 极简版（适合自建节点）  
 <img src="/assets/img/tools/subscribe-easy.png" alt="导入配置文件" width="60%" />
 
-2. 进入 ShellCrash → 6 导入配置文件 → 1 在线生成 singboxr 配置文件，输入订阅链接后回车，再输入 `1` 并回车即可
+2. 进入 ShellCrash → 6 管理配置文件 → 1 在线生成 singboxr 配置文件，输入订阅链接后回车，再输入 `1` 并回车即可
 
 ## 三、 自定义出站和规则
 ### 1. 自定义提供者 providers.json（用于添加自定义提供者 `providers`）
