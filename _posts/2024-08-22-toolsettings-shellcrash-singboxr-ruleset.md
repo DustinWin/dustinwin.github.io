@@ -45,7 +45,7 @@ curl -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/dow
    - ⑤ 根据需要是否选择 1 确认导入配置文件（此处选择 `0`）
    - ⑥ 根据需要是否选择 1 立即启动服务（此处选择 `0`）
      - 注：强烈建议选择 `0`，待以下配置完成后，最后一步启动服务
-   - ⑦ 此时脚本会自动“发现可用的内核文件”，选择 `1` 加载，后选择 3 Sing-Box-reF1nd 内核  
+   - ⑦ 此时脚本会自动“发现可用的内核文件”，选择 `1` 加载，后选择 5 Sing-Box-reF1nd 内核  
      <img src="/assets/img/pin/import-sing-boxr.png" alt="ShellCrash 配置 1" width="60%" />
 
    - ⑧ 内核加载完成后根据需要是否保留相关数据库文件（此处选择 `0`）

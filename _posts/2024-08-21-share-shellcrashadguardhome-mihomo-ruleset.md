@@ -257,7 +257,7 @@ curl -o $CRASHDIR/cn_ipv6.txt -L https://cdn.jsdelivr.net/gh/DustinWin/geoip@ips
 crash
 ```
 
-此时脚本会自动“发现可用的内核文件”，选择 1 加载，后选择 3 Clash-Meta 内核
+此时脚本会自动“发现可用的内核文件”，选择 1 加载，后选择 3 Mihomo(Meta) 内核
 
 ## 三、 编辑 user.yaml 文件
 连接 SSH 后执行命令 `vi $CRASHDIR/yamls/user.yaml`，按一下 Ins 键（Insert 键），粘贴如下内容：  
@@ -307,7 +307,7 @@ dns:
 {: .prompt-tip }
 
 注：
-- 1. 本 `dns` 配置中，仅国外域名 `proxy` 走 `fake-ip`，直连域名（含国内域名 `cn`）走国内 DNS 解析，未知域名走国外 DNS 解析（有效解决了“心理 DNS 泄露问题”，详见《[搭载 mihomo 内核配置 DNS 不泄露教程-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/dnsnoleaks-mihomo-ruleset/)》），且配置 `ecs` 提高了兼容性
+- 1. 本 `dns` 配置中，仅国外域名 `proxy` 走 `fake-ip`，`fakeip-filter` 和  `cn` 走国内 DNS 解析，未知域名走国外 DNS 解析（有效解决了“心理 DNS 泄露问题”，详见《[搭载 mihomo 内核配置 DNS 不泄露教程-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/dnsnoleaks-mihomo-ruleset/)》），且配置 `ecs` 提高了兼容性
 - 2. 推荐将 `ecs` 设置为当前网络的公网 IP 段，如当前网络公网 IP 为 `202.103.17.123`，可设置为 `202.103.17.0/24`（后续维护更新可直接执行命令 `sed -i -E "s/(ecs=)[0-9.]+\/[0-9]+/\1$(curl -s 4.ipw.cn | cut -d. -f1-3).0\/24/" $CRASHDIR/yamls/user.yaml`）
 
 ```yaml
@@ -325,8 +325,11 @@ dns:
   enhanced-mode: fake-ip
   fake-ip-range: 28.0.0.0/8
   fake-ip-range6: fc00::/16
-  fake-ip-filter-mode: whitelist
-  fake-ip-filter: ['rule-set:proxy']
+  fake-ip-filter-mode: rule
+  fake-ip-filter:
+    - RULE-SET,fakeip-filter,real-ip
+    - RULE-SET,proxy,fake-ip
+    - MATCH,real-ip
   respect-rules: true
   nameserver:
     # 推荐将 `ecs` 设置为当前网络的公网 IP 段
@@ -384,7 +387,6 @@ iptables -t nat -A PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 5353
 ip6tables -t nat -A PREROUTING -p tcp --dport 53 -j REDIRECT --to-ports 5353
 ip6tables -t nat -A PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 5353
 cat <<EOF >> /data/auto_ssh/auto_ssh.sh
-
 sleep 10s
 /data/AdGuardHome/AdGuardHome -s install
 /data/AdGuardHome/AdGuardHome -s start
