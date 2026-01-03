@@ -10,11 +10,12 @@ tags: [sing-box, sing-boxr, ShellCrash, ruleset, rule_set, 进阶, DNS, DNS 分�
 {: .prompt-tip }
 1. [ShellCrash](https://github.com/juewuy/ShellCrash) 搭配 [AdGuard Home](https://github.com/AdguardTeam/AdGuardHome) 并将 AdGuard Home 作为上游时不要使用该方法
 2. 本教程以 ShellCrash 为例，其它客户端亦可参考
-3. DNS 分流简单来说就是**指定国内域名走国内 DNS 解析，国外域名走 `fakeip`**。未知域名也走 `fakeip`（在匹配 `route.rules.rule_set:cn` 规则时会由国内 DNS 解析，解析出 IP 在国内则走 `🀄️ 直连 IP` 规则，否则走 `🐟 漏网之鱼` 规则）
-4. 部分用户觉得未知域名处理方式会导致 DNS 泄露，可参考《[搭载 sing-boxr 内核配置 DNS 不泄露教程-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/dnsnoleaks-singboxr-ruleset)》
+3. 本教程搭载 [sing-box 内核 reF1nd-dev 版](https://github.com/reF1nd/sing-box/tree/reF1nd-dev)（导入内核方法可参考《[ShellCrash 和 AdGuard Home 快速安装教程/导入 mihomo 内核 或 sing-box 内核](https://proxy-tutorials.dustinwin.us.kg/posts/pin-toolsinstall/#%E4%BA%8C-%E5%AF%BC%E5%85%A5-mihomo-%E5%86%85%E6%A0%B8-%E6%88%96-sing-box-%E5%86%85%E6%A0%B8)》）
+4. DNS 分流简单来说就是**指定国内域名走国内 DNS 解析，国外域名走 `fakeip`**。未知域名走 real-ip（在匹配 `route.rules.rule_set:cnip` 规则时会由国内 DNS 解析，解析出 IP 在国内则走 `🀄️ 直连 IP` 规则，否则走 `🐟 漏网之鱼` 规则）
+5. 部分用户觉得未知域名处理方式会导致 DNS 泄露，可参考《[搭载 sing-boxr 内核配置 DNS 不泄露教程-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/dnsnoleaks-singboxr-ruleset)》
 
 ## 一、 导入规则集合文件
-`route.rule_set` 须添加 `fakeip-filter` 和 `cn`，如下：
+`route.rule_set` 须添加 `fakeip-filter`、`cn` 和 `proxy`，如下：
 
 ```json
 {
@@ -33,6 +34,13 @@ tags: [sing-box, sing-boxr, ShellCrash, ruleset, rule_set, 进阶, DNS, DNS 分�
         "format": "binary",
         "path": "./ruleset/cn.srs",
         "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/cn.srs"
+      },
+      {
+        "tag": "proxy",
+        "type": "remote",
+        "format": "binary",
+        "path": "./ruleset/proxy.srs",
+        "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/proxy.srs"
       }
     ]
   }
@@ -67,8 +75,9 @@ tags: [sing-box, sing-boxr, ShellCrash, ruleset, rule_set, 进阶, DNS, DNS 分�
       { "ip_accept_any": true, "server": "hosts" },
       { "clash_mode": [ "Direct" ], "query_type": [ "A", "AAAA" ], "server": "dns_direct" },
       { "clash_mode": [ "Global" ], "query_type": [ "A", "AAAA" ], "server": "dns_proxy" },
-      { "rule_set": [ "fakeip-filter", "cn" ], "query_type": [ "A", "AAAA" ], "server": "dns_direct", "rewrite_ttl": 1 },
-      { "query_type": [ "A", "AAAA" ], "server": "dns_fakeip" }
+      { "rule_set": [ "fakeip-filter" ], "query_type": [ "A", "AAAA" ], "server": "dns_direct", "rewrite_ttl": 1 },
+      { "rule_set": [ "proxy" ], "query_type": [ "A", "AAAA" ], "server": "dns_fakeip" },
+      { "rule_set": [ "cn" ], "query_type": [ "A", "AAAA" ], "server": "dns_direct", "rewrite_ttl": 1 }  // # 此条仅演示，可删除
     ],
     "final": "dns_direct",
     "strategy": "prefer_ipv4",

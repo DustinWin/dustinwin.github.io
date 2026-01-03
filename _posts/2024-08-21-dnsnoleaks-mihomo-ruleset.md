@@ -8,12 +8,13 @@ tags: [Clash, mihomo, 进阶, DNS, DNS 泄露]
 
 > 说明
 {: .prompt-tip }
-1. 此方案彻底防止了 DNS 泄露（未知域名在匹配 `rules.RULE-SET:cn` 规则时会走国外 DNS 解析且配置 `ecs`，解析出 IP 在国内则走 `🀄️ 直连 IP` 规则，否则走 `🐟 漏网之鱼` 规则），兼容性高，可放心使用
+1. 此方案彻底防止了 DNS 泄露（未知域名在匹配 `rules.RULE-SET:cnip` 规则时会走国外 DNS 解析且配置 `ecs`，解析出 IP 在国内则走 `🀄️ 直连 IP` 规则，否则走 `🐟 漏网之鱼` 规则），兼容性高，可放心使用
 2. 本教程以 [ShellCrash](https://github.com/juewuy/ShellCrash) 为例，其它客户端亦可参考
-3. 可进入 <https://ipleak.net> 测试 DNS 是否泄露，“DNS Addresses” 栏目下没有中国国旗（因 `ipleak.net` 属未知域名，默认走 `🐟 漏网之鱼` 规则），即代表 DNS 没有发生泄露
+3. 本教程搭载 [mihomo 内核 Alpha 版](https://github.com/MetaCubeX/mihomo/tree/Alpha)（导入内核方法可参考《[ShellCrash 和 AdGuard Home 快速安装教程/导入 mihomo 内核 或 sing-box 内核](https://proxy-tutorials.dustinwin.us.kg/posts/pin-toolsinstall/#%E4%BA%8C-%E5%AF%BC%E5%85%A5-mihomo-%E5%86%85%E6%A0%B8-%E6%88%96-sing-box-%E5%86%85%E6%A0%B8)》）
+4. 可进入 <https://ipleak.net> 测试 DNS 是否泄露，“DNS Addresses” 栏目下没有中国国旗（因 `ipleak.net` 属未知域名，默认走 `🐟 漏网之鱼` 规则），即代表 DNS 没有发生泄露
 
 ## 一、 导入规则集合文件
-`rule-providers` 须添加 `fakeip-filter`，如下：
+`rule-providers` 须添加 `fakeip-filter`、`cn` 和 `proxy`，如下：
 
 ```yaml
 rule-providers:
@@ -31,6 +32,14 @@ rule-providers:
     format: mrs
     path: ./ruleset/cn.mrs
     url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/cn.mrs"
+    interval: 86400
+
+  proxy:
+    type: http
+    behavior: domain
+    format: mrs
+    path: ./ruleset/proxy.mrs
+    url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/proxy.mrs"
     interval: 86400
 ```
 
@@ -58,7 +67,12 @@ dns:
   enhanced-mode: fake-ip
   fake-ip-range: 28.0.0.0/8
   fake-ip-range6: fc00::/16
-  fake-ip-filter: ['rule-set:fakeip-filter,cn']
+  fake-ip-filter-mode: rule
+  fake-ip-filter:
+    - RULE-SET,fakeip-filter,real-ip
+    - RULE-SET,proxy,fake-ip
+    - RULE-SET,cn,real-ip  # 此条仅演示，可删除
+    - MATCH,real-ip
   respect-rules: true
   nameserver:
     # 推荐将 `ecs` 设置为当前网络的公网 IP 段
@@ -99,7 +113,10 @@ dns:
     enhanced-mode: fake-ip
     fake-ip-range: 28.0.0.0/8
     fake-ip-range6: fc00::/16
-    fake-ip-filter: ['rule-set:fakeip-filter']
+    fake-ip-filter-mode: rule
+    fake-ip-filter:
+    - RULE-SET,fakeip-filter,real-ip
+    - MATCH,fake-ip
     nameserver:
       - https://dns.alidns.com/dns-query
       - https://doh.pub/dns-query
