@@ -10,11 +10,12 @@ tags: [Clash, mihomo, 进阶, DNS, DNS 分流]
 {: .prompt-tip }
 1. 使用 [ShellCrash](https://github.com/juewuy/ShellCrash) 搭配 [AdGuard Home](https://github.com/AdguardTeam/AdGuardHome) 并将 AdGuard Home 作为上游时不要使用该方法
 2. 本教程以 ShellCrash 为例，其它客户端亦可参考
-3. DNS 分流简单来说就是**指定国内域名走国内 DNS 解析，国外域名走 `fake-ip`**。未知域名也走 `fake-ip`（在匹配 `rules.RULE-SET:cn` 规则时会由国内 DNS 解析，解析出 IP 在国内则走 `🀄️ 直连 IP` 规则，否则走 `🐟 漏网之鱼` 规则）
-4. 部分用户觉得未知域名处理方式会导致 DNS 泄露，可参考《[搭载 mihomo 内核配置 DNS 不泄露教程-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/dnsnoleaks-mihomo-ruleset)》
+3. 本教程搭载 [mihomo 内核 Alpha 版](https://github.com/MetaCubeX/mihomo/tree/Alpha)（导入内核方法可参考《[ShellCrash 和 AdGuard Home 快速安装教程/导入 mihomo 内核 或 sing-box 内核](https://proxy-tutorials.dustinwin.us.kg/posts/pin-toolsinstall/#%E4%BA%8C-%E5%AF%BC%E5%85%A5-mihomo-%E5%86%85%E6%A0%B8-%E6%88%96-sing-box-%E5%86%85%E6%A0%B8)》）
+4. DNS 分流简单来说就是**指定国内域名走国内 DNS 解析，国外域名走 `fake-ip`**。未知域名走 `real-ip`（在匹配 `rules.RULE-SET:cnip` 规则时会由国内 DNS 解析，解析出 IP 在国内则走 `🀄️ 直连 IP` 规则，否则走 `🐟 漏网之鱼` 规则）
+5. 部分用户觉得未知域名处理方式会导致 DNS 泄露，可参考《[搭载 mihomo 内核配置 DNS 不泄露教程-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/dnsnoleaks-mihomo-ruleset)》
 
 ## 一、 导入规则集合文件
-`rule-providers` 须添加 `fakeip-filter` 和 `cn`，如下：
+`rule-providers` 须添加 `fakeip-filter`、`cn` 和 `proxy`，如下：
 
 ```yaml
 rule-providers:
@@ -32,6 +33,14 @@ rule-providers:
     format: mrs
     path: ./ruleset/cn.mrs
     url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/cn.mrs"
+    interval: 86400
+
+  proxy:
+    type: http
+    behavior: domain
+    format: mrs
+    path: ./ruleset/proxy.mrs
+    url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/proxy.mrs"
     interval: 86400
 ```
 
@@ -54,7 +63,12 @@ dns:
   enhanced-mode: fake-ip
   fake-ip-range: 28.0.0.0/8
   fake-ip-range6: fc00::/16
-  fake-ip-filter: ['rule-set:fakeip-filter,cn']
+  fake-ip-filter-mode: rule
+  fake-ip-filter:
+    - RULE-SET,fakeip-filter,real-ip
+    - RULE-SET,proxy,fake-ip
+    - RULE-SET,cn,real-ip  # 此条仅演示，可删除
+    - MATCH,real-ip
   nameserver:
     - https://dns.alidns.com/dns-query
     - https://doh.pub/dns-query
