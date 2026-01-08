@@ -350,12 +350,12 @@ dns:
 ```
 
 2. 按一下 Esc 键（退出键），输入英文冒号 `:`，继续输入 `wq` 并回车
-3. 执行 `sc`，进入主菜单 → 5 设置自动任务 → 1 添加自动任务，可以看到末尾就有添加的定时任务，输入对应的数字并回车后可设置执行条件  
+3. 执行 `sc`，进入 ShellCrash 配置脚本 → 5 设置自动任务 → 1 添加自动任务，可以看到末尾就有添加的定时任务，输入对应的数字并回车后可设置执行条件  
 <img src="/assets/img/share/task-mihomo-ruleset.png" alt="添加定时任务" width="60%" />
 
 ## 五、 设置部分
 1. 设置可参考《[ShellCrash 搭载 mihomo 内核的配置-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/toolsettings-shellcrash-mihomo-ruleset)》，此处只列举配置的不同之处
-2. 进入主菜单 → 2 功能设置 → 2 DNS 设置 → 9 修改 DNS 服务器，设置如下：  
+2. 进入 ShellCrash 配置脚本 → 2 功能设置 → 2 DNS 设置 → 9 修改 DNS 服务器，设置如下：  
 <img src="/assets/img/dns/dns-null.png" alt="设置部分 2" width="60%" />
 
 3. 进入 2 功能设置，不要选择 5 启用域名嗅探（因 user.yaml 文件中已添加 `dns.sniffer` 配置项）

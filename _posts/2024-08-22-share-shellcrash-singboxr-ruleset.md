@@ -75,11 +75,11 @@ tags: [sing-box, sing-boxr, ShellCrash, ruleset, rule_set, 分享, Router]
       "transport": { "type": "ws", "path": "/?ed=2048", "headers": { "Host": "example.com" } }
     },
 
-    { "tag": "香港节点", "type": "urltest", "providers": [ "🛫 机场订阅" ], "include": "(?i)(🇭🇰|港|hk|hongkong|hong kong)" },
-    { "tag": "台湾节点", "type": "urltest", "providers": [ "🛫 机场订阅" ], "include": "(?i)(🇹🇼|台|tw|taiwan|tai wan)" },
-    { "tag": "日本节点", "type": "urltest", "providers": [ "🛫 机场订阅" ], "include": "(?i)(🇯🇵|日|jp|japan)" },
-    { "tag": "新加坡节点", "type": "urltest", "providers": [ "🛫 机场订阅" ], "include": "(?i)(🇸🇬|新|sg|singapore)" },
-    { "tag": "美国节点", "type": "urltest", "tolerance": 100, "providers": [ "🛫 机场订阅" ], "include": "(?i)(🇺🇸|美|us|unitedstates|united states)" },
+    { "tag": "香港节点", "type": "loadbalance", "strategy": "consistent-hashing", "providers": [ "🛫 机场订阅" ], "include": "(?i)(🇭🇰|港|hk|hongkong|hong kong)" },
+    { "tag": "台湾节点", "type": "loadbalance", "strategy": "consistent-hashing", "providers": [ "🛫 机场订阅" ], "include": "(?i)(🇹🇼|台|tw|taiwan|tai wan)" },
+    { "tag": "日本节点", "type": "loadbalance", "strategy": "consistent-hashing", "providers": [ "🛫 机场订阅" ], "include": "(?i)(🇯🇵|日|jp|japan)" },
+    { "tag": "新加坡节点", "type": "loadbalance", "strategy": "consistent-hashing", "providers": [ "🛫 机场订阅" ], "include": "(?i)(🇸🇬|新|sg|singapore)" },
+    { "tag": "美国节点", "type": "loadbalance", "strategy": "consistent-hashing", "providers": [ "🛫 机场订阅" ], "include": "(?i)(🇺🇸|美|us|unitedstates|united states)" },
     { "tag": "免费节点", "type": "urltest", "tolerance": 100, "providers": [ "🆓 免费订阅" ] }
   ],
   "route": {
@@ -205,7 +205,41 @@ tags: [sing-box, sing-boxr, ShellCrash, ruleset, rule_set, 分享, Router]
 }
 ```
 
-## 二、 导入 [sing-box reF1nd 版内核](https://github.com/reF1nd/sing-box)和 [zashboard 面板](https://github.com/Zephyruso/zashboard)
+---
+
+>`outbounds` 私货
+{: .prompt-tip }
+
+注：
+- 1. 本 `outbounds` 配置中，将不同的节点类型（如：`Shadowsocks` 和 `Trojan`）分别配置 `"type": "urltest"` 进行延迟测试（可进入 [zashboard 面板](https://github.com/Zephyruso/zashboard) → 代理 → 设置 → 管理隐藏代理组，设置隐藏以简化 Dashboard 面板中的显示）
+- 2. 再将上述延迟测试最低的出站配置 `fallback` 进行自动回退
+
+```json
+{
+  "outbounds": [
+    { "tag": "香港节点", "type": "urltest", "outbounds": [ "香港-ss", "香港-trojan" ], "fallback": { "enabled": true, "max_delay": "200ms" } },
+    { "tag": "香港-ss", "type": "urltest", "providers": [ "🛫 机场订阅" ], "include": "(?i)(🇭🇰.*ss)" },
+    { "tag": "香港-trojan", "type": "urltest", "providers": [ "🛫 机场订阅" ], "include": "🇭🇰", "exclude": "(?i)(ss)" },
+    { "tag": "台湾节点", "type": "urltest", "outbounds": [ "台湾-ss", "台湾-trojan" ], "fallback": { "enabled": true, "max_delay": "200ms" } },
+    { "tag": "台湾-ss", "type": "urltest", "providers": [ "🛫 机场订阅" ], "include": "(?i)(🇹🇼.*ss)" },
+    { "tag": "台湾-trojan", "type": "urltest", "providers": [ "🛫 机场订阅" ], "include": "🇹🇼", "exclude": "(?i)(ss)" },
+    { "tag": "日本节点", "type": "urltest", "outbounds": [ "日本-ss", "日本-trojan" ], "fallback": { "enabled": true, "max_delay": "200ms" } },
+    { "tag": "日本-ss", "type": "urltest", "providers": [ "🛫 机场订阅" ], "include": "(?i)(🇯🇵.*ss)" },
+    { "tag": "日本-trojan", "type": "urltest", "providers": [ "🛫 机场订阅" ], "include": "🇯🇵", "exclude": "(?i)(ss)" },
+    { "tag": "新加坡节点", "type": "urltest", "outbounds": [ "新加坡-ss", "新加坡-trojan" ], "fallback": { "enabled": true, "max_delay": "200ms" } },
+    { "tag": "新加坡-ss", "type": "urltest", "providers": [ "🛫 机场订阅" ], "include": "(?i)(🇸🇬.*ss)" },
+    { "tag": "新加坡-trojan", "type": "urltest", "providers": [ "🛫 机场订阅" ], "include": "🇸🇬", "exclude": "(?i)(ss)" },
+    { "tag": "美国节点", "type": "urltest", "outbounds": [ "美国-ss", "美国-trojan" ], "fallback": { "enabled": true, "max_delay": "400ms" } },
+    { "tag": "美国-ss", "type": "urltest", "tolerance": 100, "providers": [ "🛫 机场订阅" ], "include": "(?i)(🇺🇸.*ss)" },
+    { "tag": "美国-trojan", "type": "urltest", "tolerance": 100, "providers": [ "🛫 机场订阅" ], "include": "🇺🇸", "exclude": "(?i)(ss)" },
+    { "tag": "免费节点", "type": "urltest", "tolerance": 100, "providers": [ "🆓 免费订阅" ] }
+  ]
+}
+```
+
+---
+
+## 二、 导入 [sing-box reF1nd 版内核](https://github.com/reF1nd/sing-box)和 zashboard 面板
 连接 SSH 后执行如下命令：
 
 ```shell
@@ -339,12 +373,12 @@ crash
 ```
 
 2. 按一下 Esc 键（退出键），输入英文冒号 `:`，继续输入 `wq` 并回车
-3. 执行 `sc`，进入主菜单 → 5 设置自动任务 → 1 添加自动任务，可以看到末尾就有添加的定时任务，输入对应的数字并回车后可设置执行条件  
+3. 执行 `sc`，进入 ShellCrash 配置脚本 → 5 设置自动任务 → 1 添加自动任务，可以看到末尾就有添加的定时任务，输入对应的数字并回车后可设置执行条件  
 <img src="/assets/img/share/task-singboxr-ruleset.png" alt="添加定时任务" width="60%" />
 
 ## 六、 设置部分
 1. 设置可参考《[ShellCrash 搭载 sing-boxr 内核的配置-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/toolsettings-shellcrash-singboxr-ruleset)》，此处只列举配置的不同之处
-2. 进入主菜单 → 2 功能设置 → 2 DNS 设置 → 9 修改 DNS 服务器，设置如下：  
+2. 进入 ShellCrash 配置脚本 → 2 功能设置 → 2 DNS 设置 → 9 修改 DNS 服务器，设置如下：  
 <img src="/assets/img/dns/dns-null.png" alt="设置部分 2" width="60%" />
 
 3. 进入 2 功能设置，选择 5 启用域名嗅探

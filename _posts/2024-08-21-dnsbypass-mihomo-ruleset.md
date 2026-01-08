@@ -45,7 +45,7 @@ rule-providers:
 ```
 
 ## 二、 DNS 分流配置
-1. 进入主菜单 → 2 功能设置 → 2 DNS 设置 → 9 DNS 进阶设置，将“当前基础 DNS”、“PROXY-DNS”和“解析 DNS”都设置为 `null`  
+1. 进入 ShellCrash 配置脚本 → 2 功能设置 → 2 DNS 设置 → 9 DNS 进阶设置，将“当前基础 DNS”、“PROXY-DNS”和“解析 DNS”都设置为 `null`  
 <img src="/assets/img/dns/dns-null.png" alt="ShellCrash DNS 进阶设置" width="60%" />
 
 2. 连接 SSH 后执行命令 `vi $CRASHDIR/yamls/user.yaml`，按一下 Ins 键（Insert 键），粘贴如下内容：

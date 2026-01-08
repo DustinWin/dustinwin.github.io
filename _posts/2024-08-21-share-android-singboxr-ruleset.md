@@ -79,9 +79,9 @@ tags: [sing-box, sing-boxr, Android, ruleset, rule_set, 分享]
     { "tag": "tun-in", "type": "tun", "interface_name": "sing-box", "address": [ "172.18.0.1/30", "fdfe:dcba:9876::1/126" ], "auto_route": true, "strict_route": true, "stack": "mixed" }
   ],
   "outbounds": [
-    { "tag": "节点选择", "type": "selector", "outbounds": [ "香港节点", "台湾节点", "日本节点", "新加坡节点", "德国节点", "美国节点", "美国节点", "免费节点", "🆚 vless 节点" ] },
-    { "tag": "网络测试", "type": "selector", "outbounds": [ "全球直连", "节点选择", "香港节点", "台湾节点", "日本节点", "新加坡节点", "德国节点", "美国节点", "美国节点", "免费节点", "🆚 vless 节点" ] },
-    { "tag": "AI 平台", "type": "selector", "outbounds": [ "节点选择", "香港节点", "台湾节点", "日本节点", "新加坡节点", "德国节点", "美国节点", "美国节点", "免费节点", "🆚 vless 节点" ] },
+    { "tag": "节点选择", "type": "selector", "outbounds": [ "香港节点", "台湾节点", "日本节点", "新加坡节点", "德国节点", "美国节点", "免费节点", "🆚 vless 节点" ] },
+    { "tag": "网络测试", "type": "selector", "outbounds": [ "全球直连", "节点选择", "香港节点", "台湾节点", "日本节点", "新加坡节点", "德国节点", "美国节点", "免费节点", "🆚 vless 节点" ] },
+    { "tag": "AI 平台", "type": "selector", "outbounds": [ "节点选择", "香港节点", "台湾节点", "日本节点", "新加坡节点", "德国节点", "美国节点", "免费节点", "🆚 vless 节点" ] },
     { "tag": "Trackerslist", "type": "selector", "outbounds": [ "全球直连", "节点选择" ] },
     { "tag": "游戏服务", "type": "selector", "outbounds": [ "全球直连", "节点选择" ] },
     { "tag": "微软服务", "type": "selector", "outbounds": [ "全球直连", "节点选择" ] },
@@ -90,10 +90,10 @@ tags: [sing-box, sing-boxr, Android, ruleset, rule_set, 分享]
     { "tag": "直连域名", "type": "selector", "outbounds": [ "全球直连", "节点选择" ] },
     { "tag": "直连 IP", "type": "selector", "outbounds": [ "全球直连", "节点选择" ] },
     { "tag": "代理域名", "type": "selector", "outbounds": [ "节点选择", "全球直连" ] },
-    { "tag": "电报消息", "type": "selector", "outbounds": [ "节点选择", "香港节点", "台湾节点", "日本节点", "新加坡节点", "德国节点", "美国节点", "美国节点", "免费节点", "🆚 vless 节点" ] },
+    { "tag": "电报消息", "type": "selector", "outbounds": [ "节点选择", "香港节点", "台湾节点", "日本节点", "新加坡节点", "德国节点", "美国节点", "免费节点", "🆚 vless 节点" ] },
     { "tag": "直连软件", "type": "selector", "outbounds": [ "全球直连" ] },
     { "tag": "私有网络", "type": "selector", "outbounds": [ "全球直连" ] },
-    { "tag": "漏网之鱼", "type": "selector", "outbounds": [ "节点选择", "香港节点", "台湾节点", "日本节点", "新加坡节点", "德国节点", "美国节点", "美国节点", "免费节点", "🆚 vless 节点", "全球直连" ] },
+    { "tag": "漏网之鱼", "type": "selector", "outbounds": [ "节点选择", "香港节点", "台湾节点", "日本节点", "新加坡节点", "德国节点", "美国节点", "免费节点", "🆚 vless 节点", "全球直连" ] },
     { "tag": "广告域名", "type": "selector", "outbounds": [ "全球拦截", "全球直连" ] },
     { "tag": "全球拦截", "type": "block" },
     { "tag": "全球直连", "type": "selector", "outbounds": [ "DIRECT" ] },
@@ -111,11 +111,11 @@ tags: [sing-box, sing-boxr, Android, ruleset, rule_set, 分享]
       "transport": { "type": "ws", "path": "/?ed=2048", "headers": { "Host": "example.com" } }
     },
 
-    { "tag": "香港节点", "type": "urltest", "providers": [ "🛫 机场订阅" ], "include": "(?i)(🇭🇰|港|hk|hongkong|hong kong)" },
-    { "tag": "台湾节点", "type": "urltest", "providers": [ "🛫 机场订阅" ], "include": "(?i)(🇹🇼|台|tw|taiwan|tai wan)" },
-    { "tag": "日本节点", "type": "urltest", "providers": [ "🛫 机场订阅" ], "include": "(?i)(🇯🇵|日|jp|japan)" },
-    { "tag": "新加坡节点", "type": "urltest", "providers": [ "🛫 机场订阅" ], "include": "(?i)(🇸🇬|新|sg|singapore)" },
-    { "tag": "美国节点", "type": "urltest", "tolerance": 100, "providers": [ "🛫 机场订阅" ], "include": "(?i)(🇺🇸|美|us|unitedstates|united states)" },
+    { "tag": "香港节点", "type": "loadbalance", "strategy": "consistent-hashing", "providers": [ "🛫 机场订阅" ], "include": "(?i)(🇭🇰|港|hk|hongkong|hong kong)" },
+    { "tag": "台湾节点", "type": "loadbalance", "strategy": "consistent-hashing", "providers": [ "🛫 机场订阅" ], "include": "(?i)(🇹🇼|台|tw|taiwan|tai wan)" },
+    { "tag": "日本节点", "type": "loadbalance", "strategy": "consistent-hashing", "providers": [ "🛫 机场订阅" ], "include": "(?i)(🇯🇵|日|jp|japan)" },
+    { "tag": "新加坡节点", "type": "loadbalance", "strategy": "consistent-hashing", "providers": [ "🛫 机场订阅" ], "include": "(?i)(🇸🇬|新|sg|singapore)" },
+    { "tag": "美国节点", "type": "loadbalance", "strategy": "consistent-hashing", "providers": [ "🛫 机场订阅" ], "include": "(?i)(🇺🇸|美|us|unitedstates|united states)" },
     { "tag": "免费节点", "type": "urltest", "tolerance": 100, "providers": [ "🆓 免费订阅" ] }
   ],
   "route": {
@@ -270,6 +270,38 @@ tags: [sing-box, sing-boxr, Android, ruleset, rule_set, 分享]
 
 ---
 
+>`outbounds` 私货
+{: .prompt-tip }
+
+注：
+- 1. 本 `outbounds` 配置中，将不同的节点类型（如：`Shadowsocks` 和 `Trojan`）分别配置 `"type": "urltest"` 进行延迟测试（可进入 [zashboard 面板](https://github.com/Zephyruso/zashboard) → 代理 → 设置 → 管理隐藏代理组，设置隐藏以简化 Dashboard 面板中的显示）
+- 2. 再将上述延迟测试最低的出站配置 `fallback` 进行自动回退
+
+```json
+{
+  "outbounds": [
+    { "tag": "香港节点", "type": "urltest", "outbounds": [ "香港-ss", "香港-trojan" ], "fallback": { "enabled": true, "max_delay": "200ms" } },
+    { "tag": "香港-ss", "type": "urltest", "providers": [ "🛫 机场订阅" ], "include": "(?i)(🇭🇰.*ss)" },
+    { "tag": "香港-trojan", "type": "urltest", "providers": [ "🛫 机场订阅" ], "include": "🇭🇰", "exclude": "(?i)(ss)" },
+    { "tag": "台湾节点", "type": "urltest", "outbounds": [ "台湾-ss", "台湾-trojan" ], "fallback": { "enabled": true, "max_delay": "200ms" } },
+    { "tag": "台湾-ss", "type": "urltest", "providers": [ "🛫 机场订阅" ], "include": "(?i)(🇹🇼.*ss)" },
+    { "tag": "台湾-trojan", "type": "urltest", "providers": [ "🛫 机场订阅" ], "include": "🇹🇼", "exclude": "(?i)(ss)" },
+    { "tag": "日本节点", "type": "urltest", "outbounds": [ "日本-ss", "日本-trojan" ], "fallback": { "enabled": true, "max_delay": "200ms" } },
+    { "tag": "日本-ss", "type": "urltest", "providers": [ "🛫 机场订阅" ], "include": "(?i)(🇯🇵.*ss)" },
+    { "tag": "日本-trojan", "type": "urltest", "providers": [ "🛫 机场订阅" ], "include": "🇯🇵", "exclude": "(?i)(ss)" },
+    { "tag": "新加坡节点", "type": "urltest", "outbounds": [ "新加坡-ss", "新加坡-trojan" ], "fallback": { "enabled": true, "max_delay": "200ms" } },
+    { "tag": "新加坡-ss", "type": "urltest", "providers": [ "🛫 机场订阅" ], "include": "(?i)(🇸🇬.*ss)" },
+    { "tag": "新加坡-trojan", "type": "urltest", "providers": [ "🛫 机场订阅" ], "include": "🇸🇬", "exclude": "(?i)(ss)" },
+    { "tag": "美国节点", "type": "urltest", "outbounds": [ "美国-ss", "美国-trojan" ], "fallback": { "enabled": true, "max_delay": "400ms" } },
+    { "tag": "美国-ss", "type": "urltest", "tolerance": 100, "providers": [ "🛫 机场订阅" ], "include": "(?i)(🇺🇸.*ss)" },
+    { "tag": "美国-trojan", "type": "urltest", "tolerance": 100, "providers": [ "🛫 机场订阅" ], "include": "🇺🇸", "exclude": "(?i)(ss)" },
+    { "tag": "免费节点", "type": "urltest", "tolerance": 100, "providers": [ "🆓 免费订阅" ] }
+  ]
+}
+```
+
+---
+
 >`DNS` 私货
 {: .prompt-tip }
 
@@ -321,7 +353,7 @@ tags: [sing-box, sing-boxr, Android, ruleset, rule_set, 分享]
 - 注：首次启用可能会报错，重试几次即可
 
 ## 三、 访问 Dashboard 面板
-.json 文件已配置 [zashboard 面板](https://github.com/Zephyruso/zashboard)  
+.json 文件已配置 zashboard 面板  
 打开 <http://miwifi.com:9999/ui/> 后，“端口”输入`9999`，点击“提交”，即可访问 Dashboard 面板
 
 > 推荐设置

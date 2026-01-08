@@ -49,7 +49,7 @@ curl -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/dow
      <img src="/assets/img/pin/import-mihomo.png" alt="ShellCrash 配置 1" width="60%" />
 
    - ⑧ 内核加载完成后根据需要是否保留相关数据库文件（此处选择 `0`）
-3. 进入主菜单 → 9 更新与支持 → 7 切换安装源及安装版本，选择 b 切换至公测版 → 1 Jsdelivr_CDN 源（推荐）
+3. 进入 ShellCrash 配置脚本 → 9 更新与支持 → 7 切换安装源及安装版本，选择 b 切换至公测版 → 1 Jsdelivr_CDN 源（推荐）
 4. 进入 9 更新与支持 → 4 安装本地 Dashboard 面板，选择 1 安装 zashboard 面板（也可跳过此步，直接使用《[四](https://proxy-tutorials.dustinwin.us.kg/posts/toolsettings-shellcrash-mihomo-ruleset/#%E5%9B%9B-%E5%9C%A8%E7%BA%BF-dashboard-%E9%9D%A2%E6%9D%BF)》中的在线 Dashboard 面板）  
 <img src="/assets/img/pin/install-dashboard.png" alt="安装面板" width="60%" />
 

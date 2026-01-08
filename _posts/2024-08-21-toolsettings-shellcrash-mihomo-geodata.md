@@ -58,7 +58,7 @@ curl -o $CRASHDIR/Country.mmdb -L https://cdn.jsdelivr.net/gh/DustinWin/ruleset_
      <img src="/assets/img/pin/import-mihomo.png" alt="ShellCrash 配置 1" width="60%" />
 
    - ⑧ 内核加载完成后根据需要是否保留相关数据库文件（此处选择 `0`）
-3. 进入主菜单 → 9 更新与支持 → 7 切换安装源及安装版本，选择 b 切换至公测版 → 1 Jsdelivr_CDN 源（推荐）
+3. 进入 ShellCrash 配置脚本 → 9 更新与支持 → 7 切换安装源及安装版本，选择 b 切换至公测版 → 1 Jsdelivr_CDN 源（推荐）
 4. 进入 9 更新与支持 → 4 安装本地 Dashboard 面板，选择 1 安装 zashboard 面板（也可跳过此步，直接使用《[五](https://proxy-tutorials.dustinwin.us.kg/posts/toolsettings-shellcrash-mihomo-geodata/#%E4%BA%94-%E5%9C%A8%E7%BA%BF-dashboard-%E9%9D%A2%E6%9D%BF)》中的在线 Dashboard 面板）  
 <img src="/assets/img/pin/install-dashboard.png" alt="安装面板" width="60%" />
 
