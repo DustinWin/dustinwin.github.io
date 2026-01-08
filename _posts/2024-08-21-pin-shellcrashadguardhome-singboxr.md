@@ -25,7 +25,7 @@ pin: true
 - ③ 版本信息请查看打包文件内的 Readme.txt 文本
 
 ### 1. ShellCrash
-官方下载：<https://raw.githubusercontent.com/juewuy/ShellCrash/master/bin/ShellCrash.tar.gz>
+官方下载：<https://raw.githubusercontent.com/juewuy/ShellCrash/master/ShellCrash.tar.gz>
 
 ### 2. sing-box reF1nd 版内核
 第三方下载：<https://github.com/DustinWin/proxy-tools/releases/tag/sing-box>  
@@ -298,18 +298,20 @@ echo -e '12345678\n12345678' | passwd root
   - ➑ 内核加载完成后根据需要是否保留相关数据库文件（此处选择 `0`）
 - ③ 功能设置
   - ➊ 进入主菜单 → 2 功能设置 → 1 路由模式设置（推荐“混合模式”，其次“Tproxy 模式”，宽带在 300M 内推荐“Tun 模式”）
-  - ➋ 进入 2 功能设置 → 2 DNS 设置（推荐“MIX 模式”）
-  - ➌ 进入 2 功能设置 → 2 DNS 设置 → 9 DNS 进阶设置，分别选择 4 一键配置加密 DNS 和 7 禁用 DNS 劫持
-    - 注：推荐设置 DNS 分流（单独使用 ShellCrash 以及 ShellCrash 搭配 AdGuard Home 都适用），请看《[搭载 sing-boxr 内核进行 DNS 分流教程-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/dnsbypass-singboxr-ruleset)》
-    <img src="/assets/img/pin/dns-setting.png" alt="ShellCrash 配置 3" width="60%" />
+    - 注：使用“Tun 模式”前须进入主菜单 → 8 工具与优化，开启 8 小米设备 Tun 模块修复
 
-  - ➍ 进入 2 功能设置，选择 5 启用域名嗅探
-  - ➎ 进入 2 功能设置 → 8 ipv6 设置，若机场节点不支持 IPv6，可关闭 1 ipv6 透明路由  
+  - ➋ 进入 2 功能设置 → 2 DNS 设置（推荐“MIX 模式”）
+  - ➌ 进入 2 DNS 设置 → 7 DNS 劫持端口，设置为 `5353`（AdGuard Home 的“DNS 服务器端口”须设置为 `5353`）
+  - ➍ 进入 2 DNS 设置 → 9 修改 DNS 服务器，选择 4 一键配置加密 DNS
+    - 注：推荐设置 DNS 分流（单独使用 ShellCrash 以及 ShellCrash 搭配 AdGuard Home 都适用），请看《[搭载 sing-boxr 内核进行 DNS 分流教程-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/dnsbypass-singboxr-ruleset)》
+
+  - ➎ 进入 2 功能设置，选择 5 启用域名嗅探
+  - ➏ 进入 2 功能设置 → 8 ipv6 设置，若机场节点不支持 IPv6，可关闭 1 ipv6 透明路由  
     <img src="/assets/img/pin/ipv6-setting.png" alt="ShellCrash 配置 2" width="60%" />
 
 - ④ 进入主菜单 → 4 启动设置，选择 1 允许 ShellCrash 开机启动（若重启路由器后服务没有自动运行，可“设置自启延时”为 `30` 秒，然后在《[六、 1. ⑥](https://proxy-tutorials.dustinwin.us.kg//posts/pin-shellcrashadguardhome-mihomo/#1-adguard-home-%E5%AE%89%E8%A3%85)》，将 `sleep 10s` 改为 `sleep 40s`）
 - ⑤ 进入主菜单 → 5 设置自动任务 → 1 添加自动任务，输入对应的数字并回车后可设置执行条件
-- ⑥ 进入主菜单 → 9 更新与支持 → 7 切换安装源及安装版本，选择 b 切换至公测版-master → 1 Jsdelivr_CDN源，追求新版可选择 c 切换至开发版（可能不稳定）  
+- ⑥ 进入主菜单 → 9 更新与支持 → 7 切换安装源及安装版本，选择 b 切换至公测版-master → 1 Jsdelivr_CDN 源，追求新版可选择 c 切换至开发版（可能不稳定）  
   <img src="/assets/img/pin/select-update-source.png" alt="ShellCrash 配置 5" width="60%" />
 
 - ⑦ 进入主菜单 → 9 更新与支持 → 4 安装本地 Dashboard 面板，选择 1 安装 zashboard 面板  
@@ -412,7 +414,7 @@ echo -e '12345678\n12345678' | passwd root
   - ➍ 点击“打开仪表盘”后输入刚才设置的用户名和密码“登入”，就可以进入 AdGuard Home 管理页面
 - ② 进入设置 → 常规设置，取消勾选“启用日志”并点击“保存”（日志非常占用空间）
 - ③ DNS 设置
-  - ➊ 进入设置 → DNS 设置，“上游 DNS 服务器”设置为 `127.0.0.1:1053`，并选择“并行请求”
+  - ➊ 进入设置 → DNS 设置，“上游 DNS 服务器”设置为 `localhost:1053`，并选择“并行请求”
     - 注：此时页面右下角可能会弹出报错信息，但不用理会
 
     <img src="/assets/img/pin/adguardhome-up-dns.png" alt="AdGuard Home 配置 1" width="60%" />
@@ -420,7 +422,7 @@ echo -e '12345678\n12345678' | passwd root
   - ➋ “后备 DNS 服务器”设置为：
 
     ```text
-    https://dns.alidns.com/dns-query
+    quic://dns.alidns.com:853
     https://doh.pub/dns-query
     ```
 
