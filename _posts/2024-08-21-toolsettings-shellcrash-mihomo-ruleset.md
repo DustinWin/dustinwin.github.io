@@ -53,7 +53,7 @@ curl -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/dow
 4. 进入 9 更新与支持 → 4 安装本地 Dashboard 面板，选择 1 安装 zashboard 面板（也可跳过此步，直接使用《[四](https://proxy-tutorials.dustinwin.us.kg/posts/toolsettings-shellcrash-mihomo-ruleset/#%E5%9B%9B-%E5%9C%A8%E7%BA%BF-dashboard-%E9%9D%A2%E6%9D%BF)》中的在线 Dashboard 面板）  
 <img src="/assets/img/pin/install-dashboard.png" alt="安装面板" width="60%" />
 
-5. 进入主菜单 → 2 功能设置，选择 5 启用域名嗅探（若 `$CRASHDIR/yamls/user.yaml` 配置了 `sniffer` 则跳过此步骤）
+5. 进入主菜单 → 2 功能设置，选择 5 启用域名嗅探
 6. 进入主菜单 → 4 启动设置，选择 1 允许 ShellCrash 开机启动（若重启路由器后服务没有自动运行，可“设置自启延时”为 `30` 秒）
 7. 进入主菜单 → 5 设置自动任务 → 1 添加自动任务，可以看到末尾就有《[二](https://proxy-tutorials.dustinwin.us.kg/posts/toolsettings-shellcrash-mihomo-ruleset/#%E4%BA%8C-%E6%B7%BB%E5%8A%A0%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1)》中添加的定时任务，输入对应的数字并回车后可设置执行条件
 8. 进入主菜单 → 6 管理配置文件 → 2 在线获取配置文件，粘贴《[生成带有自定义策略组和规则的 mihomo 配置文件直链-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/link-mihomo-ruleset)》中生成的 .yaml 配置文件直链，启动服务即可
