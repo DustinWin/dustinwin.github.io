@@ -57,7 +57,7 @@ proxy-providers:
     type: http
     url: "https://example.com/xxx/xxx&flag=clash"
     path: ./proxies/airport2.yaml
-    interval: 86400
+    interval: 43200
     filter: "(?i)(🇭🇰|港|hk|hongkong|hong kong|🇹🇼|台|tw|taiwan|tai wan|🇯🇵|日|jp|japan|🇸🇬|新|sg|singapore|🇺🇸|美|us|unitedstates|united states)"
     exclude-filter: "高倍|直连|×10"
     health-check:
@@ -527,13 +527,13 @@ rules:
 2. 确定自己机场中有哪些国家或地区的节点，然后对 `proxy-groups` 中的 “**国家或地区策略组**”以及 `proxies` 里的国家或地区进行增删改
    - 注：两者中的国家或地区必须一一对应，新增就全部新增，删除就全部删除，修改就全部修改（重要）
 
-3. 在“国家或地区策略组”中的 `filter` 支持[正则表达式](https://tool.oschina.net/regex)，可以精确地筛选出指定的国家或地区节点  
+3. 在“国家或地区策略组”中的 `filter` 支持[正则表达式](https://www.lddgo.net/string/golangregex)，可以精确地筛选出指定的国家或地区节点  
 例如：我想筛选出“香港 IPLC”节点，`filter` 可以这样写：
 `filter: "香港.*IPLC|IPLC.*香港"`
    - 小窍门：使用 [ChatGPT](https://chatgpt.com) 等 AI 工具查询符合自己要求的正则表达式
 
-4. 在 `🚀 节点选择` 策略组下的 `proxies` 里，可以将最稳定的节点放在最前面，配置完成后会自动选择最稳定的节点  
-5. 在“国家或地区策略组”里，`type` 为 `url-test` 就是自动选择延迟最低的节点，将 `url-test` 改成 `select` 就是手动选择节点  
+1. 在 `🚀 节点选择` 策略组下的 `proxies` 里，可以将最稳定的节点放在最前面，配置完成后会自动选择最稳定的节点  
+2. 在“国家或地区策略组”里，`type` 为 `url-test` 就是自动选择延迟最低的节点，将 `url-test` 改成 `select` 就是手动选择节点  
 举个例子：我的机场包含有 2 个节点，分别是新加坡节点和日本节点，我想让 [Netflix](https://www.netflix.com/) 自动选择延迟最低的新加坡节点，[哔哩哔哩](https://www.bilibili.com)可以手动选择日本任一节点，这个需求怎么写？  
 注：
    - ① 以下只是节选，请酌情套用

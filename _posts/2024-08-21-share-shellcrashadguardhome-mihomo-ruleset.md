@@ -14,6 +14,7 @@ tags: [Clash, mihomo, ShellCrash, AdGuard Home, ruleset, rule-set, 分享, Route
 4. 此方案适用于 ShellCrash（以 arm64 架构为例，且安装路径为 `/data/ShellCrash`{: .filepath}）
 5. 此方案适用于 AdGuard Home（以 arm64 架构为例，且安装路径为 `/data/AdGuardHome`{: .filepath}）
 6. 此方案不建议开启 ShellCrash 配置脚本 → 2 功能设置 → 3 透明路由流量过滤 → 2 过滤局域网设备，因不经过内核的设备在访问 `漏网之鱼` 域名时会遇到无法访问的情况
+7. 本人将路由器设置了每天早上 6 点重启，使得《[四](https://proxy-tutorials.dustinwin.us.kg/posts/share-shellcrashadguardhome-mihomo-ruleset/#%E5%9B%9B-%E6%B7%BB%E5%8A%A0%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1)》中设置的定时任务生效
 
 ## 一、 生成配置文件 .yaml 文件直链
 具体方法此处不再赘述，请看《[生成带有自定义策略组和规则的 mihomo 配置文件直链-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/link-mihomo-ruleset)》，贴一下我使用的配置：
@@ -249,12 +250,12 @@ proxy-groups:
 连接 SSH 后执行如下命令：
 
 ```shell
-curl -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-alpha-linux-armv8.tar.gz | tar -zx -C /tmp/
+curl -o /tmp/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-alpha-linux-armv8.upx
 mkdir -p $CRASHDIR/ui/
 curl -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/Dashboard/zashboard.tar.gz | tar -zx -C $CRASHDIR/ui/
 curl -o $CRASHDIR/cn_ip.txt -L https://cdn.jsdelivr.net/gh/DustinWin/geoip@ips/cn_ipv4.txt
 curl -o $CRASHDIR/cn_ipv6.txt -L https://cdn.jsdelivr.net/gh/DustinWin/geoip@ips/cn_ipv6.txt
-crash
+sc
 ```
 
 此时脚本会自动“发现可用的内核文件”，选择 1 加载，后选择 3 Mihomo(Meta) 内核
@@ -351,9 +352,9 @@ dns:
 1. 连接 SSH 后执行命令 `vi $CRASHDIR/task/task.user`，按一下 Ins 键（Insert 键），粘贴如下内容：
 
 ```shell
-201#curl -o $CRASHDIR/CrashCore.tar.gz -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-alpha-linux-armv8.tar.gz && $CRASHDIR/start.sh restart >/dev/null 2>&1#更新mihomo内核
+201#curl -o $CRASHDIR/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-alpha-linux-armv8.upx >/dev/null 2>&1#更新mihomo内核
 202#curl -o $CRASHDIR/cn_ip.txt -L https://ghfast.top/https://github.com/DustinWin/geoip/releases/download/ips/cn_ipv4.txt && curl -o $CRASHDIR/cn_ipv6.txt -L https://ghfast.top/https://github.com/DustinWin/geoip/releases/download/ips/cn_ipv6.txt >/dev/null 2>&1#更新CN_IP文件
-203#curl -o /data/AdGuardHome/AdGuardHome -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/AdGuardHome/AdGuardHome_beta_linux_armv8 && /data/AdGuardHome/AdGuardHome -s restart >/dev/null 2>&1#更新AdGuardHome
+203#curl -o /data/AdGuardHome/AdGuardHome -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/AdGuardHome/AdGuardHome_beta_linux_armv8 >/dev/null 2>&1#更新AdGuardHome
 ```
 
 2. 按一下 Esc 键（退出键），输入英文冒号 `:`，继续输入 `wq` 并回车

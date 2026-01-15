@@ -531,7 +531,7 @@ tags: [sing-box, sing-boxr, 直链, 订阅, ruleset, rule_set, 基础]
 2. 确定自己机场中有哪些国家或地区的节点，然后对 `outbounds` 里的国家或地区进行增删改
    - 注：两者中的国家或地区必须一一对应，新增就全部新增，删除就全部删除，修改就全部修改（重要）
 
-3. 在“国家或地区出站”中的 `include` 支持[正则表达式](https://tool.oschina.net/regex)，可以精确地筛选出指定的国家或地区节点  
+3. 在“国家或地区出站”中的 `include` 支持[正则表达式](https://www.lddgo.net/string/golangregex)，可以精确地筛选出指定的国家或地区节点  
 例如：我想筛选出“香港 IPLC”节点，`include` 可以这样写：`"include": "香港.*IPLC|IPLC.*香港"`
    - 小窍门：使用 [ChatGPT](https://chatgpt.com) 等 AI 工具查询符合自己要求的正则表达式
 

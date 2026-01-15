@@ -31,7 +31,7 @@ proxy-providers:
     # 修改为你的 Clash 订阅链接
     url: "https://example.com/xxx/xxx&flag=clash"
     path: ./proxies/free.yaml
-    interval: 86400
+    interval: 43200
     health-check:
       enable: true
       url: https://www.gstatic.com/generate_204

@@ -21,7 +21,7 @@ tags: [Clash, mihomo, ShellCrash, geodata, geosite, 基础, Router]
 连接 SSH 后执行如下命令：
 
 ```shell
-curl -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-meta-linux-armv8.tar.gz | tar -zx -C /tmp/
+curl -o /tmp/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-meta-linux-armv8.upx
 ```
 
 ## 二、 导入路由规则文件
@@ -33,13 +33,15 @@ curl -o $CRASHDIR/Country.mmdb -L https://cdn.jsdelivr.net/gh/DustinWin/ruleset_
 ```
 
 ## 三、 添加定时任务
-连接 SSH 后执行命令 `vi $CRASHDIR/task/task.user`，按一下 Ins 键（Insert 键），粘贴（快捷键 Ctrl+Shift+V）如下内容：
-- 注：ShellCrash 安装路径为 `/data/ShellCrash`{: .filepath}
+连接 SSH 后执行命令 `vi $CRASHDIR/task/task.user`，按一下 Ins 键（Insert 键），粘贴（快捷键 Ctrl+Shift+V）如下内容：  
+注：
+- 1. [ShellCrash](https://github.com/juewuy/ShellCrash) 安装路径为 `/data/ShellCrash`{: .filepath}
+- 2. 须重启 ShellCrash 服务后生效
 
 ```shell
-201#curl -o $CRASHDIR/CrashCore.tar.gz -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-meta-linux-armv8.tar.gz && $CRASHDIR/start.sh restart >/dev/null 2>&1#更新mihomo内核
-202#curl -o $CRASHDIR/GeoSite.dat -L https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-geodata/geosite-all.dat && curl -o $CRASHDIR/Country.mmdb -L https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-geodata/Country.mmdb && $CRASHDIR/start.sh restart >/dev/null 2>&1#更新geodata路由规则文件
-203#curl -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/Dashboard/zashboard.tar.gz | tar -zx -C $CRASHDIR/ui/ && $CRASHDIR/start.sh restart >/dev/null 2>&1#更新zashboard面板
+201#curl -o $CRASHDIR/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-meta-linux-armv8.upx >/dev/null 2>&1#更新mihomo内核
+202#curl -o $CRASHDIR/GeoSite.dat -L https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-geodata/geosite-all.dat && curl -o $CRASHDIR/Country.mmdb -L https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-geodata/Country.mmdb >/dev/null 2>&1#更新geodata路由规则文件
+203#curl -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/Dashboard/zashboard.tar.gz | tar -zx -C $CRASHDIR/ui/ >/dev/null 2>&1#更新zashboard面板
 ```
 
 按一下 Esc 键（退出键），输入英文冒号 `:`，继续输入 `wq` 并回车

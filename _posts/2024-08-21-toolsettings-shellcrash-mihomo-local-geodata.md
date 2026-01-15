@@ -55,7 +55,7 @@ proxy-providers:
     type: http
     url: "https://example.com/xxx/xxx&flag=clash"
     path: ./proxies/airport2.yaml
-    interval: 86400
+    interval: 43200
     filter: "(?i)(🇭🇰|港|hk|hongkong|hong kong|🇹🇼|台|tw|taiwan|tai wan|🇯🇵|日|jp|japan|🇸🇬|新|sg|singapore|🇺🇸|美|us|unitedstates|united states)"
     exclude-filter: "高倍|直连|×10"
     health-check:
