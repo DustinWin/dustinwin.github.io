@@ -44,7 +44,6 @@ mixed-port: 7890
 unified-delay: true
 tcp-concurrent: true
 external-controller: 127.0.0.1:9999
-global-client-fingerprint: chrome
 profile: {store-selected: true, store-fake-ip: true}
 
 sniffer:
