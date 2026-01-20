@@ -66,7 +66,7 @@ tags: [sing-box, sing-boxr, ShellCrash, AdGuard Home, ruleset, rule_set, 分享,
     { "tag": "漏网之鱼", "type": "selector", "outbounds": [ "节点选择", "香港节点", "台湾节点", "日本节点", "新加坡节点", "美国节点", "免费节点", "🆚 vless 节点", "全球直连" ] },
     { "tag": "全球直连", "type": "selector", "outbounds": [ "DIRECT" ] },
     { "tag": "DIRECT", "type": "direct" },
-    { "tag": "GLOBAL", "type": "selector", "outbounds": [ "DIRECT", "节点选择" ] },
+    { "tag": "GLOBAL", "type": "selector", "outbounds": [ "节点选择", "DIRECT" ] },
     // 若没有单个出站节点，须删除所有 `🆚 vless 节点` 相关内容
     {
       "tag": "🆚 vless 节点",
@@ -270,7 +270,7 @@ sc
   "dns": {
     "servers": [
       {
-        "tag": "hosts",
+        "tag": "dns_hosts",
         "type": "hosts",
         "predefined": {
           "dns.alidns.com": [ "223.5.5.5", "223.6.6.6", "2400:3200::1", "2400:3200:baba::1" ],
@@ -280,11 +280,11 @@ sc
       },
       { "tag": "dns_resolver", "type": "https", "server": "223.5.5.5" },
       { "tag": "dns_direct", "type": "quic", "server": "dns.alidns.com", "domain_resolver": "dns_resolver" },
-      { "tag": "dns_proxy", "type": "https", "server": "dns.google", "domain_resolver": "dns_resolver", "detour": "节点选择" },
+      { "tag": "dns_proxy", "type": "https", "server": "dns.google", "detour": "GLOBAL" },
       { "tag": "dns_fakeip", "type": "fakeip", "inet4_range": "28.0.0.0/8", "inet6_range": "fc00::/16" }
     ],
     "rules": [
-      { "ip_accept_any": true, "server": "hosts" },
+      { "ip_accept_any": true, "server": "dns_hosts" },
       { "clash_mode": [ "Direct" ], "query_type": [ "A", "AAAA" ], "server": "dns_direct" },
       { "clash_mode": [ "Global" ], "query_type": [ "A", "AAAA" ], "server": "dns_proxy" },
       { "domain": [ "services.googleapis.cn" ], "query_type": [ "A", "AAAA" ], "server": "dns_fakeip" },
@@ -312,25 +312,17 @@ sc
 {
   "dns": {
     "servers": [
-      {
-        "tag": "hosts",
-        "type": "hosts",
-        "predefined": {
-          "dns.alidns.com": [ "223.5.5.5", "223.6.6.6", "2400:3200::1", "2400:3200:baba::1" ],
-          "dns.google": [ "8.8.8.8", "8.8.4.4", "2001:4860:4860::8888", "2001:4860:4860::8844" ],
-          "miwifi.com": [ "192.168.31.1", "127.0.0.1" ]
-        }
-      },
-      { "tag": "dns_resolver", "type": "https", "server": "223.5.5.5" },
-      { "tag": "dns_direct", "type": "quic", "server": "dns.alidns.com", "domain_resolver": "dns_resolver" },
-      { "tag": "dns_proxy", "type": "https", "server": "dns.google", "domain_resolver": "dns_resolver", "detour": "节点选择" },
+      { "tag": "dns_hosts", "type": "hosts", "predefined": { "miwifi.com": [ "192.168.31.1", "127.0.0.1" ] } },
+      { "tag": "dns_resolver", "type": "local" },
+      { "tag": "dns_direct", "type": "https", "server": "doh.pub", "domain_resolver": "dns_resolver" },
+      { "tag": "dns_proxy", "type": "https", "server": "dns.google", "detour": "GLOBAL" },
       { "tag": "dns_fakeip", "type": "fakeip", "inet4_range": "28.0.0.0/8", "inet6_range": "fc00::/16" }
     ],
     "rules": [
-      { "ip_accept_any": true, "server": "hosts" },
+      { "ip_accept_any": true, "server": "dns_hosts" },
       { "clash_mode": [ "Direct" ], "query_type": [ "A", "AAAA" ], "server": "dns_direct" },
       { "clash_mode": [ "Global" ], "query_type": [ "A", "AAAA" ], "server": "dns_proxy" },
-      { "rule_set": [ "fakeip-filter" ], "query_type": [ "A", "AAAA" ], "server": "dns_direct", "rewrite_ttl": 1 },
+      { "rule_set": [ "fakeip-filter", "microsoft-cn", "apple-cn", "google-cn", "games-cn" ], "query_type": [ "A", "AAAA" ], "server": "dns_direct", "rewrite_ttl": 1 },
       { "rule_set": [ "proxy" ], "query_type": [ "A", "AAAA" ], "server": "dns_fakeip" },
       { "rule_set": [ "private", "cn" ], "query_type": [ "A", "AAAA" ], "server": "dns_direct", "rewrite_ttl": 1 }
     ],
@@ -388,12 +380,11 @@ sc
 
 ## 六、 ShellCrash 设置
 1. 设置可参考《[ShellCrash 搭载 sing-boxr 内核的配置-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/toolsettings-shellcrash-singboxr-ruleset)》，此处只列举配置的不同之处
-2. 进入 ShellCrash 配置脚本 → 2 功能设置 → 2 DNS 设置 → 7 DNS 劫持端口，设置为 `5353`（AdGuard Home 的“DNS 服务器端口”须设置为 `5353`）
+2. 进入 ShellCrash 配置脚本 → 2 功能设置 → 2 DNS 设置 → 7 DNS 劫持端口，设置为 `5353`（须完成《[七](https://proxy-tutorials.dustinwin.us.kg/posts/share-shellcrashadguardhome-singboxr-ruleset/#%E4%B8%83-%E5%AE%89%E8%A3%85-adguard-home)》后才可设置）
 3. 进入 2 DNS 设置 → 9 修改 DNS 服务器，设置如下：  
 <img src="/assets/img/dns/dns-null.png" alt="设置部分 2" width="60%" />
 
-4. 进入 2 功能设置，选择 5 启用域名嗅探
-5. 进入主菜单 → 6 管理配置文件 → 2 在线获取配置文件，粘贴《[一](https://proxy-tutorials.dustinwin.us.kg/posts/share-shellcrashadguardhome-singboxr-ruleset/#%E4%B8%80-%E7%94%9F%E6%88%90%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-json-%E6%96%87%E4%BB%B6%E7%9B%B4%E9%93%BE)》中生成的配置文件 .json 文件直链，启动服务即可
+4. 进入主菜单 → 6 管理配置文件 → 2 在线获取配置文件，粘贴《[一](https://proxy-tutorials.dustinwin.us.kg/posts/share-shellcrashadguardhome-singboxr-ruleset/#%E4%B8%80-%E7%94%9F%E6%88%90%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-json-%E6%96%87%E4%BB%B6%E7%9B%B4%E9%93%BE)》中生成的配置文件 .json 文件直链，启动服务即可
 
 ## 七、 安装 AdGuard Home
 连接 SSH 后执行如下命令：

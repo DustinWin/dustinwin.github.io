@@ -301,7 +301,7 @@ echo -e '12345678\n12345678' | passwd root
     - 注：使用“Tun 模式”前须进入主菜单 → 8 工具与优化，开启 8 小米设备 Tun 模块修复
 
   - ➋ 进入 2 功能设置 → 2 DNS 设置（推荐“MIX 模式”）
-  - ➌ 进入 2 DNS 设置 → 7 DNS 劫持端口，设置为 `5353`（AdGuard Home 的“DNS 服务器端口”须设置为 `5353`）
+  - ➌ 进入 2 DNS 设置 → 7 DNS 劫持端口，设置为 `5353`（须完成《[六、 1](https://proxy-tutorials.dustinwin.us.kg/posts/pin-shellcrashadguardhome-singboxr/#1-adguard-home-%E5%AE%89%E8%A3%85)》后才可设置）
   - ➍ 进入 2 DNS 设置 → 9 修改 DNS 服务器，选择 4 一键配置加密 DNS
     - 注：推荐设置 DNS 分流（单独使用 ShellCrash 以及 ShellCrash 搭配 AdGuard Home 都适用），请看《[搭载 sing-boxr 内核进行 DNS 分流教程-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/dnsbypass-singboxr-ruleset)》
 
@@ -419,20 +419,8 @@ echo -e '12345678\n12345678' | passwd root
 
     <img src="/assets/img/pin/adguardhome-up-dns.png" alt="AdGuard Home 配置 1" width="60%" />
 
-  - ➋ “后备 DNS 服务器”设置为：
-
-    ```text
-    quic://dns.alidns.com:853
-    https://doh.pub/dns-query
-    ```
-
-  - ➌ “Bootstrap DNS 服务器”设置为：
-
-    ```text
-    223.5.5.5
-    119.29.29.29
-    ```
-
+  - ➋ “后备 DNS 服务器”设置为 `https://doh.pub/dns-query`
+  - ➌ “Bootstrap DNS 服务器”设置为 `119.29.29.29`
   - ➍ 直接点击“应用”即可  
     <img src="/assets/img/pin/adguardhome-dns.png" alt="AdGuard Home 配置 2" width="60%" />
 

@@ -57,27 +57,17 @@ tags: [sing-box, sing-boxr, ShellCrash, ruleset, rule_set, 进阶, DNS, DNS 分�
 {
   "dns": {
     "servers": [
-      {
-        "tag": "hosts",
-        "type": "hosts",
-        "predefined": {
-          "dns.alidns.com": [ "223.5.5.5", "223.6.6.6", "2400:3200::1", "2400:3200:baba::1" ],
-          "dns.google": [ "8.8.8.8", "8.8.4.4", "2001:4860:4860::8888", "2001:4860:4860::8844" ]
-        }
-      },
-      { "tag": "dns_resolver", "type": "https", "server": "223.5.5.5" },
-      { "tag": "dns_direct", "type": "quic", "server": "dns.alidns.com", "domain_resolver": "dns_resolver" },
-      // `outbounds` 里必须存在 `🚀 节点选择`
-      { "tag": "dns_proxy", "type": "https", "server": "dns.google", "domain_resolver": "dns_resolver", "detour": "🚀 节点选择" },
+      { "tag": "dns_resolver", "type": "local" },
+      { "tag": "dns_direct", "type": "https", "server": "doh.pub", "domain_resolver": "dns_resolver" },
+      { "tag": "dns_proxy", "type": "https", "server": "dns.google", "detour": "GLOBAL" },
       { "tag": "dns_fakeip", "type": "fakeip", "inet4_range": "28.0.0.0/8", "inet6_range": "fc00::/16" }
     ],
     "rules": [
-      { "ip_accept_any": true, "server": "hosts" },
       { "clash_mode": [ "Direct" ], "query_type": [ "A", "AAAA" ], "server": "dns_direct" },
       { "clash_mode": [ "Global" ], "query_type": [ "A", "AAAA" ], "server": "dns_proxy" },
       { "rule_set": [ "fakeip-filter" ], "query_type": [ "A", "AAAA" ], "server": "dns_direct", "rewrite_ttl": 1 },
       { "rule_set": [ "proxy" ], "query_type": [ "A", "AAAA" ], "server": "dns_fakeip" },
-      { "rule_set": [ "cn" ], "query_type": [ "A", "AAAA" ], "server": "dns_direct", "rewrite_ttl": 1 }  // # 此条仅演示，可删除
+      { "rule_set": [ "cn" ], "query_type": [ "A", "AAAA" ], "server": "dns_direct", "rewrite_ttl": 1 }  // 此条仅演示，可删除
     ],
     "final": "dns_direct",
     "strategy": "prefer_ipv4",

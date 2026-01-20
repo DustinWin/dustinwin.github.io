@@ -307,12 +307,7 @@ proxy-groups:
 - 2. 推荐将 `ecs` 设置为当前网络的公网 IP 段，如当前网络公网 IP 为 `202.103.17.123`，可设置为 `202.103.17.0/24`
 
 ```yaml
-hosts:
-  dns.alidns.com: [223.5.5.5, 223.6.6.6, 2400:3200::1, 2400:3200:baba::1]
-  doh.pub: [1.12.12.12, 1.12.12.21, 120.53.53.53]
-  dns.google: [8.8.8.8, 8.8.4.4, 2001:4860:4860::8888, 2001:4860:4860::8844]
-  dns11.quad9.net: [9.9.9.11, 149.112.112.11, 2620:fe::11, 2620:fe::fe:11]
-  miwifi.com: [192.168.31.1, 127.0.0.1]
+hosts: {miwifi.com: [192.168.31.1, 127.0.0.1]}
 
 dns:
   enable: true
@@ -327,12 +322,8 @@ dns:
     # 推荐将 `ecs` 设置为当前网络的公网 IP 段
     - 'https://dns.google/dns-query#ecs=202.103.17.0/24'
     - 'https://dns11.quad9.net/dns-query#ecs=202.103.17.0/24'
-  proxy-server-nameserver:
-    - quic://dns.alidns.com:853
-    - https://doh.pub/dns-query
-  direct-nameserver:
-    - quic://dns.alidns.com:853
-    - https://doh.pub/dns-query
+  proxy-server-nameserver: [system]
+  direct-nameserver: [system]
   nameserver-policy: {'rule-set:ads': [rcode://success]}
 ```
 
