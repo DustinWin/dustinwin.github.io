@@ -21,6 +21,6 @@ order: 4
 
 ## 对下载源的说明
 1. 本教程默认下载源为 [jsDelivr 源](https://www.jsdelivr.com/github)，格式为 `https://cdn.jsdelivr.net/gh/[username]/[reponame]@[branchname]/[filename]`，此源中**文件更新有 12 小时延迟**
-2. 若 jsDelivr 源无法访问，可将地址改为 `https://fastly.jsdelivr.net/gh/[username]/[reponame]@[branchname]/[filename]`
+2. 若 jsDelivr 源无法访问，可将地址改为 `https://testingcf.jsdelivr.net/gh/[username]/[reponame]@[branchname]/[filename]`
 3. 推荐使用 [GitHub 源](https://github.com)，格式分别为 `https://github.com/[username]/[reponame]/releases/download/[tagname]/[filename]`（推荐）、`https://raw.githubusercontent.com/[username]/[reponame]/[tagname]/[filename]` 和 `https://raw.githubusercontent.com/[username]/[reponame]/[branchname]/[filename]`
 4. 若 GitHub 源无法访问，可添加 `https://ghfast.top/` 前缀，即：将地址分别改为 `https://ghfast.top/https://github.com/[username]/[reponame]/releases/download/[tagname]/[filename]`（推荐）、`https://ghfast.top/https://raw.githubusercontent.com/[username]/[reponame]/[tagname]/[filename]` 和 `https://ghfast.top/https://raw.githubusercontent.com/[username]/[reponame]/[branchname]/[filename]`

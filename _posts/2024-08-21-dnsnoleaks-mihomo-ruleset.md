@@ -50,7 +50,7 @@ rule-providers:
 ## 三、 DNS 防泄漏配置
 ### 1. DNS 模式为 `mix`（推荐）
 连接 SSH 后执行 `vi $CRASHDIR/yamls/user.yaml`，按一下 Ins 键（Insert 键），粘贴如下内容：
->推荐将 `ecs` 设置为当前网络的公网 IP 段，如当前网络公网 IP 为 `202.103.17.123`，可设置为 `202.103.17.0/24`（后续维护更新可直接执行命令 `sed -i -E "s/(ecs=)[0-9.]+\/[0-9]+/\1$(curl -s 4.ipw.cn | cut -d. -f1-3).0\/24/" $CRASHDIR/yamls/user.yaml`）
+>推荐将 `ecs` 设置为当前宽带运营商分配的默认 DNS（可进入光猫或路由器拨号页面查看，或者前往[公共 DNS 大全](https://toolb.cn/publicdns)查询）的 IP 段，如默认 DNS 为 `211.137.58.20`，可设置为 `211.137.58.0/24`
 {: .prompt-info }
 
 ```yaml
@@ -69,9 +69,9 @@ dns:
     - MATCH,real-ip
   respect-rules: true
   nameserver:
-    # 推荐将 `ecs` 设置为当前网络的公网 IP 段
-    - 'https://dns.google/dns-query#ecs=202.103.17.0/24'
-    - 'https://dns11.quad9.net/dns-query#ecs=202.103.17.0/24'
+    # 推荐将 `ecs` 设置为当前宽带运营商分配的默认 DNS 的 IP 段
+    - 'https://dns.google/dns-query#ecs=211.137.58.0/24'
+    - 'https://dns11.quad9.net/dns-query#ecs=211.137.58.0/24'
   proxy-server-nameserver: [system]
   direct-nameserver: [system]
 ```
@@ -110,7 +110,7 @@ dns:
 
 ### 3. DNS 模式为 `redir-host`
 连接 SSH 后执行 `vi $CRASHDIR/yamls/user.yaml`，按一下 Ins 键（Insert 键），粘贴如下内容：
->推荐将 `ecs` 设置为当前网络的公网 IP 段，如当前网络公网 IP 为 `202.103.17.123`，可设置为 `202.103.17.0/24`（后续维护更新可直接执行命令 `sed -i -E "s/(ecs=)[0-9.]+\/[0-9]+/\1$(curl -s 4.ipw.cn | cut -d. -f1-3).0\/24/" $CRASHDIR/yamls/user.yaml`）
+>推荐将 `ecs` 设置为当前宽带运营商分配的默认 DNS（可进入光猫或路由器拨号页面查看，或者前往[公共 DNS 大全](https://toolb.cn/publicdns)查询）的 IP 段，如默认 DNS 为 `211.137.58.20`，可设置为 `211.137.58.0/24`
 {: .prompt-info }
 
 ```yaml
@@ -124,9 +124,9 @@ dns:
   fake-ip-filter: ['+.*']
   respect-rules: true
   nameserver:
-    # 推荐将 `ecs` 设置为当前网络的公网 IP 段
-    - 'https://dns.google/dns-query#ecs=202.103.17.0/24'
-    - 'https://dns11.quad9.net/dns-query#ecs=202.103.17.0/24'
+    # 推荐将 `ecs` 设置为当前宽带运营商分配的默认 DNS 的 IP 段
+    - 'https://dns.google/dns-query#ecs=211.137.58.0/24'
+    - 'https://dns11.quad9.net/dns-query#ecs=211.137.58.0/24'
   proxy-server-nameserver: [system]
   direct-nameserver: [system]
 ```

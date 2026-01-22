@@ -302,7 +302,7 @@ proxy-groups:
 
 注：
 - 1. 本 `dns` 配置中，仅国外域名 `proxy` 走 `fake-ip`，直连域名（含国内域名 `cn`）走国内 DNS 解析，未知域名走国外 DNS 解析（有效解决了“心理 DNS 泄露问题”，详见《[搭载 mihomo 内核配置 DNS 不泄露教程-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/dnsnoleaks-mihomo-ruleset/)》），且配置 `ecs` 提高了兼容性
-- 2. 推荐将 `ecs` 设置为当前网络的公网 IP 段，如当前网络公网 IP 为 `202.103.17.123`，可设置为 `202.103.17.0/24`
+- 2. 推荐将 `ecs` 设置为当前宽带运营商分配的默认 DNS（可进入光猫或路由器拨号页面查看，或者前往[公共 DNS 大全](https://toolb.cn/publicdns)查询）的 IP 段，如默认 DNS 为 `211.137.58.20`，可设置为 `211.137.58.0/24`
 
 ```yaml
 hosts: {miwifi.com: [192.168.31.1, 127.0.0.1]}
@@ -317,9 +317,9 @@ dns:
   fake-ip-filter: ['rule-set:proxy']
   respect-rules: true
   nameserver:
-    # 推荐将 `ecs` 设置为当前网络的公网 IP 段
-    - 'https://dns.google/dns-query#ecs=202.103.17.0/24'
-    - 'https://dns11.quad9.net/dns-query#ecs=202.103.17.0/24'
+    # 推荐将 `ecs` 设置为当前宽带运营商分配的默认 DNS 的 IP 段
+    - 'https://dns.google/dns-query#ecs=211.137.58.0/24'
+    - 'https://dns11.quad9.net/dns-query#ecs=211.137.58.0/24'
   proxy-server-nameserver: [system]
   direct-nameserver: [system]
   nameserver-policy: {'rule-set:ads': [rcode://success]}

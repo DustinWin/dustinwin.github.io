@@ -305,7 +305,7 @@ tags: [sing-box, sing-boxr, Windows, ruleset, rule_set, 分享]
 
 注：
 - 1. 本 `dns` 配置中，国外域名 `proxy` 走 `fake-ip`，私有网络 `private` 和国内域名 `cn` 走国内 DNS 解析，未知域名走国外 DNS 解析（有效解决了“心理 DNS 泄露问题”，详见《[搭载 sing-boxr 内核配置 DNS 不泄露教程-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/dnsnoleaks-singboxr-ruleset/)》），且配置 `client_subnet` 提高了兼容性
-- 2. 推荐将 `client_subnet` 设置为当前网络的公网 IP 段，如当前网络公网 IP 为 `202.103.17.123`，可设置为 `202.103.17.0/24`
+- 2. 推荐将 `client_subnet` 设置为当前宽带运营商分配的默认 DNS（可进入光猫或路由器拨号页面查看，或者前往[公共 DNS 大全](https://toolb.cn/publicdns)查询）的 IP 段，如默认 DNS 为 `211.137.58.20`，可设置为 `211.137.58.0/24`
 
 ```json
 {
@@ -330,8 +330,8 @@ tags: [sing-box, sing-boxr, Windows, ruleset, rule_set, 分享]
     "strategy": "prefer_ipv4",
     "independent_cache": true,
     "reverse_mapping": true,
-    // 推荐将 `client_subnet` 设置为当前网络的公网 IP 段，如当前网络公网 IP 为 `202.103.17.123`，可设置为 `202.103.17.0/24`
-    "client_subnet": "202.103.17.0/24"
+    // 推荐将 `client_subnet` 设置为当前宽带运营商分配的默认 DNS 的 IP 段
+    "client_subnet": "211.137.58.0/24"
   }
 }
 ```
@@ -369,7 +369,6 @@ Windows Registry Editor Version 5.00
   mkdir -p sing-box/ui
   curl -o sing-box/sing-box.exe -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-dev-windows-amd64v3.exe
   curl -o sing-box/config.json -L https://ghfast.top/{.json 配置文件直链}
-  sed -i -E "s/(\"client_subnet\": \")[0-9.]+\/[0-9]+/\1$(curl -s 4.ipw.cn | cut -d. -f1-3).0\/24/" sing-box/config.json
   echo "导入 sing-boxr 内核和配置文件成功"
 
   echo "安装 zashboard 面板..."
@@ -430,7 +429,6 @@ echo "结束 sing-boxr 相关进程成功"
 echo "更新 sing-boxr 内核和配置文件..."
 mv -f "$USERPROFILE/Downloads/sing-box.exe" .
 mv -f "$USERPROFILE/Downloads/config.json" .
-sed -i -E "s/(\"client_subnet\": \")[0-9.]+\/[0-9]+/\1$(curl -s 4.ipw.cn | cut -d. -f1-3).0\/24/" config.json
 echo "更新 sing-boxr 内核和配置文件成功"
 
 echo "等待 10 秒启动 sing-boxr 服务..."
