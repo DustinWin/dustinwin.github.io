@@ -61,9 +61,17 @@ tags: [sing-box, sing-boxr, ShellCrash, ruleset, rule_set, 进阶, DNS, DNS 泄�
   {
     "dns": {
       "servers": [
+        {
+          "tag": "dns_hosts",
+          "type": "hosts",
+          "predefined": {
+            "doh.pub": [ "1.12.12.21", "120.53.53.53", "2402:4e00::" ],
+            "dns.google": [ "8.8.8.8", "8.8.4.4", "2001:4860:4860::8888", "2001:4860:4860::8844" ]
+          }
+        },
         { "tag": "dns_resolver", "type": "local" },
-        { "tag": "dns_direct", "type": "https", "server": "doh.pub", "domain_resolver": "dns_resolver" },
-        { "tag": "dns_proxy", "type": "https", "server": "dns.google", "detour": "GLOBAL" },
+        { "tag": "dns_direct", "type": "https", "server": "doh.pub", "domain_resolver": "dns_hosts" },
+        { "tag": "dns_proxy", "type": "https", "server": "dns.google", "domain_resolver": "dns_hosts", "detour": "GLOBAL" },
         { "tag": "dns_fakeip", "type": "fakeip", "inet4_range": "28.0.0.0/8", "inet6_range": "fc00::/16" }
       ],
       "rules": [
@@ -108,9 +116,17 @@ tags: [sing-box, sing-boxr, ShellCrash, ruleset, rule_set, 进阶, DNS, DNS 泄�
   {
     "dns": {
       "servers": [
+        {
+          "tag": "dns_hosts",
+          "type": "hosts",
+          "predefined": {
+            "doh.pub": [ "1.12.12.21", "120.53.53.53", "2402:4e00::" ],
+            "dns.google": [ "8.8.8.8", "8.8.4.4", "2001:4860:4860::8888", "2001:4860:4860::8844" ]
+          }
+        },
         { "tag": "dns_resolver", "type": "local" },
-        { "tag": "dns_direct", "type": "https", "server": "doh.pub", "domain_resolver": "dns_resolver" },
-        { "tag": "dns_proxy", "type": "https", "server": "dns.google", "detour": "GLOBAL" },
+        { "tag": "dns_direct", "type": "https", "server": "doh.pub", "domain_resolver": "dns_hosts" },
+        { "tag": "dns_proxy", "type": "https", "server": "dns.google", "domain_resolver": "dns_hosts", "detour": "GLOBAL" },
         { "tag": "dns_fakeip", "type": "fakeip", "inet4_range": "28.0.0.0/8", "inet6_range": "fc00::/16" }
       ],
       "rules": [
@@ -154,9 +170,17 @@ tags: [sing-box, sing-boxr, ShellCrash, ruleset, rule_set, 进阶, DNS, DNS 泄�
   {
     "dns": {
       "servers": [
+        {
+          "tag": "dns_hosts",
+          "type": "hosts",
+          "predefined": {
+            "doh.pub": [ "1.12.12.21", "120.53.53.53", "2402:4e00::" ],
+            "dns.google": [ "8.8.8.8", "8.8.4.4", "2001:4860:4860::8888", "2001:4860:4860::8844" ]
+          }
+        },
         { "tag": "dns_resolver", "type": "local" },
-        { "tag": "dns_direct", "type": "https", "server": "doh.pub", "domain_resolver": "dns_resolver" },
-        { "tag": "dns_proxy", "type": "https", "server": "dns.google", "detour": "GLOBAL" },
+        { "tag": "dns_direct", "type": "https", "server": "doh.pub", "domain_resolver": "dns_hosts" },
+        { "tag": "dns_proxy", "type": "https", "server": "dns.google", "domain_resolver": "dns_hosts", "detour": "GLOBAL" },
         { "tag": "dns_fakeip", "type": "fakeip", "inet4_range": "28.0.0.0/8", "inet6_range": "fc00::/16" }
       ],
       "rules": [

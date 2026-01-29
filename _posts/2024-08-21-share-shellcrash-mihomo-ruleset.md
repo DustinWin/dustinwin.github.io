@@ -12,6 +12,7 @@ tags: [Clash, mihomo, ShellCrash, ruleset, rule-set, 分享, Router]
 2. 此方案适用于 [ShellCrash](https://github.com/juewuy/ShellCrash)（以 arm64 架构为例，且安装路径为 `/data/ShellCrash`{: .filepath}）
 3. 本方案绕过了 CNIP 且不搭配 [AdGuard Home](https://github.com/AdguardTeam/AdGuardHome)，在 DNS 层拦截广告
 4. 本人将路由器设置了每天早上 6 点重启，使得《[四](https://proxy-tutorials.dustinwin.us.kg/posts/share-shellcrash-mihomo-ruleset/#%E5%9B%9B-%E6%B7%BB%E5%8A%A0%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1)》中设置的定时任务生效
+5. 若 `谷歌服务` 出现错误如 [Google Chrome](https://www.google.com/chrome/) 检查更新失败，请删除 `nameserver` 相关配置项里的所有[阿里云公共 DNS](https://help.aliyun.com/zh/dns/what-is-alibaba-cloud-public-dns)
 
 ## 一、 生成配置文件 .yaml 文件直链
 具体方法此处不再赘述，请看《[生成带有自定义策略组和规则的 mihomo 配置文件直链-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/link-mihomo-ruleset)》，贴一下我使用的配置：
@@ -267,9 +268,9 @@ external-ui-url: "https://github.com/Zephyruso/zashboard/archive/gh-pages-cdn-fo
 profile: {store-selected: true, store-fake-ip: true}
 
 hosts:
-  dns.alidns.com: [223.5.5.5, 223.6.6.6, 2400:3200::1, 2400:3200:baba::1]
-  doh.pub: [1.12.12.12, 1.12.12.21, 120.53.53.53]
   miwifi.com: [192.168.31.1, 127.0.0.1]
+  doh.pub: [1.12.12.21, 120.53.53.53, 2402:4e00::]
+  dns.alidns.com: [223.5.5.5, 223.6.6.6, 2400:3200::1, 2400:3200:baba::1]
   services.googleapis.cn: [services.googleapis.com]
 
 dns:
@@ -282,8 +283,8 @@ dns:
   fake-ip-range6: fc00::/16
   fake-ip-filter: ['rule-set:trackerslist,private,cn']
   nameserver:
-    - https://dns.alidns.com/dns-query
     - https://doh.pub/dns-query
+    - quic://dns.alidns.com:853
   nameserver-policy: {'rule-set:ads': [rcode://success]}
 ```
 
@@ -297,7 +298,12 @@ dns:
 - 2. 推荐将 `ecs` 设置为当前宽带运营商分配的默认 DNS（可进入光猫或路由器拨号页面查看，或者前往[公共 DNS 大全](https://toolb.cn/publicdns)查询）的 IP 段，如默认 DNS 为 `211.137.58.20`，可设置为 `211.137.58.0/24`
 
 ```yaml
-hosts: {miwifi.com: [192.168.31.1, 127.0.0.1]}
+hosts:
+  miwifi.com: [192.168.31.1, 127.0.0.1]
+  doh.pub: [1.12.12.21, 120.53.53.53, 2402:4e00::]
+  dns.alidns.com: [223.5.5.5, 223.6.6.6, 2400:3200::1, 2400:3200:baba::1]
+  dns.google: [8.8.8.8, 8.8.4.4, 2001:4860:4860::8888, 2001:4860:4860::8844]
+  dns11.quad9.net: [9.9.9.11, 149.112.112.11, 2620:fe::11, 2620:fe::fe:11]
 
 dns:
   enable: true
@@ -313,8 +319,12 @@ dns:
     # 推荐将 `ecs` 设置为当前宽带运营商分配的默认 DNS 的 IP 段
     - 'https://dns.google/dns-query#ecs=211.137.58.0/24'
     - 'https://dns11.quad9.net/dns-query#ecs=211.137.58.0/24'
-  proxy-server-nameserver: [system]
-  direct-nameserver: [system]
+  proxy-server-nameserver:
+    - https://doh.pub/dns-query
+    - quic://dns.alidns.com:853
+  direct-nameserver:
+    - https://doh.pub/dns-query
+    - quic://dns.alidns.com:853
   nameserver-policy: {'rule-set:ads': [rcode://success]}
 ```
 

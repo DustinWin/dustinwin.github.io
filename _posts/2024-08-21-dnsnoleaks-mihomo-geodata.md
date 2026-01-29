@@ -27,6 +27,12 @@ geosite.dat 文件须包含 `fakeip-filter`、`cn` 和 `proxy`，推荐导入我
 {: .prompt-info }
 
 ```yaml
+hosts:
+  doh.pub: [1.12.12.21, 120.53.53.53, 2402:4e00::]
+  dns.alidns.com: [223.5.5.5, 223.6.6.6, 2400:3200::1, 2400:3200:baba::1]
+  dns.google: [8.8.8.8, 8.8.4.4, 2001:4860:4860::8888, 2001:4860:4860::8844]
+  dns11.quad9.net: [9.9.9.11, 149.112.112.11, 2620:fe::11, 2620:fe::fe:11]
+
 dns:
   enable: true
   ipv6: true
@@ -45,8 +51,12 @@ dns:
     # 推荐将 `ecs` 设置为当前宽带运营商分配的默认 DNS 的 IP 段
     - 'https://dns.google/dns-query#ecs=211.137.58.0/24'
     - 'https://dns11.quad9.net/dns-query#ecs=211.137.58.0/24'
-  proxy-server-nameserver: [system]
-  direct-nameserver: [system]
+  proxy-server-nameserver:
+    - https://dns.pub/dns-query
+    - quic://dns.alidns.com:853
+  direct-nameserver:
+    - https://dns.pub/dns-query
+    - quic://dns.alidns.com:853
 ```
 
 按一下 Esc 键（退出键），输入英文冒号 `:`，继续输入 `wq` 并回车
@@ -62,6 +72,10 @@ dns:
 - ② 连接 SSH 后执行 `vi $CRASHDIR/yamls/user.yaml`，按一下 Ins 键（Insert 键），粘贴如下内容：
 
   ```yaml
+  hosts:
+    doh.pub: [1.12.12.21, 120.53.53.53, 2402:4e00::]
+    dns.alidns.com: [223.5.5.5, 223.6.6.6, 2400:3200::1, 2400:3200:baba::1]
+
   dns:
     enable: true
     prefer-h3: true
@@ -74,7 +88,9 @@ dns:
     fake-ip-filter:
     - GEOSITE,fakeip-filter,real-ip
     - MATCH,fake-ip
-    nameserver: [system]
+    nameserver:
+      - https://dns.pub/dns-query
+      - quic://dns.alidns.com:853
   ```
 
   按一下 Esc 键（退出键），输入英文冒号 `:`，继续输入 `wq` 并回车
@@ -85,6 +101,12 @@ dns:
 {: .prompt-info }
 
 ```yaml
+hosts:
+  doh.pub: [1.12.12.21, 120.53.53.53, 2402:4e00::]
+  dns.alidns.com: [223.5.5.5, 223.6.6.6, 2400:3200::1, 2400:3200:baba::1]
+  dns.google: [8.8.8.8, 8.8.4.4, 2001:4860:4860::8888, 2001:4860:4860::8844]
+  dns11.quad9.net: [9.9.9.11, 149.112.112.11, 2620:fe::11, 2620:fe::fe:11]
+
 dns:
   enable: true
   ipv6: true
@@ -98,8 +120,12 @@ dns:
     # 推荐将 `ecs` 设置为当前宽带运营商分配的默认 DNS 的 IP 段
     - 'https://dns.google/dns-query#ecs=211.137.58.0/24'
     - 'https://dns11.quad9.net/dns-query#ecs=211.137.58.0/24'
-  proxy-server-nameserver: [system]
-  direct-nameserver: [system]
+  proxy-server-nameserver:
+    - https://dns.pub/dns-query
+    - quic://dns.alidns.com:853
+  direct-nameserver:
+    - https://dns.pub/dns-query
+    - quic://dns.alidns.com:853
 ```
 
 按一下 Esc 键（退出键），输入英文冒号 `:`，继续输入 `wq` 并回车

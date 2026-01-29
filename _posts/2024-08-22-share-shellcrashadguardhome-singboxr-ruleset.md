@@ -273,14 +273,14 @@ sc
         "tag": "dns_hosts",
         "type": "hosts",
         "predefined": {
-          "dns.alidns.com": [ "223.5.5.5", "223.6.6.6", "2400:3200::1", "2400:3200:baba::1" ],
-          "dns.google": [ "8.8.8.8", "8.8.4.4", "2001:4860:4860::8888", "2001:4860:4860::8844" ],
-          "miwifi.com": [ "192.168.31.1", "127.0.0.1" ]
+          "miwifi.com": [ "192.168.31.1", "127.0.0.1" ],
+          "doh.pub": [ "1.12.12.21", "120.53.53.53", "2402:4e00::" ],
+          "dns.google": [ "8.8.8.8", "8.8.4.4", "2001:4860:4860::8888", "2001:4860:4860::8844" ]
         }
       },
-      { "tag": "dns_resolver", "type": "https", "server": "223.5.5.5" },
-      { "tag": "dns_direct", "type": "quic", "server": "dns.alidns.com", "domain_resolver": "dns_resolver" },
-      { "tag": "dns_proxy", "type": "https", "server": "dns.google", "detour": "GLOBAL" },
+      { "tag": "dns_resolver", "type": "local" },
+      { "tag": "dns_direct", "type": "https", "server": "doh.pub", "domain_resolver": "dns_hosts" },
+      { "tag": "dns_proxy", "type": "https", "server": "dns.google", "domain_resolver": "dns_hosts", "detour": "GLOBAL" },
       { "tag": "dns_fakeip", "type": "fakeip", "inet4_range": "28.0.0.0/8", "inet6_range": "fc00::/16" }
     ],
     "rules": [
@@ -312,10 +312,18 @@ sc
 {
   "dns": {
     "servers": [
-      { "tag": "dns_hosts", "type": "hosts", "predefined": { "miwifi.com": [ "192.168.31.1", "127.0.0.1" ] } },
+      {
+        "tag": "dns_hosts",
+        "type": "hosts",
+        "predefined": {
+          "miwifi.com": [ "192.168.31.1", "127.0.0.1" ],
+          "doh.pub": [ "1.12.12.21", "120.53.53.53", "2402:4e00::" ],
+          "dns.google": [ "8.8.8.8", "8.8.4.4", "2001:4860:4860::8888", "2001:4860:4860::8844" ]
+        }
+      },
       { "tag": "dns_resolver", "type": "local" },
-      { "tag": "dns_direct", "type": "https", "server": "doh.pub", "domain_resolver": "dns_resolver" },
-      { "tag": "dns_proxy", "type": "https", "server": "dns.google", "detour": "GLOBAL" },
+      { "tag": "dns_direct", "type": "https", "server": "doh.pub", "domain_resolver": "dns_hosts" },
+      { "tag": "dns_proxy", "type": "https", "server": "dns.google", "domain_resolver": "dns_hosts", "detour": "GLOBAL" },
       { "tag": "dns_fakeip", "type": "fakeip", "inet4_range": "28.0.0.0/8", "inet6_range": "fc00::/16" }
     ],
     "rules": [
