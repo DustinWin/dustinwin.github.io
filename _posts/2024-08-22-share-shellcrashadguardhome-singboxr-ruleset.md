@@ -13,7 +13,7 @@ tags: [sing-box, sing-boxr, ShellCrash, AdGuard Home, ruleset, rule_set, 分享,
 3. 此方案中 ShellCrash 采用了**绕过 CN_IP** 的模式（仍与 AdGuard Home 配合完美）
 4. 此方案适用于 ShellCrash（以 arm64 架构为例，且安装路径为 `/data/ShellCrash`{: .filepath}）
 5. 此方案适用于 AdGuard Home（以 arm64 架构为例，且安装路径为 `/data/AdGuardHome`{: .filepath}）
-6. 此方案不建议开启 ShellCrash 配置脚本 → 2 功能设置 → 3 透明路由流量过滤 → 2 过滤局域网设备，因不经过内核的设备在访问 `漏网之鱼` 域名时会遇到无法访问的情况
+6. 此方案不建议启用 ShellCrash 配置脚本 → 2) 功能设置 → 3) 透明路由流量过滤 → 2) 过滤局域网设备，因不经过内核的设备在访问 `漏网之鱼` 域名时会遇到无法访问的情况
 7. 本人将路由器设置了每天早上 6 点重启，使得《[五](https://proxy-tutorials.dustinwin.us.kg/posts/share-shellcrashadguardhome-singboxr-ruleset/#%E4%BA%94-%E6%B7%BB%E5%8A%A0%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1)》中设置的定时任务生效
 
 ## 一、 生成配置文件 .json 文件直链
@@ -274,7 +274,7 @@ sc
         "type": "hosts",
         "predefined": {
           "miwifi.com": [ "192.168.31.1", "127.0.0.1" ],
-          "doh.pub": [ "1.12.12.21", "120.53.53.53", "2402:4e00::" ],
+          "doh.pub": [ "1.12.12.12", "120.53.53.53", "2402:4e00::" ],
           "dns.google": [ "8.8.8.8", "8.8.4.4", "2001:4860:4860::8888", "2001:4860:4860::8844" ]
         }
       },
@@ -317,7 +317,7 @@ sc
         "type": "hosts",
         "predefined": {
           "miwifi.com": [ "192.168.31.1", "127.0.0.1" ],
-          "doh.pub": [ "1.12.12.21", "120.53.53.53", "2402:4e00::" ],
+          "doh.pub": [ "1.12.12.12", "120.53.53.53", "2402:4e00::" ],
           "dns.google": [ "8.8.8.8", "8.8.4.4", "2001:4860:4860::8888", "2001:4860:4860::8844" ]
         }
       },
@@ -376,16 +376,18 @@ sc
 ```
 
 2. 按一下 Esc 键（退出键），输入英文冒号 `:`，继续输入 `wq` 并回车
-3. 执行 `sc`，进入 ShellCrash 配置脚本 → 5 设置自动任务 → 1 添加自动任务，可以看到末尾就有添加的定时任务，输入对应的数字并回车后可设置执行条件  
+3. 执行 `sc`，进入 ShellCrash 配置脚本 → 5) 自动任务 → 1) 添加自动任务，可以看到末尾就有添加的定时任务，输入对应的数字并回车后可设置执行条件  
 <img src="/assets/img/share/task-singboxr-adguardhome.png" alt="添加定时任务" width="60%" />
 
 ## 六、 ShellCrash 设置
 1. 设置可参考《[ShellCrash 搭载 sing-boxr 内核的配置-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/toolsettings-shellcrash-singboxr-ruleset)》，此处只列举配置的不同之处
-2. 进入 ShellCrash 配置脚本 → 2 功能设置 → 2 DNS 设置 → 7 DNS 劫持端口，设置为 `5353`（须完成《[七](https://proxy-tutorials.dustinwin.us.kg/posts/share-shellcrashadguardhome-singboxr-ruleset/#%E4%B8%83-%E5%AE%89%E8%A3%85-adguard-home)》后才可设置）
-3. 进入 2 DNS 设置 → 9 修改 DNS 服务器，设置如下：  
+2. 进入 ShellCrash 配置脚本 → 2) 功能设置 → 2) DNS 设置 → 7 DNS 劫持端口，设置为“5353”（须完成《[七](https://proxy-tutorials.dustinwin.us.kg/posts/share-shellcrashadguardhome-singboxr-ruleset/#%E4%B8%83-%E5%AE%89%E8%A3%85-adguard-home)》后才可设置）
+3. 进入 2) DNS 设置 → 9) 修改 DNS 服务器，设置如下：  
 <img src="/assets/img/dns/dns-null.png" alt="设置部分 2" width="60%" />
 
-4. 进入主菜单 → 6 管理配置文件 → 2 在线获取配置文件，粘贴《[一](https://proxy-tutorials.dustinwin.us.kg/posts/share-shellcrashadguardhome-singboxr-ruleset/#%E4%B8%80-%E7%94%9F%E6%88%90%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-json-%E6%96%87%E4%BB%B6%E7%9B%B4%E9%93%BE)》中生成的配置文件 .json 文件直链，启动服务即可
+4. 进入主菜单 → 6) 配置文件管理 → a) 添加提供者 → 1) 设置名称或代号，如输入“sing-boxr”；后进入 2) 设置链接或路径，粘贴《[一](https://proxy-tutorials.dustinwin.us.kg/posts/share-shellcrashadguardhome-singboxr-ruleset/#%E4%B8%80-%E7%94%9F%E6%88%90%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-json-%E6%96%87%E4%BB%B6%E7%9B%B4%E9%93%BE)》中生成的 .yaml 配置文件直链，选择“a) 保存此提供者”
+5. 进入 6) 配置文件管理 → c) 在线生成配置文件 → 6) 自定义浏览器 UA，选择“2) 不使用 UA”
+6. 进入 6) 配置文件管理 → 1) sing-boxr，选择选择“e) 在线获取此配置文件”，启动服务即可
 
 ## 七、 安装 AdGuard Home
 连接 SSH 后执行如下命令：
@@ -412,7 +414,7 @@ EOF
 ```
 
 ## 八、 AdGuard Home 设置
-设置可参考《[全网最详细的解锁 SSH ShellCrash 搭载 sing-boxr 内核搭配 AdGuard Home 安装和配置教程/AdGuard Home 配置](https://proxy-tutorials.dustinwin.us.kg/posts/pin-shellcrashadguardhome-singboxr/#2-adguard-home-%E9%85%8D%E7%BD%AE)》（可跳过“添加 DNS 重写”的步骤）
+设置可参考《[全网最详细的解锁 SSH ShellCrash 搭载 sing-boxr 内核搭配 AdGuard Home 安装和配置教程/AdGuard Home 配置](https://proxy-tutorials.dustinwin.us.kg/posts/pin-shellcrashadguardhome-singboxr/#2-adguard-home-%E9%85%8D%E7%BD%AE)》
 
 ## 九、 访问 Dashboard 面板
 打开 <http://miwifi.com:9999/ui/> 后，“主机”输入 `192.168.31.1`，“端口”输入 `9999`，点击“提交”即可访问 Dashboard 面板

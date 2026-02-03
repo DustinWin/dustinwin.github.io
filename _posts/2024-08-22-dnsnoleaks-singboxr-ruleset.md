@@ -47,7 +47,7 @@ tags: [sing-box, sing-boxr, ShellCrash, ruleset, rule_set, 进阶, DNS, DNS 泄�
 ```
 
 ## 二、 ShellCrash 防泄漏配置
-进入 ShellCrash 配置脚本 → 2 功能设置 → 2 DNS 设置 → 9 DNS 进阶设置，将“当前基础 DNS”、“PROXY-DNS”和“解析 DNS”都设置为 `null`  
+进入 ShellCrash 配置脚本 → 2) 功能设置 → 2) DNS 设置 → 9) 修改 DNS 服务器，将“DIRECT-DNS”、“PROXY-DNS”和“DEFAULT-DNS”都设置为 `null`  
 <img src="/assets/img/dns/dns-null.png" alt="ShellCrash 设置" width="60%" />
 
 ## 三、 DNS 防泄漏配置
@@ -65,7 +65,7 @@ tags: [sing-box, sing-boxr, ShellCrash, ruleset, rule_set, 进阶, DNS, DNS 泄�
           "tag": "dns_hosts",
           "type": "hosts",
           "predefined": {
-            "doh.pub": [ "1.12.12.21", "120.53.53.53", "2402:4e00::" ],
+            "doh.pub": [ "1.12.12.12", "120.53.53.53", "2402:4e00::" ],
             "dns.google": [ "8.8.8.8", "8.8.4.4", "2001:4860:4860::8888", "2001:4860:4860::8844" ]
           }
         },
@@ -120,7 +120,7 @@ tags: [sing-box, sing-boxr, ShellCrash, ruleset, rule_set, 进阶, DNS, DNS 泄�
           "tag": "dns_hosts",
           "type": "hosts",
           "predefined": {
-            "doh.pub": [ "1.12.12.21", "120.53.53.53", "2402:4e00::" ],
+            "doh.pub": [ "1.12.12.12", "120.53.53.53", "2402:4e00::" ],
             "dns.google": [ "8.8.8.8", "8.8.4.4", "2001:4860:4860::8888", "2001:4860:4860::8844" ]
           }
         },
@@ -174,7 +174,7 @@ tags: [sing-box, sing-boxr, ShellCrash, ruleset, rule_set, 进阶, DNS, DNS 泄�
           "tag": "dns_hosts",
           "type": "hosts",
           "predefined": {
-            "doh.pub": [ "1.12.12.21", "120.53.53.53", "2402:4e00::" ],
+            "doh.pub": [ "1.12.12.12", "120.53.53.53", "2402:4e00::" ],
             "dns.google": [ "8.8.8.8", "8.8.4.4", "2001:4860:4860::8888", "2001:4860:4860::8844" ]
           }
         },

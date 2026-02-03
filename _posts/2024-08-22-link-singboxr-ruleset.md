@@ -10,11 +10,11 @@ tags: [sing-box, sing-boxr, 直链, 订阅, ruleset, rule_set, 基础]
 {: .prompt-tip }
 1. 本教程可以生成扩展名为 .json 配置文件直链，可以**一键导入使用了 [sing-box reF1nd 版内核](https://github.com/reF1nd/sing-box)的客户端**  
 如：[ShellCrash](https://github.com/juewuy/ShellCrash) 和 [sing-box for Android](https://t.me/sing_box_reF1nd) 等
-1. 生成的订阅链接地址不会改变，支持更新订阅，**支持国内访问，支持同步机场节点**
-2. 生成的订阅链接**自带规则集**，规则集来源 [DustinWin/ruleset_geodata/ruleset](https://github.com/DustinWin/ruleset_geodata#%E4%BA%8C-ruleset-%E8%A7%84%E5%88%99%E9%9B%86%E6%96%87%E4%BB%B6%E8%AF%B4%E6%98%8E)
-3. 本教程必须使用支持[提供者](https://sing-boxr.dustinwin.us.kg/zh/configuration/provider/) `outbound_providers`（类似于 [mihomo 内核](https://github.com/MetaCubeX/mihomo)的[代理集合](https://wiki.metacubex.one/config/proxy-providers/) `proxy-providers`）的 [sing-box reF1nd 版内核](https://github.com/reF1nd/sing-box)，请先**确定自己机场的订阅链接是否为 Clash 或 sing-box 订阅链接**，若不是，需前往[肥羊在线订阅转换工具](https://suburl.v1.mk)进行转换，“生成类型”选择“Clash”或“sing-box”，其它参数保持默认即可，转换后的 Clash 订阅链接需要在末尾添加 `&flag=clash`，然后添加到 .json 文件出站提供者 `providers` 的 `url` 中
-4. 推荐使用 [Visual Studio Code](https://code.visualstudio.com/Download) 等专业编辑器来修改配置文件
-5. ShellCrash 支持本地导入配置文件，可以直接将下方的 .json 直链文件内容复制到 `$CRASHDIR/jsons/config.json`{: .filepath} 文件中，可代替通过 ShellCrash 配置脚本 → 6 管理配置文件 → 2 在线获取配置文件
+2. 生成的订阅链接地址不会改变，支持更新订阅，**支持国内访问，支持同步机场节点**
+3. 生成的订阅链接**自带规则集**，规则集来源 [DustinWin/ruleset_geodata/ruleset](https://github.com/DustinWin/ruleset_geodata#%E4%BA%8C-ruleset-%E8%A7%84%E5%88%99%E9%9B%86%E6%96%87%E4%BB%B6%E8%AF%B4%E6%98%8E)
+4. 本教程必须使用支持[提供者](https://sing-boxr.dustinwin.us.kg/zh/configuration/provider/) `outbound_providers`（类似于 [mihomo 内核](https://github.com/MetaCubeX/mihomo)的[代理集合](https://wiki.metacubex.one/config/proxy-providers/) `proxy-providers`）的 [sing-box reF1nd 版内核](https://github.com/reF1nd/sing-box)，请先**确定自己机场的订阅链接是否为 Clash 或 sing-box 订阅链接**，若不是，需前往[肥羊在线订阅转换工具](https://suburl.v1.mk)进行转换，“生成类型”选择“Clash”或“sing-box”，其它参数保持默认即可，转换后的 Clash 订阅链接需要在末尾添加 `&flag=clash`，然后添加到 .json 文件出站提供者 `providers` 的 `url` 中
+5. 推荐使用 [Visual Studio Code](https://code.visualstudio.com/Download) 等专业编辑器来修改配置文件
+6. ShellCrash 支持本地导入配置文件，可以直接将下方的 .json 直链文件内容复制到 `$CRASHDIR/jsons/config.json`{: .filepath} 文件中，可代替通过 ShellCrash 配置脚本 → 6) 配置文件管理 → a) 添加提供者
 
 ## 一、 准备编辑 .json 直链文件
 ### 1. 注册 [Gist](https://gist.github.com)
@@ -91,7 +91,7 @@ tags: [sing-box, sing-boxr, 直链, 订阅, ruleset, rule_set, 基础]
     { "tag": "🔴 全球拦截", "type": "block" },
     { "tag": "🎯 全球直连", "type": "selector", "outbounds": [ "DIRECT" ] },
     { "tag": "DIRECT", "type": "direct" },
-    { "tag": "GLOBAL", "type": "selector", "outbounds": [ "DIRECT", "🚀 节点选择" ] },
+    { "tag": "GLOBAL", "type": "selector", "outbounds": [ "🚀 节点选择", "DIRECT" ] },
 
     // 单个出站节点（以 vless 为例）
     {
@@ -134,7 +134,7 @@ tags: [sing-box, sing-boxr, 直链, 订阅, ruleset, rule_set, 基础]
       { "rule_set": [ "private" ], "outbound": "🎯 全球直连" },
       { "rule_set": [ "ads" ], "outbound": "🛑 广告域名" },
       { "rule_set": [ "trackerslist" ], "outbound": "📋 Trackerslist" },
-      // 为了使 P2P 流量（BT 下载）走直连，可添加一条 `DST-PORT` 规则（ShellCrash 会默认开启“只代理常用端口”，可删除此条 `DST-PORT`）
+      // 为了使 P2P 流量（BT 下载）走直连，可添加一条 `DST-PORT` 规则（ShellCrash 会默认启用“只代理常用端口”，可删除此条 `DST-PORT`）
       { "port_range": [ "6881:6889" ], "outbound": "🎯 全球直连"},
       // 若使用 ShellCrash，由于无法判断本机进程（默认删除 `process_name` 规则），需删除此条 `rule_set`
       { "rule_set": [ "applications" ], "outbound": "🎯 全球直连" },
@@ -362,7 +362,7 @@ tags: [sing-box, sing-boxr, 直链, 订阅, ruleset, rule_set, 基础]
     { "tag": "🎯 全球直连", "type": "selector", "outbounds": [ "DIRECT" ] },
     { "tag": "DIRECT", "type": "direct" },
     { "tag": "PROXY", "type": "urltest", "use_all_providers": true },
-    { "tag": "GLOBAL", "type": "selector", "outbounds": [ "DIRECT", "🚀 节点选择" ] },
+    { "tag": "GLOBAL", "type": "selector", "outbounds": [ "🚀 节点选择", "DIRECT" ] },
     
 
     // 单个出站节点（以 vless 为例）
@@ -535,8 +535,8 @@ tags: [sing-box, sing-boxr, 直链, 订阅, ruleset, rule_set, 基础]
 例如：我想筛选出“香港 IPLC”节点，`include` 可以这样写：`"include": "香港.*IPLC|IPLC.*香港"`
    - 小窍门：使用 [ChatGPT](https://chatgpt.com) 等 AI 工具查询符合自己要求的正则表达式
 
-1. 在 `🚀 节点选择` 出站下的 `outbounds` 里，可以将最稳定的节点放在最前面，配置完成后会自动选择最稳定的节点
-2. 在“国家或地区出站”里，`type` 为 `urltest` 就是自动选择延迟最低的节点，将 `urltest` 改成 `selector` 就是手动选择节点
+4. 在 `🚀 节点选择` 出站下的 `outbounds` 里，可以将最稳定的节点放在最前面，配置完成后会自动选择最稳定的节点
+5. 在“国家或地区出站”里，`type` 为 `urltest` 就是自动选择延迟最低的节点，将 `urltest` 改成 `selector` 就是手动选择节点
 举个例子：我的机场包含有 2 个节点，分别是新加坡节点和日本节点，我想让 [Netflix](https://www.netflix.com) 自动选择延迟最低的新加坡节点，[哔哩哔哩](https://www.bilibili.com)可以手动选择日本任一节点，这个需求怎么写？  
 注：
    - ① 以下只是节选，请酌情套用
@@ -613,4 +613,7 @@ tags: [sing-box, sing-boxr, 直链, 订阅, ruleset, rule_set, 基础]
 - 注：若无法直连访问，可在链接上添加 `https://ghfast.top/` 前缀，即：将链接改为 `https://ghfast.top/https://gist.githubusercontent.com/DustinWin/e712f40922381a8d74304d592d17b90b/raw/singboxlink.json`
 
 ## 五、 导入订阅链接（以 ShellCrash 导入订阅链接为例）
-进入 ShellCrash 配置脚本 → 6 管理配置文件 → 2 在线获取配置文件，粘贴最终生成的订阅链接即可，具体设置请参考《[ShellCrash 搭载 sing-boxr 内核的配置-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/toolsettings-shellcrash-singboxr-ruleset)》
+1. 进入 ShellCrash 配置脚本 → a) 添加提供者 → 1) 设置名称或代号，如输入“sing-boxr”；后进入 2) 设置链接或路径，粘贴最终生成的订阅链接，选择“a) 保存此提供者”
+2. 进入 6) 配置文件管理 → 6) 配置文件管理 → c) 在线生成配置文件 → 6) 自定义浏览器 UA，选择“2) 不使用 UA”
+3. 进入 6) 配置文件管理 → 1) sing-boxr，选择“e) 在线获取此配置文件”即可
+4. 具体设置请参考《[ShellCrash 搭载 sing-boxr 内核的配置-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/toolsettings-shellcrash-singboxr-ruleset)》

@@ -20,7 +20,7 @@ pin: true
 
 ```shell
 curl -o /tmp/ShellCrash.tar.gz -L https://cdn.jsdelivr.net/gh/juewuy/ShellCrash@master/ShellCrash.tar.gz
-mkdir -p /tmp/SC_tmp/ && tar -zxf '/tmp/ShellCrash.tar.gz' -C /tmp/SC_tmp/ && . /tmp/SC_tmp/init.sh
+mkdir -p /tmp/SC_tmp/ && tar -zxf '/tmp/ShellCrash.tar.gz' -C /tmp/SC_tmp/ && source /tmp/SC_tmp/init.sh
 ```
 
 ### 2. 在线安装

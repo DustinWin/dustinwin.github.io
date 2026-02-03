@@ -9,11 +9,11 @@ pin: true
 
 > 说明
 {: .prompt-tip }
-1. 本教程基于 REDMI AX6000 [官方固件](https://www1.miwifi.com/miwifi_download.html) v1.0.70 版，[ShellCrash](https://github.com/juewuy/ShellCrash) v1.9.4 版，[AdGuard Home](https://github.com/AdguardTeam/AdGuardHome) v0.108.0 版编写
+1. 本教程基于 REDMI AX6000 [官方固件](https://www1.miwifi.com/miwifi_download.html) v1.0.70 版，[ShellCrash](https://github.com/juewuy/ShellCrash) v1.9.5 版，[AdGuard Home](https://github.com/AdguardTeam/AdGuardHome) v0.108.0 版编写
 2. 恢复 SSH，安装 ShellCrash 和 AdGuard Home 的方法也适用于其它已解锁 SSH 的路由器
 3. 安装 [sing-box reF1nd 版内核](https://github.com/reF1nd/sing-box) 内核和 AdGuard Home 时须注意路由器 CPU 架构，查看 CPU 架构可连接 SSH 后执行命令 `uname -ms`，若执行结果是“linux aarch64”，就下载 armv8 或 arm64 版安装包；若是其它架构请下载相匹配的安装包
 4. ShellCrash 和 AdGuard Home 中所有没有提到的配置保持默认即可
-5. 使用本教程时，不建议开启 ShellCrash 配置脚本 → 2 功能设置 → 3 透明路由流量过滤 → 2 过滤局域网设备，因不经过内核的设备在访问 `漏网之鱼` 域名时会遇到无法访问的情况
+5. 使用本教程时，不建议启用 ShellCrash 配置脚本 → 2) 功能设置 → 3) 透明路由流量过滤 → 2) 过滤局域网设备，因不经过内核的设备在访问 `漏网之鱼` 域名时会遇到无法访问的情况
 6. ShellCrash 和 AdGuard Home 快速安装方法请看《[ShellCrash 和 AdGuard Home 快速安装教程](https://proxy-tutorials.dustinwin.us.kg/posts/pin-toolsinstall)》
 
 ## 一、 资源下载
@@ -162,7 +162,7 @@ echo -e "\nln -sf /data/auto_ssh/authorized_keys /etc/dropbear/" >> /data/auto_s
 ---
 
 ## 三、 解锁 SSH
-### 1. 开启调试模式
+### 1. 启用调试模式
 - ① 进入路由器管理页面 <http://192.168.31.1>，登录后复制地址栏中的 stok 值  
   <img src="/assets/img/pin/copy-stok.png" alt="复制 stok 值" width="60%" />
 
@@ -172,7 +172,7 @@ echo -e "\nln -sf /data/auto_ssh/authorized_keys /etc/dropbear/" >> /data/auto_s
   http://192.168.31.1/cgi-bin/luci/;stok={stok}/api/misystem/set_sys_time?timezone=%20%27%20%3B%20zz%3D%24%28dd%20if%3D%2Fdev%2Fzero%20bs%3D1%20count%3D2%202%3E%2Fdev%2Fnull%29%20%3B%20printf%20%27%A5%5A%25c%25c%27%20%24zz%20%24zz%20%7C%20mtd%20write%20-%20crash%20%3B%20
   ```
 
-  网页内容显示 `{"code":0}` 表示成功开启调试模式
+  网页内容显示 `{"code":0}` 表示成功启用调试模式
 - ③ 继续将复制的 stok 值替换如下网址的 `{stok}` 并访问：
 
   ```text
@@ -181,7 +181,7 @@ echo -e "\nln -sf /data/auto_ssh/authorized_keys /etc/dropbear/" >> /data/auto_s
 
   网页内容显示 `{"code":0}`，此时路由器会重启
 
-### 2. 永久开启 Telnet
+### 2. 永久启用 Telnet
 - ① 重启完成后进入路由器管理页面并登录，再次复制 stok 值
 - ② 将复制的 stok 值替换如下网址的 `{stok}` 并访问：
 
@@ -189,7 +189,7 @@ echo -e "\nln -sf /data/auto_ssh/authorized_keys /etc/dropbear/" >> /data/auto_s
   http://192.168.31.1/cgi-bin/luci/;stok={stok}/api/misystem/set_sys_time?timezone=%20%27%20%3B%20bdata%20set%20telnet_en%3D1%20%3B%20bdata%20set%20ssh_en%3D1%20%3B%20bdata%20set%20uart_en%3D1%20%3B%20bdata%20commit%20%3B%20
   ```
 
-  网页内容显示 `{"code":0}` 表示成功设置 Bdata 永久开启 Telnet
+  网页内容显示 `{"code":0}` 表示成功设置 Bdata 永久启用 Telnet
 - ③ 继续将复制的 stok 值替换如下网址的 `{stok}` 并访问：
 
   ```text
@@ -198,9 +198,9 @@ echo -e "\nln -sf /data/auto_ssh/authorized_keys /etc/dropbear/" >> /data/auto_s
 
   网页内容显示 `{"code":0}`，此时路由器会再次重启
 
-**开启 Telnet 成功！**
+**启用 Telnet 成功！**
 
-### 3. 永久开启并固化 SSH
+### 3. 永久启用并固化 SSH
 - ① 连接 Telnet，执行如下命令：
   - 注：第一行命令是将 Telnet 和 SSH 登录密码设置为 `12345678`，可自定义
 
@@ -224,7 +224,7 @@ echo -e "\nln -sf /data/auto_ssh/authorized_keys /etc/dropbear/" >> /data/auto_s
   reboot
   ```
 
-  <img src="/assets/img/pin/unlock-ssh.png" alt="永久开启并固化 SSH" width="60%" />
+  <img src="/assets/img/pin/unlock-ssh.png" alt="永久启用并固化 SSH" width="60%" />
 
 - ② 最后一行 `reboot` 命令需要手动回车（下同），回车后路由器会重启
 
@@ -239,7 +239,7 @@ echo -e "\nln -sf /data/auto_ssh/authorized_keys /etc/dropbear/" >> /data/auto_s
 
 <img src="/assets/img/pin/caculate-ssh-password.png" alt="计算 Telnet 登录密码" width="60%" />
 
-### 2. 永久开启并固化 SSH
+### 2. 永久启用并固化 SSH
 连接 Telnet，执行如下命令：
 - 注：最后一行命令是将 Telnet 或 SSH 登录密码设置为 `12345678`，可自定义
 
@@ -267,8 +267,8 @@ echo -e '12345678\n12345678' | passwd root
   mkdir -p /tmp/SC_tmp && tar -zxf '/tmp/ShellCrash.tar.gz' -C /tmp/SC_tmp/ && source /tmp/SC_tmp/init.sh
   ```
 
-- ③ 选择 1 安装到 /data 目录（推荐，支持软固化功能）
-- ④ 根据需要自定义别名（此处选择 `2`）
+- ③ 选择 1 安装到 /data 目录，剩余空间：*.*M
+- ④ 根据需要自定义别名（此处选择“2) 【 sc 】”）
 - ⑤ 将下载的 sing-box-ref1nd-dev-linux-armv8.tar.gz 文件复制到桌面，以管理员身份运行 PowerShell，依次执行如下命令：
 
   ```
@@ -285,47 +285,37 @@ echo -e '12345678\n12345678' | passwd root
 ### 2. ShellCrash 配置
 - ① 连接 SSH 后执行命令 `sc` 即可打开 ShellCrash 配置脚本
 - ② 新手引导
-  - ➊ 选择 1 路由设备配置局域网透明代理
-  - ➋ 根据需要是否开启小内存模式（此处选择 `0`）
+  - ➊ 选择“1) 路由设备配置局域网透明代理”
+  - ➋ 根据需要是否启用小内存模式（此处选择“0”）
   - ➌ 启用推荐的自动任务配置
-  - ➍ 根据需要是否启用软固化（此处选择 `1`，解锁 SSH 时已成功启用软固化）
-  - ➎ 根据需要是否选择 1 确认导入配置文件（此处选择 `0`）
-  - ➏ 根据需要是否选择 1 立即启动服务（此处选择 `0`）
-    - 注：强烈建议选择 `0`，待以下配置完成后，最后一步启动服务
-  - ➐ 此时脚本会自动“发现可用的内核文件”，选择 `1` 加载，后选择 5 Sing-Box-reF1nd 内核  
+  - ➍ 根据需要是否开始导入配置文件（此处选择“0”）
+  - ➎ 此时脚本会自动“发现可用的内核文件”，选择“1) 立即加载”，后选择“2) Singbox-reF1nd”  
     <img src="/assets/img/pin/import-sing-boxr.png" alt="ShellCrash 配置 1" width="60%" />
 
-  - ➑ 内核加载完成后根据需要是否保留相关数据库文件（此处选择 `0`）
+  - ➏ 内核加载完成后根据需要是否保留相关数据库文件（此处选择“0) 不保留”）
 - ③ 功能设置
-  - ➊ 进入 ShellCrash 配置脚本 → 2 功能设置 → 1 路由模式设置（推荐“混合模式”，其次“Tproxy 模式”，宽带在 300M 内推荐“Tun 模式”）
-    - 注：使用“Tun 模式”前须进入主菜单 → 8 工具与优化，开启 8 小米设备 Tun 模块修复
+  - ➊ 进入 ShellCrash 配置脚本 → 2) 功能设置 → 1) 路由模式设置（推荐“混合模式”，其次“Tproxy 模式”，宽带在 300M 内推荐“Tun 模式”）
+    - 注：使用“Tun 模式”前须进入主菜单 → 8) 工具与优化，启用“8) 小米设备 Tun 模块修复”
 
-  - ➋ 进入 2 功能设置 → 2 DNS 设置（推荐“MIX 模式”）
-  - ➌ 进入 2 DNS 设置 → 7 DNS 劫持端口，设置为 `5353`（须完成《[六、 1](https://proxy-tutorials.dustinwin.us.kg/posts/pin-shellcrashadguardhome-singboxr/#1-adguard-home-%E5%AE%89%E8%A3%85)》后才可设置）
-  - ➍ 进入 2 DNS 设置 → 9 修改 DNS 服务器，选择 4 一键配置加密 DNS
+  - ➋ 进入 2) 功能设置 → 2) DNS 设置（推荐“MIX 模式”）
+  - ➌ 进入 2) DNS 设置 → 7) DNS 劫持端口，设置为“5353”（须完成《[六、 1](https://proxy-tutorials.dustinwin.us.kg/posts/pin-shellcrashadguardhome-singboxr/#1-adguard-home-%E5%AE%89%E8%A3%85)》后才可设置）
+  - ➍ 进入 2) DNS 设置 → 9) 修改 DNS 服务器，选择“4) 一键配置加密 DNS”
     - 注：推荐设置 DNS 分流（单独使用 ShellCrash 以及 ShellCrash 搭配 AdGuard Home 都适用），请看《[搭载 sing-boxr 内核进行 DNS 分流教程-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/dnsbypass-singboxr-ruleset)》
 
-  - ➎ 进入 2 功能设置，选择 5 启用域名嗅探
-  - ➏ 进入 2 功能设置 → 8 ipv6 设置，若机场节点不支持 IPv6，可关闭 1 ipv6 透明路由  
-    <img src="/assets/img/pin/ipv6-setting.png" alt="ShellCrash 配置 2" width="60%" />
-
-- ④ 进入主菜单 → 4 启动设置，选择 1 允许 ShellCrash 开机启动（若重启路由器后服务没有自动运行，可“设置自启延时”为 `30` 秒，然后在《[六、 1. ⑥](https://proxy-tutorials.dustinwin.us.kg//posts/pin-shellcrashadguardhome-mihomo/#1-adguard-home-%E5%AE%89%E8%A3%85)》，将 `sleep 10s` 改为 `sleep 40s`）
-- ⑤ 进入主菜单 → 5 设置自动任务 → 1 添加自动任务，输入对应的数字并回车后可设置执行条件
-- ⑥ 进入主菜单 → 9 更新与支持 → 7 切换安装源及安装版本，选择 b 切换至公测版-master → 1 Jsdelivr_CDN 源，追求新版可选择 c 切换至开发版（可能不稳定）  
-  <img src="/assets/img/pin/select-update-source.png" alt="ShellCrash 配置 5" width="60%" />
-
-- ⑦ 进入主菜单 → 9 更新与支持 → 4 安装本地 Dashboard 面板，选择 1 安装 zashboard 面板  
+- ④ 进入主菜单 → 4 启动设置，启用“1) 开机自启动”（若重启路由器后服务没有自动运行，可进入 3) 设置自启延时，设置为“30”秒，然后在《[六、 1. ⑥](https://proxy-tutorials.dustinwin.us.kg//posts/pin-shellcrashadguardhome-mihomo/#1-adguard-home-%E5%AE%89%E8%A3%85)》，将 `sleep 10s` 改为 `sleep 40s`）
+- ⑤ 进入主菜单 → 5) 自动任务 → 1) 添加自动任务，输入对应的数字并回车后可设置执行条件
+- ⑥ 进入主菜单 → 8) 工具与优化，选择“6) 小米设备软固化 SSH”（无需输入需要还原的 SSH 密码）
+- ⑦ 进入主菜单 → 9) 更新与支持 → 4) 安装/更新本地 Dashboard 面板，选择“1) 安装 zashboard 面板”  
   注：
     - ➊ 启动服务后，面板 Dashboard 访问链接为：<http://192.168.31.1:9999/ui/>
     - ➋ 初次打开需要添加“主机”和“端口”，分别填入 `192.168.31.1` 和 `9999` 并点击“添加”即可访问 Dashboard 面板
 
   <img src="/assets/img/pin/install-dashboard.png" alt="ShellCrash 配置 6" width="60%" />
 
-- ⑧ 进入主菜单 → 6 管理配置文件  
-  注：
-    - ➊ 选择 1 在线生成配置文件，粘贴你的订阅链接并回车，输入 `1` 并再次回车即可
-    - ➋ 选择 2 在线获取配置文件，需要一定的 sing-boxr 知识储备，请查看《[生成带有自定义出站和规则的 sing-boxr 配置文件直链-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/link-singboxr-ruleset/)》
-    - ➌ 若 1 或 2 无法正确获取配置文件，可进入 9 自定义浏览器 UA 选择合适的 UA
+- ⑧ 导入配置文件
+  - ➊ 进入主菜单 → 6) 配置文件管理 → a) 添加提供者 → 1) 设置名称或代号，如输入“sing-boxr”；后进入 2) 设置链接或路径，粘贴你的订阅链接，选择“a) 保存此提供者”
+  - ➋ 进入 6) 配置文件管理 → c) 在线生成配置文件 → 6) 自定义浏览器 UA，根据需要设置 UA（此处选择“2) 不使用 UA”）
+  - ➌ 进入 6) 配置文件管理 → 1) sing-boxr，根据需要选择“b) 本地生成仅包含此提供者的配置文件”或“c) 在线生成仅包含此提供者的配置文件”；选择“e) 在线获取此配置文件”需要一定的 sing-boxr 知识储备，请查看《[生成带有自定义出站和规则的 sing-boxr 配置文件直链-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/link-singboxr-ruleset/)》
 
   导入配置文件完成后，选择 1 启动/重启服务
 
@@ -340,14 +330,14 @@ echo -e '12345678\n12345678' | passwd root
 6. 查看帮助和说明：`sc -h`
 
 ### 3. ShellCrash 升级
-进入主菜单 → 9 更新与支持，查看“管理脚本”、“内核文件”和“数据库文件”有无新版本，有则选择对应的数字进行升级即可  
+进入主菜单 → 9) 更新与支持，查看“管理脚本”、“内核文件”和“本地数据库文件”有无新版本，有则选择对应的数字进行升级即可  
 <img src="/assets/img/pin/update-shellcrash-singboxr.png" alt="ShellCrash 升级" width="60%" />
 
 ### 4. ShellCrash 卸载
 - ① 通过脚本命令进行卸载（任选一）  
   连接 SSH 后执行命令 `$CRASHDIR/start.sh stop && sc -u`
 - ② 通过 ShellCrash 配置进行卸载（任选一）  
-  进入主菜单 → 9 更新与支持，选择 9 卸载 ShellCrash
+  进入主菜单 → 9) 更新与支持，选择“8) 卸载 ShellCrash”
 
 ## 六 、 AdGuard Home 安装和配置
 ### 1. AdGuard Home 安装
@@ -376,11 +366,11 @@ echo -e '12345678\n12345678' | passwd root
 
   <img src="/assets/img/pin/edit-task.png" alt="AdGuard Home 安装 2" width="60%" />
 
-> AdGuard Home 的“DNS 服务器端口”须设置为 `5353`
+> AdGuard Home 的“DNS 服务器端口”须设置为“5353”
 {: .prompt-warning }
 
 - ⑥ 在最下方添加如下内容并保存：  
-  - 注： 若 ShellCrash 设置了自启延时如 `30` 秒，须将 `sleep 10s` 修改为 `sleep 40s`（即 +10s）
+  - 注： 若 ShellCrash 设置了自启延时如“30”秒，须将 `sleep 10s` 修改为 `sleep 40s`（即 +10s）
 
   ```shell
   sleep 10s
@@ -409,7 +399,7 @@ echo -e '12345678\n12345678' | passwd root
 ### 2. AdGuard Home 配置
 - ① 引导设置
   - ➊ 打开网页 <http://192.168.31.1:3000> 后点击“开始配置”
-  - ➋ **“网页管理界面端口”输入 `3000`，“DNS 服务器端口”输入 `5353`**，点击“下一步”  
+  - ➋ **“网页管理界面端口”输入 `3000`，“DNS 服务器端口”输入“5353”**，点击“下一步”  
   - ➌ “身份认证”设置用户名和密码
   - ➍ 点击“打开仪表盘”后输入刚才设置的用户名和密码“登入”，就可以进入 AdGuard Home 管理页面
 - ② 进入设置 → 常规设置，取消勾选“启用日志”并点击“保存”（日志非常占用空间）
@@ -419,12 +409,24 @@ echo -e '12345678\n12345678' | passwd root
 
     <img src="/assets/img/pin/adguardhome-up-dns.png" alt="AdGuard Home 配置 1" width="60%" />
 
-  - ➋ “后备 DNS 服务器”设置为 `https://doh.pub/dns-query`
-  - ➌ “Bootstrap DNS 服务器”设置为 `119.29.29.29`
+  - ➋ “后备 DNS 服务器”设置为：
+
+  ```text
+  119.29.29.29
+  223.5.5.5
+  ```
+
+  - ➌ “Bootstrap DNS 服务器”设置为：
+
+  ```text
+  119.29.29.29
+  223.5.5.5
+  ```
+
   - ➍ 直接点击“应用”即可  
     <img src="/assets/img/pin/adguardhome-dns.png" alt="AdGuard Home 配置 2" width="60%" />
 
-  - ➎ “速度限制”输入 `0`，然后点击下方的“保存”  
+  - ➎ “速度限制”输入“0”，然后点击下方的“保存”  
     <img src="/assets/img/pin/adguardhome-dns-service.png" alt="AdGuard Home 配置 3" width="60%" />
 
   - ➏ 勾选“乐观缓存”，并点击“保存”  

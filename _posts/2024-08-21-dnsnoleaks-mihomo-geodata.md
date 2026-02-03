@@ -17,7 +17,7 @@ tags: [Clash, mihomo, 进阶, DNS, DNS 泄露]
 geosite.dat 文件须包含 `fakeip-filter`、`cn` 和 `proxy`，推荐导入我定制的[路由规则文件](https://github.com/DustinWin/ruleset_geodata?tab=readme-ov-file#%E4%B8%80-geodata-%E6%96%87%E4%BB%B6%E8%AF%B4%E6%98%8E)
 
 ## 二、 ShellCrash 防泄漏配置
-进入 ShellCrash 配置脚本 → 2 功能设置 → 2 DNS 设置 → 9 DNS 进阶设置，将“当前基础 DNS”、“PROXY-DNS”和“解析 DNS”都设置为 `null`  
+进入 ShellCrash 配置脚本 → 2) 功能设置 → 2) DNS 设置 → 9) 修改 DNS 服务器，将“DIRECT-DNS”、“PROXY-DNS”和“DEFAULT-DNS”都设置为 `null`  
 <img src="/assets/img/dns/dns-null.png" alt="ShellCrash 设置" width="60%" />
 
 ## 三、 DNS 防泄漏配置
@@ -28,7 +28,7 @@ geosite.dat 文件须包含 `fakeip-filter`、`cn` 和 `proxy`，推荐导入我
 
 ```yaml
 hosts:
-  doh.pub: [1.12.12.21, 120.53.53.53, 2402:4e00::]
+  doh.pub: [1.12.12.12, 120.53.53.53, 2402:4e00::]
   dns.alidns.com: [223.5.5.5, 223.6.6.6, 2400:3200::1, 2400:3200:baba::1]
   dns.google: [8.8.8.8, 8.8.4.4, 2001:4860:4860::8888, 2001:4860:4860::8844]
   dns11.quad9.net: [9.9.9.11, 149.112.112.11, 2620:fe::11, 2620:fe::fe:11]
@@ -73,7 +73,7 @@ dns:
 
   ```yaml
   hosts:
-    doh.pub: [1.12.12.21, 120.53.53.53, 2402:4e00::]
+    doh.pub: [1.12.12.12, 120.53.53.53, 2402:4e00::]
     dns.alidns.com: [223.5.5.5, 223.6.6.6, 2400:3200::1, 2400:3200:baba::1]
 
   dns:
@@ -102,7 +102,7 @@ dns:
 
 ```yaml
 hosts:
-  doh.pub: [1.12.12.21, 120.53.53.53, 2402:4e00::]
+  doh.pub: [1.12.12.12, 120.53.53.53, 2402:4e00::]
   dns.alidns.com: [223.5.5.5, 223.6.6.6, 2400:3200::1, 2400:3200:baba::1]
   dns.google: [8.8.8.8, 8.8.4.4, 2001:4860:4860::8888, 2001:4860:4860::8844]
   dns11.quad9.net: [9.9.9.11, 149.112.112.11, 2620:fe::11, 2620:fe::fe:11]
