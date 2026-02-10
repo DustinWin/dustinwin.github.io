@@ -368,7 +368,7 @@ Windows Registry Editor Version 5.00
   echo "导入 mihomo 内核和配置文件..."
   cd "$PROGRAMFILES"
   mkdir -p mihomo/profiles mihomo/ui
-  curl -o mihomo/mihomo.exe -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-meta-windows-amd64v3.exe
+  curl -o mihomo/mihomo.exe -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-meta-windows-amd64-v3.exe
   curl -o mihomo/profiles/config.yaml -L https://ghfast.top/{.yaml 配置文件直链}
   echo "导入 mihomo 内核和配置文件成功"
 
@@ -419,7 +419,7 @@ Windows Registry Editor Version 5.00
 
 echo "下载 mihomo 相关文件..."
 cd "$PROGRAMFILES/mihomo"
-curl -o "$USERPROFILE/Downloads/mihomo.exe" -L https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-meta-windows-amd64v3.exe
+curl -o "$USERPROFILE/Downloads/mihomo.exe" -L https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-meta-windows-amd64-v3.exe
 curl -o "$USERPROFILE/Downloads/config.yaml" -L {.yaml 配置文件直链}
 echo "下载 mihomo 相关文件成功"
 

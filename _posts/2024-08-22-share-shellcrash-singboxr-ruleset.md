@@ -9,7 +9,7 @@ tags: [sing-box, sing-boxr, ShellCrash, ruleset, rule_set, 分享, Router]
 > 声明
 {: .prompt-warning }
 1. 请根据自身情况进行修改，**适合自己的方案才是最好的方案**，如无特殊需求，可以照搬
-2. 此方案适用于 [ShellCrash](https://github.com/juewuy/ShellCrash)（以 arm64 架构为例，且安装路径为 `/data/ShellCrash`{: .filepath}）
+2. 此方案适用于 [ShellCrash](https://github.com/juewuy/ShellCrash)（以 ARM64 架构为例，且安装路径为 `/data/ShellCrash`{: .filepath}）
 3. 本方案绕过了 CNIP 且不搭配 [AdGuard Home](https://github.com/AdguardTeam/AdGuardHome)，在 DNS 层拦截广告
 4. 本人将路由器设置了每天早上 6 点重启，使得《[五](https://proxy-tutorials.dustinwin.us.kg/posts/share-shellcrash-singboxr-ruleset/#%E4%BA%94-%E6%B7%BB%E5%8A%A0%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1)》中设置的定时任务生效
 
@@ -244,7 +244,7 @@ tags: [sing-box, sing-boxr, ShellCrash, ruleset, rule_set, 分享, Router]
 连接 SSH 后执行如下命令：
 
 ```shell
-curl -o /tmp/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-dev-linux-armv8.upx
+curl -o /tmp/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-dev-linux-arm64.upx
 mkdir -p $CRASHDIR/ui/
 curl -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/Dashboard/zashboard.tar.gz | tar -zx -C $CRASHDIR/ui/
 sc
@@ -363,7 +363,7 @@ sc
 1. 连接 SSH 后执行命令 `vi $CRASHDIR/task/task.user`，按一下 Ins 键（Insert 键），粘贴如下内容：
 
 ```shell
-201#curl -o $CRASHDIR/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-reF1nd-dev-linux-armv8.upx >/dev/null 2>&1#更新sing-boxr内核
+201#curl -o $CRASHDIR/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-reF1nd-dev-linux-arm64.upx >/dev/null 2>&1#更新sing-boxr内核
 202#curl -o $CRASHDIR/cn_ip.txt -L https://ghfast.top/https://github.com/DustinWin/geoip/releases/download/ips/cn_ipv4.txt && curl -o $CRASHDIR/cn_ipv6.txt -L https://ghfast.top/https://github.com/DustinWin/geoip/releases/download/ips/cn_ipv6.txt >/dev/null 2>&1#更新CN_IP文件
 ```
 

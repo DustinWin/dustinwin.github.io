@@ -8,20 +8,14 @@ tags: [Clash, mihomo, ShellCrash, geodata, geosite, 基础, Router]
 
 > 说明
 {: .prompt-tip }
-1. 本教程中的下载链接以 CPU 架构 ARMv8 为例，若为别的 CPU 架构，请注意修改链接后缀
-2. 查看 CPU 架构可连接 SSH 后执行命令 `uname -ms`，若执行结果是“linux aarch64”，就是搭载的 ARMv8 架构
+1. 本教程中的下载链接以 CPU 架构 ARM64 为例，若为别的 CPU 架构，请注意修改链接后缀
+2. 查看 CPU 架构可连接 SSH 后执行命令 `uname -ms`，若执行结果是“linux aarch64”，就是搭载的 ARM64 架构
 
 ## 一、 导入 [mihomo 内核](https://github.com/MetaCubeX/mihomo)
-**mihomo 内核 Linux 版下载链接后缀和 CPU 架构对应关系如下表：**
-
-| CPU 架构     | AMD64v1   | AMD64v3   | ARMv5   | ARMv6   | ARMv7   | ARMv8&ARM64&AArch64 | mips-softfloat   | mipsle-softfloat   | mipsle-hardfloat   |
-| ------------ | --------- | --------- | ------- | ------- | ------- | :-----------------: | ---------------- | ------------------ | ------------------ |
-| **链接后缀** | `amd64v1` | `amd64v3` | `armv5` | `armv6` | `armv7` |       `armv8`       | `mips-softfloat` | `mipsle-softfloat` | `mipsle-hardfloat` |
-
 连接 SSH 后执行如下命令：
 
 ```shell
-curl -o /tmp/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-meta-linux-armv8.upx
+curl -o /tmp/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-meta-linux-arm64.upx
 ```
 
 ## 二、 导入路由规则文件
@@ -39,7 +33,7 @@ curl -o $CRASHDIR/Country.mmdb -L https://cdn.jsdelivr.net/gh/DustinWin/ruleset_
 - 2. 须重启 ShellCrash 服务后生效
 
 ```shell
-201#curl -o $CRASHDIR/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-meta-linux-armv8.upx >/dev/null 2>&1#更新mihomo内核
+201#curl -o $CRASHDIR/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-meta-linux-arm64.upx >/dev/null 2>&1#更新mihomo内核
 202#curl -o $CRASHDIR/GeoSite.dat -L https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-geodata/geosite-all.dat && curl -o $CRASHDIR/Country.mmdb -L https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-geodata/Country.mmdb >/dev/null 2>&1#更新geodata路由规则文件
 203#curl -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/Dashboard/zashboard.tar.gz | tar -zx -C $CRASHDIR/ui/ >/dev/null 2>&1#更新zashboard面板
 ```

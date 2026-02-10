@@ -11,7 +11,7 @@ pin: true
 {: .prompt-tip }
 1. 本教程基于 REDMI AX6000 [官方固件](https://www1.miwifi.com/miwifi_download.html) v1.0.70 版，[ShellCrash](https://github.com/juewuy/ShellCrash) v1.9.5 版，[AdGuard Home](https://github.com/AdguardTeam/AdGuardHome) v0.108.0 版编写
 2. 恢复 SSH，安装 ShellCrash 和 AdGuard Home 的方法也适用于其它已解锁 SSH 的路由器
-3. 安装 [sing-box reF1nd 版内核](https://github.com/reF1nd/sing-box) 内核和 AdGuard Home 时须注意路由器 CPU 架构，查看 CPU 架构可连接 SSH 后执行命令 `uname -ms`，若执行结果是“linux aarch64”，就下载 armv8 或 arm64 版安装包；若是其它架构请下载相匹配的安装包
+3. 安装 [sing-box reF1nd 版内核](https://github.com/reF1nd/sing-box) 内核和 AdGuard Home 时须注意路由器 CPU 架构，查看 CPU 架构可连接 SSH 后执行命令 `uname -ms`，若执行结果是“linux aarch64”，就下载 arm64 版安装包；若是其它架构请下载相匹配的安装包
 4. ShellCrash 和 AdGuard Home 中所有没有提到的配置保持默认即可
 5. 使用本教程时，不建议启用 ShellCrash 配置脚本 → 2) 功能设置 → 3) 透明路由流量过滤 → 2) 过滤局域网设备，因不经过内核的设备在访问 `漏网之鱼` 域名时会遇到无法访问的情况
 6. ShellCrash 和 AdGuard Home 快速安装方法请看《[ShellCrash 和 AdGuard Home 快速安装教程](https://proxy-tutorials.dustinwin.us.kg/posts/pin-toolsinstall)》

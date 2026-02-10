@@ -10,8 +10,8 @@ pin: true
 > 说明
 {: .prompt-tip }
 1. 本教程中 **[AdGuard Home](https://github.com/AdguardTeam/AdGuardHome) 安装目录为 `/data/AdGuardHome`{: .filepath}**
-2. 本教程中的下载链接以 CPU 架构 ARMv8 为例，请注意修改链接后缀
-3. 查看 CPU 架构可连接 SSH 后执行命令 `uname -ms`，若执行结果是“linux aarch64”，就是搭载的 ARMv8 架构
+2. 本教程中的下载链接以 CPU 架构 ARM64 为例，请注意修改链接后缀
+3. 查看 CPU 架构可连接 SSH 后执行命令 `uname -ms`，若执行结果是“linux aarch64”，就是搭载的 ARM64 架构
 4. 以下所有命令均可全部复制后直接粘贴执行（若出现无法下载的情况，可更换[下载源](https://proxy-tutorials.dustinwin.us.kg/about/#%E5%AF%B9%E4%B8%8B%E8%BD%BD%E6%BA%90%E7%9A%84%E8%AF%B4%E6%98%8E)）
 
 ## 一、 安装 [ShellCrash](https://github.com/juewuy/ShellCrash)
@@ -31,34 +31,22 @@ export url='https://cdn.jsdelivr.net/gh/juewuy/ShellCrash@master' && sh -c "$(cu
 ```
 
 ## 二、 导入 [mihomo 内核](https://github.com/MetaCubeX/mihomo) 或 [sing-box 内核](https://github.com/SagerNet/sing-box)
-**mihomo 内核 Linux 版下载链接后缀和 CPU 架构对应关系如下表：**
-
-| CPU 架构     | AMD64v1   | AMD64v3   | ARMv5   | ARMv6   | ARMv7   | ARMv8&ARM64&AArch64 | mips-softfloat   | mipsle-softfloat   | mipsle-hardfloat   |
-| ------------ | --------- | --------- | ------- | ------- | ------- | :-----------------: | ---------------- | ------------------ | ------------------ |
-| **链接后缀** | `amd64v1` | `amd64v3` | `armv5` | `armv6` | `armv7` |       `armv8`       | `mips-softfloat` | `mipsle-softfloat` | `mipsle-hardfloat` |
-
-**sing-box 内核 Linux 版下载链接后缀和 CPU 架构对应关系如下表：**
-
-| CPU 架构     | AMD64v1   | AMD64v3   | ARMv5   | ARMv6   | ARMv7   | ARMv8&ARM64&AArch64 | mips-softfloat   | mipsle-softfloat   | mipsle-hardfloat   |
-| ------------ | --------- | --------- | ------- | ------- | ------- | :-----------------: | ---------------- | ------------------ | ------------------ |
-| **链接后缀** | `amd64v1` | `amd64v3` | `armv5` | `armv6` | `armv7` |       `armv8`       | `mips-softfloat` | `mipsle-softfloat` | `mipsle-hardfloat` |
-
 ### 1. 首次导入
 连接 SSH 后执行如下命令：
 
 ```shell
 # mihomo 内核 Meta 版
-curl -o /tmp/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-meta-linux-armv8.upx && sc
+curl -o /tmp/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-meta-linux-arm64.upx && sc
 # mihomo 内核 Alpha 版
-curl -o /tmp/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-alpha-linux-armv8.upx && sc
+curl -o /tmp/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-alpha-linux-arm64.upx && sc
 # sing-box 内核 reF1nd-main 版
-curl -o /tmp/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-main-linux-armv8.upx && sc
+curl -o /tmp/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-main-linux-arm64.upx && sc
 # sing-box 内核 reF1nd-dev 版
-curl -o /tmp/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-dev-linux-armv8.upx && sc
+curl -o /tmp/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-dev-linux-arm64.upx && sc
 # sing-box 内核 Release 版
-curl -o /tmp/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-release-linux-armv8.upx && sc
+curl -o /tmp/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-release-linux-arm64.upx && sc
 # sing-box 内核 Dev 版
-curl -o /tmp/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-dev-linux-armv8.upx && sc
+curl -o /tmp/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-dev-linux-arm64.upx && sc
 ```
 
 此时脚本会自动“发现可用的内核文件”，选择 1 加载，后选择对应的内核类型
@@ -68,17 +56,17 @@ curl -o /tmp/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/pr
 
 ```shell
 # mihomo 内核 Meta 版
-curl -o $CRASHDIR/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-meta-linux-armv8.upx && $CRASHDIR/start.sh restart
+curl -o $CRASHDIR/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-meta-linux-arm64.upx && $CRASHDIR/start.sh restart
 # mihomo 内核 Alpha 版
-curl -o $CRASHDIR/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-alpha-linux-armv8.upx && $CRASHDIR/start.sh restart
+curl -o $CRASHDIR/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-alpha-linux-arm64.upx && $CRASHDIR/start.sh restart
 # sing-box 内核 reF1nd-main 版
-curl -o $CRASHDIR/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-main-linux-armv8.upx && $CRASHDIR/start.sh restart
+curl -o $CRASHDIR/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-main-linux-arm64.upx && $CRASHDIR/start.sh restart
 # sing-box 内核 reF1nd-dev 版
-curl -o $CRASHDIR/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-dev-linux-armv8.upx && $CRASHDIR/start.sh restart
+curl -o $CRASHDIR/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-dev-linux-arm64.upx && $CRASHDIR/start.sh restart
 # sing-box 内核 Release 版
-curl -o $CRASHDIR/CrashCore.upx -L https://cdn.jsdelivr.net/gh/DustinWin/proxy-tools/@sing-box/sing-box-release-linux-armv8.upx && $CRASHDIR/start.sh restart
+curl -o $CRASHDIR/CrashCore.upx -L https://cdn.jsdelivr.net/gh/DustinWin/proxy-tools/@sing-box/sing-box-release-linux-arm64.upx && $CRASHDIR/start.sh restart
 # sing-box 内核 Dev 版
-curl -o $CRASHDIR/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-dev-linux-armv8.upx && $CRASHDIR/start.sh restart
+curl -o $CRASHDIR/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-dev-linux-arm64.upx && $CRASHDIR/start.sh restart
 ```
 
 ## 三、 安装 Dashboard 面板
@@ -102,20 +90,14 @@ curl -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/dow
 
 ## 四、 安装 AdGuard Home
 ### 1. 安装 AdGuard Home
-**AdGuard Home Linux 版 CPU 架构和链接后缀对应关系如下表：**
-
-| CPU 架构     | AMD64   | ARMv5   | ARMv6   | ARMv7   | ARMv8   | mips-softfloat   | mipsle-softfloat   |
-| ------------ | ------- | ------- | ------- | ------- | ------- | ---------------- | ------------------ |
-| **链接后缀** | `amd64` | `armv5` | `armv6` | `armv7` | `armv8` | `mips-softfloat` | `mipsle-softfloat` |
-
 连接 SSH 后执行如下命令：
 
 ```shell
 mkdir -p /data/AdGuardHome/
 # AdGuard Home Release 版
-curl -o /data/AdGuardHome/AdGuardHome -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/AdGuardHome/AdGuardHome_release_linux_armv8
+curl -o /data/AdGuardHome/AdGuardHome -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/AdGuardHome/AdGuardHome_release_linux_arm64
 # AdGuard Home Beta 版
-curl -o /data/AdGuardHome/AdGuardHome -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/AdGuardHome/AdGuardHome_beta_linux_armv8
+curl -o /data/AdGuardHome/AdGuardHome -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/AdGuardHome/AdGuardHome_beta_linux_arm64
 chmod +x /data/AdGuardHome/AdGuardHome
 /data/AdGuardHome/AdGuardHome -s install
 /data/AdGuardHome/AdGuardHome -s start
@@ -143,9 +125,9 @@ EOF
 
 ```shell
 # AdGuard Home Release 版
-curl -o /data/AdGuardHome/AdGuardHome -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/AdGuardHome/AdGuardHome_release_linux_armv8
+curl -o /data/AdGuardHome/AdGuardHome -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/AdGuardHome/AdGuardHome_release_linux_arm64
 # AdGuard Home Beta 版
-curl -o /data/AdGuardHome/AdGuardHome -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/AdGuardHome/AdGuardHome_beta_linux_armv8
+curl -o /data/AdGuardHome/AdGuardHome -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/AdGuardHome/AdGuardHome_beta_linux_arm64
 /data/AdGuardHome/AdGuardHome -s restart
 ```
 
@@ -158,11 +140,11 @@ curl -o /data/AdGuardHome/AdGuardHome -L https://ghfast.top/https://github.com/D
 - 3. 须重启 ShellCrash 和 AdGuard Home 服务后生效
 
 ```shell
-201#curl -o /data/ShellCrash/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-meta-linux-armv8.upx >/dev/null 2>&1#更新mihomo内核
-202#curl -o /data/ShellCrash/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-main-linux-armv8.upx >/dev/null 2>&1#更新sing-boxr内核
-203#curl -o /data/ShellCrash/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-release-linux-armv8.upx >/dev/null 2>&1#更新sing-box内核
+201#curl -o /data/ShellCrash/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-meta-linux-arm64.upx >/dev/null 2>&1#更新mihomo内核
+202#curl -o /data/ShellCrash/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-main-linux-arm64.upx >/dev/null 2>&1#更新sing-boxr内核
+203#curl -o /data/ShellCrash/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-release-linux-arm64.upx >/dev/null 2>&1#更新sing-box内核
 204#curl -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/Dashboard/zashboard.tar.gz | tar -zx -C $CRASHDIR/ui/ >/dev/null 2>&1#更新zashboard面板
-205#curl -o /data/AdGuardHome/AdGuardHome -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/AdGuardHome/AdGuardHome_beta_linux_armv8 >/dev/null 2>&1#更新AdGuardHome
+205#curl -o /data/AdGuardHome/AdGuardHome -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/AdGuardHome/AdGuardHome_beta_linux_arm64 >/dev/null 2>&1#更新AdGuardHome
 ```
 2. 按一下 Esc 键（退出键），输入英文冒号 `:`，继续输入 `wq` 并回车
 3. 执行 `sc`，进入 ShellCrash → 5 配置自动任务 → 1 添加自动任务，可以看到末尾就有添加的定时任务，输入对应的数字并回车后可设置执行条件

@@ -373,7 +373,7 @@ Windows Registry Editor Version 5.00
   echo "导入 sing-boxr 内核和配置文件..."
   cd "$PROGRAMFILES"
   mkdir -p sing-box/ui
-  curl -o sing-box/sing-box.exe -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-dev-windows-amd64v3.exe
+  curl -o sing-box/sing-box.exe -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-dev-windows-amd64-v3.exe
   curl -o sing-box/config.json -L https://ghfast.top/{.json 配置文件直链}
   echo "导入 sing-boxr 内核和配置文件成功"
 
@@ -424,7 +424,7 @@ Windows Registry Editor Version 5.00
 
 echo "下载 sing-boxr 相关文件..."
 cd "$PROGRAMFILES/sing-box"
-curl -o "$USERPROFILE/Downloads/sing-box.exe" -L https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-dev-windows-amd64v3.exe
+curl -o "$USERPROFILE/Downloads/sing-box.exe" -L https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-dev-windows-amd64-v3.exe
 curl -o "$USERPROFILE/Downloads/config.json" -L {.json 配置文件直链}
 echo "下载 sing-boxr 相关文件成功"
 
