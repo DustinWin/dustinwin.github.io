@@ -12,7 +12,7 @@ tags: [Clash, mihomo, ShellCrash, geodata, geosite, 分享, Router]
 2. 此方案适用于 [ShellCrash](https://github.com/juewuy/ShellCrash)（以 ARM64 架构为例，且安装路径为 `/data/ShellCrash`{: .filepath}）
 3. 本方案绕过了 CNIP 且不搭配 [AdGuard Home](https://github.com/AdguardTeam/AdGuardHome)，在 DNS 层拦截广告
 4. 本人将路由器设置了每天早上 6 点重启，使得《[五](https://proxy-tutorials.dustinwin.us.kg/posts/share-shellcrash-mihomo-geodata/#%E4%BA%94-%E6%B7%BB%E5%8A%A0%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1)》中设置的定时任务生效
-5. 若 `谷歌服务` 出现错误如 [Google Chrome](https://www.google.com/chrome/) 检查更新失败，请删除 `nameserver` 相关配置项里的所有[阿里云公共 DNS](https://help.aliyun.com/zh/dns/what-is-alibaba-cloud-public-dns)
+5. 若 `谷歌服务` 出现错误如 [Google Chrome](https://www.google.com/chrome/) 检查更新失败，请删除 `direct-nameserver` 配置项里的[阿里云公共 DNS](https://help.aliyun.com/zh/dns/what-is-alibaba-cloud-public-dns)
 
 ## 一、 生成配置文件 .yaml 文件直链
 具体方法此处不再赘述，请看《[生成带有自定义策略组和规则的 mihomo 配置文件直链-geodata 方案](https://proxy-tutorials.dustinwin.us.kg/posts/link-mihomo-geodata)》，贴一下我使用的配置：
@@ -228,7 +228,11 @@ dns:
   direct-nameserver:
     - https://doh.pub/dns-query
     - quic://dns.alidns.com:853
-  nameserver-policy: {'geosite:ads': [rcode://success]}
+  nameserver-policy:
+    'geosite:ads': [rcode://success]
+    'geosite:microsoft-cn,apple-cn,google-cn,games-cn,private,cn':
+      - https://doh.pub/dns-query
+      - quic://dns.alidns.com:853
 ```
 
 ---

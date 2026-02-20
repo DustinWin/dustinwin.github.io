@@ -9,7 +9,7 @@ tags: [Clash, Clash Mi, mihomo, Android, ruleset, rule-set, 分享]
 > 声明
 {: .prompt-warning }
 1. 请根据自身情况进行修改，**适合自己的方案才是最好的方案**，如无特殊需求，可以照搬
-2. 若 `谷歌服务` 出现错误，请删除 `nameserver` 相关配置项里的所有[阿里云公共 DNS](https://help.aliyun.com/zh/dns/what-is-alibaba-cloud-public-dns)
+2. 若 `谷歌服务` 出现错误，请删除 `direct-nameserver` 配置项里的[阿里云公共 DNS](https://help.aliyun.com/zh/dns/what-is-alibaba-cloud-public-dns)
 
 ## 一、 生成配置文件 .yaml 文件直链
 具体方法请参考《[生成带有自定义策略组和规则的 mihomo 配置文件直链-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/link-mihomo-ruleset)》，贴一下我使用的配置：
@@ -332,7 +332,11 @@ dns:
   direct-nameserver:
     - https://doh.pub/dns-query
     - quic://dns.alidns.com:853
-  nameserver-policy: {'rule-set:ads': [rcode://success]}
+  nameserver-policy:
+    'rule-set:ads': [rcode://success]
+    'rule-set:microsoft-cn,apple-cn,google-cn,games-cn,private,cn':
+      - https://doh.pub/dns-query
+      - quic://dns.alidns.com:853
 ```
 
 ---

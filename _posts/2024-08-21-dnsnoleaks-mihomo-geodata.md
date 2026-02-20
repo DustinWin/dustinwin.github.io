@@ -57,6 +57,10 @@ dns:
   direct-nameserver:
     - https://dns.pub/dns-query
     - quic://dns.alidns.com:853
+  nameserver-policy:
+    'geosite:fakeip-filter,cn':
+      - https://dns.pub/dns-query
+      - quic://dns.alidns.com:853
 ```
 
 按一下 Esc 键（退出键），输入英文冒号 `:`，继续输入 `wq` 并回车
@@ -126,6 +130,10 @@ dns:
   direct-nameserver:
     - https://dns.pub/dns-query
     - quic://dns.alidns.com:853
+  nameserver-policy:
+    'geosite:fakeip-filter,cn':
+      - https://dns.pub/dns-query
+      - quic://dns.alidns.com:853
 ```
 
 按一下 Esc 键（退出键），输入英文冒号 `:`，继续输入 `wq` 并回车

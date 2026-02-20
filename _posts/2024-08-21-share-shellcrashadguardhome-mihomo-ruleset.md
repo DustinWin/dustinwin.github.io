@@ -15,7 +15,7 @@ tags: [Clash, mihomo, ShellCrash, AdGuard Home, ruleset, rule-set, 分享, Route
 5. 此方案适用于 AdGuard Home（以 ARM64 架构为例，且安装路径为 `/data/AdGuardHome`{: .filepath}）
 6. 此方案不建议启用 ShellCrash 配置脚本 → 2) 功能设置 → 3) 透明路由流量过滤 → 2) 过滤局域网设备，因不经过内核的设备在访问 `漏网之鱼` 域名时会遇到无法访问的情况
 7. 本人将路由器设置了每天早上 6 点重启，使得《[四](https://proxy-tutorials.dustinwin.us.kg/posts/share-shellcrashadguardhome-mihomo-ruleset/#%E5%9B%9B-%E6%B7%BB%E5%8A%A0%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1)》中设置的定时任务生效
-8. 若 `谷歌服务` 出现错误如 [Google Chrome](https://www.google.com/chrome/) 检查更新失败，请删除 `nameserver` 相关配置项里的所有[阿里云公共 DNS](https://help.aliyun.com/zh/dns/what-is-alibaba-cloud-public-dns)
+8. 若 `谷歌服务` 出现错误如 [Google Chrome](https://www.google.com/chrome/) 检查更新失败，请删除 `direct-nameserver` 配置项里的[阿里云公共 DNS](https://help.aliyun.com/zh/dns/what-is-alibaba-cloud-public-dns)
 
 ## 一、 生成配置文件 .yaml 文件直链
 具体方法此处不再赘述，请看《[生成带有自定义策略组和规则的 mihomo 配置文件直链-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/link-mihomo-ruleset)》，贴一下我使用的配置：
@@ -337,6 +337,10 @@ dns:
   direct-nameserver:
     - https://doh.pub/dns-query
     - quic://dns.alidns.com:853
+  nameserver-policy:
+    'rule-set:fakeip-filter,microsoft-cn,apple-cn,google-cn,games-cn,private,cn':
+      - https://doh.pub/dns-query
+      - quic://dns.alidns.com:853
 ```
 
 ---
