@@ -74,18 +74,18 @@ tags: [sing-box, sing-boxr, 直链, 订阅, ruleset, rule_set, 基础]
     { "tag": "🚀 节点选择", "type": "selector", "outbounds": [ "♻️ 自动选择", "👉 手动选择", "🇭🇰 香港节点", "🇹🇼 台湾节点", "🇯🇵 日本节点", "🇸🇬 新加坡节点", "🇺🇸 美国节点", "🆓 免费节点" ] },
     // 选择`🎯 全球直连`为测试本地网络（运营商网络速度和 IPv6 支持情况），可选择其它节点用于测试机场节点速度和 IPv6 支持情况
     { "tag": "📈 网络测试", "type": "selector", "outbounds": [ "🎯 全球直连", "🚀 节点选择", "🇭🇰 香港节点", "🇹🇼 台湾节点", "🇯🇵 日本节点", "🇸🇬 新加坡节点", "🇺🇸 美国节点", "🆓 免费节点" ] },
+    { "tag": "🕹️ 游戏平台", "type": "selector", "outbounds": [ "🚀 节点选择", "🇭🇰 香港节点", "🇹🇼 台湾节点", "🇯🇵 日本节点", "🇸🇬 新加坡节点", "🇺🇸 美国节点" ] },
     { "tag": "🤖 AI 平台", "type": "selector", "outbounds": [ "🚀 节点选择", "🇭🇰 香港节点", "🇹🇼 台湾节点", "🇯🇵 日本节点", "🇸🇬 新加坡节点", "🇺🇸 美国节点" ] },
-    { "tag": "📋 Trackerslist", "type": "selector", "outbounds": [ "🎯 全球直连", "🚀 节点选择" ] },
     { "tag": "🎮 游戏服务", "type": "selector", "outbounds": [ "🎯 全球直连", "🚀 节点选择" ] },
     { "tag": "🪟 微软服务", "type": "selector", "outbounds": [ "🎯 全球直连", "🚀 节点选择" ] },
     { "tag": "🇬 谷歌服务", "type": "selector", "outbounds": [ "🎯 全球直连", "🚀 节点选择" ] },
     { "tag": "🍎 苹果服务", "type": "selector", "outbounds": [ "🎯 全球直连", "🚀 节点选择" ] },
     { "tag": "🌍 国外媒体", "type": "selector", "outbounds": [ "🚀 节点选择", "🇭🇰 香港节点", "🇹🇼 台湾节点", "🇯🇵 日本节点", "🇸🇬 新加坡节点", "🇺🇸 美国节点" ] },
-    { "tag": "🎮 游戏平台", "type": "selector", "outbounds": [ "🚀 节点选择", "🇭🇰 香港节点", "🇹🇼 台湾节点", "🇯🇵 日本节点", "🇸🇬 新加坡节点", "🇺🇸 美国节点" ] },
     { "tag": "🛡️ 直连域名", "type": "selector", "outbounds": [ "🎯 全球直连", "🚀 节点选择" ] },
     { "tag": "🀄️ 直连 IP", "type": "selector", "outbounds": [ "🎯 全球直连", "🚀 节点选择" ] },
     { "tag": "🧱 代理域名", "type": "selector", "outbounds": [ "🚀 节点选择", "🎯 全球直连" ] },
     { "tag": "📲 电报消息", "type": "selector", "outbounds": [ "🚀 节点选择", "🇭🇰 香港节点", "🇹🇼 台湾节点", "🇯🇵 日本节点", "🇸🇬 新加坡节点", "🇺🇸 美国节点", "🆓 免费节点" ] },
+    { "tag": "📋 Trackerslist", "type": "selector", "outbounds": [ "🎯 全球直连", "🚀 节点选择" ] },
     { "tag": "🐟 漏网之鱼", "type": "selector", "outbounds": [ "🚀 节点选择", "🇭🇰 香港节点", "🇹🇼 台湾节点", "🇯🇵 日本节点", "🇸🇬 新加坡节点", "🇺🇸 美国节点", "🆓 免费节点", "🎯 全球直连" ] },
     { "tag": "🛑 广告域名", "type": "selector", "outbounds": [ "🔴 全球拦截", "🎯 全球直连" ] },
     { "tag": "🔴 全球拦截", "type": "block" },
@@ -142,8 +142,8 @@ tags: [sing-box, sing-boxr, 直链, 订阅, ruleset, rule_set, 基础]
       { "rule_set": [ "apple-cn" ], "outbound": "🍎 苹果服务" },
       { "rule_set": [ "google-cn" ], "outbound": "🇬 谷歌服务" },
       { "rule_set": [ "games-cn" ], "outbound": "🎮 游戏服务" },
+      { "rule_set": [ "games" ], "outbound": "🕹️ 游戏平台" },
       { "rule_set": [ "media" ], "outbound": "🌍 国外媒体" },
-      { "rule_set": [ "games" ], "outbound": "🎮 游戏平台" },
       { "rule_set": [ "ai" ], "outbound": "🤖 AI 平台" },
       { "rule_set": [ "networktest" ], "outbound": "📈 网络测试" },
       { "rule_set": [ "proxy" ], "outbound": "🧱 代理域名" },
@@ -153,8 +153,8 @@ tags: [sing-box, sing-boxr, 直链, 订阅, ruleset, rule_set, 基础]
       // 将目标域名解析成 IP 后与下方的 IP 规则进行匹配，提高兼容性
       { "action": "resolve", "match_only": true },
       { "rule_set": [ "cnip" ], "outbound": "🀄️ 直连 IP" },
-      { "rule_set": [ "mediaip" ], "outbound": "🌍 国外媒体" },
-      { "rule_set": [ "gamesip" ], "outbound": "🎮 游戏平台" }
+      { "rule_set": [ "gamesip" ], "outbound": "🕹️ 游戏平台" },
+      { "rule_set": [ "mediaip" ], "outbound": "🌍 国外媒体" }
     ],
     // 规则集（binary 文件每天自动更新）
     "rule_set": [
@@ -216,18 +216,18 @@ tags: [sing-box, sing-boxr, 直链, 订阅, ruleset, rule_set, 基础]
         "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/games-cn.srs"
       },
       {
-        "tag": "media",
-        "type": "remote",
-        "format": "binary",
-        "path": "./ruleset/media.srs",
-        "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/media.srs"
-      },
-      {
         "tag": "games",
         "type": "remote",
         "format": "binary",
         "path": "./ruleset/games.srs",
         "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/games.srs"
+      },
+      {
+        "tag": "media",
+        "type": "remote",
+        "format": "binary",
+        "path": "./ruleset/media.srs",
+        "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/media.srs"
       },
       {
         "tag": "ai",
@@ -279,18 +279,18 @@ tags: [sing-box, sing-boxr, 直链, 订阅, ruleset, rule_set, 基础]
         "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/cnip.srs"
       },
       {
-        "tag": "mediaip",
-        "type": "remote",
-        "format": "binary",
-        "path": "./ruleset/mediaip.srs",
-        "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/mediaip.srs"
-      },
-      {
         "tag": "gamesip",
         "type": "remote",
         "format": "binary",
         "path": "./ruleset/gamesip.srs",
         "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/gamesip.srs"
+      },
+      {
+        "tag": "mediaip",
+        "type": "remote",
+        "format": "binary",
+        "path": "./ruleset/mediaip.srs",
+        "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/mediaip.srs"
       }
     ],
     // 默认出站，即没有命中规则的域名或 IP 走该规则
@@ -316,7 +316,7 @@ tags: [sing-box, sing-boxr, 直链, 订阅, ruleset, rule_set, 基础]
       "path": "./providers/airport1.yaml",
       // 若出现获取不了机场节点的情况，可删除此配置项
       "user_agent": "clash.meta",
-      "download_detour": "PROXY",
+      "download_detour": "GLOBAL",
       // 初步筛选需要的节点，可有效减轻路由器压力，支持正则表达式，若不筛选可删除此配置项
       "include": "(?i)(🇭🇰|港|hk|hongkong|hong kong|🇹🇼|台|tw|taiwan|tai wan|🇯🇵|日|jp|japan|🇸🇬|新|sg|singapore|🇺🇸|美|us|unitedstates|united states)",
       // 初步排除不需要的节点，支持正则表达式，若不排除可删除此配置项
@@ -335,7 +335,7 @@ tags: [sing-box, sing-boxr, 直链, 订阅, ruleset, rule_set, 基础]
       "update_interval": "12h",
       // 若出现获取不了机场节点的情况，可添加此配置项
       "user_agent": "sing-box/1.12.12",
-      "download_detour": "PROXY",
+      "download_detour": "GLOBAL",
       "include": "(?i)(🇭🇰|港|hk|hongkong|hong kong|🇹🇼|台|tw|taiwan|tai wan|🇯🇵|日|jp|japan|🇸🇬|新|sg|singapore|🇺🇸|美|us|unitedstates|united states)",
       "exclude": "高倍|直连|×10",
       "health_check": {
@@ -350,18 +350,17 @@ tags: [sing-box, sing-boxr, 直链, 订阅, ruleset, rule_set, 基础]
     { "tag": "🚀 节点选择", "type": "selector", "outbounds": [ "♻️ 自动选择", "👉 手动选择", "🇭🇰 香港节点", "🇹🇼 台湾节点", "🇯🇵 日本节点", "🇸🇬 新加坡节点", "🇺🇸 美国节点", "🆓 免费节点" ] },
     // 选择`🎯 全球直连`为测试本地网络（运营商网络速度和 IPv6 支持情况），可选择其它节点用于测试机场节点速度和 IPv6 支持情况
     { "tag": "📈 网络测试", "type": "selector", "outbounds": [ "🎯 全球直连", "🚀 节点选择", "🇭🇰 香港节点", "🇹🇼 台湾节点", "🇯🇵 日本节点", "🇸🇬 新加坡节点", "🇺🇸 美国节点", "🆓 免费节点" ] },
+    { "tag": "🕹️ 游戏平台", "type": "selector", "outbounds": [ "🚀 节点选择", "🇭🇰 香港节点", "🇹🇼 台湾节点", "🇯🇵 日本节点", "🇸🇬 新加坡节点", "🇺🇸 美国节点" ] },
     { "tag": "🤖 AI 平台", "type": "selector", "outbounds": [ "🚀 节点选择", "🇭🇰 香港节点", "🇹🇼 台湾节点", "🇯🇵 日本节点", "🇸🇬 新加坡节点", "🇺🇸 美国节点" ] },
-    { "tag": "📋 Trackerslist", "type": "selector", "outbounds": [ "🎯 全球直连", "🚀 节点选择" ] },
     { "tag": "🌍 国外媒体", "type": "selector", "outbounds": [ "🚀 节点选择", "🇭🇰 香港节点", "🇹🇼 台湾节点", "🇯🇵 日本节点", "🇸🇬 新加坡节点", "🇺🇸 美国节点" ] },
-    { "tag": "🎮 游戏平台", "type": "selector", "outbounds": [ "🚀 节点选择", "🇭🇰 香港节点", "🇹🇼 台湾节点", "🇯🇵 日本节点", "🇸🇬 新加坡节点", "🇺🇸 美国节点" ] },
     { "tag": "🧱 代理域名", "type": "selector", "outbounds": [ "🚀 节点选择", "🎯 全球直连" ] },
     { "tag": "📲 电报消息", "type": "selector", "outbounds": [ "🚀 节点选择", "🇭🇰 香港节点", "🇹🇼 台湾节点", "🇯🇵 日本节点", "🇸🇬 新加坡节点", "🇺🇸 美国节点", "🆓 免费节点" ] },
+    { "tag": "📋 Trackerslist", "type": "selector", "outbounds": [ "🎯 全球直连", "🚀 节点选择" ] },
     { "tag": "🐟 漏网之鱼", "type": "selector", "outbounds": [ "🎯 全球直连", "🚀 节点选择", "🇭🇰 香港节点", "🇹🇼 台湾节点", "🇯🇵 日本节点", "🇸🇬 新加坡节点", "🇺🇸 美国节点", "🆓 免费节点" ] },
     { "tag": "🛑 广告域名", "type": "selector", "outbounds": [ "🔴 全球拦截", "🎯 全球直连" ] },
     { "tag": "🔴 全球拦截", "type": "block" },
     { "tag": "🎯 全球直连", "type": "selector", "outbounds": [ "DIRECT" ] },
     { "tag": "DIRECT", "type": "direct" },
-    { "tag": "PROXY", "type": "urltest", "use_all_providers": true },
     { "tag": "GLOBAL", "type": "selector", "outbounds": [ "🚀 节点选择", "DIRECT" ] },
     
 
@@ -406,8 +405,8 @@ tags: [sing-box, sing-boxr, 直链, 订阅, ruleset, rule_set, 基础]
       { "rule_set": [ "private" ], "outbound": "🎯 全球直连" },
       { "rule_set": [ "ads" ], "outbound": "🛑 广告域名" },
       { "rule_set": [ "trackerslist" ], "outbound": "📋 Trackerslist" },
+      { "rule_set": [ "games" ], "outbound": "🕹️ 游戏平台" },
       { "rule_set": [ "media" ], "outbound": "🌍 国外媒体" },
-      { "rule_set": [ "games" ], "outbound": "🎮 游戏平台" },
       { "rule_set": [ "ai" ], "outbound": "🤖 AI 平台" },
       { "rule_set": [ "networktest" ], "outbound": "📈 网络测试" },
       { "rule_set": [ "tld-proxy" ], "outbound": "🧱 代理域名" },
@@ -415,8 +414,8 @@ tags: [sing-box, sing-boxr, 直链, 订阅, ruleset, rule_set, 基础]
       { "rule_set": [ "telegramip" ], "outbound": "📲 电报消息" },
       // 将目标域名解析成 IP 后与下方的 IP 规则进行匹配，提高兼容性
       { "action": "resolve", "match_only": true },
-      { "rule_set": [ "mediaip" ], "outbound": "🌍 国外媒体" },
-      { "rule_set": [ "gamesip" ], "outbound": "🎮 游戏平台" }
+      { "rule_set": [ "gamesip" ], "outbound": "🕹️ 游戏平台" }
+      { "rule_set": [ "mediaip" ], "outbound": "🌍 国外媒体" }
     ],
     // 规则集（binary 文件每天自动更新）
     "rule_set": [
@@ -426,7 +425,7 @@ tags: [sing-box, sing-boxr, 直链, 订阅, ruleset, rule_set, 基础]
         "format": "binary",
         "path": "./ruleset/ads.srs",
         "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/ads.srs",
-        "download_detour": "PROXY"
+        "download_detour": "GLOBAL"
       },
       {
         "tag": "private",
@@ -434,7 +433,7 @@ tags: [sing-box, sing-boxr, 直链, 订阅, ruleset, rule_set, 基础]
         "format": "binary",
         "path": "./ruleset/private.srs",
         "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/private.srs",
-        "download_detour": "PROXY"
+        "download_detour": "GLOBAL"
       },
       {
         "tag": "trackerslist",
@@ -442,15 +441,7 @@ tags: [sing-box, sing-boxr, 直链, 订阅, ruleset, rule_set, 基础]
         "format": "binary",
         "path": "./ruleset/trackerslist.srs",
         "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/trackerslist.srs",
-        "download_detour": "PROXY"
-      },
-      {
-        "tag": "media",
-        "type": "remote",
-        "format": "binary",
-        "path": "./ruleset/media.srs",
-        "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/media.srs",
-        "download_detour": "PROXY"
+        "download_detour": "GLOBAL"
       },
       {
         "tag": "games",
@@ -458,7 +449,15 @@ tags: [sing-box, sing-boxr, 直链, 订阅, ruleset, rule_set, 基础]
         "format": "binary",
         "path": "./ruleset/games.srs",
         "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/games.srs",
-        "download_detour": "PROXY"
+        "download_detour": "GLOBAL"
+      },
+      {
+        "tag": "media",
+        "type": "remote",
+        "format": "binary",
+        "path": "./ruleset/media.srs",
+        "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/media.srs",
+        "download_detour": "GLOBAL"
       },
       {
         "tag": "ai",
@@ -466,7 +465,7 @@ tags: [sing-box, sing-boxr, 直链, 订阅, ruleset, rule_set, 基础]
         "format": "binary",
         "path": "./ruleset/ai.srs",
         "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/ai.srs",
-        "download_detour": "PROXY"
+        "download_detour": "GLOBAL"
       },
       {
         "tag": "networktest",
@@ -474,7 +473,7 @@ tags: [sing-box, sing-boxr, 直链, 订阅, ruleset, rule_set, 基础]
         "format": "binary",
         "path": "./ruleset/networktest.srs",
         "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/networktest.srs",
-        "download_detour": "PROXY"
+        "download_detour": "GLOBAL"
       },
       {
         "tag": "tld-proxy",
@@ -482,7 +481,7 @@ tags: [sing-box, sing-boxr, 直链, 订阅, ruleset, rule_set, 基础]
         "format": "binary",
         "path": "./ruleset/tld-proxy.srs",
         "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/tld-proxy.srs",
-        "download_detour": "PROXY"
+        "download_detour": "GLOBAL"
       },
       {
         "tag": "gfw",
@@ -490,15 +489,7 @@ tags: [sing-box, sing-boxr, 直链, 订阅, ruleset, rule_set, 基础]
         "format": "binary",
         "path": "./ruleset/gfw.srs",
         "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/gfw.srs",
-        "download_detour": "PROXY"
-      },
-      {
-        "tag": "mediaip",
-        "type": "remote",
-        "format": "binary",
-        "path": "./ruleset/mediaip.srs",
-        "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/mediaip.srs",
-        "download_detour": "PROXY"
+        "download_detour": "GLOBAL"
       },
       {
         "tag": "telegramip",
@@ -506,7 +497,7 @@ tags: [sing-box, sing-boxr, 直链, 订阅, ruleset, rule_set, 基础]
         "format": "binary",
         "path": "./ruleset/telegramip.srs",
         "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/telegramip.srs",
-        "download_detour": "PROXY"
+        "download_detour": "GLOBAL"
       },
       {
         "tag": "gamesip",
@@ -514,7 +505,15 @@ tags: [sing-box, sing-boxr, 直链, 订阅, ruleset, rule_set, 基础]
         "format": "binary",
         "path": "./ruleset/gamesip.srs",
         "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/gamesip.srs",
-        "download_detour": "PROXY"
+        "download_detour": "GLOBAL"
+      },
+      {
+        "tag": "mediaip",
+        "type": "remote",
+        "format": "binary",
+        "path": "./ruleset/mediaip.srs",
+        "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/mediaip.srs",
+        "download_detour": "GLOBAL"
       }
     ],
     // 默认出站，即没有命中规则的域名或 IP 走该规则

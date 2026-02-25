@@ -131,7 +131,7 @@ proxy-providers:
     - 🇺🇸 美国节点
     - 🆓 免费节点
 
-- name: 🤖 人工智能
+- name: 🕹️ 游戏平台
   type: select
   proxies:
     - 🈯 节点指定
@@ -141,11 +141,15 @@ proxy-providers:
     - 🇸🇬 新加坡节点
     - 🇺🇸 美国节点
 
-- name: 📋 Trackerslist
+- name: 🤖 AI 平台
   type: select
   proxies:
-    - 🎯 全球直连
     - 🈯 节点指定
+    - 🇭🇰 香港节点
+    - 🇹🇼 台湾节点
+    - 🇯🇵 日本节点
+    - 🇸🇬 新加坡节点
+    - 🇺🇸 美国节点
 
 - name: 🎮 游戏服务
   type: select
@@ -172,16 +176,6 @@ proxy-providers:
     - 🈯 节点指定
 
 - name: 🌍 国外媒体
-  type: select
-  proxies:
-    - 🈯 节点指定
-    - 🇭🇰 香港节点
-    - 🇹🇼 台湾节点
-    - 🇯🇵 日本节点
-    - 🇸🇬 新加坡节点
-    - 🇺🇸 美国节点
-
-- name: 🎮 游戏平台
   type: select
   proxies:
     - 🈯 节点指定
@@ -219,6 +213,12 @@ proxy-providers:
     - 🇸🇬 新加坡节点
     - 🇺🇸 美国节点
     - 🆓 免费节点
+
+- name: 📋 Trackerslist
+  type: select
+  proxies:
+    - 🎯 全球直连
+    - 🈯 节点指定
 
 - name: 🔒 私有网络
   type: select
@@ -300,17 +300,17 @@ proxy-providers:
 - GEOSITE,apple-cn,🍎 苹果服务
 - GEOSITE,google-cn,🇬 谷歌服务
 - GEOSITE,games-cn,🎮 游戏服务
+- GEOSITE,games,🕹️ 游戏平台
 - GEOSITE,media,🌍 国外媒体
-- GEOSITE,games,🎮 游戏平台
-- GEOSITE,ai,🤖 人工智能
+- GEOSITE,ai,🤖 AI 平台
 - GEOSITE,networktest,📈 网络测速
 - GEOSITE,proxy,🧱 代理域名
 - GEOSITE,cn,🛡️ 直连域名
 - GEOIP,private,🔒 私有网络,no-resolve
 - GEOIP,cn,🀄️ 直连 IP
-- GEOIP,media,🌍 国外媒体,no-resolve
-- GEOIP,games,🎮 游戏平台,no-resolve
 - GEOIP,telegram,📲 电报消息,no-resolve
+- GEOIP,games,🕹️ 游戏平台
+- GEOIP,media,🌍 国外媒体
 ```
 
 按一下 Esc 键（退出键），输入英文冒号 `:`，继续输入 `wq` 并回车
@@ -350,7 +350,7 @@ proxy-providers:
 
 # 自定义规则优先放前面
 - GEOSITE,media,🌍 国外媒体
-- GEOIP,media,🌍 国外媒体,no-resolve
+- GEOIP,media,🌍 国外媒体
 ```
 
 按一下 Esc 键（退出键），输入英文冒号 `:`，继续输入 `wq` 并回车

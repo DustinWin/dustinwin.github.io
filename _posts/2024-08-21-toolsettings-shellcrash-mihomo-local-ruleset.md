@@ -70,20 +70,20 @@ proxy-providers:
 
 # 规则集（yaml 文件每天自动更新）
 rule-providers:
-  private:
-    type: http
-    behavior: domain
-    format: mrs
-    path: ./ruleset/private.mrs
-    url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/private.mrs"
-    interval: 86400
-
   ads:
     type: http
     behavior: domain
     format: mrs
     path: ./ruleset/ads.mrs
     url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/ads.mrs"
+    interval: 86400
+
+  private:
+    type: http
+    behavior: domain
+    format: mrs
+    path: ./ruleset/private.mrs
+    url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/private.mrs"
     interval: 86400
 
   trackerslist:
@@ -126,20 +126,20 @@ rule-providers:
     url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/games-cn.mrs"
     interval: 86400
 
-  media:
-    type: http
-    behavior: domain
-    format: mrs
-    path: ./ruleset/media.mrs
-    url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/media.mrs"
-    interval: 86400
-
   games:
     type: http
     behavior: domain
     format: mrs
     path: ./ruleset/games.mrs
     url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/games.mrs"
+    interval: 86400
+
+  media:
+    type: http
+    behavior: domain
+    format: mrs
+    path: ./ruleset/media.mrs
+    url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/media.mrs"
     interval: 86400
 
   ai:
@@ -190,12 +190,12 @@ rule-providers:
     url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/cnip.mrs"
     interval: 86400
 
-  mediaip:
+  telegramip:
     type: http
     behavior: ipcidr
     format: mrs
-    path: ./ruleset/mediaip.mrs
-    url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/mediaip.mrs"
+    path: ./ruleset/telegramip.mrs
+    url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/telegramip.mrs"
     interval: 86400
 
   gamesip:
@@ -206,12 +206,12 @@ rule-providers:
     url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/gamesip.mrs"
     interval: 86400
 
-  telegramip:
+  mediaip:
     type: http
     behavior: ipcidr
     format: mrs
-    path: ./ruleset/telegramip.mrs
-    url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/telegramip.mrs"
+    path: ./ruleset/mediaip.mrs
+    url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/mediaip.mrs"
     interval: 86400
 ```
 
@@ -277,7 +277,7 @@ rule-providers:
     - 🇺🇸 美国节点
     - 🆓 免费节点
 
-- name: 🤖 人工智能
+- name: 🕹️ 游戏平台
   type: select
   proxies:
     - 🈯 节点指定
@@ -287,11 +287,15 @@ rule-providers:
     - 🇸🇬 新加坡节点
     - 🇺🇸 美国节点
 
-- name: 📋 Trackerslist
+- name: 🤖 AI 平台
   type: select
   proxies:
-    - 🎯 全球直连
     - 🈯 节点指定
+    - 🇭🇰 香港节点
+    - 🇹🇼 台湾节点
+    - 🇯🇵 日本节点
+    - 🇸🇬 新加坡节点
+    - 🇺🇸 美国节点
 
 - name: 🎮 游戏服务
   type: select
@@ -318,16 +322,6 @@ rule-providers:
     - 🈯 节点指定
 
 - name: 🌍 国外媒体
-  type: select
-  proxies:
-    - 🈯 节点指定
-    - 🇭🇰 香港节点
-    - 🇹🇼 台湾节点
-    - 🇯🇵 日本节点
-    - 🇸🇬 新加坡节点
-    - 🇺🇸 美国节点
-
-- name: 🎮 游戏平台
   type: select
   proxies:
     - 🈯 节点指定
@@ -365,6 +359,12 @@ rule-providers:
     - 🇸🇬 新加坡节点
     - 🇺🇸 美国节点
     - 🆓 免费节点
+
+- name: 📋 Trackerslist
+  type: select
+  proxies:
+    - 🎯 全球直连
+    - 🈯 节点指定
 
 - name: 🔒 私有网络
   type: select
@@ -446,17 +446,17 @@ rule-providers:
 - RULE-SET,apple-cn,🍎 苹果服务
 - RULE-SET,google-cn,🇬 谷歌服务
 - RULE-SET,games-cn,🎮 游戏服务
+- RULE-SET,games,🕹️ 游戏平台
 - RULE-SET,media,🌍 国外媒体
-- RULE-SET,games,🎮 游戏平台
-- RULE-SET,ai,🤖 人工智能
+- RULE-SET,ai,🤖 AI 平台
 - RULE-SET,networktest,📈 网络测试
 - RULE-SET,proxy,🧱 代理域名
 - RULE-SET,cn,🛡️ 直连域名
 - RULE-SET,privateip,🔒 私有网络,no-resolve
 - RULE-SET,cnip,🀄️ 直连 IP
-- RULE-SET,mediaip,🌍 国外媒体,no-resolve
-- RULE-SET,gamesip,🎮 游戏平台,no-resolve
 - RULE-SET,telegramip,📲 电报消息,no-resolve
+- RULE-SET,gamesip,🕹️ 游戏平台
+- RULE-SET,mediaip,🌍 国外媒体
 ```
 
 按一下 Esc 键（退出键），输入英文冒号 `:`，继续输入 `wq` 并回车
@@ -542,7 +542,7 @@ rule-providers:
 
 # 自定义规则优先放前面
 - RULE-SET,netflix,🎥 奈飞视频
-- RULE-SET,netflixip,🎥 奈飞视频,no-resolve
+- RULE-SET,netflixip,🎥 奈飞视频
 - RULE-SET,bilibili,📺 哔哩哔哩
 ```
 

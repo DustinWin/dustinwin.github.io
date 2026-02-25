@@ -52,8 +52,8 @@ tags: [sing-box, sing-boxr, ShellCrash, AdGuard Home, ruleset, rule_set, 分享,
   "outbounds": [
     { "tag": "节点选择", "type": "selector", "outbounds": [ "香港节点", "台湾节点", "日本节点", "新加坡节点", "美国节点", "免费节点", "🆚 vless 节点" ] },
     { "tag": "网络测试", "type": "selector", "outbounds": [ "全球直连", "节点选择", "香港节点", "台湾节点", "日本节点", "新加坡节点", "美国节点", "免费节点", "🆚 vless 节点" ] },
-    { "tag": "AI 平台", "type": "selector", "outbounds": [ "节点选择", "香港节点", "台湾节点", "日本节点", "新加坡节点", "美国节点", "免费节点", "🆚 vless 节点" ] },
-    { "tag": "Trackerslist", "type": "selector", "outbounds": [ "全球直连", "节点选择" ] },
+    { "tag": "游戏平台", "type": "selector", "outbounds": [ "节点选择", "香港节点", "台湾节点", "日本节点", "新加坡节点", "美国节点", "🆚 vless 节点" ] },
+    { "tag": "AI 平台", "type": "selector", "outbounds": [ "节点选择", "香港节点", "台湾节点", "日本节点", "新加坡节点", "美国节点", "🆚 vless 节点" ] },
     { "tag": "游戏服务", "type": "selector", "outbounds": [ "全球直连", "节点选择" ] },
     { "tag": "微软服务", "type": "selector", "outbounds": [ "全球直连", "节点选择" ] },
     { "tag": "谷歌服务", "type": "selector", "outbounds": [ "全球直连", "节点选择" ] },
@@ -62,6 +62,7 @@ tags: [sing-box, sing-boxr, ShellCrash, AdGuard Home, ruleset, rule_set, 分享,
     { "tag": "直连 IP", "type": "selector", "outbounds": [ "全球直连", "节点选择" ] },
     { "tag": "代理域名", "type": "selector", "outbounds": [ "节点选择", "全球直连" ] },
     { "tag": "电报消息", "type": "selector", "outbounds": [ "节点选择", "香港节点", "台湾节点", "日本节点", "新加坡节点", "美国节点", "免费节点", "🆚 vless 节点" ] },
+    { "tag": "Trackerslist", "type": "selector", "outbounds": [ "全球直连", "节点选择" ] },
     { "tag": "私有网络", "type": "selector", "outbounds": [ "全球直连" ] },
     { "tag": "漏网之鱼", "type": "selector", "outbounds": [ "节点选择", "香港节点", "台湾节点", "日本节点", "新加坡节点", "美国节点", "免费节点", "🆚 vless 节点", "全球直连" ] },
     { "tag": "全球直连", "type": "selector", "outbounds": [ "DIRECT" ] },
@@ -94,6 +95,7 @@ tags: [sing-box, sing-boxr, ShellCrash, AdGuard Home, ruleset, rule_set, 分享,
       { "rule_set": [ "apple-cn" ], "outbound": "苹果服务" },
       { "rule_set": [ "google-cn" ], "outbound": "谷歌服务" },
       { "rule_set": [ "games-cn" ], "outbound": "游戏服务" },
+      { "rule_set": [ "games" ], "outbound": "游戏平台" },
       { "rule_set": [ "ai" ], "outbound": "AI 平台" },
       { "rule_set": [ "networktest" ], "outbound": "网络测试" },
       { "rule_set": [ "proxy" ], "outbound": "代理域名" },
@@ -101,7 +103,8 @@ tags: [sing-box, sing-boxr, ShellCrash, AdGuard Home, ruleset, rule_set, 分享,
       { "rule_set": [ "privateip" ], "outbound": "私有网络" },
       { "rule_set": [ "telegramip" ], "outbound": "电报消息" },
       { "action": "resolve", "match_only": true },
-      { "rule_set": [ "cnip" ], "outbound": "直连 IP" }
+      { "rule_set": [ "cnip" ], "outbound": "直连 IP" },
+      { "rule_set": [ "gamesip" ], "outbound": "游戏平台" }
     ],
     "rule_set": [
       {
@@ -154,6 +157,13 @@ tags: [sing-box, sing-boxr, ShellCrash, AdGuard Home, ruleset, rule_set, 分享,
         "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/games-cn.srs"
       },
       {
+        "tag": "games",
+        "type": "remote",
+        "format": "binary",
+        "path": "./ruleset/games.srs",
+        "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/games.srs"
+      },
+      {
         "tag": "ai",
         "type": "remote",
         "format": "binary",
@@ -201,6 +211,13 @@ tags: [sing-box, sing-boxr, ShellCrash, AdGuard Home, ruleset, rule_set, 分享,
         "format": "binary",
         "path": "./ruleset/cnip.srs",
         "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/cnip.srs"
+      },
+      {
+        "tag": "gamesip",
+        "type": "remote",
+        "format": "binary",
+        "path": "./ruleset/gamesip.srs",
+        "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/gamesip.srs"
       }
     ],
     "final": "漏网之鱼",
@@ -331,7 +348,7 @@ sc
       { "clash_mode": [ "Direct" ], "query_type": [ "A", "AAAA" ], "server": "dns_direct" },
       { "clash_mode": [ "Global" ], "query_type": [ "A", "AAAA" ], "server": "dns_proxy" },
       { "rule_set": [ "fakeip-filter", "microsoft-cn", "apple-cn", "google-cn", "games-cn" ], "query_type": [ "A", "AAAA" ], "server": "dns_direct", "rewrite_ttl": 1 },
-      { "rule_set": [ "proxy" ], "query_type": [ "A", "AAAA" ], "server": "dns_fakeip" },
+      { "rule_set": [ "games", "ai", "proxy" ], "query_type": [ "A", "AAAA" ], "server": "dns_fakeip" },
       { "rule_set": [ "private", "cn" ], "query_type": [ "A", "AAAA" ], "server": "dns_direct", "rewrite_ttl": 1 }
     ],
     "final": "dns_proxy",

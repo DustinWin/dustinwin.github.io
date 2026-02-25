@@ -30,6 +30,7 @@ proxy-providers:
       enable: true
       url: https://www.gstatic.com/generate_204
       interval: 600
+
   🆓 免费订阅:
     type: http
     # 修改为你的 Clash 订阅链接
@@ -61,8 +62,8 @@ proxies:
 proxy-groups:
   - {name: 节点选择, type: select, proxies: [香港节点, 台湾节点, 日本节点, 新加坡节点, 美国节点, 免费节点, 🆚 vless 节点], icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/proxy.png"}
   - {name: 网络测试, type: select, proxies: [全球直连, 节点选择, 香港节点, 台湾节点, 日本节点, 新加坡节点, 美国节点, 免费节点, 🆚 vless 节点], icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/networktest.png"}
-  - {name: AI 平台, type: select, proxies: [节点选择, 香港节点, 台湾节点, 日本节点, 新加坡节点, 美国节点, 免费节点, 🆚 vless 节点], icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/ai.png"}
-  - {name: Trackerslist, type: select, proxies: [全球直连, 节点选择], icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/trackerslist.png"}
+  - {name: 游戏平台, type: select, proxies: [节点选择, 香港节点, 台湾节点, 日本节点, 新加坡节点, 美国节点, 🆚 vless 节点], icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/games.png"}
+  - {name: AI 平台, type: select, proxies: [节点选择, 香港节点, 台湾节点, 日本节点, 新加坡节点, 美国节点, 🆚 vless 节点], icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/ai.png"}
   - {name: 游戏服务, type: select, proxies: [全球直连, 节点选择], icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/games-cn.png"}
   - {name: 微软服务, type: select, proxies: [全球直连, 节点选择], icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/microsoft-cn.png"}
   - {name: 谷歌服务, type: select, proxies: [全球直连, 节点选择], icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/google-cn.png"}
@@ -71,6 +72,7 @@ proxy-groups:
   - {name: 直连 IP, type: select, proxies: [全球直连, 节点选择], icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/cnip.png"}
   - {name: 代理域名, type: select, proxies: [节点选择, 全球直连], icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/global.png"}
   - {name: 电报消息, type: select, proxies: [节点选择, 香港节点, 台湾节点, 日本节点, 新加坡节点, 美国节点, 免费节点, 🆚 vless 节点], icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/telegram.png"}
+  - {name: Trackerslist, type: select, proxies: [全球直连, 节点选择], icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/trackerslist.png"}
   - {name: 私有网络, type: select, proxies: [全球直连], hidden: true, icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/private.png"}
   # 若机场的 UDP 质量不是很好，导致某游戏无法登录或进入房间，可以添加 `disable-udp: true` 配置项解决
   - {name: 漏网之鱼, type: select, proxies: [节点选择, 香港节点, 台湾节点, 日本节点, 新加坡节点, 美国节点, 免费节点, 🆚 vless 节点, 全球直连], icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/match.png"}
@@ -140,6 +142,14 @@ rule-providers:
     url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/games-cn.mrs"
     interval: 86400
 
+  games:
+    type: http
+    behavior: domain
+    format: mrs
+    path: ./ruleset/games.mrs
+    url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/games.mrs"
+    interval: 86400
+
   ai:
     type: http
     behavior: domain
@@ -196,6 +206,14 @@ rule-providers:
     url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/telegramip.mrs"
     interval: 86400
 
+  gamesip:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    path: ./ruleset/gamesip.mrs
+    url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/gamesip.mrs"
+    interval: 86400
+
 rules:
   - RULE-SET,private,私有网络
   - RULE-SET,trackerslist,Trackerslist
@@ -203,6 +221,7 @@ rules:
   - RULE-SET,apple-cn,苹果服务
   - RULE-SET,google-cn,谷歌服务
   - RULE-SET,games-cn,游戏服务
+  - RULE-SET,games,游戏平台
   - RULE-SET,ai,AI 平台
   - RULE-SET,networktest,网络测试
   - RULE-SET,proxy,代理域名
@@ -210,6 +229,7 @@ rules:
   - RULE-SET,privateip,私有网络,no-resolve
   - RULE-SET,cnip,直连 IP
   - RULE-SET,telegramip,电报消息,no-resolve
+  - RULE-SET,gamesip,游戏平台
   - MATCH,漏网之鱼
 ```
 
@@ -313,7 +333,7 @@ dns:
   fake-ip-range: 28.0.0.0/8
   fake-ip-range6: fc00::/16
   fake-ip-filter-mode: whitelist
-  fake-ip-filter: ['rule-set:proxy']
+  fake-ip-filter: ['rule-set:games,ai,proxy']
   respect-rules: true
   nameserver:
     # 推荐将 `ecs` 设置为当前宽带运营商分配的默认 DNS 的 IP 段
