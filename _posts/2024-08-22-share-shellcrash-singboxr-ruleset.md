@@ -97,7 +97,7 @@ tags: [sing-box, sing-boxr, ShellCrash, ruleset, rule_set, 分享, Router]
       { "rule_set": [ "networktest" ], "outbound": "网络测试" },
       { "rule_set": [ "proxy" ], "outbound": "代理域名" },
       { "rule_set": [ "cn" ], "outbound": "直连域名" },
-      { "rule_set": [ "privateip" ], "outbound": "私有网络" },
+      { "ip_is_private": true, "outbound": "私有网络" },
       { "rule_set": [ "telegramip" ], "outbound": "电报消息" },
       { "action": "resolve", "match_only": true },
       { "rule_set": [ "cnip" ], "outbound": "直连 IP" },
@@ -189,13 +189,6 @@ tags: [sing-box, sing-boxr, ShellCrash, ruleset, rule_set, 分享, Router]
         "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/cn.srs"
       },
       {
-        "tag": "privateip",
-        "type": "remote",
-        "format": "binary",
-        "path": "./ruleset/privateip.srs",
-        "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/privateip.srs"
-      },
-      {
         "tag": "telegramip",
         "type": "remote",
         "format": "binary",
@@ -229,28 +222,30 @@ tags: [sing-box, sing-boxr, ShellCrash, ruleset, rule_set, 分享, Router]
 {: .prompt-tip }
 
 注：
-- 1. 本 `outbounds` 配置中，将不同的节点类型（如：`Shadowsocks` 和 `Trojan`）分别配置 `"type": "urltest"` 进行延迟测试（可进入 [zashboard 面板](https://github.com/Zephyruso/zashboard) → 代理 → 设置 → 管理隐藏代理组，设置隐藏以简化 Dashboard 面板中的显示）
-- 2. 再将上述延迟测试最低的出站配置 `fallback` 进行自动回退
+- 1. 本 `outbounds` 配置中，将不同的节点类型（如：`Shadowsocks` 和 `Trojan`）分别配置 `"type": "urltest"` 进行延迟测试（可进入 [zashboard 面板](https://github.com/Zephyruso/zashboard) → 代理 → 设置 → 管理隐藏代理组，设置隐藏以简化 Dashboard 面板中的显示）。再将延迟测试最低的策略组配置 `"type": "loadbalance"` 进行负载均衡
+- 2. 将不同的优选节点分别配置 `"fallback": { "enabled": true }` 进行故障转移（可进入 zashboard 面板 → 代理 → 设置 → 管理隐藏代理组，设置隐藏以简化 Dashboard 面板中的显示）。再将故障转移后的策略组配置 `"type": "urltest"` 进行延迟测试
 
 ```json
 {
   "outbounds": [
-    { "tag": "香港节点", "type": "urltest", "outbounds": [ "香港-ss", "香港-trojan" ], "fallback": { "enabled": true, "max_delay": "200ms" } },
+    { "tag": "香港节点", "type": "loadbalance", "strategy": "consistent-hashing", "outbounds": [ "香港-ss", "香港-trojan" ] },
     { "tag": "香港-ss", "type": "urltest", "providers": [ "🛫 机场订阅" ], "include": "(?i)(🇭🇰.*ss)" },
     { "tag": "香港-trojan", "type": "urltest", "providers": [ "🛫 机场订阅" ], "include": "🇭🇰", "exclude": "(?i)(ss)" },
-    { "tag": "台湾节点", "type": "urltest", "outbounds": [ "台湾-ss", "台湾-trojan" ], "fallback": { "enabled": true, "max_delay": "200ms" } },
+    { "tag": "台湾节点", "type": "loadbalance", "strategy": "consistent-hashing", "outbounds": [ "台湾-ss", "台湾-trojan" ] },
     { "tag": "台湾-ss", "type": "urltest", "providers": [ "🛫 机场订阅" ], "include": "(?i)(🇹🇼.*ss)" },
     { "tag": "台湾-trojan", "type": "urltest", "providers": [ "🛫 机场订阅" ], "include": "🇹🇼", "exclude": "(?i)(ss)" },
-    { "tag": "日本节点", "type": "urltest", "outbounds": [ "日本-ss", "日本-trojan" ], "fallback": { "enabled": true, "max_delay": "200ms" } },
+    { "tag": "日本节点", "type": "loadbalance", "strategy": "consistent-hashing", "outbounds": [ "日本-ss", "日本-trojan" ] },
     { "tag": "日本-ss", "type": "urltest", "providers": [ "🛫 机场订阅" ], "include": "(?i)(🇯🇵.*ss)" },
     { "tag": "日本-trojan", "type": "urltest", "providers": [ "🛫 机场订阅" ], "include": "🇯🇵", "exclude": "(?i)(ss)" },
-    { "tag": "新加坡节点", "type": "urltest", "outbounds": [ "新加坡-ss", "新加坡-trojan" ], "fallback": { "enabled": true, "max_delay": "200ms" } },
+    { "tag": "新加坡节点", "type": "loadbalance", "strategy": "consistent-hashing", "outbounds": [ "新加坡-ss", "新加坡-trojan" ] },
     { "tag": "新加坡-ss", "type": "urltest", "providers": [ "🛫 机场订阅" ], "include": "(?i)(🇸🇬.*ss)" },
     { "tag": "新加坡-trojan", "type": "urltest", "providers": [ "🛫 机场订阅" ], "include": "🇸🇬", "exclude": "(?i)(ss)" },
-    { "tag": "美国节点", "type": "urltest", "outbounds": [ "美国-ss", "美国-trojan" ], "fallback": { "enabled": true, "max_delay": "400ms" } },
+    { "tag": "美国节点", "type": "loadbalance", "strategy": "consistent-hashing", "outbounds": [ "美国-ss", "美国-trojan" ] },
     { "tag": "美国-ss", "type": "urltest", "tolerance": 100, "providers": [ "🛫 机场订阅" ], "include": "(?i)(🇺🇸.*ss)" },
     { "tag": "美国-trojan", "type": "urltest", "tolerance": 100, "providers": [ "🛫 机场订阅" ], "include": "🇺🇸", "exclude": "(?i)(ss)" },
-    { "tag": "免费节点", "type": "urltest", "tolerance": 100, "providers": [ "🆓 免费订阅" ] }
+    { "tag": "免费节点", "type": "urltest", "tolerance": 100, "outbounds": [ "移动优选节点", "CF 优选节点" ] },
+    { "tag": "移动优选节点", "type": "urltest", "tolerance": 100, "providers": [ "🆓 免费订阅" ], "include": "(?i)(cmcc)", "fallback": { "enabled": true, "max_delay": "400ms" } },
+    { "tag": "CF 优选节点", "type": "urltest", "tolerance": 100, "providers": [ "🆓 免费订阅" ], "include": "(?i)(cfip)", "fallback": { "enabled": true, "max_delay": "400ms" } }
   ]
 }
 ```

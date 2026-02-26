@@ -15,7 +15,7 @@ tags: [Clash, mihomo, ShellCrash, AdGuard Home, ruleset, rule-set, 分享, Route
 5. 此方案适用于 AdGuard Home（以 ARM64 架构为例，且安装路径为 `/data/AdGuardHome`{: .filepath}）
 6. 此方案不建议启用 ShellCrash 配置脚本 → 2) 功能设置 → 3) 透明路由流量过滤 → 2) 过滤局域网设备，因不经过内核的设备在访问 `漏网之鱼` 域名时会遇到无法访问的情况
 7. 本人将路由器设置了每天早上 6 点重启，使得《[四](https://proxy-tutorials.dustinwin.us.kg/posts/share-shellcrashadguardhome-mihomo-ruleset/#%E5%9B%9B-%E6%B7%BB%E5%8A%A0%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1)》中设置的定时任务生效
-8. 若 `谷歌服务` 出现错误如 [Google Chrome](https://www.google.com/chrome/) 检查更新失败，请删除 `direct-nameserver` 配置项里的[阿里云公共 DNS](https://help.aliyun.com/zh/dns/what-is-alibaba-cloud-public-dns)
+8. 若 `谷歌服务` 出现错误如 [Google Chrome](https://www.google.com/chrome/) 检查更新失败，请删除 `nameserver` 或 `direct-nameserver` 配置项里的[阿里云公共 DNS](https://help.aliyun.com/zh/dns/what-is-alibaba-cloud-public-dns)
 
 ## 一、 生成配置文件 .yaml 文件直链
 具体方法此处不再赘述，请看《[生成带有自定义策略组和规则的 mihomo 配置文件直链-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/link-mihomo-ruleset)》，贴一下我使用的配置：
@@ -242,27 +242,29 @@ rules:
 {: .prompt-tip }
 
 注：
-- 1. 本 `proxy-groups` 配置中，将不同的节点类型（如：`Shadowsocks` 和 `Trojan`）分别配置 `type: url-test` 进行延迟测试，且配置 `hidden: true` 以简化 Dashboard 面板中的显示
-- 2. 再将上述延迟测试最低的策略组配置 `type: fallback` 进行自动回退
+- 1. 本 `proxy-groups` 配置中，将不同的节点类型（如：`Shadowsocks` 和 `Trojan`）分别配置 `type: url-test` 进行延迟测试，且配置 `hidden: true` 以简化 Dashboard 面板中的显示。再将延迟测试最低的策略组配置 `type: load-balance` 进行负载均衡
+- 2. 将不同的优选节点分别配置 `type: fallback` 进行故障转移，且配置 `hidden: true` 以简化 Dashboard 面板中的显示。再将故障转移后的策略组配置 `type: url-test` 进行延迟测试
 
 ```yaml
 proxy-groups:
-  - {name: 香港节点, type: fallback, proxies: ["香港-ss", "香港-trojan"], icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/hongkong.png"}
+  - {name: 香港节点, type: load-balance, strategy: consistent-hashing, proxies: [香港-ss, 香港-trojan], icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/hongkong.png"}
   - {name: 香港-ss, type: url-test, tolerance: 50, use: [🛫 机场订阅], filter: "(?i)(🇭🇰|港|hk|hongkong|hong kong)", exclude-type: "Trojan", hidden: true, icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/shadowsocks.png"}
   - {name: 香港-trojan, type: url-test, tolerance: 50, use: [🛫 机场订阅], filter: "(?i)(🇭🇰|港|hk|hongkong|hong kong)", exclude-type: "Shadowsocks", hidden: true, icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/trojan.png"}
-  - {name: 台湾节点, type: fallback, proxies: ["台湾-ss", "台湾-trojan"], icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/taiwan.png"}
+  - {name: 台湾节点, type: load-balance, strategy: consistent-hashing, proxies: [台湾-ss, 台湾-trojan], icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/taiwan.png"}
   - {name: 台湾-ss, type: url-test, tolerance: 50, use: [🛫 机场订阅], filter: "(?i)(🇹🇼|台|tw|taiwan|tai wan)", exclude-type: "Trojan", hidden: true, icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/shadowsocks.png"}
   - {name: 台湾-trojan, type: url-test, tolerance: 50, use: [🛫 机场订阅], filter: "(?i)(🇹🇼|台|tw|taiwan|tai wan)", exclude-type: "Shadowsocks", hidden: true, icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/trojan.png"}
-  - {name: 日本节点, type: fallback, proxies: ["日本-ss", "日本-trojan"], icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/japan.png"}
+  - {name: 日本节点, type: load-balance, strategy: consistent-hashing, proxies: [日本-ss, 日本-trojan], icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/japan.png"}
   - {name: 日本-ss, type: url-test, tolerance: 50, use: [🛫 机场订阅], filter: "(?i)(🇯🇵|日|jp|japan)", exclude-type: "Trojan", hidden: true, icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/shadowsocks.png"}
   - {name: 日本-trojan, type: url-test, tolerance: 50, use: [🛫 机场订阅], filter: "(?i)(🇯🇵|日|jp|japan)", exclude-type: "Shadowsocks", hidden: true, icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/trojan.png"}
-  - {name: 新加坡节点, type: fallback, proxies: ["新加坡-ss", "新加坡-trojan"], icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/singapore.png"}
+  - {name: 新加坡节点, type: load-balance, strategy: consistent-hashing, proxies: [新加坡-ss, 新加坡-trojan], icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/singapore.png"}
   - {name: 新加坡-ss, type: url-test, tolerance: 50, use: [🛫 机场订阅], filter: "(?i)(🇸🇬|新|sg|singapore)", exclude-type: "Trojan", hidden: true, icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/shadowsocks.png"}
   - {name: 新加坡-trojan, type: url-test, tolerance: 50, use: [🛫 机场订阅], filter: "(?i)(🇸🇬|新|sg|singapore)", exclude-type: "Shadowsocks", hidden: true, icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/trojan.png"}
-  - {name: 美国节点, type: fallback, proxies: ["美国-ss", "美国-trojan"], icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/unitedstates.png"}
+  - {name: 美国节点, type: load-balance, strategy: consistent-hashing, proxies: [美国-ss, 美国-trojan], icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/unitedstates.png"}
   - {name: 美国-ss, type: url-test, tolerance: 100, use: [🛫 机场订阅], filter: "(?i)(🇺🇸|美|us|unitedstates|united states)", exclude-type: "Trojan", hidden: true, icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/shadowsocks.png"}
   - {name: 美国-trojan, type: url-test, tolerance: 100, use: [🛫 机场订阅], filter: "(?i)(🇺🇸|美|us|unitedstates|united states)", exclude-type: "Shadowsocks", hidden: true, icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/trojan.png"}
-  - {name: 免费节点, type: url-test, tolerance: 100, use: [🆓 免费订阅], icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/free.png"}
+  - {name: 免费节点, type: url-test, tolerance: 100, proxies: [移动优选节点, CF 优选节点], icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/free.png"}
+  - {name: 移动优选节点, type: fallback, use: [🆓 免费订阅], filter: "(?i)(cmcc)", hidden: true, icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/cmcc.png"}
+  - {name: CF 优选节点, type: fallback, use: [🆓 免费订阅], filter: "(?i)(cfip)", hidden: true, icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/cfip.png"}
 ```
 
 ---
@@ -311,7 +313,7 @@ dns:
   enhanced-mode: fake-ip
   fake-ip-range: 28.0.0.0/8
   fake-ip-range6: fc00::/16
-  fake-ip-filter: ['rule-set:fakeip-filter,trackerslist,private,cn']
+  fake-ip-filter: ['rule-set:fakeip-filter,private,trackerslist,cn']
   nameserver:
     - https://doh.pub/dns-query
     - quic://dns.alidns.com:853
@@ -360,7 +362,7 @@ dns:
     - https://doh.pub/dns-query
     - quic://dns.alidns.com:853
   nameserver-policy:
-    'rule-set:fakeip-filter,microsoft-cn,apple-cn,google-cn,games-cn,private,cn':
+    'rule-set:fakeip-filter,private,microsoft-cn,apple-cn,google-cn,games-cn,cn':
       - https://doh.pub/dns-query
       - quic://dns.alidns.com:853
 ```
