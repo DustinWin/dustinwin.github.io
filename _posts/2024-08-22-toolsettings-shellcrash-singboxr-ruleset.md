@@ -15,7 +15,7 @@ tags: [sing-box, sing-boxr, ShellCrash, ruleset, rule_set, 基础, Router]
 连接 SSH 后执行如下命令：
 
 ```shell
-curl -o /tmp/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-dev-linux-arm64.upx
+curl -o /tmp/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-main-linux-arm64.upx
 ```
 
 ## 二、 添加定时任务
@@ -25,7 +25,7 @@ curl -o /tmp/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/pr
 - 2. 须重启 ShellCrash 服务后生效
 
 ```shell
-201#curl -o $CRASHDIR/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-dev-linux-arm64.upx >/dev/null 2>&1#更新sing-boxr内核
+201#curl -o $CRASHDIR/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-main-linux-arm64.upx >/dev/null 2>&1#更新sing-boxr内核
 202#curl -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/Dashboard/zashboard.tar.gz | tar -zx -C $CRASHDIR/ui/ >/dev/null 2>&1#更新zashboard面板
 ```
 

@@ -359,7 +359,7 @@ tags: [sing-box, sing-boxr, Android, ruleset, rule_set, 分享]
 ---
 
 ## 二、 导入配置文件并启动 sing-boxr
-1. 进入 sing-boxr for Android → 配置 → 新配置 → 手动创建，“类型”选择“远程”，在“URL”处粘贴《[一](https://proxy-tutorials.dustinwin.us.kg/posts/share-android-singboxr-ruleset/#%E4%B8%80-%E7%94%9F%E6%88%90%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-json-%E6%96%87%E4%BB%B6%E7%9B%B4%E9%93%BE)》中生成的配置文件 .json 直链，“自动更新间隔”填写 `1440`，最后点击“创建”
+1. 进入 sing-boxr for Android → 仪表 → 新配置 → 手动创建，“类型”选择“远程”，在“URL”处粘贴《[一](https://proxy-tutorials.dustinwin.us.kg/posts/share-android-singboxr-ruleset/#%E4%B8%80-%E7%94%9F%E6%88%90%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-json-%E6%96%87%E4%BB%B6%E7%9B%B4%E9%93%BE)》中生成的配置文件 .json 直链，“自动更新间隔”填写 `1440`，最后点击“创建”
 2. 进入 sing-boxr for Android → 仪表，点击“▶️”图标即可启动 sing-boxr 服务
 - 注：首次启用可能会报错，重试几次即可
 
