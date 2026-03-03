@@ -185,19 +185,19 @@ proxy-providers:
     - 🇸🇬 新加坡节点
     - 🇺🇸 美国节点
 
-- name: 🛡️ 直连域名
+- name: 🇨🇳 国内域名
   type: select
   proxies:
     - 🎯 全球直连
     - 🈯 节点指定
 
-- name: 🀄️ 直连 IP
+- name: 🀄️ 国内 IP
   type: select
   proxies:
     - 🎯 全球直连
     - 🈯 节点指定
 
-- name: 🧱 代理域名
+- name: 🌎 国外域名
   type: select
   proxies:
     - 🈯 节点指定
@@ -304,10 +304,10 @@ proxy-providers:
 - GEOSITE,media,🌍 国外媒体
 - GEOSITE,ai,🤖 AI 平台
 - GEOSITE,networktest,📈 网络测速
-- GEOSITE,proxy,🧱 代理域名
-- GEOSITE,cn,🛡️ 直连域名
+- GEOSITE,proxy,🌎 国外域名
+- GEOSITE,cn,🇨🇳 国内域名
 - GEOIP,private,🔒 私有网络,no-resolve
-- GEOIP,cn,🀄️ 直连 IP
+- GEOIP,cn,🀄️ 国内 IP
 - GEOIP,telegram,📲 电报消息,no-resolve
 - GEOIP,games,🕹️ 游戏平台
 - GEOIP,media,🌍 国外媒体

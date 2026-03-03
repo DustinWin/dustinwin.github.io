@@ -53,11 +53,17 @@ tags: [sing-box, sing-boxr, Windows, ruleset, rule_set, 分享]
         "predefined": {
           "miwifi.com": [ "192.168.31.1", "127.0.0.1" ],
           "doh.pub": [ "1.12.12.12", "120.53.53.53", "2402:4e00::" ],
-          "dns.google": [ "8.8.8.8", "8.8.4.4", "2001:4860:4860::8888", "2001:4860:4860::8844" ]
+          "dns.alidns.com": [ "223.5.5.5", "223.6.6.6", "2400:3200::1", "2400:3200:baba::1" ],
+          "dns.google": [ "8.8.8.8", "8.8.4.4", "2001:4860:4860::8888", "2001:4860:4860::8844" ],
+          "dns11.quad9.net": [ "9.9.9.11", "149.112.112.11", "2620:fe::11", "2620:fe::fe:11" ]
         }
       },
-      { "tag": "dns_direct", "type": "https", "server": "doh.pub", "domain_resolver": "dns_hosts" },
-      { "tag": "dns_proxy", "type": "https", "server": "dns.google", "domain_resolver": "dns_hosts", "detour": "GLOBAL" },
+      { "tag": "dns_dnspod", "type": "https", "server": "doh.pub", "domain_resolver": "dns_hosts" },
+      { "tag": "dns_alidns", "type": "quic", "server": "dns.alidns.com", "domain_resolver": "dns_hosts" },
+      { "tag": "dns_google", "type": "https", "server": "dns.google", "domain_resolver": "dns_hosts", "detour": "GLOBAL" },
+      { "tag": "dns_quad9", "type": "https", "server": "dns11.quad9.net", "domain_resolver": "dns_hosts", "detour": "GLOBAL" },
+      { "tag": "dns_direct", "type": "group", "servers": [ "dns_dnspod", "dns_alidns" ] },
+      { "tag": "dns_proxy", "type": "group", "servers": [ "dns_google", "dns_quad9" ] },
       { "tag": "dns_fakeip", "type": "fakeip", "inet4_range": "28.0.0.0/8", "inet6_range": "fc00::/16" }
     ],
     "rules": [
@@ -85,9 +91,9 @@ tags: [sing-box, sing-boxr, Windows, ruleset, rule_set, 分享]
     { "tag": "微软服务", "type": "selector", "outbounds": [ "全球直连", "节点选择" ] },
     { "tag": "谷歌服务", "type": "selector", "outbounds": [ "全球直连", "节点选择" ] },
     { "tag": "苹果服务", "type": "selector", "outbounds": [ "全球直连", "节点选择" ] },
-    { "tag": "直连域名", "type": "selector", "outbounds": [ "全球直连", "节点选择" ] },
-    { "tag": "直连 IP", "type": "selector", "outbounds": [ "全球直连", "节点选择" ] },
-    { "tag": "代理域名", "type": "selector", "outbounds": [ "节点选择", "全球直连" ] },
+    { "tag": "国内域名", "type": "selector", "outbounds": [ "全球直连", "节点选择" ] },
+    { "tag": "国内 IP", "type": "selector", "outbounds": [ "全球直连", "节点选择" ] },
+    { "tag": "国外域名", "type": "selector", "outbounds": [ "节点选择", "全球直连" ] },
     { "tag": "电报消息", "type": "selector", "outbounds": [ "节点选择", "香港节点", "台湾节点", "日本节点", "新加坡节点", "美国节点", "免费节点", "🆚 vless 节点" ] },
     { "tag": "直连软件", "type": "selector", "outbounds": [ "全球直连" ] },
     { "tag": "Trackerslist", "type": "selector", "outbounds": [ "全球直连", "节点选择" ] },
@@ -135,12 +141,12 @@ tags: [sing-box, sing-boxr, Windows, ruleset, rule_set, 分享]
       { "rule_set": [ "games" ], "outbound": "游戏平台" },
       { "rule_set": [ "ai" ], "outbound": "AI 平台" },
       { "rule_set": [ "networktest" ], "outbound": "网络测试" },
-      { "rule_set": [ "proxy" ], "outbound": "代理域名" },
-      { "rule_set": [ "cn" ], "outbound": "直连域名" },
+      { "rule_set": [ "proxy" ], "outbound": "国外域名" },
+      { "rule_set": [ "cn" ], "outbound": "国内域名" },
       { "ip_is_private": true, "outbound": "私有网络" },
       { "rule_set": [ "telegramip" ], "outbound": "电报消息" },
       { "action": "resolve", "match_only": true },
-      { "rule_set": [ "cnip" ], "outbound": "直连 IP" },
+      { "rule_set": [ "cnip" ], "outbound": "国内 IP" },
       { "rule_set": [ "gamesip" ], "outbound": "游戏平台" }
     ],
     "rule_set": [
@@ -328,11 +334,17 @@ tags: [sing-box, sing-boxr, Windows, ruleset, rule_set, 分享]
         "predefined": {
           "miwifi.com": [ "192.168.31.1", "127.0.0.1" ],
           "doh.pub": [ "1.12.12.12", "120.53.53.53", "2402:4e00::" ],
-          "dns.google": [ "8.8.8.8", "8.8.4.4", "2001:4860:4860::8888", "2001:4860:4860::8844" ]
+          "dns.alidns.com": [ "223.5.5.5", "223.6.6.6", "2400:3200::1", "2400:3200:baba::1" ],
+          "dns.google": [ "8.8.8.8", "8.8.4.4", "2001:4860:4860::8888", "2001:4860:4860::8844" ],
+          "dns11.quad9.net": [ "9.9.9.11", "149.112.112.11", "2620:fe::11", "2620:fe::fe:11" ]
         }
       },
-      { "tag": "dns_direct", "type": "https", "server": "doh.pub", "domain_resolver": "dns_hosts" },
-      { "tag": "dns_proxy", "type": "https", "server": "dns.google", "domain_resolver": "dns_hosts", "detour": "GLOBAL" },
+      { "tag": "dns_dnspod", "type": "https", "server": "doh.pub", "domain_resolver": "dns_hosts" },
+      { "tag": "dns_alidns", "type": "quic", "server": "dns.alidns.com", "domain_resolver": "dns_hosts" },
+      { "tag": "dns_google", "type": "https", "server": "dns.google", "domain_resolver": "dns_hosts", "detour": "GLOBAL" },
+      { "tag": "dns_quad9", "type": "https", "server": "dns11.quad9.net", "domain_resolver": "dns_hosts", "detour": "GLOBAL" },
+      { "tag": "dns_direct", "type": "group", "servers": [ "dns_dnspod", "dns_alidns" ] },
+      { "tag": "dns_proxy", "type": "group", "servers": [ "dns_google", "dns_quad9" ] },
       { "tag": "dns_fakeip", "type": "fakeip", "inet4_range": "28.0.0.0/8", "inet6_range": "fc00::/16" }
     ],
     "rules": [
@@ -385,7 +397,7 @@ Windows Registry Editor Version 5.00
   echo "导入 sing-boxr 内核和配置文件..."
   cd "$PROGRAMFILES"
   mkdir -p sing-box/ui
-  curl -o sing-box/sing-box.exe -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-dev-windows-amd64-v3.exe
+  curl -o sing-box/sing-box.exe -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-reF1nd-dev-windows-amd64-v3.exe
   curl -o sing-box/config.json -L https://ghfast.top/{.json 配置文件直链}
   echo "导入 sing-boxr 内核和配置文件成功"
 
@@ -436,7 +448,7 @@ Windows Registry Editor Version 5.00
 
 echo "下载 sing-boxr 相关文件..."
 cd "$PROGRAMFILES/sing-box"
-curl -o "$USERPROFILE/Downloads/sing-box.exe" -L https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-dev-windows-amd64-v3.exe
+curl -o "$USERPROFILE/Downloads/sing-box.exe" -L https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-reF1nd-dev-windows-amd64-v3.exe
 curl -o "$USERPROFILE/Downloads/config.json" -L {.json 配置文件直链}
 echo "下载 sing-boxr 相关文件成功"
 

@@ -100,9 +100,9 @@ proxy-groups:
   - {name: 🇬 谷歌服务, type: select, proxies: [🎯 全球直连, 🚀 节点选择]}
   - {name: 🍎 苹果服务, type: select, proxies: [🎯 全球直连, 🚀 节点选择]}
   - {name: 🌍 国外媒体, type: select, proxies: [🚀 节点选择, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇺🇸 美国节点]}
-  - {name: 🛡️ 直连域名, type: select, proxies: [🎯 全球直连, 🚀 节点选择]}
-  - {name: 🀄️ 直连 IP, type: select, proxies: [🎯 全球直连, 🚀 节点选择]}
-  - {name: 🧱 代理域名, type: select, proxies: [🚀 节点选择, 🎯 全球直连]}
+  - {name: 🇨🇳 国内域名, type: select, proxies: [🎯 全球直连, 🚀 节点选择]}
+  - {name: 🀄️ 国内 IP, type: select, proxies: [🎯 全球直连, 🚀 节点选择]}
+  - {name: 🌎 国外域名, type: select, proxies: [🚀 节点选择, 🎯 全球直连]}
   - {name: 📲 电报消息, type: select, proxies: [🚀 节点选择, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇺🇸 美国节点, 🆓 免费节点]}
   # 若使用 ShellCrash，由于无法判断本机进程（默认 `find-process-mode: off`），需删除此条 `⬇️ 直连软件`；若在面板 Dashboard 中需隐藏该策略组，可添加 `hidden: true` 配置项
   - {name: ⬇️ 直连软件, type: select, proxies: [🎯 全球直连], hidden: true}
@@ -301,10 +301,10 @@ rules:
   - RULE-SET,media,🌍 国外媒体
   - RULE-SET,ai,🤖 AI 平台
   - RULE-SET,networktest,📈 网络测试
-  - RULE-SET,proxy,🧱 代理域名
-  - RULE-SET,cn,🛡️ 直连域名
+  - RULE-SET,proxy,🌎 国外域名
+  - RULE-SET,cn,🇨🇳 国内域名
   - RULE-SET,privateip,🔒 私有网络,no-resolve
-  - RULE-SET,cnip,🀄️ 直连 IP
+  - RULE-SET,cnip,🀄️ 国内 IP
   - RULE-SET,telegramip,📲 电报消息,no-resolve
   - RULE-SET,gamesip,🕹️ 游戏平台
   - RULE-SET,mediaip,🌍 国外媒体
@@ -381,7 +381,7 @@ proxy-groups:
   - {name: 🕹️ 游戏平台, type: select, proxies: [🚀 节点选择, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇺🇸 美国节点]}
   - {name: 🤖 AI 平台, type: select, proxies: [🚀 节点选择, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇺🇸 美国节点]}
   - {name: 🌍 国外媒体, type: select, proxies: [🚀 节点选择, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇺🇸 美国节点]}
-  - {name: 🧱 代理域名, type: select, proxies: [🚀 节点选择, 🎯 全球直连]}
+  - {name: 🌎 国外域名, type: select, proxies: [🚀 节点选择, 🎯 全球直连]}
   - {name: 📲 电报消息, type: select, proxies: [🚀 节点选择, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇺🇸 美国节点, 🆓 免费节点]}
   - {name: 📋 Trackerslist, type: select, proxies: [🎯 全球直连, 🚀 节点选择]}
   # 若在面板 Dashboard 中需隐藏该策略组，可添加 `hidden: true` 配置项
@@ -512,8 +512,8 @@ rules:
   - RULE-SET,media,🌍 国外媒体
   - RULE-SET,ai,🤖 AI 平台
   - RULE-SET,networktest,📈 网络测试
-  - RULE-SET,tld-proxy,🧱 代理域名
-  - RULE-SET,gfw,🧱 代理域名
+  - RULE-SET,tld-proxy,🌎 国外域名
+  - RULE-SET,gfw,🌎 国外域名
   - RULE-SET,telegramip,📲 电报消息,no-resolve
   - RULE-SET,gamesip,🕹️ 游戏平台
   - RULE-SET,mediaip,🌍 国外媒体

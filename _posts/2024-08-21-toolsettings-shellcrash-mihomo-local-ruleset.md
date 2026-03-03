@@ -331,19 +331,19 @@ rule-providers:
     - 🇸🇬 新加坡节点
     - 🇺🇸 美国节点
 
-- name: 🛡️ 直连域名
+- name: 🇨🇳 国内域名
   type: select
   proxies:
     - 🎯 全球直连
     - 🈯 节点指定
 
-- name: 🀄️ 直连 IP
+- name: 🀄️ 国内 IP
   type: select
   proxies:
     - 🎯 全球直连
     - 🈯 节点指定
 
-- name: 🧱 代理域名
+- name: 🌎 国外域名
   type: select
   proxies:
     - 🈯 节点指定
@@ -450,10 +450,10 @@ rule-providers:
 - RULE-SET,media,🌍 国外媒体
 - RULE-SET,ai,🤖 AI 平台
 - RULE-SET,networktest,📈 网络测试
-- RULE-SET,proxy,🧱 代理域名
-- RULE-SET,cn,🛡️ 直连域名
+- RULE-SET,proxy,🌎 国外域名
+- RULE-SET,cn,🇨🇳 国内域名
 - RULE-SET,privateip,🔒 私有网络,no-resolve
-- RULE-SET,cnip,🀄️ 直连 IP
+- RULE-SET,cnip,🀄️ 国内 IP
 - RULE-SET,telegramip,📲 电报消息,no-resolve
 - RULE-SET,gamesip,🕹️ 游戏平台
 - RULE-SET,mediaip,🌍 国外媒体
