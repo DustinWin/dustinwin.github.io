@@ -100,8 +100,7 @@ tags: [sing-box, sing-boxr, ShellCrash, ruleset, rule_set, 分享, Router]
       { "ip_is_private": true, "outbound": "私有网络" },
       { "rule_set": [ "telegramip" ], "outbound": "电报消息" },
       { "action": "resolve", "match_only": true },
-      { "rule_set": [ "cnip" ], "outbound": "国内 IP" },
-      { "rule_set": [ "gamesip" ], "outbound": "游戏平台" }
+      { "rule_set": [ "cnip" ], "outbound": "国内 IP" }
     ],
     "rule_set": [
       {
@@ -201,13 +200,6 @@ tags: [sing-box, sing-boxr, ShellCrash, ruleset, rule_set, 分享, Router]
         "format": "binary",
         "path": "./ruleset/cnip.srs",
         "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/cnip.srs"
-      },
-      {
-        "tag": "gamesip",
-        "type": "remote",
-        "format": "binary",
-        "path": "./ruleset/gamesip.srs",
-        "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/gamesip.srs"
       }
     ],
     "final": "漏网之鱼",

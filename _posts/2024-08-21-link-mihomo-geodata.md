@@ -148,7 +148,6 @@ rules:
   - GEOIP,private,🔒 私有网络,no-resolve
   - GEOIP,cn,🀄️ 国内 IP
   - GEOIP,telegram,📲 电报消息,no-resolve
-  - GEOIP,games,🕹️ 游戏平台
   - GEOIP,media,🌍 国外媒体
   - MATCH,🐟 漏网之鱼
 ```
@@ -260,7 +259,6 @@ rules:
   - GEOSITE,tld-proxy,🌎 国外域名
   - GEOSITE,gfw,🌎 国外域名
   - GEOIP,telegram,📲 电报消息,no-resolve
-  - GEOIP,games,🕹️ 游戏平台
   - GEOIP,media,🌍 国外媒体
   - MATCH,🐟 漏网之鱼
 ```

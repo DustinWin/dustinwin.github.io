@@ -150,7 +150,6 @@ tags: [sing-box, sing-boxr, ShellCrash, ruleset, rule_set, 进阶, 本地, Route
       // 将目标域名解析成 IP 后与下方的 IP 规则进行匹配，提高兼容性
       { "action": "resolve", "match_only": true },
       { "rule_set": [ "cnip" ], "outbound": "🀄️ 国内 IP" },
-      { "rule_set": [ "gamesip" ], "outbound": "🕹️ 游戏平台" },
       { "rule_set": [ "mediaip" ], "outbound": "🌍 国外媒体" }
     ],
     // 规则集（binary 文件每天自动更新）
@@ -266,13 +265,6 @@ tags: [sing-box, sing-boxr, ShellCrash, ruleset, rule_set, 进阶, 本地, Route
         "format": "binary",
         "path": "./ruleset/cnip.srs",
         "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/cnip.srs"
-      },
-      {
-        "tag": "gamesip",
-        "type": "remote",
-        "format": "binary",
-        "path": "./ruleset/gamesip.srs",
-        "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/gamesip.srs"
       },
       {
         "tag": "mediaip",

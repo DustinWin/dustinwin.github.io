@@ -101,7 +101,6 @@ rules:
   - GEOIP,private,私有网络,no-resolve
   - GEOIP,cn,国内 IP
   - GEOIP,telegram,电报消息,no-resolve
-  - GEOIP,games,游戏平台
   - MATCH,漏网之鱼
 ```
 
@@ -157,8 +156,8 @@ sc
 
 ```shell
 curl -o $CRASHDIR/GeoSite.dat -L https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-geodata/geosite-all.dat
-curl -o $CRASHDIR/GeoIP.dat -L https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-geodata/geoip.dat
-curl -o $CRASHDIR/Country.mmdb -L https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-geodata/Country.mmdb
+curl -o $CRASHDIR/GeoIP.dat -L https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-geodata/geoip-lite.dat
+curl -o $CRASHDIR/Country.mmdb -L https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-geodata/Country-lite.mmdb
 curl -o $CRASHDIR/cn_ip.txt -L https://cdn.jsdelivr.net/gh/DustinWin/geoip@ips/cn_ipv4.txt
 curl -o $CRASHDIR/cn_ipv6.txt -L https://cdn.jsdelivr.net/gh/DustinWin/geoip@ips/cn_ipv6.txt
 ```
@@ -248,7 +247,7 @@ dns:
 
 ```shell
 201#curl -o $CRASHDIR/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-meta-linux-arm64.upx >/dev/null 2>&1#更新mihomo内核
-202#curl -o $CRASHDIR/GeoSite.dat -L https://ghfast.top/https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-geodata/geosite-all.dat && curl -o $CRASHDIR/GeoIP.dat -L https://ghfast.top/https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-geodata/geoip.dat && curl -o $CRASHDIR/Country.mmdb -L https://ghfast.top/https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-geodata/Country.mmdb >/dev/null 2>&1#更新geodata路由规则文件
+202#curl -o $CRASHDIR/GeoSite.dat -L https://ghfast.top/https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-geodata/geosite-all.dat && curl -o $CRASHDIR/GeoIP.dat -L https://ghfast.top/https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-geodata/geoip-lite.dat && curl -o $CRASHDIR/Country.mmdb -L https://ghfast.top/https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-geodata/Country-lite.mmdb >/dev/null 2>&1#更新geodata路由规则文件
 203#curl -o $CRASHDIR/cn_ip.txt -L https://ghfast.top/https://github.com/DustinWin/geoip/releases/download/ips/cn_ipv4.txt && curl -o $CRASHDIR/cn_ipv6.txt -L https://ghfast.top/https://github.com/DustinWin/geoip/releases/download/ips/cn_ipv6.txt >/dev/null 2>&1#更新CN_IP文件
 ```
 

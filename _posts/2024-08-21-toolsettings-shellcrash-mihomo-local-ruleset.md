@@ -198,14 +198,6 @@ rule-providers:
     url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/telegramip.mrs"
     interval: 86400
 
-  gamesip:
-    type: http
-    behavior: ipcidr
-    format: mrs
-    path: ./ruleset/gamesip.mrs
-    url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/gamesip.mrs"
-    interval: 86400
-
   mediaip:
     type: http
     behavior: ipcidr
@@ -455,7 +447,6 @@ rule-providers:
 - RULE-SET,privateip,🔒 私有网络,no-resolve
 - RULE-SET,cnip,🀄️ 国内 IP
 - RULE-SET,telegramip,📲 电报消息,no-resolve
-- RULE-SET,gamesip,🕹️ 游戏平台
 - RULE-SET,mediaip,🌍 国外媒体
 ```
 
