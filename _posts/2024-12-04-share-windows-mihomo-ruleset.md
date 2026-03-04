@@ -382,30 +382,94 @@ Windows Registry Editor Version 5.00
   ```shell
   #!/bin/bash
 
-  echo "导入 mihomo 内核和配置文件..."
-  cd "$PROGRAMFILES"
-  mkdir -p mihomo/profiles mihomo/ui
-  curl -o mihomo/mihomo.exe -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-meta-windows-amd64-v3.exe
-  curl -o mihomo/profiles/config.yaml -L https://ghfast.top/{.yaml 配置文件直链}
-  echo "导入 mihomo 内核和配置文件成功"
+  title="安装、更新 mihomo 内核和配置文件"
 
-  echo "安装 zashboard 面板..."
-  curl -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/Dashboard/zashboard.tar.gz | tar -zx -C mihomo/ui
-  echo "安装 zashboard 面板成功"
+  while true; do
+    clear
+    echo "==============================================="
+    echo "        安装、更新 mihomo 内核和配置文件       "
+    echo "==============================================="
+    echo
+    echo "1. 安装 mihomo 内核和面板"
+    echo "2. 导入配置文件"
+    echo "3. 更新 mihomo 内核"
+    echo "4. 启动 mihomo 服务"
+    echo "0. 退出"
+    echo "==============================================="
+    read -p "请选择操作（0-4）：" choice
+    case $choice in
+      1)
+        echo "安装 mihomo 内核和面板..."
+        cd "$PROGRAMFILES"
+        mkdir -p mihomo/profiles mihomo/ui
+        curl -o mihomo/mihomo.exe -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-meta-windows-amd64-v3.exe
+        curl -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/Dashboard/zashboard.tar.gz | tar -zx -C mihomo/ui
+        echo "安装 mihomo 内核和面板成功"
 
-  echo "赋予 mihomo 权限..."
-  cmd //c "takeown /f mihomo /a /r /d y"
-  icacls mihomo /inheritance:r
-  icacls mihomo /remove[:g] "TrustedInstaller"
-  icacls mihomo /remove[:g] "CREATOR OWNER"
-  icacls mihomo /remove[:g] "ALL APPLICATION PACKAGES"
-  icacls mihomo /remove[:g] "所有受限制的应用程序包"
-  icacls mihomo /grant[:r] "SYSTEM:(OI)(CI)F"
-  icacls mihomo /grant[:r] "Administrators:(OI)(CI)F"
-  icacls mihomo /grant[:r] "Users:(OI)(CI)F"
-  echo "赋予 mihomo 权限成功"
+        echo "赋予 mihomo 权限..."
+        cmd //c "takeown /f mihomo /a /r /d y"
+        icacls mihomo /inheritance:r
+        icacls mihomo /remove[:g] "TrustedInstaller"
+        icacls mihomo /remove[:g] "CREATOR OWNER"
+        icacls mihomo /remove[:g] "ALL APPLICATION PACKAGES"
+        icacls mihomo /remove[:g] "所有受限制的应用程序包"
+        icacls mihomo /grant[:r] "SYSTEM:(OI)(CI)F"
+        icacls mihomo /grant[:r] "Administrators:(OI)(CI)F"
+        icacls mihomo /grant[:r] "Users:(OI)(CI)F"
+        echo "赋予 mihomo 权限成功"
 
-  read -p "按任意键退出" -n1 -s
+        read -n1 -r -p "按任意键返回菜单..."
+        ;;
+      2)
+        echo "下载配置文件..."
+        curl -o "$USERPROFILE/Downloads/config.yaml" -L https://ghfast.top/{.yaml 配置文件直链}
+        echo "下载配置文件成功"
+
+        echo "结束 mihomo 相关进程..."
+        taskkill //f //t //im "mihomo*"
+        echo "结束 mihomo 相关进程成功"
+
+        echo "导入配置文件..."
+        cd "$PROGRAMFILES/mihomo"
+        mv -f "$USERPROFILE/Downloads/config.yaml" profiles
+        echo "导入配置文件成功"
+
+        read -n1 -r -p "按任意键返回菜单..."
+        ;;
+      3)
+        echo "下载 mihomo 内核..."
+        curl -o "$USERPROFILE/Downloads/mihomo.exe" -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-meta-windows-amd64-v3.exe
+        echo "下载 mihomo 内核成功"
+
+        echo "结束 mihomo 相关进程..."
+        taskkill //f //t //im "mihomo*"
+        echo "结束 mihomo 相关进程成功"
+
+        echo "更新 mihomo 内核..."
+        cd "$PROGRAMFILES/mihomo"
+        mv -f "$USERPROFILE/Downloads/mihomo.exe" .
+        echo "更新 mihomo 内核成功"
+
+        read -n1 -r -p "按任意键返回菜单..."
+        ;;
+      4)
+        echo "启动 mihomo 服务..."
+        cd "$PROGRAMFILES/mihomo"
+        start //min mihomo.exe -d profiles
+        echo "启动 mihomo 服务成功"
+
+        read -n1 -r -p "按任意键返回菜单..."
+        ;;
+      0)
+        echo "退出程序"
+        exit 0
+        ;;
+      *)
+        echo "无效选择，请重新输入"
+        read -n1 -r -p "按任意键返回菜单..."
+        ;;
+    esac
+  done
   ```
 
 - ② 另存为 .sh 文件，右击并选择“以管理员身份运行”
@@ -425,40 +489,6 @@ Windows Registry Editor Version 5.00
   - ➋ 右击快捷方式并点击“属性” → “高级”，勾选“以管理员身份运行”并“确定”
   - ➌ 若想开机启动 mihomo，可搜索“Windows 添加任务计划”教程自行添加
 
-## 四、 更新 mihomo 内核和配置文件
-编辑本文文档，粘贴如下内容：  
-注：
-- ① 将《[一](https://proxy-tutorials.dustinwin.us.kg/posts/share-windows-mihomo-ruleset/#%E4%B8%80-%E7%94%9F%E6%88%90%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-yaml-%E6%96%87%E4%BB%B6%E7%9B%B4%E9%93%BE)》中生成的配置文件 .yaml 文件直链替换下面命令中的 `{.yaml 配置文件直链}`
-- ② 或者删除此条命令，直接进入 `%PROGRAMFILES%\mihomo`{: .filepath} 文件夹，修改 config.yaml 文件内的配置内容
-
-```shell
-#!/bin/bash
-
-echo "下载 mihomo 相关文件..."
-cd "$PROGRAMFILES/mihomo"
-curl -o "$USERPROFILE/Downloads/mihomo.exe" -L https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-meta-windows-amd64-v3.exe
-curl -o "$USERPROFILE/Downloads/config.yaml" -L {.yaml 配置文件直链}
-echo "下载 mihomo 相关文件成功"
-
-echo "结束 mihomo 相关进程..."
-taskkill //f //t //im "mihomo*"
-echo "结束 mihomo 相关进程成功"
-
-echo "更新 mihomo 内核和配置文件..."
-mv -f "$USERPROFILE/Downloads/mihomo.exe" .
-mv -f "$USERPROFILE/Downloads/config.yaml" profiles
-echo "更新 mihomo 内核和配置文件成功"
-
-echo "等待 10 秒启动 mihomo 服务..."
-sleep 10
-start //min mihomo.exe -d profiles
-echo "启动 mihomo 服务成功"
-
-read -p "按任意键退出" -n1 -s
-```
-
-另存为 .sh 文件，右击并选择“以管理员身份运行”
-
-## 五、 访问 Dashboard 面板
+## 四、 访问 Dashboard 面板
 .yaml 文件已配置 [zashboard 面板](https://github.com/Zephyruso/zashboard)  
 打开 <http://miwifi.com:9999/ui/> 后，“端口”输入 `9999`，点击“提交”，即可访问 Dashboard 面板
