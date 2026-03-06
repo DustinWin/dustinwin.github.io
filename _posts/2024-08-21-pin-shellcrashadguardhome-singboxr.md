@@ -29,7 +29,7 @@ pin: true
 
 ### 2. sing-box reF1nd 版内核
 第三方下载：<https://github.com/DustinWin/proxy-tools/releases/tag/sing-box>  
-下载 sing-box-ref1nd-dev-linux-armv8.tar.gz 文件
+下载 sing-box-ref1nd-test-linux-armv8.tar.gz 文件
 
 ### 3. PuTTY
 官方下载：<https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html>  

@@ -39,14 +39,14 @@ export url='https://cdn.jsdelivr.net/gh/juewuy/ShellCrash@master' && sh -c "$(cu
 curl -o /tmp/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-meta-linux-arm64.upx && sc
 # mihomo 内核 Alpha 版
 curl -o /tmp/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-alpha-linux-arm64.upx && sc
-# sing-box 内核 reF1nd-main 版
-curl -o /tmp/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-main-linux-arm64.upx && sc
-# sing-box 内核 reF1nd-dev 版
-curl -o /tmp/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-dev-linux-arm64.upx && sc
-# sing-box 内核 Release 版
-curl -o /tmp/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-release-linux-arm64.upx && sc
-# sing-box 内核 Dev 版
-curl -o /tmp/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-dev-linux-arm64.upx && sc
+# sing-box 内核 reF1nd-Stable 版
+curl -o /tmp/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-stable-linux-arm64.upx && sc
+# sing-box 内核 reF1nd-Test 版
+curl -o /tmp/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-test-linux-arm64.upx && sc
+# sing-box 内核 Stable 版
+curl -o /tmp/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-stable-linux-arm64.upx && sc
+# sing-box 内核 Test 版
+curl -o /tmp/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-test-linux-arm64.upx && sc
 ```
 
 此时脚本会自动“发现可用的内核文件”，选择 1 加载，后选择对应的内核类型
@@ -59,14 +59,14 @@ curl -o /tmp/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/pr
 curl -o $CRASHDIR/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-meta-linux-arm64.upx && $CRASHDIR/start.sh restart
 # mihomo 内核 Alpha 版
 curl -o $CRASHDIR/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-alpha-linux-arm64.upx && $CRASHDIR/start.sh restart
-# sing-box 内核 reF1nd-main 版
-curl -o $CRASHDIR/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-main-linux-arm64.upx && $CRASHDIR/start.sh restart
-# sing-box 内核 reF1nd-dev 版
-curl -o $CRASHDIR/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-dev-linux-arm64.upx && $CRASHDIR/start.sh restart
-# sing-box 内核 Release 版
-curl -o $CRASHDIR/CrashCore.upx -L https://cdn.jsdelivr.net/gh/DustinWin/proxy-tools/@sing-box/sing-box-release-linux-arm64.upx && $CRASHDIR/start.sh restart
-# sing-box 内核 Dev 版
-curl -o $CRASHDIR/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-dev-linux-arm64.upx && $CRASHDIR/start.sh restart
+# sing-box 内核 reF1nd-Stable 版
+curl -o $CRASHDIR/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-stable-linux-arm64.upx && $CRASHDIR/start.sh restart
+# sing-box 内核 reF1nd-Test 版
+curl -o $CRASHDIR/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-test-linux-arm64.upx && $CRASHDIR/start.sh restart
+# sing-box 内核 Stable 版
+curl -o $CRASHDIR/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-stable-linux-arm64.upx && $CRASHDIR/start.sh restart
+# sing-box 内核 Test 版
+curl -o $CRASHDIR/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-test-linux-arm64.upx && $CRASHDIR/start.sh restart
 ```
 
 ## 三、 安装 Dashboard 面板
@@ -141,8 +141,8 @@ curl -o /data/AdGuardHome/AdGuardHome -L https://ghfast.top/https://github.com/D
 
 ```shell
 201#curl -o /data/ShellCrash/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-meta-linux-arm64.upx >/dev/null 2>&1#更新mihomo内核
-202#curl -o /data/ShellCrash/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-main-linux-arm64.upx >/dev/null 2>&1#更新sing-boxr内核
-203#curl -o /data/ShellCrash/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-release-linux-arm64.upx >/dev/null 2>&1#更新sing-box内核
+202#curl -o /data/ShellCrash/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-test-linux-arm64.upx >/dev/null 2>&1#更新sing-boxr内核
+203#curl -o /data/ShellCrash/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-test-linux-arm64.upx >/dev/null 2>&1#更新sing-box内核
 204#curl -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/Dashboard/zashboard.tar.gz | tar -zx -C $CRASHDIR/ui/ >/dev/null 2>&1#更新zashboard面板
 205#curl -o /data/AdGuardHome/AdGuardHome -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/AdGuardHome/AdGuardHome_beta_linux_arm64 >/dev/null 2>&1#更新AdGuardHome
 ```
