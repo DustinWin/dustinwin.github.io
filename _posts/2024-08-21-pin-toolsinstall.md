@@ -141,8 +141,8 @@ curl -o /data/AdGuardHome/AdGuardHome -L https://ghfast.top/https://github.com/D
 
 ```shell
 201#curl -o /data/ShellCrash/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-meta-linux-arm64.upx >/dev/null 2>&1#更新mihomo内核
-202#curl -o /data/ShellCrash/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-test-linux-arm64.upx >/dev/null 2>&1#更新sing-boxr内核
-203#curl -o /data/ShellCrash/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-test-linux-arm64.upx >/dev/null 2>&1#更新sing-box内核
+202#curl -o /data/ShellCrash/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-stable-linux-arm64.upx >/dev/null 2>&1#更新sing-boxr内核
+203#curl -o /data/ShellCrash/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-stable-linux-arm64.upx >/dev/null 2>&1#更新sing-box内核
 204#curl -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/Dashboard/zashboard.tar.gz | tar -zx -C $CRASHDIR/ui/ >/dev/null 2>&1#更新zashboard面板
 205#curl -o /data/AdGuardHome/AdGuardHome -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/AdGuardHome/AdGuardHome_beta_linux_arm64 >/dev/null 2>&1#更新AdGuardHome
 ```

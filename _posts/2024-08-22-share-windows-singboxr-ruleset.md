@@ -406,7 +406,7 @@ Windows Registry Editor Version 5.00
         echo "安装 sing-boxr 内核和面板..."
         cd "$PROGRAMFILES"
         mkdir -p sing-box/ui
-        curl -o sing-box/sing-box.exe -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-test-windows-amd64-v3.exe
+        curl -o sing-box/sing-box.exe -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-stable-windows-amd64-v3.exe
         curl -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/Dashboard/zashboard.tar.gz | tar -zx -C sing-box/ui
         echo "安装 sing-boxr 内核和面板成功"
 
@@ -441,7 +441,7 @@ Windows Registry Editor Version 5.00
         ;;
       3)
         echo "下载 sing-boxr 内核..."
-        curl -o "$USERPROFILE/Downloads/sing-box.exe" -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-test-windows-amd64-v3.exe
+        curl -o "$USERPROFILE/Downloads/sing-box.exe" -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-stable-windows-amd64-v3.exe
         echo "下载 sing-boxr 内核成功"
 
         echo "结束 sing-boxr 相关进程..."

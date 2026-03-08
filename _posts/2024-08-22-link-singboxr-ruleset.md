@@ -9,7 +9,7 @@ tags: [sing-box, sing-boxr, 直链, 订阅, ruleset, rule_set, 基础]
 > 说明
 {: .prompt-tip }
 1. 本教程可以生成扩展名为 .json 配置文件直链，可以**一键导入使用了 [sing-box reF1nd 版内核](https://github.com/reF1nd/sing-box)的客户端**  
-如：[ShellCrash](https://github.com/juewuy/ShellCrash) 和 [sing-box for Android](https://t.me/sing_box_reF1nd) 等
+如：[ShellCrash](https://github.com/juewuy/ShellCrash) 和 [sing-boxr for Android](https://github.com/DustinWin/proxy-tools/releases/tag/sing-box) 等
 2. 生成的订阅链接地址不会改变，支持更新订阅，**支持国内访问，支持同步机场节点**
 3. 生成的订阅链接**自带规则集**，规则集来源 [DustinWin/ruleset_geodata/ruleset](https://github.com/DustinWin/ruleset_geodata#%E4%BA%8C-ruleset-%E8%A7%84%E5%88%99%E9%9B%86%E6%96%87%E4%BB%B6%E8%AF%B4%E6%98%8E)
 4. 本教程必须使用支持[提供者](https://sing-boxr.dustinwin.us.kg/zh/configuration/provider/) `outbound_providers`（类似于 [mihomo 内核](https://github.com/MetaCubeX/mihomo)的[代理集合](https://wiki.metacubex.one/config/proxy-providers/) `proxy-providers`）的 [sing-box reF1nd 版内核](https://github.com/reF1nd/sing-box)，请先**确定自己机场的订阅链接是否为 Clash 或 sing-box 订阅链接**，若不是，需前往[肥羊在线订阅转换工具](https://suburl.v1.mk)进行转换，“生成类型”选择“Clash”或“sing-box”，其它参数保持默认即可，转换后的 Clash 订阅链接需要在末尾添加 `&flag=clash`，然后添加到 .json 文件出站提供者 `providers` 的 `url` 中
