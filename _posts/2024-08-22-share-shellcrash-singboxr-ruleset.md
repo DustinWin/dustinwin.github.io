@@ -362,7 +362,7 @@ sc
       "store_fakeip": true
     },
     "clash_api": {
-      "external_controller": "192.168.31.1:9999",
+      "external_controller": "0.0.0.0:9999",
       "external_ui": "ui",
       "external_ui_download_url": "https://github.com/Zephyruso/zashboard/archive/gh-pages.zip",
       "secret": ""
