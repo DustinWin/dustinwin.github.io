@@ -15,7 +15,7 @@ tags: [Clash, mihomo, ShellCrash, AdGuard Home, ruleset, rule-set, 分享, Route
 5. 此方案适用于 AdGuard Home（以 ARM64 架构为例，且安装路径为 `/data/AdGuardHome`{: .filepath}）
 6. 此方案不建议启用 ShellCrash 配置脚本 → 2) 功能设置 → 3) 透明路由流量过滤 → 2) 过滤局域网设备，因不经过内核的设备在访问 `漏网之鱼` 域名时会遇到无法访问的情况
 7. 本人将路由器设置了每天早上 6 点重启，使得《[四](https://proxy-tutorials.dustinwin.us.kg/posts/share-shellcrashadguardhome-mihomo-ruleset/#%E5%9B%9B-%E6%B7%BB%E5%8A%A0%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1)》中设置的定时任务生效
-8. 若 `谷歌服务` 出现错误如 [Google Chrome](https://www.google.com/chrome/) 检查更新失败，请删除 `nameserver` 或 `direct-nameserver` 配置项里的[阿里云公共 DNS](https://help.aliyun.com/zh/dns/what-is-alibaba-cloud-public-dns)
+8. 我所在地区的中国移动网络使用[阿里云公共 DNS](https://help.aliyun.com/zh/dns/what-is-alibaba-cloud-public-dns) 且 `RULE-SET,google-cn,谷歌服务` 走直连时会有异常情况出现（如 [Google Chrome](https://www.google.com/chrome/) 检查更新失败），所以使用[系统 DNS](https://wiki.metacubex.one/config/dns/type/#system) 来代替
 
 ## 一、 生成配置文件 .yaml 文件直链
 具体方法此处不再赘述，请看《[生成带有自定义策略组和规则的 mihomo 配置文件直链-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/link-mihomo-ruleset)》，贴一下我使用的配置：
@@ -293,7 +293,6 @@ profile: {store-selected: true, store-fake-ip: true}
 hosts:
   miwifi.com: [192.168.31.1, 127.0.0.1]
   doh.pub: [1.12.12.12, 120.53.53.53, 2402:4e00::]
-  dns.alidns.com: [223.5.5.5, 223.6.6.6, 2400:3200::1, 2400:3200:baba::1]
   services.googleapis.cn: [services.googleapis.com]
 
 dns:
@@ -307,7 +306,7 @@ dns:
   fake-ip-filter: ['rule-set:fakeip-filter,private,trackerslist,cn']
   nameserver:
     - https://doh.pub/dns-query
-    - quic://dns.alidns.com:853
+    - system
 ```
 
 ---
@@ -322,8 +321,8 @@ dns:
 ```yaml
 hosts:
   miwifi.com: [192.168.31.1, 127.0.0.1]
-  doh.pub: [1.12.12.12, 120.53.53.53, 2402:4e00::]
   dns.alidns.com: [223.5.5.5, 223.6.6.6, 2400:3200::1, 2400:3200:baba::1]
+  doh.pub: [1.12.12.12, 120.53.53.53, 2402:4e00::]
   dns.google: [8.8.8.8, 8.8.4.4, 2001:4860:4860::8888, 2001:4860:4860::8844]
   dns11.quad9.net: [9.9.9.11, 149.112.112.11, 2620:fe::11, 2620:fe::fe:11]
 
@@ -347,15 +346,15 @@ dns:
     - 'https://dns.google/dns-query#ecs=211.137.58.0/24'
     - 'https://dns11.quad9.net/dns-query#ecs=211.137.58.0/24'
   proxy-server-nameserver:
-    - https://doh.pub/dns-query
     - quic://dns.alidns.com:853
+    - https://doh.pub/dns-query
   direct-nameserver:
     - https://doh.pub/dns-query
-    - quic://dns.alidns.com:853
+    - system
   nameserver-policy:
     'rule-set:fakeip-filter,private,microsoft-cn,apple-cn,google-cn,games-cn,cn':
-      - https://doh.pub/dns-query
       - quic://dns.alidns.com:853
+      - https://doh.pub/dns-query
 ```
 
 ---

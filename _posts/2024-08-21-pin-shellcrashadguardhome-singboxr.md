@@ -29,7 +29,7 @@ pin: true
 
 ### 2. sing-box reF1nd 版内核
 第三方下载：<https://github.com/DustinWin/proxy-tools/releases/tag/sing-box>  
-下载 sing-box-ref1nd-test-linux-armv8.tar.gz 文件
+下载 sing-box-ref1nd-stable-linux-armv8.upx 文件
 
 ### 3. PuTTY
 官方下载：<https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html>  
@@ -269,15 +269,7 @@ echo -e '12345678\n12345678' | passwd root
 
 - ③ 选择 1 安装到 /data 目录，剩余空间：*.*M
 - ④ 根据需要自定义别名（此处选择“2) 【 sc 】”）
-- ⑤ 将下载的 sing-box-ref1nd-dev-linux-armv8.tar.gz 文件复制到桌面，以管理员身份运行 PowerShell，依次执行如下命令：
-
-  ```
-  cd C:\Users\[用户名]\Desktop
-  tar -zxvf sing-box-ref1nd-dev-linux-armv8.tar.gz
-  ```
-
-  .tar.gz 压缩文件成功解压到桌面上，目录结构为 `C:\Users\[用户名]\Desktop\CrashCore`{: .filepath}
-- ⑥ 将 CrashCore 文件移动到路由器的 `/tmp`{: .filepath} 目录中  
+- ⑤ 将下载的 sing-box-ref1nd-dev-linux-armv8.upx 文件到路由器的 `/tmp`{: .filepath} 目录中  
   <img src="/assets/img/pin/move-sing-boxr.png" alt="ShellCrash 安装 2" width="60%" />
 
 **安装 ShellCrash 成功！**
@@ -412,15 +404,15 @@ echo -e '12345678\n12345678' | passwd root
   - ➋ “后备 DNS 服务器”设置为：
 
   ```text
-  119.29.29.29
-  223.5.5.5
+  quic://dns.alidns.com:853
+  https://doh.pub/dns-query
   ```
 
   - ➌ “Bootstrap DNS 服务器”设置为：
 
   ```text
-  119.29.29.29
   223.5.5.5
+  119.29.29.29
   ```
 
   - ➍ 直接点击“应用”即可  

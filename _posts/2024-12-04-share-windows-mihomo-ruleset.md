@@ -10,7 +10,7 @@ tags: [Clash, mihomo, Windows, ruleset, rule-set, 分享]
 {: .prompt-warning }
 1. 请根据自身情况进行修改，**适合自己的方案才是最好的方案**，如无特殊需求，可以照搬
 2. 此方案采用**裸核**的方式运行，更加精简
-3. 若 `谷歌服务` 出现错误如 [Google Chrome](https://www.google.com/chrome/) 检查更新失败，请删除 `nameserver` 或 `direct-nameserver` 配置项里的[阿里云公共 DNS](https://help.aliyun.com/zh/dns/what-is-alibaba-cloud-public-dns)
+3. 我所在地区的中国移动网络使用[阿里云公共 DNS](https://help.aliyun.com/zh/dns/what-is-alibaba-cloud-public-dns) 且 `RULE-SET,google-cn,谷歌服务` 走直连时会有异常情况出现（如 [Google Chrome](https://www.google.com/chrome/) 检查更新失败），所以使用[系统 DNS](https://wiki.metacubex.one/config/dns/type/#system) 来代替
 
 ## 一、 生成配置文件 .yaml 文件直链
 具体方法请参考《[生成带有自定义策略组和规则的 mihomo 配置文件直链-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/link-mihomo-ruleset)》，贴一下我使用的配置：
@@ -69,7 +69,6 @@ tun:
 hosts:
   miwifi.com: [192.168.31.1, 127.0.0.1]
   doh.pub: [1.12.12.12, 120.53.53.53, 2402:4e00::]
-  dns.alidns.com: [223.5.5.5, 223.6.6.6, 2400:3200::1, 2400:3200:baba::1]
 
 dns:
   enable: true
@@ -81,7 +80,7 @@ dns:
   fake-ip-filter: ['rule-set:private,trackerslist,cn']
   nameserver:
     - https://doh.pub/dns-query
-    - quic://dns.alidns.com:853
+    - system
   nameserver-policy: {'rule-set:ads': [rcode://success]}
 
 # 若没有单个出站代理节点，须删除所有 `🆚 vless 节点` 相关内容
@@ -323,8 +322,8 @@ proxy-groups:
 ```yaml
 hosts:
   miwifi.com: [192.168.31.1, 127.0.0.1]
-  doh.pub: [1.12.12.12, 120.53.53.53, 2402:4e00::]
   dns.alidns.com: [223.5.5.5, 223.6.6.6, 2400:3200::1, 2400:3200:baba::1]
+  doh.pub: [1.12.12.12, 120.53.53.53, 2402:4e00::]
   dns.google: [8.8.8.8, 8.8.4.4, 2001:4860:4860::8888, 2001:4860:4860::8844]
   dns11.quad9.net: [9.9.9.11, 149.112.112.11, 2620:fe::11, 2620:fe::fe:11]
 
@@ -342,16 +341,16 @@ dns:
     - 'https://dns.google/dns-query#ecs=211.137.58.0/24'
     - 'https://dns11.quad9.net/dns-query#ecs=211.137.58.0/24'
   proxy-server-nameserver:
-    - https://doh.pub/dns-query
     - quic://dns.alidns.com:853
+    - https://doh.pub/dns-query
   direct-nameserver:
     - https://doh.pub/dns-query
-    - quic://dns.alidns.com:853
+    - system
   nameserver-policy:
     'rule-set:ads': [rcode://success]
     'rule-set:private,microsoft-cn,apple-cn,google-cn,games-cn,cn':
-      - https://doh.pub/dns-query
       - quic://dns.alidns.com:853
+      - https://doh.pub/dns-query
 ```
 
 ----

@@ -8,7 +8,8 @@ tags: [sing-box, sing-boxr, Android, ruleset, rule_set, 分享]
 
 > 声明
 {: .prompt-warning }
-请根据自身情况进行修改，**适合自己的方案才是最好的方案**，如无特殊需求，可以照搬
+1. 请根据自身情况进行修改，**适合自己的方案才是最好的方案**，如无特殊需求，可以照搬
+2. 我所在地区的中国移动网络使用[阿里云公共 DNS](https://help.aliyun.com/zh/dns/what-is-alibaba-cloud-public-dns) 且 `"rule_set": [ "google-cn" ], "outbound": "谷歌服务"` 走直连时会有异常情况出现（如 [Google Chrome](https://www.google.com/chrome/) 检查更新失败），所以使用[本地 DNS 服务器](https://sing-boxr.dustinwin.us.kg/zh/configuration/dns/server/local/)来代替
 
 ## 一、 生成配置文件 .json 文件直链
 具体方法请参考《[生成带有自定义出站和规则的 sing-boxr 配置文件直链-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/link-singboxr-ruleset)》，贴一下我使用的配置：
@@ -52,16 +53,15 @@ tags: [sing-box, sing-boxr, Android, ruleset, rule_set, 分享]
         "predefined": {
           "miwifi.com": [ "192.168.31.1", "127.0.0.1" ],
           "doh.pub": [ "1.12.12.12", "120.53.53.53", "2402:4e00::" ],
-          "dns.alidns.com": [ "223.5.5.5", "223.6.6.6", "2400:3200::1", "2400:3200:baba::1" ],
           "dns.google": [ "8.8.8.8", "8.8.4.4", "2001:4860:4860::8888", "2001:4860:4860::8844" ],
           "dns11.quad9.net": [ "9.9.9.11", "149.112.112.11", "2620:fe::11", "2620:fe::fe:11" ]
         }
       },
       { "tag": "dns_dnspod", "type": "https", "server": "doh.pub", "domain_resolver": "dns_hosts" },
-      { "tag": "dns_alidns", "type": "quic", "server": "dns.alidns.com", "domain_resolver": "dns_hosts" },
+      { "tag": "dns_local", "type": "local" },
       { "tag": "dns_google", "type": "https", "server": "dns.google", "domain_resolver": "dns_hosts", "detour": "GLOBAL" },
       { "tag": "dns_quad9", "type": "https", "server": "dns11.quad9.net", "domain_resolver": "dns_hosts", "detour": "GLOBAL" },
-      { "tag": "dns_direct", "type": "group", "servers": [ "dns_dnspod", "dns_alidns" ] },
+      { "tag": "dns_direct", "type": "group", "servers": [ "dns_dnspod", "dns_local" ] },
       { "tag": "dns_proxy", "type": "group", "servers": [ "dns_google", "dns_quad9" ] },
       { "tag": "dns_fakeip", "type": "fakeip", "inet4_range": "28.0.0.0/8", "inet6_range": "fc00::/16" }
     ],
@@ -328,16 +328,15 @@ tags: [sing-box, sing-boxr, Android, ruleset, rule_set, 分享]
         "predefined": {
           "miwifi.com": [ "192.168.31.1", "127.0.0.1" ],
           "doh.pub": [ "1.12.12.12", "120.53.53.53", "2402:4e00::" ],
-          "dns.alidns.com": [ "223.5.5.5", "223.6.6.6", "2400:3200::1", "2400:3200:baba::1" ],
           "dns.google": [ "8.8.8.8", "8.8.4.4", "2001:4860:4860::8888", "2001:4860:4860::8844" ],
           "dns11.quad9.net": [ "9.9.9.11", "149.112.112.11", "2620:fe::11", "2620:fe::fe:11" ]
         }
       },
       { "tag": "dns_dnspod", "type": "https", "server": "doh.pub", "domain_resolver": "dns_hosts" },
-      { "tag": "dns_alidns", "type": "quic", "server": "dns.alidns.com", "domain_resolver": "dns_hosts" },
+      { "tag": "dns_local", "type": "local" },
       { "tag": "dns_google", "type": "https", "server": "dns.google", "domain_resolver": "dns_hosts", "detour": "GLOBAL" },
       { "tag": "dns_quad9", "type": "https", "server": "dns11.quad9.net", "domain_resolver": "dns_hosts", "detour": "GLOBAL" },
-      { "tag": "dns_direct", "type": "group", "servers": [ "dns_dnspod", "dns_alidns" ] },
+      { "tag": "dns_direct", "type": "group", "servers": [ "dns_dnspod", "dns_local" ] },
       { "tag": "dns_proxy", "type": "group", "servers": [ "dns_google", "dns_quad9" ] },
       { "tag": "dns_fakeip", "type": "fakeip", "inet4_range": "28.0.0.0/8", "inet6_range": "fc00::/16" }
     ],
