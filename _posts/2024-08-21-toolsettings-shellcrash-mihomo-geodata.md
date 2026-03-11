@@ -27,10 +27,8 @@ curl -o $CRASHDIR/Country.mmdb -L https://cdn.jsdelivr.net/gh/DustinWin/ruleset_
 ```
 
 ## 三、 添加定时任务
-连接 SSH 后执行命令 `vi $CRASHDIR/task/task.user`，按一下 Ins 键（Insert 键），粘贴（快捷键 Ctrl+Shift+V）如下内容：  
-注：
-- 1. [ShellCrash](https://github.com/juewuy/ShellCrash) 安装路径为 `/data/ShellCrash`{: .filepath}
-- 2. 须重启 ShellCrash 服务后生效
+连接 SSH 后执行命令 `vi $CRASHDIR/task/task.user`，按一下 Ins 键（Insert 键），粘贴（快捷键 Ctrl+Shift+V）如下内容：
+- 注：须重启 ShellCrash 服务后生效
 
 ```shell
 201#curl -o $CRASHDIR/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-meta-linux-arm64.upx >/dev/null 2>&1#更新mihomo内核
