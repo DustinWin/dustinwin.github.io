@@ -270,7 +270,8 @@ tags: [sing-box, sing-boxr, Android, ruleset, rule_set, 分享]
       "external_ui": "ui",
       "external_ui_download_url": "https://github.com/Zephyruso/zashboard/archive/gh-pages.zip",
       "secret": ""
-    }
+    },
+    "urltest_unified_delay": true
   }
 }
 ```
