@@ -389,86 +389,187 @@ Windows Registry Editor Version 5.00
     echo "        安装、更新 mihomo 内核和配置文件       "
     echo "==============================================="
     echo
-    echo "1. 安装 mihomo 内核和面板"
-    echo "2. 导入配置文件"
-    echo "3. 更新 mihomo 内核"
-    echo "4. 启动 mihomo 服务"
+    echo "1. 安装（更新）mihomo 内核和面板"
+    echo "2. 导入（更新）配置文件"
+    echo "3. 启动 mihomo 服务"
+    echo "4. 停止 mihomo 服务"
     echo "0. 退出"
     echo "==============================================="
     read -p "请选择操作（0-4）：" choice
     case $choice in
       1)
-        echo "安装 mihomo 内核和面板..."
+        echo "安装（更新）mihomo 内核和面板..."
         cd "$PROGRAMFILES"
-        mkdir -p mihomo/profiles mihomo/ui
-        curl -o mihomo/mihomo.exe -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-meta-windows-amd64-v3.exe
-        curl -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/Dashboard/zashboard.tar.gz | tar -zx -C mihomo/ui
-        echo "安装 mihomo 内核和面板成功"
+        if [ -f "./mihomo/mihomo.exe" ]; then
+          echo "检测到已安装 mihomo 内核，是否更新？（Y/n）"
+          while true; do
+            read -r choice
+            case $choice in
+              Y|y)
+                echo "下载 mihomo 内核..."
+                curl -o "$USERPROFILE/Downloads/mihomo.exe" -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-meta-windows-amd64-v3.exe
+                echo "下载 mihomo 内核成功"
 
-        echo "赋予 mihomo 权限..."
-        cmd //c "takeown /f mihomo /a /r /d y"
-        icacls mihomo /inheritance:r
-        icacls mihomo /remove[:g] "TrustedInstaller"
-        icacls mihomo /remove[:g] "CREATOR OWNER"
-        icacls mihomo /remove[:g] "ALL APPLICATION PACKAGES"
-        icacls mihomo /remove[:g] "所有受限制的应用程序包"
-        icacls mihomo /grant[:r] "SYSTEM:(OI)(CI)F"
-        icacls mihomo /grant[:r] "Administrators:(OI)(CI)F"
-        icacls mihomo /grant[:r] "Users:(OI)(CI)F"
-        echo "赋予 mihomo 权限成功"
+                echo "结束 mihomo 相关进程..."
+                taskkill //f //t //im "mihomo*"
+                echo "结束 mihomo 相关进程成功"
 
-        read -n1 -r -p "按任意键返回菜单..."
+                echo "更新 mihomo 内核..."
+                mv -f "$USERPROFILE/Downloads/mihomo.exe" ./mihomo
+                if [ -f "./mihomo/profiles/config.yaml" ]; then
+                  echo "更新 mihomo 内核成功，是否启动服务？（Y/n）"
+                  while true; do
+                    read -r choice
+                    case $choice in
+                      Y|y)
+                        echo "启动 mihomo 服务..."
+                        cd ./mihomo
+                        start //min mihomo.exe run
+                        read -n1 -r -p "启动 mihomo 服务成功，按任意键返回菜单..."
+                        break
+                        ;;
+                      N|n)
+                        read -n1 -r -p "取消启动服务，按任意键返回菜单..."
+                        break
+                        ;;
+                      *)
+                        echo "无效选择，请重新输入！"
+                        ;;
+                    esac
+                  done
+                  break
+                else
+                  echo "更新 mihomo 内核成功，请返回菜单导入配置文件！"
+                  read -n1 -r -p "按任意键返回菜单..."
+                  break
+                fi
+                ;;
+              N|n)
+                read -n1 -r -p "取消更新内核，按任意键返回菜单..."
+                break
+                ;;
+              *)
+                echo "无效选择，请重新输入！"
+                ;;
+            esac
+          done
+        else
+          echo "检测到未安装 mihomo 内核，正在安装..."
+          mkdir -p ./mihomo/ui
+          curl -o ./mihomo/mihomo.exe -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-meta-windows-amd64-v3.exe
+          curl -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/Dashboard/zashboard.tar.gz | tar -zx -C ./mihomo/ui
+          echo "安装 mihomo 内核和面板成功"
+
+          echo "赋予 mihomo 权限..."
+          cmd //c "takeown /f mihomo /a /r /d y"
+          icacls mihomo /inheritance:r
+          icacls mihomo /remove[:g] "TrustedInstaller"
+          icacls mihomo /remove[:g] "CREATOR OWNER"
+          icacls mihomo /remove[:g] "ALL APPLICATION PACKAGES"
+          icacls mihomo /remove[:g] "所有受限制的应用程序包"
+          icacls mihomo /grant[:r] "SYSTEM:(OI)(CI)F"
+          icacls mihomo /grant[:r] "Administrators:(OI)(CI)F"
+          icacls mihomo /grant[:r] "Users:(OI)(CI)F"
+          echo "赋予 mihomo 权限成功，请返回菜单导入配置文件！"
+          read -n1 -r -p "按任意键返回菜单..."
+        fi
         ;;
       2)
-        echo "下载配置文件..."
-        curl -o "$USERPROFILE/Downloads/config.yaml" -L https://ghfast.top/{.yaml 配置文件直链}
-        echo "下载配置文件成功"
+        ask_run(){
+          while true; do
+            read -r choice
+            case $choice in
+              Y|y)
+                echo "启动 mihomo 服务..."
+                cd ./mihomo
+                start //min mihomo.exe run
+                read -n1 -r -p "启动 mihomo 服务成功，按任意键返回菜单..."
+                break
+                ;;
+              N|n)
+                read -n1 -r -p "取消启动服务，按任意键返回菜单..."
+                break
+                ;;
+              *)
+                echo "无效选择，请重新输入！"
+                ;;
+            esac
+          done
+        }
 
-        echo "结束 mihomo 相关进程..."
-        taskkill //f //t //im "mihomo*"
-        echo "结束 mihomo 相关进程成功"
+        echo "导入（更新）配置文件..."
+        cd "$PROGRAMFILES"
+        if [ -f "./mihomo/mihomo.exe" ]; then
+          if [ -f "./mihomo/profiles/config.yaml" ]; then
+            echo "检测到配置文件，是否更新？（Y/n）"
+            while true; do
+              read -r choice
+              case $choice in
+                Y|y)
+                  echo "下载配置文件..."
+                  curl -o "$USERPROFILE/Downloads/config.yaml" -L https://ghfast.top/{.yaml 配置文件直链}
+                  echo "下载配置文件成功"
 
-        echo "导入配置文件..."
-        cd "$PROGRAMFILES/mihomo"
-        mv -f "$USERPROFILE/Downloads/config.yaml" profiles
-        echo "导入配置文件成功"
+                  echo "结束 mihomo 相关进程..."
+                  taskkill //f //t //im "mihomo*"
+                  echo "结束 mihomo 相关进程成功"
 
-        read -n1 -r -p "按任意键返回菜单..."
+                  echo "更新配置文件..."
+                  mv -f "$USERPROFILE/Downloads/config.yaml" ./mihomo/profiles
+                  echo "更新配置文件成功，是否启动服务？（Y/n）"
+                  ask_run
+                  break
+                  ;;
+                N|n)
+                  read -n1 -r -p "取消更新配置文件，按任意键返回菜单..."
+                  break
+                  ;;
+                *)
+                  echo "无效选择，请重新输入！"
+                  ;;
+              esac
+            done
+          else
+            echo "未检测到配置文件，导入配置文件..."
+            mkdir -p ./mihomo/profiles
+            curl -o "$USERPROFILE/Downloads/config.yaml" -L https://ghfast.top/{.yaml 配置文件直链}
+            mv -f "$USERPROFILE/Downloads/config.yaml" ./mihomo/profiles
+            echo "导入配置文件成功，是否启动服务？（Y/n）"
+            ask_run
+          fi
+        else
+          echo "未检测到 mihomo 内核，请返回菜单安装内核！"
+          read -n1 -r -p "按任意键返回菜单..."
+        fi
         ;;
       3)
-        echo "下载 mihomo 内核..."
-        curl -o "$USERPROFILE/Downloads/mihomo.exe" -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-meta-windows-amd64-v3.exe
-        echo "下载 mihomo 内核成功"
-
-        echo "结束 mihomo 相关进程..."
-        taskkill //f //t //im "mihomo*"
-        echo "结束 mihomo 相关进程成功"
-
-        echo "更新 mihomo 内核..."
-        cd "$PROGRAMFILES/mihomo"
-        mv -f "$USERPROFILE/Downloads/mihomo.exe" .
-        echo "更新 mihomo 内核成功"
-
-        read -n1 -r -p "按任意键返回菜单..."
+        echo "启动 mihomo 服务..."
+        cd "$PROGRAMFILES"
+        if [[ -f "./mihomo/mihomo.exe" && -f "./mihomo/profiles/config.yaml" ]]; then
+          cd "./mihomo"
+          start //min mihomo.exe -d profiles
+          read -n1 -r -p "启动 mihomo 服务成功，按任意键返回菜单..."
+        else
+          echo "未检测到 mihomo 内核和配置文件，请返回菜单安装内核并导入配置文件！"
+          read -n1 -r -p "按任意键返回菜单..."
+        fi
         ;;
       4)
-        echo "启动 mihomo 服务..."
-        cd "$PROGRAMFILES/mihomo"
-        start //min mihomo.exe -d profiles
-        echo "启动 mihomo 服务成功"
-
-        read -n1 -r -p "按任意键返回菜单..."
+        echo "停止 mihomo 服务..."
+        taskkill //f //t //im "mihomo*"
+        read -n1 -r -p "停止 mihomo 服务成功，按任意键返回菜单..."
         ;;
       0)
         echo "退出程序"
         exit 0
         ;;
       *)
-        echo "无效选择，请重新输入"
+        echo "无效选择，请重新输入！"
         read -n1 -r -p "按任意键返回菜单..."
         ;;
     esac
   done
+  
   ```
 
 - ② 另存为 .sh 文件，右击并选择“以管理员身份运行”

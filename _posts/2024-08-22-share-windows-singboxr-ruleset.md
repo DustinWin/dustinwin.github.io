@@ -391,88 +391,189 @@ Windows Registry Editor Version 5.00
   while true; do
     clear
     echo "==============================================="
-    echo "        安装、更新 sing-boxr 内核和配置文件       "
+    echo "      安装、更新 sing-boxr 内核和配置文件      "
     echo "==============================================="
     echo
-    echo "1. 安装 sing-boxr 内核和面板"
-    echo "2. 导入配置文件"
-    echo "3. 更新 sing-boxr 内核"
-    echo "4. 启动 sing-boxr 服务"
+    echo "1. 安装（更新）sing-boxr 内核和面板"
+    echo "2. 导入（更新）配置文件"
+    echo "3. 启动 sing-boxr 服务"
+    echo "4. 停止 sing-boxr 服务"
     echo "0. 退出"
     echo "==============================================="
     read -p "请选择操作（0-4）：" choice
     case $choice in
       1)
-        echo "安装 sing-boxr 内核和面板..."
+        echo "安装（更新）sing-boxr 内核和面板..."
         cd "$PROGRAMFILES"
-        mkdir -p sing-box/ui
-        curl -o sing-box/sing-box.exe -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-stable-windows-amd64-v3.exe
-        curl -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/Dashboard/zashboard.tar.gz | tar -zx -C sing-box/ui
-        echo "安装 sing-boxr 内核和面板成功"
+        if [ -f "./sing-box/sing-box.exe" ]; then
+          echo "检测到已安装 sing-boxr 内核，是否更新？（Y/n）"
+          while true; do
+            read -r choice
+            case $choice in
+              Y|y)
+                echo "下载 sing-boxr 内核..."
+                curl -o "$USERPROFILE/Downloads/sing-box.exe" -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-stable-windows-amd64-v3.exe
+                echo "下载 sing-boxr 内核成功"
 
-        echo "赋予 sing-box 权限..."
-        cmd //c "takeown /f sing-box /a /r /d y"
-        icacls sing-box /inheritance:r
-        icacls sing-box /remove[:g] "TrustedInstaller"
-        icacls sing-box /remove[:g] "CREATOR OWNER"
-        icacls sing-box /remove[:g] "ALL APPLICATION PACKAGES"
-        icacls sing-box /remove[:g] "所有受限制的应用程序包"
-        icacls sing-box /grant[:r] "SYSTEM:(OI)(CI)F"
-        icacls sing-box /grant[:r] "Administrators:(OI)(CI)F"
-        icacls sing-box /grant[:r] "Users:(OI)(CI)F"
-        echo "赋予 sing-box 权限成功"
+                echo "结束 sing-boxr 相关进程..."
+                taskkill //f //t //im "sing-box*"
+                echo "结束 sing-boxr 相关进程成功"
 
-        read -n1 -r -p "按任意键返回菜单..."
+                echo "更新 sing-boxr 内核..."
+                mv -f "$USERPROFILE/Downloads/sing-box.exe" ./sing-box
+                if [ -f "./sing-box/config.json" ]; then
+                  echo "更新 sing-boxr 内核成功，是否启动服务？（Y/n）"
+                  while true; do
+                    read -r choice
+                    case $choice in
+                      Y|y)
+                        echo "启动 sing-boxr 服务..."
+                        cd ./sing-box
+                        start //min sing-box.exe run
+                        read -n1 -r -p "启动 sing-boxr 服务成功，按任意键返回菜单..."
+                        break
+                        ;;
+                      N|n)
+                        read -n1 -r -p "取消启动服务，按任意键返回菜单..."
+                        break
+                        ;;
+                      *)
+                        echo "无效选择，请重新输入！"
+                        ;;
+                    esac
+                  done
+                  break
+                else
+                  echo "更新 sing-boxr 内核成功，请返回菜单导入配置文件！"
+                  read -n1 -r -p "按任意键返回菜单..."
+                  break
+                fi
+                ;;
+              N|n)
+                read -n1 -r -p "取消更新内核，按任意键返回菜单..."
+                break
+                ;;
+              *)
+                echo "无效选择，请重新输入！"
+                ;;
+            esac
+          done
+        else
+          echo "检测到未安装 sing-boxr 内核，正在安装..."
+          mkdir -p ./sing-box/ui
+          curl -o ./sing-box/sing-box.exe -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-stable-windows-amd64-v3.exe
+          curl -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/Dashboard/zashboard.tar.gz | tar -zx -C ./sing-box/ui
+          echo "安装 sing-boxr 内核和面板成功"
+
+          echo "赋予 sing-box 权限..."
+          cmd //c "takeown /f sing-box /a /r /d y"
+          icacls sing-box /inheritance:r
+          icacls sing-box /remove[:g] "TrustedInstaller"
+          icacls sing-box /remove[:g] "CREATOR OWNER"
+          icacls sing-box /remove[:g] "ALL APPLICATION PACKAGES"
+          icacls sing-box /remove[:g] "所有受限制的应用程序包"
+          icacls sing-box /grant[:r] "SYSTEM:(OI)(CI)F"
+          icacls sing-box /grant[:r] "Administrators:(OI)(CI)F"
+          icacls sing-box /grant[:r] "Users:(OI)(CI)F"
+          echo "赋予 sing-box 权限成功，请返回菜单导入配置文件！"
+          read -n1 -r -p "按任意键返回菜单..."
+        fi
         ;;
       2)
-        echo "下载配置文件..."
-        curl -o "$USERPROFILE/Downloads/config.json" -L https://ghfast.top/{.json 配置文件直链}
-        echo "下载配置文件成功"
+        ask_run(){
+          while true; do
+            read -r choice
+            case $choice in
+              Y|y)
+                echo "启动 sing-boxr 服务..."
+                cd ./sing-box
+                start //min sing-box.exe run
+                read -n1 -r -p "启动 sing-boxr 服务成功，按任意键返回菜单..."
+                break
+                ;;
+              N|n)
+                read -n1 -r -p "取消启动服务，按任意键返回菜单..."
+                break
+                ;;
+              *)
+                echo "无效选择，请重新输入！"
+                ;;
+            esac
+          done
+        }
 
-        echo "结束 sing-boxr 相关进程..."
-        taskkill //f //t //im "sing-box*"
-        echo "结束 sing-boxr 相关进程成功"
-        echo "导入配置文件..."
-        cd "$PROGRAMFILES/sing-box"
-        mv -f "$USERPROFILE/Downloads/config.json" .
-        echo "导入配置文件成功"
+        echo "导入（更新）配置文件..."
+        cd "$PROGRAMFILES"
+        if [ -f "./sing-box/sing-box.exe" ]; then
+          if [ -f "./sing-box/config.json" ]; then
+            echo "检测到配置文件，是否更新？（Y/n）"
+            while true; do
+              read -r choice
+              case $choice in
+                Y|y)
+                  echo "下载配置文件..."
+                  curl -o "$USERPROFILE/Downloads/config.json" -L https://ghfast.top/{.json 配置文件直链}
+                  echo "下载配置文件成功"
 
-        read -n1 -r -p "按任意键返回菜单..."
+                  echo "结束 sing-boxr 相关进程..."
+                  taskkill //f //t //im "sing-box*"
+                  echo "结束 sing-boxr 相关进程成功"
+
+                  echo "更新配置文件..."
+                  mv -f "$USERPROFILE/Downloads/config.json" ./sing-box
+                  echo "更新配置文件成功，是否启动服务？（Y/n）"
+                  ask_run
+                  break
+                  ;;
+                N|n)
+                  read -n1 -r -p "取消更新配置文件，按任意键返回菜单..."
+                  break
+                  ;;
+                *)
+                  echo "无效选择，请重新输入！"
+                  ;;
+              esac
+            done
+          else
+            echo "未检测到配置文件，导入配置文件..."
+            curl -o "$USERPROFILE/Downloads/config.json" -L https://ghfast.top/{.json 配置文件直链}
+            mv -f "$USERPROFILE/Downloads/config.json" ./sing-box
+            echo "导入配置文件成功，是否启动服务？（Y/n）"
+            ask_run
+          fi
+        else
+          echo "未检测到 sing-boxr 内核，请返回菜单安装内核！"
+          read -n1 -r -p "按任意键返回菜单..."
+        fi
         ;;
       3)
-        echo "下载 sing-boxr 内核..."
-        curl -o "$USERPROFILE/Downloads/sing-box.exe" -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-stable-windows-amd64-v3.exe
-        echo "下载 sing-boxr 内核成功"
-
-        echo "结束 sing-boxr 相关进程..."
-        taskkill //f //t //im "sing-box*"
-        echo "结束 sing-boxr 相关进程成功"
-
-        echo "更新 sing-boxr 内核..."
-        cd "$PROGRAMFILES/sing-box"
-        mv -f "$USERPROFILE/Downloads/sing-box.exe" .
-        echo "更新 sing-boxr 内核成功"
-
-        read -n1 -r -p "按任意键返回菜单..."
+        echo "启动 sing-boxr 服务..."
+        cd "$PROGRAMFILES"
+        if [[ -f "./sing-box/sing-box.exe" && -f "./sing-box/config.json" ]]; then
+          cd "./sing-box"
+          start //min sing-box.exe run
+          read -n1 -r -p "启动 sing-boxr 服务成功，按任意键返回菜单..."
+        else
+          echo "未检测到 sing-boxr 内核和配置文件，请返回菜单安装内核并导入配置文件！"
+          read -n1 -r -p "按任意键返回菜单..."
+        fi
         ;;
       4)
-        echo "启动 sing-boxr 服务..."
-        cd "$PROGRAMFILES/sing-box"
-        start //min sing-box.exe run
-        echo "启动 sing-boxr 服务成功"
-
-        read -n1 -r -p "按任意键返回菜单..."
+        echo "停止 sing-boxr 服务..."
+        taskkill //f //t //im "sing-box*"
+        read -n1 -r -p "停止 sing-boxr 服务成功，按任意键返回菜单..."
         ;;
       0)
         echo "退出程序"
         exit 0
         ;;
       *)
-        echo "无效选择，请重新输入"
+        echo "无效选择，请重新输入！"
         read -n1 -r -p "按任意键返回菜单..."
         ;;
     esac
   done
+  
   ```
 
 - ② 另存为 .sh 文件，右击并选择“以管理员身份运行”
