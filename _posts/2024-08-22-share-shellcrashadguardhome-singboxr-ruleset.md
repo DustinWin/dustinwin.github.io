@@ -81,11 +81,11 @@ tags: [sing-box, sing-boxr, ShellCrash, AdGuard Home, ruleset, rule_set, 分享,
       "transport": { "type": "ws", "path": "/?ed=2048", "headers": { "Host": "example.com" } }
     },
 
-    { "tag": "香港节点", "type": "loadbalance", "strategy": "consistent-hashing", "providers": [ "🛫 机场订阅" ], "include": "(?i)(🇭🇰|港|hk|hongkong|hong kong)" },
-    { "tag": "台湾节点", "type": "loadbalance", "strategy": "consistent-hashing", "providers": [ "🛫 机场订阅" ], "include": "(?i)(🇹🇼|台|tw|taiwan|tai wan)" },
-    { "tag": "日本节点", "type": "loadbalance", "strategy": "consistent-hashing", "providers": [ "🛫 机场订阅" ], "include": "(?i)(🇯🇵|日|jp|japan)" },
-    { "tag": "新加坡节点", "type": "loadbalance", "strategy": "consistent-hashing", "providers": [ "🛫 机场订阅" ], "include": "(?i)(🇸🇬|新|sg|singapore)" },
-    { "tag": "美国节点", "type": "loadbalance", "strategy": "consistent-hashing", "providers": [ "🛫 机场订阅" ], "include": "(?i)(🇺🇸|美|us|unitedstates|united states)" },
+    { "tag": "香港节点", "type": "urltest", "providers": [ "🛫 机场订阅" ], "include": "(?i)(🇭🇰|港|hk|hongkong|hong kong)" },
+    { "tag": "台湾节点", "type": "urltest", "providers": [ "🛫 机场订阅" ], "include": "(?i)(🇹🇼|台|tw|taiwan|tai wan)" },
+    { "tag": "日本节点", "type": "urltest", "providers": [ "🛫 机场订阅" ], "include": "(?i)(🇯🇵|日|jp|japan)" },
+    { "tag": "新加坡节点", "type": "urltest", "providers": [ "🛫 机场订阅" ], "include": "(?i)(🇸🇬|新|sg|singapore)" },
+    { "tag": "美国节点", "type": "urltest", "tolerance": 100, "providers": [ "🛫 机场订阅" ], "include": "(?i)(🇺🇸|美|us|unitedstates|united states)" },
     { "tag": "免费节点", "type": "urltest", "tolerance": 100, "providers": [ "🆓 免费订阅" ] }
   ],
   "route": {
@@ -218,30 +218,30 @@ tags: [sing-box, sing-boxr, ShellCrash, AdGuard Home, ruleset, rule_set, 分享,
 {: .prompt-tip }
 
 注：
-- 1. 本 `outbounds` 配置中，将不同的节点类型（如：`Shadowsocks` 和 `Trojan`）分别配置 `"type": "urltest"` 进行延迟测试（可进入 [zashboard 面板](https://github.com/Zephyruso/zashboard) → 代理 → 设置 → 管理隐藏代理组，设置隐藏以简化 Dashboard 面板中的显示）。再将延迟测试最低的策略组配置 `"type": "loadbalance"` 进行负载均衡
+- 1. 本 `outbounds` 配置中，将不同的节点类型（如：`Shadowsocks` 和 `Trojan`）分别配置 `"type": "urltest"` 进行延迟测试（可进入 [zashboard 面板](https://github.com/Zephyruso/zashboard) → 代理 → 设置 → 管理隐藏代理组，设置隐藏以简化 Dashboard 面板中的显示）。再将延迟测试最低的策略组配置 `"fallback": { "enabled": true }` 进行自动回退，提高稳定性
 - 2. 将不同的优选节点分别配置 `"fallback": { "enabled": true }` 进行故障转移（可进入 zashboard 面板 → 代理 → 设置 → 管理隐藏代理组，设置隐藏以简化 Dashboard 面板中的显示）。再将故障转移后的策略组配置 `"type": "urltest"` 进行延迟测试
 
 ```json
 {
   "outbounds": [
-    { "tag": "香港节点", "type": "loadbalance", "strategy": "consistent-hashing", "outbounds": [ "香港-ss", "香港-trojan" ] },
+    { "tag": "香港节点", "type": "urltest", "outbounds": [ "香港-ss", "香港-trojan" ], "fallback": { "enabled": true, "max_delay": "400ms" } },
     { "tag": "香港-ss", "type": "urltest", "providers": [ "🛫 机场订阅" ], "include": "(?i)(🇭🇰.*ss)" },
     { "tag": "香港-trojan", "type": "urltest", "providers": [ "🛫 机场订阅" ], "include": "🇭🇰", "exclude": "(?i)(ss)" },
-    { "tag": "台湾节点", "type": "loadbalance", "strategy": "consistent-hashing", "outbounds": [ "台湾-ss", "台湾-trojan" ] },
+    { "tag": "台湾节点", "type": "urltest", "outbounds": [ "台湾-ss", "台湾-trojan" ], "fallback": { "enabled": true, "max_delay": "400ms" } },
     { "tag": "台湾-ss", "type": "urltest", "providers": [ "🛫 机场订阅" ], "include": "(?i)(🇹🇼.*ss)" },
     { "tag": "台湾-trojan", "type": "urltest", "providers": [ "🛫 机场订阅" ], "include": "🇹🇼", "exclude": "(?i)(ss)" },
-    { "tag": "日本节点", "type": "loadbalance", "strategy": "consistent-hashing", "outbounds": [ "日本-ss", "日本-trojan" ] },
+    { "tag": "日本节点", "type": "urltest", "outbounds": [ "日本-ss", "日本-trojan" ], "fallback": { "enabled": true, "max_delay": "400ms" } },
     { "tag": "日本-ss", "type": "urltest", "providers": [ "🛫 机场订阅" ], "include": "(?i)(🇯🇵.*ss)" },
     { "tag": "日本-trojan", "type": "urltest", "providers": [ "🛫 机场订阅" ], "include": "🇯🇵", "exclude": "(?i)(ss)" },
-    { "tag": "新加坡节点", "type": "loadbalance", "strategy": "consistent-hashing", "outbounds": [ "新加坡-ss", "新加坡-trojan" ] },
+    { "tag": "新加坡节点", "type": "urltest", "outbounds": [ "新加坡-ss", "新加坡-trojan" ], "fallback": { "enabled": true, "max_delay": "400ms" } },
     { "tag": "新加坡-ss", "type": "urltest", "providers": [ "🛫 机场订阅" ], "include": "(?i)(🇸🇬.*ss)" },
     { "tag": "新加坡-trojan", "type": "urltest", "providers": [ "🛫 机场订阅" ], "include": "🇸🇬", "exclude": "(?i)(ss)" },
-    { "tag": "美国节点", "type": "loadbalance", "strategy": "consistent-hashing", "outbounds": [ "美国-ss", "美国-trojan" ] },
+    { "tag": "美国节点", "type": "urltest", "outbounds": [ "美国-ss", "美国-trojan" ], "fallback": { "enabled": true, "max_delay": "400ms" } },
     { "tag": "美国-ss", "type": "urltest", "tolerance": 100, "providers": [ "🛫 机场订阅" ], "include": "(?i)(🇺🇸.*ss)" },
     { "tag": "美国-trojan", "type": "urltest", "tolerance": 100, "providers": [ "🛫 机场订阅" ], "include": "🇺🇸", "exclude": "(?i)(ss)" },
     { "tag": "免费节点", "type": "urltest", "tolerance": 100, "outbounds": [ "移动优选节点", "CF 优选节点" ] },
-    { "tag": "移动优选节点", "type": "urltest", "tolerance": 100, "providers": [ "🆓 免费订阅" ], "include": "(?i)(cmcc)", "fallback": { "enabled": true, "max_delay": "400ms" } },
-    { "tag": "CF 优选节点", "type": "urltest", "tolerance": 100, "providers": [ "🆓 免费订阅" ], "include": "(?i)(cfip)", "fallback": { "enabled": true, "max_delay": "400ms" } }
+    { "tag": "移动优选节点", "type": "urltest", "providers": [ "🆓 免费订阅" ], "include": "(?i)(cmcc)", "fallback": { "enabled": true, "max_delay": "400ms" } },
+    { "tag": "CF 优选节点", "type": "urltest", "providers": [ "🆓 免费订阅" ], "include": "(?i)(cfip)", "fallback": { "enabled": true, "max_delay": "400ms" } }
   ]
 }
 ```

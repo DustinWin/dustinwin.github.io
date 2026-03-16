@@ -275,7 +275,7 @@ proxy-providers:
 
 - name: 🇺🇸 美国节点
   type: url-test
-  tolerance: 50
+  tolerance: 100
   include-all: true
   filter: "(?i)(🇺🇸|美|us|unitedstates|united states)"
 

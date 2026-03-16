@@ -114,7 +114,7 @@ tags: [sing-box, sing-boxr, ShellCrash, ruleset, rule_set, 进阶, 本地, Route
     { "tag": "🇹🇼 台湾节点", "type": "urltest", "use_all_providers": true, "include": "(?i)(🇹🇼|台|tw|taiwan|tai wan)" },
     { "tag": "🇯🇵 日本节点", "type": "urltest", "use_all_providers": true, "include": "(?i)(🇯🇵|日|jp|japan)" },
     { "tag": "🇸🇬 新加坡节点", "type": "urltest", "use_all_providers": true, "include": "(?i)(🇸🇬|新|sg|singapore)" },
-    { "tag": "🇺🇸 美国节点", "type": "urltest", "use_all_providers": true, "include": "(?i)(🇺🇸|美|us|unitedstates|united states)" },
+    { "tag": "🇺🇸 美国节点", "type": "urltest", "tolerance": 100, "use_all_providers": true, "include": "(?i)(🇺🇸|美|us|unitedstates|united states)" },
     { "tag": "👉 手动选择", "type": "selector", "use_all_providers": true }
   ]
 }
