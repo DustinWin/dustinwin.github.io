@@ -61,9 +61,8 @@ tags: [sing-box, sing-boxr, ShellCrash, AdGuard Home, ruleset, rule_set, 分享,
     { "tag": "苹果服务", "type": "selector", "outbounds": [ "全球直连", "节点选择" ] },
     { "tag": "国内域名", "type": "selector", "outbounds": [ "全球直连", "节点选择" ] },
     { "tag": "国内 IP", "type": "selector", "outbounds": [ "全球直连", "节点选择" ] },
-    { "tag": "国外域名", "type": "selector", "outbounds": [ "节点选择", "全球直连" ] },
+    { "tag": "国外域名", "type": "selector", "outbounds": [ "节点选择", "香港节点", "台湾节点", "日本节点", "新加坡节点", "美国节点", "免费节点", "🆚 vless 节点" ] },
     { "tag": "电报消息", "type": "selector", "outbounds": [ "节点选择", "香港节点", "台湾节点", "日本节点", "新加坡节点", "美国节点", "免费节点", "🆚 vless 节点" ] },
-    { "tag": "Trackerslist", "type": "selector", "outbounds": [ "全球直连", "节点选择" ] },
     { "tag": "私有网络", "type": "selector", "outbounds": [ "全球直连" ] },
     { "tag": "漏网之鱼", "type": "selector", "outbounds": [ "节点选择", "香港节点", "台湾节点", "日本节点", "新加坡节点", "美国节点", "免费节点", "🆚 vless 节点", "全球直连" ] },
     { "tag": "全球直连", "type": "selector", "outbounds": [ "DIRECT" ] },
@@ -91,7 +90,6 @@ tags: [sing-box, sing-boxr, ShellCrash, AdGuard Home, ruleset, rule_set, 分享,
   "route": {
     "rules": [
       { "rule_set": [ "private" ], "outbound": "私有网络" },
-      { "rule_set": [ "trackerslist" ], "outbound": "Trackerslist" },
       { "rule_set": [ "microsoft-cn" ], "outbound": "微软服务" },
       { "rule_set": [ "apple-cn" ], "outbound": "苹果服务" },
       { "rule_set": [ "google-cn" ], "outbound": "谷歌服务" },
@@ -316,6 +314,7 @@ sc
 注：
 - 1. 本 `dns` 配置中，国外域名 `proxy` 走 `fake-ip`，私有网络 `private` 和国内域名 `cn` 走国内 DNS 解析，未知域名走国外 DNS 解析（有效解决了“心理 DNS 泄露问题”，详见《[搭载 sing-boxr 内核配置 DNS 不泄露教程-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/dnsnoleaks-singboxr-ruleset/)》），且配置 `client_subnet` 提高了兼容性
 - 2. 推荐将 `client_subnet` 设置为当前宽带运营商分配的默认 DNS（可进入光猫或路由器拨号页面查看，或者前往[公共 DNS 大全](https://toolb.cn/publicdns)查询）的 IP 段，如默认 DNS 为 `211.137.58.20`，可设置为 `211.137.58.0/24`
+- 3. 记得删除 `route.rule_set.trackerslist`
 
 ```json
 {
