@@ -92,9 +92,8 @@ tags: [sing-box, sing-boxr, ShellCrash, ruleset, rule_set, 进阶, 本地, Route
     { "tag": "🌍 国外媒体", "type": "selector", "outbounds": [ "🈯 节点指定", "🇭🇰 香港节点", "🇹🇼 台湾节点", "🇯🇵 日本节点", "🇸🇬 新加坡节点", "🇺🇸 美国节点" ] },
     { "tag": "🇨🇳 国内域名", "type": "selector", "outbounds": [ "🎯 全球直连", "🈯 节点指定" ] },
     { "tag": "🀄️ 国内 IP", "type": "selector", "outbounds": [ "🎯 全球直连", "🈯 节点指定" ] },
-    { "tag": "🌎 国外域名", "type": "selector", "outbounds": [ "🈯 节点指定", "🎯 全球直连" ] },
+    { "tag": "🌎 国外域名", "type": "selector", "outbounds": [ "🈯 节点指定", "🇭🇰 香港节点", "🇹🇼 台湾节点", "🇯🇵 日本节点", "🇰🇷 韩国节点", "🇸🇬 新加坡节点", "🇺🇸 美国节点", "🆓 免费节点" ] },
     { "tag": "📲 电报消息", "type": "selector", "outbounds": [ "🈯 节点指定", "🇭🇰 香港节点", "🇹🇼 台湾节点", "🇯🇵 日本节点", "🇰🇷 韩国节点", "🇸🇬 新加坡节点", "🇺🇸 美国节点", "🆓 免费节点" ] },
-    { "tag": "📋 Trackerslist", "type": "selector", "outbounds": [ "🎯 全球直连", "🈯 节点指定" ] },
 
     // 单个出站节点（以 vless 为例）
     {
@@ -134,7 +133,6 @@ tags: [sing-box, sing-boxr, ShellCrash, ruleset, rule_set, 进阶, 本地, Route
       // 自定义规则优先放前面
       { "rule_set": [ "private" ], "outbound": "🎯 全球直连" },
       { "rule_set": [ "ads" ], "action": "reject" },
-      { "rule_set": [ "trackerslist" ], "outbound": "📋 Trackerslist" },
       { "rule_set": [ "microsoft-cn" ], "outbound": "🪟 微软服务" },
       { "rule_set": [ "apple-cn" ], "outbound": "🍎 苹果服务" },
       { "rule_set": [ "google-cn" ], "outbound": "🇬 谷歌服务" },
@@ -167,13 +165,6 @@ tags: [sing-box, sing-boxr, ShellCrash, ruleset, rule_set, 进阶, 本地, Route
         "format": "binary",
         "path": "./ruleset/private.srs",
         "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/private.srs"
-      },
-      {
-        "tag": "trackerslist",
-        "type": "remote",
-        "format": "binary",
-        "path": "./ruleset/trackerslist.srs",
-        "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/trackerslist.srs"
       },
       {
         "tag": "microsoft-cn",

@@ -83,9 +83,8 @@ tags: [sing-box, sing-boxr, 直链, 订阅, ruleset, rule_set, 基础]
     { "tag": "🌍 国外媒体", "type": "selector", "outbounds": [ "🚀 节点选择", "🇭🇰 香港节点", "🇹🇼 台湾节点", "🇯🇵 日本节点", "🇸🇬 新加坡节点", "🇺🇸 美国节点" ] },
     { "tag": "🇨🇳 国内域名", "type": "selector", "outbounds": [ "🎯 全球直连", "🚀 节点选择" ] },
     { "tag": "🀄️ 国内 IP", "type": "selector", "outbounds": [ "🎯 全球直连", "🚀 节点选择" ] },
-    { "tag": "🌎 国外域名", "type": "selector", "outbounds": [ "🚀 节点选择", "🎯 全球直连" ] },
+    { "tag": "🌎 国外域名", "type": "selector", "outbounds": [ "🚀 节点选择", "🇭🇰 香港节点", "🇹🇼 台湾节点", "🇯🇵 日本节点", "🇸🇬 新加坡节点", "🇺🇸 美国节点", "🆓 免费节点" ] },
     { "tag": "📲 电报消息", "type": "selector", "outbounds": [ "🚀 节点选择", "🇭🇰 香港节点", "🇹🇼 台湾节点", "🇯🇵 日本节点", "🇸🇬 新加坡节点", "🇺🇸 美国节点", "🆓 免费节点" ] },
-    { "tag": "📋 Trackerslist", "type": "selector", "outbounds": [ "🎯 全球直连", "🚀 节点选择" ] },
     { "tag": "🐟 漏网之鱼", "type": "selector", "outbounds": [ "🚀 节点选择", "🇭🇰 香港节点", "🇹🇼 台湾节点", "🇯🇵 日本节点", "🇸🇬 新加坡节点", "🇺🇸 美国节点", "🆓 免费节点", "🎯 全球直连" ] },
     { "tag": "🛑 广告域名", "type": "selector", "outbounds": [ "🔴 全球拦截", "🎯 全球直连" ] },
     { "tag": "🔴 全球拦截", "type": "block" },
@@ -133,7 +132,6 @@ tags: [sing-box, sing-boxr, 直链, 订阅, ruleset, rule_set, 基础]
       // 自定义规则优先放前面
       { "rule_set": [ "private" ], "outbound": "🎯 全球直连" },
       { "rule_set": [ "ads" ], "outbound": "🛑 广告域名" },
-      { "rule_set": [ "trackerslist" ], "outbound": "📋 Trackerslist" },
       // 为了使 P2P 流量（BT 下载）走直连，可添加一条 `DST-PORT` 规则（ShellCrash 会默认启用“只代理常用端口”，可删除此条 `DST-PORT`）
       { "port_range": [ "6881:6889" ], "outbound": "🎯 全球直连"},
       // 若使用 ShellCrash，由于无法判断本机进程（默认删除 `process_name` 规则），需删除此条 `rule_set`
@@ -170,13 +168,6 @@ tags: [sing-box, sing-boxr, 直链, 订阅, ruleset, rule_set, 基础]
         "format": "binary",
         "path": "./ruleset/private.srs",
         "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/private.srs"
-      },
-      {
-        "tag": "trackerslist",
-        "type": "remote",
-        "format": "binary",
-        "path": "./ruleset/trackerslist.srs",
-        "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/trackerslist.srs"
       },
       // 若使用 ShellCrash，由于无法判断本机进程（默认删除 `process_name` 规则），需删除此条 `applications`
       {
@@ -345,9 +336,8 @@ tags: [sing-box, sing-boxr, 直链, 订阅, ruleset, rule_set, 基础]
     { "tag": "🕹️ 游戏平台", "type": "selector", "outbounds": [ "🚀 节点选择", "🇭🇰 香港节点", "🇹🇼 台湾节点", "🇯🇵 日本节点", "🇸🇬 新加坡节点", "🇺🇸 美国节点" ] },
     { "tag": "🤖 AI 平台", "type": "selector", "outbounds": [ "🚀 节点选择", "🇭🇰 香港节点", "🇹🇼 台湾节点", "🇯🇵 日本节点", "🇸🇬 新加坡节点", "🇺🇸 美国节点" ] },
     { "tag": "🌍 国外媒体", "type": "selector", "outbounds": [ "🚀 节点选择", "🇭🇰 香港节点", "🇹🇼 台湾节点", "🇯🇵 日本节点", "🇸🇬 新加坡节点", "🇺🇸 美国节点" ] },
-    { "tag": "🌎 国外域名", "type": "selector", "outbounds": [ "🚀 节点选择", "🎯 全球直连" ] },
+    { "tag": "🌎 国外域名", "type": "selector", "outbounds": [ "🚀 节点选择", "🇭🇰 香港节点", "🇹🇼 台湾节点", "🇯🇵 日本节点", "🇸🇬 新加坡节点", "🇺🇸 美国节点", "🆓 免费节点" ] },
     { "tag": "📲 电报消息", "type": "selector", "outbounds": [ "🚀 节点选择", "🇭🇰 香港节点", "🇹🇼 台湾节点", "🇯🇵 日本节点", "🇸🇬 新加坡节点", "🇺🇸 美国节点", "🆓 免费节点" ] },
-    { "tag": "📋 Trackerslist", "type": "selector", "outbounds": [ "🎯 全球直连", "🚀 节点选择" ] },
     { "tag": "🐟 漏网之鱼", "type": "selector", "outbounds": [ "🎯 全球直连", "🚀 节点选择", "🇭🇰 香港节点", "🇹🇼 台湾节点", "🇯🇵 日本节点", "🇸🇬 新加坡节点", "🇺🇸 美国节点", "🆓 免费节点" ] },
     { "tag": "🛑 广告域名", "type": "selector", "outbounds": [ "🔴 全球拦截", "🎯 全球直连" ] },
     { "tag": "🔴 全球拦截", "type": "block" },
@@ -396,7 +386,6 @@ tags: [sing-box, sing-boxr, 直链, 订阅, ruleset, rule_set, 基础]
       // 自定义规则优先放前面
       { "rule_set": [ "private" ], "outbound": "🎯 全球直连" },
       { "rule_set": [ "ads" ], "outbound": "🛑 广告域名" },
-      { "rule_set": [ "trackerslist" ], "outbound": "📋 Trackerslist" },
       { "rule_set": [ "games" ], "outbound": "🕹️ 游戏平台" },
       { "rule_set": [ "media" ], "outbound": "🌍 国外媒体" },
       { "rule_set": [ "ai" ], "outbound": "🤖 AI 平台" },
@@ -424,14 +413,6 @@ tags: [sing-box, sing-boxr, 直链, 订阅, ruleset, rule_set, 基础]
         "format": "binary",
         "path": "./ruleset/private.srs",
         "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/private.srs",
-        "download_detour": "GLOBAL"
-      },
-      {
-        "tag": "trackerslist",
-        "type": "remote",
-        "format": "binary",
-        "path": "./ruleset/trackerslist.srs",
-        "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/trackerslist.srs",
         "download_detour": "GLOBAL"
       },
       {

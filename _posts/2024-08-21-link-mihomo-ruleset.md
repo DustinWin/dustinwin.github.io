@@ -102,11 +102,10 @@ proxy-groups:
   - {name: 🌍 国外媒体, type: select, proxies: [🚀 节点选择, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇺🇸 美国节点]}
   - {name: 🇨🇳 国内域名, type: select, proxies: [🎯 全球直连, 🚀 节点选择]}
   - {name: 🀄️ 国内 IP, type: select, proxies: [🎯 全球直连, 🚀 节点选择]}
-  - {name: 🌎 国外域名, type: select, proxies: [🚀 节点选择, 🎯 全球直连]}
+  - {name: 🌎 国外域名, type: select, proxies: [🚀 节点选择, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇺🇸 美国节点, 🆓 免费节点]}
   - {name: 📲 电报消息, type: select, proxies: [🚀 节点选择, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇺🇸 美国节点, 🆓 免费节点]}
   # 若使用 ShellCrash，由于无法判断本机进程（默认 `find-process-mode: off`），需删除此条 `⬇️ 直连软件`；若在面板 Dashboard 中需隐藏该策略组，可添加 `hidden: true` 配置项
   - {name: ⬇️ 直连软件, type: select, proxies: [🎯 全球直连], hidden: true}
-  - {name: 📋 Trackerslist, type: select, proxies: [🎯 全球直连, 🚀 节点选择]}
   - {name: 🔒 私有网络, type: select, proxies: [🎯 全球直连], hidden: true}
   # 若机场的 UDP 质量不是很好，导致某游戏无法登录或进入房间，可添加 `disable-udp: true` 配置项解决
   - {name: 🐟 漏网之鱼, type: select, proxies: [🚀 节点选择, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇺🇸 美国节点, 🆓 免费节点, 🎯 全球直连]}
@@ -144,14 +143,6 @@ rule-providers:
     format: mrs
     path: ./ruleset/private.mrs
     url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/private.mrs"
-    interval: 86400
-
-  trackerslist:
-    type: http
-    behavior: domain
-    format: mrs
-    path: ./ruleset/trackerslist.mrs
-    url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/trackerslist.mrs"
     interval: 86400
 
   # 若使用 ShellCrash，由于无法判断本机进程（默认 `find-process-mode: off`），需删除此条 `applications`
@@ -280,7 +271,6 @@ rules:
   # 自定义规则优先放前面
   - RULE-SET,private,🔒 私有网络
   - RULE-SET,ads,🛑 广告域名
-  - RULE-SET,trackerslist,📋 Trackerslist
   # 为了使 P2P 流量（BT 下载）走直连，可添加一条 `DST-PORT` 规则（ShellCrash 会默认启用“只代理常用端口”，可删除此条 `DST-PORT`）
   - DST-PORT,6881-6889,🎯 全球直连
   # 若使用 ShellCrash，由于无法判断本机进程（默认 `find-process-mode: off`），需删除此条 `RULE-SET`
@@ -372,9 +362,8 @@ proxy-groups:
   - {name: 🕹️ 游戏平台, type: select, proxies: [🚀 节点选择, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇺🇸 美国节点]}
   - {name: 🤖 AI 平台, type: select, proxies: [🚀 节点选择, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇺🇸 美国节点]}
   - {name: 🌍 国外媒体, type: select, proxies: [🚀 节点选择, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇺🇸 美国节点]}
-  - {name: 🌎 国外域名, type: select, proxies: [🚀 节点选择, 🎯 全球直连]}
+  - {name: 🌎 国外域名, type: select, proxies: [🚀 节点选择, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇺🇸 美国节点, 🆓 免费节点]}
   - {name: 📲 电报消息, type: select, proxies: [🚀 节点选择, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇺🇸 美国节点, 🆓 免费节点]}
-  - {name: 📋 Trackerslist, type: select, proxies: [🎯 全球直连, 🚀 节点选择]}
   # 若在面板 Dashboard 中需隐藏该策略组，可添加 `hidden: true` 配置项
   - {name: 🔒 私有网络, type: select, proxies: [🎯 全球直连], hidden: true}
   - {name: 🐟 漏网之鱼, type: select, proxies: [🎯 全球直连, 🚀 节点选择, 🇭🇰 香港节点, 🇹🇼 台湾节点, 🇯🇵 日本节点, 🇸🇬 新加坡节点, 🇺🇸 美国节点, 🆓 免费节点]}
@@ -412,14 +401,6 @@ rule-providers:
     format: mrs
     path: ./ruleset/private.mrs
     url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/private.mrs"
-    interval: 86400
-
-  trackerslist:
-    type: http
-    behavior: domain
-    format: mrs
-    path: ./ruleset/trackerslist.mrs
-    url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/trackerslist.mrs"
     interval: 86400
 
   games:
@@ -490,7 +471,6 @@ rule-providers:
 rules:
   - RULE-SET,private,🔒 私有网络
   - RULE-SET,ads,🛑 广告域名
-  - RULE-SET,trackerslist,📋 Trackerslist
   - RULE-SET,games,🕹️ 游戏平台
   - RULE-SET,media,🌍 国外媒体
   - RULE-SET,ai,🤖 AI 平台

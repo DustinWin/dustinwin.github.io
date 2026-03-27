@@ -86,14 +86,6 @@ rule-providers:
     url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/private.mrs"
     interval: 86400
 
-  trackerslist:
-    type: http
-    behavior: domain
-    format: mrs
-    path: ./ruleset/trackerslist.mrs
-    url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/trackerslist.mrs"
-    interval: 86400
-
   microsoft-cn:
     type: http
     behavior: domain
@@ -339,7 +331,12 @@ rule-providers:
   type: select
   proxies:
     - 🈯 节点指定
-    - 🎯 全球直连
+    - 🇭🇰 香港节点
+    - 🇹🇼 台湾节点
+    - 🇯🇵 日本节点
+    - 🇸🇬 新加坡节点
+    - 🇺🇸 美国节点
+    - 🆓 免费节点
 
 - name: 📲 电报消息
   type: select
@@ -351,12 +348,6 @@ rule-providers:
     - 🇸🇬 新加坡节点
     - 🇺🇸 美国节点
     - 🆓 免费节点
-
-- name: 📋 Trackerslist
-  type: select
-  proxies:
-    - 🎯 全球直连
-    - 🈯 节点指定
 
 - name: 🔒 私有网络
   type: select
@@ -433,7 +424,6 @@ rule-providers:
 # 自定义规则优先放前面
 - RULE-SET,private,🔒 私有网络
 - RULE-SET,ads,🛑 广告域名
-- RULE-SET,trackerslist,📋 Trackerslist
 - RULE-SET,microsoft-cn,🪟 微软服务
 - RULE-SET,apple-cn,🍎 苹果服务
 - RULE-SET,google-cn,🇬 谷歌服务

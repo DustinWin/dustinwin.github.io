@@ -201,7 +201,12 @@ proxy-providers:
   type: select
   proxies:
     - 🈯 节点指定
-    - 🎯 全球直连
+    - 🇭🇰 香港节点
+    - 🇹🇼 台湾节点
+    - 🇯🇵 日本节点
+    - 🇸🇬 新加坡节点
+    - 🇺🇸 美国节点
+    - 🆓 免费节点
 
 - name: 📲 电报消息
   type: select
@@ -213,12 +218,6 @@ proxy-providers:
     - 🇸🇬 新加坡节点
     - 🇺🇸 美国节点
     - 🆓 免费节点
-
-- name: 📋 Trackerslist
-  type: select
-  proxies:
-    - 🎯 全球直连
-    - 🈯 节点指定
 
 - name: 🔒 私有网络
   type: select
@@ -295,7 +294,6 @@ proxy-providers:
 # 自定义规则优先放前面
 - GEOSITE,private,🔒 私有网络
 - GEOSITE,ads,🛑 广告域名
-- GEOSITE,trackerslist,📋 Trackerslist
 - GEOSITE,microsoft-cn,🪟 微软服务
 - GEOSITE,apple-cn,🍎 苹果服务
 - GEOSITE,google-cn,🇬 谷歌服务
