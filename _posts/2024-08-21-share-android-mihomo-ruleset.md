@@ -8,8 +8,7 @@ tags: [Clash, Clash Mi, mihomo, Android, ruleset, rule-set, 分享]
 
 > 声明
 {: .prompt-warning }
-1. 请根据自身情况进行修改，**适合自己的方案才是最好的方案**，如无特殊需求，可以照搬
-2. 我所在地区的中国移动网络使用[阿里云公共 DNS](https://help.aliyun.com/zh/dns/what-is-alibaba-cloud-public-dns) 且 `RULE-SET,google-cn,谷歌服务` 走直连时会有异常情况出现（如 [Google Chrome](https://www.google.com/chrome/) 检查更新失败），所以使用[系统 DNS](https://wiki.metacubex.one/config/dns/type/#system) 来代替
+请根据自身情况进行修改，**适合自己的方案才是最好的方案**，如无特殊需求，可以照搬
 
 ## 一、 生成配置文件 .yaml 文件直链
 具体方法请参考《[生成带有自定义策略组和规则的 mihomo 配置文件直链-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/link-mihomo-ruleset)》，贴一下我使用的配置：
@@ -65,8 +64,8 @@ tun:
 
 hosts:
   miwifi.com: [192.168.31.1, 127.0.0.1]
+  dns.alidns.com: [223.5.5.5, 223.6.6.6, 2400:3200::1, 2400:3200:baba::1]
   doh.pub: [1.12.12.12, 120.53.53.53, 2402:4e00::]
-  services.googleapis.cn: [services.googleapis.com]
 
 dns:
   enable: true
@@ -75,10 +74,20 @@ dns:
   enhanced-mode: fake-ip
   fake-ip-range: 28.0.0.0/8
   fake-ip-range6: fc00::/16
-  fake-ip-filter: ['rule-set:private,trackerslist,cn']
+  fake-ip-filter-mode: rule
+  fake-ip-filter:
+    - RULE-SET,trackerslist,real-ip
+    - RULE-SET,microsoft-cn,real-ip
+    - RULE-SET,apple-cn,real-ip
+    - RULE-SET,google-cn,real-ip
+    - RULE-SET,games-cn,real-ip
+    - RULE-SET,proxy,fake-ip
+    - RULE-SET,private,real-ip
+    - RULE-SET,cn,real-ip
+    - MATCH,fake-ip
   nameserver:
+    - quic://dns.alidns.com:853
     - https://doh.pub/dns-query
-    - system
   nameserver-policy: {'rule-set:ads': [rcode://success]}
 
 # 若没有单个出站代理节点，须删除所有 `🆚 vless 节点` 相关内容
@@ -128,6 +137,14 @@ proxy-groups:
   - {name: 免费节点, type: url-test, tolerance: 100, use: [🆓 免费订阅], icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/free.png"}
 
 rule-providers:
+  trackerslist:
+    type: http
+    behavior: domain
+    format: mrs
+    path: ./ruleset/trackerslist.mrs
+    url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/trackerslist.mrs"
+    interval: 86400
+
   ads:
     type: http
     behavior: domain
@@ -142,14 +159,6 @@ rule-providers:
     format: mrs
     path: ./ruleset/private.mrs
     url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/private.mrs"
-    interval: 86400
-
-  trackerslist:
-    type: http
-    behavior: domain
-    format: mrs
-    path: ./ruleset/trackerslist.mrs
-    url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/trackerslist.mrs"
     interval: 86400
 
   applications:
@@ -306,54 +315,8 @@ proxy-groups:
   - {name: CF 优选节点, type: fallback, use: [🆓 免费订阅], filter: "(?i)(cfip)", hidden: true, icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/cfip.png"}
 ```
 
----
-
->`DNS` 私货
-{: .prompt-tip }
-
-注：
-- 1. 本 `dns` 配置中，仅国外域名 `proxy` 走 `fake-ip`，国内域名 `cn` 走国内 DNS 解析，未知域名走国外 DNS 解析（有效解决了“心理 DNS 泄露问题”，详见《[搭载 mihomo 内核配置 DNS 不泄露教程-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/dnsnoleaks-mihomo-ruleset/)》），且配置 `ecs` 提高了兼容性
-- 2. 推荐将 `ecs` 设置为当前宽带运营商分配的默认 DNS（可进入光猫或路由器拨号页面查看，或者前往[公共 DNS 大全](https://toolb.cn/publicdns)查询）的 IP 段，如默认 DNS 为 `211.137.58.20`，可设置为 `211.137.58.0/24`
-- 3. 记得删除 `rule-providers.trackerslist`
-
-```yaml
-hosts:
-  miwifi.com: [192.168.31.1, 127.0.0.1]
-  dns.alidns.com: [223.5.5.5, 223.6.6.6, 2400:3200::1, 2400:3200:baba::1]
-  doh.pub: [1.12.12.12, 120.53.53.53, 2402:4e00::]
-  dns.google: [8.8.8.8, 8.8.4.4, 2001:4860:4860::8888, 2001:4860:4860::8844]
-  dns11.quad9.net: [9.9.9.11, 149.112.112.11, 2620:fe::11, 2620:fe::fe:11]
-
-dns:
-  enable: true
-  ipv6: true
-  enhanced-mode: fake-ip
-  fake-ip-range: 28.0.0.0/8
-  fake-ip-range6: fc00::/16
-  fake-ip-filter-mode: whitelist
-  fake-ip-filter: ['rule-set:games,ai,proxy']
-  respect-rules: true
-  nameserver:
-    # 推荐将 `ecs` 设置为当前宽带运营商分配的默认 DNS 的 IP 段
-    - 'https://dns.google/dns-query#ecs=211.137.58.0/24'
-    - 'https://dns11.quad9.net/dns-query#ecs=211.137.58.0/24'
-  proxy-server-nameserver:
-    - quic://dns.alidns.com:853
-    - https://doh.pub/dns-query
-  direct-nameserver:
-    - https://doh.pub/dns-query
-    - system
-  nameserver-policy:
-    'rule-set:ads': [rcode://success]
-    'rule-set:private,microsoft-cn,apple-cn,google-cn,games-cn,cn':
-      - quic://dns.alidns.com:853
-      - https://doh.pub/dns-query
-```
-
----
-
 ## 二、 导入配置文件并启动
 1. 进入 [Clash Mi for Android](https://github.com/KaringX/clashmi) → “+”图标 → 添加配置链接，“配置链接/内容”输入《[一](https://proxy-tutorials.dustinwin.us.kg/posts/share-android-mihomo-ruleset/#%E4%B8%80-%E7%94%9F%E6%88%90%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-yaml-%E6%96%87%E4%BB%B6%E7%9B%B4%E9%93%BE)》中生成的配置文件 .yaml 直链，点击“✓”
 2. 待配置下载完成后返回到主界面，进入核心设置，关闭所有配置项的覆写功能
 3. 再次返回到主界面，点击“未连接”右边的灰色按钮即可启动服务
-4. 待服务启动成功后可直接点击“面板”来使用 zashboard 面板
+4. 待服务启动成功后可直接点击“面板”来使用 [zashboard 面板](https://github.com/Zephyruso/zashboard)

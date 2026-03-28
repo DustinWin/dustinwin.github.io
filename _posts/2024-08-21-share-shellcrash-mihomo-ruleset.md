@@ -12,7 +12,6 @@ tags: [Clash, mihomo, ShellCrash, ruleset, rule-set, 分享, Router]
 2. 此方案适用于 [ShellCrash](https://github.com/juewuy/ShellCrash)（以 ARM64 架构为例，且安装路径为 `/data/ShellCrash`{: .filepath}）
 3. 本方案绕过了 CNIP 且不搭配 [AdGuard Home](https://github.com/AdguardTeam/AdGuardHome)，在 DNS 层拦截广告
 4. 本人将路由器设置了每天早上 6 点重启，使得《[四](https://proxy-tutorials.dustinwin.us.kg/posts/share-shellcrash-mihomo-ruleset/#%E5%9B%9B-%E6%B7%BB%E5%8A%A0%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1)》中设置的定时任务生效
-5. 我所在地区的中国移动网络使用[阿里云公共 DNS](https://help.aliyun.com/zh/dns/what-is-alibaba-cloud-public-dns) 且 `RULE-SET,google-cn,谷歌服务` 走直连时会有异常情况出现（如 [Google Chrome](https://www.google.com/chrome/) 检查更新失败），所以使用[系统 DNS](https://wiki.metacubex.one/config/dns/type/#system) 来代替
 
 ## 一、 生成配置文件 .yaml 文件直链
 具体方法此处不再赘述，请看《[生成带有自定义策略组和规则的 mihomo 配置文件直链-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/link-mihomo-ruleset)》，贴一下我使用的配置：
@@ -85,6 +84,14 @@ proxy-groups:
   - {name: 免费节点, type: url-test, tolerance: 100, use: [🆓 免费订阅], icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/free.png"}
 
 rule-providers:
+  trackerslist:
+    type: http
+    behavior: domain
+    format: mrs
+    path: ./ruleset/trackerslist.mrs
+    url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/trackerslist.mrs"
+    interval: 86400
+
   ads:
     type: http
     behavior: domain
@@ -99,14 +106,6 @@ rule-providers:
     format: mrs
     path: ./ruleset/private.mrs
     url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/private.mrs"
-    interval: 86400
-
-  trackerslist:
-    type: http
-    behavior: domain
-    format: mrs
-    path: ./ruleset/trackerslist.mrs
-    url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/trackerslist.mrs"
     interval: 86400
 
   microsoft-cn:
@@ -280,8 +279,8 @@ profile: {store-selected: true, store-fake-ip: true}
 
 hosts:
   miwifi.com: [192.168.31.1, 127.0.0.1]
+  dns.alidns.com: [223.5.5.5, 223.6.6.6, 2400:3200::1, 2400:3200:baba::1]
   doh.pub: [1.12.12.12, 120.53.53.53, 2402:4e00::]
-  services.googleapis.cn: [services.googleapis.com]
 
 dns:
   enable: true
@@ -291,59 +290,22 @@ dns:
   enhanced-mode: fake-ip
   fake-ip-range: 28.0.0.0/8
   fake-ip-range6: fc00::/16
-  fake-ip-filter: ['rule-set:private,trackerslist,cn']
+  fake-ip-filter-mode: rule
+  fake-ip-filter:
+    - RULE-SET,trackerslist,real-ip
+    - RULE-SET,microsoft-cn,real-ip
+    - RULE-SET,apple-cn,real-ip
+    - RULE-SET,google-cn,real-ip
+    - RULE-SET,games-cn,real-ip
+    - RULE-SET,proxy,fake-ip
+    - RULE-SET,private,real-ip
+    - RULE-SET,cn,real-ip
+    - MATCH,fake-ip
   nameserver:
-    - https://doh.pub/dns-query
-    - system
+    - quic://dns.alidns.com:853
+    - https://dns.pub/dns-query
   nameserver-policy: {'rule-set:ads': [rcode://success]}
 ```
-
----
-
->`DNS` 私货
-{: .prompt-tip }
-
-注：
-- 1. 本 `dns` 配置中，仅国外域名 `proxy` 走 `fake-ip`，国内域名 `cn` 走国内 DNS 解析，未知域名走国外 DNS 解析（有效解决了“心理 DNS 泄露问题”，详见《[搭载 mihomo 内核配置 DNS 不泄露教程-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/dnsnoleaks-mihomo-ruleset/)》），且配置 `ecs` 提高了兼容性
-- 2. 推荐将 `ecs` 设置为当前宽带运营商分配的默认 DNS（可进入光猫或路由器拨号页面查看，或者前往[公共 DNS 大全](https://toolb.cn/publicdns)查询）的 IP 段，如默认 DNS 为 `211.137.58.20`，可设置为 `211.137.58.0/24`
-- 3. 记得删除 `rule-providers.trackerslist`
-
-```yaml
-hosts:
-  miwifi.com: [192.168.31.1, 127.0.0.1]
-  dns.alidns.com: [223.5.5.5, 223.6.6.6, 2400:3200::1, 2400:3200:baba::1]
-  doh.pub: [1.12.12.12, 120.53.53.53, 2402:4e00::]
-  dns.google: [8.8.8.8, 8.8.4.4, 2001:4860:4860::8888, 2001:4860:4860::8844]
-  dns11.quad9.net: [9.9.9.11, 149.112.112.11, 2620:fe::11, 2620:fe::fe:11]
-
-dns:
-  enable: true
-  ipv6: true
-  listen: 0.0.0.0:1053
-  enhanced-mode: fake-ip
-  fake-ip-range: 28.0.0.0/8
-  fake-ip-range6: fc00::/16
-  fake-ip-filter-mode: whitelist
-  fake-ip-filter: ['rule-set:games,ai,proxy']
-  respect-rules: true
-  nameserver:
-    # 推荐将 `ecs` 设置为当前宽带运营商分配的默认 DNS 的 IP 段
-    - 'https://dns.google/dns-query#ecs=211.137.58.0/24'
-    - 'https://dns11.quad9.net/dns-query#ecs=211.137.58.0/24'
-  proxy-server-nameserver:
-    - quic://dns.alidns.com:853
-    - https://doh.pub/dns-query
-  direct-nameserver:
-    - https://doh.pub/dns-query
-    - system
-  nameserver-policy:
-    'rule-set:ads': [rcode://success]
-    'rule-set:private,microsoft-cn,apple-cn,google-cn,games-cn,cn':
-      - quic://dns.alidns.com:853
-      - https://doh.pub/dns-query
-```
-
----
 
 ## 四、 添加定时任务
 1. 连接 SSH 后执行命令 `vi $CRASHDIR/task/task.user`，按一下 Ins 键（Insert 键），粘贴如下内容：

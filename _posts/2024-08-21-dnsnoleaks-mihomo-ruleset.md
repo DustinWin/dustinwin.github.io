@@ -55,8 +55,8 @@ rule-providers:
 
 ```yaml
 hosts:
-  doh.pub: [1.12.12.12, 120.53.53.53, 2402:4e00::]
   dns.alidns.com: [223.5.5.5, 223.6.6.6, 2400:3200::1, 2400:3200:baba::1]
+  doh.pub: [1.12.12.12, 120.53.53.53, 2402:4e00::]
   dns.google: [8.8.8.8, 8.8.4.4, 2001:4860:4860::8888, 2001:4860:4860::8844]
   dns11.quad9.net: [9.9.9.11, 149.112.112.11, 2620:fe::11, 2620:fe::fe:11]
 
@@ -71,23 +71,23 @@ dns:
   fake-ip-filter:
     - RULE-SET,fakeip-filter,real-ip
     - RULE-SET,proxy,fake-ip
-    - RULE-SET,cn,real-ip  # 此条仅演示，可删除
-    - MATCH,real-ip
+    - RULE-SET,cn,real-ip
+    - MATCH,fake-ip
   respect-rules: true
   nameserver:
     # 推荐将 `ecs` 设置为当前宽带运营商分配的默认 DNS 的 IP 段
     - 'https://dns.google/dns-query#ecs=211.137.58.0/24'
     - 'https://dns11.quad9.net/dns-query#ecs=211.137.58.0/24'
   proxy-server-nameserver:
-    - https://dns.pub/dns-query
     - quic://dns.alidns.com:853
+    - https://dns.pub/dns-query
   direct-nameserver:
-    - https://dns.pub/dns-query
     - quic://dns.alidns.com:853
+    - https://dns.pub/dns-query
   nameserver-policy:
     'rule-set:fakeip-filter,cn':
-      - https://dns.pub/dns-query
       - quic://dns.alidns.com:853
+      - https://dns.pub/dns-query
 ```
 
 按一下 Esc 键（退出键），输入英文冒号 `:`，继续输入 `wq` 并回车
@@ -106,8 +106,8 @@ dns:
 
   ```yaml
   hosts:
-    doh.pub: [1.12.12.12, 120.53.53.53, 2402:4e00::]
     dns.alidns.com: [223.5.5.5, 223.6.6.6, 2400:3200::1, 2400:3200:baba::1]
+    doh.pub: [1.12.12.12, 120.53.53.53, 2402:4e00::]
 
   dns:
     enable: true
@@ -117,13 +117,10 @@ dns:
     enhanced-mode: fake-ip
     fake-ip-range: 28.0.0.0/8
     fake-ip-range6: fc00::/16
-    fake-ip-filter-mode: rule
-    fake-ip-filter:
-    - RULE-SET,fakeip-filter,real-ip
-    - MATCH,fake-ip
+    fake-ip-filter: [rule-set:fakeip-filter]
     nameserver:
-      - https://dns.pub/dns-query
       - quic://dns.alidns.com:853
+      - https://dns.pub/dns-query
   ```
 
   按一下 Esc 键（退出键），输入英文冒号 `:`，继续输入 `wq` 并回车
@@ -135,8 +132,8 @@ dns:
 
 ```yaml
 hosts:
-  doh.pub: [1.12.12.12, 120.53.53.53, 2402:4e00::]
   dns.alidns.com: [223.5.5.5, 223.6.6.6, 2400:3200::1, 2400:3200:baba::1]
+  doh.pub: [1.12.12.12, 120.53.53.53, 2402:4e00::]
   dns.google: [8.8.8.8, 8.8.4.4, 2001:4860:4860::8888, 2001:4860:4860::8844]
   dns11.quad9.net: [9.9.9.11, 149.112.112.11, 2620:fe::11, 2620:fe::fe:11]
 
@@ -154,15 +151,15 @@ dns:
     - 'https://dns.google/dns-query#ecs=211.137.58.0/24'
     - 'https://dns11.quad9.net/dns-query#ecs=211.137.58.0/24'
   proxy-server-nameserver:
-    - https://dns.pub/dns-query
     - quic://dns.alidns.com:853
+    - https://dns.pub/dns-query
   direct-nameserver:
-    - https://dns.pub/dns-query
     - quic://dns.alidns.com:853
+    - https://dns.pub/dns-query
   nameserver-policy:
-    'rule-set:fakeip-filter,cn':
-      - https://dns.pub/dns-query
+    'rule-set:cn':
       - quic://dns.alidns.com:853
+      - https://dns.pub/dns-query
 ```
 
 按一下 Esc 键（退出键），输入英文冒号 `:`，继续输入 `wq` 并回车
