@@ -62,7 +62,7 @@ tags: [sing-box, sing-boxr, ShellCrash, ruleset, rule_set, 进阶, DNS, DNS 泄�
     "dns": {
       "servers": [
         {
-          "tag": "dns_hosts",
+          "tag": "hosts",
           "type": "hosts",
           "predefined": {
             "dns.alidns.com": [ "223.5.5.5", "223.6.6.6", "2400:3200::1", "2400:3200:baba::1" ],
@@ -72,10 +72,10 @@ tags: [sing-box, sing-boxr, ShellCrash, ruleset, rule_set, 进阶, DNS, DNS 泄�
           }
         },
         { "tag": "dns_resolver", "type": "local" },
-        { "tag": "dns_alidns", "type": "quic", "server": "dns.alidns.com", "domain_resolver": "dns_hosts" },
-        { "tag": "dns_dnspod", "type": "https", "server": "doh.pub", "domain_resolver": "dns_hosts" },
-        { "tag": "dns_google", "type": "https", "server": "dns.google", "domain_resolver": "dns_hosts", "detour": "GLOBAL" },
-        { "tag": "dns_quad9", "type": "https", "server": "dns11.quad9.net", "domain_resolver": "dns_hosts", "detour": "GLOBAL" },
+        { "tag": "dns_alidns", "type": "quic", "server": "dns.alidns.com", "domain_resolver": "hosts" },
+        { "tag": "dns_dnspod", "type": "https", "server": "doh.pub", "domain_resolver": "hosts" },
+        { "tag": "dns_google", "type": "https", "server": "dns.google", "domain_resolver": "hosts", "detour": "GLOBAL" },
+        { "tag": "dns_quad9", "type": "https", "server": "dns11.quad9.net", "domain_resolver": "hosts", "detour": "GLOBAL" },
         { "tag": "dns_direct", "type": "group", "servers": [ "dns_alidns", "dns_dnspod" ] },
         { "tag": "dns_proxy", "type": "group", "servers": [ "dns_google", "dns_quad9" ] },
         { "tag": "dns_fakeip", "type": "fakeip", "inet4_range": "28.0.0.0/8", "inet6_range": "fc00::/16" }
@@ -124,7 +124,7 @@ tags: [sing-box, sing-boxr, ShellCrash, ruleset, rule_set, 进阶, DNS, DNS 泄�
     "dns": {
       "servers": [
         {
-          "tag": "dns_hosts",
+          "tag": "hosts",
           "type": "hosts",
           "predefined": {
             "dns.alidns.com": [ "223.5.5.5", "223.6.6.6", "2400:3200::1", "2400:3200:baba::1" ],
@@ -134,10 +134,10 @@ tags: [sing-box, sing-boxr, ShellCrash, ruleset, rule_set, 进阶, DNS, DNS 泄�
           }
         },
         { "tag": "dns_resolver", "type": "local" },
-        { "tag": "dns_alidns", "type": "quic", "server": "dns.alidns.com", "domain_resolver": "dns_hosts" },
-        { "tag": "dns_dnspod", "type": "https", "server": "doh.pub", "domain_resolver": "dns_hosts" },
-        { "tag": "dns_google", "type": "https", "server": "dns.google", "domain_resolver": "dns_hosts", "detour": "GLOBAL" },
-        { "tag": "dns_quad9", "type": "https", "server": "dns11.quad9.net", "domain_resolver": "dns_hosts", "detour": "GLOBAL" },
+        { "tag": "dns_alidns", "type": "quic", "server": "dns.alidns.com", "domain_resolver": "hosts" },
+        { "tag": "dns_dnspod", "type": "https", "server": "doh.pub", "domain_resolver": "hosts" },
+        { "tag": "dns_google", "type": "https", "server": "dns.google", "domain_resolver": "hosts", "detour": "GLOBAL" },
+        { "tag": "dns_quad9", "type": "https", "server": "dns11.quad9.net", "domain_resolver": "hosts", "detour": "GLOBAL" },
         { "tag": "dns_direct", "type": "group", "servers": [ "dns_alidns", "dns_dnspod" ] },
         { "tag": "dns_proxy", "type": "group", "servers": [ "dns_google", "dns_quad9" ] },
         { "tag": "dns_fakeip", "type": "fakeip", "inet4_range": "28.0.0.0/8", "inet6_range": "fc00::/16" }
@@ -184,7 +184,7 @@ tags: [sing-box, sing-boxr, ShellCrash, ruleset, rule_set, 进阶, DNS, DNS 泄�
     "dns": {
       "servers": [
         {
-          "tag": "dns_hosts",
+          "tag": "hosts",
           "type": "hosts",
           "predefined": {
             "dns.alidns.com": [ "223.5.5.5", "223.6.6.6", "2400:3200::1", "2400:3200:baba::1" ],
@@ -194,10 +194,10 @@ tags: [sing-box, sing-boxr, ShellCrash, ruleset, rule_set, 进阶, DNS, DNS 泄�
           }
         },
         { "tag": "dns_resolver", "type": "local" },
-        { "tag": "dns_alidns", "type": "quic", "server": "dns.alidns.com", "domain_resolver": "dns_hosts" },
-        { "tag": "dns_dnspod", "type": "https", "server": "doh.pub", "domain_resolver": "dns_hosts" },
-        { "tag": "dns_google", "type": "https", "server": "dns.google", "domain_resolver": "dns_hosts", "detour": "GLOBAL" },
-        { "tag": "dns_quad9", "type": "https", "server": "dns11.quad9.net", "domain_resolver": "dns_hosts", "detour": "GLOBAL" },
+        { "tag": "dns_alidns", "type": "quic", "server": "dns.alidns.com", "domain_resolver": "hosts" },
+        { "tag": "dns_dnspod", "type": "https", "server": "doh.pub", "domain_resolver": "hosts" },
+        { "tag": "dns_google", "type": "https", "server": "dns.google", "domain_resolver": "hosts", "detour": "GLOBAL" },
+        { "tag": "dns_quad9", "type": "https", "server": "dns11.quad9.net", "domain_resolver": "hosts", "detour": "GLOBAL" },
         { "tag": "dns_direct", "type": "group", "servers": [ "dns_alidns", "dns_dnspod" ] },
         { "tag": "dns_proxy", "type": "group", "servers": [ "dns_google", "dns_quad9" ] },
         { "tag": "dns_fakeip", "type": "fakeip", "inet4_range": "28.0.0.0/8", "inet6_range": "fc00::/16" }

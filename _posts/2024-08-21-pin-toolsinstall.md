@@ -135,10 +135,9 @@ curl -o /data/AdGuardHome/AdGuardHome -L https://ghfast.top/https://github.com/D
 可在 ShellCrash 里添加定时更新 mihomo 内核、sing-box 内核、[zashboard 面板](https://github.com/Zephyruso/zashboard)和 AdGuard Home 的任务
 1. 连接 SSH 后执行 `vi $CRASHDIR/task/task.user`，按一下 Ins 键（Insert 键），粘贴如下内容：  
 注：
-- 1. 留意链接后缀是否与 CPU 架构匹配
-- 2. ShellCrash 安装路径为 `/data/ShellCrash`{: .filepath}
-- 3. 须重启 ShellCrash 和 AdGuard Home 服务后生效
-
+- ① 留意链接后缀是否与 CPU 架构匹配
+- ② ShellCrash 安装路径为 `/data/ShellCrash`{: .filepath}
+- ③ 须重启 ShellCrash 和 AdGuard Home 服务后生效
 ```shell
 201#curl -o /data/ShellCrash/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-meta-linux-arm64.upx >/dev/null 2>&1#更新mihomo内核
 202#curl -o /data/ShellCrash/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-stable-linux-arm64.upx >/dev/null 2>&1#更新sing-boxr内核

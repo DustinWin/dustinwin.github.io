@@ -293,8 +293,8 @@ rules:
 {: .prompt-tip }
 
 注：
-- 1. 本 `proxy-groups` 配置中，将不同的节点类型（如：`Shadowsocks` 和 `Trojan`）分别配置 `type: url-test` 进行延迟测试，且配置 `hidden: true` 以简化 Dashboard 面板中的显示。再将延迟测试最低的策略组配置 `type: load-balance` 进行负载均衡
-- 2. 将不同的优选节点分别配置 `type: fallback` 进行故障转移，且配置 `hidden: true` 以简化 Dashboard 面板中的显示。再将故障转移后的策略组配置 `type: url-test` 进行延迟测试
+- ① 本 `proxy-groups` 配置中，将不同的节点类型（如：`Shadowsocks` 和 `Trojan`）分别配置 `type: url-test` 进行延迟测试，且配置 `hidden: true` 以简化 Dashboard 面板中的显示。再将延迟测试最低的策略组配置 `type: load-balance` 进行负载均衡
+- ② 将不同的优选节点分别配置 `type: fallback` 进行故障转移，且配置 `hidden: true` 以简化 Dashboard 面板中的显示。再将故障转移后的策略组配置 `type: url-test` 进行延迟测试
 
 ```yaml
 proxy-groups:
@@ -331,8 +331,7 @@ Windows Registry Editor Version 5.00
 [HKEY_CLASSES_ROOT\sh_auto_file\shell\runas\command]
 @="\"C:\\Program Files\\Git\\git-bash.exe\" \"%1\""
 ```
-
-3. 另存为 .reg 文件，双击导入
+另存为 .reg 文件，双击导入
 
 ## 三、 导入 [mihomo 内核](https://github.com/MetaCubeX/mihomo)和配置文件并启动 mihomo
 ### 1. 导入内核和配置文件

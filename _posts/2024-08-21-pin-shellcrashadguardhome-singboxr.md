@@ -63,11 +63,9 @@ pin: true
   - ➋ 点击“添加”  
     <img src="/assets/img/pin/add-windows-openssh-2.png" alt="启用 OpenSSH 服务器 2" width="60%" />
 
-- ③ 连接 Telnet
-
 > 在成功完成《[三、 2](https://proxy-tutorials.dustinwin.us.kg/posts/pin-shellcrashadguardhome-singboxr/#2-%E6%B0%B8%E4%B9%85%E5%BC%80%E5%90%AF-telnet)》后才能进行此操作
 {: .prompt-warning }
-
+- ③ 连接 Telnet
   - ➊ 以管理员身份运行 PowerShell 或 CMD，执行命令 `telnet 192.168.31.1`
     - 注：首次登录不需要用户名和密码，解锁或恢复 SSH 后用户名为 `root`，密码为《[三、 3](https://proxy-tutorials.dustinwin.us.kg/posts/pin-shellcrashadguardhome-singboxr/#3-%E6%B0%B8%E4%B9%85%E5%BC%80%E5%90%AF%E5%B9%B6%E5%9B%BA%E5%8C%96-ssh)》中设置的登录密码
 
@@ -76,11 +74,9 @@ pin: true
   - ➋ 输入密码 `12345678`（输入时密码不可见，下同）并回车，显示“ARE U OK”表示成功连接 Telnet  
     <img src="/assets/img/pin/connect-telnet-windows-2.png" alt="连接 Telnet 2" width="60%" />
 
-- ④ 连接 SSH
-
 > 在成功完成《[三、 3](https://proxy-tutorials.dustinwin.us.kg/posts/pin-shellcrashadguardhome-singboxr/#3-%E6%B0%B8%E4%B9%85%E5%BC%80%E5%90%AF%E5%B9%B6%E5%9B%BA%E5%8C%96-ssh)》后才能进行此操作
 {: .prompt-warning }
-
+- ④ 连接 SSH
   - ➊ 以管理员身份运行 PowerShell 或 CMD，执行命令 `ssh -oHostKeyAlgorithms=+ssh-rsa root@192.168.31.1` 以允许 SSH 客户端接受“ssh-rsa”密钥，输入 `yes` 并回车
     - 注：若当前电脑登录过 SSH，后路由器经过重新解锁或恢复 SSH，须进入 `C:\Users\[用户名]\.ssh`{: .filepath} 文件夹，删除“known_hosts”文件，否则登录会报错
 
@@ -93,22 +89,18 @@ pin: true
     <img src="/assets/img/pin/connect-ssh-windows-3.png" alt="连接 SSH 3" width="60%" />
 
 ### 2. 通过 SSH 工具添加 SSH 支持（任选一）
-- ① 连接 Telnet
-
 > 在成功完成《[三、 2](https://proxy-tutorials.dustinwin.us.kg/posts/pin-shellcrashadguardhome-singboxr/#2-%E6%B0%B8%E4%B9%85%E5%BC%80%E5%90%AF-telnet)》后才能进行此操作
 {: .prompt-warning }
-
+- ① 连接 Telnet
   - ➊ 安装 PuTTY 并打开，按图输入和选择，点击“Open”即可成功连接 Telnet
     <img src="/assets/img/pin/connect-telnet-1.png" alt="连接 Telnet 1" width="60%" />
 
   - ➋ 显示“ARE U OK”表示成功登录 Telnet  
     <img src="/assets/img/pin/connect-telnet-2.png" alt="连接和添加 Telnet 2" width="60%" />
 
-- ② 连接 SSH
-
 > 在成功完成《[三、 3](https://proxy-tutorials.dustinwin.us.kg/posts/pin-shellcrashadguardhome-singboxr/#3-%E6%B0%B8%E4%B9%85%E5%BC%80%E5%90%AF%E5%B9%B6%E5%9B%BA%E5%8C%96-ssh)》后才能进行此操作
 {: .prompt-warning }
-
+- ② 连接 SSH
   - ➊ 打开 PuTTY，然后按图输入，点击“Open”即可成功连接 SSH
     <img src="/assets/img/pin/connect-ssh-1.png" alt="连接和添加 SSH 1" width="60%" />
 
@@ -118,7 +110,6 @@ pin: true
 ### 3. 通过 WinSCP 连接路由器文件管理
 > 在成功完成《[三、 3](https://proxy-tutorials.dustinwin.us.kg/posts/pin-shellcrashadguardhome-singboxr/#3-%E6%B0%B8%E4%B9%85%E5%BC%80%E5%90%AF%E5%B9%B6%E5%9B%BA%E5%8C%96-ssh)》后才能进行此操作
 {: .prompt-warning }
-
 - ① 安装 WinSCP 并打开，“文件协议”选择“SCP”，其它按图输入，“密码”为 SSH 登录密码，点击“保存”后再点击“登录”  
   <img src="/assets/img/pin/login-winscp.png" alt="通过 WinSCP 连接路由器文件管理 1" width="60%" />
 
@@ -132,15 +123,12 @@ pin: true
 1. 配置免密码连接 SSH
 - ① 打开 PuTTYgen，直接点击“Generate”（期间鼠标必须在此窗口内不停移动）  
   <img src="/assets/img/pin/puttygen-generate.png" alt="生成 key" width="60%" />
-
 - ② 生成后复制完整的“Key”值备用，点击“Save private key”（可在“Key comment”输入 `root@192.168.31.1 - REDMI AX6000`）  
   <img src="/assets/img/pin/puttygen-save.png" alt="保存 key" width="60%" />
-
 - ③ “保存”文件到 `C:\Users\[用户名]\.ssh\rsa_key.ppk`{: .filepath} 中
 - ④ 打开 PuTTY，进入 Connection → SSH → Auth → Credentials，点击“Private key file for authentication”的“Browser”，定位到 `C:\Users\[用户名]\.ssh\rsa_key.ppk`{: .filepath} 文件并“打开”
 - ⑤ 进入 Connections → Data，“Auto-login username”输入 `root`  
   <img src="/assets/img/pin/putty-setting-1.png" alt="设置登录用户名" width="60%" />
-
 - ⑥ 进入 Session，按图输入后，**先点击“Default Settings”，后点击“Save”**  
   <img src="/assets/img/pin/putty-setting-2.png" alt="保存配置" width="60%" />
 
@@ -151,7 +139,6 @@ pin: true
 3. 导入 Key 并加入开机启动  
 连接 SSH，执行如下命令：
 - 注：将《1. ②》中复制的 Key 值替换下面命令中的 `{key}`
-
 ```shell
 echo "{key}" > /data/auto_ssh/authorized_keys
 chmod 600 /data/auto_ssh/authorized_keys
