@@ -74,7 +74,6 @@ curl -o $CRASHDIR/CrashCore.upx -L https://ghfast.top/https://github.com/DustinW
 
 | 面板名称        | 文件名              | 网址                                      |
 | --------------- | ------------------- | ----------------------------------------- |
-| yacd 面板       | `yacd.tar.gz`       | <https://yacd.haishan.me>                 |
 | Yacd-meta 面板  | `Yacd-meta.tar.gz`  | <https://yacd.metacubex.one>              |
 | metacubexd 面板 | `metacubexd.tar.gz` | <https://metacubex.github.io/metacubexd/> |
 | zashboard 面板  | `zashboard.tar.gz`  | <https://board.zash.run.place>            |
@@ -136,12 +135,11 @@ curl -o /data/AdGuardHome/AdGuardHome -L https://ghfast.top/https://github.com/D
 1. 连接 SSH 后执行 `vi $CRASHDIR/task/task.user`，按一下 Ins 键（Insert 键），粘贴如下内容：  
 注：
 - ① 留意链接后缀是否与 CPU 架构匹配
-- ② ShellCrash 安装路径为 `/data/ShellCrash`{: .filepath}
-- ③ 须重启 ShellCrash 和 AdGuard Home 服务后生效
+- ② 须重启 ShellCrash 和 AdGuard Home 服务后生效
 ```shell
-201#curl -o /data/ShellCrash/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-meta-linux-arm64.upx >/dev/null 2>&1#更新mihomo内核
-202#curl -o /data/ShellCrash/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-stable-linux-arm64.upx >/dev/null 2>&1#更新sing-boxr内核
-203#curl -o /data/ShellCrash/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-stable-linux-arm64.upx >/dev/null 2>&1#更新sing-box内核
+201#curl -o $CRASHDIR/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-meta-linux-arm64.upx >/dev/null 2>&1#更新mihomo内核
+202#curl -o $CRASHDIR/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-stable-linux-arm64.upx >/dev/null 2>&1#更新sing-boxr内核
+203#curl -o $CRASHDIR/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-stable-linux-arm64.upx >/dev/null 2>&1#更新sing-box内核
 204#curl -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/Dashboard/zashboard.tar.gz | tar -zx -C $CRASHDIR/ui/ >/dev/null 2>&1#更新zashboard面板
 205#curl -o /data/AdGuardHome/AdGuardHome -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/AdGuardHome/AdGuardHome_beta_linux_arm64 >/dev/null 2>&1#更新AdGuardHome
 ```
