@@ -83,9 +83,9 @@ tags: [sing-box, sing-boxr, ShellCrash, ruleset, rule_set, 进阶, DNS, DNS 泄�
       "rules": [
         { "clash_mode": [ "Direct" ], "server": "dns_direct" },
         { "clash_mode": [ "Global" ], "server": "dns_proxy" },
-        { "rule_set": [ "fakeip-filter" ], "server": "dns_direct", "rewrite_ttl": 1 },
+        { "rule_set": [ "fakeip-filter" ], "server": "dns_direct" },
         { "query_type": [ "A", "AAAA" ], "rule_set": [ "proxy" ], "server": "dns_fakeip" },
-        { "rule_set": [ "cn" ], "server": "dns_direct", "rewrite_ttl": 1 },
+        { "rule_set": [ "cn" ], "server": "dns_direct" },
         { "query_type": [ "A", "AAAA" ], "server": "dns_fakeip" }
       ],
       "final": "dns_proxy",
@@ -145,7 +145,7 @@ tags: [sing-box, sing-boxr, ShellCrash, ruleset, rule_set, 进阶, DNS, DNS 泄�
       "rules": [
         { "clash_mode": [ "Direct" ], "server": "dns_direct" },
         { "clash_mode": [ "Global" ], "server": "dns_proxy" },
-        { "rule_set": [ "fakeip-filter" ], "server": "dns_direct", "rewrite_ttl": 1 },
+        { "rule_set": [ "fakeip-filter" ], "server": "dns_direct" },
         { "query_type": [ "A", "AAAA" ], "server": "dns_fakeip" }
       ],
       "final": "dns_proxy",
@@ -205,8 +205,8 @@ tags: [sing-box, sing-boxr, ShellCrash, ruleset, rule_set, 进阶, DNS, DNS 泄�
       "rules": [
         { "clash_mode": [ "Direct" ], "server": "dns_direct" },
         { "clash_mode": [ "Global" ], "server": "dns_proxy" },
-        { "rule_set": [ "proxy" ], "server": "dns_proxy", "rewrite_ttl": 1 },
-        { "rule_set": [ "cn" ], "server": "dns_direct", "rewrite_ttl": 1 }
+        { "rule_set": [ "proxy" ], "server": "dns_proxy" },
+        { "rule_set": [ "cn" ], "server": "dns_direct" }
       ],
       "final": "dns_proxy",
       "strategy": "prefer_ipv4",
