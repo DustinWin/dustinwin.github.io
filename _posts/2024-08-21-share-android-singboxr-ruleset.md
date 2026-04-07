@@ -127,8 +127,8 @@ tags: [sing-box, sing-boxr, Android, ruleset, rule_set, 分享]
   "route": {
     "default_domain_resolver": { "server": "dns_direct" },
     "rules": [
-      { "action": "sniff" },
-      { "protocol": [ "dns" ], "action": "hijack-dns" },
+      { "rule_set": [ "telegramip" ], "domain": [ "Mijia Cloud" ], "invert": true, "action": "sniff" },
+      { "type": "logical", "mode": "or", "rules": [ { "protocol": [ "dns" ] }, { "port": 53 } ], "action": "hijack-dns" },
       { "clash_mode": [ "Direct" ], "outbound": "DIRECT" },
       { "clash_mode": [ "Global" ], "outbound": "GLOBAL" },
       { "rule_set": [ "private" ], "outbound": "私有网络" },
