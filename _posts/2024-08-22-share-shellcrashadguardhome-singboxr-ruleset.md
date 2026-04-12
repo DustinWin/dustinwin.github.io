@@ -15,6 +15,7 @@ tags: [sing-box, sing-boxr, ShellCrash, AdGuard Home, ruleset, rule_set, 分享,
 5. 此方案适用于 AdGuard Home（以 ARM64 架构为例，且安装路径为 `/data/AdGuardHome`{: .filepath}）
 6. 此方案不建议启用 ShellCrash 配置脚本 → 2) 功能设置 → 3) 透明路由流量过滤 → 2) 过滤局域网设备，因不经过内核的设备在访问 `漏网之鱼` 域名时会遇到无法访问的情况
 7. 本人将路由器设置了每天早上 6 点重启，使得《[五](https://proxy-tutorials.dustinwin.us.kg/posts/share-shellcrashadguardhome-singboxr-ruleset/#%E4%BA%94-%E6%B7%BB%E5%8A%A0%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1)》中设置的定时任务生效
+8. 本教程搭载 [sing-box 内核 reF1nd-Test 版](https://github.com/reF1nd/sing-box/tree/reF1nd-testing)
 
 ## 一、 生成配置文件 .json 文件直链
 具体方法此处不再赘述，请看《[生成带有自定义出站和规则的 sing-boxr 配置文件直链-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/link-singboxr-ruleset)》，贴一下我使用的配置：
@@ -247,7 +248,7 @@ tags: [sing-box, sing-boxr, ShellCrash, AdGuard Home, ruleset, rule_set, 分享,
 连接 SSH 后执行如下命令：
 
 ```shell
-curl -o /tmp/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-stable-linux-arm64.upx
+curl -o /tmp/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-test-linux-arm64.upx
 mkdir -p $CRASHDIR/ui/
 curl -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/Dashboard/zashboard.tar.gz | tar -zx -C $CRASHDIR/ui/
 curl -o $CRASHDIR/cn_ip.txt -L https://cdn.jsdelivr.net/gh/DustinWin/geoip@ips/cn_ipv4.txt
@@ -295,11 +296,13 @@ sc
       { "rule_set": [ "fakeip-filter", "trackerslist", "microsoft-cn", "apple-cn", "google-cn", "games-cn" ], "server": "dns_direct" },
       { "query_type": [ "A", "AAAA" ], "rule_set": [ "proxy" ], "server": "dns_fakeip" },
       { "rule_set": [ "private", "cn" ], "server": "dns_direct" },
+      { "action": "evaluate", "server": "dns_direct" },
+      { "match_response": true, "rule_set": [ "cnip" ] , "action": "respond" },
       { "query_type": [ "A", "AAAA" ], "server": "dns_fakeip" }
     ],
-    "final": "dns_direct",
+    "final": "dns_proxy",
     "strategy": "prefer_ipv4",
-    "independent_cache": true,
+    "optimistic": true,
     "reverse_mapping": true
   }
 }
@@ -313,7 +316,8 @@ sc
   "experimental": {
     "cache_file": {
       "enabled": true,
-      "store_fakeip": true
+      "store_fakeip": true,
+      "store_dns": true
     },
     "clash_api": {
       "external_controller": "0.0.0.0:9999",
@@ -342,6 +346,11 @@ sc
 3. 进入 2) DNS 设置 → 9) 修改 DNS 服务器，设置如下：  
 <img src="/assets/img/dns/dns-null.png" alt="设置部分 2" width="60%" />
 
+4. 连接 SSH 后执行如下命令：
+```shell
+sed -z -i 's/{\s*"ip_accept_any": true,\s*"server": "hosts"\s*}/{ "action": "evaluate", "server": "hosts" },\
+      { "match_response": true, "ip_accept_any": true, "action": "respond" }/' $CRASHDIR/starts/singbox_modify.sh
+```
 ## 七、 安装 AdGuard Home
 连接 SSH 后执行如下命令：
 

@@ -10,6 +10,7 @@ tags: [sing-box, sing-boxr, Windows, ruleset, rule_set, 分享]
 {: .prompt-warning }
 1. 请根据自身情况进行修改，**适合自己的方案才是最好的方案**，如无特殊需求，可以照搬
 2. 此方案采用**裸核**的方式运行，更加精简
+3. 本教程搭载 [sing-box 内核 reF1nd-Test 版](https://github.com/reF1nd/sing-box/tree/reF1nd-testing)
 
 ## 一、 生成配置文件 .json 文件直链
 具体方法请参考《[生成带有自定义出站和规则的 sing-boxr 配置文件直链-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/link-singboxr-ruleset)》，贴一下我使用的配置：
@@ -67,18 +68,21 @@ tags: [sing-box, sing-boxr, Windows, ruleset, rule_set, 分享]
       { "tag": "dns_fakeip", "type": "fakeip", "inet4_range": "28.0.0.0/8", "inet6_range": "fc00::/16" }
     ],
     "rules": [
-      { "ip_accept_any": true, "server": "hosts" },
+      { "action": "evaluate", "server": "hosts" },
+      { "match_response": true, "ip_accept_any": true, "action": "respond" },
       { "clash_mode": [ "Direct" ], "server": "dns_direct" },
       { "clash_mode": [ "Global" ], "server": "dns_proxy" },
       { "rule_set": [ "ads" ], "action": "predefined" },
       { "rule_set": [ "trackerslist", "microsoft-cn", "apple-cn", "google-cn", "games-cn" ], "server": "dns_direct" },
       { "query_type": [ "A", "AAAA" ], "rule_set": [ "proxy" ], "server": "dns_fakeip" },
       { "rule_set": [ "private", "cn" ], "server": "dns_direct" },
+      { "action": "evaluate", "server": "dns_direct" },
+      { "match_response": true, "rule_set": [ "cnip" ] , "action": "respond" },
       { "query_type": [ "A", "AAAA" ], "server": "dns_fakeip" }
     ],
-    "final": "dns_direct",
+    "final": "dns_proxy",
     "strategy": "prefer_ipv4",
-    "independent_cache": true,
+    "optimistic": true,
     "reverse_mapping": true
   },
   "inbounds": [
@@ -261,7 +265,8 @@ tags: [sing-box, sing-boxr, Windows, ruleset, rule_set, 分享]
   "experimental": {
     "cache_file": {
       "enabled": true,
-      "store_fakeip": true
+      "store_fakeip": true,
+      "store_dns": true
     },
     "clash_api": {
       "external_controller": "127.0.0.1:9999",
@@ -359,7 +364,7 @@ Windows Registry Editor Version 5.00
             case $choice in
               Y|y)
                 echo "下载 sing-boxr 内核..."
-                curl -o "$USERPROFILE/Downloads/sing-box.exe" -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-stable-windows-amd64-v3.exe
+                curl -o "$USERPROFILE/Downloads/sing-box.exe" -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-test-windows-amd64-v3.exe
                 echo "下载 sing-boxr 内核成功"
 
                 echo "结束 sing-boxr 相关进程..."
@@ -408,7 +413,7 @@ Windows Registry Editor Version 5.00
         else
           echo "检测到未安装 sing-boxr 内核，正在安装..."
           mkdir -p ./sing-box/ui
-          curl -o ./sing-box/sing-box.exe -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-stable-windows-amd64-v3.exe
+          curl -o ./sing-box/sing-box.exe -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-test-windows-amd64-v3.exe
           curl -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/Dashboard/zashboard.tar.gz | tar -zx -C ./sing-box/ui
           echo "安装 sing-boxr 内核和面板成功"
 

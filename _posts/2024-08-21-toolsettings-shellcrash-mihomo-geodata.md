@@ -56,7 +56,7 @@ curl -o $CRASHDIR/Country.mmdb -L https://cdn.jsdelivr.net/gh/DustinWin/ruleset_
 5. 进入主菜单 → 5) 自动任务 → 1) 添加自动任务，选择 8) 自动更新内核，回车后可设置执行条件
 6. 进入主菜单 → 8) 工具与优化，选择“6) 小米设备软固化 SSH”（无需输入需要还原的 SSH 密码）
 7. 进入 8) 工具与优化 → 8) 小米设备Tun模块修复，选择“1) 我已知晓，出现问题会自行承担！”
-8. 进入主菜单 → 9) 更新与支持 → 2) 切换/更新内核文件 → 6) 使用自定义内核 → 9) 自定义内核链接，输入 `https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-meta-linux-arm64.upx` 并回车，选择“1) Mihomo(Meta)”
+8. 进入主菜单 → 9) 更新与支持 → 2) 切换/更新内核文件 → 6) 使用自定义内核 → 9) 自定义内核链接，输入导入内核命令里的链接并回车，选择“1) Mihomo(Meta)”
 9. 导入配置文件
   - ① 进入主菜单 → 6) 配置文件管理 → a) 添加提供者 → 1) 设置名称或代号，如输入“mihomo”；后进入 2) 设置链接或路径，粘贴《[生成带有自定义策略组和规则的 mihomo 配置文件直链-geodata 方案](https://proxy-tutorials.dustinwin.us.kg/posts/link-mihomo-geodata)》中生成的 .yaml 配置文件直链，选择“a) 保存此提供者”
   - ② 进入 6) 配置文件管理 → c) 在线生成配置文件 → 6) 自定义浏览器 UA，选择“2) 不使用 UA”

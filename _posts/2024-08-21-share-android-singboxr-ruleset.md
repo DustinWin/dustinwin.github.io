@@ -8,7 +8,8 @@ tags: [sing-box, sing-boxr, Android, ruleset, rule_set, 分享]
 
 > 声明
 {: .prompt-warning }
-请根据自身情况进行修改，**适合自己的方案才是最好的方案**，如无特殊需求，可以照搬
+1. 请根据自身情况进行修改，**适合自己的方案才是最好的方案**，如无特殊需求，可以照搬
+2. 本教程搭载 [sing-box 内核 reF1nd-Test 版](https://github.com/reF1nd/sing-box/tree/reF1nd-testing)（可前往 <https://github.com/DustinWin/proxy-tools/releases/tag/sing-box> 下载“SFA-ref1nd-test-arm64-v8a.apk”文件进行安装）
 
 ## 一、 生成配置文件 .json 文件直链
 具体方法请参考《[生成带有自定义出站和规则的 sing-boxr 配置文件直链-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/link-singboxr-ruleset)》，贴一下我使用的配置：
@@ -66,18 +67,21 @@ tags: [sing-box, sing-boxr, Android, ruleset, rule_set, 分享]
       { "tag": "dns_fakeip", "type": "fakeip", "inet4_range": "28.0.0.0/8", "inet6_range": "fc00::/16" }
     ],
     "rules": [
-      { "ip_accept_any": true, "server": "hosts" },
+      { "action": "evaluate", "server": "hosts" },
+      { "match_response": true, "ip_accept_any": true, "action": "respond" },
       { "clash_mode": [ "Direct" ], "server": "dns_direct" },
       { "clash_mode": [ "Global" ], "server": "dns_proxy" },
       { "rule_set": [ "ads" ], "action": "predefined" },
       { "rule_set": [ "trackerslist", "microsoft-cn", "apple-cn", "google-cn", "games-cn" ], "server": "dns_direct" },
       { "query_type": [ "A", "AAAA" ], "rule_set": [ "proxy" ], "server": "dns_fakeip" },
       { "rule_set": [ "private", "cn" ], "server": "dns_direct" },
+      { "action": "evaluate", "server": "dns_direct" },
+      { "match_response": true, "rule_set": [ "cnip" ] , "action": "respond" },
       { "query_type": [ "A", "AAAA" ], "server": "dns_fakeip" }
     ],
-    "final": "dns_direct",
+    "final": "dns_proxy",
     "strategy": "prefer_ipv4",
-    "independent_cache": true,
+    "optimistic": true,
     "reverse_mapping": true
   },
   "inbounds": [
@@ -262,7 +266,8 @@ tags: [sing-box, sing-boxr, Android, ruleset, rule_set, 分享]
   "experimental": {
     "cache_file": {
       "enabled": true,
-      "store_fakeip": true
+      "store_fakeip": true,
+      "store_dns": true
     },
     "clash_api": {
       "external_controller": "127.0.0.1:9999",
