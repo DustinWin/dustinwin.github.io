@@ -77,7 +77,8 @@ tags: [sing-box, sing-boxr, Windows, ruleset, rule_set, 分享]
       { "query_type": [ "A", "AAAA" ], "rule_set": [ "proxy" ], "server": "dns_fakeip" },
       { "rule_set": [ "private", "cn" ], "server": "dns_direct" },
       { "action": "evaluate", "server": "dns_direct" },
-      { "match_response": true, "rule_set": [ "cnip" ] , "action": "respond" },
+      { "match_response": true, "ip_accept_any": true, "invert": true, "action": "respond" },
+      { "match_response": true, "rule_set": [ "cnip" ], "action": "respond" },
       { "query_type": [ "A", "AAAA" ], "server": "dns_fakeip" }
     ],
     "final": "dns_proxy",

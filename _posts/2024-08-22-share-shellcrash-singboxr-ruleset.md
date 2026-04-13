@@ -288,7 +288,8 @@ sc
       { "query_type": [ "A", "AAAA" ], "rule_set": [ "proxy" ], "server": "dns_fakeip" },
       { "rule_set": [ "private", "cn" ], "server": "dns_direct" },
       { "action": "evaluate", "server": "dns_direct" },
-      { "match_response": true, "rule_set": [ "cnip" ] , "action": "respond" },
+      { "match_response": true, "ip_accept_any": true, "invert": true, "action": "respond" },
+      { "match_response": true, "rule_set": [ "cnip" ], "action": "respond" },
       { "query_type": [ "A", "AAAA" ], "server": "dns_fakeip" }
     ],
     "final": "dns_proxy",
@@ -332,8 +333,8 @@ sc
 
 3. 连接 SSH 后执行如下命令：
 ```shell
-sed -z -i 's/{\s*"ip_accept_any": true,\s*"server": "hosts"\s*}/{ "action": "evaluate", "server": "hosts" },\
-      { "match_response": true, "ip_accept_any": true, "action": "respond" }/' $CRASHDIR/starts/singbox_modify.sh
+sed -i ':a;N;$!ba;s/{[[:space:]]*"ip_accept_any": true,[[:space:]]*"server": "hosts"[[:space:]]*}/{ "action": "evaluate", "server": "hosts" },\
+      { "match_response": true, "ip_accept_any": true, "action": "respond" }/' "$CRASHDIR/starts/singbox_modify.sh"
 ```
 ## 七、 访问 Dashboard 面板
 打开 <http://miwifi.com:9999/ui/> 后，“主机”输入 `192.168.31.1`，“端口”输入 `9999`，点击“提交”即可访问 Dashboard 面板

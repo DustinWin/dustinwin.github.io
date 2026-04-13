@@ -297,7 +297,8 @@ sc
       { "query_type": [ "A", "AAAA" ], "rule_set": [ "proxy" ], "server": "dns_fakeip" },
       { "rule_set": [ "private", "cn" ], "server": "dns_direct" },
       { "action": "evaluate", "server": "dns_direct" },
-      { "match_response": true, "rule_set": [ "cnip" ] , "action": "respond" },
+      { "match_response": true, "ip_accept_any": true, "invert": true, "action": "respond" },
+      { "match_response": true, "rule_set": [ "cnip" ], "action": "respond" },
       { "query_type": [ "A", "AAAA" ], "server": "dns_fakeip" }
     ],
     "final": "dns_proxy",
@@ -348,8 +349,8 @@ sc
 
 4. 连接 SSH 后执行如下命令：
 ```shell
-sed -z -i 's/{\s*"ip_accept_any": true,\s*"server": "hosts"\s*}/{ "action": "evaluate", "server": "hosts" },\
-      { "match_response": true, "ip_accept_any": true, "action": "respond" }/' $CRASHDIR/starts/singbox_modify.sh
+sed -i ':a;N;$!ba;s/{[[:space:]]*"ip_accept_any": true,[[:space:]]*"server": "hosts"[[:space:]]*}/{ "action": "evaluate", "server": "hosts" },\
+      { "match_response": true, "ip_accept_any": true, "action": "respond" }/' "$CRASHDIR/starts/singbox_modify.sh"
 ```
 ## 七、 安装 AdGuard Home
 连接 SSH 后执行如下命令：
