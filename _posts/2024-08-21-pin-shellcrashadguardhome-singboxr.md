@@ -200,7 +200,7 @@ echo -e "\nln -sf /data/auto_ssh/authorized_keys /etc/dropbear/" >> /data/auto_s
   nvram commit
   /etc/init.d/dropbear enable & /etc/init.d/dropbear start
   mkdir -p /data/auto_ssh
-  curl -o /data/auto_ssh/auto_ssh.sh -L https://cdn.jsdelivr.net/gh/lemoeo/AX6S@main/auto_ssh.sh
+  curl -sS -o /data/auto_ssh/auto_ssh.sh -L https://cdn.jsdelivr.net/gh/lemoeo/AX6S@main/auto_ssh.sh
   chmod +x /data/auto_ssh/auto_ssh.sh
   /data/auto_ssh/auto_ssh.sh install
   uci set system.@system[0].timezone='CST-8'
@@ -232,7 +232,7 @@ echo -e "\nln -sf /data/auto_ssh/authorized_keys /etc/dropbear/" >> /data/auto_s
 
 ```shell
 mkdir -p /data/auto_ssh
-curl -o /data/auto_ssh/auto_ssh.sh -L https://cdn.jsdelivr.net/gh/lemoeo/AX6S@main/auto_ssh.sh
+curl -sS -o /data/auto_ssh/auto_ssh.sh -L https://cdn.jsdelivr.net/gh/lemoeo/AX6S@main/auto_ssh.sh
 chmod +x /data/auto_ssh/auto_ssh.sh
 /data/auto_ssh/auto_ssh.sh install
 echo -e '12345678\n12345678' | passwd root
