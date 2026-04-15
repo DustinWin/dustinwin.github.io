@@ -317,8 +317,7 @@ sc
   "experimental": {
     "cache_file": {
       "enabled": true,
-      "store_fakeip": true,
-      "store_dns": true
+      "store_fakeip": true
     },
     "clash_api": {
       "external_controller": "0.0.0.0:9999",

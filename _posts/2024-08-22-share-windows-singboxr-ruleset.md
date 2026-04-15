@@ -266,8 +266,7 @@ tags: [sing-box, sing-boxr, Windows, ruleset, rule_set, 分享]
   "experimental": {
     "cache_file": {
       "enabled": true,
-      "store_fakeip": true,
-      "store_dns": true
+      "store_fakeip": true
     },
     "clash_api": {
       "external_controller": "127.0.0.1:9999",
