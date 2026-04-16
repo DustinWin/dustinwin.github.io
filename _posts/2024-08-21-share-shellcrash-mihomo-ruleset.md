@@ -297,6 +297,8 @@ dns:
     - RULE-SET,apple-cn,real-ip
     - RULE-SET,google-cn,real-ip
     - RULE-SET,games-cn,real-ip
+    - RULE-SET,games,fake-ip
+    - RULE-SET,ai,fake-ip
     - RULE-SET,proxy,fake-ip
     - RULE-SET,private,real-ip
     - RULE-SET,cn,real-ip
@@ -305,6 +307,59 @@ dns:
     - quic://dns.alidns.com:853
     - https://dns.pub/dns-query
   nameserver-policy: {'rule-set:ads': [rcode://success]}
+```
+
+---
+
+>`DNS` 私货
+{: .prompt-tip }
+
+注：
+- 1. 本 `dns` 配置中，国外域名走 `fake-ip`，国内域名走国内 DNS 解析，未知域名走 `fake-ip`，在匹配 `RULE-SET:cn` 规则时会由国外 DNS 解析且配置 `ecs` 提高了兼容性，解析出 IP 在国内则走 `国内 IP` 规则，否则走 `漏网之鱼` 规则（有效解决了“心理 DNS 泄露问题”，详见《[搭载 mihomo 内核配置 DNS 不泄露教程-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/dnsnoleaks-mihomo-ruleset/)》）
+- 2. 推荐将 `ecs` 设置为当前宽带运营商分配的默认 DNS（可进入光猫或路由器拨号页面查看，或者前往[公共 DNS 大全](https://toolb.cn/publicdns)查询）的 IP 段，如默认 DNS 为 `211.137.58.20`，可设置为 `211.137.58.0/24`
+
+```yaml
+hosts:
+  miwifi.com: [192.168.31.1, 127.0.0.1]
+  dns.alidns.com: [223.5.5.5, 223.6.6.6, 2400:3200::1, 2400:3200:baba::1]
+  doh.pub: [1.12.12.12, 120.53.53.53, 2402:4e00::]
+  dns.google: [8.8.8.8, 8.8.4.4, 2001:4860:4860::8888, 2001:4860:4860::8844]
+  dns11.quad9.net: [9.9.9.11, 149.112.112.11, 2620:fe::11, 2620:fe::fe:11]
+
+dns:
+  enable: true
+  ipv6: true
+  listen: 0.0.0.0:1053
+  enhanced-mode: fake-ip
+  fake-ip-range: 28.0.0.0/8
+  fake-ip-range6: fc00::/16
+  fake-ip-filter-mode: rule
+  fake-ip-filter:
+    - RULE-SET,trackerslist,real-ip
+    - RULE-SET,microsoft-cn,real-ip
+    - RULE-SET,apple-cn,real-ip
+    - RULE-SET,google-cn,real-ip
+    - RULE-SET,games-cn,real-ip
+    - RULE-SET,games,fake-ip
+    - RULE-SET,ai,fake-ip
+    - RULE-SET,proxy,fake-ip
+    - RULE-SET,private,real-ip
+    - RULE-SET,cn,real-ip
+    - MATCH,fake-ip
+  respect-rules: true
+  nameserver:
+    # 推荐将 `ecs` 设置为当前宽带运营商分配的默认 DNS 的 IP 段
+    - 'https://dns.google/dns-query#ecs=211.137.58.0/24'
+    - 'https://dns11.quad9.net/dns-query#ecs=211.137.58.0/24'
+  proxy-server-nameserver:
+    - quic://dns.alidns.com:853
+    - https://doh.pub/dns-query
+  direct-nameserver:
+    - quic://dns.alidns.com:853
+    - https://doh.pub/dns-query
+  nameserver-policy:
+    'rule-set:ads': [rcode://success]
+    'rule-set:trackerslist,microsoft-cn,apple-cn,google-cn,games-cn,private,cn': [quic://dns.alidns.com:853, https://doh.pub/dns-query]
 ```
 
 ## 四、 添加定时任务

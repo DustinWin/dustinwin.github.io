@@ -11,7 +11,7 @@ tags: [Clash, mihomo, 进阶, DNS, DNS 分流]
 1. 使用 [ShellCrash](https://github.com/juewuy/ShellCrash) 搭配 [AdGuard Home](https://github.com/AdguardTeam/AdGuardHome) 并将 AdGuard Home 作为上游时不要使用该方法
 2. 本教程以 ShellCrash 为例，其它客户端亦可参考
 3. 本教程搭载 [mihomo 内核 Meta 版](https://github.com/MetaCubeX/mihomo/tree/Meta)（导入内核方法可参考《[ShellCrash 和 AdGuard Home 快速安装教程/导入 mihomo 内核 或 sing-box 内核](https://proxy-tutorials.dustinwin.us.kg/posts/pin-toolsinstall/#%E4%BA%8C-%E5%AF%BC%E5%85%A5-mihomo-%E5%86%85%E6%A0%B8-%E6%88%96-sing-box-%E5%86%85%E6%A0%B8)》）
-4. DNS 分流简单来说就是**指定国内域名走国内 DNS 解析，国外域名走 `fake-ip`**。未知域名走 `fake-ip`（在匹配 `rules.GEOIP:cn` 规则时会由国内 DNS 解析，解析出 IP 在国内则走 `🀄️ 国内 IP` 规则，否则走 `🐟 漏网之鱼` 规则）
+4. DNS 分流简单来说就是**指定国内域名走国内 DNS 解析，国外域名走 `fake-ip`**。未知域名走 `fake-ip`（在匹配 `GEOIP:cn` 规则时会由国内 DNS 解析，解析出 IP 在国内则走 `国内 IP` 规则，否则走 `漏网之鱼` 规则）
 5. 部分用户觉得未知域名处理方式会导致 DNS 泄露，可参考《[搭载 mihomo 内核配置 DNS 不泄露教程-geodata 方案](https://proxy-tutorials.dustinwin.us.kg/posts/dnsnoleaks-mihomo-geodata)》
 
 ## 一、 导入路由规则文件
