@@ -89,6 +89,7 @@ tags: [sing-box, sing-boxr, Windows, ruleset, rule_set, 分享]
     // 推荐将 `client_subnet` 设置为当前宽带运营商分配的默认 DNS 的 IP 段
     "client_subnet": "211.137.58.0/24"
   },
+  "http_clients": [ { "tag": "detour_proxy", "version": 3, "detour": "GLOBAL" } ],
   "inbounds": [
     { "tag": "tun-in", "type": "tun", "interface_name": "sing-box", "address": [ "172.18.0.1/30", "fdfe:dcba:9876::1/126" ], "auto_route": true, "strict_route": true, "stack": "mixed" }
   ],
@@ -133,7 +134,7 @@ tags: [sing-box, sing-boxr, Windows, ruleset, rule_set, 分享]
     { "tag": "免费节点", "type": "urltest", "tolerance": 100, "providers": [ "🆓 免费订阅" ] }
   ],
   "route": {
-    "default_domain_resolver": { "server": "dns_direct" },
+    "default_domain_resolver": "dns_direct",
     "rules": [
       { "rule_set": [ "telegramip" ], "invert": true, "action": "sniff" },
       { "type": "logical", "mode": "or", "rules": [ { "protocol": [ "dns" ] }, { "port": 53 } ], "action": "hijack-dns" },
@@ -288,8 +289,8 @@ tags: [sing-box, sing-boxr, Windows, ruleset, rule_set, 分享]
 {: .prompt-tip }
 
 注：
-- 1. 本 `dns` 配置中，国外域名走 `fakeip`，国内域名走国内 DNS 解析，未知域名在匹配 `rule_set:cnip` 规则时会先由国外 DNS 解析且配置 `client_subnet` 提高了兼容性，解析出 IP 在国内则走国内 DNS 解析且走 `国内 IP` 规则，否则走 `fakeip` 且走 `漏网之鱼` 规则（有效解决了“心理 DNS 泄露问题”，详见《[搭载 sing-boxr 内核配置 DNS 不泄露教程-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/dnsnoleaks-singboxr-ruleset/)》）
-- 2. 推荐将 `client_subnet` 设置为当前宽带运营商分配的默认 DNS（可进入光猫或路由器拨号页面查看，或者前往[公共 DNS 大全](https://toolb.cn/publicdns)查询）的 IP 段，如默认 DNS 为 `211.137.58.20`，可设置为 `211.137.58.0/24`
+- ① 本 `dns` 配置中，国外域名走 `fakeip`，国内域名走国内 DNS 解析，未知域名在匹配 `rule_set:cnip` 规则时会先由国外 DNS 解析且配置 `client_subnet` 提高了兼容性，解析出 IP 在国内则走国内 DNS 解析且走 `国内 IP` 规则，否则走 `fakeip` 且走 `漏网之鱼` 规则（有效解决了“心理 DNS 泄露问题”，详见《[搭载 sing-boxr 内核配置 DNS 不泄露教程-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/dnsnoleaks-singboxr-ruleset/)》）
+- ② 推荐将 `client_subnet` 设置为当前宽带运营商分配的默认 DNS（可进入光猫或路由器拨号页面查看，或者前往[公共 DNS 大全](https://toolb.cn/publicdns)查询）的 IP 段，如默认 DNS 为 `211.137.58.20`，可设置为 `211.137.58.0/24`
 
 ```json
 {

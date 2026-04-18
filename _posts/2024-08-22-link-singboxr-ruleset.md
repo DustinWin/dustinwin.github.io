@@ -373,6 +373,8 @@ tags: [sing-box, sing-boxr, 直链, 订阅, ruleset, rule_set, 基础]
   ],
   // 路由
   "route": {
+    // 域名解析器，必须在 `dns.servers` 配置有 `dns_direct`
+    "default_domain_resolver": "dns_direct",
     // 规则
     "rules": [
       // 若使用 ShellCrash，可进入 7 → 4 启用域名嗅探后删除此条 `action`
@@ -523,6 +525,8 @@ tags: [sing-box, sing-boxr, 直链, 订阅, ruleset, rule_set, 基础]
   ],
   // 路由
   "route": {
+    // 域名解析器，必须在 `dns.servers` 配置有 `dns_direct`
+    "default_domain_resolver": "dns_direct",
     // 规则
     "rules": [
       // 自定义规则优先放前面
