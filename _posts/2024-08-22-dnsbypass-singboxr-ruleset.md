@@ -97,7 +97,7 @@ sed -i ':a;N;$!ba;s/{[[:space:]]*"ip_accept_any": true,[[:space:]]*"server": "ho
       { "rule_set": [ "cn" ], "server": "dns_direct" },
       { "action": "evaluate", "server": "dns_direct" },
       { "match_response": true, "rule_set": [ "cnip" ], "action": "respond" },
-      { "match_response": true, "ip_accept_any": true, "invert": true, "server": "dns_proxy" },
+      { "match_response": true, "ip_accept_any": true, "invert": true, "action": "respond" },
       { "query_type": [ "A", "AAAA" ], "server": "dns_fakeip" }
     ],
     "final": "dns_proxy",
@@ -107,17 +107,6 @@ sed -i ':a;N;$!ba;s/{[[:space:]]*"ip_accept_any": true,[[:space:]]*"server": "ho
     // 推荐将 `client_subnet` 设置为当前宽带运营商分配的默认 DNS 的 IP 段
     "client_subnet": "211.137.58.0/24"
   }
-}
-```
-按一下 Esc 键（退出键），输入英文冒号 `:`，继续输入 `wq` 并回车
-4. 连接 SSH 后执行命令 `vi $CRASHDIR/jsons/route.json`，按一下 Ins 键（Insert 键），粘贴如下内容：
-- 注：为提高匹配效率，推荐参考《[生成带有自定义出站和规则的 sing-boxr 配置文件直链-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/link-singboxr-ruleset/)》编写 `route.rules`，将 `"action": "resolve"` 放置在域名规则集之后，IP 规则集之前
-```json
-{
-  "route": {
-    "rules": [
-      { "action": "resolve", "match_only": true }
-    ]
 }
 ```
 按一下 Esc 键（退出键），输入英文冒号 `:`，继续输入 `wq` 并回车

@@ -113,20 +113,7 @@ sed -i ':a;N;$!ba;s/{[[:space:]]*"ip_accept_any": true,[[:space:]]*"server": "ho
   }
   ```
 
-  按一下 Esc 键（退出键），输入英文冒号 `:`，继续输入 `wq` 并回车
-- ② 连接 SSH 后执行命令 `vi $CRASHDIR/jsons/route.json`，按一下 Ins 键（Insert 键），粘贴如下内容：
-  - 注：为提高匹配效率，推荐参考《[生成带有自定义出站和规则的 sing-boxr 配置文件直链-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/link-singboxr-ruleset/)》编写 `route.rules`，将 `"action": "resolve"` 放置在域名规则集之后，IP 规则集之前
-
-  ```json
-  {
-    "route": {
-      "rules": [
-        { "action": "resolve", "match_only": true }
-      ]
-  }
-  ```
-
-  按一下 Esc 键（退出键），输入英文冒号 `:`，继续输入 `wq` 并回车
+- ② 按一下 Esc 键（退出键），输入英文冒号 `:`，继续输入 `wq` 并回车
 
 ### 2. DNS 模式为 `fakeip`（不推荐）
 - ① 连接 SSH 后执行命令 `vi $CRASHDIR/jsons/dns.json`，按一下 Ins 键（Insert 键），修改为如下内容：
@@ -221,17 +208,4 @@ sed -i ':a;N;$!ba;s/{[[:space:]]*"ip_accept_any": true,[[:space:]]*"server": "ho
   }
   ```
 
-  按一下 Esc 键（退出键），输入英文冒号 `:`，继续输入 `wq` 并回车
-- ② 连接 SSH 后执行命令 `vi $CRASHDIR/jsons/route.json`，按一下 Ins 键（Insert 键），粘贴如下内容：
-  - 注：为提高匹配效率，推荐参考《[生成带有自定义出站和规则的 sing-boxr 配置文件直链-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/link-singboxr-ruleset/)》编写 `route.rules`，将 `"action": "resolve"` 放置在域名规则集之后，IP 规则集之前
-
-  ```json
-  {
-    "route": {
-      "rules": [
-        { "action": "resolve", "match_only": true }
-      ]
-  }
-  ```
-
-  按一下 Esc 键（退出键），输入英文冒号 `:`，继续输入 `wq` 并回车
+- ② 按一下 Esc 键（退出键），输入英文冒号 `:`，继续输入 `wq` 并回车

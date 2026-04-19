@@ -59,11 +59,8 @@ tags: [sing-box, sing-boxr, ShellCrash, AdGuard Home, ruleset, rule_set, 分享,
     { "tag": "微软服务", "type": "selector", "outbounds": [ "全球直连", "节点选择" ] },
     { "tag": "谷歌服务", "type": "selector", "outbounds": [ "全球直连", "节点选择" ] },
     { "tag": "苹果服务", "type": "selector", "outbounds": [ "全球直连", "节点选择" ] },
-    { "tag": "国内域名", "type": "selector", "outbounds": [ "全球直连", "节点选择" ] },
-    { "tag": "国内 IP", "type": "selector", "outbounds": [ "全球直连", "节点选择" ] },
     { "tag": "国外域名", "type": "selector", "outbounds": [ "节点选择", "香港节点", "台湾节点", "日本节点", "新加坡节点", "美国节点", "免费节点", "🆚 vless 节点" ] },
     { "tag": "电报消息", "type": "selector", "outbounds": [ "节点选择", "香港节点", "台湾节点", "日本节点", "新加坡节点", "美国节点", "免费节点", "🆚 vless 节点" ] },
-    { "tag": "私有网络", "type": "selector", "outbounds": [ "全球直连" ] },
     { "tag": "漏网之鱼", "type": "selector", "outbounds": [ "节点选择", "香港节点", "台湾节点", "日本节点", "新加坡节点", "美国节点", "免费节点", "🆚 vless 节点", "全球直连" ] },
     { "tag": "全球直连", "type": "selector", "outbounds": [ "DIRECT" ] },
     { "tag": "DIRECT", "type": "direct" },
@@ -90,7 +87,6 @@ tags: [sing-box, sing-boxr, ShellCrash, AdGuard Home, ruleset, rule_set, 分享,
   "route": {
     "default_domain_resolver": "dns_direct",
     "rules": [
-      { "rule_set": [ "private" ], "outbound": "私有网络" },
       { "rule_set": [ "microsoft-cn" ], "outbound": "微软服务" },
       { "rule_set": [ "apple-cn" ], "outbound": "苹果服务" },
       { "rule_set": [ "google-cn" ], "outbound": "谷歌服务" },
@@ -99,11 +95,9 @@ tags: [sing-box, sing-boxr, ShellCrash, AdGuard Home, ruleset, rule_set, 分享,
       { "rule_set": [ "ai" ], "outbound": "AI 平台" },
       { "rule_set": [ "networktest" ], "outbound": "网络测试" },
       { "rule_set": [ "proxy" ], "outbound": "国外域名" },
-      { "rule_set": [ "cn" ], "outbound": "国内域名" },
-      { "ip_is_private": true, "outbound": "私有网络" },
       { "rule_set": [ "telegramip" ], "outbound": "电报消息" },
       { "action": "resolve", "match_only": true },
-      { "rule_set": [ "cnip" ], "outbound": "国内 IP" }
+      { "rule_set": [ "cnip" ], "outbound": "全球直连" }
     ],
     "rule_set": [
       {
@@ -298,17 +292,12 @@ sc
       { "rule_set": [ "fakeip-filter", "trackerslist", "microsoft-cn", "apple-cn", "google-cn", "games-cn" ], "server": "dns_direct" },
       { "rule_set": [ "games", "ai", "proxy" ], "query_type": [ "A", "AAAA" ], "server": "dns_fakeip" },
       { "rule_set": [ "private", "cn" ], "server": "dns_direct" },
-      { "action": "evaluate", "server": "dns_direct" },
-      { "match_response": true, "rule_set": [ "cnip" ], "action": "respond" },
-      { "match_response": true, "ip_accept_any": true, "invert": true, "server": "dns_proxy" },
       { "query_type": [ "A", "AAAA" ], "server": "dns_fakeip" }
     ],
-    "final": "dns_proxy",
+    "final": "dns_direct",
     "strategy": "prefer_ipv4",
     "optimistic": true,
-    "reverse_mapping": true,
-    // 推荐将 `client_subnet` 设置为当前宽带运营商分配的默认 DNS 的 IP 段
-    "client_subnet": "211.137.58.0/24"
+    "reverse_mapping": true
   }
 }
 ```
@@ -319,7 +308,7 @@ sc
 {: .prompt-tip }
 
 注：
-- ① 本 `dns` 配置中，国外域名走 `fakeip`，国内域名走国内 DNS 解析，未知域名在匹配 `rule_set:cnip` 规则时会先由国外 DNS 解析且配置 `client_subnet` 提高了兼容性，解析出 IP 在国内则走国内 DNS 解析且走 `国内 IP` 规则，否则走 `fakeip` 且走 `漏网之鱼` 规则（有效解决了“心理 DNS 泄露问题”，详见《[搭载 sing-boxr 内核配置 DNS 不泄露教程-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/dnsnoleaks-singboxr-ruleset/)》）
+- ① 本 `dns` 配置中，国内域名走国内 DNS 解析，国外域名走 `fakeip`，未知域名也走 `fakeip`，在匹配 `rule_set:cnip` 规则时会先由国外 DNS 解析且配置 `client_subnet` 提高了兼容性，解析出 IP 在国内则走 `国内 IP` 规则，否则走 `漏网之鱼` 规则（有效解决了“心理 DNS 泄露问题”，详见《[搭载 sing-boxr 内核配置 DNS 不泄露教程-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/dnsnoleaks-singboxr-ruleset/)》）
 - ② 推荐将 `client_subnet` 设置为当前宽带运营商分配的默认 DNS（可进入光猫或路由器拨号页面查看，或者前往[公共 DNS 大全](https://toolb.cn/publicdns)查询）的 IP 段，如默认 DNS 为 `211.137.58.20`，可设置为 `211.137.58.0/24`
 
 ```json
@@ -354,16 +343,14 @@ sc
       { "rule_set": [ "fakeip-filter", "trackerslist", "microsoft-cn", "apple-cn", "google-cn", "games-cn" ], "server": "dns_direct" },
       { "rule_set": [ "games", "ai", "proxy" ], "query_type": [ "A", "AAAA" ], "server": "dns_fakeip" },
       { "rule_set": [ "private", "cn" ], "server": "dns_direct" },
-      // 推荐将 `client_subnet` 设置为当前宽带运营商分配的默认 DNS 的 IP 段
-      { "action": "evaluate", "server": "dns_proxy", "client_subnet": "211.137.58.0/24" },
-      { "match_response": true, "rule_set": [ "cnip" ], "server": "dns_direct" },
-      { "match_response": true, "ip_accept_any": true, "invert": true, "action": "respond" },
       { "query_type": [ "A", "AAAA" ], "server": "dns_fakeip" }
     ],
     "final": "dns_proxy",
     "strategy": "prefer_ipv4",
     "optimistic": true,
-    "reverse_mapping": true
+    "reverse_mapping": true,
+    // 推荐将 `client_subnet` 设置为当前宽带运营商分配的默认 DNS 的 IP 段
+    "client_subnet": "211.137.58.0/24"
   }
 }
 ```

@@ -77,21 +77,16 @@ tags: [sing-box, sing-boxr, Windows, ruleset, rule_set, 分享]
       { "rule_set": [ "trackerslist", "microsoft-cn", "apple-cn", "google-cn", "games-cn" ], "server": "dns_direct" },
       { "rule_set": [ "games", "ai", "proxy" ], "query_type": [ "A", "AAAA" ], "server": "dns_fakeip" },
       { "rule_set": [ "private", "cn" ], "server": "dns_direct" },
-      { "action": "evaluate", "server": "dns_direct" },
-      { "match_response": true, "rule_set": [ "cnip" ], "action": "respond" },
-      { "match_response": true, "ip_accept_any": true, "invert": true, "server": "dns_proxy" },
       { "query_type": [ "A", "AAAA" ], "server": "dns_fakeip" }
     ],
-    "final": "dns_proxy",
+    "final": "dns_direct",
     "strategy": "prefer_ipv4",
     "optimistic": true,
-    "reverse_mapping": true,
-    // 推荐将 `client_subnet` 设置为当前宽带运营商分配的默认 DNS 的 IP 段
-    "client_subnet": "211.137.58.0/24"
+    "reverse_mapping": true
   },
   "http_clients": [ { "tag": "detour_proxy", "version": 3, "detour": "GLOBAL" } ],
   "inbounds": [
-    { "tag": "tun-in", "type": "tun", "interface_name": "sing-box", "address": [ "172.18.0.1/30", "fdfe:dcba:9876::1/126" ], "auto_route": true, "strict_route": true, "stack": "mixed" }
+    { "tag": "tun-in", "type": "tun", "interface_name": "sing-box", "address": [ "172.18.0.1/30", "fdfe:dcba:9876::1/126" ], "auto_route": true, "strict_route": true }
   ],
   "outbounds": [
     { "tag": "节点选择", "type": "selector", "outbounds": [ "香港节点", "台湾节点", "日本节点", "新加坡节点", "美国节点", "免费节点", "🆚 vless 节点" ] },
@@ -109,8 +104,6 @@ tags: [sing-box, sing-boxr, Windows, ruleset, rule_set, 分享]
     { "tag": "直连软件", "type": "selector", "outbounds": [ "全球直连" ] },
     { "tag": "私有网络", "type": "selector", "outbounds": [ "全球直连" ] },
     { "tag": "漏网之鱼", "type": "selector", "outbounds": [ "节点选择", "香港节点", "台湾节点", "日本节点", "新加坡节点", "美国节点", "免费节点", "🆚 vless 节点", "全球直连" ] },
-    { "tag": "广告域名", "type": "selector", "outbounds": [ "全球拦截", "全球直连" ] },
-    { "tag": "全球拦截", "type": "block" },
     { "tag": "全球直连", "type": "selector", "outbounds": [ "DIRECT" ] },
     { "tag": "DIRECT", "type": "direct" },
     { "tag": "GLOBAL", "type": "selector", "outbounds": [ "节点选择", "DIRECT" ] },
@@ -141,7 +134,6 @@ tags: [sing-box, sing-boxr, Windows, ruleset, rule_set, 分享]
       { "clash_mode": [ "Direct" ], "outbound": "DIRECT" },
       { "clash_mode": [ "Global" ], "outbound": "GLOBAL" },
       { "rule_set": [ "private" ], "outbound": "私有网络" },
-      { "rule_set": [ "ads" ], "outbound": "广告域名" },
       { "rule_set": [ "applications" ], "outbound": "直连软件" },
       { "rule_set": [ "microsoft-cn" ], "outbound": "微软服务" },
       { "rule_set": [ "apple-cn" ], "outbound": "苹果服务" },
@@ -289,7 +281,7 @@ tags: [sing-box, sing-boxr, Windows, ruleset, rule_set, 分享]
 {: .prompt-tip }
 
 注：
-- ① 本 `dns` 配置中，国外域名走 `fakeip`，国内域名走国内 DNS 解析，未知域名在匹配 `rule_set:cnip` 规则时会先由国外 DNS 解析且配置 `client_subnet` 提高了兼容性，解析出 IP 在国内则走国内 DNS 解析且走 `国内 IP` 规则，否则走 `fakeip` 且走 `漏网之鱼` 规则（有效解决了“心理 DNS 泄露问题”，详见《[搭载 sing-boxr 内核配置 DNS 不泄露教程-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/dnsnoleaks-singboxr-ruleset/)》）
+- ① 本 `dns` 配置中，国内域名走国内 DNS 解析，国外域名走 `fakeip`，未知域名也走 `fakeip`，在匹配 `rule_set:cnip` 规则时会先由国外 DNS 解析且配置 `client_subnet` 提高了兼容性，解析出 IP 在国内则走 `国内 IP` 规则，否则走 `漏网之鱼` 规则（有效解决了“心理 DNS 泄露问题”，详见《[搭载 sing-boxr 内核配置 DNS 不泄露教程-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/dnsnoleaks-singboxr-ruleset/)》）
 - ② 推荐将 `client_subnet` 设置为当前宽带运营商分配的默认 DNS（可进入光猫或路由器拨号页面查看，或者前往[公共 DNS 大全](https://toolb.cn/publicdns)查询）的 IP 段，如默认 DNS 为 `211.137.58.20`，可设置为 `211.137.58.0/24`
 
 ```json
@@ -323,16 +315,14 @@ tags: [sing-box, sing-boxr, Windows, ruleset, rule_set, 分享]
       { "rule_set": [ "trackerslist", "microsoft-cn", "apple-cn", "google-cn", "games-cn" ], "server": "dns_direct" },
       { "rule_set": [ "games", "ai", "proxy" ], "query_type": [ "A", "AAAA" ], "server": "dns_fakeip" },
       { "rule_set": [ "private", "cn" ], "server": "dns_direct" },
-      // 推荐将 `client_subnet` 设置为当前宽带运营商分配的默认 DNS 的 IP 段
-      { "action": "evaluate", "server": "dns_proxy", "client_subnet": "211.137.58.0/24" },
-      { "match_response": true, "rule_set": [ "cnip" ], "server": "dns_direct" },
-      { "match_response": true, "ip_accept_any": true, "invert": true, "action": "respond" },
       { "query_type": [ "A", "AAAA" ], "server": "dns_fakeip" }
     ],
     "final": "dns_proxy",
     "strategy": "prefer_ipv4",
     "optimistic": true,
-    "reverse_mapping": true
+    "reverse_mapping": true,
+    // 推荐将 `client_subnet` 设置为当前宽带运营商分配的默认 DNS 的 IP 段
+    "client_subnet": "211.137.58.0/24"
   }
 }
 ```
@@ -413,24 +403,24 @@ Windows Registry Editor Version 5.00
     read -p "请选择操作（0-4）：" choice
     case $choice in
       1)
-        echo "安装（更新）sing-boxr 内核和面板..."
+        echo "安装（更新）sing-boxr 内核和面板"
         cd "$PROGRAMFILES"
         if [ -f "./sing-box/sing-box.exe" ]; then
-          echo "检测到已安装 sing-boxr 内核，是否更新？（Y/n）"
+          echo "检测到当前系统已安装 sing-boxr 内核，是否更新？（Y/n）"
           while true; do
             read -n1 -r choice
             case $choice in
               [Yy])
                 echo
-                echo "下载 sing-boxr 内核..."
+                echo "正在下载 sing-boxr 内核..."
                 curl -sS -o "$USERPROFILE/Downloads/sing-box.exe" -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-test-windows-amd64-v3.exe
                 echo "下载 sing-boxr 内核成功"
 
-                echo "结束 sing-boxr 相关进程..."
+                echo "正在结束 sing-boxr 相关进程..."
                 taskkill //f //t //im "sing-box*"
                 echo "结束 sing-boxr 相关进程成功"
 
-                echo "更新 sing-boxr 内核..."
+                echo "正在更新 sing-boxr 内核..."
                 mv -f "$USERPROFILE/Downloads/sing-box.exe" ./sing-box
                 if [ -f "./sing-box/config.json" ]; then
                   echo "更新 sing-boxr 内核成功，是否启动服务？（Y/n）"
@@ -439,7 +429,7 @@ Windows Registry Editor Version 5.00
                     case $choice in
                       [Yy])
                         echo
-                        echo "启动 sing-boxr 服务..."
+                        echo "正在启动 sing-boxr 服务..."
                         cd ./sing-box
                         start //min sing-box.exe run
                         read -n1 -r -p "启动 sing-boxr 服务成功，按任意键返回菜单..."
@@ -456,8 +446,7 @@ Windows Registry Editor Version 5.00
                   done
                   break
                 else
-                  echo "更新 sing-boxr 内核成功，请返回菜单导入配置文件！"
-                  read -n1 -r -p "按任意键返回菜单..."
+                  read -n1 -r -p "更新 sing-boxr 内核成功，请返回菜单导入配置文件！按任意键返回菜单..."
                   break
                 fi
                 ;;
@@ -471,24 +460,40 @@ Windows Registry Editor Version 5.00
             esac
           done
         else
-          echo "检测到未安装 sing-boxr 内核，正在安装..."
-          mkdir -p ./sing-box/ui
-          curl -sS -o ./sing-box/sing-box.exe -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-test-windows-amd64-v3.exe
-          curl -sS -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/Dashboard/zashboard.tar.gz | tar -zx -C ./sing-box/ui
-          echo "安装 sing-boxr 内核和面板成功"
+          echo "检测到当前系统未安装 sing-boxr 内核，是否安装？（Y/n）"
+          while true; do
+            read -n1 -r choice
+            case $choice in
+              [Yy])
+                echo
+                echo "正在安装 sing-boxr 内核和面板..."
+                mkdir -p ./sing-box/ui
+                curl -sS -o ./sing-box/sing-box.exe -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-test-windows-amd64-v3.exe
+                curl -sS -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/Dashboard/zashboard.tar.gz | tar -zx -C ./sing-box/ui
+                echo "安装 sing-boxr 内核和面板成功"
 
-          echo "赋予 sing-box 权限..."
-          cmd //c "takeown /f sing-box /a /r /d y"
-          icacls sing-box /inheritance:r
-          icacls sing-box /remove[:g] "TrustedInstaller"
-          icacls sing-box /remove[:g] "CREATOR OWNER"
-          icacls sing-box /remove[:g] "ALL APPLICATION PACKAGES"
-          icacls sing-box /remove[:g] "所有受限制的应用程序包"
-          icacls sing-box /grant[:r] "SYSTEM:(OI)(CI)F"
-          icacls sing-box /grant[:r] "Administrators:(OI)(CI)F"
-          icacls sing-box /grant[:r] "Users:(OI)(CI)F"
-          echo "赋予 sing-box 权限成功，请返回菜单导入配置文件！"
-          read -n1 -r -p "按任意键返回菜单..."
+                echo "正在赋予 sing-box 权限..."
+                cmd //c "takeown /f sing-box /a /r /d y"
+                icacls sing-box /inheritance:r
+                icacls sing-box /remove[:g] "TrustedInstaller"
+                icacls sing-box /remove[:g] "CREATOR OWNER"
+                icacls sing-box /remove[:g] "ALL APPLICATION PACKAGES"
+                icacls sing-box /remove[:g] "所有受限制的应用程序包"
+                icacls sing-box /grant[:r] "SYSTEM:(OI)(CI)F"
+                icacls sing-box /grant[:r] "Administrators:(OI)(CI)F"
+                icacls sing-box /grant[:r] "Users:(OI)(CI)F"
+                read -n1 -r -p "赋予 sing-box 权限成功，请返回菜单导入配置文件！按任意键返回菜单..."
+                break
+                ;;
+              [Nn])
+                break
+                ;;
+              *)
+                echo
+                echo "无效选择，请重新输入！"
+                ;;
+            esac
+          done
         fi
         ;;
       2)
@@ -498,7 +503,7 @@ Windows Registry Editor Version 5.00
             case $choice in
               [Yy])
                 echo
-                echo "启动 sing-boxr 服务..."
+                echo "正在启动 sing-boxr 服务..."
                 cd ./sing-box
                 start //min sing-box.exe run
                 read -n1 -r -p "启动 sing-boxr 服务成功，按任意键返回菜单..."
@@ -515,27 +520,27 @@ Windows Registry Editor Version 5.00
           done
         }
 
-        echo "导入（更新）配置文件..."
+        echo "导入（更新）sing-boxr 配置文件"
         cd "$PROGRAMFILES"
         if [ -f "./sing-box/sing-box.exe" ]; then
           if [ -f "./sing-box/config.json" ]; then
-            echo "检测到配置文件，是否更新？（Y/n）"
+            echo "检测到 sing-boxr 配置文件，是否更新？（Y/n）"
             while true; do
               read -n1 -r choice
               case $choice in
                 [Yy])
                   echo
-                  echo "下载配置文件..."
+                  echo "正在下载 sing-boxr 配置文件..."
                   curl -sS -o "$USERPROFILE/Downloads/config.json" -L https://ghfast.top/{.json 配置文件直链}
-                  echo "下载配置文件成功"
+                  echo "下载 sing-boxr 配置文件成功"
 
-                  echo "结束 sing-boxr 相关进程..."
+                  echo "正在结束 sing-boxr 相关进程..."
                   taskkill //f //t //im "sing-box*"
                   echo "结束 sing-boxr 相关进程成功"
 
-                  echo "更新配置文件..."
+                  echo "正在更新 sing-boxr 配置文件..."
                   mv -f "$USERPROFILE/Downloads/config.json" ./sing-box
-                  echo "更新配置文件成功，是否启动服务？（Y/n）"
+                  echo "更新 sing-boxr 配置文件成功，是否启动服务？（Y/n）"
                   ask_run
                   break
                   ;;
@@ -549,31 +554,46 @@ Windows Registry Editor Version 5.00
               esac
             done
           else
-            echo "未检测到配置文件，导入配置文件..."
-            curl -sS -o "$USERPROFILE/Downloads/config.json" -L https://ghfast.top/{.json 配置文件直链}
-            mv -f "$USERPROFILE/Downloads/config.json" ./sing-box
-            echo "导入配置文件成功，是否启动服务？（Y/n）"
-            ask_run
+            echo "未检测到 sing-boxr 配置文件，是否导入？（Y/n）"
+            while true; do
+              read -n1 -r choice
+              case $choice in
+                [Yy])
+                  echo
+                  echo "正在导入 sing-boxr 配置文件..."
+                  curl -sS -o "$USERPROFILE/Downloads/config.json" -L https://ghfast.top/{.json 配置文件直链}
+                  mv -f "$USERPROFILE/Downloads/config.json" ./sing-box
+                  echo "导入 sing-boxr 配置文件成功，是否启动服务？（Y/n）"
+                  ask_run
+                  break
+                  ;;
+                [Nn])
+                  break
+                  ;;
+                *)
+                  echo
+                  echo "无效选择，请重新输入！"
+                  ;;
+              esac
+            done
           fi
         else
-          echo "未检测到 sing-boxr 内核，请返回菜单安装内核！"
-          read -n1 -r -p "按任意键返回菜单..."
+          read -n1 -r -p "未检测到 sing-boxr 内核，请返回菜单安装内核！按任意键返回菜单..."
         fi
         ;;
       3)
-        echo "启动 sing-boxr 服务..."
+        echo "正在启动 sing-boxr 服务..."
         cd "$PROGRAMFILES"
         if [[ -f "./sing-box/sing-box.exe" && -f "./sing-box/config.json" ]]; then
           cd "./sing-box"
           start //min sing-box.exe run
           read -n1 -r -p "启动 sing-boxr 服务成功，按任意键返回菜单..."
         else
-          echo "未检测到 sing-boxr 内核和配置文件，请返回菜单安装内核并导入配置文件！"
-          read -n1 -r -p "按任意键返回菜单..."
+          read -n1 -r -p "未检测到 sing-boxr 内核和配置文件，请返回菜单安装内核并导入配置文件！按任意键返回菜单..."
         fi
         ;;
       4)
-        echo "停止 sing-boxr 服务..."
+        echo "正在停止 sing-boxr 服务..."
         taskkill //f //t //im "sing-box*"
         read -n1 -r -p "停止 sing-boxr 服务成功，按任意键返回菜单..."
         ;;

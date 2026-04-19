@@ -129,9 +129,6 @@ proxy-groups:
   - {name: 私有网络, type: select, proxies: [全球直连], hidden: true, icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/private.png"}
   # 若机场的 UDP 质量不是很好，导致某游戏无法登录或进入房间，可以添加 `disable-udp: true` 配置项解决
   - {name: 漏网之鱼, type: select, proxies: [节点选择, 香港节点, 台湾节点, 日本节点, 新加坡节点, 美国节点, 免费节点, 🆚 vless 节点, 全球直连], icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/match.png"}
-  - {name: 广告域名, type: select, proxies: [全球拦截, 全球绕过], icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/ads.png"}
-  - {name: 全球拦截, type: select, proxies: [REJECT], hidden: true, icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/reject.png"}
-  - {name: 全球绕过, type: select, proxies: [PASS], hidden: true, icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/pass.png"}
   - {name: 全球直连, type: select, proxies: [DIRECT], hidden: true, icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/direct.png"}
 
   - {name: 香港节点, type: url-test, tolerance: 50, use: [🛫 机场订阅], filter: "(?i)(🇭🇰|港|hk|hongkong|hong kong)", icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/hongkong.png"}
@@ -272,7 +269,6 @@ rule-providers:
 
 rules:
   - RULE-SET,private,私有网络
-  - RULE-SET,ads,广告域名
   - RULE-SET,applications,直连软件
   - RULE-SET,microsoft-cn,微软服务
   - RULE-SET,apple-cn,苹果服务
@@ -295,7 +291,7 @@ rules:
 {: .prompt-tip }
 
 注：
-- ① 本 `dns` 配置中，国外域名走 `fake-ip`，国内域名走国内 DNS 解析，未知域名走 `fake-ip`，在匹配 `RULE-SET:cn` 规则时会由国外 DNS 解析且配置 `ecs` 提高了兼容性，解析出 IP 在国内则走 `国内 IP` 规则，否则走 `漏网之鱼` 规则（有效解决了“心理 DNS 泄露问题”，详见《[搭载 mihomo 内核配置 DNS 不泄露教程-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/dnsnoleaks-mihomo-ruleset/)》）
+- ① 本 `dns` 配置中，国内域名走国内 DNS 解析，国外域名走 `fake-ip`，未知域名也走 `fake-ip`，在匹配 `RULE-SET:cn` 规则时会由国外 DNS 解析且配置 `ecs` 提高了兼容性，解析出 IP 在国内则走 `国内 IP` 规则，否则走 `漏网之鱼` 规则（有效解决了“心理 DNS 泄露问题”，详见《[搭载 mihomo 内核配置 DNS 不泄露教程-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/dnsnoleaks-mihomo-ruleset/)》）
 - ② 推荐将 `ecs` 设置为当前宽带运营商分配的默认 DNS（可进入光猫或路由器拨号页面查看，或者前往[公共 DNS 大全](https://toolb.cn/publicdns)查询）的 IP 段，如默认 DNS 为 `211.137.58.20`，可设置为 `211.137.58.0/24`
 
 ```yaml
@@ -415,24 +411,24 @@ Windows Registry Editor Version 5.00
     read -p "请选择操作（0-4）：" choice
     case $choice in
       1)
-        echo "安装（更新）mihomo 内核和面板..."
+        echo "安装（更新）mihomo 内核和面板"
         cd "$PROGRAMFILES"
         if [ -f "./mihomo/mihomo.exe" ]; then
-          echo "检测到已安装 mihomo 内核，是否更新？（Y/n）"
+          echo "检测到当前系统已安装 mihomo 内核，是否更新？（Y/n）"
           while true; do
             read -n1 -r choice
             case $choice in
               [Yy])
                 echo
-                echo "下载 mihomo 内核..."
+                echo "正在下载 mihomo 内核..."
                 curl -sS -o "$USERPROFILE/Downloads/mihomo.exe" -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-meta-windows-amd64-v3.exe
                 echo "下载 mihomo 内核成功"
 
-                echo "结束 mihomo 相关进程..."
+                echo "正在结束 mihomo 相关进程..."
                 taskkill //f //t //im "mihomo*"
                 echo "结束 mihomo 相关进程成功"
 
-                echo "更新 mihomo 内核..."
+                echo "正在更新 mihomo 内核..."
                 mv -f "$USERPROFILE/Downloads/mihomo.exe" ./mihomo
                 if [ -f "./mihomo/profiles/config.yaml" ]; then
                   echo "更新 mihomo 内核成功，是否启动服务？（Y/n）"
@@ -441,7 +437,7 @@ Windows Registry Editor Version 5.00
                     case $choice in
                       [Yy])
                         echo
-                        echo "启动 mihomo 服务..."
+                        echo "正在启动 mihomo 服务..."
                         cd ./mihomo
                         start //min mihomo.exe run
                         read -n1 -r -p "启动 mihomo 服务成功，按任意键返回菜单..."
@@ -458,8 +454,7 @@ Windows Registry Editor Version 5.00
                   done
                   break
                 else
-                  echo "更新 mihomo 内核成功，请返回菜单导入配置文件！"
-                  read -n1 -r -p "按任意键返回菜单..."
+                  read -n1 -r -p "更新 mihomo 内核成功，请返回菜单导入配置文件！按任意键返回菜单..."
                   break
                 fi
                 ;;
@@ -473,24 +468,38 @@ Windows Registry Editor Version 5.00
             esac
           done
         else
-          echo "检测到未安装 mihomo 内核，正在安装..."
-          mkdir -p ./mihomo/ui
-          curl -sS -o ./mihomo/mihomo.exe -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-meta-windows-amd64-v3.exe
-          curl -sS -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/Dashboard/zashboard.tar.gz | tar -zx -C ./mihomo/ui
-          echo "安装 mihomo 内核和面板成功"
+          echo "检测到当前系统未安装 mihomo 内核，是否安装？（Y/n）"
+          while true; do
+            read -n1 -r choice
+            case $choice in
+              [Yy])
+                echo
+                echo "正在安装 mihomo 内核..."
+                mkdir -p ./mihomo/ui
+                curl -sS -o ./mihomo/mihomo.exe -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-meta-windows-amd64-v3.exe
+                curl -sS -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/Dashboard/zashboard.tar.gz | tar -zx -C ./mihomo/ui
+                echo "安装 mihomo 内核和面板成功"
 
-          echo "赋予 mihomo 权限..."
-          cmd //c "takeown /f mihomo /a /r /d y"
-          icacls mihomo /inheritance:r
-          icacls mihomo /remove[:g] "TrustedInstaller"
-          icacls mihomo /remove[:g] "CREATOR OWNER"
-          icacls mihomo /remove[:g] "ALL APPLICATION PACKAGES"
-          icacls mihomo /remove[:g] "所有受限制的应用程序包"
-          icacls mihomo /grant[:r] "SYSTEM:(OI)(CI)F"
-          icacls mihomo /grant[:r] "Administrators:(OI)(CI)F"
-          icacls mihomo /grant[:r] "Users:(OI)(CI)F"
-          echo "赋予 mihomo 权限成功，请返回菜单导入配置文件！"
-          read -n1 -r -p "按任意键返回菜单..."
+                echo "正在赋予 mihomo 权限..."
+                cmd //c "takeown /f mihomo /a /r /d y"
+                icacls mihomo /inheritance:r
+                icacls mihomo /remove[:g] "TrustedInstaller"
+                icacls mihomo /remove[:g] "CREATOR OWNER"
+                icacls mihomo /remove[:g] "ALL APPLICATION PACKAGES"
+                icacls mihomo /remove[:g] "所有受限制的应用程序包"
+                icacls mihomo /grant[:r] "SYSTEM:(OI)(CI)F"
+                icacls mihomo /grant[:r] "Administrators:(OI)(CI)F"
+                icacls mihomo /grant[:r] "Users:(OI)(CI)F"
+                read -n1 -r -p "赋予 mihomo 权限成功，请返回菜单导入配置文件！按任意键返回菜单..."
+              [Nn])
+                break
+                ;;
+              *)
+                echo
+                echo "无效选择，请重新输入！"
+                ;;
+            esac
+          done
         fi
         ;;
       2)
@@ -500,7 +509,7 @@ Windows Registry Editor Version 5.00
             case $choice in
               [Yy])
                 echo
-                echo "启动 mihomo 服务..."
+                echo "正在启动 mihomo 服务..."
                 cd ./mihomo
                 start //min mihomo.exe run
                 read -n1 -r -p "启动 mihomo 服务成功，按任意键返回菜单..."
@@ -517,27 +526,27 @@ Windows Registry Editor Version 5.00
           done
         }
 
-        echo "导入（更新）配置文件..."
+        echo "导入（更新）mihomo 配置文件"
         cd "$PROGRAMFILES"
         if [ -f "./mihomo/mihomo.exe" ]; then
           if [ -f "./mihomo/profiles/config.yaml" ]; then
-            echo "检测到配置文件，是否更新？（Y/n）"
+            echo "检测到 mihomo 配置文件，是否更新？（Y/n）"
             while true; do
               read -n1 -r choice
               case $choice in
                 [Yy])
                   echo
-                  echo "下载配置文件..."
+                  echo "正在下载 mihomo 配置文件..."
                   curl -sS -o "$USERPROFILE/Downloads/config.yaml" -L https://ghfast.top/{.yaml 配置文件直链}
-                  echo "下载配置文件成功"
+                  echo "下载 mihomo 配置文件成功"
 
-                  echo "结束 mihomo 相关进程..."
+                  echo "正在结束 mihomo 相关进程..."
                   taskkill //f //t //im "mihomo*"
                   echo "结束 mihomo 相关进程成功"
 
-                  echo "更新配置文件..."
+                  echo "正在更新 mihomo 配置文件..."
                   mv -f "$USERPROFILE/Downloads/config.yaml" ./mihomo/profiles
-                  echo "更新配置文件成功，是否启动服务？（Y/n）"
+                  echo "更新 mihomo 配置文件成功，是否启动服务？（Y/n）"
                   ask_run
                   break
                   ;;
@@ -551,32 +560,30 @@ Windows Registry Editor Version 5.00
               esac
             done
           else
-            echo "未检测到配置文件，导入配置文件..."
+            echo "未检测到 mihomo 配置文件，导入配置文件..."
             mkdir -p ./mihomo/profiles
             curl -sS -o "$USERPROFILE/Downloads/config.yaml" -L https://ghfast.top/{.yaml 配置文件直链}
             mv -f "$USERPROFILE/Downloads/config.yaml" ./mihomo/profiles
-            echo "导入配置文件成功，是否启动服务？（Y/n）"
+            echo "导入 mihomo 配置文件成功，是否启动服务？（Y/n）"
             ask_run
           fi
         else
-          echo "未检测到 mihomo 内核，请返回菜单安装内核！"
-          read -n1 -r -p "按任意键返回菜单..."
+          read -n1 -r -p "未检测到 mihomo 内核，请返回菜单安装内核！按任意键返回菜单..."
         fi
         ;;
       3)
-        echo "启动 mihomo 服务..."
+        echo "正在启动 mihomo 服务..."
         cd "$PROGRAMFILES"
         if [[ -f "./mihomo/mihomo.exe" && -f "./mihomo/profiles/config.yaml" ]]; then
           cd "./mihomo"
           start //min mihomo.exe -d profiles
           read -n1 -r -p "启动 mihomo 服务成功，按任意键返回菜单..."
         else
-          echo "未检测到 mihomo 内核和配置文件，请返回菜单安装内核并导入配置文件！"
-          read -n1 -r -p "按任意键返回菜单..."
+          read -n1 -r -p "未检测到 mihomo 内核和配置文件，请返回菜单安装内核并导入配置文件！按任意键返回菜单..."
         fi
         ;;
       4)
-        echo "停止 mihomo 服务..."
+        echo "正在停止 mihomo 服务..."
         taskkill //f //t //im "mihomo*"
         read -n1 -r -p "停止 mihomo 服务成功，按任意键返回菜单..."
         ;;
