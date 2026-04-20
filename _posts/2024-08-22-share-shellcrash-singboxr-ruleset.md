@@ -10,9 +10,10 @@ tags: [sing-box, sing-boxr, ShellCrash, ruleset, rule_set, 分享, Router]
 {: .prompt-warning }
 1. 请根据自身情况进行修改，**适合自己的方案才是最好的方案**，如无特殊需求，可以照搬
 2. 此方案适用于 [ShellCrash](https://github.com/juewuy/ShellCrash)（以 ARM64 架构为例，且安装路径为 `/data/ShellCrash`{: .filepath}）
-3. 本方案绕过了 CNIP 且不搭配 [AdGuard Home](https://github.com/AdguardTeam/AdGuardHome)，在 DNS 层拦截广告
-4. 本人将路由器设置了每天早上 6 点重启，使得《[六](https://proxy-tutorials.dustinwin.us.kg/posts/share-shellcrash-singboxr-ruleset/#%E5%85%AD-%E6%B7%BB%E5%8A%A0%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1)》中设置的定时任务生效
-5. 本教程搭载 [sing-box 内核 reF1nd-Test 版](https://github.com/reF1nd/sing-box/tree/reF1nd-testing)
+3. 本方案绕过了 CNIP 且 IP 在国内的未知域名也会被绕过
+4. 本方案不搭配 [AdGuard Home](https://github.com/AdguardTeam/AdGuardHome)，在 DNS 层拦截广告
+5. 本人将路由器设置了每天早上 6 点重启，使得《[六](https://proxy-tutorials.dustinwin.us.kg/posts/share-shellcrash-singboxr-ruleset/#%E5%85%AD-%E6%B7%BB%E5%8A%A0%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1)》中设置的定时任务生效
+6. 本教程搭载 [sing-box 内核 reF1nd-Test 版](https://github.com/reF1nd/sing-box/tree/reF1nd-testing)
 
 ## 一、 生成配置文件 .json 文件直链
 具体方法此处不再赘述，请看《[生成带有自定义出站和规则的 sing-boxr 配置文件直链-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/link-singboxr-ruleset)》，贴一下我使用的配置：
@@ -92,9 +93,8 @@ tags: [sing-box, sing-boxr, ShellCrash, ruleset, rule_set, 分享, Router]
       { "rule_set": [ "ai" ], "outbound": "AI 平台" },
       { "rule_set": [ "networktest" ], "outbound": "网络测试" },
       { "rule_set": [ "proxy" ], "outbound": "国外域名" },
-      { "rule_set": [ "telegramip" ], "outbound": "电报消息" },
-      { "action": "resolve", "match_only": true },
-      { "rule_set": [ "cnip" ], "outbound": "全球直连" }
+      { "rule_set": [ "cnip" ], "outbound": "全球直连" },
+      { "rule_set": [ "telegramip" ], "outbound": "电报消息" }
     ],
     "rule_set": [
       {
@@ -182,18 +182,18 @@ tags: [sing-box, sing-boxr, ShellCrash, ruleset, rule_set, 分享, Router]
         "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/cn.srs"
       },
       {
-        "tag": "telegramip",
-        "type": "remote",
-        "format": "binary",
-        "path": "./ruleset/telegramip.srs",
-        "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/telegramip.srs"
-      },
-      {
         "tag": "cnip",
         "type": "remote",
         "format": "binary",
         "path": "./ruleset/cnip.srs",
         "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/cnip.srs"
+      },
+      {
+        "tag": "telegramip",
+        "type": "remote",
+        "format": "binary",
+        "path": "./ruleset/telegramip.srs",
+        "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/telegramip.srs"
       }
     ],
     "final": "漏网之鱼",
@@ -283,6 +283,9 @@ sc
       { "rule_set": [ "trackerslist", "microsoft-cn", "apple-cn", "google-cn", "games-cn" ], "server": "dns_direct" },
       { "rule_set": [ "games", "ai", "proxy" ], "query_type": [ "A", "AAAA" ], "server": "dns_fakeip" },
       { "rule_set": [ "private", "cn" ], "server": "dns_direct" },
+      { "action": "evaluate", "server": "dns_direct" },
+      { "match_response": true, "rule_set": [ "cnip" ], "action": "respond" },
+      { "match_response": true, "ip_accept_any": true, "invert": true, "action": "respond" },
       { "query_type": [ "A", "AAAA" ], "server": "dns_fakeip" }
     ],
     "final": "dns_direct",
@@ -336,6 +339,10 @@ sc
       { "rule_set": [ "trackerslist", "microsoft-cn", "apple-cn", "google-cn", "games-cn" ], "server": "dns_direct" },
       { "rule_set": [ "games", "ai", "proxy" ], "query_type": [ "A", "AAAA" ], "server": "dns_fakeip" },
       { "rule_set": [ "private", "cn" ], "server": "dns_direct" },
+      // 推荐将 `client_subnet` 设置为当前宽带运营商分配的默认 DNS 的 IP 段
+      { "action": "evaluate", "server": "dns_proxy", "client_subnet": "211.137.58.0/24" },
+      { "match_response": true, "rule_set": [ "cnip" ], "action": "respond" },
+      { "match_response": true, "ip_accept_any": true, "invert": true, "action": "respond" },
       { "query_type": [ "A", "AAAA" ], "server": "dns_fakeip" }
     ],
     "final": "dns_proxy",
@@ -349,7 +356,7 @@ sc
 ```
 
 ## 四、 编辑 http_clients 文件
-连接 SSH 后执行命令 `vi $CRASHDIR/jsons/experimental.json`，按一下 Ins 键（Insert 键），粘贴如下内容：
+连接 SSH 后执行命令 `vi $CRASHDIR/jsons/http_clients.json`，按一下 Ins 键（Insert 键），粘贴如下内容：
 
 ```json
 { "http_clients": [ { "tag": "detour_proxy", "version": 3, "detour": "GLOBAL" } ] }

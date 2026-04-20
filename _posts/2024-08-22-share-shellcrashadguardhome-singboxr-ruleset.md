@@ -10,7 +10,7 @@ tags: [sing-box, sing-boxr, ShellCrash, AdGuard Home, ruleset, rule_set, 分享,
 {: .prompt-warning }
 1. 此方案采用 [ShellCrash](https://github.com/juewuy/ShellCrash) 作为上游，[AdGuard Home](https://github.com/AdguardTeam/AdGuardHome) 作为下游的模式
 2. 请根据自身情况进行修改，**适合自己的方案才是最好的方案**，如无特殊需求，可以照搬
-3. 此方案中 ShellCrash 采用了**绕过 CN_IP** 的模式（仍与 AdGuard Home 配合完美）
+3. 此方案中 ShellCrash 采用了**绕过 CN_IP** 的模式且 IP 在国内的未知域名也会被绕过（仍与 AdGuard Home 配合完美）
 4. 此方案适用于 ShellCrash（以 ARM64 架构为例，且安装路径为 `/data/ShellCrash`{: .filepath}）
 5. 此方案适用于 AdGuard Home（以 ARM64 架构为例，且安装路径为 `/data/AdGuardHome`{: .filepath}）
 6. 此方案不建议启用 ShellCrash 配置脚本 → 2) 功能设置 → 3) 透明路由流量过滤 → 2) 过滤局域网设备，因不经过内核的设备在访问 `漏网之鱼` 域名时会遇到无法访问的情况
@@ -95,9 +95,8 @@ tags: [sing-box, sing-boxr, ShellCrash, AdGuard Home, ruleset, rule_set, 分享,
       { "rule_set": [ "ai" ], "outbound": "AI 平台" },
       { "rule_set": [ "networktest" ], "outbound": "网络测试" },
       { "rule_set": [ "proxy" ], "outbound": "国外域名" },
-      { "rule_set": [ "telegramip" ], "outbound": "电报消息" },
-      { "action": "resolve", "match_only": true },
-      { "rule_set": [ "cnip" ], "outbound": "全球直连" }
+      { "rule_set": [ "cnip" ], "outbound": "全球直连" },
+      { "rule_set": [ "telegramip" ], "outbound": "电报消息" }
     ],
     "rule_set": [
       {
@@ -185,18 +184,18 @@ tags: [sing-box, sing-boxr, ShellCrash, AdGuard Home, ruleset, rule_set, 分享,
         "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/cn.srs"
       },
       {
-        "tag": "telegramip",
-        "type": "remote",
-        "format": "binary",
-        "path": "./ruleset/telegramip.srs",
-        "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/telegramip.srs"
-      },
-      {
         "tag": "cnip",
         "type": "remote",
         "format": "binary",
         "path": "./ruleset/cnip.srs",
         "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/cnip.srs"
+      },
+      {
+        "tag": "telegramip",
+        "type": "remote",
+        "format": "binary",
+        "path": "./ruleset/telegramip.srs",
+        "url": "https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/telegramip.srs"
       }
     ],
     "final": "漏网之鱼",
@@ -292,6 +291,9 @@ sc
       { "rule_set": [ "fakeip-filter", "trackerslist", "microsoft-cn", "apple-cn", "google-cn", "games-cn" ], "server": "dns_direct" },
       { "rule_set": [ "games", "ai", "proxy" ], "query_type": [ "A", "AAAA" ], "server": "dns_fakeip" },
       { "rule_set": [ "private", "cn" ], "server": "dns_direct" },
+      { "action": "evaluate", "server": "dns_direct" },
+      { "match_response": true, "rule_set": [ "cnip" ], "action": "respond" },
+      { "match_response": true, "ip_accept_any": true, "invert": true, "action": "respond" },
       { "query_type": [ "A", "AAAA" ], "server": "dns_fakeip" }
     ],
     "final": "dns_direct",
@@ -343,6 +345,10 @@ sc
       { "rule_set": [ "fakeip-filter", "trackerslist", "microsoft-cn", "apple-cn", "google-cn", "games-cn" ], "server": "dns_direct" },
       { "rule_set": [ "games", "ai", "proxy" ], "query_type": [ "A", "AAAA" ], "server": "dns_fakeip" },
       { "rule_set": [ "private", "cn" ], "server": "dns_direct" },
+      // 推荐将 `client_subnet` 设置为当前宽带运营商分配的默认 DNS 的 IP 段
+      { "action": "evaluate", "server": "dns_proxy", "client_subnet": "211.137.58.0/24" },
+      { "match_response": true, "rule_set": [ "cnip" ], "action": "respond" },
+      { "match_response": true, "ip_accept_any": true, "invert": true, "action": "respond" },
       { "query_type": [ "A", "AAAA" ], "server": "dns_fakeip" }
     ],
     "final": "dns_proxy",
@@ -356,7 +362,7 @@ sc
 ```
 
 ## 四、 编辑 http_clients 文件
-连接 SSH 后执行命令 `vi $CRASHDIR/jsons/experimental.json`，按一下 Ins 键（Insert 键），粘贴如下内容：
+连接 SSH 后执行命令 `vi $CRASHDIR/jsons/http_clients.json`，按一下 Ins 键（Insert 键），粘贴如下内容：
 
 ```json
 { "http_clients": [ { "tag": "detour_proxy", "version": 3, "detour": "GLOBAL" } ] }
