@@ -19,7 +19,7 @@ curl -sS -o /tmp/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWi
 ```
 
 ## 二、 添加定时任务
-1. 连接 SSH 后执行命令 `vi $CRASHDIR/task/task.user`，按一下 Ins 键（Insert 键），粘贴（快捷键 Ctrl+Shift+V）如下内容：
+1. 连接 SSH 后执行命令 `vi $CRASHDIR/configs/task/task.user`，按一下 Ins 键（Insert 键），粘贴（快捷键 Ctrl+Shift+V）如下内容：
 - 注：须重启 ShellCrash 服务后生效
 ```shell
 201#curl -sS -o $CRASHDIR/cn_ip.txt -L https://ghfast.top/https://github.com/DustinWin/geoip/releases/download/ips/cn_ipv4.txt && curl -sS -o $CRASHDIR/cn_ipv6.txt -L https://ghfast.top/https://github.com/DustinWin/geoip/releases/download/ips/cn_ipv6.txt >/dev/null 2>&1#更新CN_IP文件

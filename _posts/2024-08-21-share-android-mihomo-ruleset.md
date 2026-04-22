@@ -330,6 +330,7 @@ dns:
   direct-nameserver:
     - quic://dns.alidns.com:853
     - https://doh.pub/dns-query
+  direct-nameserver-follow-policy: true
   nameserver-policy:
     'rule-set:ads': [rcode://success]
     'rule-set:trackerslist,microsoft-cn,apple-cn,google-cn,games-cn,private,cn': [quic://dns.alidns.com:853, https://doh.pub/dns-query]

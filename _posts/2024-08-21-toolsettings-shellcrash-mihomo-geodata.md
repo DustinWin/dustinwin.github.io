@@ -27,7 +27,7 @@ curl -sS -o $CRASHDIR/Country.mmdb -L https://cdn.jsdelivr.net/gh/DustinWin/rule
 ```
 
 ## 三、 添加定时任务
-1. 连接 SSH 后执行命令 `vi $CRASHDIR/task/task.user`，按一下 Ins 键（Insert 键），粘贴如下内容：
+1. 连接 SSH 后执行命令 `vi $CRASHDIR/configs/task/task.user`，按一下 Ins 键（Insert 键），粘贴如下内容：
 - 注：须重启 ShellCrash 服务后生效
 ```shell
 201#curl -sS -o $CRASHDIR/GeoSite.dat -L https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-geodata/geosite.dat && curl -sS -o $CRASHDIR/Country.mmdb -L https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-geodata/Country-lite.mmdb >/dev/null 2>&1#更新geodata路由规则文件

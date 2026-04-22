@@ -57,6 +57,7 @@ dns:
   direct-nameserver:
     - quic://dns.alidns.com:853
     - https://dns.pub/dns-query
+  direct-nameserver-follow-policy: true
   nameserver-policy:
     'geosite:fakeip-filter,cn':
       - quic://dns.alidns.com:853
@@ -127,6 +128,7 @@ dns:
   direct-nameserver:
     - quic://dns.alidns.com:853
     - https://dns.pub/dns-query
+  direct-nameserver-follow-policy: true
   nameserver-policy:
     'geosite:cn':
       - quic://dns.alidns.com:853

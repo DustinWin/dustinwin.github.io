@@ -132,7 +132,7 @@ curl -sS -o /data/AdGuardHome/AdGuardHome -L https://ghfast.top/https://github.c
 
 ## 五、 扩展（以 ShellCrash 配置定时任务为例）
 可在 ShellCrash 里添加定时更新 mihomo 内核、sing-box 内核、[zashboard 面板](https://github.com/Zephyruso/zashboard)和 AdGuard Home 的任务
-1. 连接 SSH 后执行 `vi $CRASHDIR/task/task.user`，按一下 Ins 键（Insert 键），粘贴如下内容：  
+1. 连接 SSH 后执行 `vi $CRASHDIR/configs/task/task.user`，按一下 Ins 键（Insert 键），粘贴如下内容：  
 注：
 - ① 留意链接后缀是否与 CPU 架构匹配
 - ② 须重启 ShellCrash 和 AdGuard Home 服务后生效

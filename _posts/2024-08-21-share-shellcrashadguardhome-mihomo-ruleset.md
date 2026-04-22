@@ -354,13 +354,14 @@ dns:
   direct-nameserver:
     - quic://dns.alidns.com:853
     - https://doh.pub/dns-query
+  direct-nameserver-follow-policy: true
   nameserver-policy:
     'rule-set:ads': [rcode://success]
     'rule-set:fakeip-filter,trackerslist,microsoft-cn,apple-cn,google-cn,games-cn,private,cn': [quic://dns.alidns.com:853, https://doh.pub/dns-query]
 ```
 
 ## 四、 添加定时任务
-1. 连接 SSH 后执行命令 `vi $CRASHDIR/task/task.user`，按一下 Ins 键（Insert 键），粘贴如下内容：
+1. 连接 SSH 后执行命令 `vi $CRASHDIR/configs/task/task.user`，按一下 Ins 键（Insert 键），粘贴如下内容：
 ```shell
 201#curl -sS -o $CRASHDIR/cn_ip.txt -L https://ghfast.top/https://github.com/DustinWin/geoip/releases/download/ips/cn_ipv4.txt && curl -sS -o $CRASHDIR/cn_ipv6.txt -L https://ghfast.top/https://github.com/DustinWin/geoip/releases/download/ips/cn_ipv6.txt >/dev/null 2>&1#更新CN_IP文件
 202#curl -sS -o /data/AdGuardHome/AdGuardHome -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/AdGuardHome/AdGuardHome_beta_linux_arm64 >/dev/null 2>&1#更新AdGuardHome

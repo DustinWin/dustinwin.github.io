@@ -84,6 +84,7 @@ dns:
   direct-nameserver:
     - quic://dns.alidns.com:853
     - https://dns.pub/dns-query
+  direct-nameserver-follow-policy: true
   nameserver-policy:
     'rule-set:fakeip-filter,cn':
       - quic://dns.alidns.com:853
@@ -156,6 +157,7 @@ dns:
   direct-nameserver:
     - quic://dns.alidns.com:853
     - https://dns.pub/dns-query
+  direct-nameserver-follow-policy: true
   nameserver-policy:
     'rule-set:cn':
       - quic://dns.alidns.com:853

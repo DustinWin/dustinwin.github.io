@@ -289,7 +289,7 @@ tags: [sing-box, sing-boxr, Windows, ruleset, rule_set, 分享]
   "dns": {
     "servers": [
       {
-        "tag": "dns_hosts",
+        "tag": "hosts",
         "type": "hosts",
         "predefined": {
           "miwifi.com": [ "192.168.31.1", "127.0.0.1" ],
@@ -301,14 +301,15 @@ tags: [sing-box, sing-boxr, Windows, ruleset, rule_set, 分享]
       },
       { "tag": "dns_alidns", "type": "quic", "server": "dns.alidns.com", "domain_resolver": "hosts" },
       { "tag": "dns_dnspod", "type": "https", "server": "doh.pub", "domain_resolver": "hosts" },
-      { "tag": "dns_google", "type": "https", "server": "dns.google", "domain_resolver": "dns_hosts", "detour": "GLOBAL" },
-      { "tag": "dns_quad9", "type": "https", "server": "dns11.quad9.net", "domain_resolver": "dns_hosts", "detour": "GLOBAL" },
+      { "tag": "dns_google", "type": "https", "server": "dns.google", "domain_resolver": "hosts", "detour": "GLOBAL" },
+      { "tag": "dns_quad9", "type": "https", "server": "dns11.quad9.net", "domain_resolver": "hosts", "detour": "GLOBAL" },
       { "tag": "dns_direct", "type": "group", "servers": [ "dns_alidns", "dns_dnspod" ] },
       { "tag": "dns_proxy", "type": "group", "servers": [ "dns_google", "dns_quad9" ] },
       { "tag": "dns_fakeip", "type": "fakeip", "inet4_range": "28.0.0.0/8", "inet6_range": "fc00::/16" }
     ],
     "rules": [
-      { "ip_accept_any": true, "server": "dns_hosts" },
+      { "action": "evaluate", "server": "hosts" },
+      { "match_response": true, "ip_accept_any": true, "action": "respond" },
       { "clash_mode": [ "Direct" ], "server": "dns_direct" },
       { "clash_mode": [ "Global" ], "server": "dns_proxy" },
       { "rule_set": [ "ads" ], "action": "predefined" },
