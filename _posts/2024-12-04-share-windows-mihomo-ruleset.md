@@ -529,47 +529,45 @@ Windows Registry Editor Version 5.00
 
         echo "导入（更新）mihomo 配置文件"
         cd "$PROGRAMFILES"
-        if [ -f "./mihomo/mihomo.exe" ]; then
-          if [ -f "./mihomo/profiles/config.yaml" ]; then
-            echo "检测到 mihomo 配置文件，是否更新？（Y/n）"
-            while true; do
-              read -n1 -r choice
-              case $choice in
-                [Yy])
-                  echo
-                  echo "正在下载 mihomo 配置文件..."
-                  curl -sS -o "$USERPROFILE/Downloads/config.yaml" -L https://ghfast.top/{.yaml 配置文件直链}
-                  echo "下载 mihomo 配置文件成功"
+        if [[ -f "./mihomo/mihomo.exe" && -f "./mihomo/profiles/config.yaml" ]]; then
+          echo "检测到 mihomo 配置文件，是否更新？（Y/n）"
+          while true; do
+            read -n1 -r choice
+            case $choice in
+              [Yy])
+                echo
+                echo "正在下载 mihomo 配置文件..."
+                curl -sS -o "$USERPROFILE/Downloads/config.yaml" -L https://ghfast.top/{.yaml 配置文件直链}
+                echo "下载 mihomo 配置文件成功"
 
-                  echo "正在结束 mihomo 相关进程..."
-                  taskkill //f //t //im "mihomo*"
-                  echo "结束 mihomo 相关进程成功"
+                echo "正在结束 mihomo 相关进程..."
+                taskkill //f //t //im "mihomo*"
+                echo "结束 mihomo 相关进程成功"
 
-                  echo "正在更新 mihomo 配置文件..."
-                  mv -f "$USERPROFILE/Downloads/config.yaml" ./mihomo/profiles
-                  echo "更新 mihomo 配置文件成功，是否启动服务？（Y/n）"
-                  ask_run
-                  break
-                  ;;
-                [Nn])
-                  break
-                  ;;
-                *)
-                  echo
-                  echo "无效选择，请重新输入！"
-                  ;;
-              esac
-            done
-          else
-            echo "未检测到 mihomo 配置文件，导入配置文件..."
-            mkdir -p ./mihomo/profiles
-            curl -sS -o "$USERPROFILE/Downloads/config.yaml" -L https://ghfast.top/{.yaml 配置文件直链}
-            mv -f "$USERPROFILE/Downloads/config.yaml" ./mihomo/profiles
-            echo "导入 mihomo 配置文件成功，是否启动服务？（Y/n）"
-            ask_run
-          fi
+                echo "正在更新 mihomo 配置文件..."
+                mv -f "$USERPROFILE/Downloads/config.yaml" ./mihomo/profiles
+                echo "更新 mihomo 配置文件成功，是否启动服务？（Y/n）"
+                ask_run
+                break
+                ;;
+              [Nn])
+                break
+                ;;
+              *)
+                echo
+                echo "无效选择，请重新输入！"
+                ;;
+            esac
+          done
+        elif [ ! -f "./mihomo/profiles/config.yaml" ]; then
+          echo "未检测到 mihomo 配置文件，导入配置文件..."
+          mkdir -p ./mihomo/profiles
+          curl -sS -o "$USERPROFILE/Downloads/config.yaml" -L https://ghfast.top/{.yaml 配置文件直链}
+          mv -f "$USERPROFILE/Downloads/config.yaml" ./mihomo/profiles
+          echo "导入 mihomo 配置文件成功，是否启动服务？（Y/n）"
+          ask_run
         else
-          read -n1 -r -p "未检测到 mihomo 内核，请返回菜单安装内核！按任意键返回菜单..."
+          read -n1 -r -p "未检测到 mihomo 内核，请先返回菜单安装内核！按任意键返回菜单..."
         fi
         ;;
       3)
@@ -598,7 +596,7 @@ Windows Registry Editor Version 5.00
         ;;
     esac
   done
-  
+
   ```
 
 - ② 另存为 .sh 文件，右击并选择“以管理员身份运行”

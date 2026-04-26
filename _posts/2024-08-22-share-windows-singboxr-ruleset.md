@@ -523,63 +523,61 @@ Windows Registry Editor Version 5.00
 
         echo "导入（更新）sing-boxr 配置文件"
         cd "$PROGRAMFILES"
-        if [ -f "./sing-box/sing-box.exe" ]; then
-          if [ -f "./sing-box/config.json" ]; then
-            echo "检测到 sing-boxr 配置文件，是否更新？（Y/n）"
-            while true; do
-              read -n1 -r choice
-              case $choice in
-                [Yy])
-                  echo
-                  echo "正在下载 sing-boxr 配置文件..."
-                  curl -sS -o "$USERPROFILE/Downloads/config.json" -L https://ghfast.top/{.json 配置文件直链}
-                  echo "下载 sing-boxr 配置文件成功"
+        if [[ -f "./sing-box/sing-box.exe" && -f "./sing-box/config.json" ]]; then
+          echo "检测到 sing-boxr 配置文件，是否更新？（Y/n）"
+          while true; do
+            read -n1 -r choice
+            case $choice in
+              [Yy])
+                echo
+                echo "正在下载 sing-boxr 配置文件..."
+                curl -sS -o "$USERPROFILE/Downloads/config.json" -L https://ghfast.top/{.json 配置文件直链}
+                echo "下载 sing-boxr 配置文件成功"
 
-                  echo "正在结束 sing-boxr 相关进程..."
-                  taskkill //f //t //im "sing-box*"
-                  echo "结束 sing-boxr 相关进程成功"
+                echo "正在结束 sing-boxr 相关进程..."
+                taskkill //f //t //im "sing-box*"
+                echo "结束 sing-boxr 相关进程成功"
 
-                  echo "正在更新 sing-boxr 配置文件..."
-                  mv -f "$USERPROFILE/Downloads/config.json" ./sing-box
-                  echo "更新 sing-boxr 配置文件成功，是否启动服务？（Y/n）"
-                  ask_run
-                  break
-                  ;;
-                [Nn])
-                  break
-                  ;;
-                *)
-                  echo
-                  echo "无效选择，请重新输入！"
-                  ;;
-              esac
-            done
-          else
-            echo "未检测到 sing-boxr 配置文件，是否导入？（Y/n）"
-            while true; do
-              read -n1 -r choice
-              case $choice in
-                [Yy])
-                  echo
-                  echo "正在导入 sing-boxr 配置文件..."
-                  curl -sS -o "$USERPROFILE/Downloads/config.json" -L https://ghfast.top/{.json 配置文件直链}
-                  mv -f "$USERPROFILE/Downloads/config.json" ./sing-box
-                  echo "导入 sing-boxr 配置文件成功，是否启动服务？（Y/n）"
-                  ask_run
-                  break
-                  ;;
-                [Nn])
-                  break
-                  ;;
-                *)
-                  echo
-                  echo "无效选择，请重新输入！"
-                  ;;
-              esac
-            done
-          fi
+                echo "正在更新 sing-boxr 配置文件..."
+                mv -f "$USERPROFILE/Downloads/config.json" ./sing-box
+                echo "更新 sing-boxr 配置文件成功，是否启动服务？（Y/n）"
+                ask_run
+                break
+                ;;
+              [Nn])
+                break
+                ;;
+              *)
+                echo
+                echo "无效选择，请重新输入！"
+                ;;
+            esac
+          done
+        elif [ ! -f "./sing-box/config.json" ]; then
+          echo "未检测到 sing-boxr 配置文件，是否导入？（Y/n）"
+          while true; do
+            read -n1 -r choice
+            case $choice in
+              [Yy])
+                echo
+                echo "正在导入 sing-boxr 配置文件..."
+                curl -sS -o "$USERPROFILE/Downloads/config.json" -L https://ghfast.top/{.json 配置文件直链}
+                mv -f "$USERPROFILE/Downloads/config.json" ./sing-box
+                echo "导入 sing-boxr 配置文件成功，是否启动服务？（Y/n）"
+                ask_run
+                break
+                ;;
+              [Nn])
+                break
+                ;;
+              *)
+                echo
+                echo "无效选择，请重新输入！"
+                ;;
+            esac
+          done
         else
-          read -n1 -r -p "未检测到 sing-boxr 内核，请返回菜单安装内核！按任意键返回菜单..."
+          read -n1 -r -p "未检测到 sing-boxr 内核，请先返回菜单安装内核！按任意键返回菜单..."
         fi
         ;;
       3)
@@ -608,7 +606,7 @@ Windows Registry Editor Version 5.00
         ;;
     esac
   done
-  
+
   ```
 
 - ② 另存为 .sh 文件，右击并选择“以管理员身份运行”
