@@ -69,6 +69,7 @@ proxy-groups:
   - {name: 苹果服务, type: select, proxies: [全球直连, 节点选择], icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/apple-cn.png"}
   - {name: 国外域名, type: select, proxies: [节点选择, 香港节点, 台湾节点, 日本节点, 新加坡节点, 美国节点, 免费节点, 🆚 vless 节点], icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/global.png"}
   - {name: 电报消息, type: select, proxies: [节点选择, 香港节点, 台湾节点, 日本节点, 新加坡节点, 美国节点, 免费节点, 🆚 vless 节点], icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/telegram.png"}
+  - {name: 私有网络, type: select, proxies: [全球直连], hidden: true, icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/private.png"}
   # 若机场的 UDP 质量不是很好，导致某游戏无法登录或进入房间，可以添加 `disable-udp: true` 配置项解决
   - {name: 漏网之鱼, type: select, proxies: [节点选择, 香港节点, 台湾节点, 日本节点, 新加坡节点, 美国节点, 免费节点, 🆚 vless 节点, 全球直连], icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/match.png"}
   - {name: 全球直连, type: select, proxies: [DIRECT], hidden: true, icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/direct.png"}
@@ -177,6 +178,14 @@ rule-providers:
     url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/cn.mrs"
     interval: 86400
 
+  privateip:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    path: ./ruleset/privateip.mrs
+    url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/privateip.mrs"
+    interval: 86400
+
   cnip:
     type: http
     behavior: ipcidr
@@ -194,6 +203,7 @@ rule-providers:
     interval: 86400
 
 rules:
+  - RULE-SET,private,私有网络
   - RULE-SET,microsoft-cn,微软服务
   - RULE-SET,apple-cn,苹果服务
   - RULE-SET,google-cn,谷歌服务
@@ -202,6 +212,7 @@ rules:
   - RULE-SET,ai,AI 平台
   - RULE-SET,networktest,网络测试
   - RULE-SET,proxy,国外域名
+  - RULE-SET,privateip,私有网络,no-resolve
   - RULE-SET,cnip,全球直连
   - RULE-SET,telegramip,电报消息,no-resolve
   - MATCH,漏网之鱼
@@ -264,7 +275,6 @@ external-ui-url: "https://github.com/Zephyruso/zashboard/archive/gh-pages-cdn-fo
 profile: {store-selected: true, store-fake-ip: true}
 
 hosts:
-  miwifi.com: [192.168.31.1, 127.0.0.1]
   dns.alidns.com: [223.5.5.5, 223.6.6.6, 2400:3200::1, 2400:3200:baba::1]
   doh.pub: [1.12.12.12, 120.53.53.53, 2402:4e00::]
 
@@ -278,6 +288,7 @@ dns:
   fake-ip-range6: fc00::/16
   fake-ip-filter-mode: rule
   fake-ip-filter:
+    - RULE-SET,private,real-ip
     - RULE-SET,trackerslist,real-ip
     - RULE-SET,microsoft-cn,real-ip
     - RULE-SET,apple-cn,real-ip
@@ -286,13 +297,14 @@ dns:
     - RULE-SET,games,fake-ip
     - RULE-SET,ai,fake-ip
     - RULE-SET,proxy,fake-ip
-    - RULE-SET,private,real-ip
     - RULE-SET,cn,real-ip
     - MATCH,fake-ip
   nameserver:
     - quic://dns.alidns.com:853
     - https://dns.pub/dns-query
-  nameserver-policy: {'rule-set:ads': [rcode://success]}
+  nameserver-policy:
+    'rule-set:private': [system]
+    'rule-set:ads': [rcode://success]
 ```
 
 按一下 Esc 键（退出键），输入英文冒号 `:`，继续输入 `wq` 并回车
@@ -308,7 +320,6 @@ dns:
 
 ```yaml
 hosts:
-  miwifi.com: [192.168.31.1, 127.0.0.1]
   dns.alidns.com: [223.5.5.5, 223.6.6.6, 2400:3200::1, 2400:3200:baba::1]
   doh.pub: [1.12.12.12, 120.53.53.53, 2402:4e00::]
   dns.google: [8.8.8.8, 8.8.4.4, 2001:4860:4860::8888, 2001:4860:4860::8844]
@@ -323,6 +334,7 @@ dns:
   fake-ip-range6: fc00::/16
   fake-ip-filter-mode: rule
   fake-ip-filter:
+    - RULE-SET,private,real-ip
     - RULE-SET,trackerslist,real-ip
     - RULE-SET,microsoft-cn,real-ip
     - RULE-SET,apple-cn,real-ip
@@ -331,7 +343,6 @@ dns:
     - RULE-SET,games,fake-ip
     - RULE-SET,ai,fake-ip
     - RULE-SET,proxy,fake-ip
-    - RULE-SET,private,real-ip
     - RULE-SET,cn,real-ip
     - MATCH,fake-ip
   respect-rules: true
@@ -347,8 +358,9 @@ dns:
     - https://doh.pub/dns-query
   direct-nameserver-follow-policy: true
   nameserver-policy:
+    'rule-set:private': [system]
     'rule-set:ads': [rcode://success]
-    'rule-set:trackerslist,microsoft-cn,apple-cn,google-cn,games-cn,private,cn': [quic://dns.alidns.com:853, https://doh.pub/dns-query]
+    'rule-set:trackerslist,microsoft-cn,apple-cn,google-cn,games-cn,cn': [quic://dns.alidns.com:853, https://doh.pub/dns-query]
 ```
 
 ## 四、 添加定时任务

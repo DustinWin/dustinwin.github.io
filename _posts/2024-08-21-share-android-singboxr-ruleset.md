@@ -59,6 +59,7 @@ tags: [sing-box, sing-boxr, Android, ruleset, rule_set, 分享]
           "cloudflare-dns.com": [ "1.1.1.1", "1.0.0.1", "2606:4700:4700::1111", "2606:4700:4700::1001" ]
         }
       },
+      { "tag": "dns_local", "type": "local" },
       { "tag": "dns_alidns", "type": "quic", "server": "dns.alidns.com", "domain_resolver": "hosts" },
       { "tag": "dns_dnspod", "type": "https", "server": "doh.pub", "domain_resolver": "hosts" },
       { "tag": "dns_google", "type": "https", "server": "dns.google", "domain_resolver": "hosts", "detour": "GLOBAL" },
@@ -72,10 +73,11 @@ tags: [sing-box, sing-boxr, Android, ruleset, rule_set, 分享]
       { "match_response": true, "ip_accept_any": true, "action": "respond" },
       { "clash_mode": [ "Direct" ], "server": "dns_direct" },
       { "clash_mode": [ "Global" ], "server": "dns_proxy" },
+      { "rule_set": [ "private" ], "server": "dns_local" },
       { "rule_set": [ "ads" ], "action": "predefined" },
       { "rule_set": [ "trackerslist", "microsoft-cn", "apple-cn", "google-cn", "games-cn" ], "server": "dns_direct" },
       { "rule_set": [ "games", "ai", "proxy" ], "query_type": [ "A", "AAAA" ], "server": "dns_fakeip" },
-      { "rule_set": [ "private", "cn" ], "server": "dns_direct" },
+      { "rule_set": [ "cn" ], "server": "dns_direct" },
       { "query_type": [ "A", "AAAA" ], "server": "dns_fakeip" }
     ],
     "final": "dns_direct",
@@ -300,6 +302,7 @@ tags: [sing-box, sing-boxr, Android, ruleset, rule_set, 分享]
           "dns11.quad9.net": [ "9.9.9.11", "149.112.112.11", "2620:fe::11", "2620:fe::fe:11" ]
         }
       },
+      { "tag": "dns_local", "type": "local" },
       { "tag": "dns_alidns", "type": "quic", "server": "dns.alidns.com", "domain_resolver": "hosts" },
       { "tag": "dns_dnspod", "type": "https", "server": "doh.pub", "domain_resolver": "hosts" },
       { "tag": "dns_google", "type": "https", "server": "dns.google", "domain_resolver": "hosts", "detour": "GLOBAL" },
@@ -313,10 +316,11 @@ tags: [sing-box, sing-boxr, Android, ruleset, rule_set, 分享]
       { "match_response": true, "ip_accept_any": true, "action": "respond" },
       { "clash_mode": [ "Direct" ], "server": "dns_direct" },
       { "clash_mode": [ "Global" ], "server": "dns_proxy" },
+      { "rule_set": [ "private" ], "server": "dns_local" },
       { "rule_set": [ "ads" ], "action": "predefined" },
       { "rule_set": [ "trackerslist", "microsoft-cn", "apple-cn", "google-cn", "games-cn" ], "server": "dns_direct" },
       { "rule_set": [ "games", "ai", "proxy" ], "query_type": [ "A", "AAAA" ], "server": "dns_fakeip" },
-      { "rule_set": [ "private", "cn" ], "server": "dns_direct" },
+      { "rule_set": [ "cn" ], "server": "dns_direct" },
       { "query_type": [ "A", "AAAA" ], "server": "dns_fakeip" }
     ],
     "final": "dns_proxy",

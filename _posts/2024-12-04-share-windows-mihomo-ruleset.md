@@ -79,6 +79,7 @@ dns:
   fake-ip-range6: fc00::/16
   fake-ip-filter-mode: rule
   fake-ip-filter:
+    - RULE-SET,private,real-ip
     - RULE-SET,trackerslist,real-ip
     - RULE-SET,microsoft-cn,real-ip
     - RULE-SET,apple-cn,real-ip
@@ -87,13 +88,14 @@ dns:
     - RULE-SET,games,fake-ip
     - RULE-SET,ai,fake-ip
     - RULE-SET,proxy,fake-ip
-    - RULE-SET,private,real-ip
     - RULE-SET,cn,real-ip
     - MATCH,fake-ip
   nameserver:
     - quic://dns.alidns.com:853
     - https://doh.pub/dns-query
-  nameserver-policy: {'rule-set:ads': [rcode://success]}
+  nameserver-policy:
+    'rule-set:private': [system]
+    'rule-set:ads': [rcode://success]
 
 # 若没有单个出站代理节点，须删除所有 `🆚 vless 节点` 相关内容
 proxies:
@@ -311,6 +313,7 @@ dns:
   fake-ip-range6: fc00::/16
   fake-ip-filter-mode: rule
   fake-ip-filter:
+    - RULE-SET,private,real-ip
     - RULE-SET,trackerslist,real-ip
     - RULE-SET,microsoft-cn,real-ip
     - RULE-SET,apple-cn,real-ip
@@ -319,7 +322,6 @@ dns:
     - RULE-SET,games,fake-ip
     - RULE-SET,ai,fake-ip
     - RULE-SET,proxy,fake-ip
-    - RULE-SET,private,real-ip
     - RULE-SET,cn,real-ip
     - MATCH,fake-ip
   respect-rules: true
@@ -335,8 +337,9 @@ dns:
     - https://doh.pub/dns-query
   direct-nameserver-follow-policy: true
   nameserver-policy:
+    'rule-set:private': [system]
     'rule-set:ads': [rcode://success]
-    'rule-set:trackerslist,microsoft-cn,apple-cn,google-cn,games-cn,private,cn': [quic://dns.alidns.com:853, https://doh.pub/dns-query]
+    'rule-set:trackerslist,microsoft-cn,apple-cn,google-cn,games-cn,cn': [quic://dns.alidns.com:853, https://doh.pub/dns-query]
 ```
 
 ---

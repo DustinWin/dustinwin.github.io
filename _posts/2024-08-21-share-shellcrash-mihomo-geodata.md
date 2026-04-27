@@ -70,6 +70,7 @@ proxy-groups:
   - {name: 苹果服务, type: select, proxies: [全球直连, 节点选择], icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/apple-cn.png"}
   - {name: 国外域名, type: select, proxies: [节点选择, 香港节点, 台湾节点, 日本节点, 新加坡节点, 美国节点, 免费节点, 🆚 vless 节点], icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/global.png"}
   - {name: 电报消息, type: select, proxies: [节点选择, 香港节点, 台湾节点, 日本节点, 新加坡节点, 美国节点, 免费节点, 🆚 vless 节点], icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/telegram.png"}
+  - {name: 私有网络, type: select, proxies: [全球直连], hidden: true, icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/private.png"}
   # 若机场的 UDP 质量不是很好，导致某游戏无法登录或进入房间，可以添加 `disable-udp: true` 配置项解决
   - {name: 漏网之鱼, type: select, proxies: [节点选择, 香港节点, 台湾节点, 日本节点, 新加坡节点, 美国节点, 免费节点, 🆚 vless 节点, 全球直连], icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/match.png"}
   - {name: 全球直连, type: select, proxies: [DIRECT], hidden: true, icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/direct.png"}
@@ -82,6 +83,7 @@ proxy-groups:
   - {name: 免费节点, type: url-test, tolerance: 100, use: [🆓 免费订阅], icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/free.png"}
 
 rules:
+  - GEOSITE,private,私有网络
   - GEOSITE,microsoft-cn,微软服务
   - GEOSITE,apple-cn,苹果服务
   - GEOSITE,google-cn,谷歌服务
@@ -90,6 +92,7 @@ rules:
   - GEOSITE,ai,AI 平台
   - GEOSITE,networktest,网络测试
   - GEOSITE,proxy,国外域名
+  - GEOIP,private,私有网络,no-resolve
   - GEOIP,cn,全球直连
   - GEOIP,telegram,电报消息,no-resolve
   - MATCH,漏网之鱼
@@ -167,7 +170,6 @@ profile: {store-selected: true, store-fake-ip: true}
 geodata-mode: true
 
 hosts:
-  miwifi.com: [192.168.31.1, 127.0.0.1]
   dns.alidns.com: [223.5.5.5, 223.6.6.6, 2400:3200::1, 2400:3200:baba::1]
   doh.pub: [1.12.12.12, 120.53.53.53, 2402:4e00::]
 
@@ -181,6 +183,7 @@ dns:
   fake-ip-range6: fc00::/16
   fake-ip-filter-mode: rule
   fake-ip-filter:
+    - GEOSITE,private,real-ip
     - GEOSITE,trackerslist,real-ip
     - GEOSITE,microsoft-cn,real-ip
     - GEOSITE,apple-cn,real-ip
@@ -189,13 +192,14 @@ dns:
     - GEOSITE,games,fake-ip
     - GEOSITE,ai,fake-ip
     - GEOSITE,proxy,fake-ip
-    - GEOSITE,private,real-ip
     - GEOSITE,cn,real-ip
     - MATCH,fake-ip
   nameserver:
     - quic://dns.alidns.com:853
     - https://dns.pub/dns-query
-  nameserver-policy: {'geosite:ads': [rcode://success]}
+  nameserver-policy:
+    'geosite:private': [system]
+    'geosite:ads': [rcode://success]
 ```
 
 按一下 Esc 键（退出键），输入英文冒号 `:`，继续输入 `wq` 并回车
@@ -211,7 +215,6 @@ dns:
 
 ```yaml
 hosts:
-  miwifi.com: [192.168.31.1, 127.0.0.1]
   dns.alidns.com: [223.5.5.5, 223.6.6.6, 2400:3200::1, 2400:3200:baba::1]
   doh.pub: [1.12.12.12, 120.53.53.53, 2402:4e00::]
   dns.google: [8.8.8.8, 8.8.4.4, 2001:4860:4860::8888, 2001:4860:4860::8844]
@@ -226,6 +229,7 @@ dns:
   fake-ip-range6: fc00::/16
   fake-ip-filter-mode: rule
   fake-ip-filter:
+    - GEOSITE,private,real-ip
     - GEOSITE,trackerslist,real-ip
     - GEOSITE,microsoft-cn,real-ip
     - GEOSITE,apple-cn,real-ip
@@ -234,7 +238,6 @@ dns:
     - GEOSITE,games,fake-ip
     - GEOSITE,ai,fake-ip
     - GEOSITE,proxy,fake-ip
-    - GEOSITE,private,real-ip
     - GEOSITE,cn,real-ip
     - MATCH,fake-ip
   respect-rules: true
@@ -250,8 +253,9 @@ dns:
     - https://doh.pub/dns-query
   direct-nameserver-follow-policy: true
   nameserver-policy:
+    'geosite:private': [system]
     'geosite:ads': [rcode://success]
-    'geosite:trackerslist,microsoft-cn,apple-cn,google-cn,games-cn,private,cn': [quic://dns.alidns.com:853, https://doh.pub/dns-query]
+    'geosite:trackerslist,microsoft-cn,apple-cn,google-cn,games-cn,cn': [quic://dns.alidns.com:853, https://doh.pub/dns-query]
 ```
 
 ## 五、 添加定时任务
