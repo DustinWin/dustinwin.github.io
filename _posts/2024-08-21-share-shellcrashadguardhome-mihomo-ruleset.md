@@ -358,7 +358,7 @@ dns:
   nameserver:
     # 推荐将 `ecs` 设置为当前宽带运营商分配的默认 DNS 的 IP 段
     - 'https://dns.google/dns-query#ecs=211.137.58.0/24'
-    - 'https://dns11.quad9.net/dns-query#ecs=211.137.58.0/24'
+    - 'quic://dns11.quad9.net:853#ecs=211.137.58.0/24'
   proxy-server-nameserver:
     - quic://dns.alidns.com:853
     - https://doh.pub/dns-query
