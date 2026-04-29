@@ -393,7 +393,7 @@ Windows Registry Editor Version 5.00
 - ① 编辑本文文档，粘贴如下内容：  
   注：
   - ➊ 将《[一](https://proxy-tutorials.dustinwin.us.kg/posts/share-windows-mihomo-ruleset/#%E4%B8%80-%E7%94%9F%E6%88%90%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-yaml-%E6%96%87%E4%BB%B6%E7%9B%B4%E9%93%BE)》中生成的配置文件 .yaml 文件直链替换下面命令中的 `{.yaml 配置文件直链}`
-  - ➋ 或者删除此条命令，直接进入 `%PROGRAMFILES%\mihomo\profiles`{: .filepath} 文件夹，新建 config.yaml 文件并粘贴配置内容
+  - ➋ 或者删除此条命令，直接进入 `%PROGRAMFILES%\mihomo`{: .filepath} 文件夹，新建 config.yaml 文件并粘贴配置内容
 
   ```shell
   #!/bin/bash
@@ -434,7 +434,7 @@ Windows Registry Editor Version 5.00
 
                 echo "正在更新 mihomo 内核..."
                 mv -f "$USERPROFILE/Downloads/mihomo.exe" ./mihomo
-                if [ -f "./mihomo/profiles/config.yaml" ]; then
+                if [ -f "./mihomo/config.yaml" ]; then
                   echo "更新 mihomo 内核成功，是否启动服务？（Y/n）"
                   while true; do
                     read -n1 -r choice
@@ -443,7 +443,7 @@ Windows Registry Editor Version 5.00
                         echo
                         echo "正在启动 mihomo 服务..."
                         cd ./mihomo
-                        start //min mihomo.exe run
+                        start //min mihomo -d .
                         read -n1 -r -p "启动 mihomo 服务成功，按任意键返回菜单..."
                         break
                         ;;
@@ -515,7 +515,7 @@ Windows Registry Editor Version 5.00
                 echo
                 echo "正在启动 mihomo 服务..."
                 cd ./mihomo
-                start //min mihomo.exe run
+                start //min mihomo -d .
                 read -n1 -r -p "启动 mihomo 服务成功，按任意键返回菜单..."
                 break
                 ;;
@@ -532,7 +532,7 @@ Windows Registry Editor Version 5.00
 
         echo "导入（更新）mihomo 配置文件"
         cd "$PROGRAMFILES"
-        if [[ -f "./mihomo/mihomo.exe" && -f "./mihomo/profiles/config.yaml" ]]; then
+        if [[ -f "./mihomo/mihomo.exe" && -f "./mihomo/config.yaml" ]]; then
           echo "检测到 mihomo 配置文件，是否更新？（Y/n）"
           while true; do
             read -n1 -r choice
@@ -548,7 +548,7 @@ Windows Registry Editor Version 5.00
                 echo "结束 mihomo 相关进程成功"
 
                 echo "正在更新 mihomo 配置文件..."
-                mv -f "$USERPROFILE/Downloads/config.yaml" ./mihomo/profiles
+                mv -f "$USERPROFILE/Downloads/config.yaml" ./mihomo
                 echo "更新 mihomo 配置文件成功，是否启动服务？（Y/n）"
                 ask_run
                 break
@@ -562,11 +562,11 @@ Windows Registry Editor Version 5.00
                 ;;
             esac
           done
-        elif [ ! -f "./mihomo/profiles/config.yaml" ]; then
+        elif [ ! -f "./mihomo/config.yaml" ]; then
           echo "未检测到 mihomo 配置文件，导入配置文件..."
-          mkdir -p ./mihomo/profiles
+          mkdir -p ./mihomo
           curl -sS -o "$USERPROFILE/Downloads/config.yaml" -L https://ghfast.top/{.yaml 配置文件直链}
-          mv -f "$USERPROFILE/Downloads/config.yaml" ./mihomo/profiles
+          mv -f "$USERPROFILE/Downloads/config.yaml" ./mihomo
           echo "导入 mihomo 配置文件成功，是否启动服务？（Y/n）"
           ask_run
         else
@@ -576,9 +576,9 @@ Windows Registry Editor Version 5.00
       3)
         echo "正在启动 mihomo 服务..."
         cd "$PROGRAMFILES"
-        if [[ -f "./mihomo/mihomo.exe" && -f "./mihomo/profiles/config.yaml" ]]; then
+        if [[ -f "./mihomo/mihomo.exe" && -f "./mihomo/config.yaml" ]]; then
           cd "./mihomo"
-          start //min mihomo.exe -d profiles
+          start //min mihomo -d .
           read -n1 -r -p "启动 mihomo 服务成功，按任意键返回菜单..."
         else
           read -n1 -r -p "未检测到 mihomo 内核和配置文件，请返回菜单安装内核并导入配置文件！按任意键返回菜单..."
@@ -609,7 +609,7 @@ Windows Registry Editor Version 5.00
 
   ```shell
   cd "%PROGRAMFILES%\mihomo"
-  start /min mihomo.exe -d profiles
+  start /min mihomo -d .
   ```
 
 - ② 另存为 run.bat 文件并复制到 `%PROGRAMFILES%\mihomo`{: .filepath} 文件夹中

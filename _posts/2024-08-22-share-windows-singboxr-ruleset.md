@@ -435,7 +435,7 @@ Windows Registry Editor Version 5.00
                         echo
                         echo "正在启动 sing-boxr 服务..."
                         cd ./sing-box
-                        start //min sing-box.exe run
+                        start //min sing-box run
                         read -n1 -r -p "启动 sing-boxr 服务成功，按任意键返回菜单..."
                         break
                         ;;
@@ -509,7 +509,7 @@ Windows Registry Editor Version 5.00
                 echo
                 echo "正在启动 sing-boxr 服务..."
                 cd ./sing-box
-                start //min sing-box.exe run
+                start //min sing-box run
                 read -n1 -r -p "启动 sing-boxr 服务成功，按任意键返回菜单..."
                 break
                 ;;
@@ -588,7 +588,7 @@ Windows Registry Editor Version 5.00
         cd "$PROGRAMFILES"
         if [[ -f "./sing-box/sing-box.exe" && -f "./sing-box/config.json" ]]; then
           cd "./sing-box"
-          start //min sing-box.exe run
+          start //min sing-box run
           read -n1 -r -p "启动 sing-boxr 服务成功，按任意键返回菜单..."
         else
           read -n1 -r -p "未检测到 sing-boxr 内核和配置文件，请返回菜单安装内核并导入配置文件！按任意键返回菜单..."
@@ -619,7 +619,7 @@ Windows Registry Editor Version 5.00
 
   ```shell
   cd "%PROGRAMFILES%\sing-box"
-  start /min sing-box.exe run
+  start /min sing-box run
   ```
 
 - ② 另存为 run.bat 文件并复制到 `%PROGRAMFILES%\sing-box`{: .filepath} 文件夹中
