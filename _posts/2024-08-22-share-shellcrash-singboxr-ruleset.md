@@ -396,8 +396,7 @@ sc
 
 3. 连接 SSH 后执行如下命令：
 ```shell
-sed -i ':a;N;$!ba;s/{[[:space:]]*"ip_accept_any": true,[[:space:]]*"server": "hosts"[[:space:]]*}/{ "action": "evaluate", "server": "hosts" },\
-         { "match_response": true, "ip_accept_any": true, "action": "respond" }/' "$CRASHDIR/starts/singbox_modify.sh"
+sed -i ':a;N;$!ba;s/{[[:space:]]*"ip_accept_any": true,[[:space:]]*"server": "hosts"[[:space:]]*}/{ "preferred_by": [ "hosts" ], "server": "hosts" }/' "$CRASHDIR/starts/singbox_modify.sh"
 sed -i '/#生成experimental.json/i\
   #生成http_clients.json\
   cat >"$TMPDIR"/jsons/http_clients.json <<EOF\
