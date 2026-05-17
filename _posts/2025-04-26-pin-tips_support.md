@@ -12,5 +12,4 @@ pin: true
 <img src="/assets/img/pin/wechat.png" alt="微信" width="30%" />
 
 # 机场推荐
-[Bitz Net](https://dir3.bnaffloop.com/#/register?code=HT0ALWZq)（仅次于一线机场，推荐打折时购买）  
-85 折优惠码：`XMAS2025`（有效期至 2026 年 1 月 2 日 23:59）
+[Bitz Net](https://red.bnaffred.com/#/register?code=HT0ALWZq)（仅次于一线机场，推荐打折时购买）

@@ -69,8 +69,7 @@ tags: [sing-box, sing-boxr, Android, ruleset, rule_set, 分享]
       { "tag": "dns_fakeip", "type": "fakeip", "inet4_range": "28.0.0.0/8", "inet6_range": "fc00::/16" }
     ],
     "rules": [
-      { "action": "evaluate", "server": "hosts" },
-      { "match_response": true, "ip_accept_any": true, "action": "respond" },
+      { "preferred_by": [ "hosts" ], "server": "hosts" },
       { "clash_mode": [ "Direct" ], "server": "dns_direct" },
       { "clash_mode": [ "Global" ], "server": "dns_proxy" },
       { "rule_set": [ "private" ], "server": "dns_local" },
@@ -85,7 +84,7 @@ tags: [sing-box, sing-boxr, Android, ruleset, rule_set, 分享]
     "optimistic": true,
     "reverse_mapping": true
   },
-  "http_clients": [ { "tag": "detour_proxy", "version": 3, "detour": "GLOBAL" } ],
+  "http_clients": [ { "tag": "detour_proxy", "detour": "GLOBAL" } ],
   "inbounds": [
     // 启动服务时如果出现 `tun-in` 报错，可新增 `"stack": "system"` 配置项
     { "tag": "tun-in", "type": "tun", "interface_name": "sing-box", "address": [ "172.18.0.1/30", "fdfe:dcba:9876::1/126" ], "auto_route": true, "strict_route": true }
@@ -312,8 +311,7 @@ tags: [sing-box, sing-boxr, Android, ruleset, rule_set, 分享]
       { "tag": "dns_fakeip", "type": "fakeip", "inet4_range": "28.0.0.0/8", "inet6_range": "fc00::/16" }
     ],
     "rules": [
-      { "action": "evaluate", "server": "hosts" },
-      { "match_response": true, "ip_accept_any": true, "action": "respond" },
+      { "preferred_by": [ "hosts" ], "server": "hosts" },
       { "clash_mode": [ "Direct" ], "server": "dns_direct" },
       { "clash_mode": [ "Global" ], "server": "dns_proxy" },
       { "rule_set": [ "private" ], "server": "dns_local" },
