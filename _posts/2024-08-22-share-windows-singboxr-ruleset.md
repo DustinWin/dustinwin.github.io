@@ -10,7 +10,7 @@ tags: [sing-box, sing-boxr, Windows, ruleset, rule_set, 分享]
 {: .prompt-warning }
 1. 请根据自身情况进行修改，**适合自己的方案才是最好的方案**，如无特殊需求，可以照搬
 2. 此方案采用**裸核**的方式运行，更加精简
-3. 本教程搭载 [sing-box 内核 reF1nd-Test 版](https://github.com/reF1nd/sing-box/tree/reF1nd-testing)
+3. 本教程搭载 [sing-box 内核 reF1nd-Testing 版](https://github.com/reF1nd/sing-box/tree/reF1nd-testing)
 
 ## 一、 生成配置文件 .json 文件直链
 具体方法请参考《[生成带有自定义出站和规则的 sing-boxr 配置文件直链-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/link-singboxr-ruleset)》，贴一下我使用的配置：
@@ -415,7 +415,7 @@ Windows Registry Editor Version 5.00
               [Yy])
                 echo
                 echo "正在下载 sing-boxr 内核..."
-                curl -sS -o "$USERPROFILE/Downloads/sing-box.exe" -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-test-windows-amd64-v3.exe
+                curl -sS -o "$USERPROFILE/Downloads/sing-box.exe" -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-testing-windows-amd64-v3.exe
                 echo "下载 sing-boxr 内核成功"
 
                 echo "正在结束 sing-boxr 相关进程..."
@@ -470,7 +470,7 @@ Windows Registry Editor Version 5.00
                 echo
                 echo "正在安装 sing-boxr 内核和面板..."
                 mkdir -p ./sing-box/ui
-                curl -sS -o ./sing-box/sing-box.exe -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-test-windows-amd64-v3.exe
+                curl -sS -o ./sing-box/sing-box.exe -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-testing-windows-amd64-v3.exe
                 curl -sS -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/Dashboard/zashboard.tar.gz | tar -zx -C ./sing-box/ui
                 echo "安装 sing-boxr 内核和面板成功"
 
