@@ -26,7 +26,7 @@ geosite.dat 文件须包含 `fakeip-filter`、`cn` 和 `proxy`，推荐导入我
 ```yaml
 hosts:
   dns.alidns.com: [223.5.5.5, 223.6.6.6, 2400:3200::1, 2400:3200:baba::1]
-  doh.pub: [1.12.12.12, 120.53.53.53, 2402:4e00::]
+  doh.pub: [1.12.12.12, 120.53.53.53]
 
 dns:
   enable: true
@@ -47,7 +47,7 @@ dns:
 ```yaml
 hosts:
   dns.alidns.com: [223.5.5.5, 223.6.6.6, 2400:3200::1, 2400:3200:baba::1]
-  doh.pub: [1.12.12.12, 120.53.53.53, 2402:4e00::]
+  doh.pub: [1.12.12.12, 120.53.53.53]
 
 dns:
   enable: true

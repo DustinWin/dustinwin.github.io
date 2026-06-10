@@ -51,7 +51,7 @@ curl -sS -o /tmp/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWi
 9. 导入配置文件
   - ① 进入主菜单 → 6) 配置文件管理 → a) 添加提供者 → 1) 设置名称或代号，如输入“mihomo”；后进入 2) 设置链接或路径，粘贴《[生成带有自定义策略组和规则的 mihomo 配置文件直链-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/link-mihomo-ruleset)》中生成的 .yaml 配置文件直链，选择“a) 保存此提供者”
   - ② 进入 6) 配置文件管理 → c) 在线生成配置文件 → 6) 自定义浏览器 UA，选择“2) 不使用 UA”
-  - ③ 进入 6) 配置文件管理 → 1) mihomo，选择选择“e) 在线获取此配置文件”，启动服务即可
+  - ③ 进入 6) 配置文件管理 → 1) mihomo，选择“e) 在线获取此配置文件”，启动服务即可
 
 10. 访问 Dashboard 面板 <http://192.168.31.1:9999/ui/>，首次打开需要添加“主机”和“端口”，分别填入 `192.168.31.1` 和 `9999` 并点击“添加”即可  
 <img src="/assets/img/tools/192-9999-dashboard.png" alt="设置部分 2" width="60%" />
