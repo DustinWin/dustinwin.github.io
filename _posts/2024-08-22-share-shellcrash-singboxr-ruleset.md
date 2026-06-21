@@ -12,7 +12,7 @@ tags: [sing-box, sing-boxr, ShellCrash, ruleset, rule_set, 分享, Router]
 2. 此方案适用于 [ShellCrash](https://github.com/juewuy/ShellCrash)（以 ARM64 架构为例，且安装路径为 `/data/ShellCrash`{: .filepath}）
 3. 本方案绕过了 CNIP 且 IP 在国内的未知域名也会被绕过
 4. 本方案不搭配 [AdGuard Home](https://github.com/AdguardTeam/AdGuardHome)，在 DNS 层拦截广告
-5. 本人将路由器设置了每天早上 6 点重启，使得《[五](https://proxy-tutorials.dustinwin.us.kg/posts/share-shellcrash-singboxr-ruleset/#%E4%BA%94-%E6%B7%BB%E5%8A%A0%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1)》中设置的定时任务生效
+5. 本人将路由器设置了每天早上 6 点重启，使得《[六](https://proxy-tutorials.dustinwin.us.kg/posts/share-shellcrash-singboxr-ruleset/#%E5%85%AD-%E6%B7%BB%E5%8A%A0%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1)》中设置的定时任务生效
 6. 本教程搭载 [sing-box 内核 reF1nd-Testing 版](https://github.com/reF1nd/sing-box/tree/reF1nd-testing)
 
 ## 一、 生成配置文件 .json 文件直链
@@ -355,7 +355,30 @@ sc
 }
 ```
 
-## 四、 编辑 experimental.json 文件
+## 四、 编辑 services.json 文件
+连接 SSH 后执行命令 `vi $CRASHDIR/jsons/services.json`，按一下 Ins 键（Insert 键），粘贴如下内容：
+
+```json
+{
+  "services": [
+    {
+      "type": "api",
+      "listen": "::",
+      "listen_port": 9090,
+      "secret": "",
+      "access_control_allow_private_network": true,
+      "dashboard": {
+        "enabled": true,
+        "download_url": "https://github.com/Zephyruso/zashboard/archive/gh-pages-cdn-fonts-singbox-native.zip"
+      }
+    }
+  ]
+}
+```
+
+按一下 Esc 键（退出键），输入英文冒号 `:`，继续输入 `wq` 并回车
+
+## 五、 编辑 experimental.json 文件
 
 连接 SSH 后执行命令 `vi $CRASHDIR/jsons/experimental.json`，按一下 Ins 键（Insert 键），粘贴如下内容：
 
@@ -368,9 +391,8 @@ sc
     },
     "clash_api": {
       "external_controller": "0.0.0.0:9999",
-      "external_ui": "ui",
-      "external_ui_download_url": "https://github.com/Zephyruso/zashboard/archive/gh-pages-cdn-fonts.zip",
-      "secret": ""
+      "secret": "",
+      "access_control_allow_private_network": true
     },
     "urltest_unified_delay": true
   }
@@ -379,10 +401,10 @@ sc
 
 按一下 Esc 键（退出键），输入英文冒号 `:`，继续输入 `wq` 并回车
 
-## 五、 添加定时任务
+## 六、 添加定时任务
 可参考《[ShellCrash 搭载 sing-boxr 内核的配置-ruleset 方案/添加定时任务](https://proxy-tutorials.dustinwin.us.kg/posts/toolsettings-shellcrash-singboxr-ruleset/#%E4%BA%8C-%E6%B7%BB%E5%8A%A0%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1)》
 
-## 六、 设置部分
+## 七、 设置部分
 1. 设置可参考《[ShellCrash 搭载 sing-boxr 内核的配置-ruleset 方案/设置部分](https://proxy-tutorials.dustinwin.us.kg/posts/toolsettings-shellcrash-singboxr-ruleset/#%E4%B8%89-%E8%AE%BE%E7%BD%AE%E9%83%A8%E5%88%86)》，此处只列举配置的不同之处
 2. 进入 ShellCrash 配置脚本 → 2) 功能设置 → 2) DNS 设置 → 9) 修改 DNS 服务器，设置如下：  
 <img src="/assets/img/dns/dns-null.png" alt="设置部分 2" width="60%" />
@@ -410,8 +432,8 @@ EOF
 sed -i 's/log dns ntp certificate experimental/log dns ntp certificate http_clients experimental/' "$CRASHDIR/starts/singbox_modify.sh"
 sed -i 's/log dns ntp certificate experimental/log dns ntp certificate http_clients experimental/' "$CRASHDIR/menus/override.sh"
 ```
-## 七、 访问 Dashboard 面板
-打开 <http://miwifi.com:9999/ui/> 后，“主机”输入 `192.168.31.1`，“端口”输入 `9999`，点击“提交”即可访问 Dashboard 面板
+## 八、 访问 Dashboard 面板
+打开 <http://miwifi.com:9090/dashboard/> 后，“主机”输入 `192.168.31.1`，“端口”输入 `9999`，点击“提交”会弹出“启用 sing-box 原生 API”页面，直接点击“保存”，即可访问 Dashboard 面板
 
 > 推荐设置
 {: .prompt-tip }

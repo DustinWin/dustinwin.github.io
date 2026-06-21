@@ -261,6 +261,19 @@ tags: [sing-box, sing-boxr, Android, ruleset, rule_set, 分享]
     "auto_detect_interface": true,
     "override_android_vpn": true
   },
+  "services": [
+    {
+      "type": "api",
+      "listen": "::",
+      "listen_port": 9090,
+      "secret": "",
+      "access_control_allow_private_network": true,
+      "dashboard": {
+        "enabled": true,
+        "download_url": "https://github.com/Zephyruso/zashboard/archive/gh-pages-cdn-fonts-singbox-native.zip"
+      }
+    }
+  ],
   "experimental": {
     "cache_file": {
       "enabled": true,
@@ -268,9 +281,8 @@ tags: [sing-box, sing-boxr, Android, ruleset, rule_set, 分享]
     },
     "clash_api": {
       "external_controller": "127.0.0.1:9999",
-      "external_ui": "ui",
-      "external_ui_download_url": "https://github.com/Zephyruso/zashboard/archive/gh-pages.zip",
-      "secret": ""
+      "secret": "",
+      "access_control_allow_private_network": true
     },
     "urltest_unified_delay": true
   }
@@ -371,8 +383,8 @@ tags: [sing-box, sing-boxr, Android, ruleset, rule_set, 分享]
 - 注：首次启用可能会报错，重试几次即可
 
 ## 三、 访问 Dashboard 面板
-.json 文件已配置 zashboard 面板  
-打开 <http://miwifi.com:9999/ui/> 后，“端口”输入`9999`，点击“提交”，即可访问 Dashboard 面板
+.json 文件已配置 zashboard [sing-box](https://github.com/SagerNet/sing-box) 版  
+打开 <http://miwifi.com:9090/dashboard/> 后，“端口”输入`9999`，点击“提交”会弹出“启用 sing-box 原生 API”页面，直接点击“保存”，即可访问 Dashboard 面板
 
 > 推荐设置
 {: .prompt-tip }

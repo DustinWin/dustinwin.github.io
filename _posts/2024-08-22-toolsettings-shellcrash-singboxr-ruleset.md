@@ -53,8 +53,9 @@ curl -sS -o /tmp/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWi
   - ② 进入 6) 配置文件管理 → c) 在线生成配置文件 → 6) 自定义浏览器 UA，选择“2) 不使用 UA”
   - ③ 进入 6) 配置文件管理 → 1) sing-boxr，选择“e) 在线获取此配置文件”，启动服务即可
 
-10. 访问 Dashboard 面板 <http://192.168.31.1:9999/ui/>，首次打开需要添加“主机”和“端口”，分别填入 `192.168.31.1` 和 `9999` 并点击“添加”即可  
-<img src="/assets/img/tools/192-9999-dashboard.png" alt="设置部分 2" width="60%" />
+10. 访问 Dashboard 面板 <http://192.168.31.1:9090/dashboard/>，首次打开需要添加“主机”和“端口”，分别填入 `192.168.31.1` 和 `9999`，点击“提交”会弹出“启用 sing-box 原生 API”页面，直接点击“保存”，即可访问 Dashboard 面板  
+<img src="/assets/img/tools/192-9999-dashboard-singbox_1.png" alt="设置部分 2" width="60%" />  
+<img src="/assets/img/tools/192-9999-dashboard-singbox_2.png" alt="设置部分 3" width="60%" />
 
 11. 进入 Dashboard 面板 → 代理 → 代理提供者，点击“转圈”图标，可手动更新节点
 
@@ -63,5 +64,6 @@ curl -sS -o /tmp/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWi
 1. 若使用基于 [Chromium 项目](https://www.chromium.org/Home/)开发的浏览器打开网址去访问 Dashboard 面板时，以 [Chrome 浏览器](https://www.google.com/chrome/)为例，需要设置该网址域名“允许显示不安全内容”，进入设置 → 隐私和安全 → 网站设置 → 更多内容设置 → 不安全内容（或者直接在地址栏打开 `chrome://settings/content/insecureContent` 进行设置），在“允许显示不安全内容”内添加网址域名 `board.zash.run.place`  
 <img src="/assets/img/tools/chrome-setting-dashboard.png" alt="在线 Dashboard 面板 1" width="60%" />
 
-2. 首次进入 <https://board.zash.run.place> 需要添加“主机”和“端口”，分别填入 `192.168.31.1` 和 `9999` 并点击“提交”即可访问 Dashboard 面板  
-<img src="/assets/img/tools/192-9999-dashboard.png" alt="在线 Dashboard 面板 2" width="60%" />
+2. 首次进入 <https://board.zash.run.place> 需要添加“主机”和“端口”，分别填入 `192.168.31.1` 和 `9999`，点击“提交”会弹出“启用 sing-box 原生 API”页面，直接点击“保存”，即可访问 Dashboard 面板  
+<img src="/assets/img/tools/192-9999-dashboard-singbox_1.png" alt="在线 Dashboard 面板 2" width="60%" />  
+<img src="/assets/img/tools/192-9999-dashboard-singbox_2.png" alt="在线 Dashboard 面板 3" width="60%" />
