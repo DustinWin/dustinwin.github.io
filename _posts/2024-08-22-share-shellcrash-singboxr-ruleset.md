@@ -209,8 +209,8 @@ tags: [sing-box, sing-boxr, ShellCrash, ruleset, rule_set, 分享, Router]
 {: .prompt-tip }
 
 注：
-- ① 本 `outbounds` 配置中，将不同的节点类型（如：`Shadowsocks` 和 `Trojan`）分别配置 `"type": "urltest"` 进行延迟测试（可进入 [zashboard 面板](https://github.com/Zephyruso/zashboard) → 代理 → 设置 → 管理隐藏代理组，设置隐藏以简化 Dashboard 面板中的显示）。再将延迟测试最低的策略组配置 `"type": "loadbalance"` 进行负载均衡供用户选择使用
-- ② 将不同的优选节点分别配置 `"fallback": { "enabled": true }` 进行故障转移（可进入 zashboard 面板 → 代理 → 设置 → 管理隐藏代理组，设置隐藏以简化 Dashboard 面板中的显示）。再将故障转移后的策略组配置 `"type": "urltest"` 进行延迟测试供用户选择使用
+- ① 本 `outbounds` 配置中，将不同的节点类型（如：`Shadowsocks` 和 `Trojan`）分别配置 `"type": "urltest"` 进行延迟测试（可进入 [zashboard](https://github.com/Zephyruso/zashboard) → 代理 → 设置 → 管理隐藏代理组，设置隐藏以简化 Dashboard 面板中的显示）。再将延迟测试最低的策略组配置 `"type": "loadbalance"` 进行负载均衡供用户选择使用
+- ② 将不同的优选节点分别配置 `"fallback": { "enabled": true }` 进行故障转移（可进入 zashboard → 代理 → 设置 → 管理隐藏代理组，设置隐藏以简化 Dashboard 面板中的显示）。再将故障转移后的策略组配置 `"type": "urltest"` 进行延迟测试供用户选择使用
 
 ```json
 {
@@ -237,7 +237,7 @@ tags: [sing-box, sing-boxr, ShellCrash, ruleset, rule_set, 分享, Router]
 }
 ```
 
-## 二、 导入 [sing-box reF1nd 版内核](https://github.com/reF1nd/sing-box)和 zashboard 面板
+## 二、 导入 [sing-box reF1nd 版内核](https://github.com/reF1nd/sing-box)和 zashboard
 连接 SSH 后执行如下命令：
 
 ```shell
@@ -369,7 +369,7 @@ sc
       "access_control_allow_private_network": true,
       "dashboard": {
         "enabled": true,
-        "download_url": "https://github.com/Zephyruso/zashboard/archive/gh-pages-cdn-fonts-singbox-native.zip"
+        "download_url": "https://github.com/Zephyruso/zashboard/archive/gh-pages-cdn-fonts.zip"
       }
     }
   ]
@@ -433,9 +433,12 @@ sed -i 's/log dns ntp certificate experimental/log dns ntp certificate http_clie
 sed -i 's/log dns ntp certificate experimental/log dns ntp certificate http_clients experimental/' "$CRASHDIR/menus/override.sh"
 ```
 ## 八、 访问 Dashboard 面板
-打开 <http://miwifi.com:9090/dashboard/> 后，“主机”输入 `192.168.31.1`，“端口”输入 `9999`，点击“提交”会弹出“启用 sing-box 原生 API”页面，直接点击“保存”，即可访问 Dashboard 面板
+1. 打开 <http://miwifi.com:9090/dashboard/>，在“[Clash API](https://sing-boxr.dustinwin.us.kg/zh/configuration/experimental/clash-api/)”标签的“主机”内输入 `192.168.31.1`，“端口”内输入 `9999`，点击“提交”即可访问 Dashboard
+2. 进入设置 → 后端设置，点击“+”图标，切换到“[sing-box API](https://sing-boxr.dustinwin.us.kg/zh/configuration/service/api/)”标签，“主机”内输入 `192.168.31.1`，点击“提交”
+3. 通过切换后端配置可以分别使用 Clash API（支持“代理提供商”和“规则提供商”的更新）和 sing-box API Dashboard 面板
+4. 无法通过手动点击“升级面板”来更新 zashboard（默认每日自动更新）
 
 > 推荐设置
 {: .prompt-tip }
-1. 进入 zashboard 面板 → 代理 → 代理设置 → 管理隐藏代理组，隐藏不必要显示的代理组
-2. 进入 zashboard 面板 → 设置 → 代理设置 → 外观 → 自定义图标，设置“组名”和“URL”，“URL”可参考 [icon 文件](https://github.com/DustinWin/ruleset_geodata/releases/tag/icons)
+1. 进入 zashboard → 代理 → 代理设置 → 管理隐藏代理组，隐藏不必要显示的代理组
+2. 进入 zashboard → 设置 → 代理设置 → 外观 → 自定义图标，设置“组名”和“URL”，“URL”可参考 [icon 文件](https://github.com/DustinWin/ruleset_geodata/releases/tag/icons)

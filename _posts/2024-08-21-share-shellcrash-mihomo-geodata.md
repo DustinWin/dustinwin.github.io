@@ -131,7 +131,7 @@ proxy-groups:
 
 ---
 
-## 二、 导入 [mihomo 内核](https://github.com/MetaCubeX/mihomo)和 [zashboard 面板](https://github.com/Zephyruso/zashboard)
+## 二、 导入 [mihomo 内核](https://github.com/MetaCubeX/mihomo)和 [zashboard](https://github.com/Zephyruso/zashboard)
 连接 SSH 后执行如下命令：
 
 ```shell

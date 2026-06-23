@@ -53,10 +53,11 @@ curl -sS -o /tmp/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWi
   - ② 进入 6) 配置文件管理 → c) 在线生成配置文件 → 6) 自定义浏览器 UA，选择“2) 不使用 UA”
   - ③ 进入 6) 配置文件管理 → 1) mihomo，选择“e) 在线获取此配置文件”，启动服务即可
 
-10. 访问 Dashboard 面板 <http://192.168.31.1:9999/ui/>，首次打开需要添加“主机”和“端口”，分别填入 `192.168.31.1` 和 `9999` 并点击“添加”即可  
-<img src="/assets/img/tools/192-9999-dashboard.png" alt="设置部分 2" width="60%" />
+10. 访问 Dashboard 面板
+  - ① 首次打开 <http://192.168.31.1:9999/ui/> 需要添加“主机”和“端口”，分别填入 `192.168.31.1` 和 `9999` 并点击“提交”即可  
+  <img src="/assets/img/tools/192-9999-dashboard.png" alt="设置部分 2" width="60%" />
 
-1.  进入 Dashboard 面板 → 代理 → 代理提供者，点击“转圈”图标，可手动更新节点
+  - ② 进入 Dashboard 面板 → 代理 → 代理提供者，点击“转圈”图标，可手动更新节点
 
 ## 四、 在线 Dashboard 面板
 在线 Dashboard 面板 [zashboard](https://github.com/Zephyruso/zashboard)，网址：<https://board.zash.run.place>

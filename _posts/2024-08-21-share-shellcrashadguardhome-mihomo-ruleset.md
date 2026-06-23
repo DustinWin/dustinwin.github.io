@@ -252,7 +252,7 @@ proxy-groups:
   - {name: CF 优选节点, type: fallback, use: [🆓 免费订阅], filter: "(?i)(cfip)", hidden: true, icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/cfip.png"}
 ```
 
-## 二、 导入 [mihomo 内核](https://github.com/MetaCubeX/mihomo)、[zashboard 面板](https://github.com/Zephyruso/zashboard)和 CN_IP 文件
+## 二、 导入 [mihomo 内核](https://github.com/MetaCubeX/mihomo)、[zashboard](https://github.com/Zephyruso/zashboard)和 CN_IP 文件
 连接 SSH 后执行如下命令：
 
 ```shell

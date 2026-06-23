@@ -44,7 +44,7 @@ allow-lan: true
 mixed-port: 7890
 unified-delay: true
 tcp-concurrent: true
-external-controller: 127.0.0.1:9999
+external-controller: 0.0.0.0:9999
 profile: {store-selected: true, store-fake-ip: true}
 
 sniffer:
@@ -374,4 +374,4 @@ proxy-groups:
 1. 进入 [Clash Mi for Android](https://github.com/KaringX/clashmi) → “+”图标 → 添加配置链接，“配置链接/内容”输入《[一](https://proxy-tutorials.dustinwin.us.kg/posts/share-android-mihomo-ruleset/#%E4%B8%80-%E7%94%9F%E6%88%90%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-yaml-%E6%96%87%E4%BB%B6%E7%9B%B4%E9%93%BE)》中生成的配置文件 .yaml 直链，点击“✓”
 2. 待配置下载完成后返回到主界面，进入核心设置，关闭所有配置项的覆写功能
 3. 再次返回到主界面，点击“未连接”右边的灰色按钮即可启动服务
-4. 待服务启动成功后可直接点击“面板”来使用 [zashboard 面板](https://github.com/Zephyruso/zashboard)
+4. 待服务启动成功后可直接点击“面板”来使用 [zashboard](https://github.com/Zephyruso/zashboard)

@@ -620,5 +620,5 @@ Windows Registry Editor Version 5.00
   - ➌ 若想开机启动 mihomo，可搜索“Windows 添加任务计划”教程自行添加
 
 ## 四、 访问 Dashboard 面板
-.yaml 文件已配置 [zashboard 面板](https://github.com/Zephyruso/zashboard)  
+.yaml 文件已配置 [zashboard](https://github.com/Zephyruso/zashboard)  
 打开 <http://miwifi.com:9999/ui/> 后，“端口”输入 `9999`，点击“提交”，即可访问 Dashboard 面板

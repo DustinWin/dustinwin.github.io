@@ -72,22 +72,25 @@ curl -sS -o $CRASHDIR/CrashCore.upx -L https://ghfast.top/https://github.com/Dus
 ## 三、 安装 Dashboard 面板
 **Dashboard 面板对应文件名和网址关系如下表：**
 
-| 面板名称              | 文件名                      | 网址                                      |
-| --------------------- | --------------------------- | ----------------------------------------- |
-| Yacd-meta             | `Yacd-meta.tar.gz`          | <https://yacd.metacubex.one>              |
-| metacubexd            | `metacubexd.tar.gz`         | <https://metacubex.github.io/metacubexd/> |
-| zashboard             | `zashboard.tar.gz`          | <https://board.zash.run.place>            |
-| zashboard sing-box 版 | `zashboard-sing-box.tar.gz` | <https://board.zash.run.place>            |
-| sing-box dashboard    | `sing-box-dashboard.tar.gz` | <https://sing-box-dashboard.sagernet.org> |
+| 面板名称           | 文件名                      | 网址                                      |
+| ------------------ | --------------------------- | ----------------------------------------- |
+| Yacd-meta          | `Yacd-meta.tar.gz`          | <https://yacd.metacubex.one>              |
+| metacubexd         | `metacubexd.tar.gz`         | <https://metacubex.github.io/metacubexd/> |
+| zashboard          | `zashboard.tar.gz`          | <https://board.zash.run.place>            |
+| sing-box dashboard | `sing-box-dashboard.tar.gz` | <https://sing-box-dashboard.sagernet.org> |
 
 
 连接 SSH 后执行如下命令：
 
 ```shell
+# Yacd-meta
+curl -sS -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/Dashboard/Yacd-meta.tar.gz | tar -zx -C $CRASHDIR/ui/ && $CRASHDIR/start.sh restart
+# metacubexd
+curl -sS -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/Dashboard/metacubexd.tar.gz | tar -zx -C $CRASHDIR/ui/ && $CRASHDIR/start.sh restart
 # zashboard
 curl -sS -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/Dashboard/zashboard.tar.gz | tar -zx -C $CRASHDIR/ui/ && $CRASHDIR/start.sh restart
-# zashboard sing-box 版
-curl -sS -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/Dashboard/zashboard-sing-box.tar.gz | tar -zx -C $CRASHDIR/dashboard/ && $CRASHDIR/start.sh restart
+# sing-box dashboard
+curl -sS -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/Dashboard/sing-box-dashboard.tar.gz | tar -zx -C $CRASHDIR/ui/ && $CRASHDIR/start.sh restart
 ```
 
 - 注：若使用基于 [Chromium 项目](https://www.chromium.org/Home/)开发的浏览器打开网址去访问 Dashboard 面板时，以 [Chrome 浏览器](https://www.google.com/chrome/)为例，需要设置该网址域名“允许显示不安全内容”。方法如下：  
