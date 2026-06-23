@@ -52,7 +52,6 @@ tags: [sing-box, sing-boxr, Android, ruleset, rule_set, 分享]
         "tag": "hosts",
         "type": "hosts",
         "predefined": {
-          "miwifi.com": [ "192.168.31.1", "127.0.0.1" ],
           "dns.alidns.com": [ "223.5.5.5", "223.6.6.6", "2400:3200::1", "2400:3200:baba::1" ],
           "doh.pub": [ "1.12.12.12", "120.53.53.53" ],
           "dns.google": [ "8.8.8.8", "8.8.4.4", "2001:4860:4860::8888", "2001:4860:4860::8844" ],
@@ -267,11 +266,7 @@ tags: [sing-box, sing-boxr, Android, ruleset, rule_set, 分享]
       "listen": "::",
       "listen_port": 9090,
       "secret": "",
-      "access_control_allow_private_network": true,
-      "dashboard": {
-        "enabled": true,
-        "download_url": "https://github.com/Zephyruso/zashboard/archive/gh-pages-cdn-fonts.zip"
-      }
+      "access_control_allow_private_network": true
     }
   ],
   "experimental": {
@@ -306,7 +301,6 @@ tags: [sing-box, sing-boxr, Android, ruleset, rule_set, 分享]
         "tag": "hosts",
         "type": "hosts",
         "predefined": {
-          "miwifi.com": [ "192.168.31.1", "127.0.0.1" ],
           "dns.alidns.com": [ "223.5.5.5", "223.6.6.6", "2400:3200::1", "2400:3200:baba::1" ],
           "doh.pub": [ "1.12.12.12", "120.53.53.53" ],
           "dns.google": [ "8.8.8.8", "8.8.4.4", "2001:4860:4860::8888", "2001:4860:4860::8844" ],
@@ -383,10 +377,9 @@ tags: [sing-box, sing-boxr, Android, ruleset, rule_set, 分享]
 - 注：首次启用可能会报错，重试几次即可
 
 ## 三、 访问 Dashboard 面板
-1. 打开 <http://miwifi.com:9090/dashboard/>，在“[Clash API](https://sing-boxr.dustinwin.us.kg/zh/configuration/experimental/clash-api/)”标签的“端口”内输入 `9999`，点击“提交”即可访问 Dashboard
+1. 打开 zashboard 在线面板地址 <http://board.zash.run.place>，在“[Clash API](https://sing-boxr.dustinwin.us.kg/zh/configuration/experimental/clash-api/)”标签的“端口”内输入 `9999`，点击“提交”即可访问 Dashboard 面板
 2. 进入设置 → 后端设置，点击“+”图标，切换到“[sing-box API](https://sing-boxr.dustinwin.us.kg/zh/configuration/service/api/)”标签，直接点击“提交”
 3. 通过切换后端配置可以分别使用 Clash API（支持“代理提供商”和“规则提供商”的更新）和 sing-box API Dashboard 面板
-4. 无法通过手动点击“升级面板”来更新 zashboard（默认每日自动更新）
 
 > 推荐设置
 {: .prompt-tip }

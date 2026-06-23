@@ -131,13 +131,13 @@ proxy-groups:
 
 ---
 
-## 二、 导入 [mihomo 内核](https://github.com/MetaCubeX/mihomo)和 [zashboard](https://github.com/Zephyruso/zashboard)
+## 二、 导入 [mihomo 内核](https://github.com/MetaCubeX/mihomo)和 [CN_IP 文件](https://github.com/DustinWin/geoip)
 连接 SSH 后执行如下命令：
 
 ```shell
 curl -sS -o /tmp/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-meta-linux-arm64.upx
-mkdir -p $CRASHDIR/ui/
-curl -sS -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/Dashboard/zashboard.tar.gz | tar -zx -C $CRASHDIR/ui/
+curl -sS -o $CRASHDIR/cn_ip.txt -L https://cdn.jsdelivr.net/gh/DustinWin/geoip@ips/cn_ipv4.txt
+curl -sS -o $CRASHDIR/cn_ipv6.txt -L https://cdn.jsdelivr.net/gh/DustinWin/geoip@ips/cn_ipv6.txt
 sc
 ```
 
@@ -152,8 +152,6 @@ sc
 curl -sS -o $CRASHDIR/GeoSite.dat -L https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-geodata/geosite.dat
 curl -sS -o $CRASHDIR/GeoIP.dat -L https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-geodata/geoip-lite.dat
 curl -sS -o $CRASHDIR/Country.mmdb -L https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-geodata/Country-lite.mmdb
-curl -sS -o $CRASHDIR/cn_ip.txt -L https://cdn.jsdelivr.net/gh/DustinWin/geoip@ips/cn_ipv4.txt
-curl -sS -o $CRASHDIR/cn_ipv6.txt -L https://cdn.jsdelivr.net/gh/DustinWin/geoip@ips/cn_ipv6.txt
 ```
 
 ## 四、 编辑 user.yaml 文件
@@ -164,7 +162,6 @@ log-level: error
 allow-lan: true
 unified-delay: true
 tcp-concurrent: true
-external-ui-url: "https://github.com/Zephyruso/zashboard/archive/gh-pages-cdn-fonts.zip"
 profile: {store-selected: true, store-fake-ip: true}
 
 geodata-mode: true
@@ -266,5 +263,4 @@ dns:
 2. 进入 ShellCrash 配置脚本 → 2) 功能设置 → 2) DNS 设置 → 9) 修改 DNS 服务器，设置如下：  
 <img src="/assets/img/dns/dns-null.png" alt="设置部分 2" width="60%" />
 
-## 七、 访问 Dashboard 面板
-打开 <http://miwifi.com:9999/ui/> 后，“主机”输入 `192.168.31.1`，“端口”输入 `9999`，点击“提交”即可访问 Dashboard 面板
+3. 打开 [zashboard](https://github.com/Zephyruso/zashboard) 在线面板地址 <http://board.zash.run.place> 后，“主机”输入 `192.168.31.1`，“端口”输入 `9999`，点击“提交”即可访问 Dashboard 面板

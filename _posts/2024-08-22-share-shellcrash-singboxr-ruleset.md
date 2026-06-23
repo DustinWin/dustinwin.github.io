@@ -237,13 +237,13 @@ tags: [sing-box, sing-boxr, ShellCrash, ruleset, rule_set, 分享, Router]
 }
 ```
 
-## 二、 导入 [sing-box reF1nd 版内核](https://github.com/reF1nd/sing-box)和 zashboard
+## 二、 导入 [sing-box reF1nd 版内核](https://github.com/reF1nd/sing-box)和 [CN_IP 文件](https://github.com/DustinWin/geoip)
 连接 SSH 后执行如下命令：
 
 ```shell
 curl -sS -o /tmp/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-testing-linux-arm64.upx
-mkdir -p $CRASHDIR/ui/
-curl -sS -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/Dashboard/zashboard.tar.gz | tar -zx -C $CRASHDIR/ui/
+curl -sS -o $CRASHDIR/cn_ip.txt -L https://cdn.jsdelivr.net/gh/DustinWin/geoip@ips/cn_ipv4.txt
+curl -sS -o $CRASHDIR/cn_ipv6.txt -L https://cdn.jsdelivr.net/gh/DustinWin/geoip@ips/cn_ipv6.txt
 sc
 ```
 
@@ -366,11 +366,7 @@ sc
       "listen": "::",
       "listen_port": 9090,
       "secret": "",
-      "access_control_allow_private_network": true,
-      "dashboard": {
-        "enabled": true,
-        "download_url": "https://github.com/Zephyruso/zashboard/archive/gh-pages-cdn-fonts.zip"
-      }
+      "access_control_allow_private_network": true
     }
   ]
 }
@@ -432,11 +428,10 @@ EOF
 sed -i 's/log dns ntp certificate experimental/log dns ntp certificate http_clients experimental/' "$CRASHDIR/starts/singbox_modify.sh"
 sed -i 's/log dns ntp certificate experimental/log dns ntp certificate http_clients experimental/' "$CRASHDIR/menus/override.sh"
 ```
-## 八、 访问 Dashboard 面板
-1. 打开 <http://miwifi.com:9090/dashboard/>，在“[Clash API](https://sing-boxr.dustinwin.us.kg/zh/configuration/experimental/clash-api/)”标签的“主机”内输入 `192.168.31.1`，“端口”内输入 `9999`，点击“提交”即可访问 Dashboard
-2. 进入设置 → 后端设置，点击“+”图标，切换到“[sing-box API](https://sing-boxr.dustinwin.us.kg/zh/configuration/service/api/)”标签，“主机”内输入 `192.168.31.1`，点击“提交”
-3. 通过切换后端配置可以分别使用 Clash API（支持“代理提供商”和“规则提供商”的更新）和 sing-box API Dashboard 面板
-4. 无法通过手动点击“升级面板”来更新 zashboard（默认每日自动更新）
+4. 访问在线 Dashboard 面板
+  - ① 打开 zashboard 在线面板地址 <http://board.zash.run.place>，在“[Clash API](https://sing-boxr.dustinwin.us.kg/zh/configuration/experimental/clash-api/)”标签的“主机”内输入 `192.168.31.1`，“端口”内输入 `9999`，点击“提交”即可访问 Dashboard
+  - ② 进入设置 → 后端设置，点击“+”图标，切换到“[sing-box API](https://sing-boxr.dustinwin.us.kg/zh/configuration/service/api/)”标签，“主机”内输入 `192.168.31.1`，点击“提交”
+  - ③ 通过切换后端配置可以分别使用 Clash API（支持“代理提供商”和“规则提供商”的更新）和 sing-box API Dashboard 面板
 
 > 推荐设置
 {: .prompt-tip }

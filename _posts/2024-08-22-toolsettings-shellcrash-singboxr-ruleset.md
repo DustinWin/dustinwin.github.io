@@ -48,12 +48,13 @@ curl -sS -o /tmp/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWi
 6. 进入主菜单 → 8) 工具与优化，选择“6) 小米设备软固化 SSH”（无需输入需要还原的 SSH 密码）
 7. 进入 8) 工具与优化 → 8) 小米设备Tun模块修复，选择“1) 我已知晓，出现问题会自行承担！”
 8. 进入主菜单 → 9) 更新与支持 → 2) 切换/更新内核文件 → 6) 使用自定义内核 → 9) 自定义内核链接，输入导入内核命令里的链接并回车，选择“2) Singbox-reF1nd”
-9. 导入配置文件
+9. 进入 9) 更新与支持 → 4) 安装/更新本地Dashboard面板，推荐安装“1) 安装 zashboard 面板”
+10. 导入配置文件
   - ① 进入主菜单 → 6) 配置文件管理 → a) 添加提供者 → 1) 设置名称或代号，如输入“sing-boxr”；后进入 2) 设置链接或路径，粘贴《[生成带有自定义出站和规则的 sing-boxr 配置文件直链-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/link-singboxr-ruleset)》中生成的 .yaml 配置文件直链，选择“a) 保存此提供者”
   - ② 进入 6) 配置文件管理 → c) 在线生成配置文件 → 6) 自定义浏览器 UA，选择“2) 不使用 UA”
   - ③ 进入 6) 配置文件管理 → 1) sing-boxr，选择“e) 在线获取此配置文件”，启动服务即可
 
-10. 访问 Dashboard 面板
+11. 访问 Dashboard 面板
   - ① 首次打开 <http://192.168.31.1:9090/dashboard/> 需要添加“主机”和“端口”，在“[Clash API](https://sing-boxr.dustinwin.us.kg/zh/configuration/experimental/clash-api/)”标签内分别填入 `192.168.31.1` 和 `9999`，点击“提交”即可访问 Dashboard 面板  
   <img src="/assets/img/tools/192-9999-dashboard-singbox_1.png" alt="设置部分 2" width="60%" />
 
@@ -65,14 +66,14 @@ curl -sS -o /tmp/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWi
   - ⑤ 进入 Dashboard 面板 → 代理 → 代理提供者，点击“转圈”图标，可手动更新节点
 
 ## 四、 在线 Dashboard 面板
-在线 Dashboard 面板 [zashboard](https://github.com/Zephyruso/zashboard)，网址：<https://board.zash.run.place>
-1. 若使用基于 [Chromium 项目](https://www.chromium.org/Home/)开发的浏览器打开网址去访问 Dashboard 面板时，以 [Chrome 浏览器](https://www.google.com/chrome/)为例，需要设置该网址域名“允许显示不安全内容”，进入设置 → 隐私和安全 → 网站设置 → 更多内容设置 → 不安全内容（或者直接在地址栏打开 `chrome://settings/content/insecureContent` 进行设置），在“允许显示不安全内容”内添加网址域名 `board.zash.run.place`  
+在线 Dashboard 面板 [zashboard](https://github.com/Zephyruso/zashboard)，网址：<http://board.zash.run.place>
+1. 若使用基于 [Chromium 项目](https://www.chromium.org/Home/)开发的浏览器无法访问 Dashboard 在线面板时，以 [Chrome 浏览器](https://www.google.com/chrome/)为例，需要设置该网址域名“允许显示不安全内容”，进入设置 → 隐私和安全 → 网站设置 → 更多内容设置 → 不安全内容（或者直接在地址栏打开 `chrome://settings/content/insecureContent` 进行设置），在“允许显示不安全内容”内添加网址域名 `board.zash.run.place`  
 <img src="/assets/img/tools/chrome-setting-dashboard.png" alt="在线 Dashboard 面板 1" width="60%" />
 
-2. 首次进入 <https://board.zash.run.place> 需要添加“主机”和“端口”，在“Clash API”标签内分别填入 `192.168.31.1` 和 `9999`，点击“提交”即可访问 Dashboard 面板  
+2. 首次进入 <http://board.zash.run.place> 需要添加“主机”和“端口”，在“Clash API”标签内分别填入 `192.168.31.1` 和 `9999`，点击“提交”即可访问 Dashboard 面板  
 <img src="/assets/img/tools/192-9999-dashboard-singbox_1.png" alt="在线 Dashboard 面板 2" width="60%" />
 
-3. 进入Dashboard 面板 → 设置 → 后端设置，点击“+”图标，切换到“sing-box API”标签，“主机”内输入 `192.168.31.1`，点击“提交”  
+3. 进入 Dashboard 面板 → 设置 → 后端设置，点击“+”图标，切换到“sing-box API”标签，“主机”内输入 `192.168.31.1`，点击“提交”  
 <img src="/assets/img/tools/192-9999-dashboard-singbox_2.png" alt="在线 Dashboard 面板 3" width="60%" />
 
 4. 通过切换后端配置可以分别使用 Clash API（支持“代理提供商”和“规则提供商”的更新）和 sing-box API Dashboard 面板

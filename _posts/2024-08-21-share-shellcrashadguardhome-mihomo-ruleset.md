@@ -252,13 +252,11 @@ proxy-groups:
   - {name: CF 优选节点, type: fallback, use: [🆓 免费订阅], filter: "(?i)(cfip)", hidden: true, icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/cfip.png"}
 ```
 
-## 二、 导入 [mihomo 内核](https://github.com/MetaCubeX/mihomo)、[zashboard](https://github.com/Zephyruso/zashboard)和 CN_IP 文件
+## 二、 导入 [mihomo 内核](https://github.com/MetaCubeX/mihomo)和 [CN_IP 文件](https://github.com/DustinWin/geoip)
 连接 SSH 后执行如下命令：
 
 ```shell
 curl -sS -o /tmp/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-meta-linux-arm64.upx
-mkdir -p $CRASHDIR/ui/
-curl -sS -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/Dashboard/zashboard.tar.gz | tar -zx -C $CRASHDIR/ui/
 curl -sS -o $CRASHDIR/cn_ip.txt -L https://cdn.jsdelivr.net/gh/DustinWin/geoip@ips/cn_ipv4.txt
 curl -sS -o $CRASHDIR/cn_ipv6.txt -L https://cdn.jsdelivr.net/gh/DustinWin/geoip@ips/cn_ipv6.txt
 sc
@@ -279,7 +277,6 @@ log-level: error
 allow-lan: true
 unified-delay: true
 tcp-concurrent: true
-external-ui-url: "https://github.com/Zephyruso/zashboard/archive/gh-pages-cdn-fonts.zip"
 profile: {store-selected: true, store-fake-ip: true}
 
 hosts:
@@ -387,6 +384,8 @@ dns:
 3. 进入 2) DNS 设置 → 9) 修改 DNS 服务器，设置如下：  
 <img src="/assets/img/dns/dns-null.png" alt="ShellCrash 设置 2" width="60%" />
 
+4. 打开 [zashboard](https://github.com/Zephyruso/zashboard) 在线面板地址 <http://board.zash.run.place> 后，“主机”输入 `192.168.31.1`，“端口”输入 `9999`，点击“提交”即可访问 Dashboard 面板
+
 ## 六、 安装 AdGuard Home
 连接 SSH 后执行如下命令：
 
@@ -413,6 +412,3 @@ EOF
 
 ## 七、 AdGuard Home 设置
 设置可参考《[全网最详细的解锁 SSH ShellCrash 搭载 mihomo 内核搭配 AdGuard Home 安装和配置教程/AdGuard Home 配置](https://proxy-tutorials.dustinwin.us.kg/posts/pin-shellcrashadguardhome-mihomo/#2-adguard-home-%E9%85%8D%E7%BD%AE)》
-
-## 八、 访问 Dashboard 面板
-打开 <http://miwifi.com:9999/ui/> 后，“主机”输入 `192.168.31.1`，“端口”输入 `9999`，点击“提交”即可访问 Dashboard 面板

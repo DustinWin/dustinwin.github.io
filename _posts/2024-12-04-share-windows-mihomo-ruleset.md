@@ -45,9 +45,7 @@ allow-lan: true
 mixed-port: 7890
 unified-delay: true
 tcp-concurrent: true
-external-controller: 127.0.0.1:9999
-external-ui: ui
-external-ui-url: "https://github.com/Zephyruso/zashboard/archive/gh-pages.zip"
+external-controller: 0.0.0.0:9999
 profile: {store-selected: true, store-fake-ip: true}
 
 sniffer:
@@ -66,7 +64,6 @@ tun:
   strict-route: true
 
 hosts:
-  miwifi.com: [192.168.31.1, 127.0.0.1]
   dns.alidns.com: [223.5.5.5, 223.6.6.6, 2400:3200::1, 2400:3200:baba::1]
   doh.pub: [1.12.12.12, 120.53.53.53]
 
@@ -298,7 +295,6 @@ rules:
 
 ```yaml
 hosts:
-  miwifi.com: [192.168.31.1, 127.0.0.1]
   dns.alidns.com: [223.5.5.5, 223.6.6.6, 2400:3200::1, 2400:3200:baba::1]
   doh.pub: [1.12.12.12, 120.53.53.53]
   dns.google: [8.8.8.8, 8.8.4.4, 2001:4860:4860::8888, 2001:4860:4860::8844]
@@ -406,7 +402,7 @@ Windows Registry Editor Version 5.00
     echo "        安装、更新 mihomo 内核和配置文件       "
     echo "==============================================="
     echo
-    echo "1. 安装（更新）mihomo 内核和面板"
+    echo "1. 安装（更新）mihomo 内核"
     echo "2. 导入（更新）配置文件"
     echo "3. 启动 mihomo 服务"
     echo "4. 停止 mihomo 服务"
@@ -415,7 +411,7 @@ Windows Registry Editor Version 5.00
     read -p "请选择操作（0-4）：" choice
     case $choice in
       1)
-        echo "安装（更新）mihomo 内核和面板"
+        echo "安装（更新）mihomo 内核"
         cd "$PROGRAMFILES"
         if [ -f "./mihomo/mihomo.exe" ]; then
           echo "检测到当前系统已安装 mihomo 内核，是否更新？（Y/n）"
@@ -479,10 +475,9 @@ Windows Registry Editor Version 5.00
               [Yy])
                 echo
                 echo "正在安装 mihomo 内核..."
-                mkdir -p ./mihomo/ui
+                mkdir -p ./mihomo
                 curl -sS -o ./mihomo/mihomo.exe -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-meta-windows-amd64-v3.exe
-                curl -sS -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/Dashboard/zashboard.tar.gz | tar -zx -C ./mihomo/ui
-                echo "安装 mihomo 内核和面板成功"
+                echo "安装 mihomo 内核成功"
 
                 echo "正在赋予 mihomo 权限..."
                 cmd //c "takeown /f mihomo /a /r /d y"
@@ -620,5 +615,4 @@ Windows Registry Editor Version 5.00
   - ➌ 若想开机启动 mihomo，可搜索“Windows 添加任务计划”教程自行添加
 
 ## 四、 访问 Dashboard 面板
-.yaml 文件已配置 [zashboard](https://github.com/Zephyruso/zashboard)  
-打开 <http://miwifi.com:9999/ui/> 后，“端口”输入 `9999`，点击“提交”，即可访问 Dashboard 面板
+打开 [zashboard](https://github.com/Zephyruso/zashboard) 在线面板地址 <http://board.zash.run.place> 后，“主机”输入 `192.168.31.1`，“端口”输入 `9999`，点击“提交”即可访问 Dashboard 面板
