@@ -45,7 +45,7 @@ allow-lan: true
 mixed-port: 7890
 unified-delay: true
 tcp-concurrent: true
-external-controller: 0.0.0.0:9999
+external-controller: 0.0.0.0:9090
 profile: {store-selected: true, store-fake-ip: true}
 
 sniffer:
@@ -615,4 +615,8 @@ Windows Registry Editor Version 5.00
   - ➌ 若想开机启动 mihomo，可搜索“Windows 添加任务计划”教程自行添加
 
 ## 四、 访问 Dashboard 面板
-打开 [zashboard](https://github.com/Zephyruso/zashboard) 在线面板地址 <http://board.zash.run.place> 后，“主机”输入 `192.168.31.1`，“端口”输入 `9999`，点击“提交”即可访问 Dashboard 面板
+打开 [zashboard](https://github.com/Zephyruso/zashboard) 在线面板地址 <http://board.zash.run.place> 可直接访问 Dashboard 面板
+
+> 推荐设置
+{: .prompt-tip }
+进入 zashboard → 设置 → 后端设置 → 修改后端配置，可设置“标签 (可选)”来快速识别不同设备

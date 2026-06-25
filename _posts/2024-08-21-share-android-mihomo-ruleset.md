@@ -44,7 +44,7 @@ allow-lan: true
 mixed-port: 7890
 unified-delay: true
 tcp-concurrent: true
-external-controller: 0.0.0.0:9999
+external-controller: 0.0.0.0:9090
 profile: {store-selected: true, store-fake-ip: true}
 
 sniffer:

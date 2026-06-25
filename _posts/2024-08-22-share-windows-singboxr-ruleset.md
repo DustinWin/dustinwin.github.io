@@ -263,7 +263,7 @@ tags: [sing-box, sing-boxr, Windows, ruleset, rule_set, 分享]
     {
       "type": "api",
       "listen": "::",
-      "listen_port": 9090,
+      "listen_port": 9999,
       "secret": "",
       "access_control_allow_private_network": true
     }
@@ -274,7 +274,7 @@ tags: [sing-box, sing-boxr, Windows, ruleset, rule_set, 分享]
       "store_fakeip": true
     },
     "clash_api": {
-      "external_controller": "0.0.0.0:9999",
+      "external_controller": "0.0.0.0:9090",
       "secret": "",
       "access_control_allow_private_network": true
     },
@@ -633,11 +633,14 @@ Windows Registry Editor Version 5.00
   - ➌ 若想开机启动 sing-boxr，可搜索“Windows 添加任务计划”教程自行添加
 
 ## 四、 访问 Dashboard 面板
-1. 打开 zashboard 在线面板地址 <http://board.zash.run.place>，在“[Clash API](https://sing-boxr.dustinwin.us.kg/zh/configuration/experimental/clash-api/)”标签的“端口”内输入 `9999`，点击“提交”即可访问 Dashboard
-2. 进入设置 → 后端设置，点击“+”图标，切换到“[sing-box API](https://sing-boxr.dustinwin.us.kg/zh/configuration/service/api/)”标签，直接点击“提交”
+1. 打开 zashboard 在线面板地址 <http://board.zash.run.place> 可直接通过 [Clash API](https://sing-boxr.dustinwin.us.kg/zh/configuration/experimental/clash-api/) 的方式访问 Dashboard 面板
+2. 进入设置 → 后端设置，点击“+”图标，切换到“[sing-box API](https://sing-boxr.dustinwin.us.kg/zh/configuration/service/api/)”标签，将“端口”修改为 `9999` 并点击“提交”  
+<img src="/assets/img/share/172-9090-dashboard-singbox-pc.png" alt="面板设置" width="60%" />
+
 3. 通过切换后端配置可以分别使用 Clash API（支持“代理提供商”和“规则提供商”的更新）和 sing-box API Dashboard 面板
 
 > 推荐设置
 {: .prompt-tip }
 1. 进入 zashboard → 代理 → 代理设置 → 管理隐藏代理组，隐藏不必要显示的代理组
-2. 进入 zashboard → 设置 → 代理设置 → 外观 → 自定义图标，设置“组名”和“URL”，“URL”可参考 [icon 文件](https://github.com/DustinWin/ruleset_geodata/releases/tag/icons)
+2. 进入 zashboard → 设置 → 图标，设置“自定义图标”，可参考 [icon 文件](https://github.com/DustinWin/ruleset_geodata/releases/tag/icons)
+3. 进入 zashboard → 设置 → 后端设置 → 修改后端配置，可设置“标签 (可选)”来快速识别不同设备

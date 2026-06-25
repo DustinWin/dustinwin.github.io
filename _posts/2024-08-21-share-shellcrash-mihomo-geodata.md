@@ -263,4 +263,11 @@ dns:
 2. 进入 ShellCrash 配置脚本 → 2) 功能设置 → 2) DNS 设置 → 9) 修改 DNS 服务器，设置如下：  
 <img src="/assets/img/dns/dns-null.png" alt="设置部分 2" width="60%" />
 
-3. 打开 [zashboard](https://github.com/Zephyruso/zashboard) 在线面板地址 <http://board.zash.run.place> 后，“主机”输入 `192.168.31.1`，“端口”输入 `9999`，点击“提交”即可访问 Dashboard 面板
+3. 进入 2) 功能设置 → 6) 自定义端口及密钥 → 5) 修改面板访问端口，修改为 `9090`
+
+## 七、 访问 Dashboard 面板
+打开 [zashboard](https://github.com/Zephyruso/zashboard) 在线面板地址 <http://board.zash.run.place> 后，直接在 [Clash API](https://sing-boxr.dustinwin.us.kg/zh/configuration/experimental/clash-api/) 标签里将“主机”修改为 `192.168.31.1`，点击“提交”即可访问 Dashboard 面板
+
+> 推荐设置
+{: .prompt-tip }
+进入 zashboard → 设置 → 后端设置 → 修改后端配置，可设置“标签 (可选)”来快速识别不同设备

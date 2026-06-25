@@ -364,7 +364,7 @@ sc
     {
       "type": "api",
       "listen": "::",
-      "listen_port": 9090,
+      "listen_port": 9999,
       "secret": "",
       "access_control_allow_private_network": true
     }
@@ -386,7 +386,7 @@ sc
       "store_fakeip": true
     },
     "clash_api": {
-      "external_controller": "0.0.0.0:9999",
+      "external_controller": "0.0.0.0:9090",
       "secret": "",
       "access_control_allow_private_network": true
     },
@@ -405,7 +405,8 @@ sc
 2. 进入 ShellCrash 配置脚本 → 2) 功能设置 → 2) DNS 设置 → 9) 修改 DNS 服务器，设置如下：  
 <img src="/assets/img/dns/dns-null.png" alt="设置部分 2" width="60%" />
 
-3. 连接 SSH 后执行如下命令：
+3. 进入 2) 功能设置 → 6) 自定义端口及密钥 → 5) 修改面板访问端口，修改为 `9090`
+4. 连接 SSH 后执行如下命令：
 ```shell
 sed -i 's/"ip_accept_any": true,/"preferred_by": [ "hosts" ],/' "$CRASHDIR/starts/singbox_modify.sh"
 sed -i '/#生成experimental.json/i\
@@ -428,12 +429,14 @@ EOF
 sed -i 's/log dns ntp certificate experimental/log dns ntp certificate http_clients experimental/' "$CRASHDIR/starts/singbox_modify.sh"
 sed -i 's/log dns ntp certificate experimental/log dns ntp certificate http_clients experimental/' "$CRASHDIR/menus/override.sh"
 ```
-4. 访问在线 Dashboard 面板
-  - ① 打开 zashboard 在线面板地址 <http://board.zash.run.place>，在“[Clash API](https://sing-boxr.dustinwin.us.kg/zh/configuration/experimental/clash-api/)”标签的“主机”内输入 `192.168.31.1`，“端口”内输入 `9999`，点击“提交”即可访问 Dashboard
-  - ② 进入设置 → 后端设置，点击“+”图标，切换到“[sing-box API](https://sing-boxr.dustinwin.us.kg/zh/configuration/service/api/)”标签，“主机”内输入 `192.168.31.1`，点击“提交”
-  - ③ 通过切换后端配置可以分别使用 Clash API（支持“代理提供商”和“规则提供商”的更新）和 sing-box API Dashboard 面板
+
+## 八、 访问 Dashboard 面板
+1. 打开 zashboard 在线面板地址 <http://board.zash.run.place> 后，可直接在“[Clash API](https://sing-boxr.dustinwin.us.kg/zh/configuration/experimental/clash-api/)”标签里将“主机”修改为 `192.168.31.1`，点击“提交”即可访问 Dashboard
+2. 进入设置 → 后端设置，点击“+”图标，切换到“[sing-box API](https://sing-boxr.dustinwin.us.kg/zh/configuration/service/api/)”标签，将“主机”和“端口分别修改为 `192.168.31.1` 和 `9999` 并点击“提交”
+3. 通过切换后端配置可以分别使用 Clash API（支持“代理提供商”和“规则提供商”的更新）和 sing-box API Dashboard 面板
 
 > 推荐设置
 {: .prompt-tip }
 1. 进入 zashboard → 代理 → 代理设置 → 管理隐藏代理组，隐藏不必要显示的代理组
 2. 进入 zashboard → 设置 → 代理设置 → 外观 → 自定义图标，设置“组名”和“URL”，“URL”可参考 [icon 文件](https://github.com/DustinWin/ruleset_geodata/releases/tag/icons)
+3. 进入 zashboard → 设置 → 后端设置 → 修改后端配置，可设置“标签 (可选)”来快速识别不同设备
