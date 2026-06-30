@@ -14,11 +14,11 @@ tags: [sing-box, sing-boxr, ShellCrash, AdGuard Home, ruleset, rule_set, 分享,
 4. 此方案适用于 ShellCrash（以 ARM64 架构为例，且安装路径为 `/data/ShellCrash`{: .filepath}）
 5. 此方案适用于 AdGuard Home（以 ARM64 架构为例，且安装路径为 `/data/AdGuardHome`{: .filepath}）
 6. 此方案不建议启用 ShellCrash 配置脚本 → 2) 功能设置 → 3) 透明路由流量过滤 → 2) 过滤局域网设备，因不经过内核的设备在访问 `漏网之鱼` 域名时会遇到无法访问的情况
-7. 本人将路由器设置了每天早上 6 点重启，使得《[六](https://proxy-tutorials.dustinwin.us.kg/posts/share-shellcrashadguardhome-singboxr-ruleset/#%E5%85%AD-%E6%B7%BB%E5%8A%A0%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1)》中设置的定时任务生效
+7. 本人将路由器设置了每天早上 6 点重启，使得《[六](https://proxy-tutorials.dustinwin.cc.cd/posts/share-shellcrashadguardhome-singboxr-ruleset/#%E5%85%AD-%E6%B7%BB%E5%8A%A0%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1)》中设置的定时任务生效
 8. 本教程搭载 [sing-box 内核 reF1nd-Testing 版](https://github.com/reF1nd/sing-box/tree/reF1nd-testing)
 
 ## 一、 生成配置文件 .json 文件直链
-具体方法此处不再赘述，请看《[生成带有自定义出站和规则的 sing-boxr 配置文件直链-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/link-singboxr-ruleset)》，贴一下我使用的配置：
+具体方法此处不再赘述，请看《[生成带有自定义出站和规则的 sing-boxr 配置文件直链-ruleset 方案](https://proxy-tutorials.dustinwin.cc.cd/posts/link-singboxr-ruleset)》，贴一下我使用的配置：
 
 ```json
 {
@@ -257,7 +257,7 @@ sc
 - ① 推荐将 `client_subnet` 设置为当前宽带运营商分配的默认 DNS（可进入光猫或路由器拨号页面查看，或者前往[公共 DNS 大全](https://toolb.cn/publicdns)查询）的 IP 段，如默认 DNS 为 `211.137.58.20`，可设置为 `211.137.58.0/24`
 - ② 由于 ShellCrash 采用的 DNS 模式为 `mix`，**ShellCrash 传给 AdGuard Home 的国外域名对应 IP 为假 IP**，会导致 AdGuard Home 检查更新和下载更新 DNS 黑名单时失败
 - ③ `fakeip-filter` 中添加了 AdGuard Home 常用域名，包括：`adguardteam.github.io`（AdGuard Home 自带 DNS 黑名单下载域名）、`adrules.top`（常用广告拦截下载域名）、`anti-ad.net`（常用广告拦截下载域名）和 `static.adtidy.org`（AdGuard Home 检查更新域名）
-- ④ 不推荐使用自带更新去更新，推荐《[五](https://proxy-tutorials.dustinwin.us.kg/posts/share-shellcrashadguardhome-singboxr-ruleset/#%E4%BA%94-%E6%B7%BB%E5%8A%A0%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1)》中通过定时任务去自动更新（AdGuard Home 程序已被压缩，节省空间）  
+- ④ 不推荐使用自带更新去更新，推荐《[五](https://proxy-tutorials.dustinwin.cc.cd/posts/share-shellcrashadguardhome-singboxr-ruleset/#%E4%BA%94-%E6%B7%BB%E5%8A%A0%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1)》中通过定时任务去自动更新（AdGuard Home 程序已被压缩，节省空间）  
 <img src="/assets/img/share/update-adguardhome.png" alt="编辑 dns.json 文件" width="60%" />
 
 ```json
@@ -309,7 +309,7 @@ sc
 {: .prompt-tip }
 
 注：
-- ① 本 `dns` 配置中，国内域名走国内 DNS 解析，国外域名走 `fakeip`，未知域名也走 `fakeip`，在匹配 `rule_set:cnip` 规则时会先由国外 DNS 解析且配置 `client_subnet` 提高了兼容性，解析出 IP 在国内则走 `国内 IP` 规则，否则走 `漏网之鱼` 规则（有效解决了“心理 DNS 泄露问题”，详见《[搭载 sing-boxr 内核配置 DNS 不泄露教程-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/dnsnoleaks-singboxr-ruleset/)》）
+- ① 本 `dns` 配置中，国内域名走国内 DNS 解析，国外域名走 `fakeip`，未知域名也走 `fakeip`，在匹配 `rule_set:cnip` 规则时会先由国外 DNS 解析且配置 `client_subnet` 提高了兼容性，解析出 IP 在国内则走 `国内 IP` 规则，否则走 `漏网之鱼` 规则（有效解决了“心理 DNS 泄露问题”，详见《[搭载 sing-boxr 内核配置 DNS 不泄露教程-ruleset 方案](https://proxy-tutorials.dustinwin.cc.cd/posts/dnsnoleaks-singboxr-ruleset/)》）
 - ② 推荐将 `client_subnet` 设置为当前宽带运营商分配的默认 DNS（可进入光猫或路由器拨号页面查看，或者前往[公共 DNS 大全](https://toolb.cn/publicdns)查询）的 IP 段，如默认 DNS 为 `211.137.58.20`，可设置为 `211.137.58.0/24`
 
 ```json
@@ -408,8 +408,8 @@ sc
 <img src="/assets/img/share/task-adguardhome.png" alt="添加定时任务" width="60%" />
 
 ## 七、 ShellCrash 设置
-1. 设置可参考《[ShellCrash 搭载 sing-boxr 内核的配置-ruleset 方案/设置部分](https://proxy-tutorials.dustinwin.us.kg/posts/toolsettings-shellcrash-singboxr-ruleset/#%E4%B8%89-%E8%AE%BE%E7%BD%AE%E9%83%A8%E5%88%86)》，此处只列举配置的不同之处
-2. 进入 ShellCrash 配置脚本 → 2) 功能设置 → 2) DNS 设置 → 7 DNS 劫持端口，设置为“5353”（须完成《[七](https://proxy-tutorials.dustinwin.us.kg/posts/share-shellcrashadguardhome-singboxr-ruleset/#%E4%B8%83-%E5%AE%89%E8%A3%85-adguard-home)》后才可设置）
+1. 设置可参考《[ShellCrash 搭载 sing-boxr 内核的配置-ruleset 方案/设置部分](https://proxy-tutorials.dustinwin.cc.cd/posts/toolsettings-shellcrash-singboxr-ruleset/#%E4%B8%89-%E8%AE%BE%E7%BD%AE%E9%83%A8%E5%88%86)》，此处只列举配置的不同之处
+2. 进入 ShellCrash 配置脚本 → 2) 功能设置 → 2) DNS 设置 → 7 DNS 劫持端口，设置为“5353”（须完成《[七](https://proxy-tutorials.dustinwin.cc.cd/posts/share-shellcrashadguardhome-singboxr-ruleset/#%E4%B8%83-%E5%AE%89%E8%A3%85-adguard-home)》后才可设置）
 3. 进入 2) DNS 设置 → 9) 修改 DNS 服务器，设置如下：  
 <img src="/assets/img/dns/dns-null.png" alt="设置部分 2" width="60%" />
 
@@ -463,11 +463,11 @@ EOF
 ```
 
 ## 八、 AdGuard Home 设置
-设置可参考《[全网最详细的解锁 SSH ShellCrash 搭载 sing-boxr 内核搭配 AdGuard Home 安装和配置教程/AdGuard Home 配置](https://proxy-tutorials.dustinwin.us.kg/posts/pin-shellcrashadguardhome-singboxr/#2-adguard-home-%E9%85%8D%E7%BD%AE)》
+设置可参考《[全网最详细的解锁 SSH ShellCrash 搭载 sing-boxr 内核搭配 AdGuard Home 安装和配置教程/AdGuard Home 配置](https://proxy-tutorials.dustinwin.cc.cd/posts/pin-shellcrashadguardhome-singboxr/#2-adguard-home-%E9%85%8D%E7%BD%AE)》
 
 ## 九、 访问 Dashboard 面板
-1. 打开 zashboard 在线面板地址 <http://board.zash.run.place> 后，可直接在“[Clash API](https://sing-boxr.dustinwin.us.kg/zh/configuration/experimental/clash-api/)”标签里将“主机”修改为 `192.168.31.1`，点击“提交”即可访问 Dashboard
-2. 进入设置 → 后端设置，点击“+”图标，切换到“[sing-box API](https://sing-boxr.dustinwin.us.kg/zh/configuration/service/api/)”标签，将“主机”和“端口分别修改为 `192.168.31.1` 和 `9999` 并点击“提交”
+1. 打开 zashboard 在线面板地址 <http://board.zash.run.place> 后，可直接在“[Clash API](https://sing-boxr.dustinwin.cc.cd/zh/configuration/experimental/clash-api/)”标签里将“主机”修改为 `192.168.31.1`，点击“提交”即可访问 Dashboard
+2. 进入设置 → 后端设置，点击“+”图标，切换到“[sing-box API](https://sing-boxr.dustinwin.cc.cd/zh/configuration/service/api/)”标签，将“主机”和“端口分别修改为 `192.168.31.1` 和 `9999` 并点击“提交”
 3. 通过切换后端配置可以分别使用 Clash API（支持“代理提供商”和“规则提供商”的更新）和 sing-box API Dashboard 面板
 4. 打开 <http://miwifi.com:3000> 即可访问 AdGuard Home 面板
 

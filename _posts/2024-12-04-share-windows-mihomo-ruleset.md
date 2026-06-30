@@ -12,7 +12,7 @@ tags: [Clash, mihomo, Windows, ruleset, rule-set, 分享]
 2. 此方案采用**裸核**的方式运行，更加精简
 
 ## 一、 生成配置文件 .yaml 文件直链
-具体方法请参考《[生成带有自定义策略组和规则的 mihomo 配置文件直链-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/link-mihomo-ruleset)》，贴一下我使用的配置：
+具体方法请参考《[生成带有自定义策略组和规则的 mihomo 配置文件直链-ruleset 方案](https://proxy-tutorials.dustinwin.cc.cd/posts/link-mihomo-ruleset)》，贴一下我使用的配置：
 
 ```yaml
 proxy-providers:
@@ -290,7 +290,7 @@ rules:
 {: .prompt-tip }
 
 注：
-- ① 本 `dns` 配置中，国内域名走国内 DNS 解析，国外域名走 `fake-ip`，未知域名也走 `fake-ip`，在匹配 `RULE-SET:cn` 规则时会由国外 DNS 解析且配置 `ecs` 提高了兼容性，解析出 IP 在国内则走 `国内 IP` 规则，否则走 `漏网之鱼` 规则（有效解决了“心理 DNS 泄露问题”，详见《[搭载 mihomo 内核配置 DNS 不泄露教程-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/dnsnoleaks-mihomo-ruleset/)》）
+- ① 本 `dns` 配置中，国内域名走国内 DNS 解析，国外域名走 `fake-ip`，未知域名也走 `fake-ip`，在匹配 `RULE-SET:cn` 规则时会由国外 DNS 解析且配置 `ecs` 提高了兼容性，解析出 IP 在国内则走 `国内 IP` 规则，否则走 `漏网之鱼` 规则（有效解决了“心理 DNS 泄露问题”，详见《[搭载 mihomo 内核配置 DNS 不泄露教程-ruleset 方案](https://proxy-tutorials.dustinwin.cc.cd/posts/dnsnoleaks-mihomo-ruleset/)》）
 - ② 推荐将 `ecs` 设置为当前宽带运营商分配的默认 DNS（可进入光猫或路由器拨号页面查看，或者前往[公共 DNS 大全](https://toolb.cn/publicdns)查询）的 IP 段，如默认 DNS 为 `211.137.58.20`，可设置为 `211.137.58.0/24`
 
 ```yaml
@@ -388,7 +388,7 @@ Windows Registry Editor Version 5.00
 ### 1. 导入内核和配置文件
 - ① 编辑本文文档，粘贴如下内容：  
   注：
-  - ➊ 将《[一](https://proxy-tutorials.dustinwin.us.kg/posts/share-windows-mihomo-ruleset/#%E4%B8%80-%E7%94%9F%E6%88%90%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-yaml-%E6%96%87%E4%BB%B6%E7%9B%B4%E9%93%BE)》中生成的配置文件 .yaml 文件直链替换下面命令中的 `{.yaml 配置文件直链}`
+  - ➊ 将《[一](https://proxy-tutorials.dustinwin.cc.cd/posts/share-windows-mihomo-ruleset/#%E4%B8%80-%E7%94%9F%E6%88%90%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-yaml-%E6%96%87%E4%BB%B6%E7%9B%B4%E9%93%BE)》中生成的配置文件 .yaml 文件直链替换下面命令中的 `{.yaml 配置文件直链}`
   - ➋ 或者删除此条命令，直接进入 `%PROGRAMFILES%\mihomo`{: .filepath} 文件夹，新建 config.yaml 文件并粘贴配置内容
 
   ```shell

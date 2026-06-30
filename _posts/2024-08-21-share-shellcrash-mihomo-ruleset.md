@@ -11,10 +11,10 @@ tags: [Clash, mihomo, ShellCrash, ruleset, rule-set, 分享, Router]
 1. 请根据自身情况进行修改，**适合自己的方案才是最好的方案**，如无特殊需求，可以照搬
 2. 此方案适用于 [ShellCrash](https://github.com/juewuy/ShellCrash)（以 ARM64 架构为例，且安装路径为 `/data/ShellCrash`{: .filepath}）
 3. 本方案绕过了 CNIP 且不搭配 [AdGuard Home](https://github.com/AdguardTeam/AdGuardHome)，在 DNS 层拦截广告
-4. 本人将路由器设置了每天早上 6 点重启，使得《[四](https://proxy-tutorials.dustinwin.us.kg/posts/share-shellcrash-mihomo-ruleset/#%E5%9B%9B-%E6%B7%BB%E5%8A%A0%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1)》中设置的定时任务生效
+4. 本人将路由器设置了每天早上 6 点重启，使得《[四](https://proxy-tutorials.dustinwin.cc.cd/posts/share-shellcrash-mihomo-ruleset/#%E5%9B%9B-%E6%B7%BB%E5%8A%A0%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1)》中设置的定时任务生效
 
 ## 一、 生成配置文件 .yaml 文件直链
-具体方法此处不再赘述，请看《[生成带有自定义策略组和规则的 mihomo 配置文件直链-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/link-mihomo-ruleset)》，贴一下我使用的配置：
+具体方法此处不再赘述，请看《[生成带有自定义策略组和规则的 mihomo 配置文件直链-ruleset 方案](https://proxy-tutorials.dustinwin.cc.cd/posts/link-mihomo-ruleset)》，贴一下我使用的配置：
 
 ```yaml
 proxy-providers:
@@ -314,7 +314,7 @@ dns:
 {: .prompt-tip }
 
 注：
-- ① 本 `dns` 配置中，国内域名走国内 DNS 解析，国外域名走 `fake-ip`，未知域名也走 `fake-ip`，在匹配 `RULE-SET:cn` 规则时会由国外 DNS 解析且配置 `ecs` 提高了兼容性，解析出 IP 在国内则走 `国内 IP` 规则，否则走 `漏网之鱼` 规则（有效解决了“心理 DNS 泄露问题”，详见《[搭载 mihomo 内核配置 DNS 不泄露教程-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/dnsnoleaks-mihomo-ruleset/)》）
+- ① 本 `dns` 配置中，国内域名走国内 DNS 解析，国外域名走 `fake-ip`，未知域名也走 `fake-ip`，在匹配 `RULE-SET:cn` 规则时会由国外 DNS 解析且配置 `ecs` 提高了兼容性，解析出 IP 在国内则走 `国内 IP` 规则，否则走 `漏网之鱼` 规则（有效解决了“心理 DNS 泄露问题”，详见《[搭载 mihomo 内核配置 DNS 不泄露教程-ruleset 方案](https://proxy-tutorials.dustinwin.cc.cd/posts/dnsnoleaks-mihomo-ruleset/)》）
 - ② 推荐将 `ecs` 设置为当前宽带运营商分配的默认 DNS（可进入光猫或路由器拨号页面查看，或者前往[公共 DNS 大全](https://toolb.cn/publicdns)查询）的 IP 段，如默认 DNS 为 `211.137.58.20`，可设置为 `211.137.58.0/24`
 
 ```yaml
@@ -363,16 +363,16 @@ dns:
 ```
 
 ## 四、 添加定时任务
-可参考《[ShellCrash 搭载 mihomo 内核的配置-ruleset 方案/添加定时任务](https://proxy-tutorials.dustinwin.us.kg/posts/toolsettings-shellcrash-mihomo-ruleset/#%E4%BA%8C-%E6%B7%BB%E5%8A%A0%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1)》
+可参考《[ShellCrash 搭载 mihomo 内核的配置-ruleset 方案/添加定时任务](https://proxy-tutorials.dustinwin.cc.cd/posts/toolsettings-shellcrash-mihomo-ruleset/#%E4%BA%8C-%E6%B7%BB%E5%8A%A0%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1)》
 
 ## 五、 设置部分
-1. 设置可参考《[ShellCrash 搭载 mihomo 内核的配置-ruleset 方案/设置部分](https://proxy-tutorials.dustinwin.us.kg/posts/toolsettings-shellcrash-mihomo-ruleset/#%E4%B8%89-%E8%AE%BE%E7%BD%AE%E9%83%A8%E5%88%86)》，此处只列举配置的不同之处
+1. 设置可参考《[ShellCrash 搭载 mihomo 内核的配置-ruleset 方案/设置部分](https://proxy-tutorials.dustinwin.cc.cd/posts/toolsettings-shellcrash-mihomo-ruleset/#%E4%B8%89-%E8%AE%BE%E7%BD%AE%E9%83%A8%E5%88%86)》，此处只列举配置的不同之处
 2. 进入 ShellCrash 配置脚本 → 2) 功能设置 → 2) DNS 设置 → 9) 修改 DNS 服务器，设置如下：  
 <img src="/assets/img/dns/dns-null.png" alt="设置部分 2" width="60%" />
 
 3. 进入 2) 功能设置 → 6) 自定义端口及密钥 → 5) 修改面板访问端口，修改为 `9090`
 ## 六、 访问 Dashboard 面板
-打开 [zashboard](https://github.com/Zephyruso/zashboard) 在线面板地址 <http://board.zash.run.place> 后，直接在 [Clash API](https://sing-boxr.dustinwin.us.kg/zh/configuration/experimental/clash-api/) 标签里将“主机”修改为 `192.168.31.1`，点击“提交”即可访问 Dashboard 面板
+打开 [zashboard](https://github.com/Zephyruso/zashboard) 在线面板地址 <http://board.zash.run.place> 后，直接在 [Clash API](https://sing-boxr.dustinwin.cc.cd/zh/configuration/experimental/clash-api/) 标签里将“主机”修改为 `192.168.31.1`，点击“提交”即可访问 Dashboard 面板
 
 > 推荐设置
 {: .prompt-tip }

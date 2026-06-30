@@ -12,7 +12,7 @@ tags: [sing-box, sing-boxr, Android, ruleset, rule_set, 分享]
 2. 本教程搭载 [sing-box 内核 reF1nd-Testing 版](https://github.com/reF1nd/sing-box/tree/reF1nd-testing)（可前往 <https://github.com/reF1nd/sing-box-releases/releases> 下载“SFA-[version]-reF1nd-arm64-v8a.apk”文件进行安装）
 
 ## 一、 生成配置文件 .json 文件直链
-具体方法请参考《[生成带有自定义出站和规则的 sing-boxr 配置文件直链-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/link-singboxr-ruleset)》，贴一下我使用的配置：
+具体方法请参考《[生成带有自定义出站和规则的 sing-boxr 配置文件直链-ruleset 方案](https://proxy-tutorials.dustinwin.cc.cd/posts/link-singboxr-ruleset)》，贴一下我使用的配置：
 - 注：推荐将 `client_subnet` 设置为当前宽带运营商分配的默认 DNS（可进入光猫或路由器拨号页面查看，或者前往[公共 DNS 大全](https://toolb.cn/publicdns)查询）的 IP 段，如默认 DNS 为 `211.137.58.20`，可设置为 `211.137.58.0/24`
 
 ```json
@@ -290,7 +290,7 @@ tags: [sing-box, sing-boxr, Android, ruleset, rule_set, 分享]
 {: .prompt-tip }
 
 注：
-- ① 本 `dns` 配置中，国内域名走国内 DNS 解析，国外域名走 `fakeip`，未知域名也走 `fakeip`，在匹配 `rule_set:cnip` 规则时会先由国外 DNS 解析且配置 `client_subnet` 提高了兼容性，解析出 IP 在国内则走 `国内 IP` 规则，否则走 `漏网之鱼` 规则（有效解决了“心理 DNS 泄露问题”，详见《[搭载 sing-boxr 内核配置 DNS 不泄露教程-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/dnsnoleaks-singboxr-ruleset/)》）
+- ① 本 `dns` 配置中，国内域名走国内 DNS 解析，国外域名走 `fakeip`，未知域名也走 `fakeip`，在匹配 `rule_set:cnip` 规则时会先由国外 DNS 解析且配置 `client_subnet` 提高了兼容性，解析出 IP 在国内则走 `国内 IP` 规则，否则走 `漏网之鱼` 规则（有效解决了“心理 DNS 泄露问题”，详见《[搭载 sing-boxr 内核配置 DNS 不泄露教程-ruleset 方案](https://proxy-tutorials.dustinwin.cc.cd/posts/dnsnoleaks-singboxr-ruleset/)》）
 - ② 推荐将 `client_subnet` 设置为当前宽带运营商分配的默认 DNS（可进入光猫或路由器拨号页面查看，或者前往[公共 DNS 大全](https://toolb.cn/publicdns)查询）的 IP 段，如默认 DNS 为 `211.137.58.20`，可设置为 `211.137.58.0/24`
 
 ```json
@@ -372,13 +372,13 @@ tags: [sing-box, sing-boxr, Android, ruleset, rule_set, 分享]
 ```
 
 ## 二、 导入配置文件并启动 sing-boxr
-1. 进入 [sing-boxr for Android](https://github.com/DustinWin/proxy-tools/releases/tag/sing-box) → 仪表 → 新配置 → 手动创建，“类型”选择“远程”，在“URL”处粘贴《[一](https://proxy-tutorials.dustinwin.us.kg/posts/share-android-singboxr-ruleset/#%E4%B8%80-%E7%94%9F%E6%88%90%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-json-%E6%96%87%E4%BB%B6%E7%9B%B4%E9%93%BE)》中生成的配置文件 .json 直链，“自动更新间隔”填写 `1440`，最后点击“创建”
+1. 进入 [sing-boxr for Android](https://github.com/DustinWin/proxy-tools/releases/tag/sing-box) → 仪表 → 新配置 → 手动创建，“类型”选择“远程”，在“URL”处粘贴《[一](https://proxy-tutorials.dustinwin.cc.cd/posts/share-android-singboxr-ruleset/#%E4%B8%80-%E7%94%9F%E6%88%90%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-json-%E6%96%87%E4%BB%B6%E7%9B%B4%E9%93%BE)》中生成的配置文件 .json 直链，“自动更新间隔”填写 `1440`，最后点击“创建”
 2. 进入 sing-boxr for Android → 仪表，点击“▶️”图标即可启动 sing-boxr 服务
 - 注：首次启用可能会报错，重试几次即可
 
 ## 三、 访问 Dashboard 面板
-1. 打开 zashboard 在线面板地址 <http://board.zash.run.place> 可直接通过 [Clash API](https://sing-boxr.dustinwin.us.kg/zh/configuration/experimental/clash-api/) 的方式访问 Dashboard 面板
-2. 进入设置 → 后端设置，点击“+”图标，切换到“[sing-box API](https://sing-boxr.dustinwin.us.kg/zh/configuration/service/api/)”标签，将“端口”修改为 `9999` 并点击“提交”  
+1. 打开 zashboard 在线面板地址 <http://board.zash.run.place> 可直接通过 [Clash API](https://sing-boxr.dustinwin.cc.cd/zh/configuration/experimental/clash-api/) 的方式访问 Dashboard 面板
+2. 进入设置 → 后端设置，点击“+”图标，切换到“[sing-box API](https://sing-boxr.dustinwin.cc.cd/zh/configuration/service/api/)”标签，将“端口”修改为 `9999` 并点击“提交”  
 <img src="/assets/img/share/172-9090-dashboard-singbox-phone.png" alt="面板设置" width="60%" />
 
 3. 通过切换后端配置可以分别使用 Clash API（支持“代理提供商”和“规则提供商”的更新）和 sing-box API Dashboard 面板

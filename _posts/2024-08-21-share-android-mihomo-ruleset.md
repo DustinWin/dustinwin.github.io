@@ -11,7 +11,7 @@ tags: [Clash, Clash Mi, mihomo, Android, ruleset, rule-set, 分享]
 请根据自身情况进行修改，**适合自己的方案才是最好的方案**，如无特殊需求，可以照搬
 
 ## 一、 生成配置文件 .yaml 文件直链
-具体方法请参考《[生成带有自定义策略组和规则的 mihomo 配置文件直链-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/link-mihomo-ruleset)》，贴一下我使用的配置：
+具体方法请参考《[生成带有自定义策略组和规则的 mihomo 配置文件直链-ruleset 方案](https://proxy-tutorials.dustinwin.cc.cd/posts/link-mihomo-ruleset)》，贴一下我使用的配置：
 
 ```yaml
 proxy-providers:
@@ -290,7 +290,7 @@ rules:
 {: .prompt-tip }
 
 注：
-- ① 本 `dns` 配置中，国内域名走国内 DNS 解析，国外域名走 `fake-ip`，未知域名也走 `fake-ip`，在匹配 `RULE-SET:cn` 规则时会由国外 DNS 解析且配置 `ecs` 提高了兼容性，解析出 IP 在国内则走 `国内 IP` 规则，否则走 `漏网之鱼` 规则（有效解决了“心理 DNS 泄露问题”，详见《[搭载 mihomo 内核配置 DNS 不泄露教程-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/dnsnoleaks-mihomo-ruleset/)》）
+- ① 本 `dns` 配置中，国内域名走国内 DNS 解析，国外域名走 `fake-ip`，未知域名也走 `fake-ip`，在匹配 `RULE-SET:cn` 规则时会由国外 DNS 解析且配置 `ecs` 提高了兼容性，解析出 IP 在国内则走 `国内 IP` 规则，否则走 `漏网之鱼` 规则（有效解决了“心理 DNS 泄露问题”，详见《[搭载 mihomo 内核配置 DNS 不泄露教程-ruleset 方案](https://proxy-tutorials.dustinwin.cc.cd/posts/dnsnoleaks-mihomo-ruleset/)》）
 - ② 推荐将 `ecs` 设置为当前宽带运营商分配的默认 DNS（可进入光猫或路由器拨号页面查看，或者前往[公共 DNS 大全](https://toolb.cn/publicdns)查询）的 IP 段，如默认 DNS 为 `211.137.58.20`，可设置为 `211.137.58.0/24`
 
 ```yaml
@@ -371,7 +371,7 @@ proxy-groups:
 ```
 
 ## 二、 导入配置文件并启动
-1. 进入 [Clash Mi for Android](https://github.com/KaringX/clashmi) → “+”图标 → 添加配置链接，“配置链接/内容”输入《[一](https://proxy-tutorials.dustinwin.us.kg/posts/share-android-mihomo-ruleset/#%E4%B8%80-%E7%94%9F%E6%88%90%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-yaml-%E6%96%87%E4%BB%B6%E7%9B%B4%E9%93%BE)》中生成的配置文件 .yaml 直链，点击“✓”
+1. 进入 [Clash Mi for Android](https://github.com/KaringX/clashmi) → “+”图标 → 添加配置链接，“配置链接/内容”输入《[一](https://proxy-tutorials.dustinwin.cc.cd/posts/share-android-mihomo-ruleset/#%E4%B8%80-%E7%94%9F%E6%88%90%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-yaml-%E6%96%87%E4%BB%B6%E7%9B%B4%E9%93%BE)》中生成的配置文件 .yaml 直链，点击“✓”
 2. 待配置下载完成后返回到主界面，进入核心设置，关闭所有配置项的覆写功能
 3. 再次返回到主界面，点击“未连接”右边的灰色按钮即可启动服务
 4. 待服务启动成功后可直接点击“面板”来使用 [zashboard](https://github.com/Zephyruso/zashboard)

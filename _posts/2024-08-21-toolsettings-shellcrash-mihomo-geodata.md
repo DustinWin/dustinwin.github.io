@@ -49,7 +49,7 @@ curl -sS -o $CRASHDIR/Country.mmdb -L https://cdn.jsdelivr.net/gh/DustinWin/rule
   - ⑥ 内核加载完成后根据需要是否保留相关数据库文件（此处选择“0) 不保留”）
 
 3. 功能设置
-  - ① 进入 2) DNS 设置 → 9) 修改 DNS 服务器，选择“4) 一键配置加密 DNS”（推荐设置 DNS 分流，请看《[搭载 mihomo 内核进行 DNS 分流教程-geodata 方案](https://proxy-tutorials.dustinwin.us.kg/posts/dnsbypass-mihomo-geodata)》）
+  - ① 进入 2) DNS 设置 → 9) 修改 DNS 服务器，选择“4) 一键配置加密 DNS”（推荐设置 DNS 分流，请看《[搭载 mihomo 内核进行 DNS 分流教程-geodata 方案](https://proxy-tutorials.dustinwin.cc.cd/posts/dnsbypass-mihomo-geodata)》）
   - ② 进入 2) 功能设置 → 5) 启用域名嗅探，选择“1) 是”
 
 4. 进入主菜单 → 4 启动设置，启用“1) 开机自启动”
@@ -59,12 +59,12 @@ curl -sS -o $CRASHDIR/Country.mmdb -L https://cdn.jsdelivr.net/gh/DustinWin/rule
 8. 进入主菜单 → 9) 更新与支持 → 2) 切换/更新内核文件 → 6) 使用自定义内核 → 9) 自定义内核链接，输入导入内核命令里的链接并回车，选择“1) Mihomo(Meta)”
 9. 进入 9) 更新与支持 → 4) 安装/更新本地Dashboard面板，推荐安装“1) 安装 zashboard 面板”
 10. 导入配置文件
-  - ① 进入主菜单 → 6) 配置文件管理 → a) 添加提供者 → 1) 设置名称或代号，如输入“mihomo”；后进入 2) 设置链接或路径，粘贴《[生成带有自定义策略组和规则的 mihomo 配置文件直链-geodata 方案](https://proxy-tutorials.dustinwin.us.kg/posts/link-mihomo-geodata)》中生成的 .yaml 配置文件直链，选择“a) 保存此提供者”
+  - ① 进入主菜单 → 6) 配置文件管理 → a) 添加提供者 → 1) 设置名称或代号，如输入“mihomo”；后进入 2) 设置链接或路径，粘贴《[生成带有自定义策略组和规则的 mihomo 配置文件直链-geodata 方案](https://proxy-tutorials.dustinwin.cc.cd/posts/link-mihomo-geodata)》中生成的 .yaml 配置文件直链，选择“a) 保存此提供者”
   - ② 进入 6) 配置文件管理 → c) 在线生成配置文件 → 6) 自定义浏览器 UA，选择“2) 不使用 UA”
   - ③ 进入 6) 配置文件管理 → 1) mihomo，选择“e) 在线获取此配置文件”，启动服务即可
 
 11. 访问 Dashboard 面板
-  - ① 打开 <http://192.168.31.1:9999/ui/> 后，直接在“[Clash API](https://sing-boxr.dustinwin.us.kg/zh/configuration/experimental/clash-api/)”标签里将“主机”和“端口”分别修改为 `192.168.31.1` 和 `9999`，点击“提交”即可访问 Dashboard 面板  
+  - ① 打开 <http://192.168.31.1:9999/ui/> 后，直接在“[Clash API](https://sing-boxr.dustinwin.cc.cd/zh/configuration/experimental/clash-api/)”标签里将“主机”和“端口”分别修改为 `192.168.31.1` 和 `9999`，点击“提交”即可访问 Dashboard 面板  
   <img src="/assets/img/tools/192-9999-dashboard.png" alt="设置部分 2" width="60%" />
 
   - ② 进入 Dashboard 面板 → 代理 → 代理提供者，点击“转圈”图标，可手动更新节点

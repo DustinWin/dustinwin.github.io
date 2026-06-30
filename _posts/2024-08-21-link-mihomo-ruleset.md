@@ -567,4 +567,4 @@ rules:
 1. 进入 ShellCrash 配置脚本 → a) 添加提供者 → 1) 设置名称或代号，如输入 `mihomo`；后进入 2) 设置链接或路径，粘贴最终生成的订阅链接，选择“a) 保存此提供者”
 2. 进入 6) 配置文件管理 → 6) 配置文件管理 → c) 在线生成配置文件 → 6) 自定义浏览器 UA，选择“2) 不使用 UA”
 3. 进入 6) 配置文件管理 → 1) mihomo，选择“e) 在线获取此配置文件”即可
-4. 具体设置请参考《[ShellCrash 搭载 mihomo 内核的配置-ruleset 方案](https://proxy-tutorials.dustinwin.us.kg/posts/toolsettings-shellcrash-mihomo-ruleset)》
+4. 具体设置请参考《[ShellCrash 搭载 mihomo 内核的配置-ruleset 方案](https://proxy-tutorials.dustinwin.cc.cd/posts/toolsettings-shellcrash-mihomo-ruleset)》

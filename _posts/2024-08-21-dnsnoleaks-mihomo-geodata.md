@@ -10,7 +10,7 @@ tags: [Clash, mihomo, 进阶, DNS, DNS 泄露]
 {: .prompt-tip }
 1. 此方案彻底防止了 DNS 泄露（未知域名在匹配 `GEOIP:cn` 规则时会由国外 DNS 解析且配置 `ecs`，解析出 IP 在国内则走 `国内 IP` 规则，否则走 `漏网之鱼` 规则），兼容性高，可放心使用
 2. 本教程以 [ShellCrash](https://github.com/juewuy/ShellCrash) 为例，其它客户端亦可参考
-3. 本教程搭载 [mihomo 内核 Meta 版](https://github.com/MetaCubeX/mihomo/tree/Meta)（导入内核方法可参考《[ShellCrash 和 AdGuard Home 快速安装教程/导入 mihomo 内核 或 sing-box 内核](https://proxy-tutorials.dustinwin.us.kg/posts/pin-toolsinstall/#%E4%BA%8C-%E5%AF%BC%E5%85%A5-mihomo-%E5%86%85%E6%A0%B8-%E6%88%96-sing-box-%E5%86%85%E6%A0%B8)》）
+3. 本教程搭载 [mihomo 内核 Meta 版](https://github.com/MetaCubeX/mihomo/tree/Meta)（导入内核方法可参考《[ShellCrash 和 AdGuard Home 快速安装教程/导入 mihomo 内核 或 sing-box 内核](https://proxy-tutorials.dustinwin.cc.cd/posts/pin-toolsinstall/#%E4%BA%8C-%E5%AF%BC%E5%85%A5-mihomo-%E5%86%85%E6%A0%B8-%E6%88%96-sing-box-%E5%86%85%E6%A0%B8)》）
 4. 可进入 <https://ipleak.net> 测试 DNS 是否泄露，“DNS Addresses” 栏目下没有中国国旗（因 `ipleak.net` 属未知域名，默认走 `漏网之鱼` 规则），即代表 DNS 没有发生泄露
 
 ## 一、 导入路由规则文件
@@ -67,7 +67,7 @@ dns:
 按一下 Esc 键（退出键），输入英文冒号 `:`，继续输入 `wq` 并回车
 
 ### 2. DNS 模式为 `fake-ip`（不推荐）
-- ① 额外编辑配置文件，在《[生成带有自定义策略组和规则的 mihomo 配置文件直链-geodata 方案/添加模板](https://proxy-tutorials.dustinwin.us.kg/posts/link-mihomo-geodata/#%E4%BA%8C-%E6%B7%BB%E5%8A%A0%E6%A8%A1%E6%9D%BF)》编辑 .yaml 配置文件时，将 `rules` 里的所有 `GEOIP` 规则末尾加上 `no-resolve`，即修改为：
+- ① 额外编辑配置文件，在《[生成带有自定义策略组和规则的 mihomo 配置文件直链-geodata 方案/添加模板](https://proxy-tutorials.dustinwin.cc.cd/posts/link-mihomo-geodata/#%E4%BA%8C-%E6%B7%BB%E5%8A%A0%E6%A8%A1%E6%9D%BF)》编辑 .yaml 配置文件时，将 `rules` 里的所有 `GEOIP` 规则末尾加上 `no-resolve`，即修改为：
 
   ```yaml
     - GEOIP,telegram,📲 电报消息,no-resolve
