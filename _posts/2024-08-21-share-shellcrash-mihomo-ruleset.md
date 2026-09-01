@@ -361,6 +361,7 @@ dns:
 <img src="/assets/img/dns/dns-null.png" alt="设置部分 2" width="60%" />
 
 3. 进入 2) 功能设置 → 6) 自定义端口及密钥 → 5) 修改面板访问端口，修改为 `9090`
+4. 进入 4) 启动设置 → 6) 自启网络检查 → 1) 是，禁用自启网络检查
 ## 六、 访问 Dashboard 面板
 打开 [zashboard](https://github.com/Zephyruso/zashboard) 在线面板地址 <http://board.zash.run.place> 后，直接在 [Clash API](https://sing-boxr.dustinwin.cc.cd/zh/configuration/experimental/clash-api/) 标签里将“主机”修改为 `192.168.31.1`，点击“提交”即可访问 Dashboard 面板
 

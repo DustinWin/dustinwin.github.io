@@ -42,7 +42,7 @@ curl -sS -o /tmp/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWi
   - ① 推荐设置 DNS 分流，请看《[搭载 mihomo 内核进行 DNS 分流教程-geodata 方案](https://proxy-tutorials.dustinwin.cc.cd/posts/dnsbypass-mihomo-geodata)》
   - ② 进入 2) 功能设置 → 5) 启用域名嗅探，选择“1) 是”
 
-4. 进入主菜单 → 4 启动设置，启用“1) 开机自启动”，然后选择“3) 设置自启延时”为“10 秒”
+4. 进入主菜单 → 4 启动设置，启用“1) 开机自启动”
 5. 进入主菜单 → 5) 自动任务 → 1) 添加自动任务，选择 8) 自动更新内核，回车后可设置执行条件
 6. 进入主菜单 → 8) 工具与优化，选择“6) 小米设备软固化 SSH”（无需输入需要还原的 SSH 密码）
 7. 进入 8) 工具与优化 → 8) 小米设备Tun模块修复，选择“1) 我已知晓，出现问题会自行承担！”

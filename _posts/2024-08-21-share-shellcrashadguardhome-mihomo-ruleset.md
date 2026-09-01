@@ -375,6 +375,7 @@ dns:
 <img src="/assets/img/dns/dns-null.png" alt="ShellCrash 设置 2" width="60%" />
 
 4. 进入 2) 功能设置 → 6) 自定义端口及密钥 → 5) 修改面板访问端口，修改为 `9090`
+5. 进入 4) 启动设置 → 6) 自启网络检查 → 1) 是，禁用自启网络检查
 
 ## 六、 安装 AdGuard Home
 连接 SSH 后执行如下命令：
@@ -417,7 +418,7 @@ iptables -t nat -A PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 5353
 ip6tables -t nat -A PREROUTING -p tcp --dport 53 -j REDIRECT --to-ports 5353
 ip6tables -t nat -A PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 5353
 cat <<EOF >> /data/auto_ssh/auto_ssh.sh
-sleep 20s
+sleep 10s
 cp -f /data/AdGuardHome/AdGuardHome.sh /etc/init.d/AdGuardHome
 chmod +x /etc/init.d/AdGuardHome && /etc/init.d/AdGuardHome start
 iptables -t nat -A PREROUTING -p tcp --dport 53 -j REDIRECT --to-ports 5353

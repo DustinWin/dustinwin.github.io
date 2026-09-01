@@ -9,7 +9,7 @@ tags: [sing-box, sing-boxr, Android, ruleset, rule_set, 分享]
 > 声明
 {: .prompt-warning }
 1. 请根据自身情况进行修改，**适合自己的方案才是最好的方案**，如无特殊需求，可以照搬
-2. 本教程搭载 [sing-box 内核 reF1nd-Testing 版](https://github.com/reF1nd/sing-box/tree/reF1nd-testing)（可前往 <https://github.com/reF1nd/sing-box-releases/releases> 下载“SFA-[version]-reF1nd-arm64-v8a.apk”文件进行安装）
+2. 本教程搭载 [sing-box 内核 reF1nd-Stable 版](https://github.com/reF1nd/sing-box/tree/reF1nd-stable)（可前往 <https://github.com/reF1nd/sing-box-releases/releases> 下载“SFA-[version]-reF1nd-arm64-v8a.apk”文件进行安装）
 
 ## 一、 生成配置文件 .json 文件直链
 具体方法请参考《[生成带有自定义出站和规则的 sing-boxr 配置文件直链-ruleset 方案](https://proxy-tutorials.dustinwin.cc.cd/posts/link-singboxr-ruleset)》，贴一下我使用的配置：
@@ -17,7 +17,7 @@ tags: [sing-box, sing-boxr, Android, ruleset, rule_set, 分享]
 
 ```json
 {
-  "$schema": "https://raw.githubusercontent.com/reF1nd/sing-box/reF1nd-testing/docs/schema.json",
+  "$schema": "https://raw.githubusercontent.com/reF1nd/sing-box/reF1nd-stable/docs/schema.json",
   "providers": [
     {
       "tag": "🛫 机场订阅",
