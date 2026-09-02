@@ -1,6 +1,6 @@
 ---
 title: 分享 ShellCrash 搭载 mihomo 内核搭配 AdGuard Home 采用 ruleset 方案的一套配置
-description: 此配置搭载 mihomo 内核，采用 <code>RULE-SET</code> 规则搭配 .list 和 .mrs 规则集合文件
+description: 此配置搭载 <a href="https://github.com/MetaCubeX/mihomo">mihomo 内核</a>，采用 <code>RULE-SET</code> 规则搭配 .list 和 .mrs 规则集合文件
 date: 2024-08-21 18:23:54 +0800
 categories: [分享配置, Router]
 tags: [Clash, mihomo, ShellCrash, AdGuard Home, ruleset, rule-set, 分享, Router]
@@ -244,17 +244,13 @@ proxy-groups:
   - {name: CF 优选节点, type: fallback, use: [🆓 免费订阅], filter: "(?i)(cfip)", hidden: true, icon: "https://github.com/DustinWin/ruleset_geodata/releases/download/icons/cfip.png"}
 ```
 
-## 二、 导入 [mihomo 内核](https://github.com/MetaCubeX/mihomo)和 [CN_IP 文件](https://github.com/DustinWin/geoip)
+## 二、 导入 [CN_IP 文件](https://github.com/DustinWin/geoip)
 连接 SSH 后执行如下命令：
 
 ```shell
-curl -sS -o /tmp/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-meta-linux-arm64.upx
 curl -sS -o $CRASHDIR/cn_ip.txt -L https://cdn.jsdelivr.net/gh/DustinWin/geoip@ips/cn_ipv4.txt
 curl -sS -o $CRASHDIR/cn_ipv6.txt -L https://cdn.jsdelivr.net/gh/DustinWin/geoip@ips/cn_ipv6.txt
-sc
 ```
-
-此时脚本会自动“发现可用的内核文件”，选择 1 加载，后选择 3 Mihomo(Meta) 内核
 
 ## 三、 编辑 user.yaml 文件
 连接 SSH 后执行命令 `vi $CRASHDIR/yamls/user.yaml`，按一下 Ins 键（Insert 键），粘贴如下内容：  
@@ -369,7 +365,7 @@ dns:
 <img src="/assets/img/share/task-adguardhome.png" alt="添加定时任务" width="60%" />
 
 ## 五、 ShellCrash 设置
-1. 设置可参考《[ShellCrash 搭载 mihomo 内核的配置-ruleset 方案/设置部分](https://proxy-tutorials.dustinwin.cc.cd/posts/toolsettings-shellcrash-mihomo-ruleset/#%E4%B8%89-%E8%AE%BE%E7%BD%AE%E9%83%A8%E5%88%86)》，此处只列举配置的不同之处
+1. 设置可参考《[ShellCrash 搭载 mihomo 内核的配置-ruleset 方案/设置部分](https://proxy-tutorials.dustinwin.cc.cd/posts/toolsettings-shellcrash-mihomo-ruleset/#%E4%BA%8C-%E8%AE%BE%E7%BD%AE%E9%83%A8%E5%88%86)》，此处只列举配置的不同之处
 2. 进入 ShellCrash 配置脚本 → 2) 功能设置 → 2) DNS 设置 → 7) DNS 劫持端口，设置为“5353”（须完成《[六](https://proxy-tutorials.dustinwin.cc.cd/posts/share-shellcrashadguardhome-mihomo-ruleset/#%E5%85%AD-%E5%AE%89%E8%A3%85-adguard-home)》后才可设置）
 3. 进入 2) DNS 设置 → 9) 修改 DNS 服务器，设置如下：  
 <img src="/assets/img/dns/dns-null.png" alt="ShellCrash 设置 2" width="60%" />
