@@ -9,7 +9,7 @@ pin: true
 
 > 说明
 {: .prompt-tip }
-1. 本教程中 **[AdGuard Home](https://github.com/AdguardTeam/AdGuardHome) 安装目录为 `/data/AdGuardHome`{: .filepath}**
+1. 本教程中 *[AdGuard Home](https://github.com/AdguardTeam/AdGuardHome) 安装目录为 `/data/AdGuardHome`{: .filepath}**
 2. 本教程中的下载链接以 CPU 架构 ARM64 为例，请注意修改链接后缀
 3. 查看 CPU 架构可连接 SSH 后执行命令 `uname -ms`，若执行结果是“linux aarch64”，就是搭载的 ARM64 架构
 4. 以下所有命令均可全部复制后直接粘贴执行（若出现无法下载的情况，可更换[下载源](https://proxy-tutorials.dustinwin.cc.cd/about/#%E5%AF%B9%E4%B8%8B%E8%BD%BD%E6%BA%90%E7%9A%84%E8%AF%B4%E6%98%8E)）
@@ -30,7 +30,7 @@ mkdir -p /tmp/SC_tmp/ && tar -zxf '/tmp/ShellCrash.tar.gz' -C /tmp/SC_tmp/ && so
 export url='https://cdn.jsdelivr.net/gh/juewuy/ShellCrash@master' && sh -c "$(curl -kfsSl $url/install.sh)" && . /etc/profile &> /dev/null
 ```
 
-## 二、 导入 [mihomo 内核](https://github.com/MetaCubeX/mihomo) 或 [sing-box 内核](https://github.com/SagerNet/sing-box)
+## 二、 导入 [mihomo 内核](https://github.com/MetaCubeX/mihomo)或 [sing-box 内核](https://github.com/SagerNet/sing-box)
 ### 1. 首次导入
 连接 SSH 后执行如下命令：
 

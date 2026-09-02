@@ -1,6 +1,6 @@
 ---
 title: 分享 ShellCrash 搭载 sing-boxr 内核采用 ruleset 方案的一套配置
-description: 此配置搭载 <a href="https://github.com/reF1nd/sing-box">sing-boxr 内核</a>，采用 <code>rule_set</code> 规则搭配 .srs 规则集文件
+description: 此配置搭载 sing-boxr 内核，采用 <code>rule_set</code> 规则搭配 .srs 规则集文件
 date: 2024-08-22 19:45:26 +0800
 categories: [分享配置, Router]
 tags: [sing-box, sing-boxr, ShellCrash, ruleset, rule_set, 分享, Router]
@@ -311,6 +311,11 @@ curl -sS -o $CRASHDIR/cn_ipv6.txt -L https://cdn.jsdelivr.net/gh/DustinWin/geoip
 1. 打开 zashboard 在线面板地址 <http://board.zash.run.place> 后，可直接在“[Clash API](https://sing-boxr.dustinwin.cc.cd/zh/configuration/experimental/clash-api/)”标签里将“主机”修改为 `192.168.31.1`，点击“提交”即可访问 Dashboard
 2. 进入设置 → 后端设置，点击“+”图标，切换到“[sing-box API](https://sing-boxr.dustinwin.cc.cd/zh/configuration/service/api/)”标签，将“主机”和“端口分别修改为 `192.168.31.1` 和 `9999` 并点击“提交”
 3. 通过切换后端配置可以分别使用 Clash API（支持“代理提供商”和“规则提供商”的更新）和 sing-box API Dashboard 面板
+
+> 特别提醒
+{: .prompt-warning }
+1. zashboard 已[在 v3.23.0 版本中移除了对 sing-box 的支持](https://github.com/Zephyruso/zashboard/blob/main/docs/sing-box-deprecation.md)，最后支持 sing-box 的版本为 [v3.22.0](https://github.com/Zephyruso/zashboard/releases/tag/v3.22.0)
+2. 通过 Clash API 的方式仍可正常使用
 
 > 推荐设置
 {: .prompt-tip }

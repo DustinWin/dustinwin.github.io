@@ -1,6 +1,6 @@
 ---
 title: 分享 ShellCrash 搭载 sing-boxr 内核搭配 AdGuard Home 采用 ruleset 方案的一套配置
-description: 此配置搭载 <a href="https://github.com/reF1nd/sing-box">sing-boxr 内核</a>，采用 <code>rule_set</code> 规则搭配 .srs 规则集文件
+description: 此配置搭载 sing-boxr 内核，采用 <code>rule_set</code> 规则搭配 .srs 规则集文件，并搭配 AdGuard Home 作下游
 date: 2024-08-22 19:51:07 +0800
 categories: [分享配置, Router]
 tags: [sing-box, sing-boxr, ShellCrash, AdGuard Home, ruleset, rule_set, 分享, Router]
@@ -8,11 +8,11 @@ tags: [sing-box, sing-boxr, ShellCrash, AdGuard Home, ruleset, rule_set, 分享,
 
 > 声明
 {: .prompt-warning }
-1. 此方案采用 [ShellCrash](https://github.com/juewuy/ShellCrash) 作为上游，[AdGuard Home](https://github.com/AdguardTeam/AdGuardHome) 作为下游的模式
+1. 此方案采用 [ShellCrash](https://github.com/juewuy/ShellCrash) 作为上游，AdGuard Home 作为下游的模式
 2. 请根据自身情况进行修改，**适合自己的方案才是最好的方案**，如无特殊需求，可以照搬
 3. 此方案中 ShellCrash 采用了**绕过 CN_IP** 的模式且 IP 在国内的未知域名也会被绕过（仍与 AdGuard Home 配合完美）
 4. 此方案适用于 ShellCrash（以 ARM64 架构为例，且安装路径为 `/data/ShellCrash`{: .filepath}）
-5. 此方案适用于 AdGuard Home（以 ARM64 架构为例，且安装路径为 `/data/AdGuardHome`{: .filepath}）
+5. 此方案适用于 [AdGuard Home](https://github.com/AdguardTeam/AdGuardHome)（以 ARM64 架构为例，且安装路径为 `/data/AdGuardHome`{: .filepath}）
 6. 此方案不建议启用 ShellCrash 配置脚本 → 2) 功能设置 → 3) 透明路由流量过滤 → 2) 过滤局域网设备，因不经过内核的设备在访问 `漏网之鱼` 域名时会遇到无法访问的情况
 7. 本人将路由器设置了每天早上 6 点重启，使得《[六](https://proxy-tutorials.dustinwin.cc.cd/posts/share-shellcrashadguardhome-singboxr-ruleset/#%E5%85%AD-%E6%B7%BB%E5%8A%A0%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1)》中设置的定时任务生效
 8. 本教程搭载 [sing-box 内核 reF1nd-Stable 版](https://github.com/reF1nd/sing-box/tree/reF1nd-stable)
@@ -374,6 +374,11 @@ EOF
 2. 进入设置 → 后端设置，点击“+”图标，切换到“[sing-box API](https://sing-boxr.dustinwin.cc.cd/zh/configuration/service/api/)”标签，将“主机”和“端口分别修改为 `192.168.31.1` 和 `9999` 并点击“提交”
 3. 通过切换后端配置可以分别使用 Clash API（支持“代理提供商”和“规则提供商”的更新）和 sing-box API Dashboard 面板
 4. 打开 <http://miwifi.com:3000> 即可访问 AdGuard Home 面板
+
+> 特别提醒
+{: .prompt-warning }
+1. zashboard 已[在 v3.23.0 版本中移除了对 sing-box 的支持](https://github.com/Zephyruso/zashboard/blob/main/docs/sing-box-deprecation.md)，最后支持 sing-box 的版本为 [v3.22.0](https://github.com/Zephyruso/zashboard/releases/tag/v3.22.0)
+2. 通过 Clash API 的方式仍可正常使用
 
 > 推荐设置
 {: .prompt-tip }

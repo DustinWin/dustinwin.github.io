@@ -1,6 +1,6 @@
 ---
 title: 分享 ShellCrash 搭载 mihomo 内核搭配 AdGuard Home 采用 ruleset 方案的一套配置
-description: 此配置搭载 <a href="https://github.com/MetaCubeX/mihomo">mihomo 内核</a>，采用 <code>RULE-SET</code> 规则搭配 .list 和 .mrs 规则集合文件
+description: 此配置搭载 mihomo 内核，采用 <code>RULE-SET</code> 规则搭配 .list 和 .mrs 规则集合文件，并搭配 AdGuard Home 作下游
 date: 2024-08-21 18:23:54 +0800
 categories: [分享配置, Router]
 tags: [Clash, mihomo, ShellCrash, AdGuard Home, ruleset, rule-set, 分享, Router]
@@ -8,11 +8,11 @@ tags: [Clash, mihomo, ShellCrash, AdGuard Home, ruleset, rule-set, 分享, Route
 
 > 声明
 {: .prompt-warning }
-1. 此方案采用 [ShellCrash](https://github.com/juewuy/ShellCrash) 作为上游，[AdGuard Home](https://github.com/AdguardTeam/AdGuardHome) 作为下游的模式
+1. 此方案采用 [ShellCrash](https://github.com/juewuy/ShellCrash) 作为上游，AdGuard Home 作为下游的模式
 2. 请根据自身情况进行修改，**适合自己的方案才是最好的方案**，如无特殊需求，可以照搬
 3. 此方案中 ShellCrash 采用了**绕过 CN_IP** 的模式（仍与 AdGuard Home 配合完美）
-4. 此方案适用于 ShellCrash（以 ARM64 架构为例，且安装路径为 `/data/ShellCrash`{: .filepath}）
-5. 此方案适用于 AdGuard Home（以 ARM64 架构为例，且安装路径为 `/data/AdGuardHome`{: .filepath}）
+4. 此方案适用于 ShellCrash（以 ARM64 架构为例，且安装路径为 `/data/ShellCrash`{: .filepath}）并搭载 [mihomo 内核](https://github.com/MetaCubeX/mihomo)
+5. 此方案适用于 [AdGuard Home](https://github.com/AdguardTeam/AdGuardHome)（以 ARM64 架构为例，且安装路径为 `/data/AdGuardHome`{: .filepath}）
 6. 此方案不建议启用 ShellCrash 配置脚本 → 2) 功能设置 → 3) 透明路由流量过滤 → 2) 过滤局域网设备，因不经过内核的设备在访问 `漏网之鱼` 域名时会遇到无法访问的情况
 7. 本人将路由器设置了每天早上 6 点重启，使得《[四](https://proxy-tutorials.dustinwin.cc.cd/posts/share-shellcrashadguardhome-mihomo-ruleset/#%E5%9B%9B-%E6%B7%BB%E5%8A%A0%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1)》中设置的定时任务生效
 

@@ -8,7 +8,8 @@ tags: [Clash, Clash Mi, mihomo, Android, ruleset, rule-set, 分享]
 
 > 声明
 {: .prompt-warning }
-请根据自身情况进行修改，**适合自己的方案才是最好的方案**，如无特殊需求，可以照搬
+1. 请根据自身情况进行修改，**适合自己的方案才是最好的方案**，如无特殊需求，可以照搬
+2. 本教程搭载 [mihomo 内核](https://github.com/MetaCubeX/mihomo)（可前往 <https://github.com/KaringX/clashmi/releases> 下载“clashmi_[version]_android_arm64-v8a.apk”文件进行安装）
 
 ## 一、 生成配置文件 .yaml 文件直链
 具体方法请参考《[生成带有自定义策略组和规则的 mihomo 配置文件直链-ruleset 方案](https://proxy-tutorials.dustinwin.cc.cd/posts/link-mihomo-ruleset)》，贴一下我使用的配置：

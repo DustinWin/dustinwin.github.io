@@ -1,6 +1,6 @@
 ---
 title: ShellCrash 搭载 sing-boxr 内核的配置-ruleset 方案
-description: 此配置搭载 <a href="https://github.com/reF1nd/sing-box">sing-boxr 内核</a>，包括 ShellCrash 的安装、配置和使用方法
+description: 此配置搭载 sing-boxr 内核，包括 ShellCrash 的安装、配置和使用方法
 date: 2024-08-22 17:34:34 +0800
 categories: [工具配置, ShellCrash 配置]
 tags: [sing-box, sing-boxr, ShellCrash, ruleset, rule_set, 基础, Router]
@@ -17,7 +17,7 @@ tags: [sing-box, sing-boxr, ShellCrash, ruleset, rule_set, 基础, Router]
 201#curl -sS -o $CRASHDIR/cn_ip.txt -L https://ghfast.top/https://github.com/DustinWin/geoip/releases/download/ips/cn_ipv4.txt && curl -sS -o $CRASHDIR/cn_ipv6.txt -L https://ghfast.top/https://github.com/DustinWin/geoip/releases/download/ips/cn_ipv6.txt >/dev/null 2>&1#更新CN_IP文件
 ```
 2. 按一下 Esc 键（退出键），输入英文冒号 `:`，继续输入 `wq` 并回车
-3. 执行 `sc`，进入 ShellCrash 配置脚本 → 5) 自动任务 → 1) 添加自动任务，选择“8) 自动更新内核”和末尾处添加的定时任务，输入对应的数字并回车后可设置执行条件  
+3. 执行 `sc`，进入 [ShellCrash](https://github.com/juewuy/ShellCrash) 配置脚本 → 5) 自动任务 → 1) 添加自动任务，选择“8) 自动更新内核”和末尾处添加的定时任务，输入对应的数字并回车后可设置执行条件  
 <img src="/assets/img/share/task-ruleset.png" alt="添加定时任务" width="60%" />
 
 ## 二、 设置部分

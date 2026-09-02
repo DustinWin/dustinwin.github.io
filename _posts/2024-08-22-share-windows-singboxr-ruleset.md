@@ -287,7 +287,7 @@ Windows Registry Editor Version 5.00
 ```
 另存为 .reg 文件，双击导入
 
-## 三、 导入 [sing-box reF1nd 版内核](https://github.com/reF1nd/sing-box)和配置文件并启动 sing-boxr
+## 三、 导入 sing-box reF1nd 版内核和配置文件并启动 sing-boxr
 ### 1. 导入内核和配置文件
 - ① 编辑本文文档，粘贴如下内容：  
   注：
@@ -541,6 +541,11 @@ Windows Registry Editor Version 5.00
 <img src="/assets/img/share/172-9090-dashboard-singbox-pc.png" alt="面板设置" width="60%" />
 
 3. 通过切换后端配置可以分别使用 Clash API（支持“代理提供商”和“规则提供商”的更新）和 sing-box API Dashboard 面板
+
+> 特别提醒
+{: .prompt-warning }
+1. zashboard 已[在 v3.23.0 版本中移除了对 sing-box 的支持](https://github.com/Zephyruso/zashboard/blob/main/docs/sing-box-deprecation.md)，最后支持 sing-box 的版本为 [v3.22.0](https://github.com/Zephyruso/zashboard/releases/tag/v3.22.0)
+2. 通过 Clash API 的方式仍可正常使用
 
 > 推荐设置
 {: .prompt-tip }
