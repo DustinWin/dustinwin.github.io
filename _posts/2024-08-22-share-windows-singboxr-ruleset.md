@@ -324,7 +324,7 @@ Windows Registry Editor Version 5.00
               [Yy])
                 echo
                 echo "正在下载 sing-boxr 内核..."
-                curl -sS -o "$USERPROFILE/Downloads/sing-box.exe" -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-stable-windows-amd64-v3.exe
+                curl -fsS -o "$USERPROFILE/Downloads/sing-box.exe" -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-stable-windows-amd64-v3.exe
                 echo "下载 sing-boxr 内核成功"
 
                 echo "正在结束 sing-boxr 相关进程..."
@@ -379,7 +379,7 @@ Windows Registry Editor Version 5.00
                 echo
                 echo "正在安装 sing-boxr 内核..."
                 mkdir -p ./sing-box
-                curl -sS -o ./sing-box/sing-box.exe -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-stable-windows-amd64-v3.exe
+                curl -fsS -o ./sing-box/sing-box.exe -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-stable-windows-amd64-v3.exe
                 echo "安装 sing-boxr 内核成功"
 
                 echo "正在赋予 sing-box 权限..."
@@ -440,7 +440,7 @@ Windows Registry Editor Version 5.00
               [Yy])
                 echo
                 echo "正在下载 sing-boxr 配置文件..."
-                curl -sS -o "$USERPROFILE/Downloads/config.json" -L https://ghfast.top/{.json 配置文件直链}
+                curl -fsS -o "$USERPROFILE/Downloads/config.json" -L https://ghfast.top/{.json 配置文件直链}
                 echo "下载 sing-boxr 配置文件成功"
 
                 echo "正在结束 sing-boxr 相关进程..."
@@ -470,7 +470,7 @@ Windows Registry Editor Version 5.00
               [Yy])
                 echo
                 echo "正在导入 sing-boxr 配置文件..."
-                curl -sS -o "$USERPROFILE/Downloads/config.json" -L https://ghfast.top/{.json 配置文件直链}
+                curl -fsS -o "$USERPROFILE/Downloads/config.json" -L https://ghfast.top/{.json 配置文件直链}
                 mv -f "$USERPROFILE/Downloads/config.json" ./sing-box
                 echo "导入 sing-boxr 配置文件成功，是否启动服务？（Y/n）"
                 ask_run
