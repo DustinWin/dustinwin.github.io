@@ -402,61 +402,67 @@ Windows Registry Editor Version 5.00
     case $choice in
       1)
         echo "安装（更新）mihomo 内核"
-        cd "$PROGRAMFILES"
+        cd "${PROGRAMFILES}"
+        latest_version=$(curl -fsSL https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/mihomo | grep -oP '(?<=v)\d+\.\d+\.\d+' | head -n 1)
+        local_version=$(./mihomo/mihomo.exe -v | grep -oP '(?<!go)\d+\.\d+\.\d+')
         if [ -f "./mihomo/mihomo.exe" ]; then
-          echo "检测到当前系统已安装 mihomo 内核，是否更新？（Y/n）"
-          while true; do
-            read -n1 -r choice
-            case $choice in
-              [Yy])
-                echo
-                echo "正在下载 mihomo 内核..."
-                curl -fsS -o "$USERPROFILE/Downloads/mihomo.exe" -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-meta-windows-amd64-v3.exe
-                echo "下载 mihomo 内核成功"
+          if [ "${local_version}" != "${latest_version}" ]; then
+            echo "检测到新版 mihomo 内核 v${latest_version}，是否更新？（Y/n）"
+            while true; do
+              read -n1 -r choice
+              case $choice in
+                [Yy])
+                  echo
+                  echo "正在下载 mihomo 内核..."
+                  curl -fsS -o "${USERPROFILE}/Downloads/mihomo.exe" -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-meta-windows-amd64-v3.exe
+                  echo "下载 mihomo 内核成功"
 
-                echo "正在结束 mihomo 相关进程..."
-                taskkill //f //t //im "mihomo*"
-                echo "结束 mihomo 相关进程成功"
+                  echo "正在结束 mihomo 相关进程..."
+                  taskkill //f //t //im "mihomo*"
+                  echo "结束 mihomo 相关进程成功"
 
-                echo "正在更新 mihomo 内核..."
-                mv -f "$USERPROFILE/Downloads/mihomo.exe" ./mihomo
-                if [ -f "./mihomo/config.yaml" ]; then
-                  echo "更新 mihomo 内核成功，是否启动服务？（Y/n）"
-                  while true; do
-                    read -n1 -r choice
-                    case $choice in
-                      [Yy])
-                        echo
-                        echo "正在启动 mihomo 服务..."
-                        cd ./mihomo
-                        start //min mihomo -d .
-                        read -n1 -r -p "启动 mihomo 服务成功，按任意键返回菜单..."
-                        break
-                        ;;
-                      [Nn])
-                        break
-                        ;;
-                      *)
-                        echo
-                        echo "无效选择，请重新输入！"
-                        ;;
-                    esac
-                  done
+                  echo "正在更新 mihomo 内核..."
+                  mv -f "${USERPROFILE}/Downloads/mihomo.exe" ./mihomo
+                  if [ -f "./mihomo/config.yaml" ]; then
+                    echo "更新 mihomo 内核成功，是否启动服务？（Y/n）"
+                    while true; do
+                      read -n1 -r choice
+                      case $choice in
+                        [Yy])
+                          echo
+                          echo "正在启动 mihomo 服务..."
+                          cd ./mihomo
+                          start //min mihomo -d .
+                          read -n1 -r -p "启动 mihomo 服务成功，按任意键返回菜单..."
+                          break
+                          ;;
+                        [Nn])
+                          break
+                          ;;
+                        *)
+                          echo
+                          echo "无效选择，请重新输入！"
+                          ;;
+                      esac
+                    done
+                    break
+                  else
+                    read -n1 -r -p "更新 mihomo 内核成功，请返回菜单导入配置文件！按任意键返回菜单..."
+                    break
+                  fi
+                  ;;
+                [Nn])
                   break
-                else
-                  read -n1 -r -p "更新 mihomo 内核成功，请返回菜单导入配置文件！按任意键返回菜单..."
-                  break
-                fi
-                ;;
-              [Nn])
-                break
-                ;;
-              *)
-                echo
-                echo "无效选择，请重新输入！"
-                ;;
-            esac
-          done
+                  ;;
+                *)
+                  echo
+                  echo "无效选择，请重新输入！"
+                  ;;
+              esac
+            done
+          else
+            read -n1 -r -p "当前 mihomo 内核已是最新版本 v${local_version}，无需更新。按任意键返回菜单..."
+          fi
         else
           echo "检测到当前系统未安装 mihomo 内核，是否安装？（Y/n）"
           while true; do
@@ -516,7 +522,7 @@ Windows Registry Editor Version 5.00
         }
 
         echo "导入（更新）mihomo 配置文件"
-        cd "$PROGRAMFILES"
+        cd "${PROGRAMFILES}"
         if [[ -f "./mihomo/mihomo.exe" && -f "./mihomo/config.yaml" ]]; then
           echo "检测到 mihomo 配置文件，是否更新？（Y/n）"
           while true; do
@@ -525,7 +531,7 @@ Windows Registry Editor Version 5.00
               [Yy])
                 echo
                 echo "正在下载 mihomo 配置文件..."
-                curl -fsS -o "$USERPROFILE/Downloads/config.yaml" -L https://ghfast.top/{.yaml 配置文件直链}
+                curl -fsS -o "${USERPROFILE}/Downloads/config.yaml" -L https://ghfast.top/{.yaml 配置文件直链}
                 echo "下载 mihomo 配置文件成功"
 
                 echo "正在结束 mihomo 相关进程..."
@@ -533,7 +539,7 @@ Windows Registry Editor Version 5.00
                 echo "结束 mihomo 相关进程成功"
 
                 echo "正在更新 mihomo 配置文件..."
-                mv -f "$USERPROFILE/Downloads/config.yaml" ./mihomo
+                mv -f "${USERPROFILE}/Downloads/config.yaml" ./mihomo
                 echo "更新 mihomo 配置文件成功，是否启动服务？（Y/n）"
                 ask_run
                 break
@@ -550,8 +556,8 @@ Windows Registry Editor Version 5.00
         elif [ ! -f "./mihomo/config.yaml" ]; then
           echo "未检测到 mihomo 配置文件，导入配置文件..."
           mkdir -p ./mihomo
-          curl -fsS -o "$USERPROFILE/Downloads/config.yaml" -L https://ghfast.top/{.yaml 配置文件直链}
-          mv -f "$USERPROFILE/Downloads/config.yaml" ./mihomo
+          curl -fsS -o "${USERPROFILE}/Downloads/config.yaml" -L https://ghfast.top/{.yaml 配置文件直链}
+          mv -f "${USERPROFILE}/Downloads/config.yaml" ./mihomo
           echo "导入 mihomo 配置文件成功，是否启动服务？（Y/n）"
           ask_run
         else
@@ -560,7 +566,7 @@ Windows Registry Editor Version 5.00
         ;;
       3)
         echo "正在启动 mihomo 服务..."
-        cd "$PROGRAMFILES"
+        cd "${PROGRAMFILES}"
         if [[ -f "./mihomo/mihomo.exe" && -f "./mihomo/config.yaml" ]]; then
           cd "./mihomo"
           start //min mihomo -d .

@@ -315,61 +315,67 @@ Windows Registry Editor Version 5.00
     case $choice in
       1)
         echo "安装（更新）sing-boxr 内核"
-        cd "$PROGRAMFILES"
+        cd "${PROGRAMFILES}"
+        latest_version=$(curl -fsSL https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/sing-box | grep -oP '(?<=v)\d+\.\d+\.\d+-reF1nd[^，]*' | head -n 1)
+        local_version=$(./sing-box/sing-box.exe version | grep -Po '\d+\.\d+\.\d+-reF1nd.*')
         if [ -f "./sing-box/sing-box.exe" ]; then
-          echo "检测到当前系统已安装 sing-boxr 内核，是否更新？（Y/n）"
-          while true; do
-            read -n1 -r choice
-            case $choice in
-              [Yy])
-                echo
-                echo "正在下载 sing-boxr 内核..."
-                curl -fsS -o "$USERPROFILE/Downloads/sing-box.exe" -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-stable-windows-amd64-v3.exe
-                echo "下载 sing-boxr 内核成功"
+          if [ "${local_version}" != "${latest_version}" ]; then
+            echo "检测到新版 sing-boxr 内核 v${latest_version}，是否更新？（Y/n）"
+            while true; do
+              read -n1 -r choice
+              case $choice in
+                [Yy])
+                  echo
+                  echo "正在下载 sing-boxr 内核..."
+                  curl -fsS -o "${USERPROFILE}/Downloads/sing-box.exe" -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-stable-windows-amd64-v3.exe
+                  echo "下载 sing-boxr 内核成功"
 
-                echo "正在结束 sing-boxr 相关进程..."
-                taskkill //f //t //im "sing-box*"
-                echo "结束 sing-boxr 相关进程成功"
+                  echo "正在结束 sing-boxr 相关进程..."
+                  taskkill //f //t //im "sing-box*"
+                  echo "结束 sing-boxr 相关进程成功"
 
-                echo "正在更新 sing-boxr 内核..."
-                mv -f "$USERPROFILE/Downloads/sing-box.exe" ./sing-box
-                if [ -f "./sing-box/config.json" ]; then
-                  echo "更新 sing-boxr 内核成功，是否启动服务？（Y/n）"
-                  while true; do
-                    read -n1 -r choice
-                    case $choice in
-                      [Yy])
-                        echo
-                        echo "正在启动 sing-boxr 服务..."
-                        cd ./sing-box
-                        start //min sing-box run
-                        read -n1 -r -p "启动 sing-boxr 服务成功，按任意键返回菜单..."
-                        break
-                        ;;
-                      [Nn])
-                        break
-                        ;;
-                      *)
-                        echo
-                        echo "无效选择，请重新输入！"
-                        ;;
-                    esac
-                  done
+                  echo "正在更新 sing-boxr 内核..."
+                  mv -f "${USERPROFILE}/Downloads/sing-box.exe" ./sing-box
+                  if [ -f "./sing-box/config.json" ]; then
+                    echo "更新 sing-boxr 内核成功，是否启动服务？（Y/n）"
+                    while true; do
+                      read -n1 -r choice
+                      case $choice in
+                        [Yy])
+                          echo
+                          echo "正在启动 sing-boxr 服务..."
+                          cd ./sing-box
+                          start //min sing-box run
+                          read -n1 -r -p "启动 sing-boxr 服务成功，按任意键返回菜单..."
+                          break
+                          ;;
+                        [Nn])
+                          break
+                          ;;
+                        *)
+                          echo
+                          echo "无效选择，请重新输入！"
+                          ;;
+                      esac
+                    done
+                    break
+                  else
+                    read -n1 -r -p "更新 sing-boxr 内核成功，请返回菜单导入配置文件！按任意键返回菜单..."
+                    break
+                  fi
+                  ;;
+                [Nn])
                   break
-                else
-                  read -n1 -r -p "更新 sing-boxr 内核成功，请返回菜单导入配置文件！按任意键返回菜单..."
-                  break
-                fi
-                ;;
-              [Nn])
-                break
-                ;;
-              *)
-                echo
-                echo "无效选择，请重新输入！"
-                ;;
-            esac
-          done
+                  ;;
+                *)
+                  echo
+                  echo "无效选择，请重新输入！"
+                  ;;
+              esac
+            done
+          else
+            read -n1 -r -p "当前 sing-boxr 内核已是最新版本 ${local_version}，无需更新。按任意键返回菜单..."
+          fi
         else
           echo "检测到当前系统未安装 sing-boxr 内核，是否安装？（Y/n）"
           while true; do
@@ -431,7 +437,7 @@ Windows Registry Editor Version 5.00
         }
 
         echo "导入（更新）sing-boxr 配置文件"
-        cd "$PROGRAMFILES"
+        cd "${PROGRAMFILES}"
         if [[ -f "./sing-box/sing-box.exe" && -f "./sing-box/config.json" ]]; then
           echo "检测到 sing-boxr 配置文件，是否更新？（Y/n）"
           while true; do
@@ -440,7 +446,7 @@ Windows Registry Editor Version 5.00
               [Yy])
                 echo
                 echo "正在下载 sing-boxr 配置文件..."
-                curl -fsS -o "$USERPROFILE/Downloads/config.json" -L https://ghfast.top/{.json 配置文件直链}
+                curl -fsS -o "${USERPROFILE}/Downloads/config.json" -L https://ghfast.top/{.json 配置文件直链}
                 echo "下载 sing-boxr 配置文件成功"
 
                 echo "正在结束 sing-boxr 相关进程..."
@@ -448,7 +454,7 @@ Windows Registry Editor Version 5.00
                 echo "结束 sing-boxr 相关进程成功"
 
                 echo "正在更新 sing-boxr 配置文件..."
-                mv -f "$USERPROFILE/Downloads/config.json" ./sing-box
+                mv -f "${USERPROFILE}/Downloads/config.json" ./sing-box
                 echo "更新 sing-boxr 配置文件成功，是否启动服务？（Y/n）"
                 ask_run
                 break
@@ -470,8 +476,8 @@ Windows Registry Editor Version 5.00
               [Yy])
                 echo
                 echo "正在导入 sing-boxr 配置文件..."
-                curl -fsS -o "$USERPROFILE/Downloads/config.json" -L https://ghfast.top/{.json 配置文件直链}
-                mv -f "$USERPROFILE/Downloads/config.json" ./sing-box
+                curl -fsS -o "${USERPROFILE}/Downloads/config.json" -L https://ghfast.top/{.json 配置文件直链}
+                mv -f "${USERPROFILE}/Downloads/config.json" ./sing-box
                 echo "导入 sing-boxr 配置文件成功，是否启动服务？（Y/n）"
                 ask_run
                 break
@@ -491,7 +497,7 @@ Windows Registry Editor Version 5.00
         ;;
       3)
         echo "正在启动 sing-boxr 服务..."
-        cd "$PROGRAMFILES"
+        cd "${PROGRAMFILES}"
         if [[ -f "./sing-box/sing-box.exe" && -f "./sing-box/config.json" ]]; then
           cd "./sing-box"
           start //min sing-box run
