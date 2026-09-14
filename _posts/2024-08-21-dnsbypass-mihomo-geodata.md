@@ -21,7 +21,7 @@ geosite.dat 文件须包含 `fakeip-filter`、`cn` 和 `proxy`，推荐导入我
 1. 进入 ShellCrash 配置脚本 → 2) 功能设置 → 2) DNS 设置 → 9) 修改 DNS 服务器，将“DIRECT-DNS”、“PROXY-DNS”和“DEFAULT-DNS”都设置为 `null`  
 <img src="/assets/img/dns/dns-null.png" alt="ShellCrash DNS 进阶设置" width="60%" />
 
-2. 连接 SSH 后执行命令 `vi $CRASHDIR/yamls/user.yaml`，按一下 Ins 键（Insert 键），粘贴如下内容：
+2. 连接 SSH 后执行命令 `vi "${CRASHDIR}/yamls/user.yaml"`，按一下 Ins 键（Insert 键），粘贴如下内容：
 
 ```yaml
 hosts:

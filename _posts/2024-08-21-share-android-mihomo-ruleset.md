@@ -56,7 +56,7 @@ sniffer:
 
 tun:
   enable: true
-  stack: mixed
+  stack: mips
   dns-hijack: [any:53]
   auto-route: true
   auto-detect-interface: true

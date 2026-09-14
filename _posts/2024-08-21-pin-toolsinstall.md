@@ -19,7 +19,7 @@ pin: true
 连接 SSH 后执行如下命令：
 
 ```shell
-curl -fsS -o /tmp/ShellCrash.tar.gz -L https://cdn.jsdelivr.net/gh/juewuy/ShellCrash@master/ShellCrash.tar.gz
+curl -fo /tmp/ShellCrash.tar.gz -L https://cdn.jsdelivr.net/gh/juewuy/ShellCrash@master/ShellCrash.tar.gz
 mkdir -p /tmp/SC_tmp/ && tar -zxf '/tmp/ShellCrash.tar.gz' -C /tmp/SC_tmp/ && source /tmp/SC_tmp/init.sh
 ```
 
@@ -36,17 +36,17 @@ export url='https://cdn.jsdelivr.net/gh/juewuy/ShellCrash@master' && sh -c "$(cu
 
 ```shell
 # mihomo 内核 Meta 版
-curl -fsS -o /tmp/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-meta-linux-arm64.upx && sc
+curl -fo /tmp/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-meta-linux-arm64.upx && sc
 # mihomo 内核 Alpha 版
-curl -fsS -o /tmp/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-alpha-linux-arm64.upx && sc
+curl -fo /tmp/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-alpha-linux-arm64.upx && sc
 # sing-box 内核 reF1nd-Stable 版
-curl -fsS -o /tmp/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-stable-linux-arm64.upx && sc
+curl -fo /tmp/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-stable-linux-arm64.upx && sc
 # sing-box 内核 reF1nd-Testing 版
-curl -fsS -o /tmp/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-testing-linux-arm64.upx && sc
+curl -fo /tmp/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-testing-linux-arm64.upx && sc
 # sing-box 内核 Stable 版
-curl -fsS -o /tmp/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-stable-linux-arm64.upx && sc
+curl -fo /tmp/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-stable-linux-arm64.upx && sc
 # sing-box 内核 Testing 版
-curl -fsS -o /tmp/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-testing-linux-arm64.upx && sc
+curl -fo /tmp/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-testing-linux-arm64.upx && sc
 ```
 
 此时脚本会自动“发现可用的内核文件”，选择 1 加载，后选择对应的内核类型
@@ -56,17 +56,17 @@ curl -fsS -o /tmp/CrashCore.upx -L https://ghfast.top/https://github.com/DustinW
 
 ```shell
 # mihomo 内核 Meta 版
-curl -fsS -o $CRASHDIR/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-meta-linux-arm64.upx && $CRASHDIR/start.sh restart
+curl -fo "${CRASHDIR}/CrashCore.upx" -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-meta-linux-arm64.upx && "${CRASHDIR}/start.sh" restart
 # mihomo 内核 Alpha 版
-curl -fsS -o $CRASHDIR/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-alpha-linux-arm64.upx && $CRASHDIR/start.sh restart
+curl -fo "${CRASHDIR}/CrashCore.upx" -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-alpha-linux-arm64.upx && "${CRASHDIR}/start.sh" restart
 # sing-box 内核 reF1nd-Stable 版
-curl -fsS -o $CRASHDIR/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-stable-linux-arm64.upx && $CRASHDIR/start.sh restart
+curl -fo "${CRASHDIR}/CrashCore.upx" -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-stable-linux-arm64.upx && "${CRASHDIR}/start.sh" restart
 # sing-box 内核 reF1nd-Testing 版
-curl -fsS -o $CRASHDIR/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-testing-linux-arm64.upx && $CRASHDIR/start.sh restart
+curl -fo "${CRASHDIR}/CrashCore.upx" -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-ref1nd-testing-linux-arm64.upx && "${CRASHDIR}/start.sh" restart
 # sing-box 内核 Stable 版
-curl -fsS -o $CRASHDIR/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-stable-linux-arm64.upx && $CRASHDIR/start.sh restart
+curl -fo "${CRASHDIR}/CrashCore.upx" -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-stable-linux-arm64.upx && "${CRASHDIR}/start.sh" restart
 # sing-box 内核 Testing 版
-curl -fsS -o $CRASHDIR/CrashCore.upx -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-testing-linux-arm64.upx && $CRASHDIR/start.sh restart
+curl -fo "${CRASHDIR}/CrashCore.upx" -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/sing-box/sing-box-testing-linux-arm64.upx && "${CRASHDIR}/start.sh" restart
 ```
 
 ## 三、 安装 Dashboard 面板
@@ -84,13 +84,13 @@ curl -fsS -o $CRASHDIR/CrashCore.upx -L https://ghfast.top/https://github.com/Du
 
 ```shell
 # Yacd-meta
-curl -fsS -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/Dashboard/Yacd-meta.tar.gz | tar -zx -C $CRASHDIR/ui/ && $CRASHDIR/start.sh restart
+curl -fL https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/Dashboard/Yacd-meta.tar.gz | tar -zx -C "${CRASHDIR}/ui/" && "${CRASHDIR}/start.sh" restart
 # metacubexd
-curl -fsS -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/Dashboard/metacubexd.tar.gz | tar -zx -C $CRASHDIR/ui/ && $CRASHDIR/start.sh restart
+curl -fL https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/Dashboard/metacubexd.tar.gz | tar -zx -C "${CRASHDIR}/ui/" && "${CRASHDIR}/start.sh" restart
 # zashboard
-curl -fsS -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/Dashboard/zashboard.tar.gz | tar -zx -C $CRASHDIR/ui/ && $CRASHDIR/start.sh restart
+curl -fL https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/Dashboard/zashboard.tar.gz | tar -zx -C "${CRASHDIR}/ui/" && "${CRASHDIR}/start.sh" restart
 # sing-box dashboard
-curl -fsS -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/Dashboard/sing-box-dashboard.tar.gz | tar -zx -C $CRASHDIR/ui/ && $CRASHDIR/start.sh restart
+curl -fL https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/Dashboard/sing-box-dashboard.tar.gz | tar -zx -C "${CRASHDIR}/ui/" && "${CRASHDIR}/start.sh" restart
 ```
 
 - 注：若使用基于 [Chromium 项目](https://www.chromium.org/Home/)开发的浏览器无法访问在线 Dashboard 面板时，以 [Chrome 浏览器](https://www.google.com/chrome/)为例，需要设置该网址域名“允许显示不安全内容”。方法如下：  
@@ -103,9 +103,9 @@ curl -fsS -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/release
 ```shell
 mkdir -p /data/AdGuardHome/
 # AdGuard Home Release 版
-curl -fsS -o /data/AdGuardHome/AdGuardHome -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/AdGuardHome/AdGuardHome_release_linux_arm64
+curl -fo /data/AdGuardHome/AdGuardHome -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/AdGuardHome/AdGuardHome_release_linux_arm64
 # AdGuard Home Beta 版
-curl -fsS -o /data/AdGuardHome/AdGuardHome -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/AdGuardHome/AdGuardHome_beta_linux_arm64
+curl -fo /data/AdGuardHome/AdGuardHome -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/AdGuardHome/AdGuardHome_beta_linux_arm64
 chmod +x /data/AdGuardHome/AdGuardHome
 # 新建 AdGuard Home 启动/停止服务文件
 cat <<'EOF' > /data/AdGuardHome/AdGuardHome.sh
@@ -162,19 +162,19 @@ EOF
 
 ```shell
 # AdGuard Home Release 版
-curl -fsS -o /data/AdGuardHome/AdGuardHome -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/AdGuardHome/AdGuardHome_release_linux_arm64
+curl -fo /data/AdGuardHome/AdGuardHome -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/AdGuardHome/AdGuardHome_release_linux_arm64
 # AdGuard Home Beta 版
-curl -fsS -o /data/AdGuardHome/AdGuardHome -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/AdGuardHome/AdGuardHome_beta_linux_arm64
+curl -fo /data/AdGuardHome/AdGuardHome -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/AdGuardHome/AdGuardHome_beta_linux_arm64
 /data/AdGuardHome/AdGuardHome -s restart
 ```
 
 ## 五、 扩展（以 ShellCrash 配置定时任务为例）
 可在 ShellCrash 里添加定时更新 mihomo 内核、sing-box 内核、[zashboard](https://github.com/Zephyruso/zashboard) 和 AdGuard Home 的任务
 1. 进入 ShellCrash → 9) 更新与支持 → 2) 切换/更新内核文件 → 6) 使用自定义内核 → 9) 自定义内核链接，输入导入内核命令里的链接并回车，后“请确认该自定义内核的类型”
-2. 连接 SSH 后执行 `vi $CRASHDIR/configs/task/task.user`，按一下 Ins 键（Insert 键），粘贴如下内容：
+2. 连接 SSH 后执行 `vi "${CRASHDIR}/configs/task/task.user"`，按一下 Ins 键（Insert 键），粘贴如下内容：
 ```shell
-201#curl -fsS -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/Dashboard/zashboard.tar.gz | tar -zx -C $CRASHDIR/ui/ && $CRASHDIR/start.sh restart >/dev/null 2>&1#更新zashboard
-202#curl -fsS -o /data/AdGuardHome/AdGuardHome -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/AdGuardHome/AdGuardHome_beta_linux_arm64 && /data/AdGuardHome/AdGuardHome -s restart >/dev/null 2>&1#更新AdGuardHome
+201#curl -fL https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/Dashboard/zashboard.tar.gz | tar -zx -C "${CRASHDIR}/ui/" && "${CRASHDIR}/start.sh" restart >/dev/null 2>&1#更新zashboard
+202#curl -fo /data/AdGuardHome/AdGuardHome -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/AdGuardHome/AdGuardHome_beta_linux_arm64 && /data/AdGuardHome/AdGuardHome -s restart >/dev/null 2>&1#更新AdGuardHome
 ```
 3. 按一下 Esc 键（退出键），输入英文冒号 `:`，继续输入 `wq` 并回车
 4. 执行 `sc`，进入 ShellCrash → 5 配置自动任务 → 1 添加自动任务，选择“8) 自动更新内核”和末尾处添加的定时任务，输入对应的数字并回车后可设置执行条件

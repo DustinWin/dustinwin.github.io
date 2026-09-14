@@ -247,12 +247,12 @@ proxy-groups:
 连接 SSH 后执行如下命令：
 
 ```shell
-curl -fsS -o $CRASHDIR/cn_ip.txt -L https://cdn.jsdelivr.net/gh/DustinWin/geoip@ips/cn_ipv4.txt
-curl -fsS -o $CRASHDIR/cn_ipv6.txt -L https://cdn.jsdelivr.net/gh/DustinWin/geoip@ips/cn_ipv6.txt
+curl -fo "${CRASHDIR}/cn_ip.txt" -L https://cdn.jsdelivr.net/gh/DustinWin/geoip@ips/cn_ipv4.txt
+curl -fo "${CRASHDIR}/cn_ipv6.txt" -L https://cdn.jsdelivr.net/gh/DustinWin/geoip@ips/cn_ipv6.txt
 ```
 
 ## 三、 编辑 user.yaml 文件
-连接 SSH 后执行命令 `vi $CRASHDIR/yamls/user.yaml`，按一下 Ins 键（Insert 键），粘贴如下内容：
+连接 SSH 后执行命令 `vi "${CRASHDIR}/yamls/user.yaml"`，按一下 Ins 键（Insert 键），粘贴如下内容：
 
 ```yaml
 log-level: error

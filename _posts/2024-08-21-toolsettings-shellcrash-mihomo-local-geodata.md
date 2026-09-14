@@ -12,7 +12,7 @@ tags: [Clash, mihomo, ShellCrash, geodata, geosite, 进阶, 本地, Router]
 2. 本教程**仅适合白名单模式**（没有命中规则的网络流量统统使用代理，适用于服务器线路网络质量稳定、快速，不缺服务器流量的用户）
 3. 本教程最终效果媲美《[生成带有自定义策略组和规则的 mihomo 配置文件直链-geodata 方案](https://proxy-tutorials.dustinwin.cc.cd/posts/link-mihomo-geodata)》（策略组更直观，操作更方便）
 4. 若仅配置自定义策略组和规则，可直接跳过《[二](https://proxy-tutorials.dustinwin.cc.cd/posts/toolsettings-shellcrash-mihomo-local-geodata/#%E4%BA%8C-%E5%AF%BC%E5%85%A5%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6)》
-5. 所有步骤完成后，请连接 SSH 后执行命令 `$CRASHDIR/start.sh restart` 生效
+5. 所有步骤完成后，请连接 SSH 后执行命令 `"${CRASHDIR}/start.sh" restart` 生效
 6. 推荐使用 [Visual Studio Code](https://code.visualstudio.com/Download) 等专业编辑器来修改配置文件
 
 ## 一、 导入 [mihomo 内核](https://github.com/MetaCubeX/mihomo)和[路由规则文件](https://github.com/DustinWin/ruleset_geodata?tab=readme-ov-file#%E4%B8%80-geodata-%E6%96%87%E4%BB%B6%E8%AF%B4%E6%98%8E)
@@ -26,7 +26,7 @@ tags: [Clash, mihomo, ShellCrash, geodata, geosite, 进阶, 本地, Router]
 
 ## 三、 自定义策略组和规则
 ### 1. 自定义 others.yaml（用于编写自定义的锚点、入站、代理集合 `proxy-providers`、子规则 `sub-rules` 和 script 脚本等功能）
-连接 SSH 后执行命令 `vi $CRASHDIR/yamls/others.yaml`，按一下 Ins 键（Insert 键），粘贴如下内容：
+连接 SSH 后执行命令 `vi "${CRASHDIR}/yamls/others.yaml"`，按一下 Ins 键（Insert 键），粘贴如下内容：
 
 ```yaml
 # 代理集合（获取机场订阅链接内的所有节点）
@@ -72,7 +72,7 @@ proxy-providers:
 按一下 Esc 键（退出键），输入英文冒号 `:`，继续输入 `wq` 并回车
 
 ### 2. 自定义 proxies.yaml（用于添加自定义出站代理 `proxies`）
-连接 SSH 后执行命令 `vi $CRASHDIR/yamls/proxies.yaml`，按一下 Ins 键（Insert 键），粘贴如下内容：  
+连接 SSH 后执行命令 `vi "${CRASHDIR}/yamls/proxies.yaml"`，按一下 Ins 键（Insert 键），粘贴如下内容：  
 注：
 - ① 此处以“vless”节点类型为例，其它节点类型写法可参考[通用字段](https://wiki.metacubex.one/config/proxies)
 - ② 必须在 proxy-groups.yaml 里添加自定义的节点才可以正常选择和使用
@@ -99,7 +99,7 @@ proxy-providers:
 按一下 Esc 键（退出键），输入英文冒号 `:`，继续输入 `wq` 并回车
 
 ### 3. 自定义 proxy-groups.yaml（用于添加自定义策略组 `proxy-groups`）
-连接 SSH 后执行命令 `vi $CRASHDIR/yamls/proxy-groups.yaml`，按一下 Ins 键（Insert 键），粘贴如下内容：
+连接 SSH 后执行命令 `vi "${CRASHDIR}/yamls/proxy-groups.yaml"`，按一下 Ins 键（Insert 键），粘贴如下内容：
 
 ```yaml
 # 策略组
@@ -286,7 +286,7 @@ proxy-providers:
 按一下 Esc 键（退出键），输入英文冒号 `:`，继续输入 `wq` 并回车
 
 ### 4. 自定义 rules.yaml（用于添加自定义规则 `rules`）
-连接 SSH 后执行命令 `vi $CRASHDIR/yamls/rules.yaml`，按一下 Ins 键（Insert 键），粘贴如下内容：
+连接 SSH 后执行命令 `vi "${CRASHDIR}/yamls/rules.yaml"`，按一下 Ins 键（Insert 键），粘贴如下内容：
 
 ```yaml
 # 规则
@@ -318,7 +318,7 @@ proxy-providers:
 {: .prompt-warning }
 
 ### 1. 修改 proxy-groups.yaml 文件
-连接 SSH 后执行命令 `vi $CRASHDIR/yamls/proxy-groups.yaml`，按一下 Ins 键（Insert 键），粘贴如下内容：
+连接 SSH 后执行命令 `vi "${CRASHDIR}/yamls/proxy-groups.yaml"`，按一下 Ins 键（Insert 键），粘贴如下内容：
 
 ```yaml
 # 策略组
@@ -340,7 +340,7 @@ proxy-providers:
 按一下 Esc 键（退出键），输入英文冒号 `:`，继续输入 `wq` 并回车
 
 ### 2. 修改 rules.yaml 文件
-连接 SSH 后执行命令 `vi $CRASHDIR/yamls/rules.yaml`，按一下 Ins 键（Insert 键），**优先在最上方**粘贴如下内容：
+连接 SSH 后执行命令 `vi "${CRASHDIR}/yamls/rules.yaml"`，按一下 Ins 键（Insert 键），**优先在最上方**粘贴如下内容：
 
 ```yaml
 # 规则
@@ -355,7 +355,7 @@ proxy-providers:
 {: .prompt-tip }
 
 ## 五、 添加小规则
-仅添加特定网址走直连或走代理，连接 SSH 后执行命令 `vi $CRASHDIR/yamls/rules.yaml`，按一下 Ins 键（Insert 键），在**最上方**粘贴如下内容：  
+仅添加特定网址走直连或走代理，连接 SSH 后执行命令 `vi "${CRASHDIR}/yamls/rules.yaml"`，按一下 Ins 键（Insert 键），在**最上方**粘贴如下内容：  
 注：
 - ① 以下内容只是举例，请根据自身需要进行增删改
 - ② 其它规则请参考《[mihomo Wiki](https://wiki.metacubex.one/config/rules)》

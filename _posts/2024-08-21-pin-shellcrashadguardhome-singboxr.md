@@ -200,7 +200,7 @@ echo -e "\nln -sf /data/auto_ssh/authorized_keys /etc/dropbear/" >> /data/auto_s
   nvram commit
   /etc/init.d/dropbear enable & /etc/init.d/dropbear start
   mkdir -p /data/auto_ssh
-  curl -fsS -o /data/auto_ssh/auto_ssh.sh -L https://cdn.jsdelivr.net/gh/lemoeo/AX6S@main/auto_ssh.sh
+  curl -fo /data/auto_ssh/auto_ssh.sh -L https://cdn.jsdelivr.net/gh/lemoeo/AX6S@main/auto_ssh.sh
   chmod +x /data/auto_ssh/auto_ssh.sh
   /data/auto_ssh/auto_ssh.sh install
   uci set system.@system[0].timezone='CST-8'
@@ -232,7 +232,7 @@ echo -e "\nln -sf /data/auto_ssh/authorized_keys /etc/dropbear/" >> /data/auto_s
 
 ```shell
 mkdir -p /data/auto_ssh
-curl -fsS -o /data/auto_ssh/auto_ssh.sh -L https://cdn.jsdelivr.net/gh/lemoeo/AX6S@main/auto_ssh.sh
+curl -fo /data/auto_ssh/auto_ssh.sh -L https://cdn.jsdelivr.net/gh/lemoeo/AX6S@main/auto_ssh.sh
 chmod +x /data/auto_ssh/auto_ssh.sh
 /data/auto_ssh/auto_ssh.sh install
 echo -e '12345678\n12345678' | passwd root
@@ -302,10 +302,10 @@ echo -e '12345678\n12345678' | passwd root
 
 **ShellCrash 常用命令：**
 1. 打开配置：`sc`
-2. 启动服务：`$CRASHDIR/start.sh start`
-3. 停止服务：`$CRASHDIR/start.sh stop`
-4. 重启服务：`$CRASHDIR/start.sh restart`
-5. 更新订阅：`$CRASHDIR/task/task.sh update_config`
+2. 启动服务：`"${CRASHDIR}/start.sh" start`
+3. 停止服务：`"${CRASHDIR}/start.sh" stop`
+4. 重启服务：`"${CRASHDIR}/start.sh" restart`
+5. 更新订阅：`"${CRASHDIR}/task/task.sh" update_config`
 6. 查看帮助和说明：`sc -h`
 
 ### 3. ShellCrash 升级
@@ -314,7 +314,7 @@ echo -e '12345678\n12345678' | passwd root
 
 ### 4. ShellCrash 卸载
 - ① 通过脚本命令进行卸载（任选一）  
-  连接 SSH 后执行命令 `$CRASHDIR/start.sh stop && sc -u`
+  连接 SSH 后执行命令 `"${CRASHDIR}/start.sh" stop && sc -u`
 - ② 通过 ShellCrash 配置进行卸载（任选一）  
   进入主菜单 → 9) 更新与支持，选择“8) 卸载 ShellCrash”
 

@@ -13,7 +13,7 @@ tags: [sing-box, sing-boxr, ShellCrash, ruleset, rule_set, 进阶, 本地, Route
 3. 本教程最终效果媲美《[生成带有自定义出站和规则的 sing-boxr 配置文件直链-ruleset 方案](https://proxy-tutorials.dustinwin.cc.cd/posts/link-singboxr-ruleset)》（出站分组更直观，操作更方便）
 4. 若仅配置自定义出站和规则，可直接跳过《[二](https://proxy-tutorials.dustinwin.cc.cd/posts/toolsettings-shellcrash-singboxr-local-ruleset/#%E4%BA%8C-%E5%AF%BC%E5%85%A5%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6)》
 5. 提供者 providers.json、出站 outbounds.json 和规则 route.json 为合并模式（在基础配置上新增）
-6. 所有步骤完成后，请连接 SSH 后执行命令 `$CRASHDIR/start.sh restart` 生效
+6. 所有步骤完成后，请连接 SSH 后执行命令 `"${CRASHDIR}/start.sh" restart` 生效
 7. 推荐使用 [Visual Studio Code](https://code.visualstudio.com/Download) 等专业编辑器来修改配置文件
 
 ## 一、 导入 [sing-box reF1nd 版内核](https://github.com/reF1nd/sing-box)
@@ -27,7 +27,7 @@ tags: [sing-box, sing-boxr, ShellCrash, ruleset, rule_set, 进阶, 本地, Route
 
 ## 三、 自定义出站和规则
 ### 1. 自定义提供者 providers.json（用于添加自定义提供者 `providers`）
-执行命令 `vi $CRASHDIR/jsons/providers.json`，按一下 Ins 键（Insert 键），编辑如下内容并粘贴：
+执行命令 `vi "${CRASHDIR}/jsons/providers.json"`，按一下 Ins 键（Insert 键），编辑如下内容并粘贴：
 
 ```json
 {
@@ -73,7 +73,7 @@ tags: [sing-box, sing-boxr, ShellCrash, ruleset, rule_set, 进阶, 本地, Route
 按一下 Esc 键（退出键），输入英文冒号 `:`，继续输入 `wq` 并回车
 
 ### 2. 自定义出站 outbounds.json（用于添加自定义出站 `outbounds`）
-连接 SSH 后执行命令 `vi $CRASHDIR/jsons/outbounds.json`，按一下 Ins 键（Insert 键），编辑如下内容并粘贴：
+连接 SSH 后执行命令 `vi "${CRASHDIR}/jsons/outbounds.json"`，按一下 Ins 键（Insert 键），编辑如下内容并粘贴：
 
 ```json
 {
@@ -122,7 +122,7 @@ tags: [sing-box, sing-boxr, ShellCrash, ruleset, rule_set, 进阶, 本地, Route
 按一下 Esc 键（退出键），输入英文冒号 `:`，继续输入 `wq` 并回车
 
 ### 3. 自定义规则 route.json（用于添加自定义路由和规则 `route`）
-执行命令 `vi $CRASHDIR/jsons/route.json`，按一下 Ins 键（Insert 键），编辑如下内容并粘贴：
+执行命令 `vi "${CRASHDIR}/jsons/route.json"`，按一下 Ins 键（Insert 键），编辑如下内容并粘贴：
 
 ```json
 {
@@ -172,7 +172,7 @@ tags: [sing-box, sing-boxr, ShellCrash, ruleset, rule_set, 进阶, 本地, Route
 {: .prompt-warning }
 
 ### 1. 修改 outbounds.json 文件
-连接 SSH 后执行命令 `vi $CRASHDIR/jsons/outbounds.json`，按一下 Ins 键（Insert 键），编辑如下内容并粘贴：
+连接 SSH 后执行命令 `vi "${CRASHDIR}/jsons/outbounds.json"`，按一下 Ins 键（Insert 键），编辑如下内容并粘贴：
 
 ```json
 {
@@ -194,7 +194,7 @@ tags: [sing-box, sing-boxr, ShellCrash, ruleset, rule_set, 进阶, 本地, Route
 按一下 Esc 键（退出键），输入英文冒号 `:`，继续输入 `wq` 并回车
 
 ### 2. 修改 route.json 文件
-连接 SSH 后执行命令 `vi $CRASHDIR/jsons/route.json`，按一下 Ins 键（Insert 键），优先在最上方编辑如下内容并粘贴：
+连接 SSH 后执行命令 `vi "${CRASHDIR}/jsons/route.json"`，按一下 Ins 键（Insert 键），优先在最上方编辑如下内容并粘贴：
 
 ```json
 {
@@ -228,7 +228,7 @@ tags: [sing-box, sing-boxr, ShellCrash, ruleset, rule_set, 进阶, 本地, Route
 {: .prompt-tip }
 
 ## 五、 添加小规则
-仅添加特定网址走直连或走代理，连接 SSH 后执行命令 `vi $CRASHDIR/jsons/route.json`，按一下 Ins 键（Insert 键），在**最上方**粘贴如下内容：  
+仅添加特定网址走直连或走代理，连接 SSH 后执行命令 `vi "${CRASHDIR}/jsons/route.json"`，按一下 Ins 键（Insert 键），在**最上方**粘贴如下内容：  
 注：
 - ① 以下内容只是举例，请根据自身需要进行增删改
 - ② 其它规则请参考《[sing-box Wiki](https://sing-box.sagernet.org/zh/configuration/route/rule)》

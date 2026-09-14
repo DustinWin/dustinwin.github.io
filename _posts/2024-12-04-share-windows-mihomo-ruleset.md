@@ -56,7 +56,7 @@ sniffer:
 
 tun:
   enable: true
-  stack: mixed
+  stack: mips
   dns-hijack: [any:53]
   auto-route: true
   auto-detect-interface: true
@@ -414,7 +414,7 @@ Windows Registry Editor Version 5.00
                 [Yy])
                   echo
                   echo "正在下载 mihomo 内核..."
-                  curl -fsS -o "${USERPROFILE}/Downloads/mihomo.exe" -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-meta-windows-amd64-v3.exe
+                  curl -fo "${USERPROFILE}/Downloads/mihomo.exe" -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-meta-windows-amd64-v3.exe
                   echo "下载 mihomo 内核成功"
 
                   echo "正在结束 mihomo 相关进程..."
@@ -472,7 +472,7 @@ Windows Registry Editor Version 5.00
                 echo
                 echo "正在安装 mihomo 内核..."
                 mkdir -p ./mihomo
-                curl -fsS -o ./mihomo/mihomo.exe -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-meta-windows-amd64-v3.exe
+                curl -fo ./mihomo/mihomo.exe -L https://ghfast.top/https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-meta-windows-amd64-v3.exe
                 echo "安装 mihomo 内核成功"
 
                 echo "正在赋予 mihomo 权限..."
@@ -531,7 +531,7 @@ Windows Registry Editor Version 5.00
               [Yy])
                 echo
                 echo "正在下载 mihomo 配置文件..."
-                curl -fsS -o "${USERPROFILE}/Downloads/config.yaml" -L https://ghfast.top/{.yaml 配置文件直链}
+                curl -fo "${USERPROFILE}/Downloads/config.yaml" -L https://ghfast.top/{.yaml 配置文件直链}
                 echo "下载 mihomo 配置文件成功"
 
                 echo "正在结束 mihomo 相关进程..."
@@ -556,7 +556,7 @@ Windows Registry Editor Version 5.00
         elif [ ! -f "./mihomo/config.yaml" ]; then
           echo "未检测到 mihomo 配置文件，导入配置文件..."
           mkdir -p ./mihomo
-          curl -fsS -o "${USERPROFILE}/Downloads/config.yaml" -L https://ghfast.top/{.yaml 配置文件直链}
+          curl -fo "${USERPROFILE}/Downloads/config.yaml" -L https://ghfast.top/{.yaml 配置文件直链}
           mv -f "${USERPROFILE}/Downloads/config.yaml" ./mihomo
           echo "导入 mihomo 配置文件成功，是否启动服务？（Y/n）"
           ask_run
