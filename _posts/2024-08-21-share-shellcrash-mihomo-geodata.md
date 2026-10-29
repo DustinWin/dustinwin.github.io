@@ -167,7 +167,7 @@ dns:
   listen: 0.0.0.0:1053
   enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.0/15
-  fake-ip-range6: fc00::/16
+  fake-ip-range6: 2001:2::/64
   fake-ip-filter-mode: rule
   fake-ip-filter:
     - GEOSITE,private,real-ip
@@ -213,7 +213,7 @@ dns:
   listen: 0.0.0.0:1053
   enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.0/15
-  fake-ip-range6: fc00::/16
+  fake-ip-range6: 2001:2::/64
   fake-ip-filter-mode: rule
   fake-ip-filter:
     - GEOSITE,private,real-ip

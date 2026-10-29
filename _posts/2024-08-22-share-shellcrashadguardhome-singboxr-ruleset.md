@@ -186,7 +186,7 @@ curl -fo "${CRASHDIR}/cn_ipv6.txt" -L https://cdn.jsdelivr.net/gh/DustinWin/geoi
       { "tag": "dns_cloudflare", "type": "https", "server": "cloudflare-dns.com", "domain_resolver": "hosts", "detour": "GLOBAL" },
       { "tag": "dns_direct", "type": "group", "servers": [ "dns_alidns", "dns_dnspod" ] },
       { "tag": "dns_proxy", "type": "group", "servers": [ "dns_google", "dns_cloudflare" ] },
-      { "tag": "dns_fakeip", "type": "fakeip", "inet4_range": "198.18.0.0/15", "inet6_range": "fc00::/16" }
+      { "tag": "dns_fakeip", "type": "fakeip", "inet4_range": "198.18.0.0/15", "inet6_range": "2001:2::/64" }
     ],
     "rules": [
       { "clash_mode": [ "Direct" ], "server": "dns_direct" },
@@ -236,7 +236,7 @@ curl -fo "${CRASHDIR}/cn_ipv6.txt" -L https://cdn.jsdelivr.net/gh/DustinWin/geoi
       { "tag": "dns_quad9", "type": "quic", "server": "dns11.quad9.net", "domain_resolver": "hosts", "detour": "GLOBAL" },
       { "tag": "dns_direct", "type": "group", "servers": [ "dns_alidns", "dns_dnspod" ] },
       { "tag": "dns_proxy", "type": "group", "servers": [ "dns_google", "dns_quad9" ] },
-      { "tag": "dns_fakeip", "type": "fakeip", "inet4_range": "198.18.0.0/15", "inet6_range": "fc00::/16" }
+      { "tag": "dns_fakeip", "type": "fakeip", "inet4_range": "198.18.0.0/15", "inet6_range": "2001:2::/64" }
     ],
     "rules": [
       { "clash_mode": [ "Direct" ], "server": "dns_direct" },
